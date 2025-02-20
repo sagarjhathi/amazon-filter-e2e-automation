@@ -240,13 +240,45 @@ public class Base {
     	   
     	  switchWindowAndCompare(driver,i);
     	  c++;
-    	  if(c==4) {
-    		  c=0;
+    	  if(c==1) {
+    		  break;
     	  }
        }
        
+     Thread.sleep(1000);
+     driver.navigate().refresh();
+     //  WebElement priceFilter=driver.findElement(By.xpath("//div[text()='Price']"));
        
+//    		   js.executeScript("arguments[0].scrollIntoView(true)", priceFilter);
+    		   Thread.sleep(2000);
+    		  // driver.findElement(By.xpath("(//g-text-field[@jsname='pp37Ef'])[2]")).click();
+    	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    	        WebElement inputField = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@class='hUhkLe'])[2]")));
+
+    	        // Now interact with the element
+    	        inputField.click();
+    	        inputField.sendKeys("12000");
+
+    		   
+    		   //driver.findElement(By.xpath("(//div[@class='hUhkLe'])[2]")).sendKeys("12000");
+    		   driver.findElement(By.xpath("//button[@class='sh-dr__prs']")).click();
        
+      WebElement productsAfterPriceFilter = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
+      
+      //Storing all the products here within the list here
+      List<WebElement> childElementsAfterPriceFilter = productsAfterPriceFilter.findElements(By.xpath("./*"));
+       
+      System.out.println(childElementsAfterPriceFilter.size());
+      
+      int cc=0;
+      for(int i=1;i<childElementsAfterPriceFilter.size();i++) {
+   	   
+   	  switchWindowAndCompare(driver,i);
+   	  cc++;
+   	  if(cc==1) {
+   		  break;
+   	  }
+      }
         
 	}
 	
@@ -299,24 +331,12 @@ public class Base {
 //			
 			
 		    
-		   //clicking upon the view more details with in the product details
-		//    new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(driver.findElement(By.xpath("//a[text()='View product details']")))).click();
-	      // driver.findElement(By.xpath("//a[text()='View product details']")).click();
-		    
-//		    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-//		    wait.until(ExpectedConditions.invisibilityOfElementLocated(By.id("overlay-id")));  // Replace with actual overlay's locator
-//		    WebElement element = driver.findElement(By.xpath("//a[text()='View product details' and contains(@class, '_-pz')]"));
-//		    element.click();
-		    
-//		    WebElement otherOptions = driver.findElement(By.xpath("//label[text()='Other options:']"));
-//		    WebDriverWait w=(WebDriverWait) new WebDriverWait(driver,Duration.ofSeconds(5)).until(ExpectedConditions.visibilityOf(otherOptions));
-//		    
 		   
 		   
-	//    driver.findElement(By.xpath("//label[text()='Other options:']")).click();
-//		    WebElement element = driver.findElement(By.xpath("//a[contains(@class, '_-ol') and contains(@class, '_-oq') and contains(@class, '_-nD')]"));
-		   // element.click();
-
+		
+			WebElement googleShoppingPrice =driver.findElement(By.xpath("(//span[@class='_-p3 _-pZ'])[1]"));
+			System.out.println(googleShoppingPrice.getText()+"    "+"googleShoppingPrice here");
+			
 		     
 	       
 	       //storing the current window which is google shopping individual product details page
@@ -357,6 +377,7 @@ public class Base {
 	      //extracting the price here of the product from the amazn=on site
 	       String amazon=driver.findElement(By.xpath("//span[@class='a-price aok-align-center reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")).getText();
 
+	       
 	       //Extracting the product name here from the amazon site here
 	       String productName=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
 	       
