@@ -155,24 +155,68 @@ public class Base {
                 driver.navigate().refresh();
                 
     		   
+       driver.findElement(By.xpath("(//div[@class='EQ4p8c n3Kkaf']/a[@class='vjtvke ch6u2b'])[1]")).click();
        
-//      WebElement productsAfterPriceFilter = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
-//      
-//      //Storing all the products here within the list here
-//      List<WebElement> childElementsAfterPriceFilter = productsAfterPriceFilter.findElements(By.xpath("./*"));
-//       
-//      System.out.println(childElementsAfterPriceFilter.size());
-//      
-//      int cc=0;
-//      for(int i=1;i<childElementsAfterPriceFilter.size();i++) {
-//   	   
-//   	  switchWindowAndCompare(driver,i);
-//   	  cc++;
-//   	  if(cc==1) {
-//   		  break;
-//   	  }
-//      }
+      WebElement productsAfterPriceFilter = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
+      
+      //Storing all the products here within the list here
+      List<WebElement> childElementsAfterPriceFilter = productsAfterPriceFilter.findElements(By.xpath("./*"));
+       
+      System.out.println(childElementsAfterPriceFilter.size());
+      
+      int cc=0;
+      for(int i=1;i<childElementsAfterPriceFilter.size();i++) {
+   	   
+   	  switchWindowAndCompare(driver,i);
+   	  cc++;
+   	  if(cc==1) {
+   		  break;
+   	  }
+      }
+      
+      WebElement mobileBrand=driver.findElement(By.xpath("//span[@title='Realme']"));
+      js.executeScript("arguments[0].scrollIntoView(true)", mobileBrand);
+      Thread.sleep(4000);
+      driver.findElement(By.xpath("//span[@title='Realme']")).click();
         
+      int ccc=0;
+      for(int i=1;i<childElementsAfterPriceFilter.size();i++) {
+   	   
+   	  switchWindowAndCompare(driver,i);
+   	  ccc++;
+   	  if(ccc==2) {
+   		  break;
+   	  }
+      }
+      
+      driver.findElement(By.xpath("//span[@title='5G']")).click();
+      
+      
+      int cccc=0;
+      for(int i=1;i<childElementsAfterPriceFilter.size();i++) {
+   	   
+   	  switchWindowAndCompare(driver,i);
+   	  cccc++;
+   	  if(cccc==2) {
+   		  break;
+   	  }
+      }
+      
+      driver.findElement(By.xpath("//span[@title='Dual SIM']")).click();
+      
+      int ccccc=0;
+      for(int i=1;i<childElementsAfterPriceFilter.size();i++) {
+   	   
+   	  switchWindowAndCompare(driver,i);
+   	  ccccc++;
+   	  if(ccccc==2) {
+   		  break;
+   	  }
+      }
+      
+      
+      
+      
 	} 
 	
 	public static String extractPrice(String str) {
@@ -195,16 +239,20 @@ public class Base {
 	
 	public static void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
 		   
-		WebElement checkInScroll=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
 
 				
 			driver.navigate().refresh();
 		
-		    Thread.sleep(5000);
+			WebElement productLocating=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
+
 			//clicking upon the products card from the google shopping landing page
-		    driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]")).click(); 
+		    WebElement wt=new WebDriverWait(driver,Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(productLocating));
+		   wt.click();
 		    Thread.sleep(5000);
-		    WebElement viewMoreDetails=driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
+		   // WebElement viewMoreDetails=driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
+		    
+		   
+		    WebElement viewMoreDetails=driver.findElement(By.xpath("//a[text()='View product details']"));
 		    JavascriptExecutor jss=(JavascriptExecutor)driver;
 			jss.executeScript("arguments[0].scrollIntoView(true)", viewMoreDetails);
 			Thread.sleep(3000);
@@ -214,10 +262,11 @@ public class Base {
 		
 			
 		    		
-			WebElement googleShoppingPrice =driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
-			System.out.println(googleShoppingPrice.getText()+"    "+"googleShoppingPrice here");
+//			WebElement googleShoppingPrice =driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
+//			System.out.println(googleShoppingPrice.getText()+"    "+"googleShoppingPrice here");
 			
-		     
+			Thread.sleep(2000);
+		     driver.findElement(By.xpath("(//div[@class='Kl9jM UKKY9'])[1]")).click();
 	       
 	       //storing the current window which is google shopping individual product details page
 		   String cWindow=driver.getWindowHandle();
@@ -266,12 +315,12 @@ public class Base {
 	    	    }
 	    	}
 	       
-	      // driver.navigate().back();
+	       driver.navigate().back();
 	       Thread.sleep(5000);
 	       
 	       jss.executeScript("window.scrollBy(0,-200);");
 	       Thread.sleep(2000);
-	       driver.findElement(By.xpath("//a[@class=' _-pO']")).click();
+	       driver.findElement(By.xpath("//a[@aria-label='Close']")).click();
 	       
 
 	}
