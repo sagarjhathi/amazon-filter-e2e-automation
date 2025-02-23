@@ -52,29 +52,29 @@ public class Base {
         
         //Giving inputs within the search bar using send keys
         driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).sendKeys("Mobile");
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         
         //Using keys down to select the option from the suggestions given related to the inputs
         driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).sendKeys(Keys.DOWN);
-        Thread.sleep(2000);
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).sendKeys(Keys.DOWN.ENTER);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         
         //Creating javascript executor here for scrolling
         JavascriptExecutor js=(JavascriptExecutor)driver;
         
         //Locating the seller menu within the web where user can select Amazon in the sellers options
         WebElement seller=driver.findElement(By.xpath("//div[@class='lg3aE' and text()='Seller']"));
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         
         //Scrolling to the point where the seller menu field is within the view port
         js.executeScript("arguments[0].scrollIntoView(true);",seller);
-        Thread.sleep(6000);
+        Thread.sleep(2000);
         
         //clicking upon the "more" button with in seller menu in order to make all the options visible hence to select amazon
        
         driver.findElement(By.xpath("//div[@aria-label='More Seller']")).click();
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         
         //Locating  the amazon option within the sellers menu field
         WebElement amazonInSeller=driver.findElement(By.cssSelector("span.lg3aE[title='Amazon.in']"));
@@ -156,8 +156,6 @@ public class Base {
                 driver.navigate().refresh();
                 
     		   
-       
-                
       System.out.println("Applying the price filter then re-running the function");
       WebElement locatingProducts = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
       
@@ -165,6 +163,14 @@ public class Base {
       List<WebElement> childElementsAfterPriceFilter = locatingProducts.findElements(By.xpath("./*"));
        
       
+      
+      System.out.println("Applying the ram filter then re-running the function");
+      WebElement ram=driver.findElement(By.xpath("//div[contains(@class, 'EQ4p8c') and contains(@class, 'n3Kkaf') and contains(@class, 'HNgvTe')]//a[con"
+      		+ "tains(@class, 'vjtvke') and contains(@class, 'ch6u2b')]//span[contains(@class, 'lg3aE') and @title='< 4 GB']"));
+      Base.applyFilterAndTraverse(driver, ram, childElementsAfterPriceFilter);
+     
+     
+     
       System.out.println("Applying the rating  filter then re-running the function");
       WebElement moreFromProductRating=driver.findElement(By.xpath("(//div[text()='More'])[1]"));
       
@@ -235,12 +241,6 @@ public class Base {
       
 
       
-      
-      
-     
-      
-      
-      
       System.out.println("Applying the cellular Network filter then re-running the function");
       WebElement cellularNetwork=driver.findElement(By.xpath("//span[@title='GSM Network']"));
       Base.applyFilterAndTraverse(driver, cellularNetwork, childElementsAfterPriceFilter);
@@ -257,9 +257,9 @@ public class Base {
       Base.applyFilterAndTraverse(driver, screenResolution, childElementsAfterPriceFilter);
       
       
-//      System.out.println("Applying the camera filter then re-running the function");
-//      WebElement camera= driver.findElement(By.xpath("//span[@class='lg3aE' and @title='< 8 MP']"));
-//      Base.applyFilterAndTraverse(driver, camera, childElementsAfterPriceFilter);
+      System.out.println("Applying the camera filter then re-running the function");
+      WebElement camera= driver.findElement(By.xpath("//a[@class='vjtvke ch6u2b']//span[@class='lg3aE' and @title='< 8 MP']"));
+      Base.applyFilterAndTraverse(driver, camera, childElementsAfterPriceFilter);
       
       
       System.out.println("Applying the headphone filter then re-running the function");
@@ -267,31 +267,14 @@ public class Base {
       Base.applyFilterAndTraverse(driver, headphoneConnector, childElementsAfterPriceFilter);
       
       
-//      System.out.println("Applying the ram filter then re-running the function");
-//       WebElement ram=driver.findElement(By.xpath("//span[@class='lg3aE' and @title='< 4 GB']"));
-//      Base.applyFilterAndTraverse(driver, ram, childElementsAfterPriceFilter);
+     
       
       
       
       System.out.println("Applying the lens filter then re-running the function");
       WebElement lensType=driver.findElement(By.xpath("//span[@title='Ultra Wide Angle']"));
       Base.applyFilterAndTraverse(driver, lensType, childElementsAfterPriceFilter);
-      
-      
-      
-      
-//      System.out.println("Applying the rating  filter then re-running the function");
-//      WebElement moreFromProductRating=driver.findElement(By.xpath("(//div[@title='More'])[1]"));
-//      
-//      js.executeScript("arguments[0].scrollIntoView(true)", moreFromProductRating);
-//      js.executeScript("window.scrollBy(0,-300);");
-//      Thread.sleep(5000);
-//      moreFromProductRating.click();
-//      
-//      
-//      WebElement fourAndUp=driver.findElement(By.xpath("(//span[@class='cNaB2e' and text()='4 and up '])[1]"));
-//      fourAndUp.click();
-       
+        
       
 	} 
 	
@@ -325,8 +308,7 @@ public class Base {
 			//clicking upon the products card from the google shopping landing page
 		    WebElement wt=new WebDriverWait(driver,Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(productLocating));
 		   wt.click();
-//		    Thread.sleep(5000);
-		   // WebElement viewMoreDetails=driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
+
 		    
 		   
 		    WebElement viewMoreDetails=driver.findElement(By.xpath("//a[text()='View product details']"));
@@ -334,21 +316,18 @@ public class Base {
 			jss.executeScript("arguments[0].scrollIntoView(true)", viewMoreDetails);
 			Thread.sleep(1000);
 		    jss.executeScript("window.scrollBy(0,-200);");
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 			viewMoreDetails.click();
 		
 			
-		    		
-//			WebElement googleShoppingPrice =driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
-//			System.out.println(googleShoppingPrice.getText()+"    "+"googleShoppingPrice here");
 			
-			Thread.sleep(2000);
+			Thread.sleep(1000);
 		     driver.findElement(By.xpath("(//div[@class='Kl9jM UKKY9'])[1]")).click();
 	       
 	       //storing the current window which is google shopping individual product details page
 		   String cWindow=driver.getWindowHandle();
 		   
-		   Thread.sleep(2000);
+		   Thread.sleep(1000);
 		  
 	           
 	       //creating set to store all the windows here in order to switch to the amazon site 
