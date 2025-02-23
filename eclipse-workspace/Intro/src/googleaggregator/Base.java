@@ -151,112 +151,132 @@ public class Base {
     	  }
        }
        
+       
                 Thread.sleep(1000);
                 driver.navigate().refresh();
                 
     		   
        
+                
       System.out.println("Applying the price filter then re-running the function");
       WebElement locatingProducts = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
       
       //Storing all the products here within the list here
       List<WebElement> childElementsAfterPriceFilter = locatingProducts.findElements(By.xpath("./*"));
        
-      System.out.println(childElementsAfterPriceFilter.size()+"   "+"child list size after applying filters");
       
-      WebElement priceFilter=driver.findElement(By.xpath("(//div[@class='EQ4p8c n3Kkaf']/a[@class='vjtvke ch6u2b'])[1]"));
- 
-      Base.applyFilterAndTraverse(driver, priceFilter, childElementsAfterPriceFilter);
+      System.out.println("Applying the rating  filter then re-running the function");
+      WebElement moreFromProductRating=driver.findElement(By.xpath("(//div[text()='More'])[1]"));
       
-      
-      System.out.println("Applying the mobile brand  filter then re-running the function");
-
-      
-      WebElement mobileBrand=driver.findElement(By.xpath("//span[@title='Realme']"));
-      Base.applyFilterAndTraverse(driver, mobileBrand, list);
+      js.executeScript("arguments[0].scrollIntoView(true)", moreFromProductRating);
+      js.executeScript("window.scrollBy(0,-300);");
+      Thread.sleep(5000);
+      moreFromProductRating.click();
       
       
+      WebElement fourAndUp=driver.findElement(By.xpath("(//div[@class='vq3ore' and @aria-label='4 out of 5 stars'])[2]"));
+      Base.applyFilterAndTraverse(driver, fourAndUp, childElementsAfterPriceFilter);
       
-      System.out.println("Applying the 5G filter then re-running the function");
-      WebElement selecting5G =driver.findElement(By.xpath("//span[@title='5G']"));
-      Base.applyFilterAndTraverse(driver, selecting5G, list);
-      
-      
-      
-      System.out.println("Applying the Dual Sim filter then re-running the function");
-      WebElement dualSim=  driver.findElement(By.xpath("//span[@title='Dual SIM']"));
-      Base.applyFilterAndTraverse(driver, dualSim, list);
-      
-      
-      
-      System.out.println("Applying the color filter then re-running the function");
-      WebElement color=driver.findElement(By.xpath("//span[text()='Black']"));
-      Base.applyFilterAndTraverse(driver, color, list);
-      
-      
-      
-      System.out.println("Applying the storage filter then re-running the function");
-      WebElement storageCapacity =driver.findElement(By.xpath("//span[text()='64 GB']"));
-      Base.applyFilterAndTraverse(driver, storageCapacity, list);
-      
-      
-      
-      System.out.println("Applying the os filter then re-running the function");      
-      WebElement os=driver.findElement(By.xpath("//span[text()='Android']"));
-      Base.applyFilterAndTraverse(driver, os, list);
-      
-//      System.out.println("Applying the screen size filter then re-running the function");
-//      WebElement screenSize=driver.findElement(By.xpath("//span[@class='lg3aE'][contains(@title, '< 6.5 inches')]"));
-//      Base.applyFilterAndTraverse(driver, screenSize, list);
       
       
       
       System.out.println("Applying the weight filter then re-running the function");
+      WebElement weight=driver.findElement(By.xpath("(//*[contains(text(), 'grams')])[1]"));
+      Base.applyFilterAndTraverse(driver, weight, childElementsAfterPriceFilter);
       
-      
-      
-      
-      System.out.println("Applying the cellular Network filter then re-running the function");
-      WebElement cellularNetwork=driver.findElement(By.xpath("//span[@title='GSM Network']"));
-      Base.applyFilterAndTraverse(driver, cellularNetwork, list);
-      
-      
-      
-      System.out.println("Applying the security features filter then re-running the function");
-      WebElement securityFeatures=driver.findElement(By.xpath("//span[@title='Mobile Phones With Fingerprint Scanners']"));
-      Base.applyFilterAndTraverse(driver, securityFeatures, list);
-      
-      
-      System.out.println("Applying the sreen resolution filter then re-running the function");      
-      WebElement screenResolution = driver.findElement(By.xpath("//span[@title='2408 x 1080']"));
-      Base.applyFilterAndTraverse(driver, screenResolution, list);
-      
-      
-      System.out.println("Applying the camera filter then re-running the function");
-      WebElement camera=driver.findElement(By.xpath("//span[@title='< 8 MP']"));
-      Base.applyFilterAndTraverse(driver, camera, list);
-      
-      
-      System.out.println("Applying the headphone filter then re-running the function");
-      WebElement headphoneConnector=driver.findElement(By.xpath("//span[@title='Headphone Jack']"));
-      Base.applyFilterAndTraverse(driver, headphoneConnector, list);
-      
-      
-//      System.out.println("Applying the ram filter then re-running the function");
-//       WebElement ram=driver.findElement(By.xpath("//span[@='< 4 GB']"));
-//      Base.applyFilterAndTraverse(driver, ram, list);
-      
-      
-      
-      System.out.println("Applying the lens filter then re-running the function");
-      WebElement lensType=driver.findElement(By.xpath("//span[@title='Ultra Wide Angle']"));
-      Base.applyFilterAndTraverse(driver, lensType, list);
       
       
       
       System.out.println("Applying the delivery filter then re-running the function");
       WebElement delivery=driver.findElement(By.xpath("//span[@title='1–3 day delivery']"));
-      Base.applyFilterAndTraverse(driver, delivery, list);
+      Base.applyFilterAndTraverse(driver, delivery, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println(childElementsAfterPriceFilter.size()+"   "+"child list size after applying filters");
+      WebElement priceFilter=driver.findElement(By.xpath("(//div[@class='EQ4p8c n3Kkaf']/a[@class='vjtvke ch6u2b'])[1]"));
+      Base.applyFilterAndTraverse(driver, priceFilter, childElementsAfterPriceFilter);
+      
+      
+            
+      System.out.println("Applying the mobile brand  filter then re-running the function");
+      WebElement mobileBrand=driver.findElement(By.xpath("//span[@title='Realme']"));
+      Base.applyFilterAndTraverse(driver, mobileBrand, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the 5G filter then re-running the function");
+      WebElement selecting5G =driver.findElement(By.xpath("//span[@title='5G']"));
+      Base.applyFilterAndTraverse(driver, selecting5G, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the Dual Sim filter then re-running the function");
+      WebElement dualSim=  driver.findElement(By.xpath("//span[@title='Dual SIM']"));
+      Base.applyFilterAndTraverse(driver, dualSim, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the color filter then re-running the function");
+      WebElement color=driver.findElement(By.xpath("//span[text()='Black']"));
+      Base.applyFilterAndTraverse(driver, color, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the storage filter then re-running the function");
+      WebElement storageCapacity =driver.findElement(By.xpath("//span[text()='64 GB']"));
+      Base.applyFilterAndTraverse(driver, storageCapacity, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the os filter then re-running the function");      
+      WebElement os=driver.findElement(By.xpath("//span[text()='Android']"));
+      Base.applyFilterAndTraverse(driver, os, childElementsAfterPriceFilter);
+      
+
+      
+      
+      
+     
+      
+      
+      
+      System.out.println("Applying the cellular Network filter then re-running the function");
+      WebElement cellularNetwork=driver.findElement(By.xpath("//span[@title='GSM Network']"));
+      Base.applyFilterAndTraverse(driver, cellularNetwork, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the security features filter then re-running the function");
+      WebElement securityFeatures=driver.findElement(By.xpath("//span[@title='Mobile Phones With Fingerprint Scanners']"));
+      Base.applyFilterAndTraverse(driver, securityFeatures, childElementsAfterPriceFilter);
+      
+      
+      System.out.println("Applying the sreen resolution filter then re-running the function");      
+      WebElement screenResolution = driver.findElement(By.xpath("//span[@title='2408 x 1080']"));
+      Base.applyFilterAndTraverse(driver, screenResolution, childElementsAfterPriceFilter);
+      
+      
+//      System.out.println("Applying the camera filter then re-running the function");
+//      WebElement camera= driver.findElement(By.xpath("//span[@class='lg3aE' and @title='< 8 MP']"));
+//      Base.applyFilterAndTraverse(driver, camera, childElementsAfterPriceFilter);
+      
+      
+      System.out.println("Applying the headphone filter then re-running the function");
+      WebElement headphoneConnector=driver.findElement(By.xpath("//span[@title='Headphone Jack']"));
+      Base.applyFilterAndTraverse(driver, headphoneConnector, childElementsAfterPriceFilter);
+      
+      
+//      System.out.println("Applying the ram filter then re-running the function");
+//       WebElement ram=driver.findElement(By.xpath("//span[@class='lg3aE' and @title='< 4 GB']"));
+//      Base.applyFilterAndTraverse(driver, ram, childElementsAfterPriceFilter);
+      
+      
+      
+      System.out.println("Applying the lens filter then re-running the function");
+      WebElement lensType=driver.findElement(By.xpath("//span[@title='Ultra Wide Angle']"));
+      Base.applyFilterAndTraverse(driver, lensType, childElementsAfterPriceFilter);
+      
       
       
       
@@ -292,6 +312,7 @@ public class Base {
     }
 	
 	
+
 	
 	public static void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
 		   
@@ -304,16 +325,16 @@ public class Base {
 			//clicking upon the products card from the google shopping landing page
 		    WebElement wt=new WebDriverWait(driver,Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(productLocating));
 		   wt.click();
-		    Thread.sleep(5000);
+//		    Thread.sleep(5000);
 		   // WebElement viewMoreDetails=driver.findElement(By.xpath("(//span[@class='_-p2 _-pY'])[1]"));
 		    
 		   
 		    WebElement viewMoreDetails=driver.findElement(By.xpath("//a[text()='View product details']"));
 		    JavascriptExecutor jss=(JavascriptExecutor)driver;
 			jss.executeScript("arguments[0].scrollIntoView(true)", viewMoreDetails);
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 		    jss.executeScript("window.scrollBy(0,-200);");
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 			viewMoreDetails.click();
 		
 			
@@ -327,7 +348,7 @@ public class Base {
 	       //storing the current window which is google shopping individual product details page
 		   String cWindow=driver.getWindowHandle();
 		   
-		   Thread.sleep(5000);
+		   Thread.sleep(2000);
 		  
 	           
 	       //creating set to store all the windows here in order to switch to the amazon site 
@@ -350,14 +371,38 @@ public class Base {
 	      
 	       //Storing the amazon window here as the driver should be at the amazon site
 	      String amazonWindow=driver.getWindowHandle();
-	      Thread.sleep(5000);
+	      Thread.sleep(2000);
 	      
-	      //extracting the price here of the product from the amazn=on site
-	       String amazon=driver.findElement(By.xpath("//span[@class='a-price aok-align-center reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")).getText();
-
+	    
 	       
-	       //Extracting the product name here from the amazon site here
-	       String productName=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+	      // Extracting the price from Amazon
+	      try {
+	          WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
+	          WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
+	                  + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
+
+	          if (amazonPrice != null && amazonPrice.isDisplayed() == false) {
+	              System.out.println("The element is not available on the UI.");
+	          }
+
+	      } catch (Exception e) {
+	          System.out.println("Element not found or not visible within the time limit.");
+	          // Optionally, add code to skip this step or proceed with the next actions
+	      }
+
+	      // Extracting the product name from Amazon
+	      String productName = "";
+	      try {
+	          productName = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+	      } catch (Exception e) {
+	          System.out.println("Product name not found on Amazon.");
+	          // You can leave productName empty or handle it differently
+	      }
+	      
+	      if (!productName.isEmpty()) {
+	          System.out.println("Product Name: " + productName);
+	      }
+
 	       
 	       
 	       Set<String> windowHandlesLatest = driver.getWindowHandles();
@@ -372,7 +417,7 @@ public class Base {
 	    	}
 	       
 	       driver.navigate().back();
-	       Thread.sleep(5000);
+	       Thread.sleep(2000);
 	       
 	       jss.executeScript("window.scrollBy(0,-200);");
 	       Thread.sleep(2000);
@@ -402,44 +447,42 @@ public class Base {
 	      Thread.sleep(2000);
 	      element.click();
 	      
-	      
 	     
 	      
-	      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // You can adjust the timeout
-	      boolean isValid=true;
 	      try {
-	    	  
-	         WebElement noResultsState = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//p[text()='Suggestions:']")));
-	          if (noResultsState != null && noResultsState.isDisplayed()) {
-	              System.out.println("The element is displayed on the UI.");
-	              isValid=true;
-	          } else {
-	              System.out.println("The element is NOT displayed.");
-	              isValid=false;
+	          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+	          // Wait for the "No results" state element to be visible, if it appears
+	          WebElement noResults = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	                  By.xpath("//ul[@style='margin-left:1.3em;margin-bottom:2em']")
+	          ));
+
+	          if (noResults.isDisplayed()) {
+	              System.out.println("No results found, navigating back...");
+	              driver.navigate().back();  // Navigate back before returning
+	              return;  // Exit the method if no results are found
 	          }
-	      } catch (Exception e) {
-	          System.out.println("Element not found or not visible within the time limit.");
-	         isValid=true;
+	      } catch (TimeoutException e) {
+	          // No "No results" state found, continue with the normal actions
+	          System.out.println("Results found, proceeding with further actions.");
 	      }
-	      
-	      if(!isValid) {
-	    	  int c=0;
-		      for(int i=1;i<list.size();i++) {
-		   	   
-		   	  switchWindowAndCompare(driver,i);
-		   	  c++;
-		   	  if(c==1) {
-		   		  break;
-		   	  }
-		      }
-		      
-	      }
-	      if(isValid) {
-	    	  driver.navigate().back();
-	    	  Thread.sleep(1000);
-		      //driver.findElement(By.xpath("(//a[@class='vjtvke' and text()='Clear'])[1]")).click();
-		      Thread.sleep(1000);
-	      }
+	    	    
+	    	        int c = 0;
+	    	        for (int i = 1; i < list.size(); i++) {
+	    	            switchWindowAndCompare(driver, i);
+	    	            c++;
+	    	            
+	    	            // Break after the first iteration
+	    	            if (c == 1) {
+	    	                break;
+	    	            }
+	    	        }
+	    	        
+	    	        // Perform further actions after comparison
+	    	        Thread.sleep(1000);
+	    	        driver.findElement(By.xpath("(//a[@class='vjtvke' and text()='Clear'])[1]")).click();
+	    	        Thread.sleep(1000);
+	         
 	 }
 
 }
