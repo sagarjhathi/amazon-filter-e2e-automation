@@ -267,10 +267,6 @@ public class Base {
       Base.applyFilterAndTraverse(driver, headphoneConnector, childElementsAfterPriceFilter);
       
       
-     
-      
-      
-      
       System.out.println("Applying the lens filter then re-running the function");
       WebElement lensType=driver.findElement(By.xpath("//span[@title='Ultra Wide Angle']"));
       Base.applyFilterAndTraverse(driver, lensType, childElementsAfterPriceFilter);
