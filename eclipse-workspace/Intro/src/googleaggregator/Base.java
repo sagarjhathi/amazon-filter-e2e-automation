@@ -47,9 +47,9 @@ public class Base {
         //Adding implicit wait here for 10 seconds
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         
-        //Clicking on the search bar
-        driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).click();
-        
+		        //Clicking on the search bar
+		        driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).click();
+		        
         //Giving inputs within the search bar using send keys
         driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).sendKeys("Mobile");
         Thread.sleep(1000);
@@ -85,88 +85,19 @@ public class Base {
         
         
         //Clicking upon the amazon option with in the seller menu after scrolling a bit
-        driver.findElement(By.cssSelector("span.lg3aE[title='Amazon.in']")).click();
+        amazonInSeller.click();        
+    
         
-        
-       
-       //Creating arraylist to store all the web elements of the below address to locate and store all the prices of the product.
-       List<WebElement> list=new ArrayList<>();
-       list=driver.findElements(By.xpath("//span[@class='g9WBQb']"));
-       
-       
-       
-       //Getting the current window  which currently is the google shopping page .
-       String cWindow=driver.getWindowHandle();
-       
-       
-       //Creating a set to store all the windows available here
-       Set<String> windowHandles = driver.getWindowHandles();
-       
-       
-       //Storing the window of the amazon here
-       String amazonWindow=driver.getWindowHandle();
-       
-       //Extracting the amazon title and printing here to verify if the driver did switch by printing the title.
-       String amazonWindowTitle=driver.getTitle();
-       System.out.println(driver.getTitle());
-       
- 
-       //Verifying the extract function to check how does it trim and process the numbers here
-       String str="588,99,000.001";
-       System.out.println(extractPrice(str));
-       
-       
-       // After closing the second window, WebDriver will automatically switch to the first window
-       // You can now switch to the first window using the updated window handles
-       Set<String> windowHandlesLatest = driver.getWindowHandles();
-       
-       windowHandlesLatest.remove(amazonWindow);
-       
-      
-       //Verifying if the driver did switch in the above step by printing it
-       System.out.println(driver.getTitle());
-      
-     
-       // Wait for the action to take effect (you may need to adjust this for your specific case)
-       Thread.sleep(2000);  // You can also replace Thread.sleep() with WebDriverWait if you need dynamic waits
-      
-       //locating the element having all the products here to traverse within them
-       WebElement products = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
-       
-       //Storing all the products here within the list here
-       List<WebElement> childElements = products.findElements(By.xpath("./*"));
-       
-       //Printing the size of the products 
-       System.out.println(childElements.size());	
-       
-      
-  
-       int c=0;
-       for(int i=1;i<childElements.size();i++) {
-    	   
-    	  switchWindowAndCompare(driver,i);
-    	  c++;
-    	  if(c==1) {
-    		  break;
-    	  }
-       }
-       
-       
-                Thread.sleep(1000);
-                driver.navigate().refresh();
-                
-    		   
-      System.out.println("Applying the price filter then re-running the function");
       WebElement locatingProducts = driver.findElement(By.xpath("//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]"));
-      
       //Storing all the products here within the list here
       List<WebElement> childElementsAfterPriceFilter = locatingProducts.findElements(By.xpath("./*"));
        
-      
+      System.out.println("Applying the price filter then re-running the function");
+      WebElement priceFilter=driver.findElement(By.xpath("(//span[@class='lg3aE']/span[contains(text(),'₹')])[2]"));
+      Base.applyFilterAndTraverse(driver, priceFilter, childElementsAfterPriceFilter);
       
       System.out.println("Applying the ram filter then re-running the function");
-      WebElement ram=driver.findElement(By.xpath("//div[contains(@class, 'EQ4p8c') and contains(@class, 'n3Kkaf') and contains(@class, 'HNgvTe')]//a[con"
-      		+ "tains(@class, 'vjtvke') and contains(@class, 'ch6u2b')]//span[contains(@class, 'lg3aE') and @title='< 4 GB']"));
+      WebElement ram=driver.findElement(By.xpath("(//a[@class='vjtvke ch6u2b']//span[@class='lg3aE' and contains(@title, 'GB')])[5]"));
       Base.applyFilterAndTraverse(driver, ram, childElementsAfterPriceFilter);
      
      
@@ -197,13 +128,7 @@ public class Base {
       WebElement delivery=driver.findElement(By.xpath("//span[@title='1–3 day delivery']"));
       Base.applyFilterAndTraverse(driver, delivery, childElementsAfterPriceFilter);
       
-      
-      
-      System.out.println(childElementsAfterPriceFilter.size()+"   "+"child list size after applying filters");
-      WebElement priceFilter=driver.findElement(By.xpath("(//div[@class='EQ4p8c n3Kkaf']/a[@class='vjtvke ch6u2b'])[1]"));
-      Base.applyFilterAndTraverse(driver, priceFilter, childElementsAfterPriceFilter);
-      
-      
+         
             
       System.out.println("Applying the mobile brand  filter then re-running the function");
       WebElement mobileBrand=driver.findElement(By.xpath("//span[@title='Realme']"));
@@ -318,10 +243,12 @@ public class Base {
 			
 			
 			Thread.sleep(1000);
+			
+			String cWindow=driver.getWindowHandle();
 		     driver.findElement(By.xpath("(//div[@class='Kl9jM UKKY9'])[1]")).click();
 	       
 	       //storing the current window which is google shopping individual product details page
-		   String cWindow=driver.getWindowHandle();
+		   
 		   
 		   Thread.sleep(1000);
 		  
