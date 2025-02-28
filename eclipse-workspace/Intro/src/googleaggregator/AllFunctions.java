@@ -1,7 +1,9 @@
 package googleaggregator;
 
 import java.time.Duration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -210,5 +212,90 @@ public class AllFunctions {
     	 System.out.println("Applying the lens filter then re-running the function");
          WebElement lensType=driver.findElement(By.xpath("//span[@title='Ultra Wide Angle']"));
          Base.applyFilterAndTraverse(driver, lensType, list);
+    }
+    
+    public static void compareName(String str1, String str2) {
+    	
+    	str1=str1.toLowerCase();
+    	str2=str2.toLowerCase();
+    	
+    	System.out.println("Before making the changes to string "+str1);
+    	
+    	
+    	str1=str1.replaceAll("[^a-zA-Z0-9\\s]", "")  // Remove non-alphanumeric and non-space characters
+                .replaceAll("\\s+", " ")         // Replace multiple spaces with a single space
+                .trim();
+    	
+    	
+    	System.out.println("After making the changes to string "+str1);
+    	
+    	
+    	
+    	String googleSplit[]=str1.split("\\s+");
+    	
+    	for(int i=0;i<googleSplit.length;i++) {
+    		
+    		String compare=googleSplit[i];
+    		if(str2.contains(compare)) {
+    			System.out.println("Google Word available in amazon");
+    		}else {
+    			System.out.println("Google word not available in amazon");
+    		}
+    	}
+    }
+    
+    public static void compareNameViaHashMapMethod(String str1,String str2) {
+    	
+    	str1=str1.toLowerCase();
+    	str2=str2.toLowerCase();
+    	
+    	System.out.println("Before making the changes to string 1"+str1);
+    	System.out.println("Before making the changes to string 2"+str2);
+    	
+    	
+    	str1=str1.replaceAll("[^a-zA-Z0-9\\s]", "")  // Remove non-alphanumeric and non-space characters
+                .replaceAll("\\s+", " ")         // Replace multiple spaces with a single space
+                .trim();
+    	
+    	str2=str2.replaceAll("[^a-zA-Z0-9\\s]", "")  // Remove non-alphanumeric and non-space characters
+                .replaceAll("\\s+", " ")         // Replace multiple spaces with a single space
+                .trim();
+    	
+    	
+    	System.out.println("after making the changes to string 1"+str1);
+    	System.out.println("after making the changes to string 2"+str2);
+    	
+    	String googleSplit[]=str1.split("\\s+");
+    	String amazonSplit[]=str2.split("\\s+");
+    	
+    	
+    	HashMap<String,Integer> map=new HashMap<>();
+    	
+    	for(int i=0;i<amazonSplit.length;i++) {
+    		map.put(amazonSplit[i],1);
+    	}
+    	
+    	for(int i=0;i<googleSplit.length;i++) {
+    		
+    		if(map.containsKey(googleSplit[i])) {
+    			map.put(googleSplit[i], map.get(googleSplit[i])+1);
+    		}
+    	}
+    	
+    	for(Map.Entry<String, Integer> e:map.entrySet()) {
+    		
+    		if(e.getValue()==2) {
+    			System.out.println(e.getKey());
+    			System.out.println("word count == 2");
+    		}else {
+    			System.out.println(e.getKey());
+    			System.out.println("Word count  != 2");
+    		}
+    	}
+    	
+    	
+    	
+    	
+    	
     }
 }
