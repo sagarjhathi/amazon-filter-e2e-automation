@@ -1,7 +1,7 @@
 package googleaggregator;
 
 
-import org.openqa.selenium.chrome.ChromeDriver; 
+import org.openqa.selenium.chrome.ChromeDriver;  
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -92,6 +92,9 @@ public class Base {
       //Storing all the products here within the list here
       List<WebElement> childElementsAfterPriceFilter = locatingProducts.findElements(By.xpath("./*"));
        
+      
+      
+      
       System.out.println("Applying the price filter then re-running the function");
       WebElement priceFilter=driver.findElement(By.xpath("(//span[@class='lg3aE']/span[contains(text(),'₹')])[2]"));
       Base.applyFilterAndTraverse(driver, priceFilter, childElementsAfterPriceFilter);
@@ -219,9 +222,7 @@ public class Base {
 
 	
 	public static void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
-		   
-
-				
+		 
 			driver.navigate().refresh();
 				Thread.sleep(1000);
 			WebElement productLocating=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
@@ -240,7 +241,7 @@ public class Base {
 			Thread.sleep(1000);
 			viewMoreDetails.click();
 		
-			
+			String str1=driver.findElement(By.xpath("//span[@role='heading']")).getText();
 			
 			Thread.sleep(1000);
 			
@@ -271,12 +272,22 @@ public class Base {
 	    	   	System.out.println(str +"here here");
 	       }
 	      
+	       
+	       
+	       String str2=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+	       
 	       //Storing the amazon window here as the driver should be at the amazon site
 	      String amazonWindow=driver.getWindowHandle();
 	      Thread.sleep(2000);
 	      
-	    
-	       
+	      
+	      AllFunctions.compareName(str1,str2);
+	      
+	      AllFunctions.compareNameViaHashMapMethod(str1, str2);
+	      
+	      
+	      
+	      
 	      // Extracting the price from Amazon
 	      try {
 	          WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
