@@ -219,23 +219,27 @@ public class AllFunctions {
     	str1=str1.toLowerCase();
     	str2=str2.toLowerCase();
     	
-    	System.out.println("Before making the changes to string "+str1);
+    	
+    	 String googleSplit[]=str1.split("[\\s\\W]+");
     	
     	
-    	str1=str1.replaceAll("[^a-zA-Z0-9\\s]", "")  // Remove non-alphanumeric and non-space characters
-                .replaceAll("\\s+", " ")         // Replace multiple spaces with a single space
-                .trim();
+  
     	
     	
-    	System.out.println("After making the changes to string "+str1);
+    	for(int i=0;i<googleSplit.length;i++) {
+    		System.out.println(googleSplit[i]+" Checking the split regex");
+    	}
     	
     	
-    	
-    	String googleSplit[]=str1.split("\\s+");
     	
     	for(int i=0;i<googleSplit.length;i++) {
     		
     		String compare=googleSplit[i];
+    		System.out.println(compare);   
+    		
+    		System.out.println(str1+"    "+"This is string 1");
+    		System.out.println(str2+"    "+"This is string 2");
+    		
     		if(str2.contains(compare)) {
     			System.out.println("Google Word available in amazon");
     		}else {
