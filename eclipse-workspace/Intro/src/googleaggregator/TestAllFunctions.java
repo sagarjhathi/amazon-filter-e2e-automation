@@ -71,14 +71,14 @@ public class TestAllFunctions {
             AllFunctions.applyingSecurityFeaturesFilter(driver, productList);
             AllFunctions.applyingStorageFilter(driver, productList);
             AllFunctions.applyingWeightfilter(driver, productList);
-            
+
 
         } catch (Exception e) {
             System.out.println("Error during test execution: " + e.getMessage());
         } finally {
             // 12. Quit the driver after the test
             if (driver != null) {
-                driver.quit();
+//                driver.quit();
             }
         }
     }

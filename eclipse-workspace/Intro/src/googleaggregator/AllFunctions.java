@@ -222,30 +222,21 @@ public class AllFunctions {
     	
     	 String googleSplit[]=str1.split("[\\s\\W]+");
     	
-    	
-  
-    	
-    	
-    	for(int i=0;i<googleSplit.length;i++) {
-    		System.out.println(googleSplit[i]+" Checking the split regex");
-    	}
-    	
-    	
-    	
     	for(int i=0;i<googleSplit.length;i++) {
     		
     		String compare=googleSplit[i];
     		System.out.println(compare);   
-    		
-    		System.out.println(str1+"    "+"This is string 1");
-    		System.out.println(str2+"    "+"This is string 2");
-    		
+    				
     		if(str2.contains(compare)) {
     			System.out.println("Google Word available in amazon");
     		}else {
+    			
     			System.out.println("Google word not available in amazon");
+    	
     		}
     	}
+    	
+    	
     }
     
     public static void compareNameViaHashMapMethod(String str1,String str2) {
@@ -253,24 +244,9 @@ public class AllFunctions {
     	str1=str1.toLowerCase();
     	str2=str2.toLowerCase();
     	
-    	System.out.println("Before making the changes to string 1"+str1);
-    	System.out.println("Before making the changes to string 2"+str2);
     	
-    	
-    	str1=str1.replaceAll("[^a-zA-Z0-9\\s]", "")  // Remove non-alphanumeric and non-space characters
-                .replaceAll("\\s+", " ")         // Replace multiple spaces with a single space
-                .trim();
-    	
-    	str2=str2.replaceAll("[^a-zA-Z0-9\\s]", "")  // Remove non-alphanumeric and non-space characters
-                .replaceAll("\\s+", " ")         // Replace multiple spaces with a single space
-                .trim();
-    	
-    	
-    	System.out.println("after making the changes to string 1"+str1);
-    	System.out.println("after making the changes to string 2"+str2);
-    	
-    	String googleSplit[]=str1.split("\\s+");
-    	String amazonSplit[]=str2.split("\\s+");
+    	String googleSplit[]=str1.split("[\\s\\W]+");
+    	String amazonSplit[]=str2.split("[\\s\\W]+");
     	
     	
     	HashMap<String,Integer> map=new HashMap<>();
@@ -286,20 +262,57 @@ public class AllFunctions {
     		}
     	}
     	
-    	for(Map.Entry<String, Integer> e:map.entrySet()) {
-    		
-    		if(e.getValue()==2) {
-    			System.out.println(e.getKey());
-    			System.out.println("word count == 2");
+    	
+    	for(int i=0;i<googleSplit.length;i++) {
+    		if(map.containsKey(googleSplit[i])) {
+
+
+    			System.out.println(googleSplit[i]);
+    			System.out.println(str1+"    "+"this is str1");
+    			System.out.println(str2+"    "+"this is str2");
+    			System.out.println("Word found in map");
+    			
     		}else {
-    			System.out.println(e.getKey());
-    			System.out.println("Word count  != 2");
+    			System.out.println("Word not found in map");
+    			System.out.println(googleSplit[i]);
+    			System.out.println(str1+"    "+"this is str1");
+    			System.out.println(str2+"    "+"this is str2");
+    			
     		}
-    	}
+    	}	
+    	
+    }
+    
+    public static void compareprice(String str1, String str2) {
+    	
+    	System.out.println(Base.extractPrice(str1)+  "    "+   "Compare price str1 ");
     	
     	
+    	System.out.println(Base.extractPrice(str2)+  "    "+   "Compare price str2 ");
+
     	
     	
     	
     }
+    
+    
+    
+//    public static void comparePrice(WebDriver driver, String str1, String str2) {
+//        // Find all "view more details" links (or elements that might contain the text you're looking for)
+//        List<WebElement> viewMoreDetailsPrice = driver.findElements(By.xpath("//a[@class='b5ycib shntl']"));
+//
+//        // Loop through each element to check if it contains the "Amazon.in" text
+//        for (int i = 0; i < viewMoreDetailsPrice.size(); i++) {
+//            if (viewMoreDetailsPrice.get(i).getText().equals("Amazon.in")) {
+//                
+//                // Find the price corresponding to that Amazon link
+//            	WebElement priceExtract = viewMoreDetailsPrice.get(i)
+//                        .findElement(By.xpath(".//following-sibling::span[@class='g9WBQb']"));
+//                    
+//                // Print the price or perform comparison
+//                System.out.println(priceExtract.getText());
+//            }
+//        }
+//    }
+
 }

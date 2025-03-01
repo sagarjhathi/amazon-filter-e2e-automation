@@ -243,6 +243,18 @@ public class Base {
 		
 			String str1=driver.findElement(By.xpath("//span[@role='heading']")).getText();
 			
+//			String googleViewMoreDetailsPrice=driver.findElement(By.xpath("(//span[@class='g9WBQb'])[1]")).getText();
+			
+			String googleViewMoreDetailsPrice="";
+			try{
+			googleViewMoreDetailsPrice=driver.findElement(By.xpath("(//span[@class='g9WBQb'])[1]")).getText();
+				
+			}catch(Exception e) {
+				System.out.println("The google  price is not available in Ui");
+				driver.quit();
+			}
+			
+			 System.out.println(googleViewMoreDetailsPrice+"     printing the google Price before processing ");
 			Thread.sleep(1000);
 			
 			String cWindow=driver.getWindowHandle();
@@ -275,16 +287,29 @@ public class Base {
 	       
 	       
 	       String str2=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+	       String amazonPriceFromAmzon="";
+	       
+	       
+	           try{
+	    	   amazonPriceFromAmzon=driver.findElement(By.xpath("//span[@class='a-price aok-align-ce"
+	   	       		+ "nter reinventPricePriceToPayMargin priceToPay']")).getText();
+				}catch(Exception e) {
+					System.out.println("The amazon price is not available in Ui");
+					driver.quit();
+				}
+	       
+	       System.out.println(amazonPriceFromAmzon+"     printing the amazonPrice before processing ");
 	       
 	       //Storing the amazon window here as the driver should be at the amazon site
 	      String amazonWindow=driver.getWindowHandle();
 	      Thread.sleep(2000);
 	      
 	      
-	      AllFunctions.compareName(str1,str2);
+	     // AllFunctions.compareName(str1,str2);
 	      
 	      AllFunctions.compareNameViaHashMapMethod(str1, str2);
 	      
+	      AllFunctions.compareprice(googleViewMoreDetailsPrice, amazonPriceFromAmzon);
 	      
 	      
 	      
