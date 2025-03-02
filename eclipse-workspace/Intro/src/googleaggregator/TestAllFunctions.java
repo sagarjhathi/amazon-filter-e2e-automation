@@ -1,10 +1,14 @@
 package googleaggregator;
 
 
-import java.util.List;
+
+
+import java.util.List ;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import googleaggregator.AllFunctions;
 
 public class TestAllFunctions {
 
@@ -84,3 +88,19 @@ public class TestAllFunctions {
     }
 }
 
+//module Intro {
+//requires org.seleniumhq.selenium.api;
+//requires org.seleniumhq.selenium.chrome_driver;
+//requires dev.failsafe.core;
+//requires org.seleniumhq.selenium.firefox_driver;
+//requires org.seleniumhq.selenium.support;
+//requires org.testng;
+//requires org.apache.commons.io;
+//opens Objects to org.seleniumhq.selenium.support;
+//exports googleaggregator;
+//
+//
+//
+//
+//
+//}
