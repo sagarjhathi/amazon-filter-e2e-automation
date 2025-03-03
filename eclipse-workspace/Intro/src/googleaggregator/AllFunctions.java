@@ -36,7 +36,11 @@ public class AllFunctions {
 
     public static void setImplicitWait(WebDriver driver, int seconds) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
-        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+       
+    }
+    
+    public static void setPageLoadOutTimeOut(WebDriver driver, int seconds) {
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(seconds));
     }
 
     public static void clickOnSearchBarLandingPage(WebDriver driver) {

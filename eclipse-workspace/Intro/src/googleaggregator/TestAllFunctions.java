@@ -53,6 +53,7 @@ public class TestAllFunctions {
             System.out.println("Fetching all products...");
             driver.navigate().refresh();  // Refresh the page to ensure we're fetching fresh products
             Thread.sleep(3000);  // Wait for page to load
+            
             var productList = AllFunctions.getAllProducts(driver);
             System.out.println("Found " + productList.size() + " products.");
 
@@ -88,19 +89,4 @@ public class TestAllFunctions {
     }
 }
 
-//module Intro {
-//requires org.seleniumhq.selenium.api;
-//requires org.seleniumhq.selenium.chrome_driver;
-//requires dev.failsafe.core;
-//requires org.seleniumhq.selenium.firefox_driver;
-//requires org.seleniumhq.selenium.support;
-//requires org.testng;
-//requires org.apache.commons.io;
-//opens Objects to org.seleniumhq.selenium.support;
-//exports googleaggregator;
-//
-//
-//
-//
-//
-//}
+
