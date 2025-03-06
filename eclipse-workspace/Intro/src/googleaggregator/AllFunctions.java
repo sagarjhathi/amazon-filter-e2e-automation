@@ -1,28 +1,41 @@
 package googleaggregator;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 
 public class AllFunctions {
 
+	static WebDriver driver;
+	
+	
     public static WebDriver initDriver(String userAgent) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=" + userAgent);
-        WebDriver driver = new ChromeDriver(options);
+        driver = new ChromeDriver(options);
+        
         return driver;
     }
 
@@ -542,5 +555,44 @@ public class AllFunctions {
 //            }
 //        }
 //    }
+    
+    
+    public static  void captureScreenshot(ITestResult result) {
+        // Check if driver is valid and instance of TakesScreenshot
+        if (driver instanceof TakesScreenshot) {
+            TakesScreenshot screenshotDriver = (TakesScreenshot) driver;
+            File screenshot = screenshotDriver.getScreenshotAs(OutputType.FILE);
+
+            try {
+                // Get current date-time to make the screenshot name unique
+                String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(new Date());
+                
+                // Get the test method name to include in the screenshot filename
+                String testName = result.getMethod().getMethodName();  // Get the test method name
+                
+                // Create a unique filename using the test name and timestamp
+                String screenshotName = testName + "_" + timestamp + ".png";
+                
+                // Define the directory where screenshots will be stored
+                String screenshotDir = "screenshots/";
+
+                // Ensure the directory exists
+                File directory = new File(screenshotDir);
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
+
+                // Define the destination file path for the screenshot
+                File destinationFile = new File(screenshotDir + screenshotName);
+
+                // Copy the screenshot to the destination
+                FileUtils.copyFile(screenshot, destinationFile);
+
+                System.out.println("Screenshot saved at: " + destinationFile.getAbsolutePath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }
