@@ -1,7 +1,13 @@
 package googleaggregator;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 
 public class GenericHelper {
@@ -12,5 +18,7 @@ public class GenericHelper {
     public int pageLoadOutTime = 30;
     public String inputForSearch = "Mobile";
     public List<WebElement> productList;    
+    
+    
     
 }

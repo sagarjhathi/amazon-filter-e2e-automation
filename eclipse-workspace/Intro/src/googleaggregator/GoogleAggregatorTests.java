@@ -1,21 +1,34 @@
 package googleaggregator;
 
-import  googleaggregator.GenericHelper;
+import  googleaggregator.GenericHelper ;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
+import org.testng.ITestListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import java.util.Set;
-import java.util.Iterator;
-import java.util.List;
 
-public class GoogleAggregatorTests {
+import com.google.common.io.Files;
+
+import java.util.Set;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.util.List;
+import java.util.Objects;
+
+public class GoogleAggregatorTests  implements ITestListener{
 
     
 	 private WebDriver driver;
@@ -55,10 +68,20 @@ public class GoogleAggregatorTests {
 	        AllFunctions.clickOnSearchBarLandingPage(driver);
 	    }
 
+	    
 	    @Test(priority = 6)
 	    public void givingInputIntoSearchBar() {
 	        AllFunctions.inputWithInTheSearchBar(driver, helper.inputForSearch);
 	    }
+	    
+//	    @DataProvider
+//	    public Object[][] getData() {
+//	        Object[][] data = new Object[3][1]; // 3 rows, 1 column
+//	        data[0][0] = "Laptop";  // First row, first column
+//	        data[1][0] = "Camera";  // Second row, first column
+//	        data[2][0] = "Phone";   // Third row, first column (you need to add this or a similar value)
+//	        return data;
+//	    }
 	    
 	    @Test(priority = 7)
 	    public void selectingFromRecommendation() {
@@ -248,5 +271,9 @@ public class GoogleAggregatorTests {
 	            e.printStackTrace();
 	        }
 	    }
-    
+	    
+	   
+	    
+	    
+
 }
