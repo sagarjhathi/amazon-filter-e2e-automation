@@ -2,13 +2,18 @@ package googleaggregator;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class GenericHelper {
 
@@ -19,6 +24,42 @@ public class GenericHelper {
     public String inputForSearch = "Mobile";
     public List<WebElement> productList;    
     
+    public static WebDriver driver;
+    
+    public static WebDriver initDriver(String userAgent) {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("user-agent=" + userAgent);
+        driver = new ChromeDriver(options);
+        
+        return driver;
+    }
+
+    public static void navigateToURL(WebDriver driver, String url) {
+        driver.get(url);
+    }
+
+    public static void maximizeWindow(WebDriver driver) {
+        driver.manage().window().maximize();
+    }
+
+    public static void setImplicitWait(WebDriver driver, int seconds) {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
+       
+    }
+    
+    public static void setPageLoadOutTimeOut(WebDriver driver, int seconds) {
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(seconds));
+    }
     
     
+    public static void scrollToElement(WebDriver driver, WebElement element) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView(true);", element);
+    }
+
+    public static void scrollByPixels(WebDriver driver, int x, int y) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(" + x + "," + y + ")");
+    }
+
 }
