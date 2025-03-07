@@ -341,7 +341,7 @@ public class AllFunctions {
 
 		//clicking upon the products card from the google shopping landing page
 	    WebElement wt=new WebDriverWait(driver,Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(productLocating));
-	   wt.click();
+	      wt.click();
 
 	    
 	   
@@ -355,7 +355,7 @@ public class AllFunctions {
 	
 		String str1=driver.findElement(By.xpath("//span[@role='heading']")).getText();
 		
-//		String googleViewMoreDetailsPrice=driver.findElement(By.xpath("(//span[@class='g9WBQb'])[1]")).getText();
+
 		
 		String googleViewMoreDetailsPrice="";
 		try{
@@ -538,23 +538,6 @@ public class AllFunctions {
 	         
 	 }
     
-//    public static void comparePrice(WebDriver driver, String str1, String str2) {
-//        // Find all "view more details" links (or elements that might contain the text you're looking for)
-//        List<WebElement> viewMoreDetailsPrice = driver.findElements(By.xpath("//a[@class='b5ycib shntl']"));
-//
-//        // Loop through each element to check if it contains the "Amazon.in" text
-//        for (int i = 0; i < viewMoreDetailsPrice.size(); i++) {
-//            if (viewMoreDetailsPrice.get(i).getText().equals("Amazon.in")) {
-//                
-//                // Find the price corresponding to that Amazon link
-//            	WebElement priceExtract = viewMoreDetailsPrice.get(i)
-//                        .findElement(By.xpath(".//following-sibling::span[@class='g9WBQb']"));
-//                    
-//                // Print the price or perform comparison
-//                System.out.println(priceExtract.getText());
-//            }
-//        }
-//    }
     
     
     public static  void captureScreenshot(ITestResult result) {
