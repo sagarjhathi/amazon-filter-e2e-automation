@@ -1,6 +1,5 @@
 package googleaggregator;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,6 +17,7 @@ public class GoogleShoppingLandingPage {
 		this.driver = driver;
         PageFactory.initElements(driver, this);
 	}
+	
 	public  void clickOnSearchBarLandingPage() {
 		searchBar.click();
     }

@@ -24,9 +24,9 @@ public class GenericHelper {
     public String inputForSearch = "Mobile";
     public List<WebElement> productList;    
     
-    public static WebDriver driver;
+    public  WebDriver driver;
     
-    public static WebDriver initDriver(String userAgent) {
+    public  WebDriver initDriver(String userAgent) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=" + userAgent);
         driver = new ChromeDriver(options);
@@ -34,30 +34,30 @@ public class GenericHelper {
         return driver;
     }
 
-    public static void navigateToURL(WebDriver driver, String url) {
+    public  void navigateToURL(WebDriver driver, String url) {
         driver.get(url);
     }
 
-    public static void maximizeWindow(WebDriver driver) {
+    public  void maximizeWindow(WebDriver driver) {
         driver.manage().window().maximize();
     }
 
-    public static void setImplicitWait(WebDriver driver, int seconds) {
+    public  void setImplicitWait(WebDriver driver, int seconds) {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(seconds));
        
     }
     
-    public static void setPageLoadOutTimeOut(WebDriver driver, int seconds) {
+    public  void setPageLoadOutTimeOut(WebDriver driver, int seconds) {
         driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(seconds));
     }
     
     
-    public static void scrollToElement(WebDriver driver, WebElement element) {
+    public void scrollToElement(WebDriver driver, WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", element);
     }
 
-    public static void scrollByPixels(WebDriver driver, int x, int y) {
+    public void scrollByPixels(WebDriver driver, int x, int y) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(" + x + "," + y + ")");
     }

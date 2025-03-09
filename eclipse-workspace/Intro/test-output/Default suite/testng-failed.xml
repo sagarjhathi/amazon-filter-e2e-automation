@@ -3,11 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="parallel.TestClass02">
+      <class name="googleaggregator.GoogleAggregatorTests">
         <methods>
-          <include name="otherTestActions"/>
+          <include name="ABCDEclickingOnSearchBar"/>
+          <include name="ABCDEFgivingInputIntoSearchBar"/>
+          <include name="setup"/>
         </methods>
-      </class> <!-- parallel.TestClass02 -->
+      </class> <!-- googleaggregator.GoogleAggregatorTests -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

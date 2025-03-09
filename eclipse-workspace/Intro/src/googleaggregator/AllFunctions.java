@@ -258,6 +258,8 @@ public class AllFunctions {
     	
     }
     
+    
+    
     public static void compareNameViaHashMapMethod(String str1,String str2) {
     	
     	str1=str1.toLowerCase();
@@ -302,16 +304,15 @@ public class AllFunctions {
     	
     }
     
+    
+    
     public static void compareprice(String str1, String str2) {
     	
     	System.out.println(extractPrice(str1)+  "    "+   "Compare price str1 ");
     	
     	
     	System.out.println(extractPrice(str2)+  "    "+   "Compare price str2 ");
-
-    	
-    	
-    	
+	
     }
     
     
@@ -333,17 +334,18 @@ public class AllFunctions {
     
     
     
+    
     public static void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
 		 
 		driver.navigate().refresh();
-			Thread.sleep(1000);
+		Thread.sleep(1000);
 		WebElement productLocating=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
 
 		//clicking upon the products card from the google shopping landing page
-	    WebElement wt=new WebDriverWait(driver,Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(productLocating));
-	      wt.click();
-
-	    
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement productElement = wait.until(ExpectedConditions.elementToBeClickable(productLocating));
+		productElement.click();
+	  
 	   
 	    WebElement viewMoreDetails=driver.findElement(By.xpath("//a[text()='View product details']"));
 	    JavascriptExecutor jss=(JavascriptExecutor)driver;
@@ -353,7 +355,9 @@ public class AllFunctions {
 		Thread.sleep(1000);
 		viewMoreDetails.click();
 	
-		String str1=driver.findElement(By.xpath("//span[@role='heading']")).getText();
+		
+		
+		String gProductName=driver.findElement(By.xpath("//span[@role='heading']")).getText();
 		
 
 		
@@ -398,7 +402,7 @@ public class AllFunctions {
       
        
        
-       String str2=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+       String aProductName=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
        String amazonPriceFromAmzon="";
        
        
@@ -409,6 +413,7 @@ public class AllFunctions {
 				System.out.println("The amazon price is not available in Ui");
 				driver.quit();
 			}
+           
        
        System.out.println(amazonPriceFromAmzon+"     printing the amazonPrice before processing ");
        
@@ -419,26 +424,30 @@ public class AllFunctions {
       
      // AllFunctions.compareName(str1,str2);
       
-      AllFunctions.compareNameViaHashMapMethod(str1, str2);
+      AllFunctions.compareNameViaHashMapMethod(gProductName, aProductName);
       
       AllFunctions.compareprice(googleViewMoreDetailsPrice, amazonPriceFromAmzon);
       
       
       
-      // Extracting the price from Amazon
+      //Extracting the price from amazon here while handling the case where by any chance the price is not visible on Ui 
       try {
           WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
           WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
                   + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
+          
+        //span[@class='a-price aok-align-center reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']
 
           if (amazonPrice != null && amazonPrice.isDisplayed() == false) {
               System.out.println("The element is not available on the UI.");
           }
 
       } catch (Exception e) {
-          System.out.println("Element not found or not visible within the time limit.");
+          System.out.println("product price found or not visible within the time limit.");
           // Optionally, add code to skip this step or proceed with the next actions
       }
+      
+      
 
       // Extracting the product name from Amazon
       String productName = "";
@@ -478,18 +487,7 @@ public class AllFunctions {
     
     
     
-    public static boolean isElementInViewport(WebDriver driver, WebElement element) {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        // JavaScript to check if the element is in the viewport
-        String script = "var elem = arguments[0], " +
-                        "bounding = elem.getBoundingClientRect(), " +
-                        "vPwidth = window.innerWidth || document.documentElement.clientWidth, " +
-                        "vPheight = window.innerHeight || document.documentElement.clientHeight, " +
-                        "vTop = bounding.top >= 0 && bounding.top < vPheight, " +
-                        "vLeft = bounding.left >= 0 && bounding.left < vPwidth; " +
-                        "return vTop && vLeft;";
-        return (Boolean) js.executeScript(script, element);
-    }
+   
     
     
     
