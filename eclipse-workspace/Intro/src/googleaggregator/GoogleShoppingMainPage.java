@@ -9,154 +9,198 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleShoppingMainPage {
 
+	WebDriver driver;
+	GlobalUtility globalUtility;
+	ViewMoreDetailsPage viewMoreDetailsPage;
+	GoogleShoppingProductPopup googleShoppingProductPopup;
+	AmazonProductMainPage amazonProductMainPage;
 	
-	 public static void scrollToSellerLandingPage(WebDriver driver) {
-	        JavascriptExecutor js = (JavascriptExecutor) driver;
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        WebElement seller = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='lg3aE' and text()='Seller']")));
-	        js.executeScript("arguments[0].scrollIntoView(true);", seller);
-	    }
+	public GoogleShoppingMainPage(WebDriver driver) {
+		this.driver = driver;
+		this.globalUtility=new GlobalUtility(driver);
+		this.viewMoreDetailsPage=new ViewMoreDetailsPage(driver);
+		this.googleShoppingProductPopup=new GoogleShoppingProductPopup(driver);
+	} 
+	
+	// Page Factory - Web Elements
+    @FindBy(xpath = "//div[@class='lg3aE' and text()='Seller']")
+    private WebElement seller;
 
-	    public static void clickOnMoreInSellerMenuLandingPage(WebDriver driver) {
-	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-	        WebElement moreSellerButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@aria-label='More Seller']")));
-	        moreSellerButton.click();
-	    }
-	    
+    @FindBy(xpath = "//div[@aria-label='More Seller']")
+    private WebElement moreSellerButton;
 
-	    public static void applyingPriceFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the price filter then re-running the function");
-	        WebElement priceFilter=driver.findElement(By.xpath("(//span[@class='lg3aE']/span[contains(text(),'₹')])[2]"));
-	        applyFilterAndTraverse(driver, priceFilter, list);
-	    }
-	    
-	    public static void applyingRamFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the ram filter then re-running the function");
-	         WebElement ram=driver.findElement(By.xpath("(//a[@class='vjtvke ch6u2b']//span[@class='lg3aE' and contains(@title, 'GB')])[5]"));
-	         applyFilterAndTraverse(driver, ram, list);
-	    }
-	    
-	    
-	    public static void applyingRatingFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the rating  filter then re-running the function");
-	         WebElement moreFromProductRating=driver.findElement(By.xpath("(//div[text()='More'])[1]"));
-	         
-	         GenericHelper.scrollToElement(driver,moreFromProductRating);
-	         GenericHelper.scrollByPixels(driver, 0, -300);
-	         Thread.sleep(3000);
-	         moreFromProductRating.click();
-	         
-	         WebElement fourAndUp=driver.findElement(By.xpath("(//div[@class='vq3ore' and @aria-label='4 out of 5 stars'])[2]"));
-	         applyFilterAndTraverse(driver, fourAndUp, list);
-	    }
-	    
-	    
-	    public static void applyingWeightfilter(WebDriver driver,List<WebElement> list ) throws InterruptedException {
-	    	System.out.println("Applying the weight filter then re-running the function");
-	        WebElement weight=driver.findElement(By.xpath("(//*[contains(text(), 'grams')])[1]"));
-	        applyFilterAndTraverse(driver, weight, list);
-	    }
-	    
-	    
-	   
-	    
-	    public static void applyingDeliveryFilter(WebDriver driver,List<WebElement> list ) throws InterruptedException {
-	    	 System.out.println("Applying the delivery filter then re-running the function");
-	    	    WebElement delivery=driver.findElement(By.xpath("//span[@title='1–3 day delivery']"));
-	    	   applyFilterAndTraverse(driver, delivery, list);
-	    }
-	    
-	    
-	    
-	    
-	    public static void applyingBrandFilter(WebDriver driver,List<WebElement> list ) throws InterruptedException {
-	    	System.out.println("Applying the mobile brand  filter then re-running the function");
-	        WebElement mobileBrand=driver.findElement(By.xpath("//span[@title='Realme']"));
-	        applyFilterAndTraverse(driver, mobileBrand, list);
-	   }
-	    
-	    
-	    public static void applying5gFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the 5G filter then re-running the function");
-	        WebElement selecting5G =driver.findElement(By.xpath("//span[@title='5G']"));
-	        applyFilterAndTraverse(driver, selecting5G, list);
-	        
-	    }
-	    
-	    
-	    
-	    
-	    public static void applyingDualSimFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the Dual Sim filter then re-running the function");
-	        WebElement dualSim=  driver.findElement(By.xpath("//span[@title='Dual SIM']"));
-	        applyFilterAndTraverse(driver, dualSim, list);
-	    }
-	    
-	    
-	    public static void applyingColorFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the color filter then re-running the function");
-	         WebElement color=driver.findElement(By.xpath("//span[text()='Black']"));
-	         applyFilterAndTraverse(driver, color, list);
-	    }
-	    
-	    
-	    public static void applyingStorageFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the storage filter then re-running the function");
-	         WebElement storageCapacity =driver.findElement(By.xpath("//span[text()='64 GB']"));
-	        applyFilterAndTraverse(driver, storageCapacity, list);
-	    }
-	    
-	    
-	    public static void applyingOsFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the os filter then re-running the function");      
-	         WebElement os=driver.findElement(By.xpath("//span[text()='Android']"));
-	         applyFilterAndTraverse(driver, os, list);
-	    }
-	    
-	    
-	    public static void applyingCellularNetworkFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the cellular Network filter then re-running the function");
-	        WebElement cellularNetwork=driver.findElement(By.xpath("//span[@title='GSM Network']"));
-	        applyFilterAndTraverse(driver, cellularNetwork, list);
-	    }
-	    
-	    public static void applyingSecurityFeaturesFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the security features filter then re-running the function");
-	        WebElement securityFeatures=driver.findElement(By.xpath("//span[@title='Mobile Phones With Fingerprint Scanners']"));
-	        applyFilterAndTraverse(driver, securityFeatures, list);
-	    }
-	    
-	    public static void applyingScreenResolutionFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the sreen resolution filter then re-running the function");      
-	        WebElement screenResolution = driver.findElement(By.xpath("//span[@title='2408 x 1080']"));
-	      applyFilterAndTraverse(driver, screenResolution, list);
-	    }
-	    
-	    public static void applyingCameraFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	System.out.println("Applying the camera filter then re-running the function");
-	        WebElement camera= driver.findElement(By.xpath("(//a[@class='vjtvke ch6u2b']//span[@class='lg3aE' and contains(@title, 'MP')])[1]"));
-	        applyFilterAndTraverse(driver, camera, list);
-	    }
-	    
-	    public static void applyingHeadphoneFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the headphone filter then re-running the function");
-	         WebElement headphoneConnector=driver.findElement(By.xpath("//span[@title='Headphone Jack']"));
-	        applyFilterAndTraverse(driver, headphoneConnector, list);
-	    }
-	    
-	    public static void applyingLensFilter(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	    	 System.out.println("Applying the lens filter then re-running the function");
-	         WebElement lensType=driver.findElement(By.xpath("//span[@title='Ultra Wide Angle']"));
-	         applyFilterAndTraverse(driver, lensType, list);
-	    }
-	    
-	    
-	    public static void applyFilterAndTraverse(WebDriver driver, WebElement element, List<WebElement> list) throws InterruptedException {
+    @FindBy(xpath = "(//span[@class='lg3aE']/span[contains(text(),'₹')])[2]")
+    private WebElement priceFilter;
+
+    @FindBy(xpath = "(//a[@class='vjtvke ch6u2b']//span[@class='lg3aE' and contains(@title, 'GB')])[5]")
+    private WebElement ramFilter;
+
+    @FindBy(xpath = "(//div[text()='More'])[1]")
+    private WebElement moreFromProductRating;
+
+    @FindBy(xpath = "(//div[@class='vq3ore' and @aria-label='4 out of 5 stars'])[2]")
+    private WebElement fourAndUpRating;
+
+    @FindBy(xpath = "(//*[contains(text(), 'grams')])[1]")
+    private WebElement weightFilter;
+
+    @FindBy(xpath = "//span[@title='1–3 day delivery']")
+    private WebElement deliveryFilter;
+
+    @FindBy(xpath = "//span[@title='Realme']")
+    private WebElement mobileBrand;
+
+    @FindBy(xpath = "//span[@title='5G']")
+    private WebElement selecting5G;
+
+    @FindBy(xpath = "//span[@title='Dual SIM']")
+    private WebElement dualSim;
+
+    @FindBy(xpath = "//span[text()='Black']")
+    private WebElement colorFilter;
+
+    @FindBy(xpath = "//span[text()='64 GB']")
+    private WebElement storageCapacityFilter;
+
+    @FindBy(xpath = "//span[text()='Android']")
+    private WebElement osFilter;
+
+    @FindBy(xpath = "//span[@title='GSM Network']")
+    private WebElement cellularNetworkFilter;
+
+    @FindBy(xpath = "//span[@title='Mobile Phones With Fingerprint Scanners']")
+    private WebElement securityFeaturesFilter;
+
+    @FindBy(xpath = "//span[@title='2408 x 1080']")
+    private WebElement screenResolutionFilter;
+
+    @FindBy(xpath = "(//a[@class='vjtvke ch6u2b']//span[@class='lg3aE' and contains(@title, 'MP')])[1]")
+    private WebElement cameraFilter;
+
+    @FindBy(xpath = "//span[@title='Headphone Jack']")
+    private WebElement headphoneConnectorFilter;
+
+    @FindBy(xpath = "//span[@title='Ultra Wide Angle']")
+    private WebElement lensTypeFilter;
+    
+
+    public String getGoogleWindowHandle() {
+    	String cWindow=driver.getWindowHandle();
+    	return cWindow;
+    }
+
+   
+
+    public void scrollToSellerLandingPage(WebDriver driver) {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(seller));
+        js.executeScript("arguments[0].scrollIntoView(true);", seller);
+    }
+
+    public void clickOnMoreInSellerMenuLandingPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(moreSellerButton)).click();
+    }
+
+    public void applyingPriceFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the price filter then re-running the function");
+        applyFilterAndTraverse(driver, priceFilter, list);
+    }
+
+    public void applyingRamFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the ram filter then re-running the function");
+        applyFilterAndTraverse(driver, ramFilter, list);
+    }
+
+    public void applyingRatingFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the rating filter then re-running the function");
+        globalUtility.scrollToElement(driver, moreFromProductRating);
+        globalUtility.scrollByPixels(driver, 0, -300);
+        Thread.sleep(3000);
+        moreFromProductRating.click();
+        applyFilterAndTraverse(driver, fourAndUpRating, list);
+    }
+
+    public void applyingWeightFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the weight filter then re-running the function");
+        applyFilterAndTraverse(driver, weightFilter, list);
+    }
+
+    public void applyingDeliveryFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the delivery filter then re-running the function");
+        applyFilterAndTraverse(driver, deliveryFilter, list);
+    }
+
+    public void applyingBrandFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the mobile brand filter then re-running the function");
+        applyFilterAndTraverse(driver, mobileBrand, list);
+    }
+
+    public void applying5GFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the 5G filter then re-running the function");
+        applyFilterAndTraverse(driver, selecting5G, list);
+    }
+
+    public void applyingDualSimFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the Dual Sim filter then re-running the function");
+        applyFilterAndTraverse(driver, dualSim, list);
+    }
+
+    public void applyingColorFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the color filter then re-running the function");
+        applyFilterAndTraverse(driver, colorFilter, list);
+    }
+
+    public void applyingStorageFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the storage filter then re-running the function");
+        applyFilterAndTraverse(driver, storageCapacityFilter, list);
+    }
+
+    public void applyingOsFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the os filter then re-running the function");
+        applyFilterAndTraverse(driver, osFilter, list);
+    }
+
+    public void applyingCellularNetworkFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the cellular Network filter then re-running the function");
+        applyFilterAndTraverse(driver, cellularNetworkFilter, list);
+    }
+
+    public void applyingSecurityFeaturesFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the security features filter then re-running the function");
+        applyFilterAndTraverse(driver, securityFeaturesFilter, list);
+    }
+
+    public void applyingScreenResolutionFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the screen resolution filter then re-running the function");
+        applyFilterAndTraverse(driver, screenResolutionFilter, list);
+    }
+
+    public void applyingCameraFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the camera filter then re-running the function");
+        applyFilterAndTraverse(driver, cameraFilter, list);
+    }
+
+    public void applyingHeadphoneFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the headphone filter then re-running the function");
+        applyFilterAndTraverse(driver, headphoneConnectorFilter, list);
+    }
+
+    public void applyingLensFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
+        System.out.println("Applying the lens filter then re-running the function");
+        applyFilterAndTraverse(driver, lensTypeFilter, list);
+    }
+    
+       
+	 public  void applyFilterAndTraverse(WebDriver driver, WebElement element, List<WebElement> list) throws InterruptedException {
 			 JavascriptExecutor js=(JavascriptExecutor)driver;
 			 js.executeScript("arguments[0].scrollIntoView(true)", element);
 		      js.executeScript("window.scrollBy(0,-300);");
@@ -201,54 +245,41 @@ public class GoogleShoppingMainPage {
 		         
 		 }
 	    
-	    
-	    public static void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
+	 
+	 
+	 
+	 public void productLocatingAndClicking(WebDriver driver, int productIndex) {
+		 
+		 WebElement productLocating=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
+
+		 WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
+		 
+		 WebElement clickOnProduct=wait.until(ExpectedConditions.elementToBeClickable(productLocating));
+		 clickOnProduct.click();
+		 
+	 }
+	 
+	 
+	 
+	 
+	 
+	    public  void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
 			 
 			driver.navigate().refresh();
-				Thread.sleep(1000);
-			WebElement productLocating=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
-
-			//clicking upon the products card from the google shopping landing page
-		    WebElement wt=new WebDriverWait(driver,Duration.ofSeconds(10)).until(ExpectedConditions.elementToBeClickable(productLocating));
-		      wt.click();
-
-		    
-		   
-		    WebElement viewMoreDetails=driver.findElement(By.xpath("//a[text()='View product details']"));
-		    JavascriptExecutor jss=(JavascriptExecutor)driver;
-			jss.executeScript("arguments[0].scrollIntoView(true)", viewMoreDetails);
 			Thread.sleep(1000);
-		    jss.executeScript("window.scrollBy(0,-200);");
+			productLocatingAndClicking(driver,productIndex);	  
+		    googleShoppingProductPopup.scrollAndClickViewMoreDetails();
+		    viewMoreDetailsPage.getGoogleProductName();
+			viewMoreDetailsPage.getGoogleProductPrice();
 			Thread.sleep(1000);
-			viewMoreDetails.click();
-		
-			String str1=driver.findElement(By.xpath("//span[@role='heading']")).getText();
-			
-//			String googleViewMoreDetailsPrice=driver.findElement(By.xpath("(//span[@class='g9WBQb'])[1]")).getText();
-			
-			String googleViewMoreDetailsPrice="";
-			try{
-			googleViewMoreDetailsPrice=driver.findElement(By.xpath("(//span[@class='g9WBQb'])[1]")).getText();
-				
-			}catch(Exception e) {
-				System.out.println("The google  price is not available in Ui");
-				driver.quit();
-			}
-			
-			 System.out.println(googleViewMoreDetailsPrice+"     printing the google Price before processing ");
-			Thread.sleep(1000);
-			
-			String cWindow=driver.getWindowHandle();
-		     driver.findElement(By.xpath("(//div[@class='Kl9jM UKKY9'])[1]")).click();
+			String cWindow=getGoogleWindowHandle();
+			viewMoreDetailsPage.clickingOnAmazonFromViewMoreDetailsPage();
 	       
-	       //storing the current window which is google shopping individual product details page
-		   
-		   
 		   Thread.sleep(1000);
 		  
-	           
 	       //creating set to store all the windows here in order to switch to the amazon site 
-	       Set<String> windowHandles = driver.getWindowHandles();
+		   Set<String> windowHandles=globalUtility.getAllWindowHandles();
+	       
 	       
 	       // Create an iterator to loop through the window handles and switch to the amazon site
 	       for(String str:windowHandles) {
@@ -258,39 +289,24 @@ public class GoogleShoppingMainPage {
 	    	   }
 	       }
 	       
-	       
-	       
 	       //Verifying how many windows here to check if we are accessing the right window here
-	       for(String str:windowHandles) {
-	    	   	System.out.println(str +"here here");
+	       int i=1;
+	       for(String str:windowHandles) { 
+	    	   	System.out.println(str+"   "+"window-No-->"+i);
+	    	   	i++;
 	       }
 	      
-	       
-	       
-	       String str2=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
-	       String amazonPriceFromAmzon="";
-	       
-	       
-	           try{
-	    	   amazonPriceFromAmzon=driver.findElement(By.xpath("//span[@class='a-price aok-align-ce"
-	   	       		+ "nter reinventPricePriceToPayMargin priceToPay']")).getText();
-				}catch(Exception e) {
-					System.out.println("The amazon price is not available in Ui");
-					driver.quit();
-				}
-	       
-	       System.out.println(amazonPriceFromAmzon+"     printing the amazonPrice before processing ");
-	       
-	       //Storing the amazon window here as the driver should be at the amazon site
-	      String amazonWindow=driver.getWindowHandle();
+	       amazonProductMainPage.getAmazonProductName();
+	       amazonProductMainPage.getAmazonProductPrice();
+	       String amazonWindow=amazonProductMainPage.getAmazonWindowHandle();
 	      Thread.sleep(2000);
 	      
-	      
+	   
 	     // AllFunctions.compareName(str1,str2);
 	      
-	      AllFunctions.compareNameViaHashMapMethod(str1, str2);
+	      AllFunctions.compareNameViaHashMapMethod( viewMoreDetailsPage.getGoogleProductName(), amazonProductMainPage.getAmazonProductName());
 	      
-	      AllFunctions.compareprice(googleViewMoreDetailsPrice, amazonPriceFromAmzon);
+	      AllFunctions.compareprice(viewMoreDetailsPage.getGoogleProductPrice(), amazonProductMainPage.getAmazonProductPrice());
 	      
 	      
 	      
@@ -338,7 +354,7 @@ public class GoogleShoppingMainPage {
 	       driver.navigate().back();
 	       Thread.sleep(2000);
 	       
-	       jss.executeScript("window.scrollBy(0,-200);");
+	       globalUtility.scrollByPixels(driver, 0, -200);
 	       Thread.sleep(2000);
 	       driver.findElement(By.xpath("//a[@aria-label='Close']")).click();
 	       
