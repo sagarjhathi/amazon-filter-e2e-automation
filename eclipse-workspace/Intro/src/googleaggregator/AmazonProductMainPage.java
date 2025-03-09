@@ -26,7 +26,17 @@ public class AmazonProductMainPage  {
 	
 
 	public String getAmazonProductName() {
-		return amazonProductName.getText();	
+		
+		String productName = "";
+	     try {
+	         productName = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+	     } catch (Exception e) {
+	         System.out.println("Product name not found on Amazon.");
+	         // You can leave productName empty or handle it differently
+	     }
+	     
+	     System.out.println(productName+"             printing product name hereeeeeeeeeeee");
+	     return productName;
 	}
 	
 	public String getAmazonProductPrice() {

@@ -325,20 +325,7 @@ public class GoogleShoppingMainPage {
 	          // Optionally, add code to skip this step or proceed with the next actions
 	      }
 
-	      // Extracting the product name from Amazon
-	      String productName = "";
-	      try {
-	          productName = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
-	      } catch (Exception e) {
-	          System.out.println("Product name not found on Amazon.");
-	          // You can leave productName empty or handle it differently
-	      }
-	      
-	      if (!productName.isEmpty()) {
-	          System.out.println("Product Name: " + productName);
-	      }
-
-	       
+	    
 	       
 	       Set<String> windowHandlesLatest = driver.getWindowHandles();
 	       
