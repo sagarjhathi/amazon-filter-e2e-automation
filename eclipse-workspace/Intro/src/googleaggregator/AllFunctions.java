@@ -402,18 +402,47 @@ public class AllFunctions {
       
        
        
-       String aProductName=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+      String aProductName=driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+       
+       
+//     // Extracting the product name from Amazon
+     String productName = "";
+     try {
+         productName = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
+     } catch (Exception e) {
+         System.out.println("Product name not found on Amazon.");
+         // You can leave productName empty or handle it differently
+     }
+     
+     System.out.println(productName+"             printing product name hereeeeeeeeeeee");
+     
+       
+
        String amazonPriceFromAmzon="";
        
-       
-           try{
-    	   amazonPriceFromAmzon=driver.findElement(By.xpath("//span[@class='a-price aok-align-ce"
-   	       		+ "nter reinventPricePriceToPayMargin priceToPay']")).getText();
-			}catch(Exception e) {
-				System.out.println("The amazon price is not available in Ui");
-				driver.quit();
-			}
+       //Extracting the price from amazon here while handling the case where by any chance the price is not visible on Ui 
+       try {
+           WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
+           WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
+                   + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
            
+         
+           amazonPriceFromAmzon=driver.findElement(By.xpath("//span[@class='a-price aok-align-center reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")).getText();
+           
+           if (amazonPrice != null && amazonPrice.isDisplayed() == false) {
+               System.out.println("The element is not available on the UI.");
+           }
+
+       } catch (Exception e) {
+           System.out.println("product price found or not visible within the time limit.");
+           // Optionally, add code to skip this step or proceed with the next actions
+       }
+          
+       
+       if(amazonPriceFromAmzon.length()!=0) {
+    	   System.out.println(amazonPriceFromAmzon+"           amazon price  here again");
+       }
+       
        
        System.out.println(amazonPriceFromAmzon+"     printing the amazonPrice before processing ");
        
@@ -428,45 +457,7 @@ public class AllFunctions {
       
       AllFunctions.compareprice(googleViewMoreDetailsPrice, amazonPriceFromAmzon);
       
-      
-      
-      //Extracting the price from amazon here while handling the case where by any chance the price is not visible on Ui 
-      try {
-          WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
-          WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
-                  + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
-          
-        //span[@class='a-price aok-align-center reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']
 
-          if (amazonPrice != null && amazonPrice.isDisplayed() == false) {
-              System.out.println("The element is not available on the UI.");
-          }
-
-      } catch (Exception e) {
-          System.out.println("product price found or not visible within the time limit.");
-          // Optionally, add code to skip this step or proceed with the next actions
-      }
-      
-      
-
-      // Extracting the product name from Amazon
-      String productName = "";
-      try {
-          productName = driver.findElement(By.xpath("//span[@id='productTitle']")).getText();
-      } catch (Exception e) {
-          System.out.println("Product name not found on Amazon.");
-          // You can leave productName empty or handle it differently
-      }
-      
-      if (!productName.isEmpty()) {
-          System.out.println("Product Name: " + productName);
-      }
- 
-      
-      
-      
-       
-       
        Set<String> windowHandlesLatest = driver.getWindowHandles();
        
        driver.close();
