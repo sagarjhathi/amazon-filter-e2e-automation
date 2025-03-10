@@ -1,10 +1,14 @@
 package googleaggregator;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AmazonProductMainPage  {
 
@@ -41,17 +45,26 @@ public class AmazonProductMainPage  {
 	
 	public String getAmazonProductPrice() {
 		
-		      String amazonPriceFromAmzon="";
-	    
-        try{
- 	          amazonPriceFromAmzon=amazonProductPrice.getText();
-			}catch(Exception e) {
-				System.out.println("The amazon price is not available in Ui");
-				driver.quit();
-			}
-        
-             System.out.println(amazonPriceFromAmzon+"     printing the amazonPrice before processing ");
-    
+		 String amazonPriceFromAmzon="";
+	       
+	       //Extracting the price from amazon here while handling the case where by any chance the price is not visible on Ui 
+	       try {
+	           WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
+	           WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
+	                   + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
+	           
+	         
+	           amazonPriceFromAmzon= amazonPrice.getText();
+	           
+	           if(!amazonPrice.isDisplayed()) {
+	               System.out.println("The price is not visible on the UI.");
+	           }
+
+	       } catch (Exception e) {
+	           System.out.println("product price not found or not visible within the time limit.");
+	           // Optionally, add code to skip this step or proceed with the next actions
+	       }
+		      
              return amazonPriceFromAmzon;
 	}
 	
