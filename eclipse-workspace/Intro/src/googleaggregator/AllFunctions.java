@@ -367,7 +367,6 @@ public class AllFunctions {
 			
 		}catch(Exception e) {
 			System.out.println("The google  price is not available in Ui");
-			driver.quit();
 		}
 		
 		 System.out.println(googleViewMoreDetailsPrice+"     printing the google Price before processing ");
@@ -427,22 +426,17 @@ public class AllFunctions {
                    + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
            
          
-           amazonPriceFromAmzon=driver.findElement(By.xpath("//span[@class='a-price aok-align-center reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")).getText();
+           amazonPriceFromAmzon= amazonPrice.getText();
            
-           if (amazonPrice != null && amazonPrice.isDisplayed() == false) {
-               System.out.println("The element is not available on the UI.");
+           if(!amazonPrice.isDisplayed()) {
+               System.out.println("The price is not visible on the UI.");
            }
 
        } catch (Exception e) {
-           System.out.println("product price found or not visible within the time limit.");
+           System.out.println("product price not found or not visible within the time limit.");
            // Optionally, add code to skip this step or proceed with the next actions
        }
-          
-       
-       if(amazonPriceFromAmzon.length()!=0) {
-    	   System.out.println(amazonPriceFromAmzon+"           amazon price  here again");
-       }
-       
+             
        
        System.out.println(amazonPriceFromAmzon+"     printing the amazonPrice before processing ");
        

@@ -90,7 +90,10 @@ public class GoogleShoppingMainPage {
     @FindBy(xpath = "//span[@title='Ultra Wide Angle']")
     private WebElement lensTypeFilter;
     
-
+    @FindBy(xpath="//a[@aria-label='Close']")
+    private WebElement closeButtonGooglePopup;
+    
+    
     public String getGoogleWindowHandle() {
     	String cWindow=driver.getWindowHandle();
     	return cWindow;
@@ -299,35 +302,18 @@ public class GoogleShoppingMainPage {
 	       amazonProductMainPage.getAmazonProductName();
 	       amazonProductMainPage.getAmazonProductPrice();
 	       String amazonWindow=amazonProductMainPage.getAmazonWindowHandle();
-	      Thread.sleep(2000);
+	       Thread.sleep(2000);
 	      
 	   
 	     // AllFunctions.compareName(str1,str2);
 	      
-	      AllFunctions.compareNameViaHashMapMethod( viewMoreDetailsPage.getGoogleProductName(), amazonProductMainPage.getAmazonProductName());
+	      globalUtility.compareNameViaHashMapMethod( viewMoreDetailsPage.getGoogleProductName(), amazonProductMainPage.getAmazonProductName());
 	      
-	      AllFunctions.compareprice(viewMoreDetailsPage.getGoogleProductPrice(), amazonProductMainPage.getAmazonProductPrice());
+	      globalUtility.compareprice(viewMoreDetailsPage.getGoogleProductPrice(), amazonProductMainPage.getAmazonProductPrice());
 	      
 	      
 	      
-	      // Extracting the price from Amazon
-	      try {
-	          WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
-	          WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
-	                  + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
-
-	          if (amazonPrice != null && amazonPrice.isDisplayed() == false) {
-	              System.out.println("The element is not available on the UI.");
-	          }
-
-	      } catch (Exception e) {
-	          System.out.println("Element not found or not visible within the time limit.");
-	          // Optionally, add code to skip this step or proceed with the next actions
-	      }
-
-	    
-	       
-	       Set<String> windowHandlesLatest = driver.getWindowHandles();
+	       Set<String> windowHandlesLatest = globalUtility.getAllWindowHandles();
 	       
 	       driver.close();
 	       
@@ -338,12 +324,13 @@ public class GoogleShoppingMainPage {
 	    	    }
 	    	}
 	       
+	       
 	       driver.navigate().back();
 	       Thread.sleep(2000);
 	       
 	       globalUtility.scrollByPixels(driver, 0, -200);
 	       Thread.sleep(2000);
-	       driver.findElement(By.xpath("//a[@aria-label='Close']")).click();
+	       closeButtonGooglePopup.click();
 	       
 
 	}
