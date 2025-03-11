@@ -93,6 +93,35 @@ public class GoogleShoppingMainPage {
     @FindBy(xpath="//a[@aria-label='Close']")
     private WebElement closeButtonGooglePopup;
     
+    @FindBy(css="span.lg3aE[title='Amazon.in']")
+    private WebElement amazonFromSellerMenu;
+    
+    
+    @FindBy(xpath="//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]")
+    private WebElement getAllProducts;
+    
+    @FindBy(xpath="//ul[@style='margin-left:1.3em;margin-bottom:2em']")
+    private WebElement checkNoElementState;
+    
+    
+    @FindBy(xpath="(//a[@class='vjtvke' and text()='Clear'])[1]")
+    private WebElement clearButtonFromFilter;
+    
+    public List<WebElement> gettingAllProducts(WebDriver driver){
+    	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+         WebElement products = wait.until(ExpectedConditions.visibilityOf(getAllProducts));
+         return products.findElements(By.xpath("./*"));
+    }
+    
+    
+    
+    public void selectingAmazonFromSellerMenu(WebDriver driver) {
+    	
+    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement amazonInSeller = wait.until(ExpectedConditions.visibilityOf(amazonFromSellerMenu));
+        globalUtility.scrollByPixels(driver, 0, -300);
+        amazonInSeller.click();
+    }
     
     public String getGoogleWindowHandle() {
     	String cWindow=driver.getWindowHandle();
@@ -108,7 +137,7 @@ public class GoogleShoppingMainPage {
         js.executeScript("arguments[0].scrollIntoView(true);", seller);
     }
 
-    public void clickOnMoreInSellerMenuLandingPage() {
+    public void clickOnMoreInSellerMenuLandingPage(WebDriver driver) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         wait.until(ExpectedConditions.elementToBeClickable(moreSellerButton)).click();
     }
@@ -204,38 +233,37 @@ public class GoogleShoppingMainPage {
     
        
 	 public  void applyFilterAndTraverse(WebDriver driver, WebElement element, List<WebElement> list) throws InterruptedException {
-			 JavascriptExecutor js=(JavascriptExecutor)driver;
-			 js.executeScript("arguments[0].scrollIntoView(true)", element);
-		      js.executeScript("window.scrollBy(0,-300);");
+		      globalUtility.scrollToElement(driver, element);
+		      globalUtility.scrollByPixels(driver, 0, -300);
 		      Thread.sleep(2000);
 		      element.click();
 		      
 		     
 		      
-		      try {
-		          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-		          // Wait for the "No results" state element to be visible, if it appears
-		          WebElement noResults = wait.until(ExpectedConditions.visibilityOfElementLocated(
-		                  By.xpath("//ul[@style='margin-left:1.3em;margin-bottom:2em']")
-		          ));
-
-		          if (noResults.isDisplayed()) {
-		              System.out.println("No results found, navigating back...");
-		              driver.navigate().back();  // Navigate back before returning
-		              return;  // Exit the method if no results are found
-		          }
-		      } catch (TimeoutException e) {
-		          // No "No results" state found, continue with the normal actions
-		          System.out.println("Results found, proceeding with further actions.");
-		      }
+		      
+			      try {
+			          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+			          WebElement noResults = wait.until(ExpectedConditions.visibilityOf(checkNoElementState));
+			        
+	
+			          if (noResults.isDisplayed()) {
+			              System.out.println("No results found, navigating back...");
+			              driver.navigate().back();  // Navigate back before returning
+			              return;  // Exit the method if no results are found
+			          }
+			      } catch (TimeoutException e) {
+			          // No "No results" state found, continue with the normal actions
+			          System.out.println("Results found, proceeding with further actions.");
+			      }
 		    	    
+			      
+			      
+			      
 		    	        int c = 0;
 		    	        for (int i = 1; i < list.size(); i++) {
 		    	            switchWindowAndCompare(driver, i);
 		    	            c++;
-		    	            
-		    	            // Break after the first iteration
+		    	            // Break after the first iteration so that we are not iterating all the products 
 		    	            if (c == 1) {
 		    	                break;
 		    	            }
@@ -243,9 +271,8 @@ public class GoogleShoppingMainPage {
 		    	        
 		    	        // Perform further actions after comparison
 		    	        Thread.sleep(1000);
-		    	        driver.findElement(By.xpath("(//a[@class='vjtvke' and text()='Clear'])[1]")).click();
+		    	        clearButtonFromFilter.click();
 		    	        Thread.sleep(1000);
-		         
 		 }
 	    
 	 
