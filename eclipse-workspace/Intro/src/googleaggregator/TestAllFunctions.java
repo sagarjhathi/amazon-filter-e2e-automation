@@ -9,12 +9,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import googleaggregator.AllFunctions;
+import googleaggregatorPOM.GoogleShoppingMainPage;
 
 public class TestAllFunctions {
 
     public static void main(String[] args) {
         // 1. Initialize WebDriver
-        String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";
+       // String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";
+    	String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
         WebDriver driver = AllFunctions.initDriver(userAgent);
         
         if (driver == null) {
@@ -59,6 +61,8 @@ public class TestAllFunctions {
 
             
             //Applying price filter and iterating over the products
+           // GoogleShoppingMainPage gp=new GoogleShoppingMainPage(driver);
+//            AllFunctions.switchWindowAndCompare(driver, productList);
             AllFunctions.applyingPriceFilter(driver, productList);
             AllFunctions.applying5gFilter(driver, productList);
             AllFunctions.applyingBrandFilter(driver, productList);

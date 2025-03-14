@@ -1,11 +1,13 @@
-package googleaggregator;
+package googleaggregatorPOM;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -22,18 +24,21 @@ public class GlobalUtility {
 
 	
     public  WebDriver driver;
+	//String userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
+
     
 	public GlobalUtility(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver=driver;
 	}
-	
 
 	public  WebDriver initDriver(String userAgent) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=" + userAgent);
+        options.addArguments("--lang=en");
+        options.addArguments("--disable-blink-features=AutomationControlled");
+        options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
-        
         return driver;
     }
 
@@ -67,45 +72,18 @@ public class GlobalUtility {
     
 public  void compareNameViaHashMapMethod(String str1,String str2) {
     	
-    	str1=str1.toLowerCase();
-    	str2=str2.toLowerCase();
-    	
-    	
-    	String googleSplit[]=str1.split("[\\s\\W]+");
-    	String amazonSplit[]=str2.split("[\\s\\W]+");
-    	
-    	
-    	HashMap<String,Integer> map=new HashMap<>();
-    	
-    	for(int i=0;i<amazonSplit.length;i++) {
-    		map.put(amazonSplit[i],1);
-    	}
-    	
-    	for(int i=0;i<googleSplit.length;i++) {
-    		
-    		if(map.containsKey(googleSplit[i])) {
-    			map.put(googleSplit[i], map.get(googleSplit[i])+1);
-    		}
-    	}
-    	
-    	
-    	for(int i=0;i<googleSplit.length;i++) {
-    		if(map.containsKey(googleSplit[i])) {
-
-
-    			System.out.println(googleSplit[i]);
-    			System.out.println(str1+"    "+"this is str1");
-    			System.out.println(str2+"    "+"this is str2");
-    			System.out.println("Word found in map");
-    			
-    		}else {
-    			System.out.println("Word not found in map");
-    			System.out.println(googleSplit[i]);
-    			System.out.println(str1+"    "+"this is str1");
-    			System.out.println(str2+"    "+"this is str2");
-    			
-    		}
-    	}	
+    	str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
+        
+        Set<String> wordsInStr2 = new HashSet<>(Arrays.asList(str2.split("[\\s\\W]+")));
+        
+        for (String word : str1.split("[\\s\\W]+")) {
+            if (wordsInStr2.contains(word)) {
+                System.out.println(word + " - Word found in both strings");
+            } else {
+                System.out.println(word + " - Word NOT found in str2");
+            }
+        }
     	
     }
     
@@ -138,16 +116,12 @@ public  String extractPrice(String str) {
 }
 
 
-public  boolean isElementInViewport(WebDriver driver, WebElement element) {
+public boolean isElementFullyInViewport(WebDriver driver, WebElement element) {
     JavascriptExecutor js = (JavascriptExecutor) driver;
-    // JavaScript to check if the element is in the viewport
-    String script = "var elem = arguments[0], " +
-                    "bounding = elem.getBoundingClientRect(), " +
-                    "vPwidth = window.innerWidth || document.documentElement.clientWidth, " +
-                    "vPheight = window.innerHeight || document.documentElement.clientHeight, " +
-                    "vTop = bounding.top >= 0 && bounding.top < vPheight, " +
-                    "vLeft = bounding.left >= 0 && bounding.left < vPwidth; " +
-                    "return vTop && vLeft;";
+    String script = "var rect = arguments[0].getBoundingClientRect();" +
+                    "return (rect.top >= 0 && rect.left >= 0 && " +
+                    "rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && " +
+                    "rect.right <= (window.innerWidth || document.documentElement.clientWidth));";
     return (Boolean) js.executeScript(script, element);
 }
 
@@ -189,6 +163,14 @@ public   void captureScreenshot(ITestResult result) {
             e.printStackTrace();
         }
     }
+}
+
+
+public  void scrollAndClick(WebDriver driver, WebElement element) throws InterruptedException {
+    scrollToElement(driver, element);
+    scrollByPixels(driver, 0, -300);
+    Thread.sleep(2000);
+    element.click();
 }
 
 
