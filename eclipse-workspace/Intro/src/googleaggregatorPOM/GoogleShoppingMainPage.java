@@ -14,6 +14,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import googleaggregator.GenericHelper;
+
 public class GoogleShoppingMainPage {
 
 
@@ -23,20 +25,19 @@ public class GoogleShoppingMainPage {
     private ViewMoreDetailsPage viewMoreDetailsPage;
     private GoogleShoppingProductPopup googleShoppingProductPopup;
     private AmazonProductMainPage amazonProductMainPage;
+    public GenericHelper genericHelper;
 
-    public GoogleShoppingMainPage(WebDriver driver,GlobalUtility globalUtility) {
-        this.driver = driver;
-        this.globalUtility = globalUtility;
+    public GoogleShoppingMainPage(WebDriver driver, GlobalUtility globalUtility) {
+    	this.driver=driver;
+    	this.globalUtility = globalUtility;
+    	this.genericHelper=new GenericHelper();
         this.viewMoreDetailsPage = new ViewMoreDetailsPage(driver);
         this.googleShoppingProductPopup = new GoogleShoppingProductPopup(driver);
         this.amazonProductMainPage = new AmazonProductMainPage(driver);
+        PageFactory.initElements(driver, this);
     }
     
-	
-	public  GoogleShoppingMainPage(WebDriver driver) {
-		this.driver=driver;
-		PageFactory.initElements(driver, this);
-	}
+
 	
 	
 	
@@ -326,9 +327,10 @@ public class GoogleShoppingMainPage {
 	       
 	       
 		    for (String window : windowHandles) {
-			    if (!window.equals(cWindow)) {  // Use .equals() for proper string comparison
+			    if (window!=cWindow) {  // Use .equals() for proper string comparison
 			        Thread.sleep(2000);
 			        driver.switchTo().window(window);
+			        break;
 			         // Exit loop after switching to the first found window
 			    }
 			 }
@@ -360,7 +362,7 @@ public class GoogleShoppingMainPage {
 	       driver.close();
 	       
 	       for (String windowHandle : windowHandlesLatest) {
-	    	    if (!windowHandle.equals(amazonWindow)) { // Switch to the window that isn't the current one
+	    	    if (windowHandle!=amazonWindow) { // Switch to the window that isn't the current one
 	    	        driver.switchTo().window(windowHandle);
 	    	        break; // No need to continue looping once we've switched
 	    	    }

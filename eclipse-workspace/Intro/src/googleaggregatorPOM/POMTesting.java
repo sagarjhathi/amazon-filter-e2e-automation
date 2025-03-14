@@ -22,11 +22,12 @@ public class POMTesting {
 	
 	@BeforeClass
     public void setup() {
-		this.globalUtility=new GlobalUtility(driver);
+	
 		this.genericHelper=new GenericHelper();
 		this.driver=globalUtility.initDriver(genericHelper.userAgent);
+		this.globalUtility=new GlobalUtility(driver);
 		this.googleShoppingLandingPage=new GoogleShoppingLandingPage(driver);
-		this.googleShoppingMainPage = new GoogleShoppingMainPage(driver, globalUtility);
+		this.googleShoppingMainPage = new GoogleShoppingMainPage(driver,globalUtility);
     }
 	
 	

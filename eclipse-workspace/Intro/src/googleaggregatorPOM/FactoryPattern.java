@@ -15,18 +15,18 @@ public class FactoryPattern {
         this.driver = driver;
     }
 
-    public GlobalUtility createGlobalUtility() {
-        return new GlobalUtility(driver);
-    }
-    
+//    public GlobalUtility createGlobalUtility() {
+//        return new GlobalUtility(driver);
+//    }
+//    
     public GoogleShoppingLandingPage createGoogleShoppingLandingPage() {
     	return new GoogleShoppingLandingPage(driver);
     }
     
-    
-    public GoogleShoppingMainPage createGoogleShoppingMainPage() {
-    	return new GoogleShoppingMainPage(driver);
-    }
+//    
+//    public GoogleShoppingMainPage createGoogleShoppingMainPage() {
+//    	return new GoogleShoppingMainPage(driver);
+//    }
     
     public GoogleShoppingProductPopup createGoogleShoppingProductPopup() {
         return new GoogleShoppingProductPopup(driver);
