@@ -1,4 +1,4 @@
-package googleaggregator;
+package googleaggregatorPOM;
 
 import java.time.Duration;
 
@@ -50,10 +50,8 @@ public class AmazonProductMainPage  {
 	       //Extracting the price from amazon here while handling the case where by any chance the price is not visible on Ui 
 	       try {
 	           WebDriverWait checkOne = new WebDriverWait(driver, Duration.ofSeconds(10));
-	           WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='a-price aok-align-center"
-	                   + " reinventPricePriceToPayMargin priceToPay']//span[@class='a-price-whole']")));
+	           WebElement amazonPrice = checkOne.until(ExpectedConditions.visibilityOf(amazonProductPrice));
 	           
-	         
 	           amazonPriceFromAmzon= amazonPrice.getText();
 	           
 	           if(!amazonPrice.isDisplayed()) {

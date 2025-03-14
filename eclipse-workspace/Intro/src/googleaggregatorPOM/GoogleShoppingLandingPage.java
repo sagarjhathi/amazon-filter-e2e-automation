@@ -1,5 +1,6 @@
-package googleaggregator;
+package googleaggregatorPOM;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -22,11 +23,11 @@ public class GoogleShoppingLandingPage {
 		searchBar.click();
     }
 
-    public void inputWithInTheSearchBar(String input) {
-    	searchBar.sendKeys(input);
+    public void inputWithInTheSearchBar() {
+    	driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).sendKeys("Mobile");
     }
 
-    public void selectFromRecommendations(WebDriver driver) {
+    public void selectFromRecommendations() {
         searchBar.sendKeys(Keys.DOWN, Keys.ENTER);
     }
     

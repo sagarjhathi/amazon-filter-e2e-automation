@@ -1,4 +1,4 @@
-package googleaggregator;
+package googleaggregatorPOM;
 
 import java.time.Duration;
 import java.util.List;
@@ -16,18 +16,29 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class GoogleShoppingMainPage {
 
-	WebDriver driver;
-	GlobalUtility globalUtility;
-	ViewMoreDetailsPage viewMoreDetailsPage;
-	GoogleShoppingProductPopup googleShoppingProductPopup;
-	AmazonProductMainPage amazonProductMainPage;
+
 	
-	public GoogleShoppingMainPage(WebDriver driver) {
-		this.driver = driver;
-		this.globalUtility=new GlobalUtility(driver);
-		this.viewMoreDetailsPage=new ViewMoreDetailsPage(driver);
-		this.googleShoppingProductPopup=new GoogleShoppingProductPopup(driver);
-	} 
+	private WebDriver driver;
+    private GlobalUtility globalUtility;
+    private ViewMoreDetailsPage viewMoreDetailsPage;
+    private GoogleShoppingProductPopup googleShoppingProductPopup;
+    private AmazonProductMainPage amazonProductMainPage;
+
+    public GoogleShoppingMainPage(WebDriver driver,GlobalUtility globalUtility) {
+        this.driver = driver;
+        this.globalUtility = globalUtility;
+        this.viewMoreDetailsPage = new ViewMoreDetailsPage(driver);
+        this.googleShoppingProductPopup = new GoogleShoppingProductPopup(driver);
+        this.amazonProductMainPage = new AmazonProductMainPage(driver);
+    }
+    
+	
+	public  GoogleShoppingMainPage(WebDriver driver) {
+		this.driver=driver;
+		PageFactory.initElements(driver, this);
+	}
+	
+	
 	
 	// Page Factory - Web Elements
     @FindBy(xpath = "//div[@class='lg3aE' and text()='Seller']")
@@ -121,6 +132,7 @@ public class GoogleShoppingMainPage {
         WebElement amazonInSeller = wait.until(ExpectedConditions.visibilityOf(amazonFromSellerMenu));
         globalUtility.scrollByPixels(driver, 0, -300);
         amazonInSeller.click();
+        
     }
     
     public String getGoogleWindowHandle() {
@@ -231,48 +243,50 @@ public class GoogleShoppingMainPage {
         applyFilterAndTraverse(driver, lensTypeFilter, list);
     }
     
+    
+
+   
+    public boolean checkNoResultsAndNavigateBack() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+            WebElement noResults = wait.until(ExpectedConditions.visibilityOf(checkNoElementState));
+
+            if (noResults.isDisplayed()) {
+                System.out.println("No results found, navigating back...");
+                driver.navigate().back();
+                return true;
+            }
+        } catch (TimeoutException e) {
+            System.out.println("Results found, proceeding with further actions.");
+        }
+        return false;
+    }
        
+    
+    public void  clickClearButton() throws InterruptedException {
+    	Thread.sleep(1000);
+        clearButtonFromFilter.click();
+        Thread.sleep(1000);
+    }
+    
+    
 	 public  void applyFilterAndTraverse(WebDriver driver, WebElement element, List<WebElement> list) throws InterruptedException {
-		      globalUtility.scrollToElement(driver, element);
-		      globalUtility.scrollByPixels(driver, 0, -300);
-		      Thread.sleep(2000);
-		      element.click();
+		      globalUtility.scrollAndClick(driver, element);
+		      if(checkNoResultsAndNavigateBack()) {
+		    	  return;
+		      }
 		      
-		     
-		      
-		      
-			      try {
-			          WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-			          WebElement noResults = wait.until(ExpectedConditions.visibilityOf(checkNoElementState));
-			        
-	
-			          if (noResults.isDisplayed()) {
-			              System.out.println("No results found, navigating back...");
-			              driver.navigate().back();  // Navigate back before returning
-			              return;  // Exit the method if no results are found
-			          }
-			      } catch (TimeoutException e) {
-			          // No "No results" state found, continue with the normal actions
-			          System.out.println("Results found, proceeding with further actions.");
-			      }
-		    	    
-			      
-			      
-			      
-		    	        int c = 0;
-		    	        for (int i = 1; i < list.size(); i++) {
-		    	            switchWindowAndCompare(driver, i);
-		    	            c++;
-		    	            // Break after the first iteration so that we are not iterating all the products 
-		    	            if (c == 1) {
-		    	                break;
-		    	            }
-		    	        }
+		    int countCheck = 0;
+  	        for (int i = 1; i < list.size(); i++) {
+  	            switchWindowAndCompare(driver, i);
+  	            countCheck++;
+  	            // Break after the first iteration so that we are not iterating all the products 
+  	            if (countCheck == 1) {
+  	                break;
+  	            }
+  	        }   
 		    	        
-		    	        // Perform further actions after comparison
-		    	        Thread.sleep(1000);
-		    	        clearButtonFromFilter.click();
-		    	        Thread.sleep(1000);
+  	        clickClearButton(); 
 		 }
 	    
 	 
@@ -293,7 +307,7 @@ public class GoogleShoppingMainPage {
 	 
 	 
 	 
-	    public  void switchWindowAndCompare(WebDriver driver, int productIndex) throws InterruptedException {
+	    public  void switchWindowAndCompare(WebDriver driver,int productIndex) throws InterruptedException {
 			 
 			driver.navigate().refresh();
 			Thread.sleep(1000);
@@ -305,19 +319,20 @@ public class GoogleShoppingMainPage {
 			String cWindow=getGoogleWindowHandle();
 			viewMoreDetailsPage.clickingOnAmazonFromViewMoreDetailsPage();
 	       
-		   Thread.sleep(1000);
+		    Thread.sleep(1000);
 		  
 	       //creating set to store all the windows here in order to switch to the amazon site 
-		   Set<String> windowHandles=globalUtility.getAllWindowHandles();
+		    Set<String> windowHandles=globalUtility.getAllWindowHandles();
 	       
 	       
-	       // Create an iterator to loop through the window handles and switch to the amazon site
-	       for(String str:windowHandles) {
-	    	   if(str!=cWindow) {
-	    		  Thread.sleep(2000);
-	    		   driver.switchTo().window(str);
-	    	   }
-	       }
+		    for (String window : windowHandles) {
+			    if (!window.equals(cWindow)) {  // Use .equals() for proper string comparison
+			        Thread.sleep(2000);
+			        driver.switchTo().window(window);
+			         // Exit loop after switching to the first found window
+			    }
+			 }
+
 	       
 	       //Verifying how many windows here to check if we are accessing the right window here
 	       int i=1;
@@ -345,7 +360,7 @@ public class GoogleShoppingMainPage {
 	       driver.close();
 	       
 	       for (String windowHandle : windowHandlesLatest) {
-	    	    if (windowHandle!=amazonWindow) { // Switch to the window that isn't the current one
+	    	    if (!windowHandle.equals(amazonWindow)) { // Switch to the window that isn't the current one
 	    	        driver.switchTo().window(windowHandle);
 	    	        break; // No need to continue looping once we've switched
 	    	    }
