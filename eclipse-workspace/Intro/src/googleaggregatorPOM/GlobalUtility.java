@@ -24,9 +24,9 @@ public class GlobalUtility {
 
 	
     public  WebDriver driver;
-	//String userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
+	String userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
 
-    
+//    
 	public GlobalUtility(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver=driver;
@@ -41,6 +41,8 @@ public class GlobalUtility {
         driver = new ChromeDriver(options);
         return driver;
     }
+	
+	
 
     public  void navigateToURL(WebDriver driver, String url) {
         driver.get(url);
