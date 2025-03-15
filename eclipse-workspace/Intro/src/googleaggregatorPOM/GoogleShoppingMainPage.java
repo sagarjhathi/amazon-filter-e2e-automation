@@ -2,6 +2,7 @@ package googleaggregatorPOM;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -289,8 +290,11 @@ public class GoogleShoppingMainPage {
   	            }
   	        }   
 		    	
-  	       
-  	        System.out.println("Elment is in vewport status "  + globalUtility.isElementFullyInViewport(driver, clearButtonFromFilter));
+  	      JavascriptExecutor js = (JavascriptExecutor) driver;
+  	    js.executeScript("window.scrollBy(0, -500);");
+  	    
+  	      
+  	    Thread.sleep(3000);
   	        clickClearButton(); 
 		 }
 	    
@@ -375,7 +379,8 @@ public class GoogleShoppingMainPage {
 	       
 	       driver.navigate().back();
 	        globalUtility.scrollByPixels(driver, 0, -200);
-	       Thread.sleep(4000);
+	       Thread.sleep(3000);
+	       System.out.println("pop-up closing button here ");
 	       closeButtonGooglePopup.click();
 	       
 
