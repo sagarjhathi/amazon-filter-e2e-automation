@@ -467,7 +467,7 @@ public class AllFunctions {
        Thread.sleep(2000);
        
        jss.executeScript("window.scrollBy(0,-200);");
-       Thread.sleep(2000);
+     
        driver.findElement(By.xpath("//a[@aria-label='Close']")).click();
        
 

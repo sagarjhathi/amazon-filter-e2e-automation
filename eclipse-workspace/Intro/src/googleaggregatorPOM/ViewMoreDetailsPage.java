@@ -37,7 +37,7 @@ public class ViewMoreDetailsPage {
 			
 		}catch(Exception e) {
 			System.out.println("The google  price is not available in Ui");
-			driver.quit();
+			//driver.quit();
 		}
 		
 		System.out.println(googleViewMoreDetailsPrice+"     printing the google Price before processing ");
