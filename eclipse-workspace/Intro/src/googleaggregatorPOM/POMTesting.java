@@ -22,12 +22,11 @@ public class POMTesting {
 	
 	@BeforeClass
     public void setup() {
-	
+		 this.globalUtility = new GlobalUtility(); // Initialize globalUtility first
 		this.genericHelper=new GenericHelper();
 		this.driver=globalUtility.initDriver(genericHelper.userAgent);
-		this.globalUtility=new GlobalUtility(driver);
 		this.googleShoppingLandingPage=new GoogleShoppingLandingPage(driver);
-		this.googleShoppingMainPage = new GoogleShoppingMainPage(driver,globalUtility);
+		 this.googleShoppingMainPage = new GoogleShoppingMainPage(driver, globalUtility);
     }
 	
 	
@@ -84,13 +83,93 @@ public class POMTesting {
 	}
 	
 	
-	
-	@Test(priority=9)
-	public void applyingPriceFilterInGoogleMainPage() throws InterruptedException {
-		googleShoppingMainPage.applyingPriceFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	@Test(priority = 9)
+	public void applyingScreenResolutionFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingScreenResolutionFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+	@Test(priority = 10)
+	public void applyingWeightFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingWeightfilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
 	}
 	
 	
+
+	@Test(priority = 11)
+	public void applyingSecurityFeaturesFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingSecurityFeaturesFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 12)
+	public void applyingStorageFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingStorageFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+	
+	@Test(priority = 13)
+	public void applyingPriceFilterInGoogleMainPage() throws InterruptedException {
+	    googleShoppingMainPage.applyingPriceFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 14)
+	public void applying5gFilterInGoogleMainPage() throws InterruptedException {
+	    googleShoppingMainPage.applying5GFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 15)
+	public void applyingBrandFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingBrandFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 16)
+	public void applyingCameraFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingCameraFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 17)
+	public void applyingCellularNetworkFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingCellularNetworkFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 18)
+	public void applyingColorFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingColorFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 19)
+	public void applyingDeliveryFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingDeliveryFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 20)
+	public void applyingDualSimFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingDualSimFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 21)
+	public void applyingHeadphoneFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingHeadphoneFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 22)
+	public void applyingLensFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingLensFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 23)
+	public void applyingOsFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingOsFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 24)
+	public void applyingRamFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingRamFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+	@Test(priority = 25)
+	public void applyingRatingFilterInGoogleMainPage() throws InterruptedException {
+	    AllFunctions.applyingRatingFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
+
+
 	
 	
 	

@@ -63,6 +63,7 @@ public class TestAllFunctions {
             //Applying price filter and iterating over the products
            // GoogleShoppingMainPage gp=new GoogleShoppingMainPage(driver);
 //            AllFunctions.switchWindowAndCompare(driver, productList);
+            AllFunctions.applyingScreenResolutionFilter(driver, productList);
             AllFunctions.applyingPriceFilter(driver, productList);
             AllFunctions.applying5gFilter(driver, productList);
             AllFunctions.applyingBrandFilter(driver, productList);
@@ -76,7 +77,7 @@ public class TestAllFunctions {
             AllFunctions.applyingOsFilter(driver, productList);
             AllFunctions.applyingRamFilter(driver, productList);
             AllFunctions.applyingRatingFilter(driver, productList);
-            AllFunctions.applyingScreenResolutionFilter(driver, productList);
+           
             AllFunctions.applyingSecurityFeaturesFilter(driver, productList);
             AllFunctions.applyingStorageFilter(driver, productList);
             AllFunctions.applyingWeightfilter(driver, productList);

@@ -27,6 +27,11 @@ public class GlobalUtility {
 	String userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
 
 //    
+	
+	public GlobalUtility() {
+		// TODO Auto-generated constructor stub
+		this.driver=driver;
+	}
 	public GlobalUtility(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver=driver;
@@ -176,7 +181,7 @@ public  void scrollAndClick(WebDriver driver, WebElement element) throws Interru
 }
 
 
-     public Set<String> getAllWindowHandles() {
+ public Set<String> getAllWindowHandles() {
     	 
     	 Set<String> windowHandles = driver.getWindowHandles();
     	 return windowHandles;

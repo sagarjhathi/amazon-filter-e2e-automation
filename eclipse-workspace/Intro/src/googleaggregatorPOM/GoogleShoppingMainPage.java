@@ -6,9 +6,11 @@ import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -29,7 +31,7 @@ public class GoogleShoppingMainPage {
 
     public GoogleShoppingMainPage(WebDriver driver, GlobalUtility globalUtility) {
     	this.driver=driver;
-    	this.globalUtility = globalUtility;
+    	 this.globalUtility = globalUtility;
     	this.genericHelper=new GenericHelper();
         this.viewMoreDetailsPage = new ViewMoreDetailsPage(driver);
         this.googleShoppingProductPopup = new GoogleShoppingProductPopup(driver);
@@ -286,7 +288,9 @@ public class GoogleShoppingMainPage {
   	                break;
   	            }
   	        }   
-		    	        
+		    	
+  	       
+  	        System.out.println("Elment is in vewport status "  + globalUtility.isElementFullyInViewport(driver, clearButtonFromFilter));
   	        clickClearButton(); 
 		 }
 	    
@@ -330,7 +334,7 @@ public class GoogleShoppingMainPage {
 			    if (window!=cWindow) {  // Use .equals() for proper string comparison
 			        Thread.sleep(2000);
 			        driver.switchTo().window(window);
-			        break;
+			        
 			         // Exit loop after switching to the first found window
 			    }
 			 }
@@ -357,7 +361,7 @@ public class GoogleShoppingMainPage {
 	      
 	      
 	      
-	       Set<String> windowHandlesLatest = globalUtility.getAllWindowHandles();
+	       Set<String> windowHandlesLatest = driver.getWindowHandles();
 	       
 	       driver.close();
 	       
@@ -370,10 +374,8 @@ public class GoogleShoppingMainPage {
 	       
 	       
 	       driver.navigate().back();
-	       Thread.sleep(2000);
-	       
-	       globalUtility.scrollByPixels(driver, 0, -200);
-	       Thread.sleep(2000);
+	        globalUtility.scrollByPixels(driver, 0, -200);
+	       Thread.sleep(4000);
 	       closeButtonGooglePopup.click();
 	       
 
