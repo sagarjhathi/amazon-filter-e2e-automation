@@ -26,12 +26,6 @@ public class GlobalUtility {
     public  WebDriver driver;
 	String userAgent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
 
-//    
-	
-	public GlobalUtility() {
-		// TODO Auto-generated constructor stub
-		this.driver=driver;
-	}
 	public GlobalUtility(WebDriver driver) {
 		// TODO Auto-generated constructor stub
 		this.driver=driver;
@@ -40,6 +34,11 @@ public class GlobalUtility {
 	public  WebDriver initDriver(String userAgent) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=" + userAgent);
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-blink-features=AutomationControlled"); // Prevent detection
+        options.addArguments("--no-sandbox"); // Stability in CI environments
+        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--lang=en");
         options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--start-maximized");

@@ -17,12 +17,12 @@ public class POMTesting {
 	GenericHelper genericHelper;
 	GoogleShoppingMainPage googleShoppingMainPage;
 	GoogleShoppingLandingPage  	googleShoppingLandingPage;
-	FactoryPattern factory;
+	
 	
 	
 	@BeforeClass
     public void setup() {
-		 this.globalUtility = new GlobalUtility(); // Initialize globalUtility first
+		 this.globalUtility = new GlobalUtility(driver); 
 		this.genericHelper=new GenericHelper();
 		this.driver=globalUtility.initDriver(genericHelper.userAgent);
 		this.googleShoppingLandingPage=new GoogleShoppingLandingPage(driver);
