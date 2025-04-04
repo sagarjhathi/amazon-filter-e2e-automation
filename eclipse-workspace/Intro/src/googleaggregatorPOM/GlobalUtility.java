@@ -31,10 +31,12 @@ public class GlobalUtility {
 		this.driver=driver;
 	}
 
+	
+	
 	public  WebDriver initDriver(String userAgent) {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("user-agent=" + userAgent);
-        options.addArguments("--headless");
+//        options.addArguments("--headless");
         options.addArguments("--disable-gpu");
         options.addArguments("--disable-blink-features=AutomationControlled"); // Prevent detection
         options.addArguments("--no-sandbox"); // Stability in CI environments
@@ -45,6 +47,7 @@ public class GlobalUtility {
         driver = new ChromeDriver(options);
         return driver;
     }
+	
 	
 	
 

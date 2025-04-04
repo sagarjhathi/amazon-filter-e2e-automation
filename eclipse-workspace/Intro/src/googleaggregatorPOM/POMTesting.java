@@ -1,6 +1,6 @@
 package googleaggregatorPOM;
 
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver; 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -172,7 +172,10 @@ public class POMTesting {
 	}
 
 
-	
+//	@Test(priority = 9)
+//	public void applyingFiltersFromTheList() throws InterruptedException {
+//		googleShoppingMainPage.applyingAllFiltersFromList(driver);
+//	}
 	
 	
 	

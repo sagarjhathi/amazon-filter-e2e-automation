@@ -1,6 +1,7 @@
 package googleaggregatorPOM;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -386,4 +387,50 @@ public class GoogleShoppingMainPage {
 	       
 
 	}
+	    
+	    
+	    public List<WebElement> getAllFilters() {
+	        List<WebElement> allFilters = new ArrayList<>();
+	        allFilters.add(priceFilter);
+	        allFilters.add(ramFilter);
+	        allFilters.add(fourAndUpRating); // Assuming you already clicked 'More' for ratings
+	        allFilters.add(weightFilter);
+	        allFilters.add(deliveryFilter);
+	        allFilters.add(mobileBrand);
+	        allFilters.add(selecting5G);
+	        allFilters.add(dualSim);
+	        allFilters.add(colorFilter);
+	        allFilters.add(storageCapacityFilter);
+	        allFilters.add(osFilter);
+	        allFilters.add(cellularNetworkFilter);
+	        allFilters.add(securityFeaturesFilter);
+	        allFilters.add(screenResolutionFilter);
+	        allFilters.add(cameraFilter);
+	        allFilters.add(headphoneConnectorFilter);
+	        allFilters.add(lensTypeFilter);
+	        return allFilters;
+	    }
+
+	    
+	    public void applyingAllFiltersFromList(WebDriver driver) throws InterruptedException {
+	        List<WebElement> listOfFilters = getAllFilters();
+
+	        for (int i = 0; i < listOfFilters.size(); i++) {
+	            WebElement filterElement = listOfFilters.get(i);
+	            String filterName = filterElement.getText().trim();
+
+	            System.out.println("Applying filter: " + filterName);
+
+	            try {
+	                applyFilterAndTraverse(driver, filterElement, gettingAllProducts(driver));
+	                System.out.println("Successfully applied filter: " + filterName);
+	            } catch (Exception e) {
+	                System.out.println("❌ Failed to apply filter: " + filterName);
+	                e.printStackTrace();
+	                // Optionally rethrow if you want to stop execution
+	                // throw e;
+	            }
+	        }
+	    }
+
 }
