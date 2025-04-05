@@ -249,6 +249,46 @@ public class GoogleShoppingMainPage {
     }
     
     
+    public void applyingPriceFilterAllOptions(WebDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+        // Define the correct parent container
+        By priceFilterContainer = By.xpath("(//div[@class='sh-dr__short']//div[@jsname='meClP'])[2]");
+
+        WebElement parent = driver.findElement(priceFilterContainer);
+        
+        // Fetch children properly, relative to the parent element
+        List<WebElement> totalOptions = parent.findElements(By.xpath("./*"));
+        
+        System.out.println("Found filter options: " + totalOptions.size());
+
+        for (int i = 0; i < totalOptions.size(); i++) {
+            // Refetch the parent and children on each loop to avoid stale element issues
+            parent = driver.findElement(priceFilterContainer);
+            List<WebElement> filters = parent.findElements(By.xpath("./*"));
+
+            if (i >= filters.size()) break; // Safety net
+
+            WebElement currentFilter = filters.get(i);
+            String text = currentFilter.getText().trim();
+
+            // Optional: skip Min/Max if needed
+            if (text.contains("Min") || text.contains("Max")) {
+                System.out.println("Skipping Min/Max filter: " + text);
+                continue;
+            }
+
+            System.out.println("Applying filter: " + text);
+            currentFilter.click();
+
+            // Optionally wait for UI update
+            wait.until(ExpectedConditions.stalenessOf(currentFilter));
+        }
+    }
+
+
+
+    
 
    
     public boolean checkNoResultsAndNavigateBack() {
@@ -413,24 +453,11 @@ public class GoogleShoppingMainPage {
 
 	    
 	    public void applyingAllFiltersFromList(WebDriver driver) throws InterruptedException {
-	        List<WebElement> listOfFilters = getAllFilters();
-
-	        for (int i = 0; i < listOfFilters.size(); i++) {
-	            WebElement filterElement = listOfFilters.get(i);
-	            String filterName = filterElement.getText().trim();
-
-	            System.out.println("Applying filter: " + filterName);
-
-	            try {
-	                applyFilterAndTraverse(driver, filterElement, gettingAllProducts(driver));
-	                System.out.println("Successfully applied filter: " + filterName);
-	            } catch (Exception e) {
-	                System.out.println("❌ Failed to apply filter: " + filterName);
-	                e.printStackTrace();
-	                // Optionally rethrow if you want to stop execution
-	                // throw e;
-	            }
-	        }
+	    
+	    	List<WebElement> listOfFilters=getAllFilters();
+	    	
+	    	for(int i=0;i<listOfFilters.size();i++) {
+	    		applyFilterAndTraverse(driver,listOfFilters.get(i),gettingAllProducts(driver));
+	    	}
 	    }
-
 }
