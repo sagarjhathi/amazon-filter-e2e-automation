@@ -123,6 +123,9 @@ public class GoogleShoppingMainPage {
     @FindBy(xpath="(//a[@class='vjtvke' and text()='Clear'])[1]")
     private WebElement clearButtonFromFilter;
     
+    @FindBy(xpath="//div[text()='Price']/following-sibling::div")
+    private WebElement clearButtonFromPriceFilter;
+    
     public List<WebElement> gettingAllProducts(WebDriver driver){
     	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
          WebElement products = wait.until(ExpectedConditions.visibilityOf(getAllProducts));
@@ -253,17 +256,15 @@ public class GoogleShoppingMainPage {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Define the correct parent container
-        By priceFilterContainer = By.xpath("(//div[@class='sh-dr__short']//div[@jsname='meClP'])[2]");
+        By priceFilterContainer = By.xpath("//div[text()='Price']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
 
         WebElement parent = driver.findElement(priceFilterContainer);
         
         // Fetch children properly, relative to the parent element
-        List<WebElement> totalOptions = parent.findElements(By.xpath("./*"));
+        List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
         
         for(int i=0;i<totalOptions.size();i++) {
-        	
         	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
-        	
         }
         
         System.out.println("Found filter options: " + totalOptions.size());
@@ -271,8 +272,9 @@ public class GoogleShoppingMainPage {
         for (int i = 0; i < totalOptions.size(); i++) {
             // Refetch the parent and children on each loop to avoid stale element issues
             parent = driver.findElement(priceFilterContainer);
-            List<WebElement> filters = parent.findElements(By.xpath("./*"));
-
+            List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+            
+            System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
             if (i >= filters.size()) break; // Safety net
 
             WebElement currentFilter = filters.get(i);
@@ -287,8 +289,14 @@ public class GoogleShoppingMainPage {
             System.out.println("Applying filter: " + text);
             currentFilter.click();
 
+            //applyingFilter an switchign window code will come here
+            
+            
+            clearButtonFromPriceFilter.click();
             // Optionally wait for UI update
             wait.until(ExpectedConditions.stalenessOf(currentFilter));
+            
+            
         }
     }
 

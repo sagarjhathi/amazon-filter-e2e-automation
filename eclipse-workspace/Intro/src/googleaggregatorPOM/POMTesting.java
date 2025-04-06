@@ -176,7 +176,9 @@ public class POMTesting {
 	
 	@Test(priority = 9)
 	public void applyingAllFilterOptionsForPrice() throws InterruptedException {
-		googleShoppingMainPage.applyingPriceFilterAllOptions(driver);
+		for(int i=0;i<3;i++) {
+			googleShoppingMainPage.applyingPriceFilterAllOptions(driver);
+		}
 	}
 
 	
