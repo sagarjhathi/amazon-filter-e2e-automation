@@ -260,6 +260,12 @@ public class GoogleShoppingMainPage {
         // Fetch children properly, relative to the parent element
         List<WebElement> totalOptions = parent.findElements(By.xpath("./*"));
         
+        for(int i=0;i<totalOptions.size();i++) {
+        	
+        	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+        	
+        }
+        
         System.out.println("Found filter options: " + totalOptions.size());
 
         for (int i = 0; i < totalOptions.size(); i++) {
