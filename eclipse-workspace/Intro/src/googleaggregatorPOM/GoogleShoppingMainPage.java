@@ -252,7 +252,7 @@ public class GoogleShoppingMainPage {
     }
     
     
-    public void applyingPriceFilterAllOptions(WebDriver driver) {
+    public void applyingPriceFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
         // Define the correct parent container
@@ -286,13 +286,14 @@ public class GoogleShoppingMainPage {
                 continue;
             }
 
-            System.out.println("Applying filter: " + text);
-            currentFilter.click();
+//            System.out.println("Applying filter: " + text);
+//            currentFilter.click();
+       	    applyFilterAndTraverse(driver, currentFilter, list);
+
 
             //applyingFilter an switchign window code will come here
             
-            
-            clearButtonFromPriceFilter.click();
+          //  clearButtonFromPriceFilter.click();
             // Optionally wait for UI update
             wait.until(ExpectedConditions.stalenessOf(currentFilter));
             
@@ -359,7 +360,7 @@ public class GoogleShoppingMainPage {
 	 
 	 public void productLocatingAndClicking(WebDriver driver, int productIndex) {
 		 
-		 WebElement productLocating=driver.findElement(By.xpath("(//span[@class='OA4wid' and text()='Smartphone'])[" + productIndex + "]"));
+		 WebElement productLocating=driver.findElement(By.xpath("(//a[@data-what='1'])[" + productIndex + "]"));
 
 		 WebDriverWait wait=new WebDriverWait(driver,Duration.ofSeconds(10));
 		 
