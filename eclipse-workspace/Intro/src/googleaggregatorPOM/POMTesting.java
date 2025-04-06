@@ -176,14 +176,19 @@ public class POMTesting {
 	
 	@Test(priority = 9)
 	public void applyingAllFilterOptionsForPrice() throws InterruptedException {
-		for(int i=0;i<3;i++) {
 			googleShoppingMainPage.applyingPriceFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-		}
+		
 	}
 
+	@Test(priority = 10)
+	public void applyingAllFilterOptionsForBrand() throws InterruptedException {
+		googleShoppingMainPage.applyingBrandFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	}
 	
-	
-	
+	@Test(priority = 11)
+	public void applyingAllFiltersOptionsForBroadBandGeneration() throws InterruptedException {
+		googleShoppingMainPage.applyingBroadbandGenerationFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	}
 	
 	
 	
