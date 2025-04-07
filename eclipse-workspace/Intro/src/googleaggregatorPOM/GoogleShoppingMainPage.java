@@ -395,13 +395,700 @@ public class GoogleShoppingMainPage {
           
      } 
  }
+ 
+ 
+ 
     
     
+ public void applyingOperatingSystemFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Operating System']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
 
 
+ 
+ 
+ 
+ public void applyingColourFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Colour']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
 
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ public void applyingStorageCapacityFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Storage Capacity']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ public void applyingScreenSizeFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Screen Size']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
     
+ 
+ 
+ 
+ 
+ 
+ public void applyingWeightFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Weight']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(By.xpath("//div[text()='Weight']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]"));
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
 
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    driver.navigate().refresh();
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ public void applyingSIMSlotsFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='SIM Slots']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ 
+ public void applyingCellularNetworkFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Cellular Network']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ 
+ public void applyingSecurityFeaturesFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Security Features']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ public void applyingScreenResolutionFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Screen Resolution']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    driver.navigate().refresh();
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ public void applyingFrontCameraResolutionFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Front Camera Resolution']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ public void applyingConnectorTypeFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Connector Type']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ public void applyingFormFactorFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Form Factor']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+
+ 
+ 
+ 
+ public void applyingRAMFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='RAM']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ public void applyingLensTypeFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     By priceFilterContainer = By.xpath("//div[text()='Lens Type']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ public void applyingDeliveryFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+     By priceFilterContainer = By.xpath("//div[text()='Delivery']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+     WebElement parent = driver.findElement(priceFilterContainer);
+     
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+    	 driver.navigate().refresh();
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(priceFilterContainer);
+         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    driver.navigate().refresh();
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ //Product rating and seller filters will have to be built different hence did not write the code for that
+ 
    
     public boolean checkNoResultsAndNavigateBack() {
         try {
