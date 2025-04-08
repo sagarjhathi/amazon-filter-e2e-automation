@@ -85,256 +85,89 @@ public class POMTesting {
 	}
 	
 	
-//	@Test(priority = 9)
-//	public void applyingScreenResolutionFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingScreenResolutionFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	
-//	@Test(priority = 10)
-//	public void applyingWeightFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingWeightFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	
-//
-//	@Test(priority = 11)
-//	public void applyingSecurityFeaturesFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingSecurityFeaturesFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 12)
-//	public void applyingStorageFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingStorageFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 13)
-//	public void applyingPriceFilterInGoogleMainPage() throws InterruptedException {
-//	    googleShoppingMainPage.applyingPriceFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 14)
-//	public void applying5gFilterInGoogleMainPage() throws InterruptedException {
-//	    googleShoppingMainPage.applying5GFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 15)
-//	public void applyingBrandFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingBrandFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 16)
-//	public void applyingCameraFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingCameraFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 17)
-//	public void applyingCellularNetworkFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingCellularNetworkFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 18)
-//	public void applyingColorFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingColorFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 19)
-//	public void applyingDeliveryFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingDeliveryFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 20)
-//	public void applyingDualSimFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingDualSimFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 21)
-//	public void applyingHeadphoneFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingHeadphoneFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 22)
-//	public void applyingLensFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingLensFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 23)
-//	public void applyingOsFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingOsFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 24)
-//	public void applyingRamFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingRamFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//
-//	@Test(priority = 25)
-//	public void applyingRatingFilterInGoogleMainPage() throws InterruptedException {
-//		googleShoppingMainPage.applyingRatingFilter(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 9)
+	public void applyingAllFiltersOptionsForDelivery() throws InterruptedException {
+		googleShoppingMainPage.applyingDeliveryFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	}
+	
+	
+	@Test(priority = 10)
+	public void applyingAllFiltersOptionsForWeight() throws InterruptedException {
+		googleShoppingMainPage.applyingWeightFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	}
+	
+	
+	@Test(priority = 11)
+	public void applyingAllFiltersOptionsForScreenResolution() throws InterruptedException {
+		googleShoppingMainPage.applyingScreenResolutionFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	}
+	
+	@Test(priority = 12)
+	public void applyingAllFiltersOptionsForStorageCapacity() throws InterruptedException {
+		googleShoppingMainPage.applyingStorageCapacityFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	}
 
-	
-//	@Test(priority = 9)
-//	public void applyingAllFiltersOptionsForDelivery() throws InterruptedException {
-//		googleShoppingMainPage.applyingDeliveryFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	
-//	@Test(priority = 10)
-//	public void applyingAllFiltersOptionsForWeight() throws InterruptedException {
-//		googleShoppingMainPage.applyingWeightFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	
-//	@Test(priority = 11)
-//	public void applyingAllFiltersOptionsForScreenResolution() throws InterruptedException {
-//		googleShoppingMainPage.applyingScreenResolutionFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 12)
-//	public void applyingAllFiltersOptionsForStorageCapacity() throws InterruptedException {
-//		googleShoppingMainPage.applyingStorageCapacityFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-	
-	
-	
-	
-	
-//	@Test(priority = 9)
-//	public void applyingAllFilterOptionsForPrice() throws InterruptedException {
-//			googleShoppingMainPage.applyingPriceFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//		
-//	}
+
+
+	@Test(priority = 13)
+	public void applyingAllFilterOptionsForPrice() throws InterruptedException {
+		googleShoppingMainPage.applyingPriceFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}  
 //
-//	@Test(priority = 10)
-//	public void applyingAllFilterOptionsForBrand() throws InterruptedException {
-//		googleShoppingMainPage.applyingBrandFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 14)
+	public void applyingAllFilterOptionsForBrand() throws InterruptedException {
+		googleShoppingMainPage.applyingBrandFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-//	@Test(priority = 11)
-//	public void applyingAllFiltersOptionsForBroadBandGeneration() throws InterruptedException {
-//		googleShoppingMainPage.applyingBroadbandGenerationFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 15)
+	public void applyingAllFiltersOptionsForBroadBandGeneration() throws InterruptedException {
+		googleShoppingMainPage.applyingBroadbandGenerationFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-//	@Test(priority = 12)
-//	public void applyingAllFiltersOptionsForOperatingSystem() throws InterruptedException {
-//		googleShoppingMainPage.applyingOperatingSystemFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 16)
+	public void applyingAllFiltersOptionsForOperatingSystem() throws InterruptedException {
+		googleShoppingMainPage.applyingOperatingSystemFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-//	@Test(priority = 13)
-//	public void applyingAllFiltersOptionsForColour() throws InterruptedException {
-//		googleShoppingMainPage.applyingColourFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 17)
+	public void applyingAllFiltersOptionsForColour() throws InterruptedException {
+		googleShoppingMainPage.applyingColourFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-
+	@Test(priority = 18)
+	public void applyingAllFiltersOptionsForScreenSize() throws InterruptedException {
+		googleShoppingMainPage.applyingScreenSizeFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-//	@Test(priority = 15)
-//	public void applyingAllFiltersOptionsForScreenSize() throws InterruptedException {
-//		googleShoppingMainPage.applyingScreenSizeFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 19)
+	public void applyingAllFiltersOptionsForSIMSlots() throws InterruptedException {
+		googleShoppingMainPage.applyingSIMSlotsFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-
+	@Test(priority = 20)
+	public void applyingAllFiltersOptionsForCellularNetwork() throws InterruptedException {
+		googleShoppingMainPage.applyingCellularNetworkFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 //	
-//	@Test(priority = 17)
-//	public void applyingAllFiltersOptionsForSIMSlots() throws InterruptedException {
-//		googleShoppingMainPage.applyingSIMSlotsFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 18)
-//	public void applyingAllFiltersOptionsForCellularNetwork() throws InterruptedException {
-//		googleShoppingMainPage.applyingCellularNetworkFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 19)
-//	public void applyingAllFiltersOptionsForSecurityFeatures() throws InterruptedException {
-//		googleShoppingMainPage.applyingSecurityFeaturesFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-
-//	
-//	@Test(priority = 21)
-//	public void applyingAllFiltersOptionsForFrontCameraResolution() throws InterruptedException {
-//		googleShoppingMainPage.applyingFrontCameraResolutionFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 22)
-//	public void applyingAllFiltersOptionsForConnectorType() throws InterruptedException {
-//		googleShoppingMainPage.applyingConnectorTypeFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 23)
-//	public void applyingAllFiltersOptionsForRAM() throws InterruptedException {
-//		googleShoppingMainPage.applyingRAMFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 24)
-//	public void applyingAllFiltersOptionsForLensType() throws InterruptedException {
-//		googleShoppingMainPage.applyingLensTypeFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
+	@Test(priority = 21)
+	public void applyingAllFiltersOptionsForSecurityFeatures() throws InterruptedException {
+		googleShoppingMainPage.applyingSecurityFeaturesFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 	
+	@Test(priority = 22)
+	public void applyingAllFiltersOptionsForFrontCameraResolution() throws InterruptedException {
+		googleShoppingMainPage.applyingFrontCameraResolutionFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 	
+	@Test(priority = 23)
+	public void applyingAllFiltersOptionsForConnectorType() throws InterruptedException {
+		googleShoppingMainPage.applyingConnectorTypeFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 	
-//	@Test(priority = 13)
-//	public void applyingAllFilterOptionsForPrice() throws InterruptedException {
-//		googleShoppingMainPage.applyingPriceFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}  
-//
-//	@Test(priority = 14)
-//	public void applyingAllFilterOptionsForBrand() throws InterruptedException {
-//		googleShoppingMainPage.applyingBrandFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 15)
-//	public void applyingAllFiltersOptionsForBroadBandGeneration() throws InterruptedException {
-//		googleShoppingMainPage.applyingBroadbandGenerationFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 16)
-//	public void applyingAllFiltersOptionsForOperatingSystem() throws InterruptedException {
-//		googleShoppingMainPage.applyingOperatingSystemFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 17)
-//	public void applyingAllFiltersOptionsForColour() throws InterruptedException {
-//		googleShoppingMainPage.applyingColourFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 18)
-//	public void applyingAllFiltersOptionsForScreenSize() throws InterruptedException {
-//		googleShoppingMainPage.applyingScreenSizeFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 19)
-//	public void applyingAllFiltersOptionsForSIMSlots() throws InterruptedException {
-//		googleShoppingMainPage.applyingSIMSlotsFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 20)
-//	public void applyingAllFiltersOptionsForCellularNetwork() throws InterruptedException {
-//		googleShoppingMainPage.applyingCellularNetworkFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 21)
-//	public void applyingAllFiltersOptionsForSecurityFeatures() throws InterruptedException {
-//		googleShoppingMainPage.applyingSecurityFeaturesFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-	
-//	@Test(priority = 22)
-//	public void applyingAllFiltersOptionsForFrontCameraResolution() throws InterruptedException {
-//		googleShoppingMainPage.applyingFrontCameraResolutionFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 23)
-//	public void applyingAllFiltersOptionsForConnectorType() throws InterruptedException {
-//		googleShoppingMainPage.applyingConnectorTypeFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
-//	
-//	@Test(priority = 24)
-//	public void applyingAllFiltersOptionsForRAM() throws InterruptedException {
-//		googleShoppingMainPage.applyingRAMFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-//	}
+	@Test(priority = 24)
+	public void applyingAllFiltersOptionsForRAM() throws InterruptedException {
+		googleShoppingMainPage.applyingRAMFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	}
 	
 	@Test(priority = 25)
 	public void applyingAllFiltersOptionsForLensType() throws InterruptedException {
