@@ -1,6 +1,11 @@
 package googleaggregatorPOM;
 
-import org.openqa.selenium.WebDriver; 
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -36,7 +41,7 @@ public class POMTesting {
 		globalUtility.navigateToURL(driver, genericHelper.url);
 		System.out.println(1);
 	}
-	
+		
 	
 	
 	@Test(priority = 2)
@@ -60,11 +65,14 @@ public class POMTesting {
 	}
 	
 	@Test(priority = 5)
-	public void selectingFromRecommendations() {
+	public void selectingFromRecommendations() throws InterruptedException {
+		Thread.sleep(3000);
 		googleShoppingLandingPage.selectFromRecommendations();
 		System.out.println(5);
 	}
 	
+	
+
 	
 	@Test(priority=6)
 	public void scrollToSellerMenu() {
@@ -85,10 +93,13 @@ public class POMTesting {
 	}
 	
 	
+	
 	@Test(priority = 9)
-	public void applyingAllFiltersOptionsForDelivery() throws InterruptedException {
-		googleShoppingMainPage.applyingDeliveryFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
+	public void applyingAllFiltersOptionsForLensType() throws InterruptedException {
+		googleShoppingMainPage.applyingLensTypeFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
 	}
+	
+	
 	
 	
 	@Test(priority = 10)
@@ -170,8 +181,8 @@ public class POMTesting {
 	}
 	
 	@Test(priority = 25)
-	public void applyingAllFiltersOptionsForLensType() throws InterruptedException {
-		googleShoppingMainPage.applyingLensTypeFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
+	public void applyingAllFiltersOptionsForDelivery() throws InterruptedException {
+		googleShoppingMainPage.applyingDeliveryFilterAllOptions(driver,googleShoppingMainPage.gettingAllProducts(driver));
 	}
 
 

@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 public class GoogleShoppingLandingPage {
 
 	WebDriver driver;
-	@FindBy(xpath="//input[@placeholder='What are you looking for?']")
+	@FindBy(xpath="//textarea[@class='gLFyf']")
 	WebElement searchBar;
 		
 	
@@ -24,7 +24,7 @@ public class GoogleShoppingLandingPage {
     }
 
     public void inputWithInTheSearchBar() {
-    	driver.findElement(By.xpath("//input[@placeholder='What are you looking for?']")).sendKeys("Mobile");
+    	driver.findElement(By.xpath("//textarea[@class='gLFyf']")).sendKeys("Mobile");
     }
 
     public void selectFromRecommendations() {
