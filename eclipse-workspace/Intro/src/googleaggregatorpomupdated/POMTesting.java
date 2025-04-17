@@ -1,15 +1,8 @@
 package googleaggregatorpomupdated;
 
-import java.time.Duration;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
-import googleaggregator.AllFunctions;
 import googleaggregator.GenericHelper;
 
 public class POMTesting {
@@ -22,14 +15,12 @@ public class POMTesting {
 	GenericHelper genericHelper;
 	GoogleShoppingMainPage googleShoppingMainPage;
 	GoogleShoppingLandingPage  	googleShoppingLandingPage;
-//	DriverManager driverManager;
 	
 	
 	@BeforeClass
     public void setup() {
 		 this.globalUtility = new GlobalUtility(driver); 
 		this.genericHelper=new GenericHelper();
-
 		this.driver=globalUtility.initDriver(genericHelper.userAgent);
 		this.googleShoppingLandingPage=new GoogleShoppingLandingPage(driver);
 		 this.googleShoppingMainPage = new GoogleShoppingMainPage(driver, globalUtility);

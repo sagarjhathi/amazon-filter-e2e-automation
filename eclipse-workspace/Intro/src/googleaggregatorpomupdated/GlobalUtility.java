@@ -1,15 +1,13 @@
 package googleaggregatorpomupdated;
 
-import java.io.File;
+import java.io.File; 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -43,7 +41,6 @@ public class GlobalUtility {
         options.addArguments("--no-sandbox"); // Stability in CI environments
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--lang=en");
-        options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         return driver;
@@ -185,7 +182,6 @@ public  void scrollAndClick(WebDriver driver, WebElement element) throws Interru
 
 
  public Set<String> getAllWindowHandles() {
-    	 
     	 Set<String> windowHandles = driver.getWindowHandles();
     	 return windowHandles;
      }
