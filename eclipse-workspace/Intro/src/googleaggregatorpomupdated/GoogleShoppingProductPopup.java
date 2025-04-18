@@ -23,18 +23,7 @@ public class GoogleShoppingProductPopup {
 	 
 	 
 	public void scrollAndClickViewMoreDetails() throws InterruptedException {
-	   
-	    
-	    // Scroll the element into view
-	    JavascriptExecutor jss = (JavascriptExecutor) driver;
-	    jss.executeScript("arguments[0].scrollIntoView(true)", viewMoreDetails);
-	    Thread.sleep(1000);  // Wait for scroll effect
-	    
-	    // Additional scroll to make sure the element is properly in view
-	    jss.executeScript("window.scrollBy(0,-200);");
-	    Thread.sleep(1000);  // Wait for the adjustment
-	    
-	    // Click the element
+	     // Click the element
 	    viewMoreDetails.click();
 	}
 }

@@ -25,19 +25,10 @@ public class GoogleShoppingMainPage {
 
 	
 	private WebDriver driver;
-    private GlobalUtility globalUtility;
-    private ViewMoreDetailsPage viewMoreDetailsPage;
-    private GoogleShoppingProductPopup googleShoppingProductPopup;
-    private AmazonProductMainPage amazonProductMainPage;
-    public GenericHelper genericHelper;
 
-    public GoogleShoppingMainPage(WebDriver driver, GlobalUtility globalUtility) {
+
+    public GoogleShoppingMainPage(WebDriver driver) {
     	this.driver=driver;
-    	 this.globalUtility = globalUtility;
-    	this.genericHelper=new GenericHelper();
-        this.viewMoreDetailsPage = new ViewMoreDetailsPage(driver);
-        this.googleShoppingProductPopup = new GoogleShoppingProductPopup(driver);
-        this.amazonProductMainPage = new AmazonProductMainPage(driver);
         PageFactory.initElements(driver, this);
     }
     
@@ -112,7 +103,6 @@ public class GoogleShoppingMainPage {
     @FindBy(css="span.lg3aE[title='Amazon.in']")
     private WebElement amazonFromSellerMenu;
     
-    
     @FindBy(xpath="//*[contains(@class, 'sh-pr__product-results-grid') and contains(@class, 'sh-pr__product-results')]")
     private WebElement getAllProducts;
     
@@ -126,7 +116,50 @@ public class GoogleShoppingMainPage {
     @FindBy(xpath="//div[text()='Price']/following-sibling::div")
     private WebElement clearButtonFromPriceFilter;
     
-    public List<WebElement> gettingAllProducts(WebDriver driver){
+    
+    By screenSizeFilterContainer = By.xpath("//div[text()='Screen Size']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By weightFilterContainer = By.xpath("//div[text()='Weight']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By cellularNetworkFilterContainer = By.xpath("//div[text()='Cellular Network']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    
+    By simSlotFilterContainer = By.xpath("//div[text()='SIM Slots']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By storageFilterContainer = By.xpath("//div[text()='Storage Capacity']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By colorFilterContainer = By.xpath("//div[text()='Colour']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+    
+    By oSFilterContainer = By.xpath("//div[text()='Operating System']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By broadBandFilterContainer = By.xpath("//div[text()='Broadband Generation']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By brandFilterContainer = By.xpath("//div[text()='Brand']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By priceFilterContainer = By.xpath("//div[text()='Price']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+    
+    By securityFilterContainer = By.xpath("//div[text()='Security Features']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By connectorTypeFilterContainer = By.xpath("//div[text()='Connector Type']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+
+    By frontCameraResolutionFilterContainer = By.xpath("//div[text()='Front Camera Resolution']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By screenResolutionFilterContainer = By.xpath("//div[text()='Screen Resolution']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By formFactorFilterContainer = By.xpath("//div[text()='Form Factor']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By RAMFilterContainer = By.xpath("//div[text()='RAM']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By lensFilterContainer = By.xpath("//div[text()='Lens Type']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By deliveryFilterContainer = By.xpath("//div[text()='Delivery']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
+
+    By childElementsFromEachFilterParent =By.xpath(".//span[contains(@class,'DON5yf')]");
+    
+    
+    
+    public List<WebElement> gettingAllProducts(){
     	 WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
          WebElement products = wait.until(ExpectedConditions.visibilityOf(getAllProducts));
          return products.findElements(By.xpath("./*"));
@@ -134,13 +167,8 @@ public class GoogleShoppingMainPage {
     
     
     
-    public void selectingAmazonFromSellerMenu(WebDriver driver) {
-    	
-    	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        WebElement amazonInSeller = wait.until(ExpectedConditions.visibilityOf(amazonFromSellerMenu));
-        globalUtility.scrollByPixels(driver, 0, -300);
-        amazonInSeller.click();
-        
+    public void selectingAmazonFromSellerMenu() {
+    	amazonFromSellerMenu.click();
     }
     
     public String getGoogleWindowHandle() {
@@ -148,120 +176,22 @@ public class GoogleShoppingMainPage {
     	return cWindow;
     }
 
-   
+  
 
-    public void scrollToSellerLandingPage(WebDriver driver) {
-    	driver.navigate().refresh();
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(seller));
-        js.executeScript("arguments[0].scrollIntoView(true);", seller);
+    public void clickOnMoreInSellerMenuLandingPage() {
+        moreSellerButton.click();
     }
 
-    public void clickOnMoreInSellerMenuLandingPage(WebDriver driver) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(moreSellerButton)).click();
-    }
-
-    public void applyingPriceFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the price filter then re-running the function");
-        applyFilterAndTraverse(driver, priceFilter, list);
-    }
-
-    public void applyingRamFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the ram filter then re-running the function");
-        applyFilterAndTraverse(driver, ramFilter, list);
-    }
-
-    public void applyingRatingFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the rating filter then re-running the function");
-        globalUtility.scrollToElement(driver, moreFromProductRating);
-        globalUtility.scrollByPixels(driver, 0, -300);
-        Thread.sleep(3000);
-        moreFromProductRating.click();
-        applyFilterAndTraverse(driver, fourAndUpRating, list);
-    }
-
-    public void applyingWeightFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the weight filter then re-running the function");
-        applyFilterAndTraverse(driver, weightFilter, list);
-    }
-
-    public void applyingDeliveryFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the delivery filter then re-running the function");
-        applyFilterAndTraverse(driver, deliveryFilter, list);
-    }
-
-    public void applyingBrandFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the mobile brand filter then re-running the function");
-        applyFilterAndTraverse(driver, mobileBrand, list);
-    }
-
-    public void applying5GFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the 5G filter then re-running the function");
-        applyFilterAndTraverse(driver, selecting5G, list);
-    }
-
-    public void applyingDualSimFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the Dual Sim filter then re-running the function");
-        applyFilterAndTraverse(driver, dualSim, list);
-    }
-
-    public void applyingColorFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the color filter then re-running the function");
-        applyFilterAndTraverse(driver, colorFilter, list);
-    }
-
-    public void applyingStorageFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the storage filter then re-running the function");
-        applyFilterAndTraverse(driver, storageCapacityFilter, list);
-    }
-
-    public void applyingOsFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the os filter then re-running the function");
-        applyFilterAndTraverse(driver, osFilter, list);
-    }
-
-    public void applyingCellularNetworkFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the cellular Network filter then re-running the function");
-        applyFilterAndTraverse(driver, cellularNetworkFilter, list);
-    }
-
-    public void applyingSecurityFeaturesFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the security features filter then re-running the function");
-        applyFilterAndTraverse(driver, securityFeaturesFilter, list);
-    }
-
-    public void applyingScreenResolutionFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the screen resolution filter then re-running the function");
-        applyFilterAndTraverse(driver, screenResolutionFilter, list);
-    }
-
-    public void applyingCameraFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the camera filter then re-running the function");
-        applyFilterAndTraverse(driver, cameraFilter, list);
-    }
-
-    public void applyingHeadphoneFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the headphone filter then re-running the function");
-        applyFilterAndTraverse(driver, headphoneConnectorFilter, list);
-    }
-
-    public void applyingLensFilter(WebDriver driver, List<WebElement> list) throws InterruptedException {
-        System.out.println("Applying the lens filter then re-running the function");
-        applyFilterAndTraverse(driver, lensTypeFilter, list);
-    }
-    
-    
-    public void applyingPriceFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+            
+    //Done
+    public void applyingPriceFilterAllOptions(List<WebElement> list) throws InterruptedException {
     	
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        By priceFilterContainer = By.xpath("//div[text()='Price']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
         WebElement parent = driver.findElement(priceFilterContainer);
         
         
         // Fetch children properly, relative to the parent element
-        List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+        List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
         
         for(int i=0;i<totalOptions.size();i++) {
         	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -272,7 +202,7 @@ public class GoogleShoppingMainPage {
         for (int i = 0; i < totalOptions.size(); i++) {
             // Refetch the parent and children on each loop to avoid stale element issues
             parent = driver.findElement(priceFilterContainer);
-            List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+            List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
             
             System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
             if (i >= filters.size()) break; // Safety net
@@ -289,7 +219,7 @@ public class GoogleShoppingMainPage {
             System.out.println(text+" Filter name being applied ");
 
             
-       	    applyFilterAndTraverse(driver, currentFilter, list);
+       	    applyFilterAndTraverse(currentFilter, list);
        	    
             // Optionally wait for UI update
             wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -306,16 +236,15 @@ public class GoogleShoppingMainPage {
     
     
     
-    
- public void applyingBrandFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+   //Done 
+ public void applyingBrandFilterAllOptions(List<WebElement> list) throws InterruptedException {
     	
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        By priceFilterContainer = By.xpath("//div[text()='Brand']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-        WebElement parent = driver.findElement(priceFilterContainer);
+        WebElement parent = driver.findElement(brandFilterContainer);
         
         
         // Fetch children properly, relative to the parent element
-        List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+        List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
         
         for(int i=0;i<totalOptions.size();i++) {
         	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -325,8 +254,8 @@ public class GoogleShoppingMainPage {
         
         for (int i = 0; i < totalOptions.size(); i++) {
             // Refetch the parent and children on each loop to avoid stale element issues
-            parent = driver.findElement(priceFilterContainer);
-            List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+            parent = driver.findElement(brandFilterContainer);
+            List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
             
             System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
             if (i >= filters.size()) break; // Safety net
@@ -341,7 +270,7 @@ public class GoogleShoppingMainPage {
             
             System.out.println(text+" Filter name being applied ");
 
-       	    applyFilterAndTraverse(driver, currentFilter, list);
+       	    applyFilterAndTraverse(currentFilter, list);
        	    
             // Optionally wait for UI update
             wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -354,16 +283,15 @@ public class GoogleShoppingMainPage {
     
     
     
-    
- public void applyingBroadbandGenerationFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+    //Done
+ public void applyingBroadbandGenerationFilterAllOptions(List<WebElement> list) throws InterruptedException {
  	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Broadband Generation']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(broadBandFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -373,8 +301,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(broadBandFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -389,7 +317,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -400,16 +328,15 @@ public class GoogleShoppingMainPage {
  
  
     
-    
- public void applyingOperatingSystemFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+    //Done
+ public void applyingOperatingSystemFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Operating System']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(oSFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -419,8 +346,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(oSFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -435,7 +362,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -446,16 +373,15 @@ public class GoogleShoppingMainPage {
 
  
  
- 
- public void applyingColourFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingColourFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Colour']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(colorFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -465,8 +391,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(colorFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -481,56 +407,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
-    	    
-         // Optionally wait for UI update
-         wait.until(ExpectedConditions.stalenessOf(currentFilter));
-          
-     } 
- }
- 
- 
- 
- 
- 
- 
- 
-
- public void applyingStorageCapacityFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
-	 	
-     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Storage Capacity']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
-     
-     
-     // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
-     
-     for(int i=0;i<totalOptions.size();i++) {
-     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
-     }
-     
-     System.out.println("Found filter options: " + totalOptions.size());
-     
-     for (int i = 0; i < totalOptions.size(); i++) {
-         // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
-         
-         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
-         if (i >= filters.size()) break; // Safety net
-
-         WebElement currentFilter = filters.get(i);
-         String text = currentFilter.getText().trim();
-
-         if (text.contains("Min") || text.contains("Max")) {
-             System.out.println("Skipping Min/Max filter: " + text);
-             continue;
-         }
-         
-         System.out.println(text+" Filter name being applied ");
-
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -544,15 +421,15 @@ public class GoogleShoppingMainPage {
  
  
  
- public void applyingScreenSizeFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+//Done
+ public void applyingStorageCapacityFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Screen Size']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(storageFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -562,8 +439,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(storageFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -578,7 +455,54 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse( currentFilter, list);
+    	    
+         // Optionally wait for UI update
+         wait.until(ExpectedConditions.stalenessOf(currentFilter));
+          
+     } 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ //Done
+ public void applyingScreenSizeFilterAllOptions(List<WebElement> list) throws InterruptedException {
+	 	
+     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+     WebElement parent = driver.findElement(screenSizeFilterContainer);
+     		
+     
+     // Fetch children properly, relative to the parent element
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
+     
+     for(int i=0;i<totalOptions.size();i++) {
+     	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
+     }
+     
+     System.out.println("Found filter options: " + totalOptions.size());
+     
+     for (int i = 0; i < totalOptions.size(); i++) {
+         // Refetch the parent and children on each loop to avoid stale element issues
+         parent = driver.findElement(screenSizeFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
+         
+         System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
+         if (i >= filters.size()) break; // Safety net
+
+         WebElement currentFilter = filters.get(i);
+         String text = currentFilter.getText().trim();
+
+         if (text.contains("Min") || text.contains("Max")) {
+             System.out.println("Skipping Min/Max filter: " + text);
+             continue;
+         }
+         
+         System.out.println(text+" Filter name being applied ");
+
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -590,16 +514,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingWeightFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingWeightFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Weight']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(By.xpath("//div[text()='Weight']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]"));
+     WebElement parent = driver.findElement(weightFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -609,8 +532,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(weightFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -625,7 +548,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    driver.navigate().refresh();
     	    
          // Optionally wait for UI update
@@ -635,15 +558,15 @@ public class GoogleShoppingMainPage {
  }
  
  
- public void applyingSIMSlotsFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingSIMSlotsFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='SIM Slots']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(simSlotFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -653,8 +576,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(simSlotFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -669,7 +592,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -680,16 +603,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingCellularNetworkFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingCellularNetworkFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Cellular Network']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(cellularNetworkFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -699,8 +621,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(cellularNetworkFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -715,7 +637,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -726,16 +648,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingSecurityFeaturesFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingSecurityFeaturesFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Security Features']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(securityFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -745,8 +666,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(securityFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -761,7 +682,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -771,16 +692,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingScreenResolutionFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingScreenResolutionFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Screen Resolution']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(screenResolutionFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -790,8 +710,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(screenResolutionFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -806,7 +726,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    driver.navigate().refresh();
     	    
          // Optionally wait for UI update
@@ -817,16 +737,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingFrontCameraResolutionFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingFrontCameraResolutionFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Front Camera Resolution']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(frontCameraResolutionFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -836,8 +755,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(frontCameraResolutionFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -852,7 +771,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse( currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -862,16 +781,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingConnectorTypeFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingConnectorTypeFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Connector Type']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(connectorTypeFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -881,8 +799,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(connectorTypeFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -897,7 +815,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse( currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -907,16 +825,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingFormFactorFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingFormFactorFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Form Factor']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(formFactorFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -926,8 +843,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(formFactorFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -942,7 +859,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -952,16 +869,15 @@ public class GoogleShoppingMainPage {
 
  
  
- 
- public void applyingRAMFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingRAMFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='RAM']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(RAMFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -971,8 +887,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(RAMFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -987,7 +903,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse(currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -997,16 +913,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingLensTypeFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingLensTypeFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-     By priceFilterContainer = By.xpath("//div[text()='Lens Type']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(lensFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -1016,8 +931,8 @@ public class GoogleShoppingMainPage {
      
      for (int i = 0; i < totalOptions.size(); i++) {
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(lensFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -1032,7 +947,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse( currentFilter, list);
     	    
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -1042,16 +957,15 @@ public class GoogleShoppingMainPage {
  
  
  
- 
- public void applyingDeliveryFilterAllOptions(WebDriver driver,List<WebElement> list) throws InterruptedException {
+ //Done
+ public void applyingDeliveryFilterAllOptions(List<WebElement> list) throws InterruptedException {
 	 	
      WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-     By priceFilterContainer = By.xpath("//div[text()='Delivery']/parent::div/following-sibling::div//div[contains(@class,'sh-dr__short')]");
-     WebElement parent = driver.findElement(priceFilterContainer);
+     WebElement parent = driver.findElement(deliveryFilterContainer);
      
      
      // Fetch children properly, relative to the parent element
-     List<WebElement> totalOptions = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+     List<WebElement> totalOptions = parent.findElements(childElementsFromEachFilterParent);
      
      for(int i=0;i<totalOptions.size();i++) {
      	System.out.println(totalOptions.get(i).getText()+"   "+ "Printing all the Options here from price filter");
@@ -1062,8 +976,8 @@ public class GoogleShoppingMainPage {
      for (int i = 0; i < totalOptions.size(); i++) {
     	 driver.navigate().refresh();
          // Refetch the parent and children on each loop to avoid stale element issues
-         parent = driver.findElement(priceFilterContainer);
-         List<WebElement> filters = parent.findElements(By.xpath(".//span[contains(@class,'DON5yf')]"));
+         parent = driver.findElement(deliveryFilterContainer);
+         List<WebElement> filters = parent.findElements(childElementsFromEachFilterParent);
          
          System.out.println("Re-checking the size of the filter options list within the loop"   +filters.size());
          if (i >= filters.size()) break; // Safety net
@@ -1078,7 +992,7 @@ public class GoogleShoppingMainPage {
          
          System.out.println(text+" Filter name being applied ");
 
-    	    applyFilterAndTraverse(driver, currentFilter, list);
+    	    applyFilterAndTraverse( currentFilter, list);
     	    driver.navigate().refresh();
          // Optionally wait for UI update
          wait.until(ExpectedConditions.stalenessOf(currentFilter));
@@ -1115,15 +1029,15 @@ public class GoogleShoppingMainPage {
     }
     
     
-	 public  void applyFilterAndTraverse(WebDriver driver, WebElement element, List<WebElement> list) throws InterruptedException {
-		      globalUtility.scrollAndClick(driver, element);
+	 public  void applyFilterAndTraverse( WebElement element, List<WebElement> list) throws InterruptedException {
+		      globalUtility.scrollAndClick( element);
 		      if(checkNoResultsAndNavigateBack()) {
 		    	  return;
 		      }
 		      
 		    int countCheck = 0;
   	        for (int i = 1; i < list.size(); i++) {
-  	            switchWindowAndCompare(driver, i);
+  	            switchWindowAndCompare(i);
   	            countCheck++;
   	            // Break after the first iteration so that we are not iterating all the products 
   	            if (countCheck == 1) {
@@ -1143,7 +1057,7 @@ public class GoogleShoppingMainPage {
 	 
 	 
 	 
-	 public void productLocatingAndClicking(WebDriver driver, int productIndex) {
+	 public void productLocatingAndClicking( int productIndex) {
 		 
 		 WebElement productLocating=driver.findElement(By.xpath("(//a[@data-what='1'])[" + productIndex + "]"));
 
@@ -1158,11 +1072,11 @@ public class GoogleShoppingMainPage {
 	 
 	 
 	 
-	    public  void switchWindowAndCompare(WebDriver driver,int productIndex) throws InterruptedException {
+	    public  void switchWindowAndCompare(int productIndex) throws InterruptedException {
 			 
 			driver.navigate().refresh();
 			Thread.sleep(1000);
-			productLocatingAndClicking(driver,productIndex);	  
+			productLocatingAndClicking(productIndex);	  
 		    googleShoppingProductPopup.scrollAndClickViewMoreDetails();
 		    viewMoreDetailsPage.getGoogleProductName();
 			viewMoreDetailsPage.getGoogleProductPrice();
@@ -1173,7 +1087,7 @@ public class GoogleShoppingMainPage {
 		    Thread.sleep(1000);
 		  
 	       //creating set to store all the windows here in order to switch to the amazon site 
-		    Set<String> windowHandles=globalUtility.getAllWindowHandles();
+		    Set<String> windowHandles=driver.getWindowHandles();
 	       
 	       
 		    for (String window : windowHandles) {
@@ -1220,7 +1134,7 @@ public class GoogleShoppingMainPage {
 	       
 	       
 	       driver.navigate().back();
-	        globalUtility.scrollByPixels(driver, 0, -200);
+	       globalUtility.scrollByPixels(0, -200);
 	       Thread.sleep(3000);
 	       System.out.println("pop-up closing button here ");
 	       closeButtonGooglePopup.click();
@@ -1228,36 +1142,4 @@ public class GoogleShoppingMainPage {
 
 	}
 	    
-	    
-	    public List<WebElement> getAllFilters() {
-	        List<WebElement> allFilters = new ArrayList<>();
-	        allFilters.add(priceFilter);
-	        allFilters.add(ramFilter);
-	        allFilters.add(fourAndUpRating); // Assuming you already clicked 'More' for ratings
-	        allFilters.add(weightFilter);
-	        allFilters.add(deliveryFilter);
-	        allFilters.add(mobileBrand);
-	        allFilters.add(selecting5G);
-	        allFilters.add(dualSim);
-	        allFilters.add(colorFilter);
-	        allFilters.add(storageCapacityFilter);
-	        allFilters.add(osFilter);
-	        allFilters.add(cellularNetworkFilter);
-	        allFilters.add(securityFeaturesFilter);
-	        allFilters.add(screenResolutionFilter);
-	        allFilters.add(cameraFilter);
-	        allFilters.add(headphoneConnectorFilter);
-	        allFilters.add(lensTypeFilter);
-	        return allFilters;
-	    }
-
-	    
-	    public void applyingAllFiltersFromList(WebDriver driver) throws InterruptedException {
-	    
-	    	List<WebElement> listOfFilters=getAllFilters();
-	    	
-	    	for(int i=0;i<listOfFilters.size();i++) {
-	    		applyFilterAndTraverse(driver,listOfFilters.get(i),gettingAllProducts(driver));
-	    	}
-	    }
 }

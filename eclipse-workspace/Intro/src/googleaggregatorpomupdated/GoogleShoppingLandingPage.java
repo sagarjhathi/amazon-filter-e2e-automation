@@ -24,7 +24,7 @@ public class GoogleShoppingLandingPage {
     }
 
     public void inputWithInTheSearchBar() {
-    	driver.findElement(By.xpath("//textarea[@class='gLFyf']")).sendKeys("Mobile");
+    	searchBar.sendKeys("Mobile");
     }
 
     public void selectFromRecommendations() {

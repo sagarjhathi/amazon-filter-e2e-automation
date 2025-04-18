@@ -109,45 +109,13 @@ public class AmazonProductMainPage {
     }
 
     public String getAmazonProductName() {
-        try {	
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.visibilityOf(amazonProductName));
             String name = amazonProductName.getText().trim();
-
-            if (!name.isEmpty()) {
-                System.out.println("✅ Amazon Product Name extracted: " + name);
-                return name;
-            } else {
-                System.out.println("⚠️ Product name element found but text is empty.");
-            }
-
-        } catch (Exception e) {
-            System.out.println("❌ Product name not found or not visible: " + e.getMessage());
-        }
-
-        return "";
+        return name;
     }
 
     public String getAmazonProductPrice() {
-        try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.visibilityOf(amazonProductPrice));
-
             String price = amazonProductPrice.getText().trim();
-
-            if (!price.isEmpty()) {
-                System.out.println("✅ Amazon Product Price extracted: " + price);
-                return price;
-            } else {
-                System.out.println("⚠️ Price element found but text is empty.");
-            }
-
-        } catch (Exception e) {
-            System.out.println("❌ Product price not found or not visible: " + e.getMessage());
-        }
-        
-        
-        return "";
+        return price;
     }
 
     public String getAmazonWindowHandle() {
