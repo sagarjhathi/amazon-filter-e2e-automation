@@ -15,7 +15,7 @@ public class GoogleShoppingLandingPage {
 		
 	
 	public GoogleShoppingLandingPage(WebDriver driver) {
-		this.driver = driver;
+		this.driver=DriverManager.initDriver();
         PageFactory.initElements(driver, this);
 	}
 	
@@ -24,7 +24,7 @@ public class GoogleShoppingLandingPage {
     }
 
     public void inputWithInTheSearchBar() {
-    	searchBar.sendKeys("Mobile");
+    	driver.findElement(By.xpath("//textarea[@class='gLFyf']")).sendKeys("Mobile");
     }
 
     public void selectFromRecommendations() {

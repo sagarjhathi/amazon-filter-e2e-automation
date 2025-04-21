@@ -1,13 +1,15 @@
 package googleaggregatorpomupdated;
 
-import java.io.File; 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
@@ -26,7 +28,7 @@ public class GlobalUtility {
 
 	public GlobalUtility(WebDriver driver) {
 		// TODO Auto-generated constructor stub
-		this.driver=driver;
+		this.driver=DriverManager.initDriver();
 	}
 
 	
@@ -41,6 +43,7 @@ public class GlobalUtility {
         options.addArguments("--no-sandbox"); // Stability in CI environments
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--lang=en");
+        options.addArguments("--disable-blink-features=AutomationControlled");
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
         return driver;
@@ -123,7 +126,54 @@ public  String extractPrice(String str) {
 }
 
 
+public boolean isElementFullyInViewport(WebDriver driver, WebElement element) {
+    JavascriptExecutor js = (JavascriptExecutor) driver;
+    String script = "var rect = arguments[0].getBoundingClientRect();" +
+                    "return (rect.top >= 0 && rect.left >= 0 && " +
+                    "rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && " +
+                    "rect.right <= (window.innerWidth || document.documentElement.clientWidth));";
+    return (Boolean) js.executeScript(script, element);
+}
 
+
+
+public   void captureScreenshot(ITestResult result) {
+    // Check if driver is valid and instance of TakesScreenshot
+    if (driver instanceof TakesScreenshot) {
+        TakesScreenshot screenshotDriver = (TakesScreenshot) driver;
+        File screenshot = screenshotDriver.getScreenshotAs(OutputType.FILE);
+
+        try {
+            // Get current date-time to make the screenshot name unique
+            String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(new Date());
+            
+            // Get the test method name to include in the screenshot filename
+            String testName = result.getMethod().getMethodName();  // Get the test method name
+            
+            // Create a unique filename using the test name and timestamp
+            String screenshotName = testName + "_" + timestamp + ".png";
+            
+            // Define the directory where screenshots will be stored
+            String screenshotDir = "screenshots/";
+
+            // Ensure the directory exists
+            File directory = new File(screenshotDir);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            // Define the destination file path for the screenshot
+            File destinationFile = new File(screenshotDir + screenshotName);
+
+            // Copy the screenshot to the destination
+            FileUtils.copyFile(screenshot, destinationFile);
+
+            System.out.println("Screenshot saved at: " + destinationFile.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
 
 
 public  void scrollAndClick(WebDriver driver, WebElement element) throws InterruptedException {
@@ -135,6 +185,7 @@ public  void scrollAndClick(WebDriver driver, WebElement element) throws Interru
 
 
  public Set<String> getAllWindowHandles() {
+    	 
     	 Set<String> windowHandles = driver.getWindowHandles();
     	 return windowHandles;
      }

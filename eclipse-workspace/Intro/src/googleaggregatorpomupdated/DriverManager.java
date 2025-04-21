@@ -1,45 +1,53 @@
 package googleaggregatorpomupdated;
 
-import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import java.time.Duration;
+
 public class DriverManager {
 
-	
-	 private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    // ThreadLocal to keep WebDriver instance safe for parallel tests
+    private  final static ThreadLocal<WebDriver> driverThread = new ThreadLocal<>();
 
-	    public static void initializeDriver() {
-	        if (driver.get() == null) {
-	            ChromeOptions options = new ChromeOptions();
-	            options.addArguments("--remote-allow-origins=*");
-	            options.addArguments("user-agent=" + GenericHelper.userAgent);
-	            // options.addArguments("--headless");
-	             options.addArguments("--disable-gpu");
-	             options.addArguments("--disable-blink-features=AutomationControlled"); // Prevent detection
-	             options.addArguments("--no-sandbox"); // Stability in CI environments
-	             options.addArguments("--disable-dev-shm-usage");
-	             options.addArguments("--lang=en");
-	             options.addArguments("--start-maximized");
+    // Method to initialize and set the driver
+    public static  WebDriver initDriver() {
+        if (driverThread.get() == null) {
 
-	            WebDriver webDriver = new ChromeDriver(options);
-	            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-	            webDriver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(20));
-	        
-	            driver.set(webDriver);
-	        }
-	    }
+            // ✨ You can make userAgent configurable later
+            String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
+                             + "(KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 
-	    public static WebDriver getDriver() {
-	        return driver.get();
-	    }
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("user-agent=" + userAgent);
+            // options.addArguments("--headless"); // Optional: Uncomment if needed
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-blink-features=AutomationControlled");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--lang=en");
+            options.addArguments("--start-maximized");
 
-	    public static void quitDriver() {
-	        if (driver.get() != null) {
-	            driver.get().quit();
-	            driver.remove();
-	        }
-	    }
+
+            WebDriver driver = new ChromeDriver(options);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            driverThread.set(driver);
+            return driver;
+        }
+        return null;
+		
+    }
+
+    public static  WebDriver getDriver() {
+        return driverThread.get();
+    }
+
+    public static  void quitDriver() {
+        if (driverThread.get() != null) {
+            driverThread.get().quit();
+            driverThread.remove();
+        }
+    }
 }

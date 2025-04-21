@@ -16,14 +16,25 @@ public class GoogleShoppingProductPopup {
 	 WebElement viewMoreDetails;
 	 
 	 public GoogleShoppingProductPopup(WebDriver driver) {
-		 this.driver=driver;
+		 this.driver=DriverManager.initDriver();
 		 PageFactory.initElements(driver, this);
 	 }
 	
 	 
 	 
 	public void scrollAndClickViewMoreDetails() throws InterruptedException {
-	     // Click the element
+	   
+	    
+	    // Scroll the element into view
+	    JavascriptExecutor jss = (JavascriptExecutor) driver;
+	    jss.executeScript("arguments[0].scrollIntoView(true)", viewMoreDetails);
+	    Thread.sleep(1000);  // Wait for scroll effect
+	    
+	    // Additional scroll to make sure the element is properly in view
+	    jss.executeScript("window.scrollBy(0,-200);");
+	    Thread.sleep(1000);  // Wait for the adjustment
+	    
+	    // Click the element
 	    viewMoreDetails.click();
 	}
 }
