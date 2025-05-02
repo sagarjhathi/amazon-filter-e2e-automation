@@ -23,7 +23,7 @@ public class AmazonProductMainPage  {
 	
 	
 	public AmazonProductMainPage(WebDriver driver) {
-		this.driver=DriverManager.initDriver();
+		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 	 

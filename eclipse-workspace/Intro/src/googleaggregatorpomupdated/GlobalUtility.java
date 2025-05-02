@@ -28,7 +28,7 @@ public class GlobalUtility {
 
 	public GlobalUtility(WebDriver driver) {
 		// TODO Auto-generated constructor stub
-		this.driver=DriverManager.initDriver();
+		this.driver=driver;
 	}
 
 	

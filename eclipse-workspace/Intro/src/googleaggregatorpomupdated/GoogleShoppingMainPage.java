@@ -32,7 +32,7 @@ public class GoogleShoppingMainPage {
     public GenericHelper genericHelper;
 
     public GoogleShoppingMainPage(WebDriver driver, GlobalUtility globalUtility) {
-    	this.driver=DriverManager.initDriver();
+		this.driver=driver;
     	 this.globalUtility = globalUtility;
     	this.genericHelper=new GenericHelper();
         this.viewMoreDetailsPage = new ViewMoreDetailsPage(driver);

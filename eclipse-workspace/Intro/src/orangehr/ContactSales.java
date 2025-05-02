@@ -1,23 +1,24 @@
 package orangehr;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import googleaggregatorpomupdated.DriverManager;
+public class ContactSales extends BasePageObject {
 
-public class ContactSales {
+    // More robust locators as By objects
+    private static final By FULL_NAME_INPUT = By.id("Form_getForm_FullName");
+    private static final By PHONE_NUMBER_INPUT = By.id("Form_getForm_Contact");
+    private static final By EMAIL_INPUT = By.id("Form_getForm_Email");
+    private static final By COUNTRY_DROPDOWN = By.name("Country");
+    private static final By EMPLOYEES_DROPDOWN = By.name("NoOfEmployees");
+    private static final By JOB_TITLE_INPUT = By.id("Form_getForm_JobTitle");
+    private static final By MESSAGE_INPUT = By.id("Form_getForm_Comment");
+    private static final By SUBMIT_BUTTON = By.xpath("//input[@type='submit']");
+    private static final By FORM_TITLE = By.xpath("//h4[@class='form-title']");
 
-	
-	
-	WebDriver driver;
-
-    public ContactSales(WebDriver driver) {
-        this.driver =driver;
-        PageFactory.initElements(driver, this);
-    }
-
+    // Retain original FindBy elements    
     @FindBy(xpath = "//input[@id='Form_getForm_FullName']")
     WebElement fullNameContactSales;
 
@@ -27,13 +28,10 @@ public class ContactSales {
     @FindBy(xpath = "//input[@id='Form_getForm_Email']")
     WebElement businessEmailContactSales;
 
-    @FindBy(xpath = "//input[@id='Form_getForm_CompanyName']")
-    WebElement companyNameContactSales;
-
-    @FindBy(xpath = "//input[@id='Form_getForm_Country']")
+    @FindBy(xpath = "//select[@name='Country']")
     WebElement countryDropDownContactSales;
 
-    @FindBy(xpath = "//input[@id='Form_getForm_NoOfEmployees']")
+    @FindBy(xpath = "//select[@name='NoOfEmployees']")
     WebElement numberOfEmployeeContactSales;
 
     @FindBy(xpath = "//option[@value='Afghanistan']")
@@ -51,63 +49,63 @@ public class ContactSales {
     @FindBy(xpath = "//h4[@class='form-title']")
     WebElement errorTextAfterClickingGetFreeDemoContactSales;
     
-    @FindBy(xpath = "//input[@id='Form_getForm_action_submitForm']")
+    @FindBy(xpath = "//input[@type='submit']")
     WebElement contactSalesSubmitButtonContactSales;
-	
     
-	
+    public ContactSales(WebDriver driver) {
+        super(driver);
+    }
     
- // Fill text fields
+    // Enhanced methods using our base page functionality
     public void enterFullName(String fullName) {
-        fullNameContactSales.clear();
-        fullNameContactSales.sendKeys(fullName);
+        WebElement element = findWithRetry(d -> d.findElement(FULL_NAME_INPUT));
+        sendKeysWithRetry(element, fullName, 3);
     }
 
     public void enterPhoneNumber(String phoneNumber) {
-        phoneNumberContactSales.clear();
-        phoneNumberContactSales.sendKeys(phoneNumber);
+        WebElement element = findWithRetry(d -> d.findElement(PHONE_NUMBER_INPUT));
+        sendKeysWithRetry(element, phoneNumber, 3);
     }
 
     public void enterBusinessEmail(String email) {
-        businessEmailContactSales.clear();
-        businessEmailContactSales.sendKeys(email);
-    }
-
-    public void enterCompanyName(String companyName) {
-        companyNameContactSales.clear();
-        companyNameContactSales.sendKeys(companyName);
+        WebElement element = findWithRetry(d -> d.findElement(EMAIL_INPUT));
+        sendKeysWithRetry(element, email, 3);
     }
 
     public void enterJobTitle(String jobTitle) {
-        jobTitleContactSales.clear();
-        jobTitleContactSales.sendKeys(jobTitle);
+        WebElement element = findWithRetry(d -> d.findElement(JOB_TITLE_INPUT));
+        sendKeysWithRetry(element, jobTitle, 3);
     }
 
     public void enterYourMessage(String message) {
-        yourMessageContactSales.clear();
-        yourMessageContactSales.sendKeys(message);
+        WebElement element = findWithRetry(d -> d.findElement(MESSAGE_INPUT));
+        sendKeysWithRetry(element, message, 3);
     }
 
-    // Dropdown interactions
     public void selectCountry() {
-        countryDropDownContactSales.click();
-        countrySelectionFromDropDownContactSales.click();
+        WebElement countryDropdown = findWithRetry(d -> d.findElement(COUNTRY_DROPDOWN));
+        clickWithRetry(countryDropdown, 3);
+        
+        WebElement option = findWithRetry(d -> d.findElement(By.xpath("//option[@value='Afghanistan']")));
+        clickWithRetry(option, 3);
     }
 
     public void selectNumberOfEmployees() {
-        numberOfEmployeeContactSales.click();
-        employeeSelectionFromDropDownContactSales.click();
+        WebElement employeesDropdown = findWithRetry(d -> d.findElement(EMPLOYEES_DROPDOWN));
+        clickWithRetry(employeesDropdown, 3);
+        
+        WebElement option = findWithRetry(d -> d.findElement(By.xpath("//option[@value='< 10']")));
+        clickWithRetry(option, 3);
     }
     
     public void submitFormContactSales() {
-    	contactSalesSubmitButtonContactSales.click();
+        WebElement submitButton = findWithRetry(d -> d.findElement(SUBMIT_BUTTON));
+        clickWithRetry(submitButton, 3);
+        waitForPageLoadComplete();
     }
 
-    // Get error message (optional validation)
     public String getErrorText() {
-        return errorTextAfterClickingGetFreeDemoContactSales.getText();
+        WebElement formTitle = findWithRetry(d -> d.findElement(FORM_TITLE));
+        return getTextWithRetry(formTitle, 3);
     }
-
-	
-	
 }

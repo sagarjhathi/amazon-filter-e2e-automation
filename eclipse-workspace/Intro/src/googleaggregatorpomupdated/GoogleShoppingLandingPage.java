@@ -15,7 +15,7 @@ public class GoogleShoppingLandingPage {
 		
 	
 	public GoogleShoppingLandingPage(WebDriver driver) {
-		this.driver=DriverManager.initDriver();
+		this.driver=driver;
         PageFactory.initElements(driver, this);
 	}
 	

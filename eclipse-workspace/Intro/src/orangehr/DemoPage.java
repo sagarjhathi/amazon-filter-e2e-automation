@@ -1,100 +1,102 @@
 package orangehr;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-import googleaggregatorpomupdated.DriverManager;
+public class DemoPage extends BasePageObject {
 
-public class DemoPage {
+    // More robust locators as By objects
+    private static final By FULL_NAME_INPUT = By.id("Form_getForm_FullName");
+    private static final By PHONE_NUMBER_INPUT = By.id("Form_getForm_Contact");
+    private static final By EMAIL_INPUT = By.id("Form_getForm_Email");
+    private static final By COMPANY_NAME_INPUT = By.id("Form_getForm_CompanyName");
+    private static final By COUNTRY_DROPDOWN = By.name("Country");
+    private static final By EMPLOYEES_DROPDOWN = By.name("NoOfEmployees");
+    private static final By SUBMIT_BUTTON = By.id("Form_getForm_action_submitForm");
+    private static final By FORM_TITLE = By.xpath("//h4[@class='form-title']");
+    
+    // Retain original FindBy elements
+    @FindBy(xpath="//input[@id='Form_getForm_FullName']")
+    WebElement fullNameDemoPage;
+    
+    @FindBy(xpath="//input[@id='Form_getForm_Contact']")
+    WebElement phoneNumberDemoPage;
+    
+    @FindBy(xpath="//input[@id='Form_getForm_Email']")
+    WebElement businessEmailDemoPage;
+    
+    @FindBy(xpath="//input[@id='Form_getForm_CompanyName']")
+    WebElement companyNameDemoPage;
+    
+    @FindBy(xpath="//select[@name='Country']")
+    WebElement countryDropDownDemoPage;
+    
+    @FindBy(xpath="//select[@name='NoOfEmployees']")
+    WebElement numberOfEmployeeDemoPage;
+    
+    @FindBy(xpath="//option[@value='Afghanistan']")
+    WebElement countryselectionFromDropDownDemoPage;
+    
+    @FindBy(xpath="//option[@value='< 10']")
+    WebElement employeeSelectionFromDropDownDemoPage;
+    
+    @FindBy(xpath="//input[@id='Form_getForm_action_submitForm']")
+    WebElement getFreeDemoSubmitButtonDemoPage;
+    
+    @FindBy(xpath="//h4[@class='form-title']")
+    WebElement errorTextAfterClickingGetFreeDemo;
+    
+    public DemoPage(WebDriver driver) {
+        super(driver);
+    }
+    
+    // Enhanced methods using our base page functionality
+    public void enterFullName(String fullName) {
+        WebElement element = findWithRetry(d -> d.findElement(FULL_NAME_INPUT));
+        sendKeysWithRetry(element, fullName, 3);
+    }
 
-	
-	WebDriver driver;
-	public DemoPage(WebDriver driver) {
-        this.driver =driver;
-		PageFactory.initElements(driver,this);
-	}
-	
-	
-	@FindBy(xpath="//input[@id='Form_getForm_FullName']")
-	WebElement fullNameDemoPage;
-	
-	@FindBy(xpath="//input[@id='Form_getForm_Contact']")
-	WebElement phoneNumberDemoPage;
-	
-	@FindBy(xpath="//input[@id='Form_getForm_Email']")
-	WebElement businessEmailDemoPage;
-	
-	@FindBy(xpath="//input[@id='Form_getForm_CompanyName']")
-	WebElement companyNameDemoPage;
-	
-	@FindBy(xpath="//input[@id='Form_getForm_Country']")
-	WebElement countryDropDownDemoPage;
-	
-	@FindBy(xpath="//input[@id='Form_getForm_NoOfEmployees']")
-	WebElement numberOfEmployeeDemoPage;
-	
-	@FindBy(xpath="//option[@value='Afghanistan']")
-	WebElement countryselectionFromDropDownDemoPage;
-	
-	@FindBy(xpath="//option[@value='< 10']")
-	WebElement employeeSelectionFromDropDownDemoPage;
-	
-	
-	@FindBy(xpath="//input[@id='Form_getForm_action_submitForm']")
-	WebElement getFreeDemoSubmitButtonDemoPage;
-	
-	
-	@FindBy(xpath="//h4[@class='form-title']")
-	WebElement errorTextAfterClickingGetFreeDemo;
-	
-	
-	
-	// Fill input fields
-	public void enterFullName(String fullName) {
-	    fullNameDemoPage.clear();
-	    fullNameDemoPage.sendKeys(fullName);
-	}
+    public void enterPhoneNumber(String phoneNumber) {
+        WebElement element = findWithRetry(d -> d.findElement(PHONE_NUMBER_INPUT));
+        sendKeysWithRetry(element, phoneNumber, 3);
+    }
 
-	public void enterPhoneNumber(String phoneNumber) {
-	    phoneNumberDemoPage.clear();
-	    phoneNumberDemoPage.sendKeys(phoneNumber);
-	}
+    public void enterBusinessEmail(String email) {
+        WebElement element = findWithRetry(d -> d.findElement(EMAIL_INPUT));
+        sendKeysWithRetry(element, email, 3);
+    }
 
-	public void enterBusinessEmail(String email) {
-	    businessEmailDemoPage.clear();
-	    businessEmailDemoPage.sendKeys(email);
-	}
+    public void enterCompanyName(String companyName) {
+        WebElement element = findWithRetry(d -> d.findElement(COMPANY_NAME_INPUT));
+        sendKeysWithRetry(element, companyName, 3);
+    }
 
-	public void enterCompanyName(String companyName) {
-	    companyNameDemoPage.clear();
-	    companyNameDemoPage.sendKeys(companyName);
-	}
+    public void selectCountry() {
+        WebElement countryDropdown = findWithRetry(d -> d.findElement(COUNTRY_DROPDOWN));
+        clickWithRetry(countryDropdown, 3);
+        
+        WebElement option = findWithRetry(d -> d.findElement(By.xpath("//option[@value='Afghanistan']")));
+        clickWithRetry(option, 3);
+    }
 
-	// Select dropdown options
-	public void selectCountry() {
-	    countryDropDownDemoPage.click();
-	    countryselectionFromDropDownDemoPage.click();
-	}
+    public void selectNumberOfEmployees() {
+        WebElement employeesDropdown = findWithRetry(d -> d.findElement(EMPLOYEES_DROPDOWN));
+        clickWithRetry(employeesDropdown, 3);
+        
+        WebElement option = findWithRetry(d -> d.findElement(By.xpath("//option[@value='< 10']")));
+        clickWithRetry(option, 3);
+    }
 
-	public void selectNumberOfEmployees() {
-	    numberOfEmployeeDemoPage.click();
-	    employeeSelectionFromDropDownDemoPage.click();
-	}
+    public void clickSubmitButton() {
+        WebElement submitButton = findWithRetry(d -> d.findElement(SUBMIT_BUTTON));
+        clickWithRetry(submitButton, 3);
+        waitForPageLoadComplete();
+    }
 
-	// Click the "Get Free Demo" submit button
-	public void clickSubmitButton() {
-	    getFreeDemoSubmitButtonDemoPage.click();
-	}
-
-	// Get any error message displayed after submission
-	public String getErrorText() {
-	    return errorTextAfterClickingGetFreeDemo.getText();
-	}
-
-	
-	
-	
-	
+    public String getErrorText() {
+        WebElement formTitle = findWithRetry(d -> d.findElement(FORM_TITLE));
+        return getTextWithRetry(formTitle, 3);
+    }
 }

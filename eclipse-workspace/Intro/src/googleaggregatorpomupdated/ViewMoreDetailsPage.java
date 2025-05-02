@@ -12,7 +12,7 @@ public class ViewMoreDetailsPage {
 	WebDriver driver;
 	
 	public ViewMoreDetailsPage(WebDriver driver) {
-		this.driver=DriverManager.initDriver();
+		this.driver=driver;
 		PageFactory.initElements(driver, this);
 	}
 

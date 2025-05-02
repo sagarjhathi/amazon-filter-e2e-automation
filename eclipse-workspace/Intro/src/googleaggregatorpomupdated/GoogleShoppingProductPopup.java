@@ -16,7 +16,7 @@ public class GoogleShoppingProductPopup {
 	 WebElement viewMoreDetails;
 	 
 	 public GoogleShoppingProductPopup(WebDriver driver) {
-		 this.driver=DriverManager.initDriver();
+			this.driver=driver;
 		 PageFactory.initElements(driver, this);
 	 }
 	

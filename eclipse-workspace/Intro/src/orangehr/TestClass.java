@@ -1,75 +1,95 @@
 package orangehr;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class TestClass {
+    private WebDriver driver;
+    
+    @BeforeMethod
+    public void setup() {
+        // Only initialize if not already initialized
+        if (DriverManager.getDriver() == null) {
+            driver = DriverManager.initDriver();
+        } else {
+            driver = DriverManager.getDriver();
+        }
+    }
 
-		WebDriver driver;
-		
-		@BeforeClass
-		public void setup() {
-			this.driver=new ChromeDriver();
-			driver.get("https://www.orangehrm.com/");
-			driver.manage().window().maximize();
-		}
-		
-		
-	    @Test
-	    public void fillDemoFormTest() {
-	    	
-	        // Create an object for the DemoPage (POM class)
-	    	LandingPage landingPage=new LandingPage(driver);
-	    	landingPage.clickingOnFreeDemoButtonLandingPage();
-	    	
-	        DemoPage demoPage = new DemoPage(driver);
+    @AfterMethod
+    public void tearDown() {
+        // Only quit if this is the last test in this thread
+        DriverManager.quitDriver();
+    }
+    
+    @Test
+    public void fillDemoFormTest() {
+        try {
+            // Navigate to landing page and ensure it's fully loaded
+            LandingPage landingPage = new LandingPage(driver);
+            landingPage.navigateToLandingPage();
+            
+            // Click the Free Demo button and wait for the next page
+            landingPage.clickingOnFreeDemoButtonLandingPage();
+            
+            // Fill the demo form
+            DemoPage demoPage = new DemoPage(driver);
+            demoPage.enterFullName("Test Full Name");
+            demoPage.enterPhoneNumber("1919191919");
+            demoPage.enterBusinessEmail("test@gmail.com");
+            demoPage.enterCompanyName("Test Company");
+            demoPage.selectCountry();
+            demoPage.selectNumberOfEmployees();
+            demoPage.clickSubmitButton();
+            
+            // Verify the expected message
+            String actualErrorMessage = demoPage.getErrorText();
+            String expectedErrorMessage = "We Just Need a Few Details.";
+            Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message mismatch after form submission");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail("Test failed due to exception: " + e.getMessage());
+        }
+    }
 
-	        // Interact with the demo page elements using the POM methods
-	        demoPage.enterFullName("Test Full Name");
-	        demoPage.enterPhoneNumber("1919191919");
-	        demoPage.enterBusinessEmail("test@gmail.com");
-	        demoPage.enterCompanyName("Test Company");
-	        demoPage.selectCountry();
-	        demoPage.selectNumberOfEmployees();
-	        demoPage.clickSubmitButton();
-	        driver.navigate().refresh();
-
-	        // You can add assertions here to verify the success
-	        String actualErrorMessage = demoPage.getErrorText();
-	        String expectedErrorMessage = "We Just Need a Few Details.";
-	        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message mismatch after form submission");
-	    }
-
-	   
-	    @Test
-	    public void fillSalesFormTest() {
-	        // Create an object for the ContactSales page (POM class)
-	    	
-	    	LandingPage landingPage=new LandingPage(driver);
-	    	landingPage.clickingOnSalesButtonLandingPage();
-	    	
-	    	
-	        ContactSales contactSales = new ContactSales(driver);
-
-	        // Interact with the sales page elements using the POM methods
-	        contactSales.enterFullName("Test contact sales");
-	        contactSales.enterPhoneNumber("987654321");
-	        contactSales.enterBusinessEmail("jane.smith@example.com");
-	        contactSales.enterCompanyName("Sales Inc.");
-	        contactSales.selectCountry();
-	        contactSales.selectNumberOfEmployees();
-	        contactSales.submitFormContactSales();
-	        
-
-	        // Add assertions to verify form submission
-	        String actualErrorMessage = contactSales.getErrorText();
-	        String expectedErrorMessage = "Unlock the Full Potential of OrangeHRM!";
-	        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message mismatch after form submission");
-	    }
-	}
-
-	
-	
+    @Test
+    public void fillSalesFormTest() {
+        try {
+            // Navigate to landing page and ensure it's fully loaded
+            LandingPage landingPage = new LandingPage(driver);
+            landingPage.navigateToLandingPage();
+            
+            // Click the Sales button and wait for the next page
+            landingPage.clickingOnSalesButtonLandingPage();
+            
+            // Fill the sales form
+            ContactSales contactsales = new ContactSales(driver);
+            contactsales.enterFullName("Test contact sales");
+            contactsales.enterPhoneNumber("987654321");
+            contactsales.enterBusinessEmail("jane.smith@example.com");
+            contactsales.selectCountry();
+            contactsales.selectNumberOfEmployees();
+            contactsales.enterJobTitle("Test Job");
+            contactsales.enterYourMessage("Test");
+            
+            // Scroll down to ensure the submit button is visible
+            JavascriptExecutor js = (JavascriptExecutor)driver;
+            js.executeScript("window.scrollBy(0,200);");
+            
+            // Submit the form and wait for completion
+            contactsales.submitFormContactSales();
+            
+            // Verify the expected message
+            String actualErrorMessage = contactsales.getErrorText();
+            String expectedErrorMessage = "Unlock the Full Potential of OrangeHRM!";
+            Assert.assertEquals(actualErrorMessage, expectedErrorMessage, "Error message mismatch after submitting sales form");
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail("Test failed due to exception: " + e.getMessage());
+        }
+    }
+}
