@@ -45,7 +45,13 @@ public class LocatorsTrial {
 		
 		
 		
+		System.out.println(driver.findElement(By.xpath("(//div[@class='a-section a-spacing-small a-spacing-top-small'])[1]")).getText());
 		
+		List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+		
+		for(int i=0;i<filterOptions.size();i++) {
+			System.out.println(filterOptions.get(i).getText());
+		}
 		
 		List<WebElement> parent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 				By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']")));
