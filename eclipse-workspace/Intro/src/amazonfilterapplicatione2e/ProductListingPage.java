@@ -13,7 +13,6 @@ public class ProductListingPage {
 	@FindBy(xpath="//span[@class='a-price-whole']")
 	WebElement productPriceListingPage;
 	
-	
 	@FindBy(xpath="//div[@data-cy='delivery-recipe']")
 	WebElement productDeliveryDayListingPage;
 	

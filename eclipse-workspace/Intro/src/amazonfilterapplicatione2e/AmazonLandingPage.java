@@ -31,5 +31,9 @@ public class AmazonLandingPage extends BasePage{
 		submitSearchButton.click();
 	}
 	
+	public void openingLandingPage() {
+		driver.get("https://www.amazon.in/");
+	}
+	
 	
 }
