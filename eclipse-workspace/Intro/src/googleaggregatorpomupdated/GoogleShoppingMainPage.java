@@ -1,4 +1,4 @@
-package googleaggregatorPOM;
+package googleaggregatorpomupdated;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class GoogleShoppingMainPage {
     public GenericHelper genericHelper;
 
     public GoogleShoppingMainPage(WebDriver driver, GlobalUtility globalUtility) {
-    	this.driver=driver;
+		this.driver=driver;
     	 this.globalUtility = globalUtility;
     	this.genericHelper=new GenericHelper();
         this.viewMoreDetailsPage = new ViewMoreDetailsPage(driver);

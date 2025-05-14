@@ -20,7 +20,9 @@ public class GenericHelper {
 	public String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
 
 	//public String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36";
-    public String url = "https://shopping.google.com";
+    public String url = "https://www.google.com/shopping";
+	public String searchTerm;
+    //public String url = "https://www.google.com/search?q=" + searchTerm + "&tbm=shop";
     public int implicitWait = 30;
     public int pageLoadOutTime = 30;
     public String inputForSearch = "Mobile";
@@ -30,8 +32,8 @@ public class GenericHelper {
     
     public  WebDriver initDriver(String userAgent) {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("user-agent=" + userAgent);
-        driver = new ChromeDriver(options);
+      //  options.addArguments("user-agent=" + userAgent);
+    //    driver = new ChromeDriver(options);
         
         return driver;
     }

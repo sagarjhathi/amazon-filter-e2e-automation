@@ -18,13 +18,36 @@
 	    GenericHelper genericHelper;
 	    DriverManager driverManager;
 
+//	    @BeforeMethod
+//	    public void setup() {
+//	    	this.driver = DriverManager.setDriver(globalUtility.initDriver(genericHelper.userAgent));
+//	        this.genericHelper = new GenericHelper();
+//	        this.driverManager = new DriverManager();
+//	        this.globalUtility = new GlobalUtility(driver);
+//	        this.googleShoppingLandingPage = new GoogleShoppingLandingPage(driver);
+//	        this.googleShoppingMainPage = new GoogleShoppingMainPage(driver, globalUtility);
+//
+//	        globalUtility.navigateToURL(driver, genericHelper.url);
+//	        globalUtility.maximizeWindow(driver);
+//	        globalUtility.setImplicitWait(driver, 10);
+//	        globalUtility.setPageLoadOutTimeOut(driver, 20);
+//
+//	        googleShoppingLandingPage.clickOnSearchBarLandingPage();
+//	        googleShoppingLandingPage.inputWithInTheSearchBar();
+//	        googleShoppingLandingPage.selectFromRecommendations();
+//
+//	        googleShoppingMainPage.scrollToSellerLandingPage(driver);
+//	        googleShoppingMainPage.clickOnMoreInSellerMenuLandingPage(driver);
+//	        googleShoppingMainPage.selectingAmazonFromSellerMenu(driver);
+//	    }
+	    
 	    @BeforeMethod
-	    public void setup() {
-	        this.genericHelper = new GenericHelper();
-	        this.driverManager = new DriverManager();
-	        this.driver = DriverManager.setDriver(new GlobalUtility(null).initDriver(genericHelper.userAgent));
-	        
-	        this.globalUtility = new GlobalUtility(driver);
+	    public void setup() throws InterruptedException {
+	        this.genericHelper = new GenericHelper(); // 1. Init first
+	        this.driver = DriverManager.setDriver(new GlobalUtility(driver).initDriver(genericHelper.userAgent)); // 2. Init driver
+	        this.globalUtility = new GlobalUtility(driver); // 3. Init utility with driver
+	        this.driverManager = new DriverManager(); // optional, but ok
+
 	        this.googleShoppingLandingPage = new GoogleShoppingLandingPage(driver);
 	        this.googleShoppingMainPage = new GoogleShoppingMainPage(driver, globalUtility);
 
@@ -35,6 +58,7 @@
 
 	        googleShoppingLandingPage.clickOnSearchBarLandingPage();
 	        googleShoppingLandingPage.inputWithInTheSearchBar();
+	        Thread.sleep(2000); // delay you mentioned helped
 	        googleShoppingLandingPage.selectFromRecommendations();
 
 	        googleShoppingMainPage.scrollToSellerLandingPage(driver);
@@ -42,9 +66,6 @@
 	        googleShoppingMainPage.selectingAmazonFromSellerMenu(driver);
 	    }
 
-	  
-
-	    // ========== Sample Parallel-Ready Filter Tests ==========
 
 	    
 	    @Test
@@ -130,10 +151,7 @@
 	    @Test
 	    public void applyingAllFiltersOptionsForDelivery() throws InterruptedException {
 	        googleShoppingMainPage.applyingDeliveryFilterAllOptions(driver, googleShoppingMainPage.gettingAllProducts(driver));
-	    }
-
-
-	   
+	    }  
 	}
 
 	
