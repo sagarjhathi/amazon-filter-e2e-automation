@@ -24,6 +24,9 @@ public class DriverManager {
 			options.addArguments("--lang=en");
 			options.addArguments("--disable-blink-features=AutomationControlled");
 			options.addArguments("--start-maximized");
+			options.addArguments("--disable-dev-shm-usage");
+			options.addArguments("--no-sandbox");
+			//options.addArguments("--headless=new");
 
 			//WebDriver driver = new ChromeDriver(options);
 			driver.set(new ChromeDriver(options));
