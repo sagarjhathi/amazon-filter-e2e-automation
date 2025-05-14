@@ -115,38 +115,40 @@ public class LocatorsTrial {
 //
 //		
 //		//Delivery filter option functionality verification
-////		List<WebElement> listDeliveryOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-////				By.xpath("//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base']")));
-////
-////		for (int i = 0; i < listDeliveryOptions.size(); i++) {
-////			System.out.println(listDeliveryOptions.get(i).getText() + "   size is  " + listDeliveryOptions.size());
-////		}
-////		
-////		
-////		
-////		for (int i = 0; i < listDeliveryOptions.size(); i++) {
-////			
-////			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-////					By.xpath("//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base']")));
-////
-////			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-////
-////			String str = inloopParent.get(i).getText().trim();
-////
-////			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-////					"//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base' and text()='"
-////							+ str + "']"))).click();
-////
-////			Thread.sleep(5000);
-////			
-////			wait.until(ExpectedConditions.elementToBeClickable(
-////					By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
-////			Thread.sleep(2000);
-////			
-////		
-////			
-////			driver.navigate().refresh();
-////		}
+//		List<WebElement> listDeliveryOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+//				By.xpath("//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base']")));
+//
+//		for (int i = 0; i < listDeliveryOptions.size(); i++) {
+//			System.out.println(listDeliveryOptions.get(i).getText() + "   size is  " + listDeliveryOptions.size());
+//		}
+//		
+//		
+//		
+//		for (int i = 0; i < listDeliveryOptions.size(); i++) {
+//			
+//			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+//					By.xpath("//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base']")));
+//
+//			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+//
+//			String str = inloopParent.get(i).getText().trim();
+//
+//			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+//					"//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base' and text()='"
+//							+ str + "']"))).click();
+//
+//            
+//			
+//			Thread.sleep(5000);
+//			
+//			wait.until(ExpectedConditions.elementToBeClickable(
+//					By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+//			Thread.sleep(2000);
+//			
+//		
+//			
+//			driver.navigate().refresh();
+//		}
 //		
 //		
 //		
@@ -340,9 +342,9 @@ public class LocatorsTrial {
 			
 			//WebElement maxSlider = driver.findElement(By.id("p_36/range-slider_slider-item_upper-bound-slider"));
 
-			JavascriptExecutor js = (JavascriptExecutor) driver;
-			js.executeScript("window.scrollBy", 0,300);
-			Thread.sleep(2000);
+//			JavascriptExecutor js = (JavascriptExecutor) driver;
+//			js.executeScript("window.scrollBy", 0,300);
+//			Thread.sleep(2000);
 			// Set min slider value
 //			js.executeScript(
 //			    "arguments[0].value = arguments[1];" +
@@ -387,50 +389,63 @@ public class LocatorsTrial {
 
 			
 			
-			// List of values to set for min and max sliders
-			List<Integer> minValues = Arrays.asList(60, 90, 130);
-			List<Integer> maxValues = Arrays.asList(80, 120, 160);
+//			// List of values to set for min and max sliders
+//			List<Integer> minValues = Arrays.asList(60, 90, 130);
+//			List<Integer> maxValues = Arrays.asList(80, 120, 160);
+//
+//			// Find the min and max sliders
+//			
+//			WebElement minSlider = driver.findElement(By.id("p_36/range-slider_slider-item_lower-bound-slider"));
+//			WebElement maxSlider = driver.findElement(By.id("p_36/range-slider_slider-item_upper-bound-slider"));
+//
+//			// Initialize JavascriptExecutor for executing JavaScript
+//			
+//
+//			for (int i = 0; i < minValues.size(); i++) {
+//			    int min = minValues.get(i);
+//			    int max = maxValues.get(i);
+//
+//			    // Set the min slider value
+//			    js.executeScript(
+//			        "arguments[0].value = arguments[1];" +
+//			        "arguments[0].dispatchEvent(new Event('input'));" +
+//			        "arguments[0].dispatchEvent(new Event('change'));",
+//			        minSlider, String.valueOf(min)
+//			    );
+//
+//			    // Set the max slider value
+//			    js.executeScript(
+//			        "arguments[0].value = arguments[1];" +
+//			        "arguments[0].dispatchEvent(new Event('input'));" +
+//			        "arguments[0].dispatchEvent(new Event('change'));",
+//			        maxSlider, String.valueOf(max)
+//			    );
+//			    
+//			    Thread.sleep(1000);
+//			    
+//			    driver.findElement(By.xpath("//div[@class='a-section sf-submit-range-button']")).click();
+//			    
+//			    // Optional: Wait a bit to observe the change (adjust as needed)
+//			    Thread.sleep(2000); // Wait 1 second for each iteration
+//			}
 
-			// Find the min and max sliders
+
+			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']")).click();
+			Thread.sleep(2000);
+               List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@data-cy='delivery-recipe']"));	
 			
-			WebElement minSlider = driver.findElement(By.id("p_36/range-slider_slider-item_lower-bound-slider"));
-			WebElement maxSlider = driver.findElement(By.id("p_36/range-slider_slider-item_upper-bound-slider"));
-
-			// Initialize JavascriptExecutor for executing JavaScript
-			
-
-			for (int i = 0; i < minValues.size(); i++) {
-			    int min = minValues.get(i);
-			    int max = maxValues.get(i);
-
-			    // Set the min slider value
-			    js.executeScript(
-			        "arguments[0].value = arguments[1];" +
-			        "arguments[0].dispatchEvent(new Event('input'));" +
-			        "arguments[0].dispatchEvent(new Event('change'));",
-			        minSlider, String.valueOf(min)
-			    );
-
-			    // Set the max slider value
-			    js.executeScript(
-			        "arguments[0].value = arguments[1];" +
-			        "arguments[0].dispatchEvent(new Event('input'));" +
-			        "arguments[0].dispatchEvent(new Event('change'));",
-			        maxSlider, String.valueOf(max)
-			    );
-			    
-			    Thread.sleep(1000);
-			    
-			    driver.findElement(By.xpath("//div[@class='a-section sf-submit-range-button']")).click();
-			    
-			    // Optional: Wait a bit to observe the change (adjust as needed)
-			    Thread.sleep(2000); // Wait 1 second for each iteration
+			for(int j=0;j<deliveryChild.size();j++) {
+				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size());
 			}
-
-
-
-
 			
+			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']")).click();
+			
+			
+			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']")).click();
+
+			for(int j=0;j<deliveryChild.size();j++) {
+				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size());
+			}
 
 				
 	}
