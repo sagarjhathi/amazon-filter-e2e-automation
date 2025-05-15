@@ -11,13 +11,14 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class AmazonTests extends BaseTest {
 
 	
-	@Test(priority=11)
-	public void verifyingDeliveryDayFilterFunctionality(){
+	@Test(priority=1)
+	public void verifyingGetItByTomorrowFilterFunctionality() throws InterruptedException{
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
@@ -42,38 +43,15 @@ public class AmazonTests extends BaseTest {
 			}
 			
 			
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		
-		List<WebElement> listDeliveryOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-				By.xpath("//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base']")));
-
-		for (int i = 1; i < listDeliveryOptions.size(); i++) {
-			System.out.println(listDeliveryOptions.get(i).getText() + "   size is  " + listDeliveryOptions.size());
-		}
-		
-		for (int i = 1; i < listDeliveryOptions.size(); i++) {
-			
-			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-					By.xpath("//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base']")));
-
-			if(i>inloopParent.size()-1) {
-				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
-				return;
-			}
-			
-			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-
-			String str = inloopParent.get(i).getText().trim();
-
-			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//ul[@id='filter-p_90']//span[@class='a-size-base a-color-base' and text()='"
-							+ str + "']"))).click();
-
+		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']"))).click();
+			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(
 					By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+			System.out.println("Clicking clear under delivery");
+			Thread.sleep(2000);
 			//driver.navigate().refresh();
 		}
-	}
 
 	
 	
@@ -439,7 +417,7 @@ public class AmazonTests extends BaseTest {
 			boolean exist = false;
 			for (int i = 0; i < filterOptions.size(); i++) {
 			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Display Size")) {
+			    if (text.equalsIgnoreCase("Processor Speed")) {
 			        System.out.println(text + "  matches with assert text here");
 			        exist = true;
 			        break;
@@ -618,11 +596,7 @@ public class AmazonTests extends BaseTest {
 						inLoopmoreInOperatingSystemVersion.click();
 			       }
 			
-			
-//			js.executeScript("window.scrollBy", 0,1300);
-//			Thread.sleep(2000);
-//			WebElement osLink = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//a[@aria-label='See more, Operating System']")));
-//			wait.until(ExpectedConditions.elementToBeClickable(osLink)).click();
+		
 					
 					
 			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
@@ -726,7 +700,7 @@ public class AmazonTests extends BaseTest {
 	//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']
 	
 	
-	@Test(priority=1)
+	@Test(priority=11)
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -794,6 +768,7 @@ public class AmazonTests extends BaseTest {
 				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
 			}
 			
+		
 
 			wait.until(ExpectedConditions.elementToBeClickable(
 			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
