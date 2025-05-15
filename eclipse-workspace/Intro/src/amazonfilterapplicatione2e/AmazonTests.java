@@ -1,6 +1,7 @@
 package amazonfilterapplicatione2e;
 
 import java.time.Duration;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +14,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import java.time.LocalDate;
+	import java.time.format.DateTimeFormatter;
 
 public class AmazonTests extends BaseTest {
 
@@ -46,8 +49,49 @@ public class AmazonTests extends BaseTest {
 		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']"))).click();
 			Thread.sleep(2000);
+			
+			
+			
+			List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
+			
+	     	
+
+	     	
+ 	        LocalDate tomorrow = LocalDate.now().plusDays(1);
+ 	       LocalDate today = LocalDate.now();
+ 	        
+ 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+ 	        String formattedDate = tomorrow.format(formatter);
+ 	        
+ 	        DateTimeFormatter formatterToday = DateTimeFormatter.ofPattern("E, dd MMM");
+	        String formattedDateToday = today.format(formatter);
+ 	        
+ 	        System.out.println("Formatted Date: " + formattedDate);
+ 	       String[] dateParts = formattedDate.replace(",", "").split(" ");
+ 	      dateParts =  formattedDateToday.replace(",", "").split(" ");
+ 	       	
+     
+	for(int j=0;j<deliveryChild.size();j++) {
+		System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
+		String assertString=deliveryChild.get(j).getText();
+		
+		for (String part : dateParts) {
+            if(assertString.contains(part)) {
+            	System.out.println("Date part contain in the text and the part is -->  "+ part);
+            }else {
+            	System.out.println("Date part does not contain in the text and the failed part is -->"+part);
+
+            }
+        }
+		
+	}
+	
 			wait.until(ExpectedConditions.elementToBeClickable(
-					By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+			
+			
+		     	 
+				
 			System.out.println("Clicking clear under delivery");
 			Thread.sleep(2000);
 			//driver.navigate().refresh();
@@ -762,14 +806,7 @@ public class AmazonTests extends BaseTest {
 			
 			
 			Thread.sleep(2000);
-            List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
 			
-			for(int j=0;j<deliveryChild.size();j++) {
-				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
-			}
-			
-		
-
 			wait.until(ExpectedConditions.elementToBeClickable(
 			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
 			
