@@ -430,24 +430,29 @@ public class LocatorsTrial {
 //			}
 
 
-			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']")).click();
-			Thread.sleep(2000);
-               List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@data-cy='delivery-recipe']"));	
-			
-			for(int j=0;j<deliveryChild.size();j++) {
-				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size());
-			}
-			
-			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']")).click();
-			
-			
-			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']")).click();
-
-			for(int j=0;j<deliveryChild.size();j++) {
-				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size());
-			}
-
-				
+//			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']")).click();
+//			Thread.sleep(2000);
+//               List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@data-cy='delivery-recipe']"));	
+//			
+//			for(int j=0;j<deliveryChild.size();j++) {
+//				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size());
+//			}
+//			
+//			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']")).click();
+//			
+//			
+//			driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']")).click();
+//
+//			for(int j=0;j<deliveryChild.size();j++) {
+//				System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size());
+//			}
+		
+		
+		driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']")).click();
+		
+		
 	}
 
 }
