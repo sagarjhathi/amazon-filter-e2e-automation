@@ -4,7 +4,10 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -23,13 +26,13 @@ public class AmazonTests extends BaseTest {
 	@Test(priority=1)
 	public void verifyingGetItByTomorrowFilterFunctionality() throws InterruptedException{
 		
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
-		am.givingInputWithinSearchBar("Mobile");
-		am.clickingOnSubmitSearchButton();
+		                    AmazonLandingPage am=new AmazonLandingPage();
+		                    am.openingLandingPage();
+		                    am.givingInputWithinSearchBar("Mobile");
+		                    am.clickingOnSubmitSearchButton();
 		
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+		    List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
 			boolean exist = false;
 			for (int i = 0; i < filterOptions.size(); i++) {
 			    String text = filterOptions.get(i).getText().trim();
@@ -39,6 +42,7 @@ public class AmazonTests extends BaseTest {
 			        break;
 			    }
 			}
+			
 
 			if (!exist) {
 			    System.out.println("Filter option 'Delivery Day' does not exist in the list. Skipping the test.");
@@ -50,39 +54,37 @@ public class AmazonTests extends BaseTest {
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']"))).click();
 			Thread.sleep(2000);
 			
+			    List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
 			
-			
-			List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
-			
-	     	
+			    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+			    String todayFormatted = LocalDate.now().format(formatter);
+			    String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
 
-	     	
- 	        LocalDate tomorrow = LocalDate.now().plusDays(1);
- 	       LocalDate today = LocalDate.now();
- 	        
- 	        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
- 	        String formattedDate = tomorrow.format(formatter);
- 	        
- 	        DateTimeFormatter formatterToday = DateTimeFormatter.ofPattern("E, dd MMM");
-	        String formattedDateToday = today.format(formatter);
- 	        
- 	        System.out.println("Formatted Date: " + formattedDate);
- 	       String[] dateParts = formattedDate.replace(",", "").split(" ");
- 	      dateParts =  formattedDateToday.replace(",", "").split(" ");
+			    // Clean and split for partial matching
+			    Set<String> allowedDateParts = new HashSet<>();
+			    Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+			    Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+			    allowedDateParts.add("Tomorrow");
+			    allowedDateParts.add("Today");
+			    
+			    System.out.println("Allowed date parts: " + allowedDateParts);
  	       	
      
 	for(int j=0;j<deliveryChild.size();j++) {
 		System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
 		String assertString=deliveryChild.get(j).getText();
 		
-		for (String part : dateParts) {
-            if(assertString.contains(part)) {
-            	System.out.println("Date part contain in the text and the part is -->  "+ part);
-            }else {
-            	System.out.println("Date part does not contain in the text and the failed part is -->"+part);
+		  boolean found = false;
 
-            }
-        }
+		    for (String part : allowedDateParts) {
+		        if (assertString.contains(part)) {
+		            found = true;
+		            break; // stop as soon as a match is found
+		        }
+		    }
+		    
+		    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
+		    System.out.println("✔ Valid delivery date found in: " + assertString);
 		
 	}
 	
@@ -94,7 +96,6 @@ public class AmazonTests extends BaseTest {
 				
 			System.out.println("Clicking clear under delivery");
 			Thread.sleep(2000);
-			//driver.navigate().refresh();
 		}
 
 	
