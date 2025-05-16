@@ -86,17 +86,153 @@ public class AmazonTests extends BaseTest {
 		    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
 		    System.out.println("✔ Valid delivery date found in: " + assertString);
 		
-	}
+	        }
 	
 			wait.until(ExpectedConditions.elementToBeClickable(
 			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
 			
 			
-		     	 
-				
 			System.out.println("Clicking clear under delivery");
 			Thread.sleep(2000);
 		}
+	
+	
+	
+	
+	
+	
+	@Test(priority=1)
+	public void verifyingGetItIn2DaysFilterFunctionality() throws InterruptedException{
+		
+		                    AmazonLandingPage am=new AmazonLandingPage();
+		                    am.openingLandingPage();
+		                    am.givingInputWithinSearchBar("Mobile");
+		                    am.clickingOnSubmitSearchButton();
+		
+		
+		    List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+			boolean exist = false;
+			for (int i = 0; i < filterOptions.size(); i++) {
+			    String text = filterOptions.get(i).getText().trim();
+			    if (text.equalsIgnoreCase("Delivery Day")) {
+			        System.out.println(text + "  matches with assert text here");
+			        exist = true;
+			        break;
+			    }
+			}
+			
+
+			if (!exist) {
+			    System.out.println("Filter option 'Delivery Day' does not exist in the list. Skipping the test.");
+			    return;
+			}
+			
+			
+		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']"))).click();
+			Thread.sleep(2000);
+			
+			    List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
+			
+			    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+			    String todayFormatted = LocalDate.now().format(formatter);
+			    String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
+			    String dayAfterTomorrowFormatted = LocalDate.now().plusDays(2).format(formatter);
+
+			    // Clean and split for partial matching
+			    Set<String> allowedDateParts = new HashSet<>();
+			    Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+			    Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+			    Collections.addAll(allowedDateParts, dayAfterTomorrowFormatted.replace(",", "").split(" "));
+			    allowedDateParts.add("Tomorrow");
+			    allowedDateParts.add("Today");
+			    
+			    System.out.println("Allowed date parts: " + allowedDateParts);
+ 	       	
+     
+	for(int j=0;j<deliveryChild.size();j++) {
+		System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
+		String assertString=deliveryChild.get(j).getText();
+		
+		  boolean found = false;
+
+		    for (String part : allowedDateParts) {
+		        if (assertString.contains(part)) {
+		            found = true;
+		            break; // stop as soon as a match is found
+		        }
+		    }
+		    
+		    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
+		    System.out.println("✔ Valid delivery date found in: " + assertString);
+		
+	        }
+	
+			wait.until(ExpectedConditions.elementToBeClickable(
+			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+			
+			
+			System.out.println("Clicking clear under delivery");
+			Thread.sleep(2000);
+		}
+	
+	
+
+	
+	
+//	@Test(priority=2)
+//	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
+//		
+//		                    AmazonLandingPage am=new AmazonLandingPage();
+//		                    am.openingLandingPage();
+//		                    am.givingInputWithinSearchBar("Mobile");
+//		                    am.clickingOnSubmitSearchButton();
+//		
+//		
+//		    List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Delivery Day")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//			
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'Delivery Day' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
+//			
+//			
+//		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+//			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']"))).click();
+//			Thread.sleep(2000);
+//			
+//			List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
+//			
+// 	       	
+//    
+//	for(int j=0;j<deliveryChild.size();j++) {
+//		System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
+//		String assertString=deliveryChild.get(j).getText();
+//		
+//		  boolean found = false;
+//		  if (assertString.contains("Today")) {
+//	            found = true;
+//	        }
+//		    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
+//		    System.out.println("✔ Valid delivery date found in: " + assertString);
+//	        }
+//	
+//			wait.until(ExpectedConditions.elementToBeClickable(
+//			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+//			
+//			
+//			System.out.println("Clicking clear under delivery");
+//		}
 
 	
 	
