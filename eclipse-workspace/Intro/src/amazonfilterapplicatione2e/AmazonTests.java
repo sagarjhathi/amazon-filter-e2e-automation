@@ -15,8 +15,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -26,7 +24,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import java.time.LocalDate;
-	import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatter;
 
 public class AmazonTests extends BaseTest {
 
@@ -377,7 +375,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	@Test(priority=5)
-	public void verifyingStorageCapacityFilterFunctionality() {
+	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
@@ -430,7 +428,82 @@ public class AmazonTests extends BaseTest {
 					"//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='"
 							+ str + "']"))).click();
 			
+			Thread.sleep(2000);
 
+			String currentWindow=driver.getWindowHandle();
+			System.out.println("Printing current window  "+ currentWindow);
+		    List<WebElement> productNameListingPage  =	driver.findElements(By.xpath("//div[@data-cy='title-recipe']"));
+			for(int p=1;p<productNameListingPage.size();p++) {
+				System.out.println("inside the loop ");
+				driver.findElement(By.xpath("(//div[@data-cy='title-recipe'])["+p+"]")).click();
+				System.out.println("Clicked on the producct name new pop-up should open");
+				Thread.sleep(3000);
+				Set<String> allWindowHandles=driver.getWindowHandles();
+				
+				for(String e:allWindowHandles) {
+					if(!e.equals(currentWindow)) {
+						System.out.println("found the window switching now");
+
+						driver.switchTo().window(e);
+					}else {
+						System.out.println("did not find the window trying again");
+					}
+				}
+				
+//				System.out.println("Printing individualPageWindow   "+ individualPageWindow);
+//
+//				driver.switchTo().window(individualPageWindow);
+				
+				System.out.println("Switched to the new window here");
+				Thread.sleep(3000);
+//				WebElement productNameIndividualPage =driver.findElement(By.xpath("//span[@id='productTitle']"));
+//				WebElement productKeyFeatureBlock=driver.findElement(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));
+//				WebElement aboutThisItemBulletPoint=driver.findElement(By.xpath("//div[@id='feature-bullets']"));
+//				WebElement seeMoreProductDetailsButtonIndividualPage=driver.findElement(By.xpath("//a[@id='seeMoreDetailsLink']"));
+//				WebElement technicalDetailsBlockIndividualPage=driver.findElement(By.xpath("//div[@id='prodDetails']"));
+				
+
+				WebElement productNameIndividualPage = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='productTitle']")));
+
+				WebElement productKeyFeatureBlock = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']")));
+
+				WebElement aboutThisItemBulletPoint = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='feature-bullets']")));
+
+				WebElement seeMoreProductDetailsButtonIndividualPage = wait.until(
+				    ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='seeMoreDetailsLink']")));
+
+				WebElement technicalDetailsBlockIndividualPage = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='prodDetails']")));
+
+				
+				System.out.println(productNameIndividualPage.getText()+"    productNameIndividualPage");
+				System.out.println(productKeyFeatureBlock.getText()+"    productKeyFeatureBlock");
+				System.out.println(aboutThisItemBulletPoint.getText()+"    aboutThisItemBulletPoint");
+				System.out.println(seeMoreProductDetailsButtonIndividualPage.getText()+"    seeMoreProductDetailsButtonIndividualPage");
+				System.out.println(technicalDetailsBlockIndividualPage.getText()+"    technicalDetailsBlockIndividualPage");
+
+				
+				for(String e:allWindowHandles) {
+					if(e.equals(currentWindow)) {
+						driver.close();
+						System.out.println("found the window switching now");
+						driver.switchTo().window(e);
+					}else {
+						System.out.println("did not find the window trying again");
+					}
+				}
+				
+				
+			}
+
+			
+			
+			
+			
+			
 			wait.until(ExpectedConditions.elementToBeClickable(
 			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
 			
@@ -806,7 +879,7 @@ public class AmazonTests extends BaseTest {
 		
 		List<WebElement> listOperatingSystemVersionOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 	    By.xpath("//ul[@id='filter-p_n_feature_thirty-one_browse-bin']//span[@class='a-size-base a-color-base']")));
-		
+		Thread.sleep(2000);
 		
 		
 		for (int i = 1; i < listOperatingSystemVersionOptions.size(); i++) {
@@ -819,7 +892,7 @@ public class AmazonTests extends BaseTest {
 			       if(i!=1) {
 			    	   js.executeScript("window.scrollBy(0, 1500);");
 				        WebElement inLoopmoreInOperatingSystemVersion = wait.until(ExpectedConditions.elementToBeClickable(
-				        By.xpath("//a[@aria-label='See more, Operating System ']")));
+				        By.xpath("//a[contains(@aria-label,'See more, Operating System')]")));
 						
 						js.executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", inLoopmoreInOperatingSystemVersion);
 						Thread.sleep(2000);
