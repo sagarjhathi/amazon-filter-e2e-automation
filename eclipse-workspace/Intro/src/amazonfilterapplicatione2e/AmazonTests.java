@@ -32,11 +32,16 @@ public class AmazonTests extends BaseTest {
 		                    am.clickingOnSubmitSearchButton();
 		
 		
-		    List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+		    List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
+		    
+		    for(int k=0;k<filterOptions.size();k++) {
+		    	System.out.println(filterOptions.get(k).getText().trim());
+		    }
+		    
 			boolean exist = false;
 			for (int i = 0; i < filterOptions.size(); i++) {
 			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Delivery Day")) {
+			    if (text.equalsIgnoreCase("Get It by Tomorrow")) {
 			        System.out.println(text + "  matches with assert text here");
 			        exist = true;
 			        break;
@@ -45,7 +50,7 @@ public class AmazonTests extends BaseTest {
 			
 
 			if (!exist) {
-			    System.out.println("Filter option 'Delivery Day' does not exist in the list. Skipping the test.");
+			    System.out.println("Filter option 'Get It by Tomorrow' does not exist in the list. Skipping the test.");
 			    return;
 			}
 			
@@ -101,7 +106,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=1)
+	@Test(priority=2)
 	public void verifyingGetItIn2DaysFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -110,11 +115,12 @@ public class AmazonTests extends BaseTest {
 		                    am.clickingOnSubmitSearchButton();
 		
 		
-		    List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+		      List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
+
 			boolean exist = false;
 			for (int i = 0; i < filterOptions.size(); i++) {
 			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Delivery Day")) {
+			    if (text.equalsIgnoreCase("Get It in 2 Days")) {
 			        System.out.println(text + "  matches with assert text here");
 			        exist = true;
 			        break;
@@ -123,7 +129,7 @@ public class AmazonTests extends BaseTest {
 			
 
 			if (!exist) {
-			    System.out.println("Filter option 'Delivery Day' does not exist in the list. Skipping the test.");
+			    System.out.println("Filter option 'Get It in 2 Days' does not exist in the list. Skipping the test.");
 			    return;
 			}
 			
@@ -180,63 +186,64 @@ public class AmazonTests extends BaseTest {
 
 	
 	
-//	@Test(priority=2)
-//	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
-//		
-//		                    AmazonLandingPage am=new AmazonLandingPage();
-//		                    am.openingLandingPage();
-//		                    am.givingInputWithinSearchBar("Mobile");
-//		                    am.clickingOnSubmitSearchButton();
-//		
-//		
-//		    List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-//			boolean exist = false;
-//			for (int i = 0; i < filterOptions.size(); i++) {
-//			    String text = filterOptions.get(i).getText().trim();
-//			    if (text.equalsIgnoreCase("Delivery Day")) {
-//			        System.out.println(text + "  matches with assert text here");
-//			        exist = true;
-//			        break;
-//			    }
-//			}
-//			
-//
-//			if (!exist) {
-//			    System.out.println("Filter option 'Delivery Day' does not exist in the list. Skipping the test.");
-//			    return;
-//			}
-//			
-//			
-//		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-//			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']"))).click();
-//			Thread.sleep(2000);
-//			
-//			List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
-//			
-// 	       	
-//    
-//	for(int j=0;j<deliveryChild.size();j++) {
-//		System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
-//		String assertString=deliveryChild.get(j).getText();
-//		
-//		  boolean found = false;
-//		  if (assertString.contains("Today")) {
-//	            found = true;
-//	        }
-//		    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
-//		    System.out.println("✔ Valid delivery date found in: " + assertString);
-//	        }
-//	
-//			wait.until(ExpectedConditions.elementToBeClickable(
-//			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
-//			
-//			
-//			System.out.println("Clicking clear under delivery");
-//		}
+	@Test(priority=3)
+	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
+		
+		                    AmazonLandingPage am=new AmazonLandingPage();
+		                    am.openingLandingPage();
+		                    am.givingInputWithinSearchBar("Mobile");
+		                    am.clickingOnSubmitSearchButton();
+		
+		
+		    List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
+
+			boolean exist = false;
+			for (int i = 0; i < filterOptions.size(); i++) {
+			    String text = filterOptions.get(i).getText().trim();
+			    if (text.equalsIgnoreCase("Get It Today")) {
+			        System.out.println(text + "  matches with assert text here");
+			        exist = true;
+			        break;
+			    }
+			}
+			
+
+			if (!exist) {
+			    System.out.println("Filter option 'Get It Today' does not exist in the list. Skipping the test.");
+			    return;
+			}
+			
+			
+		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']"))).click();
+			Thread.sleep(2000);
+			
+			List<WebElement> deliveryChild=driver.findElements(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));	
+			
+ 	       	
+    
+	for(int j=0;j<deliveryChild.size();j++) {
+		System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
+		String assertString=deliveryChild.get(j).getText();
+		
+		  boolean found = false;
+		  if (assertString.contains("Today")) {
+	            found = true;
+	        }
+		    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
+		    System.out.println("✔ Valid delivery date found in: " + assertString);
+	        }
+	
+			wait.until(ExpectedConditions.elementToBeClickable(
+			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+			
+			
+			System.out.println("Clicking clear under delivery");
+		}
 
 	
 	
-	@Test(priority=10)
+	@Test(priority=4)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
 	
@@ -246,7 +253,8 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		
-        List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+        List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-"
+        		+ "size-base a-color-base puis-bold-weight-text']"));
 		boolean exist = false;
 		for (int i = 0; i < filterOptions.size(); i++) {
 		    String text = filterOptions.get(i).getText().trim();
@@ -256,6 +264,8 @@ public class AmazonTests extends BaseTest {
 		        break;
 		    }
 		}
+		
+		
 
 		if (!exist) {
 		    System.out.println("Filter option 'Brands' does not exist in the list. Skipping the test.");
@@ -313,8 +323,25 @@ public class AmazonTests extends BaseTest {
 						"//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='"
 								+ str + "']"))).click();
 				
+				Thread.sleep(3000);
+				System.out.println("Before checking the product name the code execution is here");
+				
+			List<WebElement> productNameOnListingPage =	driver.findElements(By.xpath("//div[@data-cy='title-recipe']"));
+			int noOfBrandNameNotIntheList =0;
+			for(int k=0;k<productNameOnListingPage.size();k++) {
+				if(productNameOnListingPage.get(k).getText().contains(str)) {
+					System.out.println("Product name found in the list index no is -->" +k);
+				}else {
+					System.out.println("Product name not found in the list hence the filter functionality failed index no is -->"+k);
+					noOfBrandNameNotIntheList++;
+				//	Assert.fail("Product name not found in the list hence the filter functionality failed index no is -->"+k);
+				}
+				
+			}
+			
+				System.out.println("The no of brand name not present in the list is -->"+noOfBrandNameNotIntheList +"for the brand filter -->"+str);
 				wait.until(ExpectedConditions.elementToBeClickable(
-						By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+				By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
 				
 				if(i==10 || i==20 || i==30) {
 					
@@ -327,7 +354,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=9)
+	@Test(priority=5)
 	public void verifyingStorageCapacityFilterFunctionality() {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -390,7 +417,7 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	@Test(priority=8)
+	@Test(priority=6)
 	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -514,7 +541,7 @@ public class AmazonTests extends BaseTest {
 	
 		
 	
-	@Test(priority=6)
+	@Test(priority=8)
 	public void verifyingDisplaySizeFilterFunctionality() {
 		
 		
@@ -582,7 +609,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=5)
+	@Test(priority=9)
 	public void verifyingProcessorSpeedFilterFunctionality() {
 		
 		
@@ -650,7 +677,7 @@ public class AmazonTests extends BaseTest {
 	
 	//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']
 	
-	@Test(priority=4)
+	@Test(priority=10)
 	public void verifyingDisplayTypeFilterFunctionality() {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -718,7 +745,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=3)
+	@Test(priority=11)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -809,7 +836,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=2)
+	@Test(priority=12)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -881,7 +908,7 @@ public class AmazonTests extends BaseTest {
 	//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']
 	
 	
-	@Test(priority=11)
+	@Test(priority=13)
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
