@@ -1,6 +1,6 @@
 package amazonfilterapplicatione2e;
 
-import java.time.Duration;
+import java.time.Duration; 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,6 +8,14 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import java.time.Duration;
+
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -340,8 +348,22 @@ public class AmazonTests extends BaseTest {
 			}
 			
 				System.out.println("The no of brand name not present in the list is -->"+noOfBrandNameNotIntheList +"for the brand filter -->"+str);
-				wait.until(ExpectedConditions.elementToBeClickable(
-				By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+				
+//				wait.until(ExpectedConditions.elementToBeClickable(
+//				By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+				
+				
+				try {
+				    // First attempt
+				    wait.until(ExpectedConditions.elementToBeClickable(
+				        By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']")))
+				        .click();
+				} catch (Exception e) {
+				    // Refresh and retry once
+				    System.out.println("Element not clickable, going back via navigate.back()...filter name is"+str);
+				    driver.navigate().back();
+				}
+				
 				
 				if(i==10 || i==20 || i==30) {
 					
