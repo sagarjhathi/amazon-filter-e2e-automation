@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ProductListingPage {
+public class ProductListingPage extends  BasePage{
 
 	
 	@FindBy(xpath="//div[@data-cy='title-recipe']")
@@ -16,5 +16,7 @@ public class ProductListingPage {
 	@FindBy(xpath="//div[@data-cy='delivery-recipe']")
 	WebElement productDeliveryDayListingPage;
 	
+	
+		
 	
 }
