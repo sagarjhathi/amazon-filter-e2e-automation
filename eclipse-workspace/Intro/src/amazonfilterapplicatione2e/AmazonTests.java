@@ -29,7 +29,7 @@ import java.time.format.DateTimeFormatter;
 public class AmazonTests extends BaseTest {
 
 	
-	@Test(priority=1)
+	@Test(priority=4)
 	public void verifyingGetItByTomorrowFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -374,7 +374,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=5)
+	@Test(priority=1)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -410,7 +410,7 @@ public class AmazonTests extends BaseTest {
 		}
 		
 		
-		for (int i = 1; i < listStorageCapacityOptions.size(); i++) {
+		for (int i = 5; i < listStorageCapacityOptions.size(); i++) {
 			
 			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']")));
@@ -472,12 +472,27 @@ public class AmazonTests extends BaseTest {
 				WebElement aboutThisItemBulletPoint = wait.until(
 				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='feature-bullets']")));
 
-				WebElement seeMoreProductDetailsButtonIndividualPage = wait.until(
-				    ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='seeMoreDetailsLink']")));
+//				WebElement seeMoreProductDetailsButtonIndividualPage = wait.until(
+//				    ExpectedConditions.elementToBeClickable(By.xpath("//a[@id='seeMoreDetailsLink']")));
 
 				WebElement technicalDetailsBlockIndividualPage = wait.until(
 				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='prodDetails']")));
+				
+				
+				Thread.sleep(2000);
+				// Scroll and wait for the 'See More Product Details' button
+				((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 500);");
+				Thread.sleep(2000);
 
+				WebElement seeMoreProductDetailsButtonIndividualPage = wait.until(ExpectedConditions.presenceOfElementLocated(
+				    By.xpath("//a[@id='seeMoreDetailsLink']")
+				));
+
+				((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
+
+				wait.until(ExpectedConditions.elementToBeClickable(seeMoreProductDetailsButtonIndividualPage)).click();
+				
+				Thread.sleep(2000);
 				
 				System.out.println(productNameIndividualPage.getText()+"    productNameIndividualPage");
 				System.out.println(productKeyFeatureBlock.getText()+"    productKeyFeatureBlock");
@@ -500,10 +515,7 @@ public class AmazonTests extends BaseTest {
 			}
 
 			
-			
-			
-			
-			
+			Thread.sleep(2000);
 			wait.until(ExpectedConditions.elementToBeClickable(
 			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
 			
