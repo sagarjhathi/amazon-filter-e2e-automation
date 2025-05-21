@@ -29,7 +29,7 @@ import java.time.format.DateTimeFormatter;
 public class AmazonTests extends BaseTest {
 
 	
-	@Test(priority=4)
+	@Test(priority=13)
 	public void verifyingGetItByTomorrowFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -44,20 +44,27 @@ public class AmazonTests extends BaseTest {
 		    	System.out.println(filterOptions.get(k).getText().trim());
 		    }
 		    
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Get It by Tomorrow")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Get It by Tomorrow")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//			
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'Get It by Tomorrow' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
+		    
+		    ProductListingPage pp=new ProductListingPage();
 			
-
-			if (!exist) {
-			    System.out.println("Filter option 'Get It by Tomorrow' does not exist in the list. Skipping the test.");
-			    return;
+			if (!pp.filterCheckUnderList("Display Size")) {
+			    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+			    return ;
 			}
 			
 			
@@ -112,7 +119,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=2)
+	@Test(priority=12)
 	public void verifyingGetItIn2DaysFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -121,23 +128,29 @@ public class AmazonTests extends BaseTest {
 		                    am.clickingOnSubmitSearchButton();
 		
 		
-		      List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
-
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Get It in 2 Days")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-			
-
-			if (!exist) {
-			    System.out.println("Filter option 'Get It in 2 Days' does not exist in the list. Skipping the test.");
-			    return;
-			}
+		                    ProductListingPage pp=new ProductListingPage();
+		            		
+		            		if (!pp.filterCheckUnderList("Display Size")) {
+		            		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		            		    return ;
+		            		}
+//		      List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
+//
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Get It in 2 Days")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//			
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'Get It in 2 Days' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 			
 			
 		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -192,7 +205,7 @@ public class AmazonTests extends BaseTest {
 
 	
 	
-	@Test(priority=3)
+	@Test(priority=11)
 	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -200,24 +213,31 @@ public class AmazonTests extends BaseTest {
 		                    am.givingInputWithinSearchBar("Mobile");
 		                    am.clickingOnSubmitSearchButton();
 		
+		               
+		                    ProductListingPage pp=new ProductListingPage();
+		            		
+		            		if (!pp.filterCheckUnderList("Display Size")) {
+		            		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		            		    return ;
+		            		}
 		
-		    List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
-
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Get It Today")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-			
-
-			if (!exist) {
-			    System.out.println("Filter option 'Get It Today' does not exist in the list. Skipping the test.");
-			    return;
-			}
+//		    List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
+//
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Get It Today")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//			
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'Get It Today' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 			
 			
 		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -249,7 +269,7 @@ public class AmazonTests extends BaseTest {
 
 	
 	
-	@Test(priority=4)
+	@Test(priority=10)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
 	
@@ -259,24 +279,30 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		
-        List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-"
-        		+ "size-base a-color-base puis-bold-weight-text']"));
-		boolean exist = false;
-		for (int i = 0; i < filterOptions.size(); i++) {
-		    String text = filterOptions.get(i).getText().trim();
-		    if (text.equalsIgnoreCase("brands")) {
-		        System.out.println(text + "  matches with assert text here");
-		        exist = true;
-		        break;
-		    }
-		}
+ProductListingPage pp=new ProductListingPage();
 		
-		
-
-		if (!exist) {
-		    System.out.println("Filter option 'Brands' does not exist in the list. Skipping the test.");
-		    return;
+		if (!pp.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
 		}
+//        List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-"
+//        		+ "size-base a-color-base puis-bold-weight-text']"));
+//		boolean exist = false;
+//		for (int i = 0; i < filterOptions.size(); i++) {
+//		    String text = filterOptions.get(i).getText().trim();
+//		    if (text.equalsIgnoreCase("brands")) {
+//		        System.out.println(text + "  matches with assert text here");
+//		        exist = true;
+//		        break;
+//		    }
+//		}
+//		
+//		
+//
+//		if (!exist) {
+//		    System.out.println("Filter option 'Brands' does not exist in the list. Skipping the test.");
+//		    return;
+//		}
 		
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 		WebElement moreInBrands = wait.until(ExpectedConditions.elementToBeClickable(
@@ -374,7 +400,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=5)
+	@Test(priority=9)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -382,22 +408,28 @@ public class AmazonTests extends BaseTest {
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
+ProductListingPage pp=new ProductListingPage();
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Storage Capacity")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-			    return;
-			}
+		if (!pp.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+		
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Storage Capacity")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 		
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(15));
 		
@@ -434,7 +466,9 @@ public class AmazonTests extends BaseTest {
 			System.out.println("Printing current window  "+ currentWindow);
 		    List<WebElement> productNameListingPage  =	driver.findElements(By.xpath("//div[@data-cy='title-recipe']"));
 			for(int p=1;p<productNameListingPage.size();p++) {
-				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());
+				WebElement productName=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@data-cy='title-recipe'])["+p+"]")));
+				String pName=productName.getText();
+						System.out.println("inside the loop and product name is "+pName);
 				driver.findElement(By.xpath("(//div[@data-cy='title-recipe'])["+p+"]")).click();
 				System.out.println("Clicked on the producct name new pop-up should open");
 				Thread.sleep(2000);
@@ -485,7 +519,7 @@ public class AmazonTests extends BaseTest {
 			        System.out.println("'See More Details' clicked.");
 
 			    } catch (Exception e1) {
-			    	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
+			    	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+pName);
 			    	driver.close();
 			    	driver.switchTo().window(currentWindow);
 			    	continue; // ✅ move on to the next product
@@ -519,13 +553,21 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	@Test(priority=7)
+	@Test(priority=8)
 	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
+		
+		
+ProductListingPage pp=new ProductListingPage();
+		
+		if (!pp.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
+		}
 		
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollBy", 0,300);
@@ -740,7 +782,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority = 15)
+	@Test(priority = 7)
 	public void verifyingBatteryCapacityFilterFunctionality() throws InterruptedException {
 
 	    AmazonLandingPage am = new AmazonLandingPage();
@@ -748,21 +790,28 @@ public class AmazonTests extends BaseTest {
 	    am.givingInputWithinSearchBar("Mobile");
 	    am.clickingOnSubmitSearchButton();
 
-	    List<WebElement> filterOptions = driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-	    boolean exist = false;
-	    for (WebElement option : filterOptions) {
-	        String text = option.getText().trim();
-	        if (text.equalsIgnoreCase("Battery Capacity")) {
-	            System.out.println(text + " matches with assert text here");
-	            exist = true;
-	            break;
-	        }
-	    }
-
-	    if (!exist) {
-	        System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
-	        return;
-	    }
+	    
+ProductListingPage pp=new ProductListingPage();
+		
+		if (!pp.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+//	    List<WebElement> filterOptions = driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//	    boolean exist = false;
+//	    for (WebElement option : filterOptions) {
+//	        String text = option.getText().trim();
+//	        if (text.equalsIgnoreCase("Battery Capacity")) {
+//	            System.out.println(text + " matches with assert text here");
+//	            exist = true;
+//	            break;
+//	        }
+//	    }
+//
+//	    if (!exist) {
+//	        System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
+//	        return;
+//	    }
 
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
@@ -909,7 +958,7 @@ public class AmazonTests extends BaseTest {
 	
 		
 	
-	@Test(priority=20)
+	@Test(priority=6)
 	public void verifyingDisplaySizeFilterFunctionality() throws InterruptedException {
 		
 		
@@ -921,21 +970,27 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Display Size")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-			    return;
-			}
+ProductListingPage pp=new ProductListingPage();
+		
+		if (!pp.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Display Size")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 		
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
@@ -1062,7 +1117,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=1)
+	@Test(priority=5)
 	public void verifyingProcessorSpeedFilterFunctionality() throws InterruptedException {
 		
 		
@@ -1074,21 +1129,28 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Processor Speed")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-			    return;
-			}
+   ProductListingPage pp=new ProductListingPage();
+		
+		if (!pp.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+		
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Processor Speed")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 		
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
@@ -1212,7 +1274,7 @@ public class AmazonTests extends BaseTest {
 	
 	//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']
 	
-	@Test(priority=10)
+	@Test(priority=4)
 	public void verifyingDisplayTypeFilterFunctionality() {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1220,22 +1282,28 @@ public class AmazonTests extends BaseTest {
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
+		ProductListingPage p=new ProductListingPage();
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Display Size")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-			    return;
-			}
+		if (!p.filterCheckUnderList("Display Size")) {
+		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+		
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Display Size")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 		
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
@@ -1280,7 +1348,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=11)
+	@Test(priority=3)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1304,6 +1372,7 @@ public class AmazonTests extends BaseTest {
 			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
 			    return;
 			}
+		
 			
 			
 			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -1361,8 +1430,6 @@ public class AmazonTests extends BaseTest {
 
 			wait.until(ExpectedConditions.elementToBeClickable(
 			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
-			
-			driver.navigate().refresh();
 		}
 	}
 	
@@ -1371,7 +1438,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=12)
+	@Test(priority=2)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1395,6 +1462,8 @@ public class AmazonTests extends BaseTest {
 			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
 			    return;
 			}
+		
+		
 			
 			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 		
@@ -1440,10 +1509,9 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']
 	
 	
-	@Test(priority=13)
+	@Test(priority=1)
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1452,23 +1520,33 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Discount")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
+		ProductListingPage p=new ProductListingPage();
 
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-			    return;
-			}
+		
+		
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Discount")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
+		
+		if (!p.filterCheckUnderList("Discount")) {
+		    System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+		
 			
-			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 		
 			
 		
