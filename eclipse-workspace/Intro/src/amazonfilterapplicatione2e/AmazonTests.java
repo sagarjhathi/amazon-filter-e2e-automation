@@ -61,10 +61,9 @@ public class AmazonTests extends BaseTest {
 //			}
 		    
 		    ProductListingPage pp=new ProductListingPage();
-			
-			if (!pp.filterCheckUnderList("Display Size")) {
-			    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
-			    return ;
+			if (!pp.filterCheckUnderList("Get It by Tomorrow")) {
+			    System.out.println("Filter option 'Get It by Tomorrow' does not exist in the list. Skipping the test.");
+			    return;
 			}
 			
 			
@@ -130,10 +129,11 @@ public class AmazonTests extends BaseTest {
 		
 		                    ProductListingPage pp=new ProductListingPage();
 		            		
-		            		if (!pp.filterCheckUnderList("Display Size")) {
-		            		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		            		if (!pp.filterCheckUnderList("Get It in 2 Days")) {
+		            		    System.out.println("Filter option 'Get It in 2 Days' does not exist in the list. Skipping the test.");
 		            		    return ;
 		            		}
+		            		
 //		      List<WebElement> filterOptions=driver.findElements(By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']"));
 //
 //			boolean exist = false;
@@ -216,8 +216,8 @@ public class AmazonTests extends BaseTest {
 		               
 		                    ProductListingPage pp=new ProductListingPage();
 		            		
-		            		if (!pp.filterCheckUnderList("Display Size")) {
-		            		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		            		if (!pp.filterCheckUnderList("Get It Today")) {
+		            		    System.out.println("Filter option 'Get It Today' does not exist in the list. Skipping the test.");
 		            		    return ;
 		            		}
 		
@@ -279,10 +279,10 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		
-ProductListingPage pp=new ProductListingPage();
+         ProductListingPage pp=new ProductListingPage();
 		
-		if (!pp.filterCheckUnderList("Display Size")) {
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		if (!pp.filterCheckUnderList("brands")) {
+		    System.out.println("Filter option 'brands' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 //        List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-"
@@ -408,10 +408,10 @@ ProductListingPage pp=new ProductListingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
-ProductListingPage pp=new ProductListingPage();
+          ProductListingPage pp=new ProductListingPage();
 		
-		if (!pp.filterCheckUnderList("Display Size")) {
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		if (!pp.filterCheckUnderList("Storage Capacity")) {
+		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
@@ -562,10 +562,10 @@ ProductListingPage pp=new ProductListingPage();
 		am.clickingOnSubmitSearchButton();
 		
 		
-ProductListingPage pp=new ProductListingPage();
+        ProductListingPage pp=new ProductListingPage();
 		
-		if (!pp.filterCheckUnderList("Display Size")) {
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		if (!pp.filterCheckUnderList("Price")) {
+		    System.out.println("Filter option 'Price' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
@@ -791,10 +791,10 @@ ProductListingPage pp=new ProductListingPage();
 	    am.clickingOnSubmitSearchButton();
 
 	    
-ProductListingPage pp=new ProductListingPage();
+         ProductListingPage pp=new ProductListingPage();
 		
-		if (!pp.filterCheckUnderList("Display Size")) {
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		if (!pp.filterCheckUnderList("Battery Capacity")) {
+		    System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 //	    List<WebElement> filterOptions = driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
@@ -1131,8 +1131,8 @@ ProductListingPage pp=new ProductListingPage();
 		
    ProductListingPage pp=new ProductListingPage();
 		
-		if (!pp.filterCheckUnderList("Display Size")) {
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		if (!pp.filterCheckUnderList("Processor Speed")) {
+		    System.out.println("Filter option 'Processor Speed' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
@@ -1185,10 +1185,15 @@ ProductListingPage pp=new ProductListingPage();
 			Thread.sleep(2000);
 
 			String currentWindow=driver.getWindowHandle();
+			
 			System.out.println("Printing current window  "+ currentWindow);
+			
 		    List<WebElement> productNameListingPage  =	driver.findElements(By.xpath("//div[@data-cy='title-recipe']"));
+		    
 			for(int p=1;p<productNameListingPage.size();p++) {
+				
 				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());
+				driver.findElement(By.xpath("(//div[@data-cy='title-recipe'])["+p+"]")).click();
 				System.out.println("Clicked on the producct name new pop-up should open");
 				Thread.sleep(2000);
 				Set<String> allWindowHandles=driver.getWindowHandles();
@@ -1284,8 +1289,8 @@ ProductListingPage pp=new ProductListingPage();
 		
 		ProductListingPage p=new ProductListingPage();
 		
-		if (!p.filterCheckUnderList("Display Size")) {
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+		if (!p.filterCheckUnderList("Display Type")) {
+		    System.out.println("Filter option 'Display Type' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
@@ -1357,23 +1362,28 @@ ProductListingPage pp=new ProductListingPage();
 		am.clickingOnSubmitSearchButton();
 		
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Operating System ") || text.equalsIgnoreCase("Operating System Version")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
-
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-			    return;
-			}
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Operating System") || text.equalsIgnoreCase("Operating System Version")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+//
+//			if (!exist) {
+//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+//			    return;
+//			}
 		
-			
+		
+		ProductListingPage pp=new ProductListingPage();	
+		if (!pp.filterCheckUnderList("Operating System", "Operating System Version")) {
+		    System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
+		    return;
+		}
 			
 			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 			WebElement moreInOperatingSystemVersion = wait.until(ExpectedConditions.elementToBeClickable(
@@ -1447,19 +1457,23 @@ ProductListingPage pp=new ProductListingPage();
 		am.clickingOnSubmitSearchButton();
 		
 		
-		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-			boolean exist = false;
-			for (int i = 0; i < filterOptions.size(); i++) {
-			    String text = filterOptions.get(i).getText().trim();
-			    if (text.equalsIgnoreCase("Mobile Phone Primary Camera Resolution") || text.equalsIgnoreCase("Mobile Phone Primary Camera Resolution")) {
-			        System.out.println(text + "  matches with assert text here");
-			        exist = true;
-			        break;
-			    }
-			}
+//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
+//			boolean exist = false;
+//			for (int i = 0; i < filterOptions.size(); i++) {
+//			    String text = filterOptions.get(i).getText().trim();
+//			    if (text.equalsIgnoreCase("Mobile Phone Primary Camera Resolution") || text.equalsIgnoreCase("Mobile Phone Primary Camera Resolution")) {
+//			        System.out.println(text + "  matches with assert text here");
+//			        exist = true;
+//			        break;
+//			    }
+//			}
+			
+		ProductListingPage pp= new ProductListingPage();
+		
+			
 
-			if (!exist) {
-			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
+			if (!pp.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
+			    System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
 			    return;
 			}
 		
