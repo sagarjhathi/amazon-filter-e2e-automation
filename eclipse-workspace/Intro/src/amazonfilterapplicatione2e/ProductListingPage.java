@@ -33,24 +33,7 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	
-	public boolean filterCheckUnderList(String filterName) {
-		
-//			boolean exist = false;
-//			for (int i = 0; i < listOfFilterNameInLeftNav.size(); i++) {
-//			    String text = listOfFilterNameInLeftNav.get(i).getText().trim();
-//			    if (text.equalsIgnoreCase(filterName)) {
-//			        System.out.println(text + "  matches with assert text here");
-//			        exist = true;
-//			        break;
-//			    }
-//			}
-//
-//			if (!exist) {
-//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-//			    return exist;
-//			}
-//			return exist;
-		
+	public boolean filterCheckUnderList(String filterName) {		
 		    List<String> filterNames = new ArrayList<>();
 		    String target = filterName.trim().toLowerCase(); // convert input to lowercase
 
@@ -70,7 +53,7 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	
-	public boolean filterCheckUnderList(String filterName1,String filterName2) {
+public boolean filterCheckUnderList(String filterName1,String filterName2) {
 		
 	    List<String> filterNames = new ArrayList<>();
 	    String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
@@ -93,14 +76,16 @@ public class ProductListingPage extends  BasePage{
 	
 	public void safeClick(By locator) {
 	    int attempts = 0;
-
 	    while (attempts < 3) {
 	        try {
 	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 	            element.click();
+	            System.out.println("Clicking using safeClick");
+
 	            return;
 	        } catch (ElementClickInterceptedException  | StaleElementReferenceException e) {
 	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+	            driver.navigate().refresh();
 	            attempts++;
 	            try {
 	                Thread.sleep(1000); // small delay before retry
@@ -109,10 +94,10 @@ public class ProductListingPage extends  BasePage{
 	    }
 
 	    throw new RuntimeException("Click failed after multiple retries: " + locator);
-	}
+}
 
 
-	public List<WebElement> safeFindElement(By locator) {
+	public List<WebElement> safeFindElements(By locator) {
 	    int attempts = 0;
 	    while (attempts < 3) {
 	        try {
@@ -124,6 +109,7 @@ public class ProductListingPage extends  BasePage{
 	            attempts++;
 	            try {
 	            	driver.navigate().refresh();
+	            	System.out.println("Refreshing the page in safeFindElements Method");
 	                Thread.sleep(1000);
 	            } catch (InterruptedException ignored) {}
 	        }
@@ -131,6 +117,26 @@ public class ProductListingPage extends  BasePage{
 
 	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
 	}
-
 	
+	
+	public WebElement safeFindElement(By locator) {
+	    int attempts = 0;
+	    while (attempts < 3) {
+	        try {
+	            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+	            System.out.println("Found the element: " + locator);
+	            return element;
+	        } catch (NoSuchElementException | StaleElementReferenceException e) {
+	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
+	            attempts++;
+	            try {
+	            	driver.navigate().refresh();
+	            	System.out.println("Refreshing the page in safeFindElement Method");
+	                Thread.sleep(1000);
+	            } catch (InterruptedException ignored) {}
+	        }
+	    }
+
+	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
+	}
 }
