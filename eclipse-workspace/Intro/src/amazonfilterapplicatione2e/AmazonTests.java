@@ -404,34 +404,17 @@ public class AmazonTests extends BaseTest {
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(15));
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
-          ProductListingPage pp=new ProductListingPage();
-		
+        ProductListingPage pp=new ProductListingPage();
 		if (!pp.filterCheckUnderList("Storage Capacity")) {
 		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
-		
-//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-//			boolean exist = false;
-//			for (int i = 0; i < filterOptions.size(); i++) {
-//			    String text = filterOptions.get(i).getText().trim();
-//			    if (text.equalsIgnoreCase("Storage Capacity")) {
-//			        System.out.println(text + "  matches with assert text here");
-//			        exist = true;
-//			        break;
-//			    }
-//			}
-//
-//			if (!exist) {
-//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-//			    return;
-//			}
-		
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(15));
+			
 		
 		List<WebElement> listStorageCapacityOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 	    By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']")));
@@ -446,7 +429,7 @@ public class AmazonTests extends BaseTest {
 			
 			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 			By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']")));
-
+			
 			if(i>inloopParent.size()-1) {
 				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
 				return;
@@ -1286,34 +1269,24 @@ ProductListingPage pp=new ProductListingPage();
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
 		ProductListingPage p=new ProductListingPage();
+		
 		
 		if (!p.filterCheckUnderList("Display Type")) {
 		    System.out.println("Filter option 'Display Type' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
-//		  List<WebElement> filterOptions=driver.findElements(By.xpath("//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']"));
-//			boolean exist = false;
-//			for (int i = 0; i < filterOptions.size(); i++) {
-//			    String text = filterOptions.get(i).getText().trim();
-//			    if (text.equalsIgnoreCase("Display Size")) {
-//			        System.out.println(text + "  matches with assert text here");
-//			        exist = true;
-//			        break;
-//			    }
-//			}
-//
-//			if (!exist) {
-//			    System.out.println("Filter option 'storage capacity' does not exist in the list. Skipping the test.");
-//			    return;
-//			}
 		
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		List<WebElement> listDisplayTypeOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
-	    By.xpath("//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']")));
+		
+//		List<WebElement> listDisplayTypeOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+//	    By.xpath("//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']")));
+		
+		By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']");
+		List<WebElement> listDisplayTypeOptions=p.safeFindElement(listStorageCapacityOptionsBy);
 
 		
 		for (int i = 1; i < listDisplayTypeOptions.size(); i++) {
@@ -1525,7 +1498,7 @@ ProductListingPage pp=new ProductListingPage();
 	
 	
 	
-	@Test(priority=1)
+	@Test(priority=15)
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1604,4 +1577,140 @@ ProductListingPage pp=new ProductListingPage();
 			driver.navigate().refresh();
 		}
 	}
+	
+	@Test(priority=1)
+	public void verifyingStorageCapacityFilterFunctionalityTrial() throws InterruptedException {
+		
+		AmazonLandingPage am=new AmazonLandingPage();
+		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(15));
+		am.openingLandingPage();
+		am.givingInputWithinSearchBar("Mobile");
+		am.clickingOnSubmitSearchButton();
+		
+        ProductListingPage pp=new ProductListingPage();
+		if (!pp.filterCheckUnderList("Storage Capacity")) {
+		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
+		    return ;
+		}
+			
+		By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
+		List<WebElement> listStorageCapacityOptions=pp.safeFindElement(listStorageCapacityOptionsBy);
+		
+		
+		
+		for (int i = 1; i < listStorageCapacityOptions.size(); i++) {
+			System.out.println(listStorageCapacityOptions.get(i).getText() + "   size is  " + listStorageCapacityOptions.size());
+		}
+		
+		
+		
+		for (int i = 1; i < listStorageCapacityOptions.size(); i++) {
+			
+			List<WebElement> inloopParent = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
+			By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']")));
+			
+			if(i>inloopParent.size()-1) {
+				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+				return;
+			}
+			
+			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+			String str = inloopParent.get(i).getText().trim();
+
+			
+			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
+					"//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='"
+							+ str + "']"))).click();
+			
+			Thread.sleep(2000);
+
+			String currentWindow=driver.getWindowHandle();
+			System.out.println("Printing current window  "+ currentWindow);
+		    List<WebElement> productNameListingPage  =	driver.findElements(By.xpath("//div[@data-cy='title-recipe']"));
+			for(int p=1;p<productNameListingPage.size();p++) {
+				WebElement productName=wait.until(ExpectedConditions.elementToBeClickable(By.xpath("(//div[@data-cy='title-recipe'])["+p+"]")));
+				String pName=productName.getText();
+						System.out.println("inside the loop and product name is "+pName);
+				driver.findElement(By.xpath("(//div[@data-cy='title-recipe'])["+p+"]")).click();
+				System.out.println("Clicked on the producct name new pop-up should open");
+				Thread.sleep(2000);
+				Set<String> allWindowHandles=driver.getWindowHandles();
+				
+				for(String e:allWindowHandles) {
+					if(!e.equals(currentWindow)) {
+						System.out.println("found the window switching now");
+
+						driver.switchTo().window(e);
+					}else {
+						System.out.println("did not find the window trying again");
+					}
+				}
+				
+				
+				System.out.println("Switched to the new window here");
+				Thread.sleep(2000);
+
+				
+
+				WebElement productNameIndividualPage = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@id='productTitle']")));
+
+				WebElement productKeyFeatureBlock = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']")));
+
+				WebElement aboutThisItemBulletPoint = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='feature-bullets']")));
+
+				WebElement technicalDetailsBlockIndividualPage = wait.until(
+				    ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='prodDetails']")));
+				
+			
+				// Scroll and wait for the 'See More Product Details' button
+				((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 700);");
+				Thread.sleep(2000);
+						
+				try {
+			        WebElement seeMoreProductDetailsButtonIndividualPage = wait.until(ExpectedConditions.elementToBeClickable(
+			            By.xpath("//a[@id='seeMoreDetailsLink']")));
+
+			        ((JavascriptExecutor) driver).executeScript(
+			            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
+			        Thread.sleep(500);
+
+			        seeMoreProductDetailsButtonIndividualPage.click();
+			        System.out.println("'See More Details' clicked.");
+
+			    } catch (Exception e1) {
+			    	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+pName);
+			    	driver.close();
+			    	driver.switchTo().window(currentWindow);
+			    	continue; // ✅ move on to the next product
+			    }
+			    
+				
+				Thread.sleep(2000);
+				
+				System.out.println(productNameIndividualPage.getText()+"    productNameIndividualPage");
+				System.out.println(productKeyFeatureBlock.getText()+"    productKeyFeatureBlock");
+				System.out.println(aboutThisItemBulletPoint.getText()+"    aboutThisItemBulletPoint");
+				System.out.println(technicalDetailsBlockIndividualPage.getText()+"    technicalDetailsBlockIndividualPage");
+
+				
+				for(String e:allWindowHandles) {
+					if(e.equals(currentWindow)) {
+						driver.close();
+						System.out.println("Switching back to the listing page");
+						driver.switchTo().window(e);
+					}
+				}
+				
+			}
+
+			Thread.sleep(1000);
+			wait.until(ExpectedConditions.elementToBeClickable(
+			By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']"))).click();
+			
+		}
+	}
+
 }
