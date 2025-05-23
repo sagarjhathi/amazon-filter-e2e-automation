@@ -2,12 +2,17 @@ package amazonfilterapplicatione2e;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class ProductListingPage extends  BasePage{
 
@@ -84,5 +89,48 @@ public class ProductListingPage extends  BasePage{
 	        return false;
 	    }
 }
+	
+	
+	public void safeClick(By locator) {
+	    int attempts = 0;
+
+	    while (attempts < 3) {
+	        try {
+	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+	            element.click();
+	            return;
+	        } catch (ElementClickInterceptedException  | StaleElementReferenceException e) {
+	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+	            attempts++;
+	            try {
+	                Thread.sleep(1000); // small delay before retry
+	            } catch (InterruptedException ignored) {}
+	        }
+	    }
+
+	    throw new RuntimeException("Click failed after multiple retries: " + locator);
+	}
+
+
+	public List<WebElement> safeFindElement(By locator) {
+	    int attempts = 0;
+	    while (attempts < 3) {
+	        try {
+	            List<WebElement> element = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	            System.out.println("Found the element: " + locator);
+	            return element;
+	        } catch (NoSuchElementException | StaleElementReferenceException e) {
+	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
+	            attempts++;
+	            try {
+	            	driver.navigate().refresh();
+	                Thread.sleep(1000);
+	            } catch (InterruptedException ignored) {}
+	        }
+	    }
+
+	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
+	}
+
 	
 }
