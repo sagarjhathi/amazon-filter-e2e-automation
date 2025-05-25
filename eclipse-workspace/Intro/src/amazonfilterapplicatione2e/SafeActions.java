@@ -7,12 +7,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class SafeActions extends BasePage{
-    private WebDriverWait wait;
-
-//    public SafeActions(WebDriver driver) {
-//        this.driver = driver;
-//        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-//    }
+   
 
     public WebElement safeFindElement(By locator) {
         int attempts = 0;

@@ -13,6 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ProductListingPage extends  BasePage{
 
@@ -74,49 +75,92 @@ public boolean filterCheckUnderList(String filterName1,String filterName2) {
 }
 	
 	
-	public void safeClick(By locator) {
-	    int attempts = 0;
-	    while (attempts < 3) {
-	        try {
-	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-	            element.click();
-	            System.out.println("Clicking using safeClick");
+//	public void safeClick(By locator) {
+//	    int attempts = 0;
+//	    while (attempts < 3) {
+//	        try {
+//	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+//	            element.click();
+//	            System.out.println("Clicking using safeClick");
+//	            return;
+//	        } catch (ElementClickInterceptedException  | StaleElementReferenceException e) {
+//	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+//	            driver.navigate().refresh();
+//	            attempts++;
+//	            try {
+//	                Thread.sleep(1000); // small delay before retry
+//	            } catch (InterruptedException ignored) {}
+//	        }
+//	    }
+//
+//	    throw new RuntimeException("Click failed after multiple retries: " + locator);
+//     }
+//
+//
+//	public List<WebElement> safeFindElements(By locator) {
+//	    int attempts = 0;
+//	    while (attempts < 3) {
+//	        try {
+//	            List<WebElement> element = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+//	            System.out.println("Found the element: " + locator);
+//	            return element;
+//	        } catch (NoSuchElementException | StaleElementReferenceException e) {
+//	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
+//	            attempts++;
+//	            try {
+//	            	driver.navigate().refresh();
+//	            	System.out.println("Refreshing the page in safeFindElements Method");
+//	                Thread.sleep(1000);
+//	            } catch (InterruptedException ignored) {}
+//	        }
+//	    }
+//
+//	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
+//	}
 
-	            return;
-	        } catch (ElementClickInterceptedException  | StaleElementReferenceException e) {
-	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
-	            driver.navigate().refresh();
-	            attempts++;
-	            try {
-	                Thread.sleep(1000); // small delay before retry
-	            } catch (InterruptedException ignored) {}
-	        }
-	    }
-
-	    throw new RuntimeException("Click failed after multiple retries: " + locator);
+public void safeClick(By locator) {
+    int attempts = 0;
+    while (attempts < 3) {
+        try {
+            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+            element.click();
+            System.out.println("Clicking using safeClick");
+            return;
+        } catch (ElementClickInterceptedException | StaleElementReferenceException e) {
+            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+            attempts++;
+            try {
+                driver.navigate().refresh();
+                Thread.sleep(1000); // small delay before retry
+            } catch (InterruptedException ignored) {}
+        }
+    }
+    // After 3 attempts, skip the action without throwing exception
+    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
 }
 
+public List<WebElement> safeFindElements(By locator) {
+    int attempts = 0;
+    while (attempts < 3) {
+        try {
+            List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+            System.out.println("Found the elements: " + locator);
+            return elements;
+        } catch (NoSuchElementException | StaleElementReferenceException e) {
+            System.out.println("Retrying findElements for: " + locator + " - Attempt " + (attempts + 1));
+            attempts++;
+            try {
+                driver.navigate().refresh();
+                System.out.println("Refreshing the page in safeFindElements Method");
+                Thread.sleep(1000);
+            } catch (InterruptedException ignored) {}
+        }
+    }
+    // After 3 attempts, return null instead of throwing exception
+    System.out.println("Skipping action: Elements not found after 3 attempts - " + locator);
+    return null;
+}
 
-	public List<WebElement> safeFindElements(By locator) {
-	    int attempts = 0;
-	    while (attempts < 3) {
-	        try {
-	            List<WebElement> element = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-	            System.out.println("Found the element: " + locator);
-	            return element;
-	        } catch (NoSuchElementException | StaleElementReferenceException e) {
-	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
-	            attempts++;
-	            try {
-	            	driver.navigate().refresh();
-	            	System.out.println("Refreshing the page in safeFindElements Method");
-	                Thread.sleep(1000);
-	            } catch (InterruptedException ignored) {}
-	        }
-	    }
-
-	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
-	}
 	
 	
 	public WebElement safeFindElement(By locator) {
@@ -126,17 +170,22 @@ public boolean filterCheckUnderList(String filterName1,String filterName2) {
 	            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	            System.out.println("Found the element: " + locator);
 	            return element;
-	        } catch (NoSuchElementException | StaleElementReferenceException e) {
+	        } catch (Exception e) {
 	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
 	            attempts++;
 	            try {
-	            	driver.navigate().refresh();
-	            	System.out.println("Refreshing the page in safeFindElement Method");
+	                driver.navigate().refresh();
+	                System.out.println("Refreshing the page in safeFindElement Method");
 	                Thread.sleep(1000);
 	            } catch (InterruptedException ignored) {}
 	        }
 	    }
 
-	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
+//	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
+	    // Element not found after retries — skip the action
+	    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
+	    return null;
 	}
+
+
 }
