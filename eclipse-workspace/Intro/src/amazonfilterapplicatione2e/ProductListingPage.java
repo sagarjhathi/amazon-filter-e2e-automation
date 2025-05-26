@@ -27,8 +27,6 @@ public class ProductListingPage extends  BasePage{
 	@FindBy(xpath="//div[@data-cy='delivery-recipe']")
 	WebElement productDeliveryDayListingPage;
 	
-	
-	
 	@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
 	List<WebElement> listOfFilterNameInLeftNav;
 	
@@ -54,7 +52,7 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	
-public boolean filterCheckUnderList(String filterName1,String filterName2) {
+       public boolean filterCheckUnderList(String filterName1,String filterName2) {
 		
 	    List<String> filterNames = new ArrayList<>();
 	    String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
@@ -72,7 +70,7 @@ public boolean filterCheckUnderList(String filterName1,String filterName2) {
 	        System.out.println("Filter option '" + filterName1 +"  " +filterName2+ "' does not exist in the list. Skipping the test.");
 	        return false;
 	    }
-}
+    }
 	
 	
 //	public void safeClick(By locator) {

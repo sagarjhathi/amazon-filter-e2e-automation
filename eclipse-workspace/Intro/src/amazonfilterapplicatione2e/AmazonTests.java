@@ -559,7 +559,7 @@ public class AmazonTests extends BaseTest {
 //				System.out.println(productNameIndividualPage.getText()+"    productNameIndividualPage");
 //				System.out.println(productKeyFeatureBlock.getText()+"    productKeyFeatureBlock");
 //				System.out.println(aboutThisItemBulletPoint.getText()+"    aboutThisItemBulletPoint");
-//		//		System.out.println(seeMoreProductDetailsButtonIndividualPage.getText()+"    seeMoreProductDetailsButtonIndividualPage");
+//				System.out.println(seeMoreProductDetailsButtonIndividualPage.getText()+"    seeMoreProductDetailsButtonIndividualPage");
 //				System.out.println(technicalDetailsBlockIndividualPage.getText()+"    technicalDetailsBlockIndividualPage");
 
 				
