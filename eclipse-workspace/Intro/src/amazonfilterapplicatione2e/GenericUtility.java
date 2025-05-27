@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.openqa.selenium.WebElement;
 
+
 public class GenericUtility extends ProductListingPage{
 	
 	
@@ -28,7 +29,7 @@ public class GenericUtility extends ProductListingPage{
 
 
 
-   public boolean filterCheckUnderList(String filterName1,String filterName2) {
+    public boolean filterCheckUnderList(String filterName1,String filterName2) {
 	
     List<String> filterNames = new ArrayList<>();
     String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
@@ -48,4 +49,5 @@ public class GenericUtility extends ProductListingPage{
     }
 }
 
+    
 }
