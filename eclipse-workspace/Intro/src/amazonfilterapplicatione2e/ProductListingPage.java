@@ -3,6 +3,7 @@ package amazonfilterapplicatione2e;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
 import org.openqa.selenium.By;
@@ -30,8 +31,47 @@ public class ProductListingPage extends  BasePage{
 	@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
 	List<WebElement> listOfFilterNameInLeftNav;
 	
+	By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
+    By productNameListingPageBy=By.xpath("//div[@data-cy='title-recipe']");
+    
+    By productNameIndividualPage=By.xpath("//span[@id='productTitle']");
+
+	By productKeyFeatureBlock= By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
+
+	By aboutThisItemBulletPoint=By.xpath("//div[@id='feature-bullets']");
+
+	By technicalDetailsBlockIndividualPage =By.xpath("//div[@id='prodDetails']");
+
+	By seeMoreProductDetailsButtonIndividualPageBy=By.xpath("//a[@id='seeMoreDetailsLink']");
+
+	By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
+
+	 public By getFilterByName(String filterName) {
+	        return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+	    }
+	 
+	 public By getProductByIndex(int index) {
+	        return By.xpath("(//div[@data-cy='title-recipe'])[" + index + "]");
+	    }
+	 
+	 
+	 public void switchToNewWindow(String currentWindowHandle) {
+		    Set<String> allWindowHandles = driver.getWindowHandles();
+
+		    for (String handle : allWindowHandles) {
+		        if (!handle.equals(currentWindowHandle)) {
+		            System.out.println("Found the new window. Switching now...");
+		            driver.switchTo().window(handle);
+		            return;
+		        }
+		    }
+
+		    System.out.println("No new window found to switch to.");
+		}
+
 	
 	
+	 
 	public boolean filterCheckUnderList(String filterName) {		
 		    List<String> filterNames = new ArrayList<>();
 		    String target = filterName.trim().toLowerCase(); // convert input to lowercase
