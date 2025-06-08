@@ -955,28 +955,26 @@ public class AmazonTests extends BaseTest {
 	@Test(priority=0)
 	public void verifyingProcessorSpeedFilterFunctionality() throws InterruptedException {
 		
+		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		
 		SafeActions safeAct=new SafeActions();
+		ProductListingPage productPage=new ProductListingPage();
         GenericUtility genericUtility =new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Processor Speed")) {
 		    return ;
 		}
 		
-		ProductListingPage productPage=new ProductListingPage();
-		//By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
+	
 		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
-		
-		
 		genericUtility.printFilterNamesOnly(safeAct);
 		
+		
 		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
-			
 			
 			List<WebElement> inloopParent=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
 			if(i>inloopParent.size()-1) {
@@ -985,67 +983,37 @@ public class AmazonTests extends BaseTest {
 			}
 			
 			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-			String str = inloopParent.get(i).getText().trim();
-
-			
-		//	By filterName=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ str + "']");
+			String str = inloopParent.get(i).getText().trim();			
 			safeAct.safeClick(productPage.getFilterByName(str));
-				
 			Thread.sleep(1000);
-
 			String currentWindow=driver.getWindowHandle();
 			System.out.println("Printing current window  "+ currentWindow);
-						
-		//    By productNameListingPageBy=By.xpath("//div[@data-cy='title-recipe']");
-			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
-		    
 			
+			
+			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
 			for(int p=1;p<productNameListingPage.size();p++) {
 				
 				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-				//By elementClickOnListingPage=By.xpath("(//div[@data-cy='title-recipe'])["+p+"]");
 				safeAct.safeClick(productPage.getProductByIndex(i));
 				
 				
 				System.out.println("Clicked on the producct name new pop-up should open");
-				Thread.sleep(2000);
-//				Set<String> allWindowHandles=driver.getWindowHandles();
-//				
-//				for(String e:allWindowHandles) {
-//					if(!e.equals(currentWindow)) {
-//						System.out.println("found the window switching now");
-//						driver.switchTo().window(e);
-//					}else {
-//						System.out.println("did not find the window trying again");
-//					}
-//				}
-//				
-//				
-//				System.out.println("Switched to the new window here");
-//				Thread.sleep(2000);			
+				Thread.sleep(2000);		
 				productPage.switchToNewWindow(currentWindow);
 				
-			//	By productNameIndividualPage=By.xpath("//span[@id='productTitle']");
 				safeAct.safeFindElement(productPage.productNameIndividualPage);
 				
-			//	By productKeyFeatureBlock= By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
 				safeAct.safeFindElement(productPage.productKeyFeatureBlock);
 				
-			//	By aboutThisItemBulletPoint=By.xpath("//div[@id='feature-bullets']");
 				safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
 				
-			//	By technicalDetailsBlockIndividualPage =By.xpath("//div[@id='prodDetails']");
 				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
 				
-			
-				// Scroll and wait for the 'See More Product Details' button
-		//		((JavascriptExecutor) driver).executeScript("window.scrollBy(0, 700);");
 		        genericUtility.scrollByPixel(0, 700);
 		    
 		
 						
 				try {					
-				//	By seeMoreProductDetailsButtonIndividualPageBy=By.xpath("//a[@id='seeMoreDetailsLink']");
 				   
 					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
 			        ((JavascriptExecutor) driver).executeScript(
@@ -1062,32 +1030,12 @@ public class AmazonTests extends BaseTest {
 			    	continue; // ✅ move on to the next product
 			    }
 			    
-				
-				Thread.sleep(2000);
-				
-//				System.out.println(productNameIndividualPage.getText()+"    productNameIndividualPage");
-//				System.out.println(productKeyFeatureBlock.getText()+"    productKeyFeatureBlock");
-//				System.out.println(aboutThisItemBulletPoint.getText()+"    aboutThisItemBulletPoint");
-//				System.out.println(seeMoreProductDetailsButtonIndividualPage.getText()+"    seeMoreProductDetailsButtonIndividualPage");
-//				System.out.println(technicalDetailsBlockIndividualPage.getText()+"    technicalDetailsBlockIndividualPage");
-
-				
-//				for(String e:allWindowHandles) {
-//					if(e.equals(currentWindow)) {
-//						driver.close();
-//						System.out.println("Switching back to the listing page");
-//						driver.switchTo().window(e);
-//					}
-//				}
-				
+				Thread.sleep(2000);				
 				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 				
 			}
 
-				
-			//By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
 			safeAct.safeClick(productPage.clearButtonBy);
-			
 		}
 	}
 	
