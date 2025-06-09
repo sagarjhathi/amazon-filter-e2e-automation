@@ -994,7 +994,7 @@ public class AmazonTests extends BaseTest {
 			for(int p=1;p<productNameListingPage.size();p++) {
 				
 				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-				safeAct.safeClick(productPage.getProductByIndex(i));
+				safeAct.safeClick(productPage.getProductByIndex(p));
 				
 				
 				System.out.println("Clicked on the producct name new pop-up should open");
@@ -1010,9 +1010,7 @@ public class AmazonTests extends BaseTest {
 				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
 				
 		        genericUtility.scrollByPixel(0, 700);
-		    
-		
-						
+		    	
 				try {					
 				   
 					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
@@ -1031,10 +1029,8 @@ public class AmazonTests extends BaseTest {
 			    }
 			    
 				Thread.sleep(2000);				
-				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-				
+				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
 			}
-
 			safeAct.safeClick(productPage.clearButtonBy);
 		}
 	}
