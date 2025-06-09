@@ -969,70 +969,72 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-	
 		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
 		genericUtility.printFilterNamesOnly(safeAct);
+		productPage.applyFilterAndValidateProducts(productPage.listProcessorSpeedOptionsBy);
 		
 		
-		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
-			
-			List<WebElement> inloopParent=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
-			if(i>inloopParent.size()-1) {
-				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
-				return;
-			}
-			
-			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-			String str = inloopParent.get(i).getText().trim();			
-			safeAct.safeClick(productPage.getFilterByName(str));
-			Thread.sleep(1000);
-			String currentWindow=driver.getWindowHandle();
-			System.out.println("Printing current window  "+ currentWindow);
-			
-			
-			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
-			for(int p=1;p<productNameListingPage.size();p++) {
-				
-				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-				safeAct.safeClick(productPage.getProductByIndex(p));
-				
-				
-				System.out.println("Clicked on the producct name new pop-up should open");
-				Thread.sleep(2000);		
-				productPage.switchToNewWindow(currentWindow);
-				
-				safeAct.safeFindElement(productPage.productNameIndividualPage);
-				
-				safeAct.safeFindElement(productPage.productKeyFeatureBlock);
-				
-				safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
-				
-				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
-				
-		        genericUtility.scrollByPixel(0, 700);
-		    	
-				try {					
-				   
-					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-			        ((JavascriptExecutor) driver).executeScript(
-			            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
-			        Thread.sleep(500);
-
-			        safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-			        System.out.println("'See More Details' clicked.");
-
-			    } catch (Exception e1) {
-			  //  	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
-			    	driver.close();
-			    	driver.switchTo().window(currentWindow);
-			    	continue; // ✅ move on to the next product
-			    }
-			    
-				Thread.sleep(2000);				
-				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
-			}
-			safeAct.safeClick(productPage.clearButtonBy);
-		}
+//		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
+//			
+//			List<WebElement> inloopParent=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
+//			if(i>inloopParent.size()-1) {
+//				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+//				return;
+//			}
+//			
+//			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+//			String str = inloopParent.get(i).getText().trim();			
+//			safeAct.safeClick(productPage.getFilterByName(str));
+//			Thread.sleep(1000);
+//			String currentWindow=driver.getWindowHandle();
+//			System.out.println("Printing current window  "+ currentWindow);
+//			
+//			
+//			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+//			for(int p=1;p<productNameListingPage.size();p++) {
+//				
+//				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
+//				safeAct.safeClick(productPage.getProductByIndex(p));
+//				
+//				
+//				System.out.println("Clicked on the producct name new pop-up should open");
+//				Thread.sleep(2000);		
+//				productPage.switchToNewWindow(currentWindow);
+//				
+//				safeAct.safeFindElement(productPage.productNameIndividualPage);
+//				
+//				safeAct.safeFindElement(productPage.productKeyFeatureBlock);
+//				
+//				safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
+//				
+//				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
+//				
+//		        genericUtility.scrollByPixel(0, 700);
+//		    	
+//				try {					
+//				   
+//					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+//			        ((JavascriptExecutor) driver).executeScript(
+//			            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
+//			        Thread.sleep(500);
+//
+//			        safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+//			        System.out.println("'See More Details' clicked.");
+//
+//			    } catch (Exception e1) {
+//			  //  	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
+//			    	driver.close();
+//			    	driver.switchTo().window(currentWindow);
+//			    	continue; // ✅ move on to the next product
+//			    }
+//			    
+//				Thread.sleep(2000);				
+//				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
+//			}
+//			safeAct.safeClick(productPage.clearButtonBy);
+//		}
+		
+		
 	}
 	
 	

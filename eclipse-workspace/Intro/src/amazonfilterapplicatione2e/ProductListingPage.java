@@ -228,21 +228,18 @@ public List<WebElement> safeFindElements(By locator) {
 	}
 
 
-	public List<WebElement> getFilterOptionsByBy(By filterOptionsBy){
-	    SafeActions safeAct = new SafeActions();
-	    List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(filterOptionsBy);
-	    return listProcessorSpeedOptions;
-
-	}
+	
+			
 	public void applyFilterAndValidateProducts(By filterOptionsBy) throws InterruptedException {
 
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
 	    GenericUtility genericUtility = new GenericUtility();
 
-	    List<WebElement> listProcessorSpeedOptions=getFilterOptionsByBy(filterOptionsBy);
-	    
-		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
+	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+	    genericUtility.printFilterNamesOnly(safeAct); // Optional for debugging
+
+		for (int i = 1; i < filterOptions.size(); i++) {
 		
 		List<WebElement> inloopParent=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
 		if(i>inloopParent.size()-1) {
@@ -262,7 +259,7 @@ public List<WebElement> safeFindElements(By locator) {
 		for(int p=1;p<productNameListingPage.size();p++) {
 			
 			System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-			safeAct.safeClick(productPage.getProductByIndex(i));
+			safeAct.safeClick(productPage.getProductByIndex(p));
 			
 			
 			System.out.println("Clicked on the producct name new pop-up should open");
@@ -301,7 +298,7 @@ public List<WebElement> safeFindElements(By locator) {
 		}
 		safeAct.safeClick(productPage.clearButtonBy);
 	}
-	    
 	}
+
 
 }
