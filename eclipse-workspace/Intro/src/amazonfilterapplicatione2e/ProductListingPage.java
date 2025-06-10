@@ -34,6 +34,14 @@ public class ProductListingPage extends  BasePage{
 	
 	By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	
+	By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
+	
+    By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']//span[@class='a-size-base a-color-base']");
+    
+	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
+
+
+
     By productNameListingPageBy=By.xpath("//div[@data-cy='title-recipe']");
     
     By productNameIndividualPage=By.xpath("//span[@id='productTitle']");
@@ -237,7 +245,7 @@ public List<WebElement> safeFindElements(By locator) {
 	    GenericUtility genericUtility = new GenericUtility();
 
 	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-	    genericUtility.printFilterNamesOnly(safeAct); // Optional for debugging
+	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
 
 		for (int i = 1; i < filterOptions.size(); i++) {
 		
