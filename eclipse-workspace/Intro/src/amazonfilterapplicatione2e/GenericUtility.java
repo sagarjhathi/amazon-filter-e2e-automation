@@ -2,6 +2,7 @@ package amazonfilterapplicatione2e;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Set;
 
 import org.openqa.selenium.By;
@@ -26,6 +27,32 @@ public class GenericUtility extends ProductListingPage{
 	    return false;
 	}
 
+
+	public boolean isElementInViewport( By locator) {
+	    try {
+	        WebElement element = driver.findElement(locator);
+
+	        if (!element.isDisplayed()) {
+	            return false;
+	        }
+
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	        return (Boolean) js.executeScript(
+	            "var elem = arguments[0],                 " +
+	            "  box = elem.getBoundingClientRect(),    " +
+	            "  cx = box.left + box.width / 2,         " +
+	            "  cy = box.top + box.height / 2,         " +
+	            "  e = document.elementFromPoint(cx, cy); " +
+	            "for (; e; e = e.parentElement) {         " +
+	            "  if (e === elem)                        " +
+	            "    return true;                         " +
+	            "}                                        " +
+	            "return false;", element);
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	}
 
 
 
