@@ -54,10 +54,10 @@ public class GenericUtility extends ProductListingPage{
     
 	
 	
-    public void printFilterNamesOnly(SafeActions safeAct) {
-		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(listProcessorSpeedOptionsBy);		
-		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
-			System.out.println(listProcessorSpeedOptions.get(i).getText() + "   size of the list is  " + listProcessorSpeedOptions.size());
+    public void printFilterNamesOnly(By filterName) {
+		List<WebElement> filterOptions=safeFindElements(filterName);		
+		for (int i = 1; i < filterOptions.size(); i++) {
+			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
 		}
     }
 
