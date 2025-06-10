@@ -1,6 +1,10 @@
 package amazonfilterapplicatione2e;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
@@ -16,6 +20,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class ProductListingPage extends  BasePage{
 
@@ -39,8 +44,17 @@ public class ProductListingPage extends  BasePage{
     By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']//span[@class='a-size-base a-color-base']");
     
 	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
-
-
+	
+	By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
+	
+	By getItByTomorrowUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']");
+	
+	By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
+	
+	
+	
+	By listProductCardsBy=By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
+	
 
     By productNameListingPageBy=By.xpath("//div[@data-cy='title-recipe']");
     
@@ -306,6 +320,48 @@ public List<WebElement> safeFindElements(By locator) {
 		}
 		safeAct.safeClick(productPage.clearButtonBy);
 	}
+	}
+
+	
+	
+	public void validateDeliveryFilterOptions(By productCardLocator) throws InterruptedException {
+	    // Click the delivery filter
+		ProductListingPage productPage = new ProductListingPage();
+		SafeActions safeAct = new SafeActions();
+	    safeAct.safeClick(productCardLocator);
+	    Thread.sleep(2000); // Consider replacing with explicit wait
+
+	    // Find product card elements
+	    List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
+
+	    // Format today and tomorrow's dates
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+	    String todayFormatted = LocalDate.now().format(formatter);
+	    String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
+
+	    // Build allowed date parts
+	    Set<String> allowedDateParts = new HashSet<>();
+	    Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+	    Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+	    allowedDateParts.add("Today");
+	    allowedDateParts.add("Tomorrow");
+
+	    System.out.println("Allowed date parts: " + allowedDateParts);
+
+	    // Validate each element's delivery date
+	    for (int i = 0; i < deliveryElements.size(); i++) {
+	        String text = deliveryElements.get(i).getText();
+	        System.out.println(text + "   size is " + deliveryElements.size() + " index no is " + i);
+
+	        boolean found = allowedDateParts.stream().anyMatch(text::contains);
+	        Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + text);
+	        System.out.println("✔ Valid delivery date found in: " + text);
+	    }
+
+	    // Clear the delivery filter
+	    safeAct.safeClick(productPage.clearButtonBy);
+	    System.out.println("Clicking clear under delivery");
+	    Thread.sleep(2000); // Replace with explicit wait if possible
 	}
 
 
