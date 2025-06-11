@@ -1,5 +1,6 @@
 package amazonfilterapplicatione2e;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -39,6 +40,8 @@ public class ProductListingPage extends  BasePage{
 	
 	By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	
+	By listBrandsOptionsBy=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
+	
 	By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
 	
     By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']//span[@class='a-size-base a-color-base']");
@@ -51,7 +54,11 @@ public class ProductListingPage extends  BasePage{
 	
 	By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
 	
+	By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
 	
+	
+	
+	By seeMoreButtonUnderBrandFilter=By.xpath("//a[@aria-label='See more, Brands']");
 	
 	By listProductCardsBy=By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
 	
@@ -70,9 +77,32 @@ public class ProductListingPage extends  BasePage{
 
 	By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
 
-	 public By getFilterByName(String filterName) {
-	        return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
-	    }
+	By listBrandFilterOptionBaseXpath=By.xpath("//ul[@id='filter-p_123']");
+	
+	By listStorageCapacityFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']");
+	
+	By listBatteryCapacityFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']");
+	
+	By listDisplaySizeFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']");
+	
+	By listProcessorSpeedFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']");
+	
+	
+//	    public By getProcessorSpeedFilterByName(String filterName) {
+//	        return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+//	    }
+//	    
+//	    public By getBrandsFilterByName(String filterName) {
+//	        return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='"+ filterName + "']");
+//	    }
+	
+	
+	public By getFilterByName(By locator, String filterName) {
+		String raw = locator.toString(); // e.g., "By.xpath: //div[@class='example']"
+	    raw= raw.replace("By.xpath: ", "").trim(); // Now it's just "//div[@class='example']"
+	    return By.xpath(raw + "//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+	}
+
 	 
 	 public By getProductByIndex(int index) {
 	        return By.xpath("(//div[@data-cy='title-recipe'])[" + index + "]");
@@ -252,7 +282,7 @@ public List<WebElement> safeFindElements(By locator) {
 
 	
 			
-	public void applyFilterAndValidateProducts(By filterOptionsBy) throws InterruptedException {
+	public void applyFilterAndValidateProducts(By filterOptionsBy, By baseXapthLocator) throws InterruptedException {
 
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
@@ -271,11 +301,10 @@ public List<WebElement> safeFindElements(By locator) {
 		
 		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
 		String str = inloopParent.get(i).getText().trim();			
-		safeAct.safeClick(productPage.getFilterByName(str));
+		safeAct.safeClick(productPage.getFilterByName(baseXapthLocator,str));
 		Thread.sleep(1000);
 		String currentWindow=driver.getWindowHandle();
 		System.out.println("Printing current window  "+ currentWindow);
-		
 		
 		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
 		for(int p=1;p<productNameListingPage.size();p++) {
@@ -364,5 +393,170 @@ public List<WebElement> safeFindElements(By locator) {
 	    Thread.sleep(2000); // Replace with explicit wait if possible
 	}
 
+	
+	public void validateGetItTodayFilterOptionUnderDeliveryDay(By filterOption) throws InterruptedException {
+		
+		ProductListingPage productPage = new ProductListingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeClick(filterOption);		            		
+		Thread.sleep(2000);
+	
+List<WebElement> deliveryChild=safeAct.safeFindElements(productPage.listProductCardsBy);	
+for(int j=0;j<deliveryChild.size();j++) {
+	System.out.println(deliveryChild.get(j).getText()+"   size is " +deliveryChild.size() +" index no is "+j);
+	String assertString=deliveryChild.get(j).getText();
+	
+	  boolean found = false;
+	  if (assertString.contains("Today")) {
+            found = true;
+        }
+	    Assert.assertTrue(found, "❌ None of the allowed date parts are present in: " + assertString);
+	    System.out.println("✔ Valid delivery date found in: " + assertString);
+        }
+
+		safeAct.safeClick(productPage.clearButtonBy);
+		System.out.println("Clicking clear under delivery");
+	}
+	
+	
+	
+	
+	public void applyFilterAndValidateBrandsFilter(By filterOptionsBy, By baseXapthLocator) throws InterruptedException {
+
+	    SafeActions safeAct = new SafeActions();
+	    ProductListingPage productPage = new ProductListingPage();
+	    GenericUtility genericUtility = new GenericUtility();
+
+	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
+	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+		
+	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
+
+		for (int i = 1; i < filterOptions.size(); i++) {
+		    
+		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
+		if(i>inloopParent.size()-1) {
+			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+			return;
+		}
+		
+		 if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
+	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+	            Thread.sleep(1000);
+	        }
+		
+	    
+		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+		String str = inloopParent.get(i).getText().trim();	
+		genericUtility.smoothScrollToElement(productPage.getFilterByName(baseXapthLocator,str));
+		safeAct.safeClick(productPage.getFilterByName(baseXapthLocator,str));
+		Thread.sleep(1000);
+		
+		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+		
+		int noOfBrandNameNotIntheList =0;
+		for(int k=0;k<productNameListingPage.size();k++) {
+			if(productNameListingPage.get(k).getText().contains(str)) {
+				System.out.println("Product name found in the list index no is -->" +k);
+			}else {
+				System.out.println("Product name not found in the list hence the filter functionality failed index no is -->"+k);
+				noOfBrandNameNotIntheList++;
+			//	Assert.fail("Product name not found in the list hence the filter functionality failed index no is -->"+k);
+			}
+		}
+		
+		System.out.println("The no of brand name not present in the list is -->"+noOfBrandNameNotIntheList +"for the brand filter -->"+str);
+		
+		try {
+			safeAct.safeClick(productPage.clearButtonBy);
+		} catch (Exception e) {
+		    System.out.println("Element not clickable, going back via navigate.back()...filter name is"+str);
+		    driver.navigate().back();
+		}
+		
+		
+		if(i % 10 == 0 && i != 0) {
+			
+			driver.navigate().refresh();
+			System.out.println("Refreshing the page here ");
+		}	
+		}
+	}
+	
+	
+	public void applyBrandFiltersAndValidateProductNames(By filterOptionsBy) throws InterruptedException {
+	    SafeActions safeAct = new SafeActions();
+	    ProductListingPage productPage = new ProductListingPage();
+	    GenericUtility genericUtility = new GenericUtility();
+
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+
+	    // Step 1: Click 'See more' under brands
+	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
+	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+
+	    // Step 2: Get all brand filter options
+	    List<WebElement> brandOptions = safeAct.safeFindElements(filterOptionsBy);
+
+	    for (int i = 1; i < brandOptions.size(); i++) {
+	        // Refresh and recapture DOM elements in each loop to avoid stale elements
+	        List<WebElement> inLoopBrandOptions = safeAct.safeFindElements(filterOptionsBy);
+
+	        if (i > inLoopBrandOptions.size() - 1) {
+	            System.out.println("Avoiding out-of-bounds issue.");
+	            return;
+	        }
+
+	        // Step 3: Click 'See more' in each iteration if present (as per original logic)
+	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
+	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+	            Thread.sleep(1000);
+	        }
+
+	        // Step 4: Extract brand name
+	        String brandName = inLoopBrandOptions.get(i).getText().trim();
+	        System.out.println("Applying brand filter: " + brandName);
+
+	        // Step 5: Scroll to brand and click
+	        By dynamicBrandLocator = By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='" + brandName + "']");
+	        genericUtility.smoothScrollToElement(dynamicBrandLocator);
+	        wait.until(ExpectedConditions.elementToBeClickable(dynamicBrandLocator)).click();
+	        Thread.sleep(2000);
+
+	        // Step 6: Validate product titles contain the brand name
+	        List<WebElement> productTitles = safeAct.safeFindElements(productPage.productNameListingPageBy);
+	        int mismatchCount = 0;
+
+	        for (int k = 0; k < productTitles.size(); k++) {
+	            String productTitle = productTitles.get(k).getText();
+	            if (!productTitle.contains(brandName)) {
+	                System.out.println("Mismatch at index " + k + " → Title: " + productTitle);
+	                mismatchCount++;
+	            }
+	        }
+
+	        System.out.println("Mismatch count for brand '" + brandName + "': " + mismatchCount);
+
+	        // Step 7: Clear filter or go back
+	        try {
+	            safeAct.safeClick(productPage.clearButtonBy);
+	        } catch (Exception e) {
+	            System.out.println("Clear button not clickable, navigating back. Brand: " + brandName);
+	            driver.navigate().back();
+	        }
+
+	        // Step 8: Refresh on every 10th iteration
+	        if (i % 10 == 0 && i != 0) {
+	            driver.navigate().refresh();
+	            System.out.println("Refreshing page after brand " + brandName);
+	        }
+	    }
+	}
 
 }
+

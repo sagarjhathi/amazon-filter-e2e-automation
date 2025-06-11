@@ -98,6 +98,15 @@ public class GenericUtility extends ProductListingPage{
             e.printStackTrace();
         }
     }
+    
+    public void smoothScrollToElement(By locator) {
+        SafeActions safeAct=new SafeActions();
+       WebElement element= safeAct.safeFindElement(locator);
+        ((JavascriptExecutor) driver).executeScript(
+            "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", 
+            element
+        );
+    }
  
     
     public void closeCurrentWindowAndSwitchBack(String currentWindow) {
