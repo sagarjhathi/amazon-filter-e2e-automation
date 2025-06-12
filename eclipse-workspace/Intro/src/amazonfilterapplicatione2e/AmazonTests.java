@@ -171,7 +171,7 @@ public class AmazonTests extends BaseTest {
 
 	
 	
-	@Test(priority=2)
+	@Test(priority=-1)
 	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -184,13 +184,13 @@ public class AmazonTests extends BaseTest {
 		            		ProductListingPage productPage=new ProductListingPage();
 		            		SafeActions safeAct=new SafeActions();
 		            		
-		            		if (!genericUtility.isElementInViewport(productPage.getItTodayUnderDeliveryDayFilterBy)) {
+		            		if (!genericUtility.isElementVisibleOnUI(productPage.getItTodayUnderDeliveryDayFilterBy)) {
 		            		    System.out.println("Filter option 'Get It Today' does not exist. Skipping the test.");
-		            		    return ;
+		            		    return;
 		            		}
 		            		
 		            		
-		            	productPage.validateGetItTodayFilterOptionUnderDeliveryDay(productPage.getItTodayUnderDeliveryDayFilterBy);
+                            productPage.validateGetItTodayFilterOptionUnderDeliveryDay(productPage.getItTodayUnderDeliveryDayFilterBy);
 		
 //  List<WebElement> deliveryChild=safeAct.safeFindElements(productPage.listProductCardsBy);	
 //	for(int j=0;j<deliveryChild.size();j++) {
@@ -233,7 +233,11 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandFilterOptionBaseXpath,productPage.listBrandsOptionsBy);
+		productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
+		
+		productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
+		
+	
 		
 //		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 //		WebElement moreInBrands = wait.until(ExpectedConditions.elementToBeClickable(
@@ -355,7 +359,7 @@ public class AmazonTests extends BaseTest {
 		ProductListingPage productPage=new ProductListingPage();
 		List<WebElement> listStorageCapacityOptions=safeAct.safeFindElements(productPage.listStorageCapacityOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listStorageCapacityOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityFilterOptionsBaseXpath,productPage.listStorageCapacityOptionsBy);
+		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"batterycapacity");
 		
 		
 
@@ -581,7 +585,7 @@ public class AmazonTests extends BaseTest {
 	    
 	    List<WebElement> listBatteryCapacityOptions=safeAct.safeFindElements(productPage.listBatteryCapacityOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listBatteryCapacityOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityFilterOptionsBaseXpath,productPage.listBatteryCapacityOptionsBy);
+		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityOptionsBy,"displaysize");
 	    
 	    
 	    
@@ -793,7 +797,7 @@ public class AmazonTests extends BaseTest {
 //		By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
 		List<WebElement> listDisplaySizeOptions=safeAct.safeFindElements(productPage.listDisplaySizeOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listDisplaySizeOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listDisplaySizeFilterOptionsBaseXpath,productPage.listDisplaySizeOptionsBy);
+		productPage.applyFilterAndValidateProducts(productPage.listDisplaySizeOptionsBy,"displaysize");
 
 		
 //		for (int i = 1; i < listDisplaySizeOptions.size(); i++) {
@@ -958,7 +962,7 @@ public class AmazonTests extends BaseTest {
 		
 		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listProcessorSpeedOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listProcessorSpeedFilterOptionsBaseXpath,productPage.listProcessorSpeedOptionsBy);
+		productPage.applyFilterAndValidateProducts(productPage.listProcessorSpeedOptionsBy,"processorspeed");
 		
 		
 //		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
@@ -1155,8 +1159,7 @@ public class AmazonTests extends BaseTest {
 
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//ul[@id='filter-p_n_feature_thirty-one_browse-bin']//span[@class='a-size-base a-color-base' and text()='"
-							+ str + "']"))).click();
+					"//ul[@id='filter-p_n_feature_thirty-one_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ str + "']"))).click();
 			
 
 			wait.until(ExpectedConditions.elementToBeClickable(
@@ -1222,8 +1225,7 @@ public class AmazonTests extends BaseTest {
 
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base' and text()='"
-							+ str + "']"))).click();
+					"//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ str + "']"))).click();
 			
 
 			wait.until(ExpectedConditions.elementToBeClickable(
@@ -1276,8 +1278,7 @@ public class AmazonTests extends BaseTest {
 			String str = inloopParent.get(i).getText().trim();
 
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(
-					"//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"
-							+ str + "']"))).click();
+					"//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ str + "']"))).click();
 			
 			Thread.sleep(2000);
 			

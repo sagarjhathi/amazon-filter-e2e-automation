@@ -54,7 +54,49 @@ public class GenericUtility extends ProductListingPage{
 	    }
 	}
 
+	
+	
+	
+	public boolean isElementVisibleOnUI(By locator) {
+	    try {
+	        List<WebElement> elements = driver.findElements(locator); // Returns empty list if not found
+	        if (elements.isEmpty()) {
+	            return false;
+	        }
 
+	        WebElement element = elements.get(0);
+	        if (!element.isDisplayed()) {
+	            return false;
+	        }
+
+	        JavascriptExecutor js = (JavascriptExecutor) driver;
+	        return (Boolean) js.executeScript(
+	            "var elem = arguments[0],                 " +
+	            "  box = elem.getBoundingClientRect(),    " +
+	            "  cx = box.left + box.width / 2,         " +
+	            "  cy = box.top + box.height / 2,         " +
+	            "  e = document.elementFromPoint(cx, cy); " +
+	            "for (; e; e = e.parentElement) {         " +
+	            "  if (e === elem)                        " +
+	            "    return true;                         " +
+	            "}                                        " +
+	            "return false;", element);
+	    } catch (Exception e) {
+	        return false;
+	    }
+	}
+
+
+
+	
+	public boolean isElementPresent(By locator) {
+	    try {
+	        driver.findElement(locator);
+	        return true;
+	    } catch (NoSuchElementException e) {
+	        return false;
+	    }
+	}
 
     public boolean filterCheckUnderList(String filterName1,String filterName2) {
 	
