@@ -39,7 +39,7 @@ public class SafeActions extends BasePage{
 	            List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	            System.out.println("Found the elements: " + locator);
 	            return elements;
-	        } catch (NoSuchElementException | StaleElementReferenceException e) {
+	        } catch (TimeoutException | NoSuchElementException | StaleElementReferenceException e) {
 	            System.out.println("Retrying findElements for: " + locator + " - Attempt " + (attempts + 1));
 	            attempts++;
 	            try {
