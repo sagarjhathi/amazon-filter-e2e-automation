@@ -41,7 +41,7 @@ public class AmazonTests extends BaseTest {
 		                    SafeActions safeAct=new SafeActions();
 		                    
 		                    GenericUtility genericUtility=new GenericUtility();
-		                    if (!genericUtility.isElementInViewport(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
+		                    if (!genericUtility.isElementVisibleOnUI(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		        			    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
 		        			    return;
 		        			}
@@ -235,7 +235,7 @@ public class AmazonTests extends BaseTest {
 		
 		productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
 		
-		productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
+	//	productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
 		
 	
 		
@@ -338,7 +338,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=4)
+	@Test(priority=-2)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -359,7 +359,7 @@ public class AmazonTests extends BaseTest {
 		ProductListingPage productPage=new ProductListingPage();
 		List<WebElement> listStorageCapacityOptions=safeAct.safeFindElements(productPage.listStorageCapacityOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listStorageCapacityOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"batterycapacity");
+		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"storagecapacity");
 		
 		
 

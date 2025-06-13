@@ -19,7 +19,7 @@ public class SafeActions extends BasePage{
 	            element.click();
 	            System.out.println("Clicking using safeClick");
 	            return;
-	        } catch (ElementClickInterceptedException | StaleElementReferenceException e) {
+	        } catch (TimeoutException |ElementClickInterceptedException | StaleElementReferenceException e) {
 	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
 	            attempts++;
 	            try {

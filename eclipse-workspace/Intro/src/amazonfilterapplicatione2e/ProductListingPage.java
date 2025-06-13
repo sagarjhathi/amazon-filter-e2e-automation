@@ -316,7 +316,7 @@ public List<WebElement> safeFindElements(By locator) {
 
 		for (int i = 1; i < filterOptions.size(); i++) {
 		
-		List<WebElement> inloopParent=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
+		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
 		if(i>inloopParent.size()-1) {
 			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
 			return;
