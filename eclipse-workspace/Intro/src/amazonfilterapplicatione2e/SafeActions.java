@@ -79,5 +79,29 @@ public class SafeActions extends BasePage{
 		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
 		    return null;
 		}
+		
+		
+		
+		public boolean safeClickBoolean(By locator) {
+		    int attempts = 0;
+		    while (attempts < 3) {
+		        try {
+		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		            element.click();
+		            System.out.println("Clicking using safeClick");
+		            return true; // success
+		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
+		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+		            attempts++;
+		            try {
+		                driver.navigate().refresh();
+		                Thread.sleep(1000);
+		            } catch (InterruptedException ignored) {}
+		        }
+		    }
+		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
+		    return false; // failure
+		}
+
 }
 
