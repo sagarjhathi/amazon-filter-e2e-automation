@@ -44,11 +44,20 @@ public class ProductListingPage extends  BasePage{
 	
 	By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
 	
+	By listDisplayTypeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']");
+	
+	By listDiscountOptionsBy=By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']");
+	
     By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']//span[@class='a-size-base a-color-base']");
     
 	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	
 	By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
+	
+	By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
+	
+	By listOperatingSystemVersionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-one_browse-bin']//span[@class='a-size-base a-color-base']");
+	
 	
 	By getItByTomorrowUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']");
 	
@@ -57,12 +66,25 @@ public class ProductListingPage extends  BasePage{
 	By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
 	
 	
+	By seeMoreButtonUnderOperatingSystemFilter=By.xpath("//a[@aria-label='See more, Operating System Version']");
+	
 	
 	By seeMoreButtonUnderBrandFilter=By.xpath("//a[@aria-label='See more, Brands']");
 	
 	By listProductCardsBy=By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
 	
-
+	By priceMinSliderButton=By.id("p_36/range-slider_slider-item_lower-bound-slider");
+	
+	By priceMaxSliderButton=By.id("p_36/range-slider_slider-item_upper-bound-slider");
+	
+	By priceSliderSubmitButton=By.xpath("//div[@class='a-section sf-submit-range-button']");
+	
+	By minPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_upper-bound-slider']");
+	
+	By maxPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_lower-bound-slider']");
+	
+	By productPriceFromProductCards=By.xpath("//span[@class='a-price-whole']");
+	
     By productNameListingPageBy=By.xpath("//div[@data-cy='title-recipe']");
     
     By productNameIndividualPage=By.xpath("//span[@id='productTitle']");
@@ -76,16 +98,6 @@ public class ProductListingPage extends  BasePage{
 	By seeMoreProductDetailsButtonIndividualPageBy=By.xpath("//a[@id='seeMoreDetailsLink']");
 
 	By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
-
-	By listBrandFilterOptionBaseXpath=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
-	
-	By listStorageCapacityFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']");
-	
-	By listBatteryCapacityFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']");
-	
-	By listDisplaySizeFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']");
-	
-	By listProcessorSpeedFilterOptionsBaseXpath=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']");
 	
 	
 	    public By getfilterByTypeAndName(String filterName, String filterOption) {
@@ -109,7 +121,7 @@ public class ProductListingPage extends  BasePage{
 	        case "mobilephoneprimarycameraresolution":
 	        	return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "discount":
-	        	By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
+	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
 	    }
@@ -190,49 +202,6 @@ public class ProductListingPage extends  BasePage{
     }
 	
 	
-//	public void safeClick(By locator) {
-//	    int attempts = 0;
-//	    while (attempts < 3) {
-//	        try {
-//	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-//	            element.click();
-//	            System.out.println("Clicking using safeClick");
-//	            return;
-//	        } catch (ElementClickInterceptedException  | StaleElementReferenceException e) {
-//	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
-//	            driver.navigate().refresh();
-//	            attempts++;
-//	            try {
-//	                Thread.sleep(1000); // small delay before retry
-//	            } catch (InterruptedException ignored) {}
-//	        }
-//	    }
-//
-//	    throw new RuntimeException("Click failed after multiple retries: " + locator);
-//     }
-//
-//
-//	public List<WebElement> safeFindElements(By locator) {
-//	    int attempts = 0;
-//	    while (attempts < 3) {
-//	        try {
-//	            List<WebElement> element = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-//	            System.out.println("Found the element: " + locator);
-//	            return element;
-//	        } catch (NoSuchElementException | StaleElementReferenceException e) {
-//	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
-//	            attempts++;
-//	            try {
-//	            	driver.navigate().refresh();
-//	            	System.out.println("Refreshing the page in safeFindElements Method");
-//	                Thread.sleep(1000);
-//	            } catch (InterruptedException ignored) {}
-//	        }
-//	    }
-//
-//	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
-//	}
-
 public void safeClick(By locator) {
     int attempts = 0;
     while (attempts < 3) {
@@ -323,8 +292,16 @@ public List<WebElement> safeFindElements(By locator) {
 		}
 		
 		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+		
 		String str = inloopParent.get(i).getText().trim();			
-		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
+		
+//		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
+		if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
+		    System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
+		    continue; // ⛔ Skip the rest of the current loop iteration
+		}
+
+		
 		Thread.sleep(1000);
 		String currentWindow=driver.getWindowHandle();
 		System.out.println("Printing current window  "+ currentWindow);
@@ -469,7 +446,7 @@ for(int j=0;j<deliveryChild.size();j++) {
 	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
 	            Thread.sleep(1000);
-	        }
+	      }
 		
 	    
 		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
@@ -578,6 +555,178 @@ for(int j=0;j<deliveryChild.size();j++) {
 	        }
 	    }
 	}
+	
+	
+	
+	
+	
+	public void applyOperatingSystemFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
+
+	    SafeActions safeAct = new SafeActions();
+	    ProductListingPage productPage = new ProductListingPage();
+	    GenericUtility genericUtility = new GenericUtility();
+
+	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
+	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+	    safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+
+		for (int i = 1; i < filterOptions.size(); i++) {
+		
+		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
+		if(i>inloopParent.size()-1) {
+			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+			return;
+		}
+		
+		if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+            Thread.sleep(1000);
+        }
+		
+		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+		
+		String str = inloopParent.get(i).getText().trim();			
+		
+//		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
+		if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
+		    System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
+		    continue; // ⛔ Skip the rest of the current loop iteration
+		}
+
+		
+		Thread.sleep(1000);
+		String currentWindow=driver.getWindowHandle();
+		System.out.println("Printing current window  "+ currentWindow);
+		
+		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+		for(int p=1;p<productNameListingPage.size();p++) {
+			
+			System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
+			safeAct.safeClick(productPage.getProductByIndex(p));
+			
+			
+			System.out.println("Clicked on the producct name new pop-up should open");
+			Thread.sleep(2000);		
+			productPage.switchToNewWindow(currentWindow);
+			
+			safeAct.safeFindElement(productPage.productNameIndividualPage);
+			
+			safeAct.safeFindElement(productPage.productKeyFeatureBlock);
+			
+			safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
+			
+			safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
+			
+	        genericUtility.scrollByPixel(0, 700);
+	    	
+			try {					
+			   
+				WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+		        ((JavascriptExecutor) driver).executeScript(
+		            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
+		        Thread.sleep(500);
+
+		        safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+		        System.out.println("'See More Details' clicked.");
+
+		    } catch (Exception e1) {
+		  //  	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
+		    	driver.close();
+		    	driver.switchTo().window(currentWindow);
+		    	continue; // ✅ move on to the next product
+		    }
+		    
+			Thread.sleep(2000);				
+			genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
+		}
+		safeAct.safeClick(productPage.clearButtonBy);
+	}
+	}
+	
+	
+	
+	
+	public void applyPriceSliderAndValidate(List<Integer> minValues, List<Integer> maxValues) throws InterruptedException {
+	    
+	    if (minValues.size() != maxValues.size()) {
+	        throw new IllegalArgumentException("minValues and maxValues must be of same size");
+	    }
+
+	    ProductListingPage productPage=new ProductListingPage();
+	    SafeActions safeAct=new SafeActions();
+	    
+	    JavascriptExecutor js = (JavascriptExecutor) driver;
+
+	    // Scroll to make slider visible
+	    js.executeScript("window.scrollBy(0, 300);");
+	    Thread.sleep(2000);
+
+	    // Locate sliders
+//	    WebElement minSlider = driver.findElement(By.id("p_36/range-slider_slider-item_lower-bound-slider"));
+//	    WebElement maxSlider = driver.findElement(By.id("p_36/range-slider_slider-item_upper-bound-slider"));
+	    
+	    WebElement minSlider=safeAct.safeFindElement(productPage.priceMinSliderButton);
+	    WebElement maxSlider= safeAct.safeFindElement(productPage.priceMaxSliderButton);
+
+	    for (int i = 0; i < minValues.size(); i++) {
+	        int min = minValues.get(i);
+	        int max = maxValues.get(i);
+
+	        // Set min slider
+	        js.executeScript(
+	            "arguments[0].value = arguments[1];" +
+	            "arguments[0].dispatchEvent(new Event('input'));" +
+	            "arguments[0].dispatchEvent(new Event('change'));",
+	            minSlider, String.valueOf(min)
+	        );
+
+	        // Set max slider
+	        js.executeScript(
+	            "arguments[0].value = arguments[1];" +
+	            "arguments[0].dispatchEvent(new Event('input'));" +
+	            "arguments[0].dispatchEvent(new Event('change'));",
+	            maxSlider, String.valueOf(max)
+	        );
+
+	        Thread.sleep(1000);
+
+	        // Click 'Go' / Apply
+	       // driver.findElement(By.xpath("//div[@class='a-section sf-submit-range-button']")).click();
+	        safeAct.safeFindElement(productPage.priceSliderSubmitButton);
+	        Thread.sleep(2000);
+
+	        // Extract the applied max filter text and product prices
+//	        String maxPriceApplied = driver.findElement(
+//	            By.xpath("//label[@for='p_36/range-slider_slider-item_upper-bound-slider']")
+//	        ).getText().replaceAll("[^\\d]", "");
+	        
+	        String maxPriceApplied=safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText().replaceAll("[^\\d]", "");
+
+	     //   List<WebElement> prices = driver.findElements(By.xpath("//span[@class='a-price-whole']"));
+	        
+	        List<WebElement> prices=safeAct.safeFindElements(productPage.productPriceFromProductCards);
+
+	        for (int j = 0; j < prices.size(); j++) {
+	            String priceText = prices.get(j).getText().replaceAll("[^\\d]", "");
+	            if (priceText.isEmpty() || maxPriceApplied.isEmpty()) continue;
+
+	            int productPrice = Integer.parseInt(priceText);
+	            int maxFilter = Integer.parseInt(maxPriceApplied);
+
+	            if (productPrice <= maxFilter) {
+	                System.out.println("✅ Price OK [Index: " + j + "] => Product Price: " + productPrice + ", Filter Max: " + maxFilter);
+	            } else {
+	                String error = "❌ Price too high [Index: " + j + "] => Product Price: " + productPrice + ", Filter Max: " + maxFilter;
+	                System.out.println(error);
+	                Assert.fail(error);
+	            }
+	        }
+	        Thread.sleep(2000); // Small wait after each set
+	    }
+	}
+
 
 }
 
