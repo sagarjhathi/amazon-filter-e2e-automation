@@ -658,15 +658,11 @@ for(int j=0;j<deliveryChild.size();j++) {
 	    SafeActions safeAct=new SafeActions();
 	    
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
-
 	    // Scroll to make slider visible
 	    js.executeScript("window.scrollBy(0, 300);");
 	    Thread.sleep(2000);
 
-	    // Locate sliders
-//	    WebElement minSlider = driver.findElement(By.id("p_36/range-slider_slider-item_lower-bound-slider"));
-//	    WebElement maxSlider = driver.findElement(By.id("p_36/range-slider_slider-item_upper-bound-slider"));
-	    
+	    // Locate sliders	    
 	    WebElement minSlider=safeAct.safeFindElement(productPage.priceMinSliderButton);
 	    WebElement maxSlider= safeAct.safeFindElement(productPage.priceMaxSliderButton);
 
@@ -691,42 +687,38 @@ for(int j=0;j<deliveryChild.size();j++) {
 	        );
 
 	        Thread.sleep(1000);
-
 	        // Click 'Go' / Apply
-	       // driver.findElement(By.xpath("//div[@class='a-section sf-submit-range-button']")).click();
 	        safeAct.safeFindElement(productPage.priceSliderSubmitButton);
 	        Thread.sleep(2000);
 
 	        // Extract the applied max filter text and product prices
-//	        String maxPriceApplied = driver.findElement(
-//	            By.xpath("//label[@for='p_36/range-slider_slider-item_upper-bound-slider']")
-//	        ).getText().replaceAll("[^\\d]", "");
-	        
-	        String maxPriceApplied=safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText().replaceAll("[^\\d]", "");
-
-	     //   List<WebElement> prices = driver.findElements(By.xpath("//span[@class='a-price-whole']"));
-	        
+	        String maxPriceApplied=safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
+	        String minPriceApplied=safeAct.safeFindElement(productPage.minPriceFilterApplied).getText();
 	        List<WebElement> prices=safeAct.safeFindElements(productPage.productPriceFromProductCards);
+	        
 
 	        for (int j = 0; j < prices.size(); j++) {
-	            String priceText = prices.get(j).getText().replaceAll("[^\\d]", "");
-	            if (priceText.isEmpty() || maxPriceApplied.isEmpty()) continue;
-
-	            int productPrice = Integer.parseInt(priceText);
-	            int maxFilter = Integer.parseInt(maxPriceApplied);
-
-	            if (productPrice <= maxFilter) {
-	                System.out.println("✅ Price OK [Index: " + j + "] => Product Price: " + productPrice + ", Filter Max: " + maxFilter);
-	            } else {
-	                String error = "❌ Price too high [Index: " + j + "] => Product Price: " + productPrice + ", Filter Max: " + maxFilter;
-	                System.out.println(error);
-	                Assert.fail(error);
-	            }
+	        	String productPrice=prices.get(j).getText();
+		    	productPrice = productPrice.replaceAll("[^\\d]", "");
+		    	maxPriceApplied = maxPriceApplied.replaceAll("[^\\d]", "");
+		    	minPriceApplied=minPriceApplied.replaceAll("[^\\d]", "");
+		    	
+		    	int productPriceInt=Integer.parseInt(productPrice);
+		    	int maxPriceFilterAppliedInt=Integer.parseInt(maxPriceApplied);
+		    	
+		    	boolean bool=true;
+		    	if(productPriceInt<=maxPriceFilterAppliedInt) {
+		    		System.out.println("Product price is within limits --> product index and applied filter and product price is "+ j+"  "+maxPriceApplied+"  "+productPrice);
+		    	}else {
+		    		String errorMessage="Product price is above limit --> product index and applied filter is and  product price "+ j+"  "+maxPriceApplied+"  "+productPrice;
+		    		bool = false;
+		    	    System.out.println(errorMessage);
+		    	    Assert.fail(errorMessage); 
+		    	}
 	        }
 	        Thread.sleep(2000); // Small wait after each set
 	    }
 	}
-
 
 }
 
