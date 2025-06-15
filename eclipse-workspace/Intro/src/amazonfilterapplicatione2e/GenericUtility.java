@@ -13,42 +13,42 @@ import org.openqa.selenium.WebElement;
 public class GenericUtility extends ProductListingPage{
 	
 	
-//	public boolean filterCheckUnderList(String filterName) {
-//	    String target = filterName.trim().toLowerCase();
-//
-//	    for (WebElement el : listOfFilterNameInLeftNav) {
-//	        if (el.getText().trim().toLowerCase().equals(target)) {
-//	            System.out.println(filterName + " matches with assert text here");
-//	            return true;
-//	        }
-//	    }
-//
-//	    System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
-//	    return false;
-//	}
-	
 	public boolean filterCheckUnderList(String filterName) {
-
-	    List<String> filterNames = new ArrayList<>();
-	    String target = filterName.trim().toLowerCase(); // normalize input
+	    String target = filterName.trim().toLowerCase();
 
 	    for (WebElement el : listOfFilterNameInLeftNav) {
-	        String text = el.getText().trim().toLowerCase(); // normalize UI text
-	        filterNames.add(text);
+	        if (el.getText().trim().toLowerCase().equals(target)) {
+	            System.out.println(filterName + " matches with assert text here");
+	            return true;
+	        }
 	    }
 
-	    for (String name : filterNames) {
-	        System.out.println(name + "  <- Filter from UI");
-	    }
-
-	    if (filterNames.contains(target)) {
-	        System.out.println(filterName + " matches a filter in the list.");
-	        return true;
-	    } else {
-	        System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
-	        return false;
-	    }
+	    System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
+	    return false;
 	}
+	
+//	public boolean filterCheckUnderList(String filterName) {
+//
+//	    List<String> filterNames = new ArrayList<>();
+//	    String target = filterName.trim().toLowerCase(); // normalize input
+//
+//	    for (WebElement el : listOfFilterNameInLeftNav) {
+//	        String text = el.getText().trim().toLowerCase(); // normalize UI text
+//	        filterNames.add(text);
+//	    }
+//
+//	    for (String name : filterNames) {
+//	        System.out.println(name + "  <- Filter from UI");
+//	    }
+//
+//	    if (filterNames.contains(target)) {
+//	        System.out.println(filterName + " matches a filter in the list.");
+//	        return true;
+//	    } else {
+//	        System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
+//	        return false;
+//	    }
+//	}
 
 
 
