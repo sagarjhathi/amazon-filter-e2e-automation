@@ -17,6 +17,7 @@ public class GenericUtility extends ProductListingPage{
 	    String target = filterName.trim().toLowerCase();
 
 	    for (WebElement el : listOfFilterNameInLeftNav) {
+	    
 	        if (el.getText().trim().toLowerCase().equals(target)) {
 	            System.out.println(filterName + " matches with assert text here");
 	            return true;
@@ -80,6 +81,7 @@ public class GenericUtility extends ProductListingPage{
 	
 	public boolean isElementInViewport(By locator) {
 	    try {
+	    
 	        List<WebElement> elements = driver.findElements(locator);
 	        if (elements.isEmpty()) return false;
 
@@ -113,6 +115,7 @@ public class GenericUtility extends ProductListingPage{
 		System.out.println("Checking if the filter and options visible on UI via isElementVisibleOnUI");
 		Thread.sleep(3000);
 	    try {
+	    
 	        List<WebElement> elements = driver.findElements(locator); // Returns empty list if not found
 	        if (elements.isEmpty()) {
 	        	System.out.println("Filter and Filter options not visible on Ui hence Returning from the function");
@@ -158,6 +161,7 @@ public class GenericUtility extends ProductListingPage{
     List<String> filterNames = new ArrayList<>();
     String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
     String target2 = filterName2.trim().toLowerCase();
+
 
     for (WebElement el : listOfFilterNameInLeftNav) {
         String text = el.getText().trim().toLowerCase(); // convert element text to lowercase

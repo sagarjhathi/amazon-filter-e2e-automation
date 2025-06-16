@@ -640,9 +640,9 @@ for(int j=0;j<deliveryChild.size();j++) {
 		    
 			Thread.sleep(2000);				
 			genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
-		}
+		 }
 		safeAct.safeClick(productPage.clearButtonBy);
-	}
+	   }
 	}
 	
 	
@@ -653,7 +653,7 @@ for(int j=0;j<deliveryChild.size();j++) {
 	    if (minValues.size() != maxValues.size()) {
 	        throw new IllegalArgumentException("minValues and maxValues must be of same size");
 	    }
-
+	    	
 	    ProductListingPage productPage=new ProductListingPage();
 	    SafeActions safeAct=new SafeActions();
 	    
@@ -714,11 +714,12 @@ for(int j=0;j<deliveryChild.size();j++) {
 		    		bool = false;
 		    	    System.out.println(errorMessage);
 		    	    Assert.fail(errorMessage); 
-		    	}
-	        }
+		    	 }
+	         }
 	        Thread.sleep(2000); // Small wait after each set
-	    }
+	     }
 	}
+	
 
+	
 }
-
