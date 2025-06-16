@@ -210,7 +210,7 @@ public class AmazonTests extends BaseTest {
 
 	
 	
-	@Test(priority=0, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=-10, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
 	
@@ -232,9 +232,9 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
+	//	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
 		
-	//	productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
+		productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
 		
 	
 		
