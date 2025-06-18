@@ -28,8 +28,8 @@ import java.time.format.DateTimeFormatter;
 
 public class AmazonTests extends BaseTest {
 
-	
-	@Test(priority=3, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=-1)
+	//@Test(priority=1, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingGetItByTomorrowFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -54,7 +54,6 @@ public class AmazonTests extends BaseTest {
 //		    	System.out.println(filterOptions.get(k).getText().trim());
 //		    }
 		    genericUtility.printFilterNamesOnly(productPage.listDeliveryDayOptionsBy);
-		    
 		    productPage.validateDeliveryFilterOptions(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
 
 //		    WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -99,8 +98,8 @@ public class AmazonTests extends BaseTest {
 //			Thread.sleep(2000);
 		}
 	
-	
-	@Test(priority=1, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=-2)
+	//@Test(priority=2, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingGetItIn2DaysFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -169,8 +168,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 
-	
-	@Test(priority = -1, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=-3)
+//	@Test(priority = 3, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
 		
 		                    AmazonLandingPage am=new AmazonLandingPage();
@@ -209,8 +208,8 @@ public class AmazonTests extends BaseTest {
 		}
 
 	
-	
-	@Test(priority=-10, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=4)
+	//@Test(priority=4, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
 	
@@ -336,8 +335,8 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	
-	@Test(priority=-2, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=5)
+	//@Test(priority=5, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -475,8 +474,8 @@ public class AmazonTests extends BaseTest {
 //		}
 	}
 	
-	
-	@Test(priority=5, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=6)
+	//@Test(priority=6, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -570,8 +569,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 
-	
-	@Test(priority = 6, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=7)
+	//@Test(priority = 7, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingBatteryCapacityFilterFunctionality() throws InterruptedException {
 
 	    AmazonLandingPage am = new AmazonLandingPage();
@@ -781,8 +780,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 		
-	
-	@Test(priority=7, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=8)
+	//@Test(priority=8, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingDisplaySizeFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -950,8 +949,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	
-	@Test(priority=8, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=9)
+	//@Test(priority=9, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingProcessorSpeedFilterFunctionality() throws InterruptedException {
 		
 		
@@ -1037,8 +1036,8 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	
-	@Test(priority=-5, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=10)
+	//@Test(priority=10, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingDisplayTypeFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1103,8 +1102,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	
-	@Test(priority=-10, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=11)
+	//@Test(priority=11, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1192,8 +1191,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	
-	@Test(priority=-7, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=12)
+	//@Test(priority=12, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -1260,8 +1259,8 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	
-	@Test(priority=-6, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=13)
+//	@Test(priority=13, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
