@@ -14,9 +14,11 @@ import java.util.concurrent.TimeoutException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -310,8 +312,28 @@ public List<WebElement> safeFindElements(By locator) {
 		for(int p=1;p<productNameListingPage.size();p++) {
 			
 			System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-			safeAct.safeClick(productPage.getProductByIndex(p));
+		//	safeAct.safeClick(productPage.getProductByIndex(p));
 			
+			try {
+			    WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+			    
+			    // Simulate Ctrl+Click (Cmd+Click on Mac)
+			    Actions actions = new Actions(driver);
+			    actions
+			        .keyDown(Keys.CONTROL) // Use Keys.COMMAND on Mac
+			        .click(productElement)
+			        .keyUp(Keys.CONTROL)
+			        .build()
+			        .perform();
+
+			    System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+			    Thread.sleep(2000); // Allow time for tab to open
+
+			} catch (Exception e) {
+			    System.out.println("Failed to Ctrl+Click product index " + p);
+			    continue;
+			}
+
 			
 			System.out.println("Clicked on the producct name new pop-up should open");
 			Thread.sleep(2000);		
@@ -504,24 +526,31 @@ public List<WebElement> safeFindElements(By locator) {
 	
 	
 	public void applyBrandFiltersAndValidateProductNames(By filterOptionsBy, String filterName) throws InterruptedException {
+		
+		
+		System.out.println("Within the applyBrandFiltersAndValidateProductNames Function ");
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
 	    GenericUtility genericUtility = new GenericUtility();
 
-	    
-
+	   
 	    // Step 1: Click 'See more' under brands
 	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
 	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+	    System.out.println("Clicking on More button under Brands Filter via applyBrandFiltersAndValidateProductNames function ");
 
+	    
 	    // Step 2: Get all brand filter options
 	    List<WebElement> brandOptions = safeAct.safeFindElements(filterOptionsBy);
+	    System.out.println("Printing the brand filter options ");
+	    genericUtility.printFilterNamesOnly(filterOptionsBy);
 
+	    
 	    for (int i = 1; i < brandOptions.size(); i++) {
-	        // Refresh and recapture DOM elements in each loop to avoid stale elements
+	    	
+	    	
 	        List<WebElement> inLoopBrandOptions = safeAct.safeFindElements(filterOptionsBy);
-
 	        if (i > inLoopBrandOptions.size() - 1) {
 	            System.out.println("Avoiding out-of-bounds issue.");
 	            return;
@@ -534,13 +563,19 @@ public List<WebElement> safeFindElements(By locator) {
 	            Thread.sleep(1000);
 	        }
 
+	        
 	        // Step 4: Extract brand name
 	        String brandName = inLoopBrandOptions.get(i).getText().trim();
-	        System.out.println("Applying brand filter: " + brandName);
+	        System.out.println("Applying brand filter: " + brandName+"  index no is "+ i);
 
 	        // Step 5: Scroll to brand and click
-	        safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, brandName));
+//	        safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, brandName));
+	        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, brandName))) {
+			    System.out.println("Filter click failed for: " + brandName + ". Skipping this filter option.");
+			    continue; // ⛔ Skip the rest of the current loop iteration
+			}
 	        Thread.sleep(2000);
+	        
 
 	        // Step 6: Validate product titles contain the brand name
 	        List<WebElement> productTitles = safeAct.safeFindElements(productPage.productNameListingPageBy);
@@ -549,13 +584,13 @@ public List<WebElement> safeFindElements(By locator) {
 	        for (int k = 0; k < productTitles.size(); k++) {
 	            String productTitle = productTitles.get(k).getText();
 	            if (!productTitle.toLowerCase().contains(brandName.toLowerCase())) {
-	                System.out.println("Mismatch at index " + k + " → Title: " + productTitle);
+	                System.out.println("Mismatch at index " + k + " → Product Title: " + productTitle +" expected keyword within was  =" +brandName);
 	                mismatchCount++;
 	            }
 	        }
 
 	        System.out.println("Mismatch count for brand '" + brandName + "': " + mismatchCount);
-
+	        System.out.println("---------------------------------------------------------------------------");
 	        // Step 7: Clear filter or go back
 	        try {
 	            safeAct.safeClick(productPage.clearButtonBy);
