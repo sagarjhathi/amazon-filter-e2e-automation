@@ -208,7 +208,7 @@ public class AmazonTests extends BaseTest {
 		}
 
 	
-	@Test(priority=4)
+	@Test(priority=-4)
 	//@Test(priority=4, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
@@ -223,7 +223,6 @@ public class AmazonTests extends BaseTest {
 		ProductListingPage productPage=new ProductListingPage();
 		
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
-		
 		GenericUtility genericUtility=new GenericUtility();
 		
 		if (!genericUtility.filterCheckUnderList("brands")) {
@@ -235,6 +234,7 @@ public class AmazonTests extends BaseTest {
 		
 		productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
 		
+		//productPage.applyFilterAndValidateProducts(productPage.listBrandsOptionsBy, "brands");
 	
 		
 //		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -335,7 +335,7 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	@Test(priority=5)
+	@Test(priority=-5)
 	//@Test(priority=5, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
