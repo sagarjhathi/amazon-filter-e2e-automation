@@ -87,6 +87,7 @@ public class SafeActions extends BasePage{
 		    while (attempts < 3) {
 		        try {
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
 		            System.out.println("Clicking using safeClick");
 		            return true; // success

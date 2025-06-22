@@ -294,7 +294,6 @@ public List<WebElement> safeFindElements(By locator) {
 		}
 		
 		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-		
 		String str = inloopParent.get(i).getText().trim();			
 		
 //		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
@@ -362,6 +361,10 @@ public List<WebElement> safeFindElements(By locator) {
 		    } catch (Exception e1) {
 		  //  	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
 		    	driver.close();
+		    	//Adding thread sleep for 2 seconds because my speculation is once the close executes here and 
+		    	//the driver switches back to the main window the close is closing the main window due to more
+		    	//execution time or delayed execution time of close
+		    	Thread.sleep(2000);
 		    	driver.switchTo().window(currentWindow);
 		    	continue; // ✅ move on to the next product
 		    }
@@ -370,7 +373,7 @@ public List<WebElement> safeFindElements(By locator) {
 			genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
 		}
 		safeAct.safeClick(productPage.clearButtonBy);
-	}
+	 }
 	}
 
 	
@@ -551,25 +554,27 @@ public List<WebElement> safeFindElements(By locator) {
 	    	
 	    	
 	        List<WebElement> inLoopBrandOptions = safeAct.safeFindElements(filterOptionsBy);
-	        if (i > inLoopBrandOptions.size() - 1) {
+	   	        if (i > inLoopBrandOptions.size() - 1) {
 	            System.out.println("Avoiding out-of-bounds issue.");
 	            return;
 	        }
 
-	        // Step 3: Click 'See more' in each iteration if present (as per original logic)
+//	        // Step 3: Click 'See more' in each iteration if present (as per original logic)
 	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
 	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
 	            Thread.sleep(1000);
 	        }
-
+	      
 	        
+	       
 	        // Step 4: Extract brand name
 	        String brandName = inLoopBrandOptions.get(i).getText().trim();
 	        System.out.println("Applying brand filter: " + brandName+"  index no is "+ i);
 
 	        // Step 5: Scroll to brand and click
-//	        safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, brandName));
+	        //     safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, brandName));
+	        
 	        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, brandName))) {
 			    System.out.println("Filter click failed for: " + brandName + ". Skipping this filter option.");
 			    continue; // ⛔ Skip the rest of the current loop iteration
@@ -593,7 +598,9 @@ public List<WebElement> safeFindElements(By locator) {
 	        System.out.println("---------------------------------------------------------------------------");
 	        // Step 7: Clear filter or go back
 	        try {
-	            safeAct.safeClick(productPage.clearButtonBy);
+	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
+		              	 safeAct.safeClick(productPage.clearButtonBy);
+		        }
 	        } catch (Exception e) {
 	            System.out.println("Clear button not clickable, navigating back. Brand: " + brandName);
 	            driver.navigate().back();
@@ -655,7 +662,26 @@ public List<WebElement> safeFindElements(By locator) {
 		for(int p=1;p<productNameListingPage.size();p++) {
 			
 			System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-			safeAct.safeClick(productPage.getProductByIndex(p));
+//			safeAct.safeClick(productPage.getProductByIndex(p));
+			try {
+			    WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+			    
+			    // Simulate Ctrl+Click (Cmd+Click on Mac)
+			    Actions actions = new Actions(driver);
+			    actions
+			        .keyDown(Keys.CONTROL) // Use Keys.COMMAND on Mac
+			        .click(productElement)
+			        .keyUp(Keys.CONTROL)
+			        .build()
+			        .perform();
+
+			    System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+			    Thread.sleep(2000); // Allow time for tab to open
+
+			} catch (Exception e) {
+			    System.out.println("Failed to Ctrl+Click product index " + p);
+			    continue;
+			}
 			
 			
 			System.out.println("Clicked on the producct name new pop-up should open");
@@ -684,6 +710,7 @@ public List<WebElement> safeFindElements(By locator) {
 
 		    } catch (Exception e1) {
 		  //  	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
+		    	Thread.sleep(2000);
 		    	driver.close();
 		    	driver.switchTo().window(currentWindow);
 		    	continue; // ✅ move on to the next product
@@ -773,4 +800,18 @@ public List<WebElement> safeFindElements(By locator) {
 	
 
 	
+	public void refreshIfServiceUnavailable() {
+	    String pageSource = driver.getPageSource().toLowerCase();
+	    String title = driver.getTitle().toLowerCase();
+
+	    if (pageSource.contains("service unavailable") || 
+	        pageSource.contains("it's rush hour") || 
+	        title.contains("service unavailable") || 
+	        title.contains("oops")) {
+	        
+	        System.out.println("Detected error page. Refreshing...");
+	        driver.navigate().refresh();
+	    }
+	}
+
 }
