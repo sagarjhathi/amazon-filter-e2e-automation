@@ -39,7 +39,7 @@ public class AmazonTests extends BaseTest {
 		
 		                    ProductListingPage productPage=new ProductListingPage();
 		                    SafeActions safeAct=new SafeActions();
-		                    
+		                    productPage.refreshIfServiceUnavailable();
 		                    GenericUtility genericUtility=new GenericUtility();
 		                    if (!genericUtility.isElementVisibleOnUI(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		        			    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
@@ -110,6 +110,7 @@ public class AmazonTests extends BaseTest {
 		
 		        		    GenericUtility genericUtility=new GenericUtility();
 		        		    ProductListingPage productPage=new ProductListingPage();
+		        		    productPage.refreshIfServiceUnavailable();
 		            		if (!genericUtility.isElementInViewport(productPage.getItInTwoDaysUnderDeliveryDayFilterBy)) {
 		            		    System.out.println("Filter option 'Get It in 2 Days' does not exist. Skipping the test.");
 		            		    return ;
@@ -181,7 +182,7 @@ public class AmazonTests extends BaseTest {
 		                    GenericUtility genericUtility=new GenericUtility();
 		            		ProductListingPage productPage=new ProductListingPage();
 		            		SafeActions safeAct=new SafeActions();
-		            		
+		            		productPage.refreshIfServiceUnavailable();
 		            		if (!genericUtility.isElementVisibleOnUI(productPage.getItTodayUnderDeliveryDayFilterBy)) {
 		            		    System.out.println("Filter option 'Get It Today' does not exist. Skipping the test.");
 		            		    return;
@@ -224,13 +225,14 @@ public class AmazonTests extends BaseTest {
 		
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
 		GenericUtility genericUtility=new GenericUtility();
+		productPage.refreshIfServiceUnavailable();
 		
 		if (!genericUtility.filterCheckUnderList("brands")) {
 		    System.out.println("Filter option 'brands' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
-	//	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
+	 //	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
 		
 		productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
 		
@@ -335,7 +337,7 @@ public class AmazonTests extends BaseTest {
 	}
 	
 	
-	@Test(priority=-5)
+	@Test(priority=5)
 	//@Test(priority=5, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
@@ -347,14 +349,15 @@ public class AmazonTests extends BaseTest {
 		
 		
 		GenericUtility genericUtility=new GenericUtility();
+		ProductListingPage productPage=new ProductListingPage();
 		SafeActions safeAct=new SafeActions();
-		
+		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Storage Capacity")) {
 		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 			
-		ProductListingPage productPage=new ProductListingPage();
+		
 		List<WebElement> listStorageCapacityOptions=safeAct.safeFindElements(productPage.listStorageCapacityOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listStorageCapacityOptionsBy);
 		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"storagecapacity");
@@ -486,7 +489,7 @@ public class AmazonTests extends BaseTest {
 		
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
-		
+		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Price")) {
 		    System.out.println("Filter option 'Price' does not exist in the list. Skipping the test.");
 		    return ;
@@ -580,14 +583,15 @@ public class AmazonTests extends BaseTest {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
 	    SafeActions safeAct=new SafeActions();
-	    
+	    ProductListingPage productPage =new ProductListingPage();
+	    productPage.refreshIfServiceUnavailable();
 	    GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Battery Capacity")) {
 		    System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 
-		ProductListingPage productPage =new ProductListingPage();
+		
 
 	    
 	    List<WebElement> listBatteryCapacityOptions=safeAct.safeFindElements(productPage.listBatteryCapacityOptionsBy);
@@ -794,7 +798,7 @@ public class AmazonTests extends BaseTest {
           GenericUtility genericUtility=new GenericUtility();
           SafeActions safeAct=new SafeActions();
   		ProductListingPage productPage=new ProductListingPage();
-		
+  		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Display Size")) {
 		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
 		    return ;
@@ -963,6 +967,8 @@ public class AmazonTests extends BaseTest {
 		SafeActions safeAct=new SafeActions();
 		ProductListingPage productPage=new ProductListingPage();
         GenericUtility genericUtility =new GenericUtility();
+        
+        productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Processor Speed")) {
 		    return ;
 		}
@@ -1048,7 +1054,7 @@ public class AmazonTests extends BaseTest {
 		
 		SafeActions safeAct=new SafeActions();
 		ProductListingPage productPage=new ProductListingPage();
-		
+		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Display Type")){
 		    System.out.println("Filter option 'Display Type' does not exist. Skipping the test.");
@@ -1056,7 +1062,6 @@ public class AmazonTests extends BaseTest {
 		}
 		
 		productPage.applyFilterAndValidateProducts(productPage.listDisplayTypeOptionsBy ,"displaytype");
-		
 		
 		
 		
@@ -1115,7 +1120,7 @@ public class AmazonTests extends BaseTest {
 		GenericUtility genericUtility=new GenericUtility();	
 		SafeActions safeAct=new SafeActions();
 		ProductListingPage productPage=new ProductListingPage();
-		
+		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
 		    System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
 		    return;
@@ -1205,7 +1210,7 @@ public class AmazonTests extends BaseTest {
 		GenericUtility genericUtility= new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
 		
-			
+		productPage.refreshIfServiceUnavailable();
 
 			if (!genericUtility.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
 			    System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
@@ -1270,7 +1275,7 @@ public class AmazonTests extends BaseTest {
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 		
 		ProductListingPage productPage=new ProductListingPage();
-		
+		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Discount")) {
 		    System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");
