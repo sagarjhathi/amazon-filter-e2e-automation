@@ -183,7 +183,7 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	
-       public boolean filterCheckUnderList(String filterName1,String filterName2) {
+ public boolean filterCheckUnderList(String filterName1,String filterName2) {
 		
 	    List<String> filterNames = new ArrayList<>();
 	    String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
@@ -249,7 +249,7 @@ public List<WebElement> safeFindElements(By locator) {
 
 	
 	
-	public WebElement safeFindElement(By locator) {
+public WebElement safeFindElement(By locator) {
 	    int attempts = 0;
 	    while (attempts < 3) {
 	        try {
@@ -276,7 +276,7 @@ public List<WebElement> safeFindElements(By locator) {
 
 	
 			
-	public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
+public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
 
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
@@ -425,6 +425,62 @@ public List<WebElement> safeFindElements(By locator) {
 	    System.out.println("Clicking clear under validateDeliveryFilterOptions");
 	    
 	}
+	
+	
+	
+	public List<Object> validateDeliveryFilterOptionsUpdated(By filterOptions) throws InterruptedException {
+		
+	   	 System.out.println("Within the Function validateDeliveryFilterOptionsUpdate ");
+	    //Creating ProductListingPage and SafeActions objects in-order to use the contents.
+		ProductListingPage productPage = new ProductListingPage();
+		SafeActions safeAct = new SafeActions();
+	    safeAct.safeClick(filterOptions);
+	    Thread.sleep(2000);
+	   
+
+	    // Find product card elements
+	    List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
+
+	    // Format today and tomorrow's dates
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+	    String todayFormatted = LocalDate.now().format(formatter);
+	    String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
+
+	    // Build allowed date parts
+	    Set<String> allowedDateParts = new HashSet<>();
+	    Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+	    Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+	    allowedDateParts.add("Today");
+	    allowedDateParts.add("Tomorrow");
+	    
+	    List<Object> returnAble=new ArrayList<>();
+	    returnAble.add(deliveryElements);
+	    returnAble.add(allowedDateParts);
+	    return returnAble;
+	    
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 	public void validateGetItTodayFilterOptionUnderDeliveryDay(By filterOption) throws InterruptedException {

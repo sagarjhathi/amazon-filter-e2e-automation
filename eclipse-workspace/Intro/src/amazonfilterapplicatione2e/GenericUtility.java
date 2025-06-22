@@ -188,7 +188,13 @@ public class GenericUtility extends ProductListingPage{
 	
     public void printFilterNamesOnly(By filterName) {
 		List<WebElement> filterOptions=safeFindElements(filterName);		
-		for (int i = 1; i < filterOptions.size(); i++) {
+		for (int i = 0; i < filterOptions.size(); i++) {
+			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
+		}
+    }
+    
+    public void printNamesOnly(List<WebElement> filterOptions) {		
+		for (int i = 0; i < filterOptions.size(); i++) {
 			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
 		}
     }
@@ -214,11 +220,13 @@ public class GenericUtility extends ProductListingPage{
     }
  
     
-    public void closeCurrentWindowAndSwitchBack(String currentWindow) {
+    public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
         Set<String> allWindowHandles = driver.getWindowHandles();
         for (String handle : allWindowHandles) {
             if (handle.equals(currentWindow)) {
+            	System.out.println("In the closeCurrentWindowAndSwitchBack from genetic utility");
                 driver.close(); // Close the current popup or child window
+                Thread.sleep(1000);
                 System.out.println("Switching back to the listing page");
                 driver.switchTo().window(handle); // Switch back to original window
             }
