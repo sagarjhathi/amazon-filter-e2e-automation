@@ -4,6 +4,7 @@ import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -419,12 +420,57 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 	        System.out.println("-----------------------------------------------------------------");
 	    }
 	    
-
 	    // Clear the delivery filter
 	    safeAct.safeClick(productPage.clearButtonBy);
 	    System.out.println("Clicking clear under validateDeliveryFilterOptions");
 	    
 	}
+	
+	
+	
+	public List<Object> validateDeliveryFilterOptionsWithResult(By filterOptions) throws InterruptedException {
+	    
+	    ProductListingPage productPage = new ProductListingPage();
+	    SafeActions safeAct = new SafeActions();
+	    safeAct.safeClick(filterOptions);
+	    Thread.sleep(2000);
+
+	    List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
+
+	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+	    String todayFormatted = LocalDate.now().format(formatter);
+	    String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
+
+	    Set<String> allowedDateParts = new HashSet<>();
+	    Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+	    Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+	    allowedDateParts.add("Today");
+	    allowedDateParts.add("Tomorrow");
+
+	    for (int i = 0; i < deliveryElements.size(); i++) {
+	        String text = deliveryElements.get(i).getText();
+	        
+	        boolean found = false;
+	        for (String part : allowedDateParts) {
+	            if (text.contains(part)) {
+	            	System.out.println("Found the The text from delivery element --> " + text + 
+	                        " | List size: " + deliveryElements.size() + 
+	                        " | Index: " + i);
+	                found = true;
+	                break;
+	            }
+	        }
+	        System.out.println("------------------------------------------------------");
+	        if (!found) {
+	            // ❌ Return failed: [false, elementText, index]
+	            return Arrays.asList(false, text, i);
+	        }
+	    }
+
+	    // ✅ Return success: [true, "", -1]
+	    return Arrays.asList(true, "All the things are valid no errors", -1);
+	}
+
 	
 	
 	
@@ -483,7 +529,7 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 	
 
 	
-	public void validateGetItTodayFilterOptionUnderDeliveryDay(By filterOption) throws InterruptedException {
+	public List<Object> validateGetItTodayFilterOptionUnderDeliveryDay(By filterOption) throws InterruptedException {
 		
 	     	 System.out.println("Within the Function validateGetItTodayFilterOptionUnderDeliveryDay ");
 		     //Creating ProductListingPage and SafeActions objects in-order to use the contents.
@@ -498,21 +544,25 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
              // Validate each element's delivery date
              for(int j=0;j<deliveryElements.size();j++) {
         	 String assertString=deliveryElements.get(j).getText();
- 	         System.out.println("The text from delivery element --> "+assertString + "  and size of the list is " + deliveryElements.size() + " index no is " + j);
+ 	         System.out.println("Found the text from delivery element --> " + assertString + 
+                    " | List size: " + deliveryElements.size() + 
+                    " | Index: " + j);
 	    
 	         boolean found = false;
 	         if (assertString.contains("Today")) {
              found = true;
              }
-	         Assert.assertTrue(found, "❌ None of the allowed date parts are present, printing the element text in: " + assertString+" index no is "+j);
-	         System.out.println("✔ Valid delivery date found in: " + assertString+"index no is "+j);
+	     //    Assert.assertTrue(found, "❌ None of the allowed date parts are present, printing the element text in: " + assertString+" index no is "+j);
+	         if(!found) {
+	        	  return Arrays.asList(false, assertString, j);
+	         }
 		     System.out.println("-----------------------------------------------------------------");
-
              }
 
              // Clear the delivery filter
 		     safeAct.safeClick(productPage.clearButtonBy);
 		     System.out.println("Clicking clear under validateGetItTodayFilterOptionUnderDeliveryDay");
+			return Arrays.asList(true, "All the things are valid no errors", -1);
 	}
 	
 	
