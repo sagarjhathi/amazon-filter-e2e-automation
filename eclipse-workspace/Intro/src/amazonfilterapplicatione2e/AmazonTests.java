@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
 import org.openqa.selenium.By;
@@ -23,6 +24,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -161,9 +164,35 @@ public class AmazonTests extends BaseTest {
 		
 	 //	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
 		
-		productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
+	//	productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
 		
 		//productPage.applyFilterAndValidateProducts(productPage.listBrandsOptionsBy, "brands");
+		
+		
+		
+		
+		
+		Map<Object, Object> result = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsBy,"brands");
+
+		    // Extracting values
+		    boolean isValid = (boolean) result.get("isValid");
+		    String brand = (String) result.get("brand");
+		    List<String> mismatches = (List<String>) result.get("mismatches");
+
+		    // Soft Assertion
+		    SoftAssert softAssert = new SoftAssert();
+
+		    if (!isValid) {
+		        System.out.println("❌ Brand validation failed for brand: " + brand);
+		        for (String detail : mismatches) {
+		            System.out.println(detail);
+		            softAssert.fail(detail);  // Add each failure to soft assert
+		        }
+		    } else {
+		        System.out.println("✔ All product titles matched for brand: " + brand);
+		    }
+
+		    softAssert.assertAll(); 
 	
 		
 //		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));

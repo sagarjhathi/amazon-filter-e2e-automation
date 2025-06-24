@@ -6,8 +6,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
@@ -634,6 +636,107 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 	}
 	
 	
+	
+	
+	
+	
+
+	
+	public Map<Object,Object> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
+
+	    SafeActions safeAct = new SafeActions();
+	    ProductListingPage productPage = new ProductListingPage();
+	    GenericUtility genericUtility = new GenericUtility();
+
+	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
+	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+		
+	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
+	    Map<Object, Object> result = new HashMap<>();
+	    
+		for (int i = 1; i < filterOptions.size(); i++) {
+		    
+		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
+		if(i>inloopParent.size()-1) {
+			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size and continuing");
+			continue;
+		}
+		
+		 if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
+	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+	            Thread.sleep(1000);
+	      }
+		
+	    
+		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+		String str = inloopParent.get(i).getText().trim();	
+		genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName,str));
+		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
+		Thread.sleep(1000);
+		
+		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+		
+		
+		    boolean isValid = true;
+		    String text="";
+		    List<String> mismatchDetails = new ArrayList<>();
+
+		
+		int noOfBrandNameNotIntheList =0;
+		for(int k=0;k<productNameListingPage.size();k++){
+			if(productNameListingPage.get(k).getText().contains(str)) {
+				String title=productNameListingPage.get(k).getText();
+				System.out.println("Product name found in the list index no is -->" +k);
+				//text="❌ Index: " + k + ", Brand: " + str + ", Title: '" + title;
+			}else {
+				String title=productNameListingPage.get(k).getText();
+				System.out.println("Product name not found in the list hence the filter functionality failed index no is -->"+k);
+				isValid=false;
+				text = "❌ Index: " + k + ", Brand: " + str + ", Title: '" + title;
+				mismatchDetails.add(text);
+				noOfBrandNameNotIntheList++;
+			//	Assert.fail("Product name not found in the list hence the filter functionality failed index no is -->"+k);
+			}
+		}
+		
+		result.put("brand", str);
+		result.put("isValid", isValid);
+		result.put("mismatches", mismatchDetails);
+		
+		System.out.println("The no of brand name not present in the list is -->"+noOfBrandNameNotIntheList +"for the brand filter -->"+str);
+		
+		try {
+			safeAct.safeClick(productPage.clearButtonBy);
+		} catch (Exception e) {
+		    System.out.println("Element not clickable, going back via navigate.back()...filter name is"+str);
+		    driver.navigate().back();
+		}
+		
+		
+		if(i % 10 == 0 && i != 0) {
+			
+			driver.navigate().refresh();
+			System.out.println("Refreshing the page here ");
+		}	
+		}
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public void applyBrandFiltersAndValidateProductNames(By filterOptionsBy, String filterName) throws InterruptedException {
 		
 		
@@ -687,7 +790,6 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 			}
 	        Thread.sleep(2000);
 	        
-
 	        // Step 6: Validate product titles contain the brand name
 	        List<WebElement> productTitles = safeAct.safeFindElements(productPage.productNameListingPageBy);
 	        int mismatchCount = 0;
