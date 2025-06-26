@@ -805,6 +805,7 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 	        System.out.println("Mismatch count for brand '" + brandName + "': " + mismatchCount);
 	        System.out.println("---------------------------------------------------------------------------");
 	        // Step 7: Clear filter or go back
+	        
 	        try {
 	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
 		              	 safeAct.safeClick(productPage.clearButtonBy);
