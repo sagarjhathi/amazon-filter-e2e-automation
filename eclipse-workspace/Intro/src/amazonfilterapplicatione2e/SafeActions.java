@@ -23,7 +23,7 @@ public class SafeActions extends BasePage{
 	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
 	            attempts++;
 	            try {
-	                driver.navigate().refresh();
+	              //  driver.navigate().refresh();
 	                Thread.sleep(1000); // small delay before retry
 	            } catch (InterruptedException ignored) {}
 	        }
