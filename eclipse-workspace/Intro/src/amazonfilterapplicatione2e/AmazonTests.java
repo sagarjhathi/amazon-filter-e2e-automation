@@ -139,7 +139,7 @@ public class AmazonTests extends BaseTest {
 		          
 
 	
-	@Test(priority=4)
+	@Test(priority=-4)
 	//@Test(priority=4, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
@@ -169,30 +169,33 @@ public class AmazonTests extends BaseTest {
 		//productPage.applyFilterAndValidateProducts(productPage.listBrandsOptionsBy, "brands");
 		
 		
-		
-		
-		
-		Map<Object, Object> result = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsBy,"brands");
+		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(
+		        productPage.listBrandsOptionsBy, "brands"
+		    );
 
-		    // Extracting values
-		    boolean isValid = (boolean) result.get("isValid");
-		    String brand = (String) result.get("brand");
-		    List<String> mismatches = (List<String>) result.get("mismatches");
-
-		    // Soft Assertion
 		    SoftAssert softAssert = new SoftAssert();
 
-		    if (!isValid) {
-		        System.out.println("❌ Brand validation failed for brand: " + brand);
-		        for (String detail : mismatches) {
-		            System.out.println(detail);
-		            softAssert.fail(detail);  // Add each failure to soft assert
+		    for (Map<Object, Object> result : allResults) {
+		        boolean isValid = (boolean) result.get("isValid");
+		        String brand = (String) result.get("brand");
+		        List<String> mismatches = (List<String>) result.get("mismatches");
+
+		        if (!isValid) {
+		            System.out.println("❌ Brand validation failed for brand: " + brand);
+		            for (String detail : mismatches) {
+		                System.out.println(detail);
+		                softAssert.fail(detail);
+		            }
+		        } else {
+		            System.out.println("✔ All product titles matched for brand: " + brand);
 		        }
-		    } else {
-		        System.out.println("✔ All product titles matched for brand: " + brand);
 		    }
 
-		    softAssert.assertAll(); 
+		    softAssert.assertAll();
+		
+		
+		
+
 	
 		
 //		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
