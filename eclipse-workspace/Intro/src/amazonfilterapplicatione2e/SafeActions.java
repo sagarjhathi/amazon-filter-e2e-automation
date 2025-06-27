@@ -24,6 +24,7 @@ public class SafeActions extends BasePage{
 	            attempts++;
 	            try {
 	              //  driver.navigate().refresh();
+	            	
 	                Thread.sleep(1000); // small delay before retry
 	            } catch (InterruptedException ignored) {}
 	        }
