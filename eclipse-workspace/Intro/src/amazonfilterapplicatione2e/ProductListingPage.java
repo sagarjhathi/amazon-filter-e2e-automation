@@ -279,7 +279,7 @@ public WebElement safeFindElement(By locator) {
 
 	
 			
-public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
+        public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
 
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
@@ -352,23 +352,15 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 	        genericUtility.scrollByPixel(0, 700);
 	    	
 			try {					
-			   
-				WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-		        ((JavascriptExecutor) driver).executeScript(
-		            "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
+		        genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
 		        Thread.sleep(500);
-
 		        safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
 		        System.out.println("'See More Details' clicked.");
-
 		    } catch (Exception e1) {
-		  //  	System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
+		    //System.out.println("Unable to click the show more details button and the filter and product is --?"+str+"   "+productNameListingPage.get(p).getText());
 		    	driver.close();
-		    	//Adding thread sleep for 2 seconds because my speculation is once the close executes here and 
-		    	//the driver switches back to the main window the close is closing the main window due to more
-		    	//execution time or delayed execution time of close
 		    	Thread.sleep(2000);
-		    	driver.switchTo().window(currentWindow);
+		    	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
 		    	continue; // ✅ move on to the next product
 		    }
 		    
@@ -378,6 +370,109 @@ public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName
 		safeAct.safeClick(productPage.clearButtonBy);
 	 }
 	}
+
+
+
+
+
+
+public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
+
+    SafeActions safeAct = new SafeActions();
+    ProductListingPage productPage = new ProductListingPage();
+    GenericUtility genericUtility = new GenericUtility();
+
+    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
+
+    List<Map<String, Object>> results = new ArrayList<>();
+
+    for (int i = 1; i < filterOptions.size(); i++) {
+
+        List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
+        if (i > inloopParent.size() - 1) {
+            System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+            return results;
+        }
+
+        System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+        String str = inloopParent.get(i).getText().trim();
+
+        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
+            System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
+            continue; // ⛔ Skip the rest of the current loop iteration
+        }
+
+        Thread.sleep(1000);
+        String currentWindow = driver.getWindowHandle();
+        System.out.println("Printing current window  " + currentWindow);
+
+        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
+        for (int p = 1; p < productNameListingPage.size(); p++) {
+
+            System.out.println("inside the loop and product name is " + productNameListingPage.get(p).getText());
+
+            try {
+                WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+
+                Actions actions = new Actions(driver);
+                actions
+                    .keyDown(Keys.CONTROL)
+                    .click(productElement)
+                    .keyUp(Keys.CONTROL)
+                    .build()
+                    .perform();
+
+                System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+                Thread.sleep(2000);
+
+            } catch (Exception e) {
+                System.out.println("Failed to Ctrl+Click product index " + p);
+                continue;
+            }
+
+            System.out.println("Clicked on the producct name new pop-up should open");
+            Thread.sleep(2000);
+            productPage.switchToNewWindow(currentWindow);
+
+            String name = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
+            String keyFeatures = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
+            String about = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
+            String techDetails = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
+
+            genericUtility.scrollByPixel(0, 700);
+
+            try {
+                genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
+                Thread.sleep(500);
+                safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+                System.out.println("'See More Details' clicked.");
+            } catch (Exception e1) {
+                driver.close();
+                Thread.sleep(2000);
+                genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
+                continue;
+            }
+
+            Thread.sleep(2000);
+            genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
+
+            // ✅ Only this block is new
+            Map<String, Object> productResult = new HashMap<>();
+            productResult.put("filter", str);
+            productResult.put("title", name);
+            productResult.put("keyFeatures", keyFeatures);
+            productResult.put("about", about);
+            productResult.put("techDetails", techDetails);
+            results.add(productResult);
+        }
+
+        safeAct.safeClick(productPage.clearButtonBy);
+    }
+
+    return results;
+}
+
 
 	
 	
