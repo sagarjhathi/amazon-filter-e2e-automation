@@ -317,38 +317,38 @@ public class AmazonTests extends BaseTest {
 		}
 			
 		
-		List<WebElement> listStorageCapacityOptions=safeAct.safeFindElements(productPage.listStorageCapacityOptionsBy);
-		genericUtility.printFilterNamesOnly(productPage.listStorageCapacityOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"storagecapacity");
+//		List<WebElement> listStorageCapacityOptions=safeAct.safeFindElements(productPage.listStorageCapacityOptionsBy);
+//		genericUtility.printFilterNamesOnly(productPage.listStorageCapacityOptionsBy);
+//		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"storagecapacity");
 		
 //		
 //		 // ⏬ Call the main function and get result
-//	    List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listStorageCapacityOptionsBy,"storagecapacity");
-//
-//	    SoftAssert softAssert = new SoftAssert();
-//
-//	    for (Map<String, Object> product : results) {
-//	        String filter = ((String) product.get("filter")).toLowerCase();
-//	        String title = ((String) product.get("title")).toLowerCase();
-//	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-//	        String about = ((String) product.get("about")).toLowerCase();
-//	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
-//
-//	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-//	                        || about.contains(filter) || techDetails.contains(filter);
-//
-//	        if (!isMatch) {
-//	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-//	                          + "Title: " + title + "\n"
-//	                          + "Key Features: " + keyFeatures + "\n"
-//	                          + "About: " + about + "\n"
-//	                          + "Tech Details: " + techDetails + "\n");
-//	        } else {
-//	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
-//	        }
-//	    }
-//
-//	    softAssert.assertAll(); // 🚨 Important to report all failures
+	    List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listStorageCapacityOptionsBy,"storagecapacity");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); // 🚨 Important to report all failures
 
 		
 		
@@ -585,7 +585,7 @@ public class AmazonTests extends BaseTest {
 	    
 	    List<WebElement> listBatteryCapacityOptions=safeAct.safeFindElements(productPage.listBatteryCapacityOptionsBy);
 		genericUtility.printFilterNamesOnly(productPage.listBatteryCapacityOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityOptionsBy,"displaysize");
+		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
 	    
 	    
 	    

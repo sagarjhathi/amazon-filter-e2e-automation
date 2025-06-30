@@ -55,6 +55,7 @@ public class ProductListingPage extends  BasePage{
 	
     By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']//span[@class='a-size-base a-color-base']");
     
+   
 	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	
 	By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
@@ -288,7 +289,7 @@ public WebElement safeFindElement(By locator) {
 	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
 
-		for (int i = 1; i < filterOptions.size(); i++) {
+		for (int i = 0; i < filterOptions.size(); i++) {
 		
 		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
 		if(i>inloopParent.size()-1) {
@@ -299,7 +300,7 @@ public WebElement safeFindElement(By locator) {
 		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
 		String str = inloopParent.get(i).getText().trim();			
 		
-//		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
+	//	safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
 		if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
 		    System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
 		    continue; // ⛔ Skip the rest of the current loop iteration
@@ -311,9 +312,11 @@ public WebElement safeFindElement(By locator) {
 		System.out.println("Printing current window  "+ currentWindow);
 		
 		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
-		for(int p=1;p<productNameListingPage.size();p++) {
-			
-			System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
+		System.out.println(productNameListingPage.get(0).getText()+"  printing the 1st product here before the loop");
+		
+		for(int p=1;p<=productNameListingPage.size()-1;p++) {	
+			Thread.sleep(3000);
+			System.out.println("inside the loop and product name is  and index is "+p+"  "+productNameListingPage.get(p).getText());				
 		//	safeAct.safeClick(productPage.getProductByIndex(p));
 			
 			try {
@@ -387,7 +390,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
     List<Map<String, Object>> results = new ArrayList<>();
 
-    for (int i = 1; i < filterOptions.size(); i++) {
+    for (int i = 0; i < filterOptions.size(); i++) {
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
         if (i > inloopParent.size() - 1) {
@@ -410,11 +413,11 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         for (int p = 1; p < productNameListingPage.size(); p++) {
 
-            System.out.println("inside the loop and product name is " + productNameListingPage.get(p).getText());
+            System.out.println("inside the loop and product name is " + productNameListingPage.get(p-1).getText());
 
             try {
                 WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-
+                System.out.println(productElement.getText()+"Printing the name in try catch ");
                 Actions actions = new Actions(driver);
                 actions
                     .keyDown(Keys.CONTROL)
