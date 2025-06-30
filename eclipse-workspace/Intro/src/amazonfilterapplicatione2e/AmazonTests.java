@@ -343,6 +343,7 @@ public class AmazonTests extends BaseTest {
 	                          + "Key Features: " + keyFeatures + "\n"
 	                          + "About: " + about + "\n"
 	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
 	        } else {
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
@@ -466,7 +467,7 @@ public class AmazonTests extends BaseTest {
 //		}
 	}
 	
-	@Test(priority=6)
+	@Test(priority=-6)
 	//@Test(priority=6, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
@@ -487,7 +488,33 @@ public class AmazonTests extends BaseTest {
 		List<Integer> minValues = Arrays.asList(60, 90, 130);
 		List<Integer> maxValues = Arrays.asList(80, 120, 160);
 		
-		productPage.applyPriceSliderAndValidate(minValues, maxValues);
+		//productPage.applyPriceSliderAndValidate(minValues, maxValues);
+		
+		
+		    List<Map<String, Object>> results = productPage.applyPriceSliderAndValidateWithResult(minValues, maxValues);
+
+		    SoftAssert softAssert = new SoftAssert();
+
+		    for (Map<String, Object> result : results) {
+		        boolean isValid = (boolean) result.get("isValid");
+		        int min = (int) result.get("min");
+		        int max = (int) result.get("max");
+		        List<String> mismatches = (List<String>) result.get("mismatches");
+
+		        if (!isValid) {
+		            System.out.println("❌ Validation failed for price range: " + min + " - " + max);
+		            for (String msg : mismatches) {
+		                System.out.println(msg);
+		                softAssert.fail(msg);
+		            }
+		            
+		        } else {
+		            System.out.println("✔ Price range validated: " + min + " - " + max);
+		        }
+		        System.out.println("------------------------------------------------------------");		  
+		        }
+
+		    softAssert.assertAll();
 		
 		
 //		
