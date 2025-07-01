@@ -588,7 +588,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 
-	@Test(priority=7)
+	@Test(priority=-7)
 	//@Test(priority = 7, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingBatteryCapacityFilterFunctionality() throws InterruptedException {
 
@@ -610,11 +610,39 @@ public class AmazonTests extends BaseTest {
 		
 
 	    
-	    List<WebElement> listBatteryCapacityOptions=safeAct.safeFindElements(productPage.listBatteryCapacityOptionsBy);
-		genericUtility.printFilterNamesOnly(productPage.listBatteryCapacityOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
+//	    List<WebElement> listBatteryCapacityOptions=safeAct.safeFindElements(productPage.listBatteryCapacityOptionsBy);
+//		genericUtility.printFilterNamesOnly(productPage.listBatteryCapacityOptionsBy);
+//		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
 	    
 	    
+		
+		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); 
 	    
 //	    for (int i = 1; i < listBatteryCapacityOptions.size(); i++) {
 //	        System.out.println(listBatteryCapacityOptions.get(i).getText() + " size is " + listBatteryCapacityOptions.size());
@@ -822,10 +850,39 @@ public class AmazonTests extends BaseTest {
 		
 		
 //		By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
-		List<WebElement> listDisplaySizeOptions=safeAct.safeFindElements(productPage.listDisplaySizeOptionsBy);
-		genericUtility.printFilterNamesOnly(productPage.listDisplaySizeOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listDisplaySizeOptionsBy,"displaysize");
+//		List<WebElement> listDisplaySizeOptions=safeAct.safeFindElements(productPage.listDisplaySizeOptionsBy);
+//		genericUtility.printFilterNamesOnly(productPage.listDisplaySizeOptionsBy);
+//		productPage.applyFilterAndValidateProducts(productPage.listDisplaySizeOptionsBy,"displaysize");
 
+		
+		
+		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); 
 		
 //		for (int i = 1; i < listDisplaySizeOptions.size(); i++) {
 //			System.out.println(listDisplaySizeOptions.get(i).getText() + "   size is  " + listDisplaySizeOptions.size());
@@ -989,10 +1046,39 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
-		genericUtility.printFilterNamesOnly(productPage.listProcessorSpeedOptionsBy);
-		productPage.applyFilterAndValidateProducts(productPage.listProcessorSpeedOptionsBy,"processorspeed");
+//		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
+//		genericUtility.printFilterNamesOnly(productPage.listProcessorSpeedOptionsBy);
+//		productPage.applyFilterAndValidateProducts(productPage.listProcessorSpeedOptionsBy,"processorspeed");
 		
+		
+		
+		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listProcessorSpeedOptionsBy,"processorspeed");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); 
 		
 //		for (int i = 1; i < listProcessorSpeedOptions.size(); i++) {
 //			
@@ -1077,10 +1163,36 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		productPage.applyFilterAndValidateProducts(productPage.listDisplayTypeOptionsBy ,"displaytype");
+	//	productPage.applyFilterAndValidateProducts(productPage.listDisplayTypeOptionsBy ,"displaytype");
 		
 		
-		
+		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplayTypeOptionsBy ,"displaytype");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); 
 //		List<WebElement> listDisplayTypeOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
 //	    By.xpath("//ul[@id='filter-p_n_feature_thirty-four_browse-bin']//span[@class='a-size-base a-color-base']")));
 		
@@ -1142,7 +1254,39 @@ public class AmazonTests extends BaseTest {
 		    return;
 		}
 		
-		productPage.applyOperatingSystemFilterAndValidateProducts(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
+		//productPage.applyOperatingSystemFilterAndValidateProducts(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
+		
+		
+		List<Map<String, Object>> results = productPage.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); 
+		
+		
+		
 			
 //		    safeAct.safeFindElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 ////			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
@@ -1233,8 +1377,36 @@ public class AmazonTests extends BaseTest {
 			    return;
 			}
 		
-			productPage.applyFilterAndValidateProducts(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
+		//	productPage.applyFilterAndValidateProducts(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
 		
+			
+			List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
+
+		    SoftAssert softAssert = new SoftAssert();
+
+		    for (Map<String, Object> product : results) {
+		        String filter = ((String) product.get("filter")).toLowerCase();
+		        String title = ((String) product.get("title")).toLowerCase();
+		        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+		        String about = ((String) product.get("about")).toLowerCase();
+		        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+		        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+		                        || about.contains(filter) || techDetails.contains(filter);
+
+		        if (!isMatch) {
+		            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+		                          + "Title: " + title + "\n"
+		                          + "Key Features: " + keyFeatures + "\n"
+		                          + "About: " + about + "\n"
+		                          + "Tech Details: " + techDetails + "\n");
+		            System.out.println("---------------------------------------------------------------");
+		        } else {
+		            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+		        }
+		    }
+
+		    softAssert.assertAll(); 
 			
 //			WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 //		
@@ -1298,8 +1470,36 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		productPage.applyFilterAndValidateProducts(productPage.listDiscountOptionsBy,"discount");
+	//	productPage.applyFilterAndValidateProducts(productPage.listDiscountOptionsBy,"discount");
 		
+		
+		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
+
+	    SoftAssert softAssert = new SoftAssert();
+
+	    for (Map<String, Object> product : results) {
+	        String filter = ((String) product.get("filter")).toLowerCase();
+	        String title = ((String) product.get("title")).toLowerCase();
+	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
+	        String about = ((String) product.get("about")).toLowerCase();
+	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+
+	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
+	                        || about.contains(filter) || techDetails.contains(filter);
+
+	        if (!isMatch) {
+	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+	                          + "Title: " + title + "\n"
+	                          + "Key Features: " + keyFeatures + "\n"
+	                          + "About: " + about + "\n"
+	                          + "Tech Details: " + techDetails + "\n");
+	            System.out.println("---------------------------------------------------------------");
+	        } else {
+	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
+	        }
+	    }
+
+	    softAssert.assertAll(); 
 		
 			
 //		List<WebElement> listDiscountOptions = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(
