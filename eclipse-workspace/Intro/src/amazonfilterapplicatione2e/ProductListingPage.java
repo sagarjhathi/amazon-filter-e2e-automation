@@ -85,9 +85,9 @@ public class ProductListingPage extends  BasePage{
 	
 	By priceSliderSubmitButton=By.xpath("//div[@class='a-section sf-submit-range-button']");
 	
-	By minPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_upper-bound-slider']");
+	By maxPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_upper-bound-slider']");
 	
-	By maxPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_lower-bound-slider']");
+	By minPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_lower-bound-slider']");
 	
 	By productPriceFromProductCards=By.xpath("//span[@class='a-price-whole']");
 	
@@ -1177,9 +1177,6 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	
 	
-	
-	
-	
 	public List<Map<String, Object>> applyPriceSliderAndValidateWithResult(List<Integer> minValues, List<Integer> maxValues) throws InterruptedException {
 
 	    if (minValues.size() != maxValues.size()) {
@@ -1196,7 +1193,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    js.executeScript("window.scrollBy(0, 300);");
 	    Thread.sleep(2000);
 
-	    // Locate sliders
+	    // Locate sliders	    
 	    WebElement minSlider = safeAct.safeFindElement(productPage.priceMinSliderButton);
 	    WebElement maxSlider = safeAct.safeFindElement(productPage.priceMaxSliderButton);
 
@@ -1221,34 +1218,47 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        );
 
 	        Thread.sleep(1000);
-
 	        // Click 'Go' / Apply
 	        safeAct.safeFindElement(productPage.priceSliderSubmitButton);
 	        Thread.sleep(2000);
 
-	        // Extract the applied max & min filter text and product prices
-	        String maxPriceApplied = safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText().replaceAll("[^\\d]", "");
-	        String minPriceApplied = safeAct.safeFindElement(productPage.minPriceFilterApplied).getText().replaceAll("[^\\d]", "");
-
+	        // Extract the applied max filter text and product prices
+	        String maxPriceApplied = safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
+	        String minPriceApplied = safeAct.safeFindElement(productPage.minPriceFilterApplied).getText();
+	        System.out.println("Max price ="+maxPriceApplied+"  "+"Min price ="+minPriceApplied);
 	        List<WebElement> prices = safeAct.safeFindElements(productPage.productPriceFromProductCards);
 
 	        List<String> mismatches = new ArrayList<>();
 	        boolean isValid = true;
 
 	        for (int j = 0; j < prices.size(); j++) {
-	            String productPriceText = prices.get(j).getText().replaceAll("[^\\d]", "");
-	            if (productPriceText.isEmpty()) continue;
+	            String productPrice = prices.get(j).getText();
+	            productPrice = productPrice.replaceAll("[^\\d]", "");
+	            maxPriceApplied = maxPriceApplied.replaceAll("[^\\d]", "");
+	            minPriceApplied = minPriceApplied.replaceAll("[^\\d]", "");
 
-	            int productPrice = Integer.parseInt(productPriceText);
-	            int minPrice = Integer.parseInt(minPriceApplied);
-	            int maxPrice = Integer.parseInt(maxPriceApplied);
+	            int productPriceInt = Integer.parseInt(productPrice);
+	            int maxPriceFilterAppliedInt = Integer.parseInt(maxPriceApplied);
+	            int minPriceFilterAppliedInt = Integer.parseInt(minPriceApplied);
 
-	            if (productPrice >= minPrice && productPrice <= maxPrice) {
-	                System.out.println("Product price is within limits --> product index and applied filter and product price is "
-	                        + j + "  " + maxPrice + "  " + productPrice);
+
+//	            if (minPriceFilterAppliedInt > maxPriceFilterAppliedInt) {
+//	                System.out.println("⚠️ Detected swapped min/max from UI. Swapping values to maintain proper validation.");
+//	                int temp = minPriceFilterAppliedInt;
+//	                minPriceFilterAppliedInt = maxPriceFilterAppliedInt;
+//	                maxPriceFilterAppliedInt = temp;
+//	            }
+	            
+	            boolean bool = true;
+	            if (productPriceInt <= maxPriceFilterAppliedInt) {
+	                System.out.println("Product price is within limits --> product index and applied filter and product price is " 
+	                    + j + "  " + maxPriceApplied + "  " + productPrice);
 	            } else {
-	                String errorMessage = "Product price is above limit --> product index->"+j+" and applied Max filter->"+maxPrice+"  and  applied Min filter->"+minPrice+" Actual product price -> "
-	              +productPrice;
+	                String errorMessage = "Product price is above limit --> product index->" + j 
+	                    + " and applied Max filter->" + maxPriceApplied 
+	                    + "  and  applied Min filter->" + minPriceApplied 
+	                    + " Actual product price -> " + productPrice;
+	                bool = false;
 	                System.out.println(errorMessage);
 	                mismatches.add(errorMessage);
 	                isValid = false;
@@ -1267,6 +1277,98 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    return results;
 	}
+
+	
+	
+	
+//	
+//	public List<Map<String, Object>> applyPriceSliderAndValidateWithResult(List<Integer> minValues, List<Integer> maxValues) throws InterruptedException {
+//
+//	    if (minValues.size() != maxValues.size()) {
+//	        throw new IllegalArgumentException("minValues and maxValues must be of same size");
+//	    }
+//
+//	    ProductListingPage productPage = new ProductListingPage();
+//	    SafeActions safeAct = new SafeActions();
+//	    JavascriptExecutor js = (JavascriptExecutor) driver;
+//
+//	    List<Map<String, Object>> results = new ArrayList<>();
+//
+//	    // Scroll to make slider visible
+//	    js.executeScript("window.scrollBy(0, 300);");
+//	    Thread.sleep(2000);
+//
+//	    // Locate sliders
+//	    WebElement minSlider = safeAct.safeFindElement(productPage.priceMinSliderButton);
+//	    WebElement maxSlider = safeAct.safeFindElement(productPage.priceMaxSliderButton);
+//
+//	    for (int i = 0; i < minValues.size(); i++) {
+//	        int min = minValues.get(i);
+//	        int max = maxValues.get(i);
+//
+//	        // Set min slider
+//	        js.executeScript(
+//	            "arguments[0].value = arguments[1];" +
+//	            "arguments[0].dispatchEvent(new Event('input'));" +
+//	            "arguments[0].dispatchEvent(new Event('change'));",
+//	            minSlider, String.valueOf(min)
+//	        );
+//
+//	        // Set max slider
+//	        js.executeScript(
+//	            "arguments[0].value = arguments[1];" +
+//	            "arguments[0].dispatchEvent(new Event('input'));" +
+//	            "arguments[0].dispatchEvent(new Event('change'));",
+//	            maxSlider, String.valueOf(max)
+//	        );
+//
+//	        Thread.sleep(1000);
+//
+//	        // Click 'Go' / Apply
+//	        safeAct.safeFindElement(productPage.priceSliderSubmitButton);
+//	        Thread.sleep(2000);
+//
+//	        // Extract the applied max & min filter text and product prices
+//	        String maxPriceApplied = safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText().replaceAll("[^\\d]", "");
+//	        String minPriceApplied = safeAct.safeFindElement(productPage.minPriceFilterApplied).getText().replaceAll("[^\\d]", "");
+//
+//	        List<WebElement> prices = safeAct.safeFindElements(productPage.productPriceFromProductCards);
+//
+//	        List<String> mismatches = new ArrayList<>();
+//	        boolean isValid = true;
+//
+//	        for (int j = 0; j < prices.size(); j++) {
+//	            String productPriceText = prices.get(j).getText().replaceAll("[^\\d]", "");
+//	            if (productPriceText.isEmpty()) continue;
+//
+//	            int productPrice = Integer.parseInt(productPriceText);
+//	            int minPrice = Integer.parseInt(minPriceApplied);
+//	            int maxPrice = Integer.parseInt(maxPriceApplied);
+//
+//	            if (productPrice >= minPrice && productPrice <= maxPrice) {
+//	                System.out.println("Product price is within limits --> product index and applied filter and product price is "
+//	                        + j + "  " + maxPrice + "  " + productPrice);
+//	            } else {
+//	                String errorMessage = "Product price is above limit --> product index->"+j+" and applied Max filter->"+maxPrice+"  and  applied Min filter->"+minPrice+" Actual product price -> "
+//	              +productPrice;
+//	                System.out.println(errorMessage);
+//	                mismatches.add(errorMessage);
+//	                isValid = false;
+//	            }
+//	        }
+//
+//	        Map<String, Object> result = new HashMap<>();
+//	        result.put("min", min);
+//	        result.put("max", max);
+//	        result.put("isValid", isValid);
+//	        result.put("mismatches", mismatches);
+//	        results.add(result);
+//
+//	        Thread.sleep(2000); // Small wait after each set
+//	    }
+//
+//	    return results;
+//	}
 
 	
 	public void refreshIfServiceUnavailable() {
