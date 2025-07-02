@@ -1591,7 +1591,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 //	}
 
 	
-	public void refreshIfServiceUnavailable() {
+  public void refreshIfServiceUnavailable() {
 	    String pageSource = driver.getPageSource().toLowerCase();
 	    String title = driver.getTitle().toLowerCase();
 
