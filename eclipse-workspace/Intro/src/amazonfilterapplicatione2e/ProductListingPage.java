@@ -451,8 +451,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
                 safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
                 System.out.println("'See More Details' clicked.");
             } catch (Exception e1) {
-                driver.close();
-                Thread.sleep(2000);
+                //driver.close();
+              //  Thread.sleep(2000);
                 genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
                 continue;
             }
