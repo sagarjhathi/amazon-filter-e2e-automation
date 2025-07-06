@@ -53,9 +53,13 @@ public class BaseTest {
 	    @BeforeMethod
 	    public void setUp(Method method) {
 	        // ✅ Assign unique thread name for routing log
-	        String threadName = method.getName() + "-" + Thread.currentThread().threadId();
-	        ThreadContext.put("threadName", threadName);
-	        log.info("🔹 Starting test method: " + method.getName());
+	    	 String testName = method.getName(); // The actual test method name
+	    	    String threadName = testName + "-" + Thread.currentThread().threadId();
+
+	    	    ThreadContext.put("threadName", threadName); // Used in file name routing (if needed)
+	    	    ThreadContext.put("testName", testName);     // ✅ Add this for use in logs
+
+	    	    log.info("🔹 Starting test method: " + testName);
 
 	        DriverManager.initDriver();
 	        driver = DriverManager.getDriver();

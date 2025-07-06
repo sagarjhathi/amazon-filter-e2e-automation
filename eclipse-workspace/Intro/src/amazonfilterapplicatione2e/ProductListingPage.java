@@ -14,6 +14,8 @@ import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.ElementClickInterceptedException;
 import org.openqa.selenium.JavascriptExecutor;
@@ -105,10 +107,13 @@ public class ProductListingPage extends  BasePage{
 
 	By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
 	
+	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+
 	
 	    public By getfilterByTypeAndName(String filterName, String filterOption) {
 	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
-	        
+			log.info("[{}] Within getfilterByTypeAndName method", ThreadContext.get("testName"));
+
 	        switch (filterName.toLowerCase()) {
 	        case "processorspeed":
 	            return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterOption + "']");
@@ -146,11 +151,15 @@ public class ProductListingPage extends  BasePage{
 
 	 
 	 public By getProductByIndex(int index) {
+			log.info("[{}] Within getProductByIndex method", ThreadContext.get("testName"));
+
 	        return By.xpath("(//div[@data-cy='title-recipe'])[" + index + "]");
 	    }
 	 
 	 
 	 public void switchToNewWindow(String currentWindowHandle) {
+			log.info("[{}] Within switchToNewWindow method", ThreadContext.get("testName"));
+
 		    Set<String> allWindowHandles = driver.getWindowHandles();
 
 		    for (String handle : allWindowHandles) {
@@ -167,7 +176,8 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	 
-	public boolean filterCheckUnderList(String filterName) {		
+	public boolean filterCheckUnderList(String filterName) {	
+		
 		    List<String> filterNames = new ArrayList<>();
 		    String target = filterName.trim().toLowerCase(); // convert input to lowercase
 
@@ -281,6 +291,8 @@ public WebElement safeFindElement(By locator) {
 	
 			
         public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
+        	
+        log.info("[{}] Within applyFilterAndValidateProducts method", ThreadContext.get("testName"));
 
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
@@ -290,9 +302,12 @@ public WebElement safeFindElement(By locator) {
 	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
 
 		for (int i = 0; i < filterOptions.size(); i++) {
-		
+			log.info("[{}] Within filterOptions loop within applyFilterAndValidateProducts", ThreadContext.get("testName"));
+
 		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
 		if(i>inloopParent.size()-1) {
+			log.info("[{}] Avoiding out of bounds issue by traversing only upto the inloop size within applyFilterAndValidateProducts", ThreadContext.get("testName"));
+
 			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
 			return;
 		}
@@ -315,13 +330,16 @@ public WebElement safeFindElement(By locator) {
 		System.out.println(productNameListingPage.get(0).getText()+"  printing the 1st product here before the loop");
 		
 		for(int p=1;p<=productNameListingPage.size()-1;p++) {	
+			log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProducts", ThreadContext.get("testName"));
+
 			Thread.sleep(3000);
 			System.out.println("inside the loop and product name is  and index is "+p+"  "+productNameListingPage.get(p).getText());				
 		//	safeAct.safeClick(productPage.getProductByIndex(p));
 			
 			try {
 			    WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-			    
+				log.info("[{}] Getting product by index  within productNameListingPage loop", ThreadContext.get("testName"));
+
 			    // Simulate Ctrl+Click (Cmd+Click on Mac)
 			    Actions actions = new Actions(driver);
 			    actions
@@ -332,18 +350,24 @@ public WebElement safeFindElement(By locator) {
 			        .perform();
 
 			    System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+				log.info("[{}] Product clicked with Ctrl+Click to open in new tab  within productNameListingPage loop", ThreadContext.get("testName"));
+
 			    Thread.sleep(2000); // Allow time for tab to open
 
 			} catch (Exception e) {
+				log.info("[{}] Failed to Ctrl+Click product index " + p+"  within productNameListingPage loop", ThreadContext.get("testName"));
 			    System.out.println("Failed to Ctrl+Click product index " + p);
 			    continue;
 			}
 
 			
 			System.out.println("Clicked on the producct name new pop-up should open");
+			log.info("[{}] Clicked on the producct name new pop-up should open  via productNameListingPage loop", ThreadContext.get("testName"));
+
 			Thread.sleep(2000);		
 			productPage.switchToNewWindow(currentWindow);
-			
+			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
+
 			safeAct.safeFindElement(productPage.productNameIndividualPage);
 			
 			safeAct.safeFindElement(productPage.productKeyFeatureBlock);
@@ -381,6 +405,8 @@ public WebElement safeFindElement(By locator) {
 
 public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
 
+    log.info("[{}] Within applyFilterAndValidateProductsWithResult method", ThreadContext.get("testName"));
+
     SafeActions safeAct = new SafeActions();
     ProductListingPage productPage = new ProductListingPage();
     GenericUtility genericUtility = new GenericUtility();
@@ -391,9 +417,12 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
     List<Map<String, Object>> results = new ArrayList<>();
 
     for (int i = 0; i < filterOptions.size(); i++) {
+		log.info("[{}] Within filterOptions loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
         if (i > inloopParent.size() - 1) {
+			log.info("[{}] Avoiding out of bounds issue by traversing only upto the inloop size within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
+
             System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
             return results;
         }
@@ -413,10 +442,14 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         for (int p = 1; p < productNameListingPage.size(); p++) {
 
+			log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
+
             System.out.println("inside the loop and product name is " + productNameListingPage.get(p-1).getText());
 
             try {
                 WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+				log.info("[{}] Getting product by index  within productNameListingPage loop", ThreadContext.get("testName"));
+
                 System.out.println(productElement.getText()+"Printing the name in try catch ");
                 Actions actions = new Actions(driver);
                 actions
@@ -427,21 +460,30 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
                     .perform();
 
                 System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+				log.info("[{}] Product clicked with Ctrl+Click to open in new tab  within productNameListingPage loop", ThreadContext.get("testName"));
+
                 Thread.sleep(2000);
 
             } catch (Exception e) {
+				log.info("[{}] Failed to Ctrl+Click product index " + p+"  within productNameListingPage loop", ThreadContext.get("testName"));
                 System.out.println("Failed to Ctrl+Click product index " + p);
                 continue;
             }
 
             System.out.println("Clicked on the producct name new pop-up should open");
+			log.info("[{}] Clicked on the producct name new pop-up should open  via productNameListingPage loop", ThreadContext.get("testName"));
+
             Thread.sleep(2000);
             productPage.switchToNewWindow(currentWindow);
+			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
+
 
             String name = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
             String keyFeatures = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
             String about = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
             String techDetails = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
+
+			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
 
             genericUtility.scrollByPixel(0, 700);
 
@@ -449,16 +491,21 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
                 genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
                 Thread.sleep(500);
                 safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+    			log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
                 System.out.println("'See More Details' clicked.");
             } catch (Exception e1) {
                 //driver.close();
               //  Thread.sleep(2000);
+    			log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
                 genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
+    			log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
                 continue;
             }
 
             Thread.sleep(2000);
             genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
+			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
+
 
             // ✅ Only this block is new
             Map<String, Object> productResult = new HashMap<>();
@@ -467,11 +514,18 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             productResult.put("keyFeatures", keyFeatures);
             productResult.put("about", about);
             productResult.put("techDetails", techDetails);
+			log.info("[{}]  Added 'filter','title','keyFeatures', 'about', 'techDetails' into the Map -> productResult", ThreadContext.get("testName"));
+
             results.add(productResult);
+			log.info("[{}]  Added 'productResult' Map into the 'results' i.e list of maps ", ThreadContext.get("testName"));
+
         }
 
         safeAct.safeClick(productPage.clearButtonBy);
+		log.info("[{}]  Clickin clear button in the end  within productNameListingPage loop", ThreadContext.get("testName"));
+
     }
+	log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));
 
     return results;
 }
