@@ -33,36 +33,42 @@ public class BaseTest {
 //	        // Quit WebDriver instance after test
 //	        DriverManager.quitDriver();
 //	    }
-	 
-	 @BeforeMethod(alwaysRun = true)
-	 public void setup(Method method, ITestContext context) {
-	     // Set ThreadContext first
-	     String methodName = method.getName();
-	     String threadName = methodName + "-" + Thread.currentThread().threadId();
-	     ThreadContext.put("threadName", threadName);
-	     log.info("🔹 Starting test method: " + methodName);
+//	 
+//
+//	    @BeforeMethod(alwaysRun = true)
+//	    public void setLoggingContext(Method method) {
+//	        String threadName = method.getName() + "-" + Thread.currentThread().threadId();
+//	        ThreadContext.put("threadName", threadName);
+//	        log.info("🔹 Starting test method: " + method.getName());
+//	    }
+//
+//	 
+//	    @AfterMethod(alwaysRun = true)
+//	    public void clearLoggingContext(ITestResult result) {
+//	        log.info("✅ Finished test method: " + result.getName());
+//	        ThreadContext.clearAll();
+//	    }
 
-	     // Then initialize driver
-	     DriverManager.initDriver(); 
-	     driver = DriverManager.getDriver();
-	 }
 
-	 
-	 @AfterMethod(alwaysRun = true)
-	 public void tearDown(ITestResult result) {
-	     log.info("✅ Finished test method: " + result.getName());
-	     DriverManager.quitDriver();
-	     ThreadContext.clearAll();
-	 }
+	    @BeforeMethod
+	    public void setUp(Method method) {
+	        // ✅ Assign unique thread name for routing log
+	        String threadName = method.getName() + "-" + Thread.currentThread().threadId();
+	        ThreadContext.put("threadName", threadName);
+	        log.info("🔹 Starting test method: " + method.getName());
 
-	
+	        DriverManager.initDriver();
+	        driver = DriverManager.getDriver();
+	    }
+
+	    @AfterMethod
+	    public void tearDown(ITestResult result) {
+	        log.info("✅ Finished test method: " + result.getName());
+	        ThreadContext.clearAll();  // ✅ Critical to avoid context bleed
+	        DriverManager.quitDriver();
+	    }
 	   
-	    
 	   
-
-
-	  
-
 	
 	
 }
