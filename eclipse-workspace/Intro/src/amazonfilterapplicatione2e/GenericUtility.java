@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -12,81 +14,47 @@ import org.openqa.selenium.WebElement;
 
 public class GenericUtility extends ProductListingPage{
 	
-	
+	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+
 	public boolean filterCheckUnderList(String filterName) {
+		log.info("[{}] Within filterCheckUnderList method", ThreadContext.get("testName"));
+
 	    String target = filterName.trim().toLowerCase();
 
 	    for (WebElement el : listOfFilterNameInLeftNav) {
 	    
 	        if (el.getText().trim().toLowerCase().equals(target)) {
 	            System.out.println(filterName + " matches with assert text here");
+	    		log.info("[{}] Found the Filter within the filter check List", ThreadContext.get("testName"));
 	            return true;
 	        }
 	    }
 
+
 	    System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
+		log.info("[{}] Filter option does not exist within the filter check List", ThreadContext.get("testName"));
 	    return false;
 	}
 	
-//	public boolean filterCheckUnderList(String filterName) {
-//
-//	    List<String> filterNames = new ArrayList<>();
-//	    String target = filterName.trim().toLowerCase(); // normalize input
-//
-//	    for (WebElement el : listOfFilterNameInLeftNav) {
-//	        String text = el.getText().trim().toLowerCase(); // normalize UI text
-//	        filterNames.add(text);
-//	    }
-//
-//	    for (String name : filterNames) {
-//	        System.out.println(name + "  <- Filter from UI");
-//	    }
-//
-//	    if (filterNames.contains(target)) {
-//	        System.out.println(filterName + " matches a filter in the list.");
-//	        return true;
-//	    } else {
-//	        System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
-//	        return false;
-//	    }
-//	}
 
-
-
-//	public boolean isElementInViewport( By locator) {
-//	    try {
-//	        WebElement element = driver.findElement(locator);
-//
-//	        if (!element.isDisplayed()) {
-//	            return false;
-//	        }
-//
-//	        JavascriptExecutor js = (JavascriptExecutor) driver;
-//
-//	        return (Boolean) js.executeScript(
-//	            "var elem = arguments[0],                 " +
-//	            "  box = elem.getBoundingClientRect(),    " +
-//	            "  cx = box.left + box.width / 2,         " +
-//	            "  cy = box.top + box.height / 2,         " +
-//	            "  e = document.elementFromPoint(cx, cy); " +
-//	            "for (; e; e = e.parentElement) {         " +
-//	            "  if (e === elem)                        " +
-//	            "    return true;                         " +
-//	            "}                                        " +
-//	            "return false;", element);
-//	    } catch (NoSuchElementException e) {
-//	        return false;
-//	    }
-//	}
 	
 	public boolean isElementInViewport(By locator) {
 	    try {
-	    
+    		log.info("[{}] Checking if element within view port via isElementInViewport method", ThreadContext.get("testName"));
+
 	        List<WebElement> elements = driver.findElements(locator);
-	        if (elements.isEmpty()) return false;
+	        if (elements.isEmpty()) {
+	        	return false;
+	        }
+    		
+
 
 	        WebElement element = elements.get(0);
-	        if (!element.isDisplayed()) return false;
+	        if (!element.isDisplayed()) {
+	        	return false;
+	        }
+    		
+
 
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 
@@ -104,6 +72,7 @@ public class GenericUtility extends ProductListingPage{
 	    } catch (Exception e) {
 	        return false;
 	    }
+	    
 	}
 
 
@@ -112,6 +81,8 @@ public class GenericUtility extends ProductListingPage{
 	
 	public boolean isElementVisibleOnUI(By locator) throws InterruptedException {
 		
+		log.info("[{}] Checking if element visible on UI via isElementVisibleOnUI Method", ThreadContext.get("testName"));
+
 		System.out.println("Checking if the filter and options visible on UI via isElementVisibleOnUI");
 		Thread.sleep(3000);
 	    try {
@@ -148,6 +119,8 @@ public class GenericUtility extends ProductListingPage{
 
 	
 	public boolean isElementPresent(By locator) {
+		log.info("[{}] Checking if present via isElementPresent Method", ThreadContext.get("testName"));
+
 	    try {
 	        driver.findElement(locator);
 	        return true;
@@ -158,6 +131,8 @@ public class GenericUtility extends ProductListingPage{
 
     public boolean filterCheckUnderList(String filterName1,String filterName2) {
 	
+		log.info("[{}] Within filterCheckUnderList method", ThreadContext.get("testName"));
+
     List<String> filterNames = new ArrayList<>();
     String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
     String target2 = filterName2.trim().toLowerCase();
@@ -181,19 +156,22 @@ public class GenericUtility extends ProductListingPage{
     }
 }
     
-	By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
 
     
 	
 	
     public void printFilterNamesOnly(By filterName) {
+		log.info("[{}] Within printFilterNamesOnly method", ThreadContext.get("testName"));
+
 		List<WebElement> filterOptions=safeFindElements(filterName);		
 		for (int i = 0; i < filterOptions.size(); i++) {
 			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
 		}
     }
     
-    public void printNamesOnly(List<WebElement> filterOptions) {		
+    public void printNamesOnly(List<WebElement> filterOptions) {
+		log.info("[{}] Within printNamesOnly method", ThreadContext.get("testName"));
+
 		for (int i = 0; i < filterOptions.size(); i++) {
 			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
 		}
@@ -201,6 +179,8 @@ public class GenericUtility extends ProductListingPage{
 
     
     public void scrollByPixel(int x, int y) {
+		log.info("[{}] Within scrollByPixel method", ThreadContext.get("testName"));
+
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
         try {
             Thread.sleep(2000); // Wait to allow scroll animation to complete
@@ -211,6 +191,8 @@ public class GenericUtility extends ProductListingPage{
     }
     
     public void smoothScrollToElement(By locator) {
+		log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));
+
         SafeActions safeAct=new SafeActions();
        WebElement element= safeAct.safeFindElement(locator);
         ((JavascriptExecutor) driver).executeScript(
@@ -221,6 +203,8 @@ public class GenericUtility extends ProductListingPage{
  
     
     public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
+		log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
+
         Set<String> allWindowHandles = driver.getWindowHandles();
         for (String handle : allWindowHandles) {
             if (handle.equals(currentWindow)) {
