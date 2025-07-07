@@ -821,98 +821,12 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	}
 	
 	
-	
-	
-	
-	
 
-	
-//	public Map<Object,Object> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
-//
-//	    SafeActions safeAct = new SafeActions();
-//	    ProductListingPage productPage = new ProductListingPage();
-//	    GenericUtility genericUtility = new GenericUtility();
-//
-//	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
-//	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-//	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-//		
-//	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-//	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
-//	    Map<Object, Object> result = new HashMap<>();
-//	    
-//		for (int i = 1; i < filterOptions.size(); i++) {
-//		    
-//		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
-//		if(i>inloopParent.size()-1) {
-//			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size and continuing");
-//			continue;
-//		}
-//		
-//		 if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
-//	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-//	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-//	            Thread.sleep(1000);
-//	      }
-//		
-//	    
-//		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-//		String str = inloopParent.get(i).getText().trim();	
-//		genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName,str));
-//		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
-//		Thread.sleep(1000);
-//		
-//		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
-//		
-//		
-//		    boolean isValid = true;
-//		    String text="";
-//		    List<String> mismatchDetails = new ArrayList<>();
-//
-//		
-//		int noOfBrandNameNotIntheList =0;
-//		for(int k=0;k<productNameListingPage.size();k++){
-//			if(productNameListingPage.get(k).getText().contains(str)) {
-//				String title=productNameListingPage.get(k).getText();
-//				System.out.println("Product name found in the list index no is -->" +k);
-//				//text="❌ Index: " + k + ", Brand: " + str + ", Title: '" + title;
-//			}else {
-//				String title=productNameListingPage.get(k).getText();
-//				System.out.println("Product name not found in the list hence the filter functionality failed index no is -->"+k);
-//				isValid=false;
-//				text = "❌ Index: " + k + ", Brand: " + str + ", Title: '" + title;
-//				mismatchDetails.add(text);
-//				noOfBrandNameNotIntheList++;
-//			//	Assert.fail("Product name not found in the list hence the filter functionality failed index no is -->"+k);
-//			}
-//		}
-//		
-//		result.put("brand", str);
-//		result.put("isValid", isValid);
-//		result.put("mismatches", mismatchDetails);
-//		
-//		System.out.println("The no of brand name not present in the list is -->"+noOfBrandNameNotIntheList +"for the brand filter -->"+str);
-//		
-//		try {
-//			safeAct.safeClick(productPage.clearButtonBy);
-//		} catch (Exception e) {
-//		    System.out.println("Element not clickable, going back via navigate.back()...filter name is"+str);
-//		    driver.navigate().back();
-//		}
-//		
-//		
-//		if(i % 10 == 0 && i != 0) {
-//			
-//			driver.navigate().refresh();
-//			System.out.println("Refreshing the page here ");
-//		}	
-//		}
-//		return result;
-//	}
 	
 	
 	
 	public List<Map<Object, Object>> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
+	    log.info("[{}] Within applyFilterAndValidateBrandsFilterWithResult method", ThreadContext.get("testName"));
 
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
@@ -920,7 +834,11 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
 	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+	    log.info("[{}] Scrolling to the 'More' Button under brands filter section", ThreadContext.get("testName"));
+
 	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+	    log.info("[{}] Clicked the 'More' Button under brands filter section", ThreadContext.get("testName"));
+
 
 	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 	    genericUtility.printFilterNamesOnly(filterOptionsBy);
@@ -928,19 +846,27 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    List<Map<Object, Object>> allResults = new ArrayList<>();
 
 	    for (int i = 1; i < filterOptions.size(); i++) {
+		    log.info("[{}] Within the filterOptions loop ", ThreadContext.get("testName"));
 
 	        List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
-	        if (i > inloopParent.size() - 1) continue;
+	        if (i > inloopParent.size() - 1) {
+			    log.info("[{}] Avoiding out of bouns by only iterating over the innerLoopParent ", ThreadContext.get("testName"));
+	        	continue;
+	        }
 
 	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
 	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+			    log.info("[{}] Clicked the 'More' Button under brands filter section within the loop ", ThreadContext.get("testName"));
+
 	            Thread.sleep(1000);
 	        }
 
 	        String str = inloopParent.get(i).getText().trim();
 	        genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName, str));
 	        safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, str));
+			log.info("[" + ThreadContext.get("testName") + "] Clicked on " + str+"Within the filterOptions loop");
+
 	        Thread.sleep(1000);
 
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
@@ -949,7 +875,10 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        List<String> mismatchDetails = new ArrayList<>();
 
 	        for (int k = 0; k < productNameListingPage.size(); k++) {
+
 	            String title = productNameListingPage.get(k).getText();
+				log.info("[" + ThreadContext.get("testName") + "] Within productNameListingPage loop with product index "+k +"and filter name "+ str);
+
 	            if (!title.toLowerCase().contains(str.toLowerCase())) {
 	                isValid = false;
 	                mismatchDetails.add("❌ Index: " + k + ", Brand: " + str + ", Title: '" + title + "'");
@@ -960,21 +889,30 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        result.put("brand", str);
 	        result.put("isValid", isValid);
 	        result.put("mismatches", mismatchDetails);
+			log.info("[" + ThreadContext.get("testName") + "] Creating 'result' Map for storing ,'brand','isValid','mismatches list' with map size ->"+result.size());
 
 	        allResults.add(result);
+			log.info("[" + ThreadContext.get("testName") + "] Adding 'result' with the data into 'allResults' i.e list of Map"+result.size());
 
 	        try {
 	        	if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
 	              	 safeAct.safeClick(productPage.clearButtonBy);
+	     			log.info("[" + ThreadContext.get("testName") + "] Clicked clear button for the filter ->"+str);
+
 	        }
 	        } catch (Exception e) {
 	            driver.navigate().back();
+     			log.info("[" + ThreadContext.get("testName") + "] Cannot click clear button hence navigating back to fresh page for filter->"+str);
+
 	        }
 
 	        if (i % 10 == 0 && i != 0) {
 	            driver.navigate().refresh();
+     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
+
 	        }
 	    }
+			log.info("[" + ThreadContext.get("testName") + "] Returning the allResults List of Maps containing the data");
 
 	    return allResults;
 	}
