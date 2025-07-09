@@ -536,7 +536,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=-11)
+	@Test(priority=-111)
 	//@Test(priority=11, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		
