@@ -1018,115 +1018,13 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	
 	
 	
-//	public List<Map<String, Object>> applyOperatingSystemFilterAndValidateProductsWithResults(By filterOptionsBy, String filterName) throws InterruptedException {
-//
-//	    SafeActions safeAct = new SafeActions();
-//	    ProductListingPage productPage = new ProductListingPage();
-//	    GenericUtility genericUtility = new GenericUtility();
-//
-//	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-//	    genericUtility.printFilterNamesOnly(filterOptionsBy);
-//	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-//	    safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-//
-//	    List<Map<String, Object>> allResults = new ArrayList<>();
-//
-//	    for (int i = 1; i < filterOptions.size(); i++) {
-//
-//	        List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
-//	        if (i > inloopParent.size() - 1) continue;
-//
-//	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
-//	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-//	            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-//	            Thread.sleep(1000);
-//	        }
-//
-//	        String str = inloopParent.get(i).getText().trim();
-//
-//	        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
-//	            System.out.println("Filter click failed for: " + str);
-//	            continue;
-//	        }
-//
-//	        Thread.sleep(1000);
-//	        String currentWindow = driver.getWindowHandle();
-//	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
-//
-//	        boolean isValid = true;
-//	        List<String> mismatches = new ArrayList<>();
-//
-//	        for (int p = 1; p < productNameListingPage.size(); p++) {
-//	            try {
-//	                WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-//	                new Actions(driver)
-//	                        .keyDown(Keys.CONTROL)
-//	                        .click(productElement)
-//	                        .keyUp(Keys.CONTROL)
-//	                        .build().perform();
-//
-//	                Thread.sleep(2000);
-//	                productPage.switchToNewWindow(currentWindow);
-//
-//	                safeAct.safeFindElement(productPage.productNameIndividualPage);
-//	                safeAct.safeFindElement(productPage.productKeyFeatureBlock);
-//	                safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
-//	                safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
-//	                genericUtility.scrollByPixel(0, 700);
-//
-//	                try {
-//	                    WebElement seeMore = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-//	                    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMore);
-//	                    Thread.sleep(500);
-//	                    safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-//	                    System.out.println("'See More Details' clicked.");
-//	                } catch (Exception e1) {
-//	                    mismatches.add("⚠️ Failed to expand details for product index " + p + " under OS: " + str);
-//	                    isValid = false;
-//	                }
-//
-//	                Thread.sleep(2000);
-//	                genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-//
-//	            } catch (Exception e) {
-//	                mismatches.add("❌ Ctrl+Click failed for product index " + p + " under OS: " + str);
-//	                isValid = false;
-//	                continue;
-//	            }
-//	        }
-//	        
-//	        String productTitle = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
-//	        String keyFeatureBlockText = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
-//	        String aboutBlockText = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
-//	        String techDetailsBlockText = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
-//
-//
-//	        Map<String, Object> result = new HashMap<>();
-//	        result.put("filter", str);
-//	        result.put("title", productTitle);
-//	        result.put("keyFeatures", keyFeatureBlockText);
-//	        result.put("about", aboutBlockText);
-//	        result.put("techDetails", techDetailsBlockText);
-//	        allResults.add(result);
-//
-//	        try {
-//	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
-//	                safeAct.safeClick(productPage.clearButtonBy);
-//	            }
-//	        } catch (Exception e) {
-//	            driver.navigate().back();
-//	        }
-//
-//	        if (i % 10 == 0 && i != 0) {
-//	            driver.navigate().refresh();
-//	        }
-//	    }
-//
-//	    return allResults;
-//	}
-
+	
+	
+	
 	public List<Map<String, Object>> applyOperatingSystemFilterAndValidateProductsWithResults(By filterOptionsBy, String filterName) throws InterruptedException {
+	    log.info("[{}] Within applyOperatingSystemFilterAndValidateProductsWithResults method", ThreadContext.get("testName"));
 
+		
 	    SafeActions safeAct = new SafeActions();
 	    ProductListingPage productPage = new ProductListingPage();
 	    GenericUtility genericUtility = new GenericUtility();
@@ -1135,10 +1033,15 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    genericUtility.printFilterNamesOnly(filterOptionsBy);
 	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	    safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+	    log.info("[{}] Clicked 'More' Button under the OS filter section", ThreadContext.get("testName"));
+
 
 	    List<Map<String, Object>> allResults = new ArrayList<>();
 
+	    
 	    for (int i = 1; i < filterOptions.size(); i++) {
+		    log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
+
 	        List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
 	        if (i > inloopParent.size() - 1) continue;
 
@@ -1148,10 +1051,11 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            Thread.sleep(1000);
 	        }
 
+	        
 	        String str = inloopParent.get(i).getText().trim();
-
 	        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
 	            System.out.println("Filter click failed for: " + str);
+	    	    log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
 	            continue;
 	        }
 
@@ -1160,6 +1064,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
 	        for (int p = 1; p < productNameListingPage.size(); p++) {
+	    	    log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
+
 	            try {
 	                WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
 	                new Actions(driver)
@@ -1167,6 +1073,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                        .click(productElement)
 	                        .keyUp(Keys.CONTROL)
 	                        .build().perform();
+		    	    log.info("[{}] Clicking on the Product , product inedx -> and filter applied->"+p+"  "+str, ThreadContext.get("testName"));
 
 	                Thread.sleep(2000);
 	                productPage.switchToNewWindow(currentWindow);
@@ -1185,8 +1092,12 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                    Thread.sleep(500);
 	                    safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
 	                    System.out.println("'See More Details' clicked.");
+	    	    	    log.info("[{}] CLicking on More deatils button , index and applied filter ->"+p+str, ThreadContext.get("testName"));
+
 	                } catch (Exception e1) {
 	                    System.out.println("⚠️ Failed to expand details for: " + str + ", index: " + p);
+	    	    	    log.info("[{}] Cannot click the More details button , index and applied filter ->"+p+str, ThreadContext.get("testName"));
+
 	                }
 
 	                // ✅ Collect details here before closing the tab
@@ -1195,13 +1106,19 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                String aboutBlockText = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
 	                String techDetailsBlockText = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
 
+    	    	    log.info("[{}] Extracting 'productTitle','keyFeatureBlockText','aboutBlockText' ,'techDetailsBlockText' , index and applied filter ->"+p+str, ThreadContext.get("testName"));
+
 	                Map<String, Object> result = new HashMap<>();
 	                result.put("filter", str);
 	                result.put("title", productTitle);
 	                result.put("keyFeatures", keyFeatureBlockText);
 	                result.put("about", aboutBlockText);
 	                result.put("techDetails", techDetailsBlockText);
+    	    	    log.info("[{}] Adding the data to the 'result' Map, index and applied filter ->"+p+str, ThreadContext.get("testName"));
+
 	                allResults.add(result);
+    	    	    log.info("[{}] Adding the 'result' Map to 'allResults' i.e List of maps index and applied filter ->"+p+str, ThreadContext.get("testName"));
+
 
 	                // ✅ Now safe to close
 	                genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
@@ -1212,19 +1129,28 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            }
 	        }
 
+	        
 	        // Clear applied filter
 	        try {
 	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
 	                safeAct.safeClick(productPage.clearButtonBy);
+    	    	    log.info("[{}] Clearing the applied filter ,and applied filter ->"+str, ThreadContext.get("testName"));
+
 	            }
 	        } catch (Exception e) {
 	            driver.navigate().back();
+	    	    log.info("[{}] Cannot click clear Button,and applied filter ->"+str, ThreadContext.get("testName"));
+
 	        }
 
 	        if (i % 10 == 0 && i != 0) {
 	            driver.navigate().refresh();
+	    	    log.info("[{}] Refreshing the page to avoid storage issue ->"+str, ThreadContext.get("testName"));
+
 	        }
 	    }
+
+	    log.info("[{}] Returning the Master data 'allResults'  ->", ThreadContext.get("testName"));
 
 	    return allResults;
 	}
