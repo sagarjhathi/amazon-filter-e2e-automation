@@ -1350,10 +1350,14 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	
 	public List<Map<String, Object>> applyPriceSliderAndValidateWithResult(List<Integer> minValues, List<Integer> maxValues) throws InterruptedException {
 
+	    log.info("[{}] Within applyPriceSliderAndValidateWithResult method", ThreadContext.get("testName"));
+
 	    if (minValues.size() != maxValues.size()) {
+		    log.info("[{}] Checking if the Min value and Max value list size are same", ThreadContext.get("testName"));
 	        throw new IllegalArgumentException("minValues and maxValues must be of same size");
 	    }
 
+	    
 	    ProductListingPage productPage = new ProductListingPage();
 	    SafeActions safeAct = new SafeActions();
 	    JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -1379,6 +1383,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            "arguments[0].dispatchEvent(new Event('change'));",
 	            minSlider, String.valueOf(min)
 	        );
+		    log.info("[{}] Applying the Min filter , Min filter value->"+min, ThreadContext.get("testName"));
+
 
 	        // Set max slider
 	        js.executeScript(
@@ -1387,10 +1393,14 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            "arguments[0].dispatchEvent(new Event('change'));",
 	            maxSlider, String.valueOf(max)
 	        );
+		    log.info("[{}] Applying the Max filter , Max filter value->"+max, ThreadContext.get("testName"));
+
 
 	        Thread.sleep(1000);
 	        // Click 'Go' / Apply
 	        safeAct.safeFindElement(productPage.priceSliderSubmitButton);
+		    log.info("[{}] Hitting the submit button"+max, ThreadContext.get("testName"));
+
 	        Thread.sleep(2000);
 
 	        // Extract the applied max filter text and product prices
@@ -1422,9 +1432,13 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            
 	            boolean bool = true;
 	            if (productPriceInt <= maxPriceFilterAppliedInt) {
+	    		    log.info("[{}] Checking if the product price is <= then the max filter applied, Product price and Max applied ->"+productPriceInt+"  "+max, ThreadContext.get("testName"));
+
 	                System.out.println("Product price is within limits --> product index and applied filter and product price is " 
 	                    + j + "  " + maxPriceApplied + "  " + productPrice);
 	            } else {
+	    		    log.info("[{}] Product price is more then the applied filter, Product price and Max applied ->"+productPriceInt+"  "+max, ThreadContext.get("testName"));
+
 	                String errorMessage = "Product price is above limit --> product index->" + j 
 	                    + " and applied Max filter->" + maxPriceApplied 
 	                    + "  and  applied Min filter->" + minPriceApplied 
@@ -1441,10 +1455,14 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        result.put("max", max);
 	        result.put("isValid", isValid);
 	        result.put("mismatches", mismatches);
+		    log.info("[{}] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->"+max, ThreadContext.get("testName"));
+
 	        results.add(result);
+		    log.info("[{}] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->"+max, ThreadContext.get("testName"));
 
 	        Thread.sleep(2000); // Small wait after each set
 	    }
+	    log.info("[{}] Returning the data here in the end", ThreadContext.get("testName"));
 
 	    return results;
 	}
