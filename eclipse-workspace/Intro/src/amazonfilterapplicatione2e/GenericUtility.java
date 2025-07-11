@@ -202,7 +202,7 @@ public class GenericUtility extends ProductListingPage{
     }
  
     
-    public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
+ public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
 		log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
 
         Set<String> allWindowHandles = driver.getWindowHandles();

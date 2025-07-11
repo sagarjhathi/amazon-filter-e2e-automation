@@ -137,7 +137,7 @@ public class AmazonTests extends BaseTest {
 		            		
 		            		
 	//@Test(priority=-4)
-	@Test(priority=4, retryAnalyzer = RetryFailedTest.class)
+	@Test(priority=-14, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
 		
 	
@@ -536,7 +536,7 @@ public class AmazonTests extends BaseTest {
 	
 	
 	
-	@Test(priority=-111)
+	@Test(priority=11)
 	//@Test(priority=11, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		
