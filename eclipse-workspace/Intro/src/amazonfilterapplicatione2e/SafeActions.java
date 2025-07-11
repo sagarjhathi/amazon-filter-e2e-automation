@@ -94,7 +94,6 @@ public class SafeActions extends BasePage{
 		            try {
 		                driver.navigate().refresh();
 						log.info("[{}]Refrehsing the page , while trying to safely find : ->"+locator, ThreadContext.get("testName"));
-
 		                System.out.println("Refreshing the page in safeFindElement Method");
 		                Thread.sleep(1000);
 		            } catch (InterruptedException ignored) {}
@@ -103,6 +102,8 @@ public class SafeActions extends BasePage{
 
 //		    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
 		    // Element not found after retries — skip the action
+			log.info("[{}] Skipping action: Element not found after "+attempts+"   attemps", ThreadContext.get("testName"));
+
 		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
 		    return null;
 		}
@@ -110,23 +111,32 @@ public class SafeActions extends BasePage{
 		
 		
 		public boolean safeClickBoolean(By locator) {
+			log.info("[{}] Within safeClickBoolean method", ThreadContext.get("testName"));
+
 		    int attempts = 0;
 		    while (attempts < 3) {
 		        try {
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
+					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
 		            System.out.println("Clicking using safeClick");
 		            return true; // success
 		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
 		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+					log.info("[{}] Cannot click the button, element ->"+locator ,ThreadContext.get("testName"));
+
 		            attempts++;
 		            try {
 		                driver.navigate().refresh();
+						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
+
 		                Thread.sleep(1000);
 		            } catch (InterruptedException ignored) {}
 		        }
 		    }
+			log.info("[{}]Skipping click action: Element not clickable after"+attempts+"   attempts" ,ThreadContext.get("testName"));
+
 		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
 		    return false; // failure
 		}
