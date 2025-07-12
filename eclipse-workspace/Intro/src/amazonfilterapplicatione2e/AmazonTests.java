@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
+
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,6 +34,7 @@ import java.time.format.DateTimeFormatter;
 
 public class AmazonTests extends BaseTest {
 
+	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
 	//Logging and reporting with screen shots would be the next big thing to add after assertions
 	//@Test(priority=-1)
 	@Test(priority=1, retryAnalyzer = RetryFailedTest.class)
@@ -60,6 +64,8 @@ public class AmazonTests extends BaseTest {
 	    int index = (int) result.get(2);
 	    
 	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
+	            ThreadContext.get("testName"), isValid, index, text);
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);  
 		    
 		}
@@ -96,6 +102,8 @@ public class AmazonTests extends BaseTest {
 	    int index = (int) result.get(2);
 	    
 	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
+	            ThreadContext.get("testName"), isValid, index, text);
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);      		
 		}
 	
@@ -130,6 +138,8 @@ public class AmazonTests extends BaseTest {
 	    int index = (int) result.get(2);
 	    
 	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
+	            ThreadContext.get("testName"), isValid, index, text);
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);             		  
 		            	    
 	    
