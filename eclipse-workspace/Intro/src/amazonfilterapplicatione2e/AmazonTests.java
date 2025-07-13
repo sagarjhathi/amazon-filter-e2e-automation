@@ -796,7 +796,6 @@ public class AmazonTests extends BaseTest {
 	    }
 
 	    log.info("[{}] ⏹ Final assertion for Discount filter validation...", ThreadContext.get("testName"));
-
 	    softAssert.assertAll(); 
 	}
 }
