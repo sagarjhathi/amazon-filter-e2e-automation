@@ -51,6 +51,7 @@ public class AmazonTests extends BaseTest {
        
         if (!genericUtility.isElementVisibleOnUI(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
+		    log.warn("[{}] ⚠ Filter option 'Get It by Tomorrow' does not exist. Skipping the test.", ThreadContext.get("testName"));
 		    return;
 		}
         
@@ -63,9 +64,10 @@ public class AmazonTests extends BaseTest {
 	    String text = (String) result.get(1);
 	    int index = (int) result.get(2);
 	    
-	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
 	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
 	            ThreadContext.get("testName"), isValid, index, text);
+	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
+	   
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);  
 		    
 		}
@@ -89,6 +91,7 @@ public class AmazonTests extends BaseTest {
 		 
  		if (!genericUtility.isElementInViewport(productPage.getItInTwoDaysUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It in 2 Days' does not exist. Skipping the test.");
+ 		   log.warn("[{}] ⚠ Filter option 'Get It in 2 Days' does not exist. Skipping the test.", ThreadContext.get("testName"));
  		    return ;
  		}                 
 		            		
@@ -101,9 +104,10 @@ public class AmazonTests extends BaseTest {
 	    String text = (String) result.get(1);
 	    int index = (int) result.get(2);
 	    
-	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
 	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
 	            ThreadContext.get("testName"), isValid, index, text);
+	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
+	    
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);      		
 		}
 	
@@ -121,10 +125,10 @@ public class AmazonTests extends BaseTest {
     
         GenericUtility genericUtility=new GenericUtility();
  		ProductListingPage productPage=new ProductListingPage();
- 		SafeActions safeAct=new SafeActions();
  		productPage.refreshIfServiceUnavailable();
  		if (!genericUtility.isElementVisibleOnUI(productPage.getItTodayUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It Today' does not exist. Skipping the test.");
+ 		   log.warn("[{}] ⚠ Filter option 'Get It Today' does not exist. Skipping the test.", ThreadContext.get("testName"));
  		    return;
  		}                   
 		            		
@@ -166,6 +170,7 @@ public class AmazonTests extends BaseTest {
 		
 		if (!genericUtility.filterCheckUnderList("brands")) {
 		    System.out.println("Filter option 'brands' does not exist in the list. Skipping the test.");
+	 		   log.warn("[{}] ⚠ Filter option 'brands' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
 		    return ;
 		}
 		
@@ -188,20 +193,26 @@ public class AmazonTests extends BaseTest {
 		        List<String> mismatches = (List<String>) result.get("mismatches");
 
 		        if (!isValid) {
+		        	log.error("[{}] ❌ Brand validation failed for '{}'. {} mismatches found.", ThreadContext.get("testName"), brand, mismatches.size());
 		            System.out.println("❌ Brand validation failed for brand: " + brand);
 		            for (String detail : mismatches) {
 		                System.out.println(detail);
+		                log.error("[{}] ✖ Mismatch for '{}': {}", ThreadContext.get("testName"), brand, detail);
+
 		                softAssert.fail(detail);
 		            }
 		        } else {
+		            log.info("[{}] ✅ All product titles matched for brand: '{}'", ThreadContext.get("testName"), brand);
 		            System.out.println("✔ All product titles matched for brand: " + brand);
 		        }
 		    }
 
+		    log.info("[{}] ⏹ Asserting all soft assertions now...", ThreadContext.get("testName"));
 		    softAssert.assertAll();
 		
 		
 	}
+	
 	
 	
 	//@Test(priority=-5)
@@ -221,6 +232,7 @@ public class AmazonTests extends BaseTest {
 		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Storage Capacity")) {
 		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
+	 		   log.warn("[{}] ⚠ Filter option 'Storage Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
 		    return ;
 		}
 			
@@ -233,6 +245,8 @@ public class AmazonTests extends BaseTest {
 //		 // ⏬ Call the main function and get result
 	    List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listStorageCapacityOptionsBy,"storagecapacity");
 
+	    log.info("[{}] 🔄 Retrieved {} results from applyFilterAndValidateProductsWithResult.",
+	            ThreadContext.get("testName"), results.size());
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -242,10 +256,15 @@ public class AmazonTests extends BaseTest {
 	        String about = ((String) product.get("about")).toLowerCase();
 	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
 
+	        log.info("[{}] 🔍 Checking if filter '{}' is found in product details.", ThreadContext.get("testName"), filter);
+
 	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	log.error("[{}] ❌ Filter '{}' not found.\n🔎 Title: {}\n🔎 Key Features: {}\n🔎 About: {}\n🔎 Tech Details: {}\n-------------------------------------------------------------",
+	        	          ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -276,6 +295,7 @@ public class AmazonTests extends BaseTest {
 		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Price")) {
 		    System.out.println("Filter option 'Price' does not exist in the list. Skipping the test.");
+	 		   log.warn("[{}] ⚠ Filter option 'Price' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
 		    return ;
 		}
 		
@@ -296,17 +316,26 @@ public class AmazonTests extends BaseTest {
 		        List<String> mismatches = (List<String>) result.get("mismatches");
 
 		        if (!isValid) {
+		            log.error("[{}] ❌ Validation failed for price range: {} - {}", ThreadContext.get("testName"), min, max);
 		            System.out.println("❌ Validation failed for price range: " + min + " - " + max);
 		            for (String msg : mismatches) {
 		                System.out.println(msg);
+		                log.error("[{}] ✖ {}", ThreadContext.get("testName"), msg);
 		                softAssert.fail(msg);
 		            }
 		            
 		        } else {
+		            log.info("[{}] ✅ Price range validated successfully: {} - {}", ThreadContext.get("testName"), min, max);
+
 		            System.out.println("✔ Price range validated: " + min + " - " + max);
 		        }
-		        System.out.println("------------------------------------------------------------");		  
+		        System.out.println("------------------------------------------------------------");		
+		        log.info("[{}] ------------------------------------------------------------", ThreadContext.get("testName"));
+
 		        }
+		    
+		    log.info("[{}] ⏹ Asserting all soft assertions now...", ThreadContext.get("testName"));
+
 
 		    softAssert.assertAll();
 					
@@ -328,6 +357,8 @@ public class AmazonTests extends BaseTest {
 	    productPage.refreshIfServiceUnavailable();
 	    GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Battery Capacity")) {
+	        log.warn("[{}] ⚠ Filter option 'Battery Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
+
 		    System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
@@ -356,6 +387,9 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	log.error("[{}] ❌ Battery capacity filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
+	        		    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -363,9 +397,13 @@ public class AmazonTests extends BaseTest {
 	                          + "Tech Details: " + techDetails + "\n");
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
+	            log.info("[{}] ✅ Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
+
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
+
+	    log.info("[{}] ⏹ Asserting all soft assertions now...", ThreadContext.get("testName"));
 
 	    softAssert.assertAll(); 
 	}
@@ -389,6 +427,8 @@ public class AmazonTests extends BaseTest {
   		ProductListingPage productPage=new ProductListingPage();
   		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Display Size")) {
+	        log.warn("[{}] ⚠ Filter option 'Display Size' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
+
 		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
 		    return ;
 		}
@@ -416,6 +456,9 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	 log.error("[{}] ❌ Display Size filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
+	                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -423,9 +466,13 @@ public class AmazonTests extends BaseTest {
 	                          + "Tech Details: " + techDetails + "\n");
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
+	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
+
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
+
+	    log.info("[{}] ⏹ Final assertion for display size filter validation starting...", ThreadContext.get("testName"));
 
 	    softAssert.assertAll(); 
 	
@@ -450,6 +497,8 @@ public class AmazonTests extends BaseTest {
         
         productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Processor Speed")) {
+	        log.warn("[{}] ⚠ Filter option 'Processor Speed' not available. Skipping test.", ThreadContext.get("testName"));
+
 		    return ;
 		}
 		
@@ -474,6 +523,8 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	log.error("[{}] ❌ Processor Speed filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
+	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -481,9 +532,14 @@ public class AmazonTests extends BaseTest {
 	                          + "Tech Details: " + techDetails + "\n");
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
+	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
+
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
+	    
+	    log.info("[{}] ⏹ Final assertion for processor speed filter validation starting...", ThreadContext.get("testName"));
+
 
 	    softAssert.assertAll(); 
 		
@@ -506,6 +562,8 @@ public class AmazonTests extends BaseTest {
 		GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Display Type")){
 		    System.out.println("Filter option 'Display Type' does not exist. Skipping the test.");
+	        log.warn("[{}] ⚠ Filter option 'Display Type' does not exist. Skipping the test.", ThreadContext.get("testName"));
+
 		    return ;
 		}
 		
@@ -527,6 +585,10 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	
+	        	log.error("[{}] ❌ Display Type filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -534,9 +596,13 @@ public class AmazonTests extends BaseTest {
 	                          + "Tech Details: " + techDetails + "\n");
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
+	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
+
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
+
+	    log.info("[{}] ⏹ Final assertion for display type filter validation...", ThreadContext.get("testName"));
 
 	    softAssert.assertAll(); 
 		}
@@ -562,6 +628,8 @@ public class AmazonTests extends BaseTest {
 		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
 		    System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
+	        log.warn("[{}] ⚠ Filter option 'Operating System' or 'Operating System Version' not found. Skipping test.", ThreadContext.get("testName"));
+
 		    return;
 		}
 		
@@ -583,6 +651,9 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	log.error("[{}] ❌ OS Version filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -590,9 +661,13 @@ public class AmazonTests extends BaseTest {
 	                          + "Tech Details: " + techDetails + "\n");
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
+	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
+
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
+
+	    log.info("[{}] ⏹ Final assertion for OS Version filter validation...", ThreadContext.get("testName"));
 
 	    softAssert.assertAll(); 
 		
@@ -617,6 +692,8 @@ public class AmazonTests extends BaseTest {
 
 			if (!genericUtility.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
 			    System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
+			    log.warn("[{}] ⚠ Filter 'Mobile Phone Primary Camera Resolution' not found. Skipping test.",
+		                ThreadContext.get("testName"));
 			    return;
 			}
 		
@@ -638,6 +715,9 @@ public class AmazonTests extends BaseTest {
 		                        || about.contains(filter) || techDetails.contains(filter);
 
 		        if (!isMatch) {
+		        	 log.error("[{}] ❌ Camera Resolution filter '{}' not matched in product details.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+		                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+		             log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
 		            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 		                          + "Title: " + title + "\n"
 		                          + "Key Features: " + keyFeatures + "\n"
@@ -645,9 +725,14 @@ public class AmazonTests extends BaseTest {
 		                          + "Tech Details: " + techDetails + "\n");
 		            System.out.println("---------------------------------------------------------------");
 		        } else {
+		            log.info("[{}] ✔ Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
+
 		            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 		        }
 		    }
+		    
+		    log.info("[{}] ⏹ Final assertion for Camera Resolution filter validation...", ThreadContext.get("testName"));
+
 
 		    softAssert.assertAll(); 
 	}
@@ -668,6 +753,8 @@ public class AmazonTests extends BaseTest {
 		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Discount")) {
+	        log.warn("[{}] ⚠ Filter 'Discount' not available. Skipping test.", ThreadContext.get("testName"));
+
 		    System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");
 		    return ;
 		}
@@ -690,6 +777,11 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
+	        	log.error("[{}] ❌ Discount filter '{}' not found in product.", ThreadContext.get("testName"), filter);
+	            log.debug("[{}] 🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+	                    ThreadContext.get("testName"), title, keyFeatures, about, techDetails);
+	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
+
 	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
 	                          + "Title: " + title + "\n"
 	                          + "Key Features: " + keyFeatures + "\n"
@@ -697,9 +789,13 @@ public class AmazonTests extends BaseTest {
 	                          + "Tech Details: " + techDetails + "\n");
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
+	            log.info("[{}] ✔ Filter '{}' matched in at least one product section.", ThreadContext.get("testName"), filter);
+
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
+
+	    log.info("[{}] ⏹ Final assertion for Discount filter validation...", ThreadContext.get("testName"));
 
 	    softAssert.assertAll(); 
 	}
