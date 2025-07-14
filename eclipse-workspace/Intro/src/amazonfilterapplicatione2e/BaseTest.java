@@ -17,55 +17,29 @@ import org.apache.logging.log4j.ThreadContext;
 
 public class BaseTest {
  
-	private static final Logger log = LoggerUtility.getLogger(BaseTest.class);
+	private  final Logger log = LoggerUtility.getLogger(BaseTest.class);
+	//private final Logger log = LoggerUtility.getLogger(getClass());
 
 	
 	 protected WebDriver driver;
 
-//	    @BeforeMethod
-//	    public void setUp() {
-//	        // Initialize WebDriver instance using DriverManager
-//	    	DriverManager.initDriver(); 
-//	        driver = DriverManager.getDriver();
-//	    }
-//
-//	    @AfterMethod
-//	    public void tearDown() {
-//	        // Quit WebDriver instance after test
-//	        DriverManager.quitDriver();
-//	    }
-//	 
-//
-//	    @BeforeMethod(alwaysRun = true)
-//	    public void setLoggingContext(Method method) {
-//	        String threadName = method.getName() + "-" + Thread.currentThread().threadId();
-//	        ThreadContext.put("threadName", threadName);
-//	        log.info("🔹 Starting test method: " + method.getName());
-//	    }
-//
-//	 
-//	    @AfterMethod(alwaysRun = true)
-//	    public void clearLoggingContext(ITestResult result) {
-//	        log.info("✅ Finished test method: " + result.getName());
-//	        ThreadContext.clearAll();
-//	    }
-
-
 	    @BeforeMethod
 	    public void setUp(Method method) {
 	        // ✅ Assign unique thread name for routing log
-	    	 String testName = method.getName(); // The actual test method name
+	    	    String testName = method.getName(); // The actual test method name
 	    	    String threadName = testName + "-" + Thread.currentThread().threadId();
-
+	    	    String logName = method.getName() + "_" + Thread.currentThread().getId();
+	    	    ThreadContext.put("logFileName", logName);  // ✅ Very important
 	    	    ThreadContext.put("threadName", threadName); // Used in file name routing (if needed)
 	    	    ThreadContext.put("testName", testName);     // ✅ Add this for use in logs
-	    	   
+
+	    	    System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
 	    	    log.info("🔹 Starting test method: " + testName);
 
 	        DriverManager.initDriver();
 	        driver = DriverManager.getDriver();
 	    }
-
+	 
 	    @AfterMethod
 	    public void tearDown(ITestResult result) {
 	        log.info("✅ Finished test method: " + result.getName());
@@ -74,6 +48,7 @@ public class BaseTest {
 	    }
 	   
 	   
+	
 	
 	
 }

@@ -14,7 +14,8 @@ import org.openqa.selenium.WebElement;
 
 public class GenericUtility extends ProductListingPage{
 	
-	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+	private  final Logger log = LoggerUtility.getLogger(GenericUtility.class);
+	//private final Logger log = LoggerUtility.getLogger(getClass());
 
 	public boolean filterCheckUnderList(String filterName) {
 		log.info("[{}] Within filterCheckUnderList method", ThreadContext.get("testName"));

@@ -107,7 +107,8 @@ public class ProductListingPage extends  BasePage{
 
 	By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
 	
-	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+	private  final Logger log = LoggerUtility.getLogger(ProductListingPage.class);
+//	private final Logger log = LoggerUtility.getLogger(getClass());
 
 	
 	    public By getfilterByTypeAndName(String filterName, String filterOption) {

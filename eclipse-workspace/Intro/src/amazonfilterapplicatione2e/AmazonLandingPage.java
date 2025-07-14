@@ -8,7 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class AmazonLandingPage extends BasePage{
 
-	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+	private  final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+	//private final Logger log = LoggerUtility.getLogger(getClass());
 	
 	@FindBy(xpath="//input[@id='twotabsearchtextbox']")
 	WebElement searchBarLandingPage;
