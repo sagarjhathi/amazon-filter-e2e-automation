@@ -12,7 +12,8 @@ import java.util.NoSuchElementException;
 
 public class SafeActions extends BasePage{
    
-	private static final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
+	private  final Logger log = LoggerUtility.getLogger(SafeActions.class);
+//	private final Logger log = LoggerUtility.getLogger(getClass());
 
 
 	public void safeClick(By locator) {
