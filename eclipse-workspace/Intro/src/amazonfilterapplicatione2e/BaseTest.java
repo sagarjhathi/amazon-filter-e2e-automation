@@ -32,10 +32,10 @@ public class BaseTest {
 	    	    ThreadContext.put("logFileName", logName);  // ✅ Very important
 	    	    ThreadContext.put("threadName", threadName); // Used in file name routing (if needed)
 	    	    ThreadContext.put("testName", testName);     // ✅ Add this for use in logs
-
+	    	    
 	    	    System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
 	    	    log.info("🔹 Starting test method: " + testName);
-
+	    	    
 	        DriverManager.initDriver();
 	        driver = DriverManager.getDriver();
 	    }
