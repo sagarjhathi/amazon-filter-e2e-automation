@@ -18,9 +18,6 @@
             <PatternLayout>
               <Pattern>${LOG_PATTERN}</Pattern>
             </PatternLayout>
-            <Policies>
-              <SizeBasedTriggeringPolicy size="5MB"/>
-            </Policies>
           </RollingFile>
         </Route>
       </Routes>
