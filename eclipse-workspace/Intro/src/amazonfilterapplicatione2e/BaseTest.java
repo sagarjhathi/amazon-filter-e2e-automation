@@ -4,6 +4,7 @@ package amazonfilterapplicatione2e;
 import java.io.File;
 import java.lang.reflect.Method;
 
+import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +18,7 @@ import org.apache.logging.log4j.ThreadContext;
 
 public class BaseTest {
  
-	private  final Logger log = LoggerUtility.getLogger(BaseTest.class);
+	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
 	//private final Logger log = LoggerUtility.getLogger(getClass());
 
 	
@@ -32,6 +33,8 @@ public class BaseTest {
 	    	    ThreadContext.put("logFileName", logName);  // ✅ Very important
 	    	    ThreadContext.put("threadName", threadName); // Used in file name routing (if needed)
 	    	    ThreadContext.put("testName", testName);     // ✅ Add this for use in logs
+	    	    ThreadContext.put("logFileName", testName); // ✅ must come before logger is called
+	    	    log = LogManager.getLogger(testName); 
 	    	    
 	    	    System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
 	    	    log.info("🔹 Starting test method: " + testName);
