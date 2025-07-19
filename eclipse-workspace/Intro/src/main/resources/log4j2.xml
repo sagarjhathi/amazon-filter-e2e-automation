@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
-  <Properties>
-    <Property name="LOG_PATTERN">%d{HH:mm:ss.SSS} [%t] %-5level [%X{logFileName}] %msg%n</Property>
-  </Properties>
+<Properties>
+  <Property name="LOG_PATTERN">%d{yyyy-MM-dd hh:mm:ss.SSS a} [%t] %-5level [%X{logFileName}] %msg%n</Property>
+</Properties>
+
 
   <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
