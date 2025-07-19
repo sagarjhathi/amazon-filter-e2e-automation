@@ -20,7 +20,7 @@ public class SafeActions extends BasePage{
 		log.info("[{}] Within safeClick method", ThreadContext.get("testName"));
 
 	    int attempts = 0;
-	    while (attempts < 3) {
+	    while (attempts < 2) {
 	        try {
 	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 	            element.click();
@@ -32,7 +32,7 @@ public class SafeActions extends BasePage{
 	    		log.info("[{}] Cannot click the butto using safeClick, trying again", ThreadContext.get("testName"));
 	            attempts++;
 	            try {
-	             //   driver.navigate().refresh();
+	                driver.navigate().refresh();
 	                Thread.sleep(1000); // small delay before retry
 	            } catch (InterruptedException ignored) {}
 	        }
@@ -47,7 +47,7 @@ public class SafeActions extends BasePage{
 		log.info("[{}] Within safeFindElements ", ThreadContext.get("testName"));
 
 	    int attempts = 0;
-	    while (attempts < 3) {
+	    while (attempts < 2) {
 	        try {
 	            List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	    		log.info("[{}] Returning the  "+elements+" from the safeFindElements method", ThreadContext.get("testName"));
@@ -80,7 +80,7 @@ public class SafeActions extends BasePage{
 			log.info("[{}] Within safeFindElement method", ThreadContext.get("testName"));
 
 		    int attempts = 0;
-		    while (attempts < 3) {
+		    while (attempts < 2) {
 		        try {
 		        	
 		            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
@@ -115,7 +115,7 @@ public class SafeActions extends BasePage{
 			log.info("[{}] Within safeClickBoolean method", ThreadContext.get("testName"));
 
 		    int attempts = 0;
-		    while (attempts < 3) {
+		    while (attempts < 2) {
 		        try {
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");

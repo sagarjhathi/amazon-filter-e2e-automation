@@ -15,7 +15,8 @@
         <Route>
           <RollingFile name="RollingFile-${ctx:logFileName}"
                        fileName="logs/${ctx:logFileName}.log"
-                       filePattern="logs/archive/${ctx:logFileName}-%d{yyyy-MM-dd-HH-mm}.log.gz">
+                       filePattern="logs/archive/${ctx:logFileName}-%d{yyyy-MM-dd-HH-mm}.log.gz"
+                       append="false">
             <PatternLayout pattern="${LOG_PATTERN}" />
             <Policies>
               <SizeBasedTriggeringPolicy size="5MB"/>

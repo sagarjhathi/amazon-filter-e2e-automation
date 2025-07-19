@@ -214,8 +214,6 @@ public class AmazonTests extends BaseTest {
 		
 	}
 	
-	
-	
 	//@Test(priority=-5)
 	@Test(priority=5, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
