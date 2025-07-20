@@ -1,14 +1,22 @@
 package amazonfilterapplicatione2e.reporting;
 
-
+import amazonfilterapplicatione2e.DriverManager;
 import amazonfilterapplicatione2e.ScreenshotUtil;
 import com.aventstack.extentreports.Status;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.apache.logging.log4j.ThreadContext;
+import org.openqa.selenium.WebDriver;
+
+import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TestListener implements ITestListener {
+
+    private static final String RUN_TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
+    private static final String SCREENSHOT_BASE_DIR = System.getProperty("user.dir") + "/test-output/screenshots/Run_" + RUN_TIMESTAMP;
 
     @Override
     public void onTestStart(ITestResult result) {
@@ -20,6 +28,7 @@ public class TestListener implements ITestListener {
     public void onTestSuccess(ITestResult result) {
         ExtentTestManager.getTest().log(Status.PASS, "✅ Test Passed");
         attachLogFile();
+        attachScreenshotFolder(result);
     }
 
     @Override
@@ -28,16 +37,19 @@ public class TestListener implements ITestListener {
 
         // Screenshot on failure
         String testName = result.getMethod().getMethodName();
-        String screenshotPath = ScreenshotUtil.captureScreenshot(testName);
+        WebDriver driver = DriverManager.getDriver();
+        String screenshotPath = ScreenshotUtil.capture(driver, testName, "General", 0);
         ExtentTestManager.getTest().addScreenCaptureFromPath(screenshotPath);
 
         attachLogFile();
+        attachScreenshotFolder(result);
     }
 
     @Override
     public void onTestSkipped(ITestResult result) {
         ExtentTestManager.getTest().log(Status.SKIP, "⚠️ Test Skipped");
         attachLogFile();
+        attachScreenshotFolder(result);
     }
 
     @Override
@@ -49,7 +61,6 @@ public class TestListener implements ITestListener {
         try {
             String logFileName = ThreadContext.get("logFileName");
             if (logFileName != null) {
-                // Absolute path version
                 String absolutePath = System.getProperty("user.dir") + "/logs/" + logFileName + ".log";
                 String fileUrl = "file:///" + absolutePath.replace("\\", "/");
 
@@ -60,5 +71,18 @@ public class TestListener implements ITestListener {
         }
     }
 
-}
+    private void attachScreenshotFolder(ITestResult result) {
+        try {
+            String testName = result.getMethod().getMethodName();
+            File testFolder = new File(SCREENSHOT_BASE_DIR + "/" + testName);
+            if (testFolder.exists()) {
+                String folderPath = testFolder.getAbsolutePath().replace("\\", "/");
+                String folderLink = "file:///" + folderPath;
 
+                ExtentTestManager.getTest().info("🖼️ <a href='" + folderLink + "' target='_blank'>Open Screenshot Folder</a>");
+            }
+        } catch (Exception e) {
+            ExtentTestManager.getTest().warning("⚠️ Could not attach screenshot folder: " + e.getMessage());
+        }
+    }
+}
