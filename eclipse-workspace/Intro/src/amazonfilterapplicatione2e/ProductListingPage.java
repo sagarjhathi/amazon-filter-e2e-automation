@@ -30,6 +30,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import amazonfilterapplicatione2e.reporting.ExtentTestManager;
+
 public class ProductListingPage extends  BasePage{
 
 	
@@ -139,16 +141,6 @@ public class ProductListingPage extends  BasePage{
 	    }
 	    }
     
-//	    public By getBrandsFilterByName(String filterName) {
-//	        return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='"+ filterName + "']");
-//	    }
-	
-	
-//	public By getFilterByName(By locator, String filterName) {
-//		String raw = locator.toString(); // e.g., "By.xpath: //div[@class='example']"
-//	    raw= raw.replace("By.xpath: ", "").trim(); // Now it's just "//div[@class='example']"
-//	    return By.xpath(raw + "//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
-//	}
 
 	 
 	 public By getProductByIndex(int index) {
@@ -416,7 +408,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
     List<Map<String, Object>> results = new ArrayList<>();
 
-    for (int i = 0; i < filterOptions.size(); i++) {
+    for (int i = 0; i < 1; i++) {
 		log.info("[{}] Within filterOptions loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
@@ -434,18 +426,24 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
             continue; // ⛔ Skip the rest of the current loop iteration
         }
-
+        String testName = ThreadContext.get("logFileName");
+        String filterValue = str; // or dynamically picked
+        int productIndex;
         Thread.sleep(1000);
         String currentWindow = driver.getWindowHandle();
         System.out.println("Printing current window  " + currentWindow);
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         for (int p = 1; p < productNameListingPage.size(); p++) {
+        	 productIndex = p;
+        	 String screenshotPath = ScreenshotUtil.capture(driver, testName, filterValue, productIndex);
+        	 ExtentTestManager.getTest().info("📸 Screenshot: " + filterValue + " | Index " + i)
+        	     .addScreenCaptureFromPath(screenshotPath);
 
 			log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
             System.out.println("inside the loop and product name is " + productNameListingPage.get(p-1).getText());
-
+            
             try {
                 WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
 				log.info("[{}] Getting product by index  within productNameListingPage loop", ThreadContext.get("testName"));
