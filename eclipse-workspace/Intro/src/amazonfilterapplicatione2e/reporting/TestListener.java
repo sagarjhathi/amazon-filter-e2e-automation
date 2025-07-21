@@ -3,6 +3,9 @@ package amazonfilterapplicatione2e.reporting;
 import amazonfilterapplicatione2e.DriverManager;
 import amazonfilterapplicatione2e.ScreenshotUtil;
 import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
+
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
@@ -37,12 +40,15 @@ public class TestListener implements ITestListener {
 
         // Screenshot on failure
         String testName = result.getMethod().getMethodName();
-        WebDriver driver = DriverManager.getDriver();
-        String screenshotPath = ScreenshotUtil.capture(driver, testName, "General", 0);
-        ExtentTestManager.getTest().addScreenCaptureFromPath(screenshotPath);
+        Throwable cause = result.getThrowable();
 
-        attachLogFile();
-        attachScreenshotFolder(result);
+        // Log failure in Extent Report
+        ExtentTestManager.getTest().log(Status.FAIL,
+            "❌ Test Failed: " + testName + "<br><pre>" + cause + "</pre>");
+
+        // No screenshot taken
+        attachLogFile();             // 🔹 Still attach logs if needed
+        attachScreenshotFolder(result); // 🔹 Still attach folder path for context if needed
     }
 
     @Override
@@ -71,18 +77,55 @@ public class TestListener implements ITestListener {
         }
     }
 
+//    private void attachScreenshotFolder(ITestResult result) {
+//        try {
+//            String testName = result.getMethod().getMethodName();
+//            File testFolder = new File(SCREENSHOT_BASE_DIR + "/" + testName);
+//            if (testFolder.exists()) {
+//                String folderPath = testFolder.getAbsolutePath().replace("\\", "/");
+//                String folderLink = "file:///" + folderPath;
+//
+//                // ✅ Collapsible section in Extent Report
+//                ExtentTestManager.getTest().info(
+//                    "<details><summary>📂 Open Screenshot Folder</summary><a href='" + folderLink + "' target='_blank'>Click Here</a></details>"
+//                );
+//            }
+//        } catch (Exception e) {
+//            ExtentTestManager.getTest().warning("⚠️ Could not attach screenshot folder: " + e.getMessage());
+//        }
+//    }
+    
+    
     private void attachScreenshotFolder(ITestResult result) {
         try {
             String testName = result.getMethod().getMethodName();
             File testFolder = new File(SCREENSHOT_BASE_DIR + "/" + testName);
             if (testFolder.exists()) {
-                String folderPath = testFolder.getAbsolutePath().replace("\\", "/");
-                String folderLink = "file:///" + folderPath;
+                StringBuilder html = new StringBuilder();
+                html.append("<details><summary>📂 Open Screenshot Folder</summary>");
 
-                ExtentTestManager.getTest().info("🖼️ <a href='" + folderLink + "' target='_blank'>Open Screenshot Folder</a>");
+                File[] files = testFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".png"));
+                if (files != null && files.length > 0) {
+                    for (File file : files) {
+                        String filePath = file.getAbsolutePath().replace("\\", "/");
+                        String fileUrl = "file:///" + filePath;
+                        html.append("<div><a href='").append(fileUrl)
+                            .append("' target='_blank'>").append(file.getName()).append("</a></div>");
+                    }
+                } else {
+                    html.append("<div>No screenshots found</div>");
+                }
+
+                html.append("</details>");
+
+                // Attach it to the report
+                ExtentTestManager.getTest().info(MarkupHelper.createLabel(html.toString(), ExtentColor.GREY));
             }
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("⚠️ Could not attach screenshot folder: " + e.getMessage());
         }
     }
+
+    
+
 }
