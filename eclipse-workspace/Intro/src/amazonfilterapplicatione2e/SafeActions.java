@@ -17,11 +17,17 @@ public class SafeActions extends BasePage{
 
 
 	public void safeClick(By locator) {
+//		ProductListingPage productPage=new ProductListingPage();
+//		if(driver.findElement(productPage.seeMoreButtonIndividualPage).isDisplayed()) {
+//			System.out.println("Found the see more button hence returning from safeclick");
+//			return;
+//		}
 		log.info("[{}] Within safeClick method", ThreadContext.get("testName"));
 
 	    int attempts = 0;
 	    while (attempts < 2) {
 	        try {
+	        	
 	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 	            element.click();
 	    		log.info("[{}] Clicked the  "+element+"   using safeClick", ThreadContext.get("testName"));

@@ -109,6 +109,8 @@ public class ProductListingPage extends  BasePage{
 
 	By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
 	
+	By seeMoreButtonIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
+	
 	private  final Logger log = LoggerUtility.getLogger(ProductListingPage.class);
 //	private final Logger log = LoggerUtility.getLogger(getClass());
 
@@ -408,7 +410,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
     List<Map<String, Object>> results = new ArrayList<>();
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < filterOptions.size(); i++) {
 		log.info("[{}] Within filterOptions loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
@@ -426,19 +428,29 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
             continue; // ⛔ Skip the rest of the current loop iteration
         }
+        
+        
         String testName = ThreadContext.get("logFileName");
         String filterValue = str; // or dynamically picked
         int productIndex;
+        
+        
         Thread.sleep(1000);
         String currentWindow = driver.getWindowHandle();
         System.out.println("Printing current window  " + currentWindow);
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         for (int p = 1; p < productNameListingPage.size(); p++) {
-        	 productIndex = p;
-        	 String screenshotPath = ScreenshotUtil.capture(driver, testName, filterValue, productIndex);
-        	 ExtentTestManager.getTest().info("📸 Screenshot: " + filterValue + " | Index " + i)
-        	     .addScreenCaptureFromPath(screenshotPath);
+        	 productIndex = p-1;
+    
+        	 ExtentTestManager.getTest().info("🖼 Captured screenshot for filter: " + filterValue + ", index: " + productIndex);
+
+        	 String path = ScreenshotUtil.capture(testName, filterValue, productIndex);
+        	 String caption = "📷 " + filterValue + " | Index: " + productIndex;
+
+        	 ExtentTestManager.getTest()
+        	     .addScreenCaptureFromPath(path, caption);
+
 
 			log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
@@ -487,7 +499,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
             try {
                 genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
-                Thread.sleep(500);
+                Thread.sleep(1000);
                 safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
     			log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
                 System.out.println("'See More Details' clicked.");
