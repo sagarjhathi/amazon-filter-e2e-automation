@@ -26,8 +26,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
+import amazonfilterapplicatione2e.reporting.ExtentTestManager;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -38,12 +41,22 @@ public class AmazonTests extends BaseTest {
 	//private final Logger log = LoggerUtility.getLogger(getClass());
 	//Logging and reporting with screen shots would be the next big thing to add after assertions
 	//@Test(priority=-1)
-	@Test(priority=1, retryAnalyzer = RetryFailedTest.class)
-	public void verifyingGetItByTomorrowFilterFunctionality() throws InterruptedException{
-		
+	
+	@DataProvider(name = "Data")
+	public Object[][] getBrands() {
+	    return new Object[][] {
+	        {"Mobile"},
+	        {"Laptop"},
+	        {"Charger"}
+	    };
+	}
+	
+	@Test(priority=1, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException{
+		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
         am.openingLandingPage();
-        am.givingInputWithinSearchBar("Mobile");
+        am.givingInputWithinSearchBar(input);
         am.clickingOnSubmitSearchButton();                   
 		
         ProductListingPage productPage=new ProductListingPage();
