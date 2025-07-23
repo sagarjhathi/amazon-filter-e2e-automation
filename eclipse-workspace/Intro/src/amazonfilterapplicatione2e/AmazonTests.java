@@ -46,8 +46,10 @@ public class AmazonTests extends BaseTest {
 	public Object[][] getBrands() {
 	    return new Object[][] {
 	        {"Mobile"},
-	        {"Laptop"},
-	        {"Charger"}
+	        {"Tv"},
+	        {"Charger"},
+	        {"AC"},
+	        {"Fridge"}
 	    };
 	}
 	
@@ -88,12 +90,13 @@ public class AmazonTests extends BaseTest {
 	
 	
 //	//@Test(priority=-2)
-	@Test(priority=2, retryAnalyzer = RetryFailedTest.class)
-	public void verifyingGetItIn2DaysFilterFunctionality() throws InterruptedException{
-		
+	@Test(priority=2, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException{
+		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
+
 		 AmazonLandingPage am=new AmazonLandingPage();
          am.openingLandingPage();
-         am.givingInputWithinSearchBar("Mobile");
+         am.givingInputWithinSearchBar(input);
          am.clickingOnSubmitSearchButton();
 
 
@@ -126,12 +129,13 @@ public class AmazonTests extends BaseTest {
 
 
 //	//@Test(priority=-3)
-	@Test(priority = 3, retryAnalyzer = RetryFailedTest.class)
-	public void verifyingGetItByTodayFilterFunctionality() throws InterruptedException{
-		
+	@Test(priority = 3, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException{
+		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
+
 		AmazonLandingPage am=new AmazonLandingPage();
         am.openingLandingPage();
-        am.givingInputWithinSearchBar("Mobile");
+        am.givingInputWithinSearchBar(input);
         am.clickingOnSubmitSearchButton();
 
     
@@ -163,17 +167,17 @@ public class AmazonTests extends BaseTest {
 		            		
 		            		
 	//@Test(priority=-4)
-	@Test(priority=-14, retryAnalyzer = RetryFailedTest.class)
-	public void verifyingTheBrandsFilterFunctionality() throws InterruptedException {
+	@Test(priority=4, retryAnalyzer = RetryFailedTest.class)
+	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException {
 		
-	
+		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
+
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 		Thread.sleep(3000);
-		SafeActions safeAct=new SafeActions();
 		ProductListingPage productPage=new ProductListingPage();
 		
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
@@ -186,11 +190,11 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-	 //	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
+	    //	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
 		
-	//	productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
+	    //	productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
 		
-		//productPage.applyFilterAndValidateProducts(productPage.listBrandsOptionsBy, "brands");
+	    //  productPage.applyFilterAndValidateProducts(productPage.listBrandsOptionsBy, "brands");
 		
 		
 		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(
