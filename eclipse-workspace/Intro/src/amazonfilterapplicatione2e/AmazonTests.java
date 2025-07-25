@@ -71,7 +71,6 @@ public class AmazonTests extends BaseTest {
 		    return;
 		}
         
-        //productPage.validateDeliveryFilterOptions(productPage.getItByTomorrowUnderDeliveryDayFilterBy);                                        
 	    genericUtility.printFilterNamesOnly(productPage.getItByTomorrowUnderDeliveryDayFilterBy); 
 	
 	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
@@ -110,7 +109,6 @@ public class AmazonTests extends BaseTest {
  		    return ;
  		}                 
 		            		
-		//productPage.validateDeliveryFilterOptions(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
  		genericUtility.printFilterNamesOnly(productPage.getItInTwoDaysUnderDeliveryDayFilterBy); 
  		
 	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
@@ -149,7 +147,6 @@ public class AmazonTests extends BaseTest {
  		}                   
 		            		
 		            		
-        //productPage.validateGetItTodayFilterOptionUnderDeliveryDay(productPage.getItTodayUnderDeliveryDayFilterBy);
  		genericUtility.printFilterNamesOnly(productPage.getItTodayUnderDeliveryDayFilterBy); 
 		List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItTodayUnderDeliveryDayFilterBy);
 		
@@ -190,11 +187,7 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-	    //	productPage.applyFilterAndValidateBrandsFilter(productPage.listBrandsOptionsBy,"brands");
-		
-	    //	productPage.applyBrandFiltersAndValidateProductNames(productPage.listBrandsOptionsBy,"brands");
-		
-	    //  productPage.applyFilterAndValidateProducts(productPage.listBrandsOptionsBy, "brands");
+
 		
 		
 		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(
@@ -243,7 +236,7 @@ public class AmazonTests extends BaseTest {
 		
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
-		SafeActions safeAct=new SafeActions();
+		
 		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Storage Capacity")) {
 		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
@@ -252,9 +245,7 @@ public class AmazonTests extends BaseTest {
 		}
 			
 		
-//		List<WebElement> listStorageCapacityOptions=safeAct.safeFindElements(productPage.listStorageCapacityOptionsBy);
-//		genericUtility.printFilterNamesOnly(productPage.listStorageCapacityOptionsBy);
-//		productPage.applyFilterAndValidateProducts(productPage.listStorageCapacityOptionsBy,"storagecapacity");
+
 		
 		
 //		 // ⏬ Call the main function and get result
@@ -318,7 +309,7 @@ public class AmazonTests extends BaseTest {
 		List<Integer> minValues = Arrays.asList(60, 90, 130);
 		List<Integer> maxValues = Arrays.asList(80, 120, 160);
 		
-	//	productPage.applyPriceSliderAndValidate(minValues, maxValues);
+
 		
 		
 		    List<Map<String, Object>> results = productPage.applyPriceSliderAndValidateWithResult(minValues, maxValues);
@@ -368,7 +359,7 @@ public class AmazonTests extends BaseTest {
 	    am.clickingOnSubmitSearchButton();
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 
-	    SafeActions safeAct=new SafeActions();
+
 	    ProductListingPage productPage =new ProductListingPage();
 	    productPage.refreshIfServiceUnavailable();
 	    GenericUtility genericUtility=new GenericUtility();
@@ -382,9 +373,7 @@ public class AmazonTests extends BaseTest {
 		
 
 	    
-//	    List<WebElement> listBatteryCapacityOptions=safeAct.safeFindElements(productPage.listBatteryCapacityOptionsBy);
-//		genericUtility.printFilterNamesOnly(productPage.listBatteryCapacityOptionsBy);
-//		productPage.applyFilterAndValidateProducts(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
+
 	    
 	    
 		
@@ -437,7 +426,7 @@ public class AmazonTests extends BaseTest {
 		
 		
           GenericUtility genericUtility=new GenericUtility();
-          SafeActions safeAct=new SafeActions();
+         
   		  ProductListingPage productPage=new ProductListingPage();
   		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Display Size")) {
@@ -447,12 +436,6 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		
-//		By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
-//		List<WebElement> listDisplaySizeOptions=safeAct.safeFindElements(productPage.listDisplaySizeOptionsBy);
-//		genericUtility.printFilterNamesOnly(productPage.listDisplaySizeOptionsBy);
-//		productPage.applyFilterAndValidateProducts(productPage.listDisplaySizeOptionsBy,"displaysize");
-
 		
 		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
@@ -504,7 +487,7 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		SafeActions safeAct=new SafeActions();
+	
 		ProductListingPage productPage=new ProductListingPage();
         GenericUtility genericUtility =new GenericUtility();
         
@@ -515,9 +498,7 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-//		List<WebElement> listProcessorSpeedOptions=safeAct.safeFindElements(productPage.listProcessorSpeedOptionsBy);
-//		genericUtility.printFilterNamesOnly(productPage.listProcessorSpeedOptionsBy);
-//		productPage.applyFilterAndValidateProducts(productPage.listProcessorSpeedOptionsBy,"processorspeed");
+
 		
 		
 		
@@ -569,7 +550,7 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		SafeActions safeAct=new SafeActions();
+		
 		ProductListingPage productPage=new ProductListingPage();
 		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
@@ -580,7 +561,6 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-	//	productPage.applyFilterAndValidateProducts(productPage.listDisplayTypeOptionsBy ,"displaytype");
 		
 		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplayTypeOptionsBy ,"displaytype");
@@ -632,7 +612,7 @@ public class AmazonTests extends BaseTest {
 		
 	
 		GenericUtility genericUtility=new GenericUtility();	
-		SafeActions safeAct=new SafeActions();
+
 		ProductListingPage productPage=new ProductListingPage();
 		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
@@ -642,7 +622,6 @@ public class AmazonTests extends BaseTest {
 		    return;
 		}
 		
-		//productPage.applyOperatingSystemFilterAndValidateProducts(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
 		
 		
 		List<Map<String, Object>> results = productPage.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
@@ -703,7 +682,6 @@ public class AmazonTests extends BaseTest {
 			    return;
 			}
 		
-		//	productPage.applyFilterAndValidateProducts(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
 		
 			
 			List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
@@ -764,7 +742,6 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-	//	productPage.applyFilterAndValidateProducts(productPage.listDiscountOptionsBy,"discount");
 		
 		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
