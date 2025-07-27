@@ -53,9 +53,11 @@ public class AmazonTests extends BaseTest {
 	    };
 	}
 	
+	
 	@Test(priority=1, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException{
-		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
+		
+		ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
         am.openingLandingPage();
         am.givingInputWithinSearchBar(input);
@@ -72,7 +74,6 @@ public class AmazonTests extends BaseTest {
 		}
         
 	    genericUtility.printFilterNamesOnly(productPage.getItByTomorrowUnderDeliveryDayFilterBy); 
-	
 	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
 
 	    boolean isValid = (boolean) result.get(0);
@@ -80,9 +81,8 @@ public class AmazonTests extends BaseTest {
 	    int index = (int) result.get(2);
 	    
 	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
-	            ThreadContext.get("testName"), isValid, index, text);
+	    ThreadContext.get("testName"), isValid, index, text);
 	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
-	   
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);  
 		    
 		}
@@ -91,13 +91,12 @@ public class AmazonTests extends BaseTest {
 //	//@Test(priority=-2)
 	@Test(priority=2, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException{
+		
 		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
-
 		 AmazonLandingPage am=new AmazonLandingPage();
          am.openingLandingPage();
          am.givingInputWithinSearchBar(input);
          am.clickingOnSubmitSearchButton();
-
 
          GenericUtility genericUtility=new GenericUtility();
 		 ProductListingPage productPage=new ProductListingPage();
@@ -110,7 +109,6 @@ public class AmazonTests extends BaseTest {
  		}                 
 		            		
  		genericUtility.printFilterNamesOnly(productPage.getItInTwoDaysUnderDeliveryDayFilterBy); 
- 		
 	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
 
 	    boolean isValid = (boolean) result.get(0);
@@ -118,9 +116,8 @@ public class AmazonTests extends BaseTest {
 	    int index = (int) result.get(2);
 	    
 	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
-	            ThreadContext.get("testName"), isValid, index, text);
+	    ThreadContext.get("testName"), isValid, index, text);
 	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
-	    
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);      		
 		}
 	
@@ -129,14 +126,13 @@ public class AmazonTests extends BaseTest {
 //	//@Test(priority=-3)
 	@Test(priority = 3, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
 	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException{
-		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
-
+		
+		ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
         am.openingLandingPage();
         am.givingInputWithinSearchBar(input);
         am.clickingOnSubmitSearchButton();
 
-    
         GenericUtility genericUtility=new GenericUtility();
  		ProductListingPage productPage=new ProductListingPage();
  		productPage.refreshIfServiceUnavailable();
@@ -156,7 +152,7 @@ public class AmazonTests extends BaseTest {
 	    
 	    Assert.assertTrue(isValid,"❌ Delivery date mismatch at index " + index + ". Text: " + text);
 	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
-	            ThreadContext.get("testName"), isValid, index, text);
+	    ThreadContext.get("testName"), isValid, index, text);
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);             		  
 		            	    
 	    
@@ -167,8 +163,7 @@ public class AmazonTests extends BaseTest {
 	@Test(priority=4, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException {
 		
-		 ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
-
+		ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar(input);
@@ -187,14 +182,8 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-
-		
-		
-		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(
-		        productPage.listBrandsOptionsBy, "brands"
-		    );
-
-		    SoftAssert softAssert = new SoftAssert();
+  List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsBy, "brands");
+  SoftAssert softAssert = new SoftAssert();
 
 		    for (Map<Object, Object> result : allResults) {
 		        boolean isValid = (boolean) result.get("isValid");
@@ -228,11 +217,9 @@ public class AmazonTests extends BaseTest {
 	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(15));
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
-		
 		
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
@@ -244,15 +231,11 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 			
-		
-
-		
-		
+	
 //		 // ⏬ Call the main function and get result
 	    List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listStorageCapacityOptionsBy,"storagecapacity");
-
 	    log.info("[{}] 🔄 Retrieved {} results from applyFilterAndValidateProductsWithResult.",
-	            ThreadContext.get("testName"), results.size());
+	    ThreadContext.get("testName"), results.size());
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -296,7 +279,6 @@ public class AmazonTests extends BaseTest {
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
-		
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
 		productPage.refreshIfServiceUnavailable();
@@ -309,12 +291,9 @@ public class AmazonTests extends BaseTest {
 		List<Integer> minValues = Arrays.asList(60, 90, 130);
 		List<Integer> maxValues = Arrays.asList(80, 120, 160);
 		
-
 		
-		
-		    List<Map<String, Object>> results = productPage.applyPriceSliderAndValidateWithResult(minValues, maxValues);
-
-		    SoftAssert softAssert = new SoftAssert();
+		List<Map<String, Object>> results = productPage.applyPriceSliderAndValidateWithResult(minValues, maxValues);
+		SoftAssert softAssert = new SoftAssert();
 
 		    for (Map<String, Object> result : results) {
 		        boolean isValid = (boolean) result.get("isValid");
@@ -342,8 +321,6 @@ public class AmazonTests extends BaseTest {
 		        }
 		    
 		    log.info("[{}] ⏹ Asserting all soft assertions now...", ThreadContext.get("testName"));
-
-
 		    softAssert.assertAll();
 					
 	}
@@ -357,8 +334,6 @@ public class AmazonTests extends BaseTest {
 	    am.openingLandingPage();
 	    am.givingInputWithinSearchBar("Mobile");
 	    am.clickingOnSubmitSearchButton();
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
 
 	    ProductListingPage productPage =new ProductListingPage();
 	    productPage.refreshIfServiceUnavailable();
@@ -371,15 +346,8 @@ public class AmazonTests extends BaseTest {
 		}
 
 		
-
-	    
-
-	    
-	    
-		
-		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
-
-	    SoftAssert softAssert = new SoftAssert();
+   List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
+   SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
 	        String filter = ((String) product.get("filter")).toLowerCase();
@@ -403,13 +371,11 @@ public class AmazonTests extends BaseTest {
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
 	            log.info("[{}] ✅ Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
-
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
 
 	    log.info("[{}] ⏹ Asserting all soft assertions now...", ThreadContext.get("testName"));
-
 	    softAssert.assertAll(); 
 	}
 
@@ -422,24 +388,19 @@ public class AmazonTests extends BaseTest {
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
-		
-          GenericUtility genericUtility=new GenericUtility();
-         
-  		  ProductListingPage productPage=new ProductListingPage();
+        GenericUtility genericUtility=new GenericUtility();
+        ProductListingPage productPage=new ProductListingPage();
   		productPage.refreshIfServiceUnavailable();
+  		
 		if (!genericUtility.filterCheckUnderList("Display Size")) {
 	        log.warn("[{}] ⚠ Filter option 'Display Size' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
-
 		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
 		    return ;
 		}
 		
 		
-		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
-
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -470,7 +431,6 @@ public class AmazonTests extends BaseTest {
 	    }
 
 	    log.info("[{}] ⏹ Final assertion for display size filter validation starting...", ThreadContext.get("testName"));
-
 	    softAssert.assertAll(); 
 	
 	}
@@ -479,13 +439,11 @@ public class AmazonTests extends BaseTest {
 //	//@Test(priority=9)
 	@Test(priority=9, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingProcessorSpeedFilterFunctionality() throws InterruptedException {
-		
-		
+				
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
 		
 	
 		ProductListingPage productPage=new ProductListingPage();
@@ -494,16 +452,11 @@ public class AmazonTests extends BaseTest {
         productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Processor Speed")) {
 	        log.warn("[{}] ⚠ Filter option 'Processor Speed' not available. Skipping test.", ThreadContext.get("testName"));
-
 		    return ;
 		}
 		
-
-		
-		
 		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listProcessorSpeedOptionsBy,"processorspeed");
-
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -527,14 +480,11 @@ public class AmazonTests extends BaseTest {
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
 	    
 	    log.info("[{}] ⏹ Final assertion for processor speed filter validation starting...", ThreadContext.get("testName"));
-
-
 	    softAssert.assertAll(); 
 		
 	}
@@ -548,8 +498,6 @@ public class AmazonTests extends BaseTest {
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(10));
-		
 		
 		ProductListingPage productPage=new ProductListingPage();
 		productPage.refreshIfServiceUnavailable();
@@ -557,14 +505,10 @@ public class AmazonTests extends BaseTest {
 		if (!genericUtility.filterCheckUnderList("Display Type")){
 		    System.out.println("Filter option 'Display Type' does not exist. Skipping the test.");
 	        log.warn("[{}] ⚠ Filter option 'Display Type' does not exist. Skipping the test.", ThreadContext.get("testName"));
-
 		    return ;
 		}
 		
-		
-		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplayTypeOptionsBy ,"displaytype");
-
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -578,7 +522,6 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	
 	        	log.error("[{}] ❌ Display Type filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
 	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
 	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
@@ -590,14 +533,13 @@ public class AmazonTests extends BaseTest {
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
 
 	    log.info("[{}] ⏹ Final assertion for display type filter validation...", ThreadContext.get("testName"));
-
 	    softAssert.assertAll(); 
+	    
 		}
 
 	
@@ -612,20 +554,16 @@ public class AmazonTests extends BaseTest {
 		
 	
 		GenericUtility genericUtility=new GenericUtility();	
-
 		ProductListingPage productPage=new ProductListingPage();
 		productPage.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
 		    System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
 	        log.warn("[{}] ⚠ Filter option 'Operating System' or 'Operating System Version' not found. Skipping test.", ThreadContext.get("testName"));
-
 		    return;
 		}
 		
 		
-		
 		List<Map<String, Object>> results = productPage.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
-
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -650,13 +588,11 @@ public class AmazonTests extends BaseTest {
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
 
 	    log.info("[{}] ⏹ Final assertion for OS Version filter validation...", ThreadContext.get("testName"));
-
 	    softAssert.assertAll(); 
 		
 	}
@@ -678,15 +614,12 @@ public class AmazonTests extends BaseTest {
 			if (!genericUtility.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
 			    System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
 			    log.warn("[{}] ⚠ Filter 'Mobile Phone Primary Camera Resolution' not found. Skipping test.",
-		                ThreadContext.get("testName"));
+		        ThreadContext.get("testName"));
 			    return;
 			}
 		
-		
-			
-			List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
-
-		    SoftAssert softAssert = new SoftAssert();
+		 List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
+		 SoftAssert softAssert = new SoftAssert();
 
 		    for (Map<String, Object> product : results) {
 		        String filter = ((String) product.get("filter")).toLowerCase();
@@ -710,15 +643,13 @@ public class AmazonTests extends BaseTest {
 		            System.out.println("---------------------------------------------------------------");
 		        } else {
 		            log.info("[{}] ✔ Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
-
 		            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 		        }
 		    }
 		    
 		    log.info("[{}] ⏹ Final assertion for Camera Resolution filter validation...", ThreadContext.get("testName"));
-
-
 		    softAssert.assertAll(); 
+		    
 	}
 
 	
@@ -730,14 +661,12 @@ public class AmazonTests extends BaseTest {
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
-		WebDriverWait wait=new WebDriverWait(driver, Duration.ofSeconds(20));
 		
 		ProductListingPage productPage=new ProductListingPage();
 		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
 		if (!genericUtility.filterCheckUnderList("Discount")) {
 	        log.warn("[{}] ⚠ Filter 'Discount' not available. Skipping test.", ThreadContext.get("testName"));
-
 		    System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");
 		    return ;
 		}
@@ -745,7 +674,6 @@ public class AmazonTests extends BaseTest {
 		
 		
 		List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
-
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -772,7 +700,6 @@ public class AmazonTests extends BaseTest {
 	            System.out.println("---------------------------------------------------------------");
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one product section.", ThreadContext.get("testName"), filter);
-
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
