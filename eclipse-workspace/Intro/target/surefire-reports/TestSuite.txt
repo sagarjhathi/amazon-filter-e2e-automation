@@ -1,0 +1,53 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 112.019 s <<< FAILURE! - in TestSuite
+amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality[Tv](2)  Time elapsed: 3.846 s  <<< FAILURE!
+java.lang.AssertionError: 
+❌ Delivery date mismatch at index 0. Text: WoodMarwar Solid Sheesham Wood Entertainment Tv Unit for Living Room | Free Standing Media Console Movable Tv Cabinet Sideboard | Tv Table Side Board with 4 Door Cabinet & 1 Flap Door Storage | Walnut
+16
+See options
+No featured offers available
+₹23,499(1 new offer)
++5 expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality(AmazonTests.java:120)
+
+amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality[Tv](2)  Time elapsed: 5.75 s  <<< FAILURE!
+java.lang.AssertionError: 
+❌ Delivery date mismatch at index 0. Text: WoodMarwar Solid Sheesham Wood Entertainment Tv Unit for Living Room | Free Standing Media Console Movable Tv Cabinet Sideboard | Tv Table Side Board with 4 Door Cabinet & 1 Flap Door Storage | Walnut
+16
+See options
+No featured offers available
+₹23,499(1 new offer)
++5 expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality(AmazonTests.java:85)
+
+amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality[Charger](3)  Time elapsed: 0.436 s  <<< FAILURE!
+java.lang.AssertionError: 
+❌ Delivery date mismatch at index 11. Text: CHOUYONL Foldable Alarm Clock Wireless Charger with Atmosphere Lights, Week Display, Dual Alarms, 4 Level Brightness, 6 Speed Volume,8 Music Rightones, Foldable Design, Easily Carry
+62
+₹7,112
+M.R.P:
+₹10,112 (30% off)
+FREE delivery 13 - 14 Aug
+Add to cart expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality(AmazonTests.java:85)
+
+amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality[Fridge](5)  Time elapsed: 7.246 s  <<< FAILURE!
+java.lang.AssertionError: 
+❌ Delivery date mismatch at index 5. Text: HuBDIC Multipurpose Deodorizer │Air Ionizer with Negative Ion to Remove Odors in Refrigerator, Shoe Closet, Bathroom, Wardrobe, Car, and Pet Litters │ Portable Air Purifier and Cleaner (Pink)
+19
+₹4,821 (
+₹4,82,100/100 g)
+M.R.P:
+₹7,821 (38% off)
+FREE delivery 13 - 14 Aug
+Add to cart expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality(AmazonTests.java:120)
+
+amazonfilterapplicatione2e.AmazonTests.verifyingTheBrandsFilterFunctionality  Time elapsed: 0.931 s  <<< FAILURE!
+org.testng.TestNGException: 
+
+Cannot inject @Test annotated Method [verifyingTheBrandsFilterFunctionality] with [class java.lang.String].
+For more information on native dependency injection please refer to https://testng.org/#_dependency_injection
+

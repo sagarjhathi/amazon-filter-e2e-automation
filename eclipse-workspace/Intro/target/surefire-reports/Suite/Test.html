@@ -1,0 +1,360 @@
+<html>
+<head>
+<title>TestNG:  Test</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>Test</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>11/5/0</td>
+</tr><tr>
+<td>Started on:</td><td>Mon Jul 28 21:41:04 IST 2025</td>
+</tr>
+<tr><td>Total time:</td><td>110 seconds (110723 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality()'><b>verifyingGetItIn2DaysFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Tv</td>
+<td><div><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 0. Text: WoodMarwar Solid Sheesham Wood Entertainment Tv Unit for Living Room | Free Standing Media Console Movable Tv Cabinet Sideboard | Tv Table Side Board with 4 Door Cabinet &amp; 1 Flap Door Storage | Walnut
+16
+See options
+No featured offers available
+₹23,499(1 new offer)
++5 expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality(AmazonTests.java:120)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+... Removed 14 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace732281124", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace732281124'><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 0. Text: WoodMarwar Solid Sheesham Wood Entertainment Tv Unit for Living Room | Free Standing Media Console Movable Tv Cabinet Sideboard | Tv Table Side Board with 4 Door Cabinet &amp; 1 Flap Door Storage | Walnut
+16
+See options
+No featured offers available
+₹23,499(1 new offer)
++5 expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality(AmazonTests.java:120)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</pre></div></td>
+<td>8</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality()'><b>verifyingGetItByTomorrowFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Tv</td>
+<td><div><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 0. Text: WoodMarwar Solid Sheesham Wood Entertainment Tv Unit for Living Room | Free Standing Media Console Movable Tv Cabinet Sideboard | Tv Table Side Board with 4 Door Cabinet &amp; 1 Flap Door Storage | Walnut
+16
+See options
+No featured offers available
+₹23,499(1 new offer)
++5 expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality(AmazonTests.java:85)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+... Removed 14 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace123367116", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace123367116'><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 0. Text: WoodMarwar Solid Sheesham Wood Entertainment Tv Unit for Living Room | Free Standing Media Console Movable Tv Cabinet Sideboard | Tv Table Side Board with 4 Door Cabinet &amp; 1 Flap Door Storage | Walnut
+16
+See options
+No featured offers available
+₹23,499(1 new offer)
++5 expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality(AmazonTests.java:85)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</pre></div></td>
+<td>12</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality()'><b>verifyingGetItByTomorrowFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Charger</td>
+<td><div><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 11. Text: CHOUYONL Foldable Alarm Clock Wireless Charger with Atmosphere Lights, Week Display, Dual Alarms, 4 Level Brightness, 6 Speed Volume,8 Music Rightones, Foldable Design, Easily Carry
+62
+₹7,112
+M.R.P:
+₹10,112 (30% off)
+FREE delivery 13 - 14 Aug
+Add to cart expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality(AmazonTests.java:85)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+... Removed 14 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1497906191", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1497906191'><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 11. Text: CHOUYONL Foldable Alarm Clock Wireless Charger with Atmosphere Lights, Week Display, Dual Alarms, 4 Level Brightness, 6 Speed Volume,8 Music Rightones, Foldable Design, Easily Carry
+62
+₹7,112
+M.R.P:
+₹10,112 (30% off)
+FREE delivery 13 - 14 Aug
+Add to cart expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality(AmazonTests.java:85)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</pre></div></td>
+<td>12</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality()'><b>verifyingGetItIn2DaysFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Fridge</td>
+<td><div><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 5. Text: HuBDIC Multipurpose Deodorizer │Air Ionizer with Negative Ion to Remove Odors in Refrigerator, Shoe Closet, Bathroom, Wardrobe, Car, and Pet Litters │ Portable Air Purifier and Cleaner (Pink)
+19
+₹4,821 (
+₹4,82,100/100 g)
+M.R.P:
+₹7,821 (38% off)
+FREE delivery 13 - 14 Aug
+Add to cart expected [true] but found [false]
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality(AmazonTests.java:120)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+... Removed 14 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace656341938", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace656341938'><pre>java.lang.AssertionError: ❌ Delivery date mismatch at index 5. Text: HuBDIC Multipurpose Deodorizer │Air Ionizer with Negative Ion to Remove Odors in Refrigerator, Shoe Closet, Bathroom, Wardrobe, Car, and Pet Litters │ Portable Air Purifier and Cleaner (Pink)
+19
+₹4,821 (
+₹4,82,100/100 g)
+M.R.P:
+₹7,821 (38% off)
+FREE delivery 13 - 14 Aug
+Add to cart expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:111)
+	at org.testng.Assert.failNotEquals(Assert.java:1578)
+	at org.testng.Assert.assertTrue(Assert.java:57)
+	at amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality(AmazonTests.java:120)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</pre></div></td>
+<td>9</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingTheBrandsFilterFunctionality()'><b>verifyingTheBrandsFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests</td>
+<td><div><pre>org.testng.TestNGException: 
+Cannot inject @Test annotated Method [verifyingTheBrandsFilterFunctionality] with [class java.lang.String].
+For more information on native dependency injection please refer to https://testng.org/#_dependency_injection
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1933181749", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1933181749'><pre>org.testng.TestNGException: 
+Cannot inject @Test annotated Method [verifyingTheBrandsFilterFunctionality] with [class java.lang.String].
+For more information on native dependency injection please refer to https://testng.org/#_dependency_injection
+	at org.testng.internal.Parameters.checkParameterTypes(Parameters.java:442)
+	at org.testng.internal.Parameters.createParametersForMethod(Parameters.java:347)
+	at org.testng.internal.Parameters.createParameters(Parameters.java:699)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:885)
+	at org.testng.internal.Parameters.handleParameters(Parameters.java:734)
+	at org.testng.internal.invokers.ParameterHandler.handleParameters(ParameterHandler.java:72)
+	at org.testng.internal.invokers.ParameterHandler.createParameters(ParameterHandler.java:51)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:946)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</pre></div></td>
+<td>0</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality()'><b>verifyingGetItIn2DaysFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Mobile</td>
+<td></td>
+<td>10</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTodayFilterFunctionality()'><b>verifyingGetItByTodayFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Charger</td>
+<td></td>
+<td>9</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality()'><b>verifyingGetItByTomorrowFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: AC</td>
+<td></td>
+<td>9</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality()'><b>verifyingGetItByTomorrowFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Mobile</td>
+<td></td>
+<td>15</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTodayFilterFunctionality()'><b>verifyingGetItByTodayFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Tv</td>
+<td></td>
+<td>8</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality()'><b>verifyingGetItIn2DaysFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: AC</td>
+<td></td>
+<td>6</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTomorrowFilterFunctionality()'><b>verifyingGetItByTomorrowFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Fridge</td>
+<td></td>
+<td>9</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTodayFilterFunctionality()'><b>verifyingGetItByTodayFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: AC</td>
+<td></td>
+<td>8</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTodayFilterFunctionality()'><b>verifyingGetItByTodayFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Mobile</td>
+<td></td>
+<td>9</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItByTodayFilterFunctionality()'><b>verifyingGetItByTodayFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Fridge</td>
+<td></td>
+<td>8</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+<tr>
+<td title='amazonfilterapplicatione2e.AmazonTests.verifyingGetItIn2DaysFilterFunctionality()'><b>verifyingGetItIn2DaysFilterFunctionality</b><br>Test class: amazonfilterapplicatione2e.AmazonTests<br>Parameters: Charger</td>
+<td></td>
+<td>8</td>
+<td>amazonfilterapplicatione2e.AmazonTests@4982cc36</td></tr>
+</table><p>
+</body>
+</html>
