@@ -3,7 +3,7 @@ name: Amazon Filter Automation CI
 on:
   push:
     branches:
-      - feature/google-aggregator-improvements
+      - google-aggregator-pom-updated
   pull_request:
     branches:
       - master
