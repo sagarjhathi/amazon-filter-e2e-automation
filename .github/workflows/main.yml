@@ -3,8 +3,8 @@ name: CI Pipeline
 on:
   push:
     branches:
-      - '**'        # ✅ Triggers on push to ANY branch
-  workflow_dispatch:  # ✅ Allows manual trigger via GitHub UI
+      - '**'  # Any branch
+  workflow_dispatch:
 
 jobs:
   build:
@@ -21,5 +21,19 @@ jobs:
           java-version: 24
 
       - name: Run Maven Tests
-        working-directory: eclipse-workspace/Intro  # ✅ this is your actual project root
+        working-directory: eclipse-workspace/Intro
         run: mvn clean test
+
+      - name: Upload Surefire Reports
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: surefire-reports
+          path: eclipse-workspace/Intro/target/surefire-reports
+
+      - name: Upload ExtentReports (if generated)
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: extent-reports
+          path: eclipse-workspace/Intro/test-output
