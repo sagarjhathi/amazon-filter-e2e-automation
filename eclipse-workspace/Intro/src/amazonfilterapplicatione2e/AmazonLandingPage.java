@@ -26,9 +26,7 @@ public class AmazonLandingPage extends BasePage{
 	}
 	
 	
-	public void selectingFromRecommendations() {
-		searchBarLandingPage.sendKeys(Keys.DOWN);
-		searchBarLandingPage.sendKeys(Keys.DOWN);	
+	public void selectingFromRecommendations() {	
 		log.info("[{}] Selecting option from recommdendations", ThreadContext.get("testName"));
 	}
 	

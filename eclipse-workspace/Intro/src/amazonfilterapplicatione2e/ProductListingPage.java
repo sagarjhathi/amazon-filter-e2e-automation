@@ -337,7 +337,7 @@ public WebElement safeFindElement(By locator) {
 			    // Simulate Ctrl+Click (Cmd+Click on Mac)
 			    Actions actions = new Actions(driver);
 			    actions
-			        .keyDown(Keys.CONTROL) // Use Keys.COMMAND on Mac
+		            .keyDown(Keys.CONTROL) // Use Keys.COMMAND on Mac
 			        .click(productElement)
 			        .keyUp(Keys.CONTROL)
 			        .build()
