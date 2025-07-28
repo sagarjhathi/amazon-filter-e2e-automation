@@ -21,5 +21,5 @@ jobs:
           java-version: 24
 
       - name: Run Maven Tests
-        working-directory: Intro   # ✅ this is critical
-        run: mvn clean test
+        working-directory: Intro   # ✅ this points to the folder containing your pom.xml
+        run: mvn clean test        # ✅ THIS line must be on a new line
