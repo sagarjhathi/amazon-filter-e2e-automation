@@ -143,6 +143,7 @@ public class AmazonTests extends BaseTest {
  		}                   
 		            		
 		            		
+ 		
  		genericUtility.printFilterNamesOnly(productPage.getItTodayUnderDeliveryDayFilterBy); 
 		List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItTodayUnderDeliveryDayFilterBy);
 		
