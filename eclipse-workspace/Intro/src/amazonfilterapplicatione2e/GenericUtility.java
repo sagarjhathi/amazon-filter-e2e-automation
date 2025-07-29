@@ -1,5 +1,6 @@
 package amazonfilterapplicatione2e;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -10,6 +11,7 @@ import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class GenericUtility extends ProductListingPage{
@@ -87,7 +89,7 @@ public class GenericUtility extends ProductListingPage{
 		System.out.println("Checking if the filter and options visible on UI via isElementVisibleOnUI");
 		Thread.sleep(3000);
 	    try {
-	    
+	    	waitUtil.waitUntilClickable(locator, 10);
 	        List<WebElement> elements = driver.findElements(locator); // Returns empty list if not found
 	        if (elements.isEmpty()) {
 	        	System.out.println("Filter and Filter options not visible on Ui hence Returning from the function");
@@ -180,8 +182,8 @@ public class GenericUtility extends ProductListingPage{
 
     
     public void scrollByPixel(int x, int y) {
+    	
 		log.info("[{}] Within scrollByPixel method", ThreadContext.get("testName"));
-
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
         try {
             Thread.sleep(2000); // Wait to allow scroll animation to complete
@@ -195,7 +197,7 @@ public class GenericUtility extends ProductListingPage{
 		log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));
 
         SafeActions safeAct=new SafeActions();
-       WebElement element= safeAct.safeFindElement(locator);
+        WebElement element= safeAct.safeFindElement(locator);
         ((JavascriptExecutor) driver).executeScript(
             "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", 
             element
@@ -218,6 +220,27 @@ public class GenericUtility extends ProductListingPage{
             }
         }
     }
+    
+//    public void closeCurrentWindowAndSwitchBack(String currentWindow) {
+//        log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
+//
+//        Set<String> allWindowHandles = driver.getWindowHandles();
+//        for (String handle : allWindowHandles) {
+//            if (handle.equals(currentWindow)) {
+//                log.debug("Closing the current popup window");
+//                driver.close(); // Close the child or popup window
+//
+//                log.debug("Waiting for number of windows to reduce");
+//                new WebDriverWait(driver, Duration.ofSeconds(10))
+//                    .until(driver -> driver.getWindowHandles().size() == 1);
+//
+//                log.debug("Switching back to main window");
+//                driver.switchTo().window(handle); // Switch back to original
+//                break;
+//            }
+//        }
+//    }
+
 
     
 }

@@ -18,12 +18,13 @@ public class BasePage {
 	WebDriver driver;
 	WebDriverWait wait;
 	String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36";
-
+	WaitUtility waitUtil;
 	public BasePage() {
 		
         this.driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        this.waitUtil = new WaitUtility(this.driver);
     }
 
     // Common actions
