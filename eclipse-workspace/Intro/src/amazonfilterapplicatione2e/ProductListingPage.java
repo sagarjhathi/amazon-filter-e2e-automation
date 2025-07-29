@@ -212,9 +212,9 @@ public class ProductListingPage extends  BasePage{
     }
 	
 	
-public void safeClick(By locator) {
+public void safeClick(By locator) throws InterruptedException {
     int attempts = 0;
-    while (attempts < 3) {
+    while (attempts < 1) {
         try {
             WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
             element.click();
@@ -223,19 +223,19 @@ public void safeClick(By locator) {
         } catch (ElementClickInterceptedException | StaleElementReferenceException e) {
             System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
             attempts++;
-            try {
-                driver.navigate().refresh();
-                Thread.sleep(1000); // small delay before retry
-            } catch (InterruptedException ignored) {}
-        }
+            driver.navigate().refresh();
+         Thread.sleep(1000); // small delay before retry
+            
+       
     }
     // After 3 attempts, skip the action without throwing exception
-    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
+        System.out.println("Skipping click action: Element not clickable after 1 attempts - " + locator);
+}
 }
 
 public List<WebElement> safeFindElements(By locator) {
     int attempts = 0;
-    while (attempts < 3) {
+    while (attempts < 1) {
         try {
             List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
             System.out.println("Found the elements: " + locator);
@@ -243,11 +243,10 @@ public List<WebElement> safeFindElements(By locator) {
         } catch (NoSuchElementException | StaleElementReferenceException e) {
             System.out.println("Retrying findElements for: " + locator + " - Attempt " + (attempts + 1));
             attempts++;
-            try {
                 driver.navigate().refresh();
                 System.out.println("Refreshing the page in safeFindElements Method");
-                Thread.sleep(1000);
-            } catch (InterruptedException ignored) {}
+            
+            
         }
     }
     // After 3 attempts, return null instead of throwing exception
@@ -259,7 +258,7 @@ public List<WebElement> safeFindElements(By locator) {
 	
 public WebElement safeFindElement(By locator) {
 	    int attempts = 0;
-	    while (attempts < 3) {
+	    while (attempts < 1) {
 	        try {
 	            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
 	            System.out.println("Found the element: " + locator);
@@ -267,11 +266,10 @@ public WebElement safeFindElement(By locator) {
 	        } catch (Exception e) {
 	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
 	            attempts++;
-	            try {
 	                driver.navigate().refresh();
 	                System.out.println("Refreshing the page in safeFindElement Method");
-	                Thread.sleep(1000);
-	            } catch (InterruptedException ignored) {}
+	                
+	           
 	        }
 	    }
 
@@ -331,7 +329,8 @@ public WebElement safeFindElement(By locator) {
 		//	safeAct.safeClick(productPage.getProductByIndex(p));
 			
 			try {
-			    WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+				waitUtil.waitUntilClickable(productPage.getProductByIndex(p), 10);		
+				WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
 				log.info("[{}] Getting product by index  within productNameListingPage loop", ThreadContext.get("testName"));
 
 			    // Simulate Ctrl+Click (Cmd+Click on Mac)
@@ -505,7 +504,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
                 System.out.println("'See More Details' clicked.");
             } catch (Exception e1) {
                 //driver.close();
-              //  Thread.sleep(2000);
+               Thread.sleep(2000);
     			log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
                 genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
     			log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
@@ -612,7 +611,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
 
 	    Thread.sleep(2000);
-
+	    
 	    List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
 
 	    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
@@ -1031,7 +1030,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
 	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-	            Thread.sleep(1000);
+	           Thread.sleep(1000);
 	        }
 
 	        
@@ -1429,7 +1428,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        results.add(result);
 		    log.info("[{}] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->"+max, ThreadContext.get("testName"));
 
-	        Thread.sleep(2000); // Small wait after each set
+	      
+		    Thread.sleep(2000); // Small wait after each set
 	    }
 	    log.info("[{}] Returning the data here in the end", ThreadContext.get("testName"));
 

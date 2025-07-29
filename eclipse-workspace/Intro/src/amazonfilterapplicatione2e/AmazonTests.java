@@ -170,7 +170,6 @@ public class AmazonTests extends BaseTest {
 		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
-		Thread.sleep(3000);
 		ProductListingPage productPage=new ProductListingPage();
 		
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
