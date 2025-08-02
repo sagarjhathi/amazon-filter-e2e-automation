@@ -60,8 +60,11 @@ public class ProductListingPage extends  BasePage{
     By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_thirty-five_browse-bin']//span[@class='a-size-base a-color-base']");
     
    
-	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
-	
+	//By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
+	//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']
+	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']");
+
+	// 
 	By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
 	
 	By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
@@ -112,7 +115,6 @@ public class ProductListingPage extends  BasePage{
 	By seeMoreButtonIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
 	
 	private  final Logger log = LoggerUtility.getLogger(ProductListingPage.class);
-//	private final Logger log = LoggerUtility.getLogger(getClass());
 
 	
 	    public By getfilterByTypeAndName(String filterName, String filterOption) {
@@ -123,7 +125,7 @@ public class ProductListingPage extends  BasePage{
 	        case "processorspeed":
 	            return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterOption + "']");
 	        case "storagecapacity":
-	        	return By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
+	        	return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "brands":
 	            return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "batterycapacity":

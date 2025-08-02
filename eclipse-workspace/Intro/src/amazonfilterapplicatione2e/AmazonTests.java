@@ -38,9 +38,7 @@ import java.time.format.DateTimeFormatter;
 public class AmazonTests extends BaseTest {
 
 	private  final Logger log = LoggerUtility.getLogger(AmazonTests.class);
-	//private final Logger log = LoggerUtility.getLogger(getClass());
-	//Logging and reporting with screen shots would be the next big thing to add after assertions
-	//@Test(priority=-1)
+	
 	
 	@DataProvider(name = "Data")
 	public Object[][] getBrands() {

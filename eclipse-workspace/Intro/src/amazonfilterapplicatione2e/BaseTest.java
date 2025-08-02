@@ -20,7 +20,7 @@ import org.apache.logging.log4j.ThreadContext;
 public class BaseTest {
  
 	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
-	//private final Logger log = LoggerUtility.getLogger(getClass());
+
 
 	
 	 protected WebDriver driver;
