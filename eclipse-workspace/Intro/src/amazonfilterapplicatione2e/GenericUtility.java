@@ -193,16 +193,39 @@ public class GenericUtility extends ProductListingPage{
         }
     }
     
+//    public void smoothScrollToElement(By locator) {
+//		log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));
+//
+//        SafeActions safeAct=new SafeActions();
+//        WebElement element= safeAct.safeFindElement(locator);
+//        ((JavascriptExecutor) driver).executeScript(
+//            "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", 
+//            element
+//        );
+//    }
+    
     public void smoothScrollToElement(By locator) {
-		log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));
+        log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));
 
-        SafeActions safeAct=new SafeActions();
-        WebElement element= safeAct.safeFindElement(locator);
-        ((JavascriptExecutor) driver).executeScript(
-            "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", 
-            element
-        );
+        try {
+            SafeActions safeAct = new SafeActions();
+            WebElement element = safeAct.safeFindElement(locator);
+
+            if (element != null) {
+                ((JavascriptExecutor) driver).executeScript(
+                    "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", 
+                    element
+                );
+                log.info("[{}] Successfully scrolled to element: {}", ThreadContext.get("testName"), locator);
+            } else {
+                log.warn("[{}] Element not found for locator: {}", ThreadContext.get("testName"), locator);
+            }
+
+        } catch (Exception e) {
+            log.error("[{}] Error while scrolling to element: {} - {}", ThreadContext.get("testName"), locator, e.getMessage());
+        }
     }
+
  
     
  public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
@@ -240,6 +263,29 @@ public class GenericUtility extends ProductListingPage{
 //            }
 //        }
 //    }
+
+
+ public String fetchTextWithRetries(By locator, SafeActions safeAct) {
+	    String text = "";
+	    int retryCount = 0;
+
+	    while (text.isEmpty() && retryCount < 2) {
+	        try {
+	            WebElement element = safeAct.safeFindElement(locator);
+	            if (element != null) {
+	                text = element.getText().trim();
+	            } else {
+	                Thread.sleep(500); // brief wait before retry
+	            }
+	        } catch (Exception e) {
+	            System.out.println("⚠️ Exception while fetching element text: " + e.getMessage());
+	        }
+
+	        retryCount++;
+	    }
+
+	    return text;
+	}
 
 
     
