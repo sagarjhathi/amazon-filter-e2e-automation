@@ -17,7 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class GenericUtility extends ProductListingPage{
 	
 	private  final Logger log = LoggerUtility.getLogger(GenericUtility.class);
-	//private final Logger log = LoggerUtility.getLogger(getClass());
+	
 
 	public boolean filterCheckUnderList(String filterName) {
 		log.info("[{}] Within filterCheckUnderList method", ThreadContext.get("testName"));
