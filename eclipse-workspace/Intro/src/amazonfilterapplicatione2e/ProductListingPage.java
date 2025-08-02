@@ -488,11 +488,53 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             productPage.switchToNewWindow(currentWindow);
 			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
 
+			
+//			String name = "";
+//			int retryCount = 0;
+//
+//			while (name.isEmpty() && retryCount < 5) {
+//			    WebElement productElement = safeAct.safeFindElement(productPage.productNameIndividualPage);
+//			    if (productElement != null) {
+//			        name = productElement.getText().trim();
+//			    } else {
+//			        Thread.sleep(1000); // optional short wait
+//			    }
+//			    retryCount++;
+//			}
+//
+//			if (name.isEmpty()) {
+//			    System.out.println("Failed to fetch product name after 5 attempts");
+//			}
+			
+          //  String name = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
+            
+//            String keyFeatures = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
+//            String about = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
+//            String techDetails = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
 
-            String name = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
-            String keyFeatures = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
-            String about = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
-            String techDetails = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
+            
+
+
+			String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
+			String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
+			String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
+			String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
+
+			// Optional logging or fallback handling
+			if (name.isEmpty()) {
+			    System.out.println("❌ Failed to fetch product name after retries");
+			}
+			if (keyFeatures.isEmpty()) {
+			    System.out.println("❌ Failed to fetch key features after retries");
+			}
+			if (about.isEmpty()) {
+			    System.out.println("❌ Failed to fetch about section after retries");
+			}
+			if (techDetails.isEmpty()) {
+			    System.out.println("❌ Failed to fetch technical details after retries");
+			}
+
+     
 
 			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
 
