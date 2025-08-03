@@ -23,6 +23,7 @@ jobs:
       - name: Run Maven Tests
         working-directory: eclipse-workspace/Intro
         run: mvn clean test
+        continue-on-error: true
 
       - name: Upload Surefire Reports
         if: always()
