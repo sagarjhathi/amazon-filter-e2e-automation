@@ -4,11 +4,7 @@
   <test thread-count="2" parallel="methods" name="Test">
     <classes>
       <class name="amazonfilterapplicatione2e.AmazonTests">
-  
-   <methods>
-              <include name="verifyingStorageCapacityFilterFunctionality"/>
-              <include name="verifyingTheBrandsFilterFunctionality"/>
-            </methods>
+           
       </class>
     </classes>
   </test>
