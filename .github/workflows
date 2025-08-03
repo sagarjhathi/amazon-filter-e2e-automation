@@ -1,0 +1,39 @@
+name: CI Pipeline POM Branch
+
+on:
+  push:
+    branches:
+      - '**'   # Runs on all branches
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 24
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 24
+
+      - name: Run Maven Tests
+        working-directory: eclipse-workspace/Intro
+        run: mvn clean test
+
+      - name: Upload Surefire Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: surefire-reports
+          path: eclipse-workspace/Intro/target/surefire-reports
+
+      - name: Upload Extent Reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-reports
+          path: eclipse-workspace/Intro/test-output
