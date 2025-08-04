@@ -5,6 +5,8 @@ on:
     branches:
       - '**'   # Runs on all branches
   workflow_dispatch:
+  schedule:
+    - cron: '30 22 * * *'  # Runs daily at 4 AM IST (22:30 UTC)
 
 jobs:
   build:
@@ -37,4 +39,18 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extent-reports
-          path: eclipse-workspace/Intro/test-output
+          path: eclipse-workspace/Intro/test-output/ExtentReports/
+
+      - name: Notify on Discord
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          status="${{ job.status }}"
+          timestamp=$(date -u +"%Y-%m-%d %H:%M UTC")
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "{
+                     \"content\": \"📢 **CI Test Run Status:** $status\n🕒 **Time:** $timestamp\n📄 **Extent Report** is available in the [Artifacts section]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\n🔗 [Click to View Run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
+                   }" \
+               $DISCORD_WEBHOOK
