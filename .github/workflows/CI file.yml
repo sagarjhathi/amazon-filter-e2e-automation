@@ -6,7 +6,7 @@ on:
       - '**'   # Runs on all branches
   workflow_dispatch:
   schedule:
-    - cron: '30 22 * * *'  # Runs daily at 4 AM IST (22:30 UTC)
+  - cron: '35 18 * * *'  # 12:05 AM IST
 
 jobs:
   build:
@@ -21,6 +21,18 @@ jobs:
         with:
           distribution: temurin
           java-version: 24
+
+      - name: Notify Test Start on Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          timestamp=$(date -u +"%Y-%m-%d %H:%M UTC")
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "{
+                     \"content\": \"🚀 **CI Test Run Started**\n🕒 **Start Time:** $timestamp\n📦 **Repo:** $GITHUB_REPOSITORY\n🔗 [Run Link]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
+                   }" \
+               $DISCORD_WEBHOOK
 
       - name: Run Maven Tests
         working-directory: eclipse-workspace/Intro
@@ -51,6 +63,6 @@ jobs:
           curl -H "Content-Type: application/json" \
                -X POST \
                -d "{
-                     \"content\": \"📢 **CI Test Run Status:** $status\n🕒 **Time:** $timestamp\n📄 **Extent Report** is available in the [Artifacts section]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\n🔗 [Click to View Run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
+                     \"content\": \"📢 **CI Test Run Status:** $status\n🕒 **End Time:** $timestamp\n📄 **Extent Report** is available in the [Artifacts section]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\n🔗 [Click to View Run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
                    }" \
                $DISCORD_WEBHOOK
