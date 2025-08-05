@@ -65,7 +65,7 @@ public class AmazonTests extends BaseTest {
 		
         ProductListingPage productPage=new ProductListingPage();
         GenericUtility genericUtility=new GenericUtility();
-        productPage.refreshIfServiceUnavailable();
+        genericUtility.refreshIfServiceUnavailable();
        
         if (!genericUtility.isElementVisibleOnUI(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
@@ -100,7 +100,7 @@ public class AmazonTests extends BaseTest {
 
          GenericUtility genericUtility=new GenericUtility();
 		 ProductListingPage productPage=new ProductListingPage();
-		 productPage.refreshIfServiceUnavailable();   
+		 genericUtility.refreshIfServiceUnavailable();   
 		 
  		if (!genericUtility.isElementInViewport(productPage.getItInTwoDaysUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It in 2 Days' does not exist. Skipping the test.");
@@ -135,7 +135,7 @@ public class AmazonTests extends BaseTest {
 
         GenericUtility genericUtility=new GenericUtility();
  		ProductListingPage productPage=new ProductListingPage();
- 		productPage.refreshIfServiceUnavailable();
+ 		genericUtility.refreshIfServiceUnavailable();
  		if (!genericUtility.isElementVisibleOnUI(productPage.getItTodayUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It Today' does not exist. Skipping the test.");
  		   log.warn("[{}] ⚠ Filter option 'Get It Today' does not exist. Skipping the test.", ThreadContext.get("testName"));
@@ -176,7 +176,7 @@ public class AmazonTests extends BaseTest {
 		
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
 		GenericUtility genericUtility=new GenericUtility();
-		productPage.refreshIfServiceUnavailable();
+		genericUtility.refreshIfServiceUnavailable();
 		
 		if (!genericUtility.filterCheckUnderList("brands")) {
 		    System.out.println("Filter option 'brands' does not exist in the list. Skipping the test.");
@@ -226,7 +226,7 @@ public class AmazonTests extends BaseTest {
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
 		
-		productPage.refreshIfServiceUnavailable();
+		genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Storage Capacity")) {
 		    System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
 	 		   log.warn("[{}] ⚠ Filter option 'Storage Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
@@ -283,7 +283,7 @@ public class AmazonTests extends BaseTest {
 		
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
-		productPage.refreshIfServiceUnavailable();
+		genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Price")) {
 		    System.out.println("Filter option 'Price' does not exist in the list. Skipping the test.");
 	 		   log.warn("[{}] ⚠ Filter option 'Price' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
@@ -338,8 +338,10 @@ public class AmazonTests extends BaseTest {
 	    am.clickingOnSubmitSearchButton();
 
 	    ProductListingPage productPage =new ProductListingPage();
-	    productPage.refreshIfServiceUnavailable();
+	    
+	   
 	    GenericUtility genericUtility=new GenericUtility();
+	    genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Battery Capacity")) {
 	        log.warn("[{}] ⚠ Filter option 'Battery Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
 
@@ -393,7 +395,7 @@ public class AmazonTests extends BaseTest {
 		
         GenericUtility genericUtility=new GenericUtility();
         ProductListingPage productPage=new ProductListingPage();
-  		productPage.refreshIfServiceUnavailable();
+        genericUtility.refreshIfServiceUnavailable();
   		
 		if (!genericUtility.filterCheckUnderList("Display Size")) {
 	        log.warn("[{}] ⚠ Filter option 'Display Size' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
@@ -451,7 +453,7 @@ public class AmazonTests extends BaseTest {
 		ProductListingPage productPage=new ProductListingPage();
         GenericUtility genericUtility =new GenericUtility();
         
-        productPage.refreshIfServiceUnavailable();
+        genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Processor Speed")) {
 	        log.warn("[{}] ⚠ Filter option 'Processor Speed' not available. Skipping test.", ThreadContext.get("testName"));
 		    return ;
@@ -502,8 +504,9 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 		
 		ProductListingPage productPage=new ProductListingPage();
-		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
+		genericUtility.refreshIfServiceUnavailable();
+		
 		if (!genericUtility.filterCheckUnderList("Display Type")){
 		    System.out.println("Filter option 'Display Type' does not exist. Skipping the test.");
 	        log.warn("[{}] ⚠ Filter option 'Display Type' does not exist. Skipping the test.", ThreadContext.get("testName"));
@@ -557,7 +560,7 @@ public class AmazonTests extends BaseTest {
 	
 		GenericUtility genericUtility=new GenericUtility();	
 		ProductListingPage productPage=new ProductListingPage();
-		productPage.refreshIfServiceUnavailable();
+		genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
 		    System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
 	        log.warn("[{}] ⚠ Filter option 'Operating System' or 'Operating System Version' not found. Skipping test.", ThreadContext.get("testName"));
@@ -611,7 +614,7 @@ public class AmazonTests extends BaseTest {
 		
 		GenericUtility genericUtility= new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
-		productPage.refreshIfServiceUnavailable();
+		genericUtility.refreshIfServiceUnavailable();
 
 			if (!genericUtility.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
 			    System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
@@ -664,9 +667,11 @@ public class AmazonTests extends BaseTest {
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
+		
 		ProductListingPage productPage=new ProductListingPage();
-		productPage.refreshIfServiceUnavailable();
 		GenericUtility genericUtility=new GenericUtility();
+		genericUtility.refreshIfServiceUnavailable();
+		
 		if (!genericUtility.filterCheckUnderList("Discount")) {
 	        log.warn("[{}] ⚠ Filter 'Discount' not available. Skipping test.", ThreadContext.get("testName"));
 		    System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");

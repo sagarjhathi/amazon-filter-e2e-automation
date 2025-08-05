@@ -10,7 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
@@ -160,13 +162,25 @@ public class GenericUtility extends ProductListingPage{
 }
     
 
+    public void refreshIfServiceUnavailable() {
+	    String pageSource = driver.getPageSource().toLowerCase();
+	    String title = driver.getTitle().toLowerCase();
+
+	    if (pageSource.contains("service unavailable") || 
+	        pageSource.contains("it's rush hour") || 
+	        title.contains("service unavailable") || 
+	        title.contains("oops")) {
+	        
+	        System.out.println("Detected error page. Refreshing...");
+	        driver.navigate().refresh();
+	    }
+	}
     
-	
 	
     public void printFilterNamesOnly(By filterName) {
 		log.info("[{}] Within printFilterNamesOnly method", ThreadContext.get("testName"));
-
-		List<WebElement> filterOptions=safeFindElements(filterName);		
+		SafeActions safeAct=new SafeActions();
+		List<WebElement> filterOptions=safeAct.safeFindElements(filterName);		
 		for (int i = 0; i < filterOptions.size(); i++) {
 			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
 		}
