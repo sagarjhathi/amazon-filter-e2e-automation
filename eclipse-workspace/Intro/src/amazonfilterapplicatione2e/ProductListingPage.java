@@ -170,118 +170,7 @@ public class ProductListingPage extends  BasePage{
 		}
 
 	
-	
-	 
-	public boolean filterCheckUnderList(String filterName) {	
 		
-		    List<String> filterNames = new ArrayList<>();
-		    String target = filterName.trim().toLowerCase(); // convert input to lowercase
-
-		    for (WebElement el : listOfFilterNameInLeftNav) {
-		        String text = el.getText().trim().toLowerCase(); // convert element text to lowercase
-		        filterNames.add(text);
-		    }
-
-		    if (filterNames.contains(target)) {
-		        System.out.println(filterName + " matches with assert text here");
-		        return true;
-		    } else {
-		        System.out.println("Filter option '" + filterName + "' does not exist in the list. Skipping the test.");
-		        return false;
-		    }
-	}
-	
-	
-	
- public boolean filterCheckUnderList(String filterName1,String filterName2) {
-		
-	    List<String> filterNames = new ArrayList<>();
-	    String target1 = filterName1.trim().toLowerCase(); // convert input to lowercase
-	    String target2 = filterName1.trim().toLowerCase();
-
-	    for (WebElement el : listOfFilterNameInLeftNav) {
-	        String text = el.getText().trim().toLowerCase(); // convert element text to lowercase
-	        filterNames.add(text);
-	    }
-
-	    if (filterNames.contains(target1) ||filterNames.contains(target2) ) {
-	        System.out.println(filterName1+ "  and " +filterName2 + " matches with assert text here");
-	        return true;
-	    } else {
-	        System.out.println("Filter option '" + filterName1 +"  " +filterName2+ "' does not exist in the list. Skipping the test.");
-	        return false;
-	    }
-    }
-	
-	
-public void safeClick(By locator) throws InterruptedException {
-    int attempts = 0;
-    while (attempts < 1) {
-        try {
-            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
-            element.click();
-            System.out.println("Clicking using safeClick");
-            return;
-        } catch (ElementClickInterceptedException | StaleElementReferenceException e) {
-            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
-            attempts++;
-            driver.navigate().refresh();
-         Thread.sleep(1000); // small delay before retry
-            
-       
-    }
-    // After 3 attempts, skip the action without throwing exception
-        System.out.println("Skipping click action: Element not clickable after 1 attempts - " + locator);
-}
-}
-
-public List<WebElement> safeFindElements(By locator) {
-    int attempts = 0;
-    while (attempts < 1) {
-        try {
-            List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-            System.out.println("Found the elements: " + locator);
-            return elements;
-        } catch (NoSuchElementException | StaleElementReferenceException e) {
-            System.out.println("Retrying findElements for: " + locator + " - Attempt " + (attempts + 1));
-            attempts++;
-                driver.navigate().refresh();
-                System.out.println("Refreshing the page in safeFindElements Method");
-            
-            
-        }
-    }
-    // After 3 attempts, return null instead of throwing exception
-    System.out.println("Skipping action: Elements not found after 3 attempts - " + locator);
-    return null;
-}
-
-	
-	
-public WebElement safeFindElement(By locator) {
-	    int attempts = 0;
-	    while (attempts < 1) {
-	        try {
-	            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-	            System.out.println("Found the element: " + locator);
-	            return element;
-	        } catch (Exception e) {
-	            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
-	            attempts++;
-	                driver.navigate().refresh();
-	                System.out.println("Refreshing the page in safeFindElement Method");
-	                
-	           
-	        }
-	    }
-
-//	    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
-	    // Element not found after retries — skip the action
-	    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
-	    return null;
-	}
-
-
 	
 			
     public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
@@ -738,125 +627,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	}
 	
 	
-	
-	
-	public List<Object> validateGetItTodayFilterOptionUnderDeliveryDay(By filterOption) throws InterruptedException {
-	    log.info("[{}] Within validateGetItTodayFilterOptionUnderDeliveryDay method", ThreadContext.get("testName"));
-
-	     	 System.out.println("Within the Function validateGetItTodayFilterOptionUnderDeliveryDay ");
-		     //Creating ProductListingPage and SafeActions objects in-order to use the contents.
-		     ProductListingPage productPage = new ProductListingPage();
-		     SafeActions safeAct = new SafeActions();
-		     safeAct.safeClick(filterOption);
-			 log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOption);
-
-
-		 
-		     // Find product card elements
-             List<WebElement> deliveryElements=safeAct.safeFindElements(productPage.listProductCardsBy);	
-         
-             // Validate each element's delivery date
-             for(int j=0;j<deliveryElements.size();j++) {
-         	 log.info("[{}] Within  deliveryElements loop within validateGetItTodayFilterOptionUnderDeliveryDay method", ThreadContext.get("testName"));
-
-        	 String assertString=deliveryElements.get(j).getText();
- 	         System.out.println("Found the text from delivery element --> " + assertString + 
-                    " | List size: " + deliveryElements.size() + 
-                    " | Index: " + j);
-	    
-	         boolean found = false;
-	         if (assertString.contains("Today")) {
-             found = true;
-             }
-	     //    Assert.assertTrue(found, "❌ None of the allowed date parts are present, printing the element text in: " + assertString+" index no is "+j);
-	         if(!found) {
-				 log.info("[{}] Assert text not found wihtin the product info hence returning the list of boolean values", ThreadContext.get("testName"));
-
-	        	  return Arrays.asList(false, assertString, j);
-	         }
-		     System.out.println("-----------------------------------------------------------------");
-             }
-
-             // Clear the delivery filter
-		     safeAct.safeClick(productPage.clearButtonBy);
-		     System.out.println("Clicking clear under validateGetItTodayFilterOptionUnderDeliveryDay");
-			 log.info("[{}] returning the list of boolean values as list", ThreadContext.get("testName"));
-
-			return Arrays.asList(true, "All the things are valid no errors", -1);
-	}
-	
-	
-	
-	
-	public void applyFilterAndValidateBrandsFilter(By filterOptionsBy, String filterName) throws InterruptedException {
-
-	    SafeActions safeAct = new SafeActions();
-	    ProductListingPage productPage = new ProductListingPage();
-	    GenericUtility genericUtility = new GenericUtility();
-
-	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
-	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-		
-	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-	    genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
-
-		for (int i = 1; i < filterOptions.size(); i++) {
-		    
-		List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
-		if(i>inloopParent.size()-1) {
-			System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
-			return;
-		}
-		
-		 if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
-	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-	            Thread.sleep(1000);
-	      }
-		
-	    
-		System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-		String str = inloopParent.get(i).getText().trim();	
-		genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName,str));
-		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
-		Thread.sleep(1000);
-		
-		List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
-		
-		int noOfBrandNameNotIntheList =0;
-		for(int k=0;k<productNameListingPage.size();k++) {
-			if(productNameListingPage.get(k).getText().contains(str)) {
-				System.out.println("Product name found in the list index no is -->" +k);
-			}else {
-				System.out.println("Product name not found in the list hence the filter functionality failed index no is -->"+k);
-				noOfBrandNameNotIntheList++;
-			//	Assert.fail("Product name not found in the list hence the filter functionality failed index no is -->"+k);
-			}
-		}
-		
-		System.out.println("The no of brand name not present in the list is -->"+noOfBrandNameNotIntheList +"for the brand filter -->"+str);
-		
-		try {
-			safeAct.safeClick(productPage.clearButtonBy);
-		} catch (Exception e) {
-		    System.out.println("Element not clickable, going back via navigate.back()...filter name is"+str);
-		    driver.navigate().back();
-		}
-		
-		
-		if(i % 10 == 0 && i != 0) {
 			
-			driver.navigate().refresh();
-			System.out.println("Refreshing the page here ");
-		}	
-		}
-	}
-	
-	
-
-	
-	
 	
 	public List<Map<Object, Object>> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
 	    log.info("[{}] Within applyFilterAndValidateBrandsFilterWithResult method", ThreadContext.get("testName"));
@@ -950,99 +721,6 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    return allResults;
 	}
 
-	
-	
-	
-	
-	
-	
-	public void applyBrandFiltersAndValidateProductNames(By filterOptionsBy, String filterName) throws InterruptedException {
-		
-		
-		System.out.println("Within the applyBrandFiltersAndValidateProductNames Function ");
-	    SafeActions safeAct = new SafeActions();
-	    ProductListingPage productPage = new ProductListingPage();
-	    GenericUtility genericUtility = new GenericUtility();
-
-	   
-	    // Step 1: Click 'See more' under brands
-	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
-	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-	    System.out.println("Clicking on More button under Brands Filter via applyBrandFiltersAndValidateProductNames function ");
-
-	    
-	    // Step 2: Get all brand filter options
-	    List<WebElement> brandOptions = safeAct.safeFindElements(filterOptionsBy);
-	    System.out.println("Printing the brand filter options ");
-	    genericUtility.printFilterNamesOnly(filterOptionsBy);
-
-	    
-	    for (int i = 1; i < brandOptions.size(); i++) {
-	    	
-	    	
-	        List<WebElement> inLoopBrandOptions = safeAct.safeFindElements(filterOptionsBy);
-	   	        if (i > inLoopBrandOptions.size() - 1) {
-	            System.out.println("Avoiding out-of-bounds issue.");
-	            return;
-	        }
-
-//	        // Step 3: Click 'See more' in each iteration if present (as per original logic)
-	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
-	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-	            Thread.sleep(1000);
-	        }
-	      
-	        
-	       
-	        // Step 4: Extract brand name
-	        String brandName = inLoopBrandOptions.get(i).getText().trim();
-	        System.out.println("Applying brand filter: " + brandName+"  index no is "+ i);
-
-	        // Step 5: Scroll to brand and click
-	        //     safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, brandName));
-	        
-	        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, brandName))) {
-			    System.out.println("Filter click failed for: " + brandName + ". Skipping this filter option.");
-			    continue; // ⛔ Skip the rest of the current loop iteration
-			}
-	        Thread.sleep(2000);
-	        
-	        // Step 6: Validate product titles contain the brand name
-	        List<WebElement> productTitles = safeAct.safeFindElements(productPage.productNameListingPageBy);
-	        int mismatchCount = 0;
-
-	        for (int k = 0; k < productTitles.size(); k++) {
-	            String productTitle = productTitles.get(k).getText();
-	            if (!productTitle.toLowerCase().contains(brandName.toLowerCase())) {
-	                System.out.println("Mismatch at index " + k + " → Product Title: " + productTitle +" expected keyword within was  =" +brandName);
-	                mismatchCount++;
-	            }
-	        }
-
-	        System.out.println("Mismatch count for brand '" + brandName + "': " + mismatchCount);
-	        System.out.println("---------------------------------------------------------------------------");
-	        // Step 7: Clear filter or go back
-	        
-	        try {
-	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
-		              	 safeAct.safeClick(productPage.clearButtonBy);
-		        }
-	        } catch (Exception e) {
-	            System.out.println("Clear button not clickable, navigating back. Brand: " + brandName);
-	            driver.navigate().back();
-	        }
-
-	        // Step 8: Refresh on every 10th iteration
-	        if (i % 10 == 0 && i != 0) {
-	            driver.navigate().refresh();
-	            System.out.println("Refreshing page after brand " + brandName);
-	        }
-	    }
-	}
-	
-	
 	
 	
 	
@@ -1181,7 +859,6 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    return allResults;
 	}
 
-	
 	
 	
 	
@@ -1366,7 +1043,6 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	
 
 	
-	
 	public List<Map<String, Object>> applyPriceSliderAndValidateWithResult(List<Integer> minValues, List<Integer> maxValues) throws InterruptedException {
 
 	    log.info("[{}] Within applyPriceSliderAndValidateWithResult method", ThreadContext.get("testName"));
@@ -1481,20 +1157,4 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	}
 
 	
-
-	
-  public void refreshIfServiceUnavailable() {
-	    String pageSource = driver.getPageSource().toLowerCase();
-	    String title = driver.getTitle().toLowerCase();
-
-	    if (pageSource.contains("service unavailable") || 
-	        pageSource.contains("it's rush hour") || 
-	        title.contains("service unavailable") || 
-	        title.contains("oops")) {
-	        
-	        System.out.println("Detected error page. Refreshing...");
-	        driver.navigate().refresh();
-	    }
-	}
-
 }
