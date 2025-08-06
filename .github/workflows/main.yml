@@ -6,7 +6,7 @@ on:
       - '**'   # Runs on all branches
   workflow_dispatch:
   schedule:
-    - cron: '52 18 * * *'  # 12:22 AM IST daily
+    - cron: '39 17 * * *'  # 11:09 PM IST daily
     - cron: '30 22 * * *'  # 4:00 AM IST daily
 
 jobs:
