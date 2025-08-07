@@ -297,15 +297,16 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
     List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
     genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
-
     List<Map<String, Object>> results = new ArrayList<>();
 
+    
     for (int i = 0; i < filterOptions.size(); i++) {
-		log.info("[{}] Within filterOptions loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
+		log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
         if (i > inloopParent.size() - 1) {
-			log.info("[{}] Avoiding out of bounds issue by traversing only upto the inloop size within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
+			//log.info("[{}] Avoiding out of bounds issue by traversing only upto the inloop size within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
+			log.info("[{}] Limiting traversal to in-loop size to prevent IndexOutOfBoundsException in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
             System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
             return results;
@@ -327,28 +328,26 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         
         Thread.sleep(1000);
         String currentWindow = driver.getWindowHandle();
-        System.out.println("Printing current window  " + currentWindow);
+        System.out.println(" Printing current window  " + currentWindow);
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
+        
         for (int p = 1; p < productNameListingPage.size(); p++) {
+        	
         	 productIndex = p-1;
     
         	 ExtentTestManager.getTest().info("🖼 Captured screenshot for filter: " + filterValue + ", index: " + productIndex);
-
         	 String path = ScreenshotUtil.capture(testName, filterValue, productIndex);
         	 String caption = "📷 " + filterValue + " | Index: " + productIndex;
 
-        	 ExtentTestManager.getTest()
-        	     .addScreenCaptureFromPath(path, caption);
+        	ExtentTestManager.getTest().addScreenCaptureFromPath(path, caption);
 
-
-			log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
-
+			log.info("[{}] Within productNameListingPage loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
             System.out.println("inside the loop and product name is " + productNameListingPage.get(p-1).getText());
             
             try {
                 WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-				log.info("[{}] Getting product by index  within productNameListingPage loop", ThreadContext.get("testName"));
+				log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
 
                 System.out.println(productElement.getText()+"Printing the name in try catch ");
                 Actions actions = new Actions(driver);
@@ -360,49 +359,22 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
                     .perform();
 
                 System.out.println("Product clicked with Ctrl+Click to open in new tab.");
-				log.info("[{}] Product clicked with Ctrl+Click to open in new tab  within productNameListingPage loop", ThreadContext.get("testName"));
+				log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", ThreadContext.get("testName"));
 
                 Thread.sleep(2000);
 
             } catch (Exception e) {
-				log.info("[{}] Failed to Ctrl+Click product index " + p+"  within productNameListingPage loop", ThreadContext.get("testName"));
+				log.info("[{}] Failed to Ctrl+Click product index " + p+"  for filter value->"+filterValue, ThreadContext.get("testName"));
                 System.out.println("Failed to Ctrl+Click product index " + p);
                 continue;
             }
 
             System.out.println("Clicked on the producct name new pop-up should open");
-			log.info("[{}] Clicked on the producct name new pop-up should open  via productNameListingPage loop", ThreadContext.get("testName"));
+			log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", ThreadContext.get("testName"));
 
             Thread.sleep(2000);
             productPage.switchToNewWindow(currentWindow);
 			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
-
-			
-//			String name = "";
-//			int retryCount = 0;
-//
-//			while (name.isEmpty() && retryCount < 5) {
-//			    WebElement productElement = safeAct.safeFindElement(productPage.productNameIndividualPage);
-//			    if (productElement != null) {
-//			        name = productElement.getText().trim();
-//			    } else {
-//			        Thread.sleep(1000); // optional short wait
-//			    }
-//			    retryCount++;
-//			}
-//
-//			if (name.isEmpty()) {
-//			    System.out.println("Failed to fetch product name after 5 attempts");
-//			}
-			
-          //  String name = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
-            
-//            String keyFeatures = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
-//            String about = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
-//            String techDetails = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
-
-            
-
 
 			String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
 			String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
@@ -411,22 +383,23 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 			// Optional logging or fallback handling
 			if (name.isEmpty()) {
+				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
 			    System.out.println("❌ Failed to fetch product name after retries");
 			}
 			if (keyFeatures.isEmpty()) {
+				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
 			    System.out.println("❌ Failed to fetch key features after retries");
 			}
 			if (about.isEmpty()) {
+				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
 			    System.out.println("❌ Failed to fetch about section after retries");
 			}
 			if (techDetails.isEmpty()) {
+				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
 			    System.out.println("❌ Failed to fetch technical details after retries");
 			}
 
-     
-
 			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
-
             genericUtility.scrollByPixel(0, 700);
 
             try {
@@ -448,7 +421,6 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
 
-
             // ✅ Only this block is new
             Map<String, Object> productResult = new HashMap<>();
             productResult.put("filter", str);
@@ -456,6 +428,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             productResult.put("keyFeatures", keyFeatures);
             productResult.put("about", about);
             productResult.put("techDetails", techDetails);
+            
 			log.info("[{}]  Added 'filter','title','keyFeatures', 'about', 'techDetails' into the Map -> productResult", ThreadContext.get("testName"));
 
             results.add(productResult);
@@ -464,11 +437,10 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         }
 
         safeAct.safeClick(productPage.clearButtonBy);
-		log.info("[{}]  Clickin clear button in the end  within productNameListingPage loop", ThreadContext.get("testName"));
+		log.info("[{}] Clearing the filter value ->"+filterValue+"within productNameListingPage loop", ThreadContext.get("testName"));
 
     }
 	log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));
-
     return results;
 }
 
