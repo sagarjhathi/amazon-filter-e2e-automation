@@ -68,7 +68,9 @@ public class TestListener implements ITestListener {
             String logFileName = ThreadContext.get("logFileName");
             if (logFileName != null) {
                 String absolutePath = System.getProperty("user.dir") + "/logs/" + logFileName + ".log";
-                String fileUrl = "file:///" + absolutePath.replace("\\", "/");
+                String absolutePathNew = "C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/" + logFileName + ".log";
+
+                String fileUrl = "file:///" + absolutePathNew.replace("\\", "/");
 
                 ExtentTestManager.getTest().info("📄 <a href='" + fileUrl + "' target='_blank'>Click to view log file</a>");
             }
