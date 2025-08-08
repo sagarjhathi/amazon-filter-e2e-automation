@@ -34,23 +34,32 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult result) {
-        ExtentTestManager.getTest().log(Status.PASS, "✅ Test Passed");
+     //   ExtentTestManager.getTest().log(Status.PASS, "✅ Test Passed");
         attachLogFile();
         attachScreenshotFolder(result);
     }
 
     @Override
     public void onTestFailure(ITestResult result) {
-        ExtentTestManager.getTest().log(Status.FAIL, "❌ Test Failed: " + result.getThrowable());
+     //   ExtentTestManager.getTest().log(Status.FAIL, "❌ Test Failed: " + result.getThrowable());
 
         // Screenshot on failure
         String testName = result.getMethod().getMethodName();
         Throwable cause = result.getThrowable();
 
         // Log failure in Extent Report
-        ExtentTestManager.getTest().log(Status.FAIL,
-            "❌ Test Failed: " + testName + "<br><pre>" + cause + "</pre>");
+//        ExtentTestManager.getTest().log(Status.FAIL,
+         //   "❌ Test Failed: " + testName + "<br><pre>" + cause + "</pre>");
 
+        Throwable throwable = result.getThrowable();
+        if (throwable != null) {
+            String message = throwable.getMessage();
+
+            if (message != null) {
+                String formattedMessage = formatFailureMessage(message);
+                ExtentTestManager.getTest().fail(formattedMessage);
+            }
+        }
         // No screenshot taken
         attachLogFile();             // 🔹 Still attach logs if needed
         attachScreenshotFolder(result); // 🔹 Still attach folder path for context if needed
@@ -58,7 +67,7 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult result) {
-        ExtentTestManager.getTest().log(Status.SKIP, "⚠️ Test Skipped");
+      //  ExtentTestManager.getTest().log(Status.SKIP, "⚠️ Test Skipped");
         attachLogFile();
         attachScreenshotFolder(result);
     }
@@ -85,158 +94,6 @@ public class TestListener implements ITestListener {
     }
 
     
-//    @Override
-//    public void onTestStart(ITestResult result) {
-//       String testName = result.getMethod().getMethodName();
-////        ExtentTestManager.startTest(testName).log(Status.INFO, "🔹 Test Started: " + testName);
-//    }
-//
-//    @Override
-//    public void onTestSuccess(ITestResult result) {
-//        ExtentTestManager.getTest().log(Status.PASS, "✅ Test Passed");
-//        attachLogFile();
-//        attachScreenshotFolder(result);
-//    }
-//
-//    @Override
-//    public void onTestFailure(ITestResult result) {
-//       // ExtentTestManager.getTest().log(Status.FAIL, "❌ Test Failed: " + result.getThrowable());
-//
-//        // Screenshot on failure
-//       String testName = result.getMethod().getMethodName();
-//       Throwable cause = result.getThrowable();
-//
-//        // Log failure in Extent Report
-////        ExtentTestManager.getTest().log(Status.FAIL,
-////            "❌ Test Failed: " + testName + "<br><pre>" + cause + "</pre>");
-//
-//        // No screenshot taken
-//        attachLogFile();             // 🔹 Still attach logs if needed
-//        attachScreenshotFolder(result); // 🔹 Still attach folder path for context if needed
-//    }
-//
-//    @Override
-//    public void onTestSkipped(ITestResult result) {
-//        ExtentTestManager.getTest().log(Status.SKIP, "⚠️ Test Skipped");
-//        attachLogFile();
-//        attachScreenshotFolder(result);
-//    }
-//
-//    @Override
-//    public void onFinish(ITestContext context) {
-//        ExtentManager.getInstance().flush();
-//    }
-//
-//    private void attachLogFile() {
-//        try {
-//            String logFileName = ThreadContext.get("logFileName");
-//            if (logFileName != null) {
-//                String absolutePath = System.getProperty("user.dir") + "/logs/" + logFileName + ".log";
-//                String absolutePathNew = "C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/" + logFileName + ".log";
-//
-//                String fileUrl = "file:///" + absolutePathNew.replace("\\", "/");
-//
-//                ExtentTestManager.getTest().info("📄 <a href='" + fileUrl + "' target='_blank'>Click to view log file</a>");
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("⚠️ Failed to attach log file: " + e.getMessage());
-//        }
-//    }
-
-//    private void attachScreenshotFolder(ITestResult result) {
-//        try {
-//            String testName = result.getMethod().getMethodName();
-//            File testFolder = new File(SCREENSHOT_BASE_DIR + "/" + testName);
-//            if (testFolder.exists()) {
-//                String folderPath = testFolder.getAbsolutePath().replace("\\", "/");
-//                String folderLink = "file:///" + folderPath;
-//
-//                // ✅ Collapsible section in Extent Report
-//                ExtentTestManager.getTest().info(
-//                    "<details><summary>📂 Open Screenshot Folder</summary><a href='" + folderLink + "' target='_blank'>Click Here</a></details>"
-//                );
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("⚠️ Could not attach screenshot folder: " + e.getMessage());
-//        }
-//    }
-    
-    
-//    private void attachScreenshotFolder(ITestResult result) {
-//        try {
-//            String testName = result.getMethod().getMethodName();
-//            File testFolder = new File(SCREENSHOT_BASE_DIR + "/" + testName);
-//            if (testFolder.exists()) {
-//                StringBuilder html = new StringBuilder();
-//                html.append("<details><summary>📂 Open Screenshot Folder</summary>");
-//
-//                File[] files = testFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".png"));
-//                if (files != null && files.length > 0) {
-//                    for (File file : files) {
-//                        String filePath = file.getAbsolutePath().replace("\\", "/");
-//                        String fileUrl = "file:///" + filePath;
-//                        html.append("<div><a href='").append(fileUrl)
-//                            .append("' target='_blank'>").append(file.getName()).append("</a></div>");
-//                    }
-//                } else {
-//                    html.append("<div>No screenshots found</div>");
-//                }
-//
-//                html.append("</details>");
-//
-//                // Attach it to the report
-//                ExtentTestManager.getTest().info(MarkupHelper.createLabel(html.toString(), ExtentColor.GREY));
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("⚠️ Could not attach screenshot folder: " + e.getMessage());
-//        }
-//    }
-    
-    
-//    private void attachScreenshotFolder(ITestResult result) {
-//        try {
-//            String testName = result.getMethod().getMethodName();
-//
-//            // ✅ Match ScreenshotUtil's save path exactly
-//            String screenshotDirPath = System.getProperty("user.dir")
-//                    + "/test-output/screenshots/Run_" 
-//                    + ExtentManager.RUN_TIMESTAMP 
-//                    + "/" + testName;
-//
-//            File testFolder = new File(screenshotDirPath);
-//            if (testFolder.exists()) {
-//                StringBuilder html = new StringBuilder();
-//                html.append("<details><summary>📂 Open Screenshot Folder</summary>");
-//
-//                File[] files = testFolder.listFiles((dir, name) -> name.toLowerCase().endsWith(".png"));
-//                if (files != null && files.length > 0) {
-//                    for (File file : files) {
-//                        String filePath = file.getAbsolutePath().replace("\\", "/"); // absolute path
-//                        String fileUrl = "file:///" + filePath;
-//                        html.append("<div><a href='")
-//                            .append(fileUrl)
-//                            .append("' target='_blank'>")
-//                            .append(file.getName())
-//                            .append("</a></div>");
-//                    }
-//                } else {
-//                    html.append("<div>No screenshots found</div>");
-//                }
-//
-//                html.append("</details>");
-//
-//                ExtentTestManager.getTest()
-//                        .info(MarkupHelper.createLabel(html.toString(), ExtentColor.GREY));
-//            } else {
-//                ExtentTestManager.getTest()
-//                        .info("No screenshot folder found for test: " + testName);
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest()
-//                    .warning("⚠️ Could not attach screenshot folder: " + e.getMessage());
-//        }
-//    }
-
     
     private void attachScreenshotFolder(ITestResult result) {
         try {
@@ -253,11 +110,13 @@ public class TestListener implements ITestListener {
                     for (File file : files) {
                         String filePath = file.getAbsolutePath().replace("\\", "/");
                         String fileUrl = "file:///" + filePath;
+                        String fileName = file.getName(); // 📌 This is the screenshot file name
 
-                        // Embed image directly
-                        html.append("<div style='margin-top:5px;'>")
+                        // Embed image with file name as label
+                        html.append("<div style='margin-top:10px; border:1px solid #ccc; padding:5px;'>")
+                            .append("<div style='font-weight:bold; margin-bottom:3px;'>📸 ").append(fileName).append("</div>")
                             .append("<a href='").append(fileUrl).append("' target='_blank'>")
-                            .append("<img src='").append(fileUrl).append("' style='max-width:600px; border:1px solid #ccc;'/>")
+                            .append("<img src='").append(fileUrl).append("' style='max-width:600px; border:1px solid #ddd;'/>")
                             .append("</a></div>");
                     }
                 } else {
@@ -274,13 +133,37 @@ public class TestListener implements ITestListener {
     }
 
 
+
     
   
     
 
     
 
+    private String formatFailureMessage(String message) {
+        // Optional: detect structured failure message by keywords
+        if (message.contains("Brand filter") && message.contains("📦 Title:")) {
 
+            // Split for better readability
+            String[] lines = message.split("\n");
+            String filter = lines[0]; // first line like ❌ Brand filter '...' not found
+
+            // Build collapsible HTML
+            StringBuilder html = new StringBuilder();
+            html.append("❌ <b>").append(filter).append("</b>");
+            html.append("<details><summary>📄 Click to expand product details</summary>");
+
+            for (int i = 1; i < lines.length; i++) {
+                html.append(lines[i].replace("\n", "<br>")).append("<br>");
+            }
+
+            html.append("</details>");
+            return html.toString();
+        }
+
+        // If no special format, return as-is
+        return message;
+    }
 
 
     
