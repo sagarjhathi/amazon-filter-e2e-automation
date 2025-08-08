@@ -33,7 +33,7 @@ public class AmazonLandingPage extends BasePage{
 	
 	public void clickingOnSubmitSearchButton() {
 		submitSearchButton.click();
-		log.info("[{}] Clicking on the submit button beside the search bar", ThreadContext.get("testName"));
+		log.info("[{}] Clicking on the submit in the search bar", ThreadContext.get("testName"));
 
 	}
 	

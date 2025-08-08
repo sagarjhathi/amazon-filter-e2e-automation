@@ -38,7 +38,7 @@ public class ExtentManager {
         // Optional system info
         extent.setSystemInfo("OS", System.getProperty("os.name"));
         extent.setSystemInfo("Java Version", System.getProperty("java.version"));
-        extent.setSystemInfo("Tester", "Your Name");
+        extent.setSystemInfo("Tester", "Sagar Hathi");
 
         return extent;
     }

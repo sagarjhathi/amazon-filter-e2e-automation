@@ -144,6 +144,34 @@ public class ProductListingPage extends  BasePage{
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
 	    }
 	    }
+	    
+	    public By getAppliedfilterByTypeAndName(String filterName, String filterOption) {
+	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+			log.info("[{}] Within getAppliedfilterByTypeAndName method", ThreadContext.get("testName"));
+
+	        switch (filterName.toLowerCase()) {
+	        case "processorspeed":
+	            return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
+	        case "storagecapacity":
+	        	return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        case "brands":
+	            return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        case "batterycapacity":
+	            return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
+	        case "displaysize" :
+	         	return By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        case "displaytype":
+	        	return By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        case "operatingsystem":
+	        	return By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        case "mobilephoneprimarycameraresolution":
+	        	return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        case "discount":
+	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	        default:
+	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
+	    }
+	    }
     
 
 	 
@@ -315,32 +343,35 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
         String str = inloopParent.get(i).getText().trim();
 
-        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
-            System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
-            continue; // ⛔ Skip the rest of the current loop iteration
-        }
         
         
         String testName = ThreadContext.get("logFileName");
         String filterValue = str; // or dynamically picked
+        int filterIndex=i;
+        
+        
+        if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
+            System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
+            continue; // ⛔ Skip the rest of the current loop iteration
+        }
+        
+
+        
         int productIndex;
-        
-        
         Thread.sleep(1000);
         String currentWindow = driver.getWindowHandle();
         System.out.println(" Printing current window  " + currentWindow);
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         
-        for (int p = 1; p < productNameListingPage.size(); p++) {
+        for (int p = 1; p < 2; p++) {
         	
         	 productIndex = p-1;
     
-        	 ExtentTestManager.getTest().info("🖼 Captured screenshot for filter: " + filterValue + ", index: " + productIndex);
-        	 String path = ScreenshotUtil.capture(testName, filterValue, productIndex);
-        	 String caption = "📷 " + filterValue + " | Index: " + productIndex;
-
-        	ExtentTestManager.getTest().addScreenCaptureFromPath(path, caption);
+//        	 ExtentTestManager.getTest().info("🖼 Captured screenshot for filter: " + filterValue + ", index: " + productIndex);
+//        	 String path = ScreenshotUtil.capture(testName, filterValue, productIndex);
+//        	 String caption = "📷 " + filterValue + " | Index: " + productIndex;
+//        	 ExtentTestManager.getTest().addScreenCaptureFromPath(path, caption);
 
 			log.info("[{}] Within productNameListingPage loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
             System.out.println("inside the loop and product name is " + productNameListingPage.get(p-1).getText());
@@ -421,6 +452,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
 
+
             // ✅ Only this block is new
             Map<String, Object> productResult = new HashMap<>();
             productResult.put("filter", str);
@@ -433,11 +465,15 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
             results.add(productResult);
 			log.info("[{}]  Added 'productResult' Map into the 'results' i.e list of maps ", ThreadContext.get("testName"));
+			log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
 
         }
 
         safeAct.safeClick(productPage.clearButtonBy);
 		log.info("[{}] Clearing the filter value ->"+filterValue+"within productNameListingPage loop", ThreadContext.get("testName"));
+
+		log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
+		log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
 
     }
 	log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));

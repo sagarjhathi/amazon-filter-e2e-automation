@@ -33,50 +33,55 @@ public class ScreenshotUtil {
         }
         baseDir.mkdirs();  // Recreate
     }
+    
+    
+    /**
+     * Capture screenshot with default test name (from ThreadContext) + timestamp.
+     */
+    public static String capture() {
+        String testName = ThreadContext.get("testName");
+        return captureInternal(testName, null);
+    }
 
-//    public static String capture(String testName, String filterValue, int productIndex) {
-//        String timestamp = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
-//
-//        // Folder path to store screenshots (absolute path)
-//        String folderPath = "test-output/screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName;
-//        new File(folderPath).mkdirs();  // Create folder if not exists
-//
-//        // File name with filter and index info
-//        String fileName = "Filter_" + filterValue + "_Index_" + productIndex + "__" + timestamp + ".png";
-//
-//        // Full path to save file
-//        String fullPath = folderPath + "/" + fileName;
-//        WebDriver driver = DriverManager.getDriver();
-//        try {
-//            File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//            FileUtils.copyFile(src, new File(fullPath));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//            return null;
-//        }
-//
-//        // ✅ Return relative path to be used in Extent Report
-//        String relativePath = "../screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName + "/" + fileName;
-//        return relativePath.replace("\\", "/");
-//    }
+    /**
+     * Capture screenshot with a custom file name (optional context).
+     */
+    public static String capture(String customName) {
+        String testName = ThreadContext.get("testName");
+        return captureInternal(testName, customName);
+    }
+
     
     public static String capture(String testName, String filterValue, int productIndex) {
+        String customName = "Filter->" + filterValue + "_Index_" + productIndex;
+        return captureInternal(testName, customName);
+    }
+    
+    
+    public static String capture(String testName, String filterValue) {
+        String customName = "Filter Applied is " + filterValue;
+        return captureInternal(testName, customName);
+    }
+    
+    
+    
+    private static String captureInternal(String testName, String customName) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
-
         String folderPath = "test-output/screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName;
         new File(folderPath).mkdirs();
 
-        String fileName = "Filter_" + filterValue + "_Index_" + productIndex + "__" + timestamp + ".png";
+        String fileName = (customName != null && !customName.isEmpty())
+                ? customName + "__" + timestamp + ".png"
+                : testName + "__" + timestamp + ".png";
+
         String fullPath = folderPath + "/" + fileName;
         WebDriver driver = DriverManager.getDriver();
 
-        log.info("[{}] Attempting screenshot capture for test='{}', filter='{}', index={}", 
-                 ThreadContext.get("testName"), testName, filterValue, productIndex);
+        log.info("[{}] Capturing screenshot: {}", ThreadContext.get("testName"), fileName);
 
         try {
-            // Check if driver is responsive
             try {
-                driver.getTitle();  // Will throw if session is invalid
+                driver.getTitle(); // check if driver is alive
             } catch (Exception e) {
                 log.warn("[{}] WebDriver seems unresponsive. Skipping screenshot.", ThreadContext.get("testName"));
                 return null;
@@ -87,12 +92,7 @@ public class ScreenshotUtil {
 
             log.info("[{}] Screenshot saved at: {}", ThreadContext.get("testName"), fullPath);
         } catch (WebDriverException we) {
-            // Detect if it's likely a timeout from remote
-            if (we.getMessage().toLowerCase().contains("timeout") || we.getCause() instanceof java.util.concurrent.TimeoutException) {
-                log.error("[{}] Screenshot failed due to timeout: {}", ThreadContext.get("testName"), we.getMessage());
-            } else {
-                log.error("[{}] WebDriverException during screenshot: {}", ThreadContext.get("testName"), we.getMessage());
-            }
+            log.error("[{}] WebDriverException during screenshot: {}", ThreadContext.get("testName"), we.getMessage());
             return null;
         } catch (IOException ioe) {
             log.error("[{}] IOException while saving screenshot: {}", ThreadContext.get("testName"), ioe.getMessage());
@@ -105,7 +105,6 @@ public class ScreenshotUtil {
         String relativePath = "../screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName + "/" + fileName;
         return relativePath.replace("\\", "/");
     }
-
-
+    
 
 }

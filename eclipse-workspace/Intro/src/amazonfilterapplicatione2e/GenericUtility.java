@@ -207,16 +207,6 @@ public class GenericUtility extends ProductListingPage{
         }
     }
     
-//    public void smoothScrollToElement(By locator) {
-//		log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));
-//
-//        SafeActions safeAct=new SafeActions();
-//        WebElement element= safeAct.safeFindElement(locator);
-//        ((JavascriptExecutor) driver).executeScript(
-//            "arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });", 
-//            element
-//        );
-//    }
     
     public void smoothScrollToElement(By locator) {
         log.info("[{}] Within smoothScrollToElement method", ThreadContext.get("testName"));

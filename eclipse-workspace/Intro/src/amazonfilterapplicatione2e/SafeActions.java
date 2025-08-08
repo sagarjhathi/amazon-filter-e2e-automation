@@ -6,6 +6,8 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import amazonfilterapplicatione2e.reporting.ExtentTestManager;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -116,27 +118,82 @@ public class SafeActions extends BasePage{
 		
 		
 		
-		public boolean safeClickBoolean(By locator) {
+		public boolean safeClickBoolean(By locator) throws InterruptedException {
 			log.info("[{}] Within safeClickBoolean method", ThreadContext.get("testName"));
 
+				GenericUtility genericUtility=new GenericUtility();
+				ProductListingPage productPage=new ProductListingPage();
+								
+				//ScreenshotUtil screenUtil=new ScreenshotUtil();
+				String testName = ThreadContext.get("logFileName");
+				
+		    int attempts = 0;
+		    while (attempts < 2) {
+		        try {
+					log.info("[{}] Within safeClickBoolean method Try block after the scroll line", ThreadContext.get("testName"));
+		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
+		            element.click();
+		            Thread.sleep(2000);
+		            genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(testName, testName));
+		        	Thread.sleep(2000);
+					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
+		            System.out.println("Clicking using safeClick");
+		            
+		          //  ScreenshotUtil.capture(testName);
+		            return true; // success
+		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
+		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
+					log.info("[{}] Cannot click the button, element ->"+locator ,ThreadContext.get("testName"));
+					
+				
+		            attempts++;
+		            try {
+		                driver.navigate().refresh();
+						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
+		                Thread.sleep(1000);
+		            } catch (InterruptedException ignored) {}
+		        }
+		    }
+			log.info("[{}]Skipping click action: Element not clickable after"+attempts+"   attempts" ,ThreadContext.get("testName"));
+
+		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
+		    return false; // failure
+		}
+		
+		
+		
+		public boolean safeClickBooleanWithScreenShot(By locator,String filterName,String filterOption) throws InterruptedException {
+			    log.info("[{}] Within safeClickBooleanWithScreenShot method", ThreadContext.get("testName"));
+
+				GenericUtility genericUtility=new GenericUtility();
+				ProductListingPage productPage=new ProductListingPage();
+				String testName = ThreadContext.get("logFileName");
+				String filterOptionToPass=filterOption;
+				
+				
 		    int attempts = 0;
 		    while (attempts < 2) {
 		        try {
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
+		            Thread.sleep(2000);
+		            genericUtility.smoothScrollToElement(productPage.getAppliedfilterByTypeAndName(filterName, filterOption));
+		        	Thread.sleep(2000);
 					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
-		            System.out.println("Clicking using safeClick");
+		            System.out.println("Clicking using safeClick");  
+		            ScreenshotUtil.capture(testName,filterOptionToPass);
 		            return true; // success
 		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
 		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
 					log.info("[{}] Cannot click the button, element ->"+locator ,ThreadContext.get("testName"));
-
+					
+				
 		            attempts++;
 		            try {
 		                driver.navigate().refresh();
 						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
-
 		                Thread.sleep(1000);
 		            } catch (InterruptedException ignored) {}
 		        }
