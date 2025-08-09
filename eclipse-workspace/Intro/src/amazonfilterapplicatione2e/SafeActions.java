@@ -18,11 +18,6 @@ public class SafeActions extends BasePage{
 
 
 	public void safeClick(By locator) {
-//		ProductListingPage productPage=new ProductListingPage();
-//		if(driver.findElement(productPage.seeMoreButtonIndividualPage).isDisplayed()) {
-//			System.out.println("Found the see more button hence returning from safeclick");
-//			return;
-//		}
 		log.info("[{}] Within safeClick method", ThreadContext.get("testName"));
 
 	    int attempts = 0;
@@ -163,6 +158,7 @@ public class SafeActions extends BasePage{
 		
 		
 		
+		
 		public boolean safeClickBooleanWithScreenShot(By locator,String filterName,String filterOption) throws InterruptedException {
 			    log.info("[{}] Within safeClickBooleanWithScreenShot method", ThreadContext.get("testName"));
 
@@ -173,14 +169,14 @@ public class SafeActions extends BasePage{
 				
 				
 		    int attempts = 0;
-		    while (attempts < 2) {
+		    while (attempts < 1) {
 		        try {
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
-		            Thread.sleep(2000);
+		            Thread.sleep(1000);
 		            genericUtility.smoothScrollToElement(productPage.getAppliedfilterByTypeAndName(filterName, filterOption));
-		        	Thread.sleep(2000);
+		        	Thread.sleep(1000);
 					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
 		            System.out.println("Clicking using safeClick");  
 		            ScreenshotUtil.capture(testName,filterOptionToPass);
@@ -188,11 +184,18 @@ public class SafeActions extends BasePage{
 		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
 		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
 					log.info("[{}] Cannot click the button, element ->"+locator ,ThreadContext.get("testName"));
-					
-				
 		            attempts++;
+		            
 		            try {
+		            	
 		                driver.navigate().refresh();
+		                	Thread.sleep(1000);		
+		                	By batteryHeader=By.xpath("//div[@id='p_n_g-101015098008111-title']");
+		                	genericUtility.smoothScrollToElement(batteryHeader);
+		                	Thread.sleep(1000);
+				            ScreenshotUtil.capture(testName,filterOptionToPass,"failed filter apply screenshot-");
+		                
+		                
 						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
 		                Thread.sleep(1000);
 		            } catch (InterruptedException ignored) {}

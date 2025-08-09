@@ -140,10 +140,14 @@ public class ProductListingPage extends  BasePage{
 	        	return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "discount":
 	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
+	        case "Operating System Version":
+	        	return By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
+
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
 	    }
 	    }
+	    
 	    
 	    public By getAppliedfilterByTypeAndName(String filterName, String filterOption) {
 	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
@@ -327,6 +331,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
     genericUtility.printFilterNamesOnly(filterOptionsBy); // Optional for debugging
     List<Map<String, Object>> results = new ArrayList<>();
 
+    log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
+
     
     for (int i = 0; i < filterOptions.size(); i++) {
 		log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
@@ -335,7 +341,6 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         if (i > inloopParent.size() - 1) {
 			//log.info("[{}] Avoiding out of bounds issue by traversing only upto the inloop size within applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 			log.info("[{}] Limiting traversal to in-loop size to prevent IndexOutOfBoundsException in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
-
             System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
             return results;
         }
@@ -343,8 +348,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
         String str = inloopParent.get(i).getText().trim();
 
-        
-        
+       
         String testName = ThreadContext.get("logFileName");
         String filterValue = str; // or dynamically picked
         int filterIndex=i;
@@ -750,12 +754,15 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    List<Map<String, Object>> allResults = new ArrayList<>();
 
-	    
-	    for (int i = 1; i < filterOptions.size(); i++) {
+	    log.info("[{}] Within OS fucntion , this is the filterOptions size ->"+filterOptions.size(), ThreadContext.get("testName"));
+
+	    for (int i = 0; i < filterOptions.size(); i++) {
 		    log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
 
 	        List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
-	        if (i > inloopParent.size() - 1) continue;
+	        if (i > inloopParent.size() - 1) {
+	        	 return allResults;
+	        }
 
 	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
 	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
@@ -765,7 +772,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	        
 	        String str = inloopParent.get(i).getText().trim();
-	        if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
+	        
+	        if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 	            System.out.println("Filter click failed for: " + str);
 	    	    log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
 	            continue;
@@ -775,7 +783,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        String currentWindow = driver.getWindowHandle();
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
-	        for (int p = 1; p < productNameListingPage.size(); p++) {
+	        for (int p = 1; p < 2; p++) {
 	    	    log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 
 	            try {
@@ -842,18 +850,19 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        }
 
 	        
-	        // Clear applied filter
-	        try {
-	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
-	                safeAct.safeClick(productPage.clearButtonBy);
-    	    	    log.info("[{}] Clearing the applied filter ,and applied filter ->"+str, ThreadContext.get("testName"));
-
-	            }
-	        } catch (Exception e) {
-	            driver.navigate().back();
-	    	    log.info("[{}] Cannot click clear Button,and applied filter ->"+str, ThreadContext.get("testName"));
-
-	        }
+//	        // Clear applied filter
+//	        try {
+//	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
+//	                safeAct.safeClick(productPage.clearButtonBy);
+//    	    	    log.info("[{}] Clearing the applied filter ,and applied filter ->"+str, ThreadContext.get("testName"));
+//
+//	            }
+//	        } catch (Exception e) {
+//	            driver.navigate().back();
+//	    	    log.info("[{}] Cannot click clear Button,and applied filter ->"+str, ThreadContext.get("testName"));
+//
+//	        }
+	        safeAct.safeClick(productPage.clearButtonBy);
 
 	        if (i % 10 == 0 && i != 0) {
 	            driver.navigate().refresh();
