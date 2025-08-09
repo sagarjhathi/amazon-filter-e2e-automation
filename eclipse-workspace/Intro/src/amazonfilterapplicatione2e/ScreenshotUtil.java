@@ -63,7 +63,17 @@ public class ScreenshotUtil {
         return captureInternal(testName, customName);
     }
     
+    public static String capture(String testName, String filterValue,String customMessage) {
+        String customName = customMessage+"  "+"Filter Applied is " + filterValue;
+        return captureInternal(testName, customName);
+    }
     
+//    private static String sanitizeFileName(String input) {
+//        if (input == null) return "screenshot";
+//        // Replace anything not a letter, digit, dash, underscore, or dot with underscore
+//        return input.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
+//    }
+//    
     
     private static String captureInternal(String testName, String customName) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
@@ -105,6 +115,11 @@ public class ScreenshotUtil {
         String relativePath = "../screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName + "/" + fileName;
         return relativePath.replace("\\", "/");
     }
+    
+
+    
+
+
     
 
 }
