@@ -44,7 +44,7 @@ public class AmazonTests extends BaseTest {
 	public Object[][] getBrands() {
 	    return new Object[][] {
 	        {"Mobile"},
-//	        {"Tv"},
+	        {"Tv"},
 //	        {"Charger"},
 //	        {"AC"},
 //	        {"Fridge"}
@@ -215,12 +215,12 @@ public class AmazonTests extends BaseTest {
 	
 	
 
-	@Test(priority=5, retryAnalyzer = RetryFailedTest.class)
-	public void verifyingStorageCapacityFilterFunctionality() throws InterruptedException {
+	@Test(priority=5, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException {
 		
 		AmazonLandingPage amazonPage=new AmazonLandingPage();
 		amazonPage.openingLandingPage();
-		amazonPage.givingInputWithinSearchBar("Mobile");
+		amazonPage.givingInputWithinSearchBar(input);
 		amazonPage.clickingOnSubmitSearchButton();
 		
 		GenericUtility genericUtility=new GenericUtility();
@@ -261,7 +261,7 @@ public class AmazonTests extends BaseTest {
 	        	
 
 	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append("❌ Brand filter '").append(filter).append("' not found in product details.\n")
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
 	        	              .append("-------------------------------------------------------------\n")
 	        	              .append("📦 Title: ").append(title).append("\n")
 	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
@@ -337,12 +337,13 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority = 7, retryAnalyzer = RetryFailedTest.class)
-	public void verifyingBatteryCapacityFilterFunctionality() throws InterruptedException {
+	@Test(priority = 7, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("🧪 Test Input Parameter: <b>" + input + "</b>");
 
 	    AmazonLandingPage am = new AmazonLandingPage();
 	    am.openingLandingPage();
-	    am.givingInputWithinSearchBar("Mobile");
+	    am.givingInputWithinSearchBar(input);
 	    am.clickingOnSubmitSearchButton();
 
 	    ProductListingPage productPage =new ProductListingPage();
@@ -352,7 +353,6 @@ public class AmazonTests extends BaseTest {
 	    genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Battery Capacity")) {
 	        log.warn("[{}] ⚠ Filter option 'Battery Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
-
 		    System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
 		    return ;
 		}
@@ -360,7 +360,10 @@ public class AmazonTests extends BaseTest {
 		
    List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
    SoftAssert softAssert = new SoftAssert();
-
+   
+   if(results.size()==0) {
+	   softAssert.fail();
+   }
 	    for (Map<String, Object> product : results) {
 	        String filter = ((String) product.get("filter")).toLowerCase();
 	        String title = ((String) product.get("title")).toLowerCase();
@@ -372,15 +375,24 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	log.error("[{}] ❌ Battery capacity filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
-	        		    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
 
-	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-	                          + "Title: " + title + "\n"
-	                          + "Key Features: " + keyFeatures + "\n"
-	                          + "About: " + about + "\n"
-	                          + "Tech Details: " + techDetails + "\n");
-	            System.out.println("---------------------------------------------------------------");
+	        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+	        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+	        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+	        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+	        	
+
+	        	StringBuilder failureMessage = new StringBuilder();
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+	        	              .append("---------------------------------------------------------------------------------------\n")
+	        	              .append("📦 Title: ").append(title).append("\n")
+	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+	        	              .append("ℹ️ About: ").append(about).append("\n")
+	        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+	        	              .append("-----------------------------------------------------------------------------------------");
+
+	        	softAssert.fail(failureMessage.toString());
+	        	
 	        } else {
 	            log.info("[{}] ✅ Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
@@ -426,15 +438,35 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	 log.error("[{}] ❌ Display Size filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
-	                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+//	        	 log.error("[{}] ❌ Display Size filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
+//	                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+//
+//	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+//	                          + "Title: " + title + "\n"
+//	                          + "Key Features: " + keyFeatures + "\n"
+//	                          + "About: " + about + "\n"
+//	                          + "Tech Details: " + techDetails + "\n");
+//	            System.out.println("---------------------------------------------------------------");
+	        	
+	        	
+	        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+	        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+	        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+	        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+	        	
 
-	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-	                          + "Title: " + title + "\n"
-	                          + "Key Features: " + keyFeatures + "\n"
-	                          + "About: " + about + "\n"
-	                          + "Tech Details: " + techDetails + "\n");
-	            System.out.println("---------------------------------------------------------------");
+	        	StringBuilder failureMessage = new StringBuilder();
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+	        	              .append("--------------------------------------------------------------------------------------\n")
+	        	              .append("📦 Title: ").append(title).append("\n")
+	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+	        	              .append("ℹ️ About: ").append(about).append("\n")
+	        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+	        	              .append("------------------------------------------------------------------------------------------");
+
+	        	softAssert.fail(failureMessage.toString());
+	        	
+	        	
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
 
@@ -482,14 +514,32 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	log.error("[{}] ❌ Processor Speed filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
-	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-	                          + "Title: " + title + "\n"
-	                          + "Key Features: " + keyFeatures + "\n"
-	                          + "About: " + about + "\n"
-	                          + "Tech Details: " + techDetails + "\n");
-	            System.out.println("---------------------------------------------------------------");
+//	        	log.error("[{}] ❌ Processor Speed filter '{}' not found.\n🔍 Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
+//	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+//	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+//	                          + "Title: " + title + "\n"
+//	                          + "Key Features: " + keyFeatures + "\n"
+//	                          + "About: " + about + "\n"
+//	                          + "Tech Details: " + techDetails + "\n");
+//	            System.out.println("---------------------------------------------------------------");
+	        	
+
+	        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+	        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+	        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+	        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+	        	
+
+	        	StringBuilder failureMessage = new StringBuilder();
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+	        	              .append("-------------------------------------------------------------\n")
+	        	              .append("📦 Title: ").append(title).append("\n")
+	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+	        	              .append("ℹ️ About: ").append(about).append("\n")
+	        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+	        	              .append("-------------------------------------------------------------");
+
+	        	softAssert.fail(failureMessage.toString());
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
@@ -535,15 +585,33 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	log.error("[{}] ❌ Display Type filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
-	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-	                          + "Title: " + title + "\n"
-	                          + "Key Features: " + keyFeatures + "\n"
-	                          + "About: " + about + "\n"
-	                          + "Tech Details: " + techDetails + "\n");
-	            System.out.println("---------------------------------------------------------------");
+//	        	log.error("[{}] ❌ Display Type filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+//	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+//	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
+//	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+//	                          + "Title: " + title + "\n"
+//	                          + "Key Features: " + keyFeatures + "\n"
+//	                          + "About: " + about + "\n"
+//	                          + "Tech Details: " + techDetails + "\n");
+//	            System.out.println("---------------------------------------------------------------");
+	        	
+
+	        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+	        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+	        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+	        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+	        	
+
+	        	StringBuilder failureMessage = new StringBuilder();
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+	        	              .append("-------------------------------------------------------------\n")
+	        	              .append("📦 Title: ").append(title).append("\n")
+	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+	        	              .append("ℹ️ About: ").append(about).append("\n")
+	        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+	        	              .append("-------------------------------------------------------------");
+
+	        	softAssert.fail(failureMessage.toString());
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
@@ -590,15 +658,33 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	log.error("[{}] ❌ OS Version filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
-	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-	                          + "Title: " + title + "\n"
-	                          + "Key Features: " + keyFeatures + "\n"
-	                          + "About: " + about + "\n"
-	                          + "Tech Details: " + techDetails + "\n");
-	            System.out.println("---------------------------------------------------------------");
+//	        	log.error("[{}] ❌ OS Version filter '{}' not found.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+//	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+//	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
+//	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+//	                          + "Title: " + title + "\n"
+//	                          + "Key Features: " + keyFeatures + "\n"
+//	                          + "About: " + about + "\n"
+//	                          + "Tech Details: " + techDetails + "\n");
+//	            System.out.println("---------------------------------------------------------------");
+	        	
+
+	        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+	        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+	        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+	        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+	        	
+
+	        	StringBuilder failureMessage = new StringBuilder();
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+	        	              .append("-------------------------------------------------------------\n")
+	        	              .append("📦 Title: ").append(title).append("\n")
+	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+	        	              .append("ℹ️ About: ").append(about).append("\n")
+	        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+	        	              .append("-------------------------------------------------------------");
+
+	        	softAssert.fail(failureMessage.toString());
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
@@ -645,15 +731,33 @@ public class AmazonTests extends BaseTest {
 		                        || about.contains(filter) || techDetails.contains(filter);
 
 		        if (!isMatch) {
-		        	 log.error("[{}] ❌ Camera Resolution filter '{}' not matched in product details.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
-		                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-		             log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-		            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-		                          + "Title: " + title + "\n"
-		                          + "Key Features: " + keyFeatures + "\n"
-		                          + "About: " + about + "\n"
-		                          + "Tech Details: " + techDetails + "\n");
-		            System.out.println("---------------------------------------------------------------");
+//		        	 log.error("[{}] ❌ Camera Resolution filter '{}' not matched in product details.\n🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+//		                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
+//		             log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
+//		            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+//		                          + "Title: " + title + "\n"
+//		                          + "Key Features: " + keyFeatures + "\n"
+//		                          + "About: " + about + "\n"
+//		                          + "Tech Details: " + techDetails + "\n");
+//		            System.out.println("---------------------------------------------------------------");
+		        	
+
+		        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+		        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+		        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+		        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+		        	
+
+		        	StringBuilder failureMessage = new StringBuilder();
+		        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+		        	              .append("-------------------------------------------------------------\n")
+		        	              .append("📦 Title: ").append(title).append("\n")
+		        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+		        	              .append("ℹ️ About: ").append(about).append("\n")
+		        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+		        	              .append("-------------------------------------------------------------");
+
+		        	softAssert.fail(failureMessage.toString());
 		        } else {
 		            log.info("[{}] ✔ Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
 		            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
@@ -702,17 +806,35 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-	        	log.error("[{}] ❌ Discount filter '{}' not found in product.", ThreadContext.get("testName"), filter);
-	            log.debug("[{}] 🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
-	                    ThreadContext.get("testName"), title, keyFeatures, about, techDetails);
-	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
+//	        	log.error("[{}] ❌ Discount filter '{}' not found in product.", ThreadContext.get("testName"), filter);
+//	            log.debug("[{}] 🔍 Title: {}\n🔍 Key Features: {}\n🔍 About: {}\n🔍 Tech Details: {}",
+//	                    ThreadContext.get("testName"), title, keyFeatures, about, techDetails);
+//	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
+//
+//	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
+//	                          + "Title: " + title + "\n"
+//	                          + "Key Features: " + keyFeatures + "\n"
+//	                          + "About: " + about + "\n"
+//	                          + "Tech Details: " + techDetails + "\n");
+//	            System.out.println("---------------------------------------------------------------");
+	        	
 
-	            softAssert.fail("❌ Brand filter '" + filter + "' not found in product details:\n"
-	                          + "Title: " + title + "\n"
-	                          + "Key Features: " + keyFeatures + "\n"
-	                          + "About: " + about + "\n"
-	                          + "Tech Details: " + techDetails + "\n");
-	            System.out.println("---------------------------------------------------------------");
+	        	log.error("[{}] ❌ Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
+	        	log.debug("[{}] 🔎 Key Features: {}", ThreadContext.get("testName"), keyFeatures);
+	        	log.debug("[{}] 🔎 About: {}", ThreadContext.get("testName"), about);
+	        	log.debug("[{}] 🔎 Tech Details: {}", ThreadContext.get("testName"), techDetails);
+	        	
+
+	        	StringBuilder failureMessage = new StringBuilder();
+	        	failureMessage.append("❌ filter '").append(filter).append("' not found in product details.\n")
+	        	              .append("-------------------------------------------------------------\n")
+	        	              .append("📦 Title: ").append(title).append("\n")
+	        	              .append("🔎 Key Features: ").append(keyFeatures).append("\n")
+	        	              .append("ℹ️ About: ").append(about).append("\n")
+	        	              .append("⚙️ Tech Details: ").append(techDetails).append("\n")
+	        	              .append("-------------------------------------------------------------");
+
+	        	softAssert.fail(failureMessage.toString());
 	        } else {
 	            log.info("[{}] ✔ Filter '{}' matched in at least one product section.", ThreadContext.get("testName"), filter);
 	            System.out.println("✔ Filter '" + filter + "' matched in at least one section of product details.");
