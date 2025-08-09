@@ -163,6 +163,7 @@ public class SafeActions extends BasePage{
 			    log.info("[{}] Within safeClickBooleanWithScreenShot method", ThreadContext.get("testName"));
 
 				GenericUtility genericUtility=new GenericUtility();
+				SafeActions safeAct=new SafeActions();
 				ProductListingPage productPage=new ProductListingPage();
 				String testName = ThreadContext.get("logFileName");
 				String filterOptionToPass=filterOption;
@@ -190,8 +191,13 @@ public class SafeActions extends BasePage{
 		            	
 		                driver.navigate().refresh();
 		                	Thread.sleep(1000);		
-		                	By batteryHeader=By.xpath("//div[@id='p_n_g-101015098008111-title']");
-		                	genericUtility.smoothScrollToElement(batteryHeader);
+//		                	By batteryHeader=By.xpath("//div[@id='p_n_g-101015098008111-title']");
+		                	log.info("[{}] Cannot apply filter taking failed screenshot for ->"+filterOption ,ThreadContext.get("testName"));
+		                	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
+		                	Thread.sleep(1000);
+		                	if(genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+		                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+		                	}
 		                	Thread.sleep(1000);
 				            ScreenshotUtil.capture(testName,filterOptionToPass,"failed filter apply screenshot-");
 		                

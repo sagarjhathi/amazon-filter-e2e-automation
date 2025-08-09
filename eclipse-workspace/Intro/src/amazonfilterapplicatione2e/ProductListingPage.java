@@ -176,6 +176,38 @@ public class ProductListingPage extends  BasePage{
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
 	    }
 	    }
+	    
+	    
+	    
+	    
+	    
+	    public By getfilterHeaderByTypeAndName(String filterName) {
+	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+			log.info("[{}] Within getAppliedfilterByTypeAndName method", ThreadContext.get("testName"));
+
+	        switch (filterName.toLowerCase()) {
+	        case "processorspeed":
+	            return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']");
+	        case "storagecapacity":
+	        	return By.xpath("//ul[@id='filter-p_n_g-1003492455111']");
+	        case "brands":
+	            return By.xpath("//ul[@id='filter-p_123']");
+	        case "batterycapacity":
+	            return By.xpath("//ul[@id='filter-p_n_g-101015098008111']");
+	        case "displaysize" :
+	         	return By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']");
+	        case "displaytype":
+	        	return By.xpath("//ul[@id='filter-p_n_g-101013595158111']");
+	        case "operatingsystem":
+	        	return By.xpath("//ul[@id='filter-p_n_g-1003517064111']");
+	        case "mobilephoneprimarycameraresolution":
+	        	return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']");
+	        case "discount":
+	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']");
+	        default:
+	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
+	    }
+	    }
     
 
 	 
@@ -764,15 +796,17 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        	 return allResults;
 	        }
 
-	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
-	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-	            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-	           Thread.sleep(1000);
-	        }
+//	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+//	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+//	            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+//	           Thread.sleep(1000);
+//	        }
 
+	        Thread.sleep(1000);
+	        safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	        
 	        String str = inloopParent.get(i).getText().trim();
-	        
+	        Thread.sleep(1000);
 	        if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 	            System.out.println("Filter click failed for: " + str);
 	    	    log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
