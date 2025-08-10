@@ -180,6 +180,21 @@ public class ProductListingPage extends  BasePage{
 	    
 	    
 	    
+	    public By getMoreButtonByFilterTypeAndName(String filterName) {
+	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+			log.info("[{}] Within getMoreButtonByFilterTypeAndName method", ThreadContext.get("testName"));
+
+	        switch (filterName.toLowerCase()) {
+	        case "brands":
+	            return By.xpath("//a[@aria-label='See more, Brands']");
+	        case "operatingsystem":
+	        	return  By.xpath("//a[@aria-label='See more, Operating System Version']");
+	
+	        default:
+	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
+	    }
+	    }
+	    
 	    
 	    public By getfilterHeaderByTypeAndName(String filterName) {
 	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
@@ -796,14 +811,12 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        	 return allResults;
 	        }
 
-//	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
-//	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-//	            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-//	           Thread.sleep(1000);
-//	        }
+	        if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+	            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+	           Thread.sleep(1000);
+	        }
 
-	        Thread.sleep(1000);
-	        safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	        
 	        String str = inloopParent.get(i).getText().trim();
 	        Thread.sleep(1000);

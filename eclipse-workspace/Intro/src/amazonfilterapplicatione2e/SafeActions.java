@@ -189,15 +189,18 @@ public class SafeActions extends BasePage{
 		            
 		            try {
 		            	
-		                driver.navigate().refresh();
+		                   driver.navigate().refresh();
 		                	Thread.sleep(1000);		
 //		                	By batteryHeader=By.xpath("//div[@id='p_n_g-101015098008111-title']");
 		                	log.info("[{}] Cannot apply filter taking failed screenshot for ->"+filterOption ,ThreadContext.get("testName"));
 		                	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
-		                	Thread.sleep(1000);
-		                	if(genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+		                	Thread.sleep(2000);
+//		                	genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+
+		                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
 		                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 		                	}
+		                	
 		                	Thread.sleep(1000);
 				            ScreenshotUtil.capture(testName,filterOptionToPass,"failed filter apply screenshot-");
 		                
