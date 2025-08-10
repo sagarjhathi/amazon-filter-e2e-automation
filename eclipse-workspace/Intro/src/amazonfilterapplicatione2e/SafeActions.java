@@ -172,10 +172,23 @@ public class SafeActions extends BasePage{
 		    int attempts = 0;
 		    while (attempts < 1) {
 		        try {
+                	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
+                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+                	}
+                	
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
 		            Thread.sleep(1000);
+		            
+		            genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
+		            Thread.sleep(1000);             
+		            if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+                	}
+		            Thread.sleep(1000);
+                	
 		            genericUtility.smoothScrollToElement(productPage.getAppliedfilterByTypeAndName(filterName, filterOption));
 		        	Thread.sleep(1000);
 					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));

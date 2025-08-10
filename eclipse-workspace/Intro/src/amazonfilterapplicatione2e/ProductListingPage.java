@@ -79,8 +79,12 @@ public class ProductListingPage extends  BasePage{
 	By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
 	
 	
-	By seeMoreButtonUnderOperatingSystemFilter=By.xpath("//a[@aria-label='See more, Operating System Version']");
+//	By seeMoreButtonUnderOperatingSystemFilter=By.xpath("//a[@aria-label='See more, Operating System Version']");
 	
+	By seeMoreButtonUnderOperatingSystemFilter=	By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating System ']");
+
+
+
 	
 	By seeMoreButtonUnderBrandFilter=By.xpath("//a[@aria-label='See more, Brands']");
 	
@@ -187,8 +191,10 @@ public class ProductListingPage extends  BasePage{
 	        switch (filterName.toLowerCase()) {
 	        case "brands":
 	            return By.xpath("//a[@aria-label='See more, Brands']");
+//	        case "operatingsystem":
+//	        	return  By.xpath("//a[@aria-label='See more, Operating System Version']");
 	        case "operatingsystem":
-	        	return  By.xpath("//a[@aria-label='See more, Operating System Version']");
+	        	return  By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating System ']");
 	
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
@@ -794,8 +800,13 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 	    genericUtility.printFilterNamesOnly(filterOptionsBy);
-	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-	    safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+//	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+	    if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+            safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+           Thread.sleep(1000);
+        }
+	 //   safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	    log.info("[{}] Clicked 'More' Button under the OS filter section", ThreadContext.get("testName"));
 
 
