@@ -191,11 +191,26 @@ public class ProductListingPage extends  BasePage{
 	        switch (filterName.toLowerCase()) {
 	        case "brands":
 	            return By.xpath("//a[@aria-label='See more, Brands']");
-//	        case "operatingsystem":
-//	        	return  By.xpath("//a[@aria-label='See more, Operating System Version']");
 	        case "operatingsystem":
 	        	return  By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating System ']");
 	
+	        default:
+	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
+	    }
+	    }
+	    
+	    
+	    public String getDeliveryDayFilterByName(String filterName) {
+	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
+			log.info("[{}] Within getMoreButtonByFilterTypeAndName method", ThreadContext.get("testName"));
+
+	        switch (filterName) {
+	        case "verifyingGetItByTomorrowFilterFunctionality":
+	            return "Get It by Tomorrow";
+	        case "verifyingGetItIn2DaysFilterFunctionality":
+	        	return  "Get It in 2 Days";
+	        case "verifyingGetItByTodayFilterFunctionality":
+	        	return  "Get It By Today";
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
 	    }
@@ -606,6 +621,13 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    ProductListingPage productPage = new ProductListingPage();
 	    SafeActions safeAct = new SafeActions();
 	    safeAct.safeClick(filterOptions);
+	    
+	    
+	    String testName = ThreadContext.get("logFileName");
+	    Thread.sleep(2000);
+	    String filterOption=getDeliveryDayFilterByName(testName);
+	    ScreenshotUtil.capture(testName,filterOption);
+	    
 	    log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
 
 	    Thread.sleep(2000);
@@ -701,11 +723,17 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    ProductListingPage productPage = new ProductListingPage();
 	    GenericUtility genericUtility = new GenericUtility();
 
-	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
-	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+//	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
+//	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	    log.info("[{}] Scrolling to the 'More' Button under brands filter section", ThreadContext.get("testName"));
 
-	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+//	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+	    if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
+            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+		    log.info("[{}] Clicked the 'More' Button under brands filter section within the loop ", ThreadContext.get("testName"));
+            Thread.sleep(1000);
+        }
 	    log.info("[{}] Clicked the 'More' Button under brands filter section", ThreadContext.get("testName"));
 
 
@@ -727,13 +755,20 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	            safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
 			    log.info("[{}] Clicked the 'More' Button under brands filter section within the loop ", ThreadContext.get("testName"));
-
 	            Thread.sleep(1000);
 	        }
 
 	        String str = inloopParent.get(i).getText().trim();
-	        genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName, str));
-	        safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, str));
+	       // genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName, str));
+	        
+	      //  safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, str));
+	        
+	        if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
+	            System.out.println("Filter click failed for: " + str);
+	    	    log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
+	            continue;
+	        }
+	        
 			log.info("[" + ThreadContext.get("testName") + "] Clicked on " + str+"Within the filterOptions loop");
 
 	        Thread.sleep(1000);
@@ -1178,10 +1213,16 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        String minPriceApplied = safeAct.safeFindElement(productPage.minPriceFilterApplied).getText();
 	        System.out.println("Max price ="+maxPriceApplied+"  "+"Min price ="+minPriceApplied);
 	        List<WebElement> prices = safeAct.safeFindElements(productPage.productPriceFromProductCards);
-
+	        
+	        
+	        String appliedFilter="Max Price="+maxPriceApplied+"  "+"Min price="+minPriceApplied;
+	        
 	        List<String> mismatches = new ArrayList<>();
 	        boolean isValid = true;
-
+	        
+	        String testName = ThreadContext.get("logFileName");
+	        ScreenshotUtil.capture(testName,appliedFilter);
+	        
 	        for (int j = 0; j < prices.size(); j++) {
 	            String productPrice = prices.get(j).getText();
 	            productPrice = productPrice.replaceAll("[^\\d]", "");
