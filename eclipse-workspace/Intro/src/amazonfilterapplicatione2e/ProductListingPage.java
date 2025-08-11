@@ -876,7 +876,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        String currentWindow = driver.getWindowHandle();
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
-	        for (int p = 1; p < 2; p++) {
+	        for (int p = 1; p < productNameListingPage.size(); p++) {
 	    	    log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 
 	            try {

@@ -168,13 +168,21 @@ public class SafeActions extends BasePage{
 				String testName = ThreadContext.get("logFileName");
 				String filterOptionToPass=filterOption;
 				
-				
+		    	String os="verifyingOperatingSystemVersionFilterFunctionality";
+            	String brands ="verifyingTheBrandsFilterFunctionality";
 		    int attempts = 0;
 		    while (attempts < 1) {
 		        try {
                 	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
-                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+                	
+//                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+//                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+//                	}
+            
+                	if(testName.equals(os) || testName.equals(brands)) {
+                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+                    	}
                 	}
                 	
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -184,8 +192,14 @@ public class SafeActions extends BasePage{
 		            
 		            genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
 		            Thread.sleep(1000);             
-		            if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+//		            if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+//                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+//                	}
+		            
+		            if(testName.equals(os) || testName.equals(brands)) {
+                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+                    	}
                 	}
 		            Thread.sleep(1000);
                 	
@@ -210,8 +224,14 @@ public class SafeActions extends BasePage{
 		                	Thread.sleep(2000);
 //		                	genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 
-		                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-		                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+//		                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+//		                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+//		                	}
+		                	
+		                	if(testName.equals(os) || testName.equals(brands)) {
+		                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
+		                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
+		                    	}
 		                	}
 		                	
 		                	Thread.sleep(1000);

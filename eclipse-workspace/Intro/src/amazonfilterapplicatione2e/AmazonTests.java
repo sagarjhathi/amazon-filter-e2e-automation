@@ -43,7 +43,7 @@ public class AmazonTests extends BaseTest {
 	@DataProvider(name = "Data")
 	public Object[][] getBrands() {
 	    return new Object[][] {
-	        {"Mobile"},
+//	        {"Mobile"},
 	        {"Tv"},
 //	        {"Charger"},
 //	        {"AC"},
@@ -847,9 +847,5 @@ public class AmazonTests extends BaseTest {
 }
 
 
-//Brands
-//Os
-//Price
 
-// Also need to cover how the pricing is decided in the toggle
 
