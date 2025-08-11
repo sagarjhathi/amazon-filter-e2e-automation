@@ -174,7 +174,7 @@ public class SafeActions extends BasePage{
 		        try {
                 	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
                 	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
                 	}
                 	
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -185,7 +185,7 @@ public class SafeActions extends BasePage{
 		            genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
 		            Thread.sleep(1000);             
 		            if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
                 	}
 		            Thread.sleep(1000);
                 	
@@ -211,7 +211,7 @@ public class SafeActions extends BasePage{
 //		                	genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 
 		                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-		                		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+		                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
 		                	}
 		                	
 		                	Thread.sleep(1000);
