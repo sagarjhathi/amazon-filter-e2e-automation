@@ -162,7 +162,7 @@ public class AmazonTests extends BaseTest {
 		            		  
 	
 	
-	
+	//brands need separate handling of screenshot
 	@Test(priority=4, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
 	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException {
 		
@@ -280,7 +280,7 @@ public class AmazonTests extends BaseTest {
 	}
 
 	
-
+	//Price filter needs separate handlng of screenshot
 	@Test(priority=6, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
@@ -845,3 +845,11 @@ public class AmazonTests extends BaseTest {
 	    softAssert.assertAll(); 
 	}
 }
+
+
+//Brands
+//Os
+//Price
+
+// Also need to cover how the pricing is decided in the toggle
+
