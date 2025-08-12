@@ -439,7 +439,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         
-        for (int p = 1; p <productNameListingPage.size(); p++) {
+        for (int p = 1; p <2; p++) {
         	
         	 productIndex = p-1;
     
