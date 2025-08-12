@@ -118,6 +118,9 @@ public class ProductListingPage extends  BasePage{
 	
 	By seeMoreButtonIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
 	
+	By reportAnIssue=By.xpath("//div[@id='CardInstanceCnrYlcUauBaBV5oi0X1UVw']");
+	
+	By showMoreOnlyIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
 	private  final Logger log = LoggerUtility.getLogger(ProductListingPage.class);
 
 	
@@ -436,7 +439,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         
-        for (int p = 1; p < 2; p++) {
+        for (int p = 1; p <productNameListingPage.size(); p++) {
         	
         	 productIndex = p-1;
     
@@ -506,20 +509,42 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             genericUtility.scrollByPixel(0, 700);
 
             try {
-                genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
-                Thread.sleep(1000);
-                safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-    			log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
-                System.out.println("'See More Details' clicked.");
+            	 if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage)) {
+                 	String productNamePlusIndex="Product Index="+productIndex;
+                 	genericUtility.smoothScrollToElement(reportAnIssue);
+                 	Thread.sleep(1000);
+                 	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+         			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
+                 }else {
+                	 genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
+                     Thread.sleep(1000);
+                     safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+         			log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
+                     System.out.println("'See More Details' clicked.");
+                 }
+               
             } catch (Exception e1) {
                 //driver.close();
+            	genericUtility.smoothScrollToElement(showMoreOnlyIndividualPage);
+            	Thread.sleep(1000);
+            	
+            	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
+            	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+    			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
+
                Thread.sleep(2000);
     			log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
                 genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
     			log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
                 continue;
             }
+            
+            
+//            String productNamePlusIndex="Product Index="+productIndex;
+//        	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+//			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
 
+           
             Thread.sleep(2000);
             genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));

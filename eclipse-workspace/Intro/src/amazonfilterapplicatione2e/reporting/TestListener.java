@@ -68,6 +68,11 @@ public class TestListener implements ITestListener {
     @Override
     public void onTestSkipped(ITestResult result) {
       //  ExtentTestManager.getTest().log(Status.SKIP, "⚠️ Test Skipped");
+    	if (result.getThrowable() != null) {
+            ExtentTestManager.getTest().skip("⏭ Test Skipped: " + result.getThrowable().getMessage());
+        } else {
+            ExtentTestManager.getTest().skip("⏭ Test Skipped (No Exception)");
+        }
         attachLogFile();
         attachScreenshotFolder(result);
     }
