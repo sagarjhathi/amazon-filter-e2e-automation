@@ -68,13 +68,7 @@ jobs:
           branch="${{ github.ref_name }}"
           job_name="${{ github.job }}"
 
-          read -r -d '' payload <<EOM
-{
-  "content": "🚀 **CI Test Started - $job_name**\n👤 Triggered by: $actor\n🌿 Branch: $branch\n🕒 Start Time: $timestamp\n🔗 [View Run]($runUrl)"
-}
-EOM
-
-          curl -H "Content-Type: application/json" -X POST -d "$payload" "$DISCORD_WEBHOOK"
+          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"🚀 **CI Test Started - $job_name**\\n👤 Triggered by: $actor\\n🌿 Branch: $branch\\n🕒 Start Time: $timestamp\\n🔗 [View Run]($runUrl)\"}" "$DISCORD_WEBHOOK"
 
       - name: Run Maven Tests with retry on failure
         working-directory: ${{ env.WORKDIR }}
@@ -159,10 +153,4 @@ EOM
           actor="${{ github.actor }}"
           timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
 
-          read -r -d '' payload <<EOM
-{
-  "content": "$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): ${status^}\n👤 Triggered by: $actor\n🔖 Commit: \`$commit_short\`\n🕒 Completed at: $timestamp\n🔗 [View Full Run Details]($runUrl)\n📦 [Download Extent Report & Artifacts]($artifactUrl)\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*"
-}
-EOM
-
-          curl -H "Content-Type: application/json" -X POST -d "$payload" "$DISCORD_WEBHOOK"
+          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"}" "$DISCORD_WEBHOOK"
