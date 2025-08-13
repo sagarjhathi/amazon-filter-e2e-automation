@@ -70,19 +70,11 @@ jobs:
 
           curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"🚀 **CI Test Started - $job_name**\\n👤 Triggered by: $actor\\n🌿 Branch: $branch\\n🕒 Start Time: $timestamp\\n🔗 [View Run]($runUrl)\"}" "$DISCORD_WEBHOOK"
 
-      - name: Run Maven Tests with retry on failure
+      - name: Run Maven Tests
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
-          set -e
-          attempts=0
-          until [ $attempts -ge 2 ]
-          do
-            mvn -B -ntp clean test && break
-            attempts=$((attempts+1))
-            echo "Retrying test run ($attempts/2) after failure..."
-            sleep 10
-          done
+          mvn -B -ntp clean test
 
       - name: Package Extent Report bundle with screenshots and logs
         if: always()
