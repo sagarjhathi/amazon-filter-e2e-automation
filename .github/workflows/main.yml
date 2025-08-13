@@ -62,10 +62,14 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          timestamp=$(date -u +"%Y-%m-%d %H:%M UTC")
           runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
+          actor="${{ github.actor }}"
+          branch="${{ github.ref_name }}"
+          job_name="${{ github.job }}"
+
           curl -H "Content-Type: application/json" -X POST -d "{
-            \"content\": \"🚀 **CI Test Started**\n🕒 **Start Time:** $timestamp\n🔗 [View Run]($runUrl)\"
+            \"content\": \"🚀 **CI Test Started - $job_name**\\n👤 Triggered by: $actor\\n🌿 Branch: $branch\\n🕒 Start Time: $timestamp\\n🔗 [View Run]($runUrl)\"
           }" "$DISCORD_WEBHOOK"
 
       - name: Run Maven Tests with retry on failure
@@ -88,15 +92,12 @@ jobs:
         working-directory: ${{ env.WORKDIR }}
         run: |
           mkdir -p artifacts/extent
-          # Copy report html and resources
           if [ -d "test-output/ExtentReports" ]; then
             cp -r test-output/ExtentReports artifacts/extent/ExtentReports
           fi
-          # Copy screenshots folder
           if [ -d "test-output/screenshots" ]; then
             cp -r test-output/screenshots artifacts/extent/screenshots
           fi
-          # Copy logs folder if exists
           if [ -d "logs" ]; then
             cp -r logs artifacts/extent/logs
           fi
@@ -136,15 +137,30 @@ jobs:
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
-          status="${{ job.status }}"
-          timestamp=$(date -u +"%Y-%m-%d %H:%M UTC")
           runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           artifactUrl="${runUrl}#artifacts"
-          emoji="✅"
-          if [ \"$status\" = \"failure\" ]; then
-            emoji=\"❌\"
-          elif [ \"$status\" = \"cancelled\" ]; then
-            emoji=\"⚠️\"
+          status="${{ job.status }}"
+
+          if [ "$status" = "success" ]; then
+            status_emoji=$'\u2705'  # ✅
+          elif [ "$status" = "failure" ]; then
+            status_emoji=$'\u274C'  # ❌
+          else
+            status_emoji=$'\u26A0'  # ⚠️
           fi
-          curl -H \"Content-Type: application/json\" -X POST -d \"{
-            \\\"content\\\": \\\"$emoji **CI Pipeline** (${{ github.ref }}): $status\\n🔗 [View Run]($runUrl)\\n📄 [Extent Report]($artifactUrl)\\n🕒 **End Time:** $timestamp\\\"\n          }\" \"$DISCORD_WEBHOOK\"    
+
+          commit_sha="${{ github.sha }}"
+          commit_short="${commit_sha:0:7}"
+          branch="${{ github.ref_name }}"
+          actor="${{ github.actor }}"
+          timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
+
+          curl -H "Content-Type: application/json" -X POST -d "{
+            \"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): \${status^}\\n\"\
+            \"👤 Triggered by: $actor\\n\"\
+            \"🔖 Commit: \`$commit_short\`\\n\"\
+            \"🕒 Completed at: $timestamp\\n\"\
+            \"🔗 [View Full Run Details]($runUrl)\\n\"\
+            \"📦 [Download Extent Report & Artifacts]($artifactUrl)\\n\"\
+            \"💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"
+          }" "$DISCORD_WEBHOOK"
