@@ -1,60 +1,134 @@
-name: CI Pipeline at Master
+name: CI Pipeline
 
 on:
   push:
     branches:
-      - '**'   # Runs on all branches
+      - "**"
+  pull_request:
+    branches:
+      - "**"
   workflow_dispatch:
   schedule:
-    - cron: '50 17 * * *'  # 11:20 PM IST daily
-    - cron: '30 22 * * *'  # 4:00 AM IST daily
+    - cron: "50 17 * * *"   # 11:20 PM IST daily
+    - cron: "30 22 * * *"   # 4:00 AM IST daily
+
+env:
+  JAVA_DISTRIBUTION: temurin
+  JAVA_VERSION: 24
+  WORKDIR: eclipse-workspace/Intro
+  ARTIFACT_RETENTION_DAYS: 7
 
 jobs:
-  build:
+  test:
     runs-on: windows-latest
+    timeout-minutes: 90
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Set up JDK 24
+      - name: Set up JDK
         uses: actions/setup-java@v4
         with:
-          distribution: temurin
-          java-version: 24
+          distribution: ${{ env.JAVA_DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+
+      - name: Cache Maven target and .m2 repo (optional)
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.m2/repository
+            ${{ env.WORKDIR }}/target
+          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            maven-${{ runner.os }}-
+
+      - name: Print environment info
+        shell: bash
+        run: |
+          echo "Java version:"
+          java -version
+          echo "Maven version:"
+          mvn -v
+          echo "Working directory: ${{ env.WORKDIR }}"
+          echo "Runner OS: $RUNNER_OS"
 
       - name: Notify Discord – Start of Test
-        shell: bash
         if: always()
+        shell: bash
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           timestamp=$(date -u +"%Y-%m-%d %H:%M UTC")
-          curl -H "Content-Type: application/json" \
-               -X POST \
-               -d "{
-                     \"content\": \"🚀 **CI Test Started**\n🕒 **Start Time:** $timestamp\n🧪 [Click to view run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
-                   }" \
-               $DISCORD_WEBHOOK
+          runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          curl -H "Content-Type: application/json" -X POST -d "{
+            \"content\": \"🚀 **CI Test Started**\n🕒 **Start Time:** $timestamp\n🔗 [View Run]($runUrl)\"
+          }" "$DISCORD_WEBHOOK"
 
-      - name: Run Maven Tests
-        working-directory: eclipse-workspace/Intro
-        run: mvn clean test
-        continue-on-error: true
+      - name: Run Maven Tests with retry on failure
+        working-directory: ${{ env.WORKDIR }}
+        shell: bash
+        run: |
+          set -e
+          attempts=0
+          until [ $attempts -ge 2 ]
+          do
+            mvn -B -ntp clean test && break
+            attempts=$((attempts+1))
+            echo "Retrying test run ($attempts/2) after failure..."
+            sleep 10
+          done
+
+      - name: Package Extent Report bundle with screenshots and logs
+        if: always()
+        shell: bash
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          mkdir -p artifacts/extent
+          # Copy report html and resources
+          if [ -d "test-output/ExtentReports" ]; then
+            cp -r test-output/ExtentReports artifacts/extent/ExtentReports
+          fi
+          # Copy screenshots folder
+          if [ -d "test-output/screenshots" ]; then
+            cp -r test-output/screenshots artifacts/extent/screenshots
+          fi
+          # Copy logs folder if exists
+          if [ -d "logs" ]; then
+            cp -r logs artifacts/extent/logs
+          fi
+          echo "<html><body><h3>Artifacts</h3><ul><li><a href='ExtentReports/ExtentReport.html'>Open Extent Report</a></li></ul></body></html>" > artifacts/extent/index.html
 
       - name: Upload Surefire Reports
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: surefire-reports
-          path: eclipse-workspace/Intro/target/surefire-reports
+          path: ${{ env.WORKDIR }}/target/surefire-reports
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
 
-      - name: Upload Extent Reports
+      - name: Upload Extent Report Bundle (HTML + screenshots + logs)
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: extent-reports
-          path: eclipse-workspace/Intro/test-output/ExtentReports/
+          name: extent-report-bundle
+          path: ${{ env.WORKDIR }}/artifacts/extent
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: Upload Raw Logs (optional)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: framework-logs
+          path: |
+            ${{ env.WORKDIR }}/logs
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: ignore
 
       - name: Notify Discord – End of Test
         if: always()
@@ -64,9 +138,13 @@ jobs:
         run: |
           status="${{ job.status }}"
           timestamp=$(date -u +"%Y-%m-%d %H:%M UTC")
-          curl -H "Content-Type: application/json" \
-               -X POST \
-               -d "{
-                     \"content\": \"📢 **CI Test Run Status:** $status\n🕒 **End Time:** $timestamp\n📄 **Extent Report** is available in the [Artifacts section]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\n🔗 [Click to View Run]($GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID)\"
-                   }" \
-               $DISCORD_WEBHOOK
+          runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          artifactUrl="${runUrl}#artifacts"
+          emoji="✅"
+          if [ \"$status\" = \"failure\" ]; then
+            emoji=\"❌\"
+          elif [ \"$status\" = \"cancelled\" ]; then
+            emoji=\"⚠️\"
+          fi
+          curl -H \"Content-Type: application/json\" -X POST -d \"{
+            \\\"content\\\": \\\"$emoji **CI Pipeline** (${{ github.ref }}): $status\\n🔗 [View Run]($runUrl)\\n📄 [Extent Report]($artifactUrl)\\n🕒 **End Time:** $timestamp\\\"\n          }\" \"$DISCORD_WEBHOOK\"    
