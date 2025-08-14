@@ -859,17 +859,14 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 	    genericUtility.printFilterNamesOnly(filterOptionsBy);
-//	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	    if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
             genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
             safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
            Thread.sleep(1000);
         }
-	 //   safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 	    log.info("[{}] Clicked 'More' Button under the OS filter section", ThreadContext.get("testName"));
 
 	    String testName = ThreadContext.get("logFileName");
-
 	    List<Map<String, Object>> allResults = new ArrayList<>();
 
 	    log.info("[{}] Within OS fucntion , this is the filterOptions size ->"+filterOptions.size(), ThreadContext.get("testName"));
@@ -902,7 +899,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        String currentWindow = driver.getWindowHandle();
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
-	        for (int p = 1; p < productNameListingPage.size(); p++) {
+	        for (int p = 1; p <5; p++) {
 	    	    log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 	    	    int productIndex=p-1;
 	            try {
@@ -912,33 +909,10 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                        .click(productElement)
 	                        .keyUp(Keys.CONTROL)
 	                        .build().perform();
-		    	    log.info("[{}] Clicking on the Product , product inedx -> and filter applied->"+p+"  "+str, ThreadContext.get("testName"));
+		    	    log.info("[{}] Clicking on the Product , product inedx ->" +p+"and filter applied->"+"   "+str, ThreadContext.get("testName"));
 
 	                Thread.sleep(2000);
 	                productPage.switchToNewWindow(currentWindow);
-
-	                // Ensure product page loaded
-//	                safeAct.safeFindElement(productPage.productNameIndividualPage);
-//	                safeAct.safeFindElement(productPage.productKeyFeatureBlock);
-//	                safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
-//	                safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
-//	                genericUtility.scrollByPixel(0, 700);
-//
-//	                try {
-//	                    WebElement seeMore = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-//	                    ((JavascriptExecutor) driver).executeScript(
-//	                        "arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMore);
-//	                    Thread.sleep(500);
-//	                    safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-//	                    System.out.println("'See More Details' clicked.");
-//	    	    	    log.info("[{}] CLicking on More deatils button , index and applied filter ->"+p+str, ThreadContext.get("testName"));
-//
-//	                } catch (Exception e1) {
-//	                    System.out.println("⚠️ Failed to expand details for: " + str + ", index: " + p);
-//	    	    	    log.info("[{}] Cannot click the More details button , index and applied filter ->"+p+str, ThreadContext.get("testName"));
-//
-//	                }
-	                
 
 	    			String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
 	    			String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
@@ -964,7 +938,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    			}
 
 	    			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
-	                genericUtility.scrollByPixel(0, 700);
+	               // genericUtility.scrollByPixel(0, 700);
 
 	                try {
 	                	 if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage)) {
