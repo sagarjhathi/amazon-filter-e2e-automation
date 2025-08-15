@@ -919,6 +919,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    			String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
 	    			String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
 
+    	    	    log.info("[{}] Extracting 'productTitle','keyFeatureBlockText','aboutBlockText' ,'techDetailsBlockText' , index and applied filter ->"+p+str, ThreadContext.get("testName"));
+
 	    			// Optional logging or fallback handling
 	    			if (name.isEmpty()) {
 	    				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
@@ -938,7 +940,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    			}
 
 	    			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
-	               // genericUtility.scrollByPixel(0, 700);
+	              
 
 	                try {
 	                	 if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage)) {
@@ -951,7 +953,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                    	 genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
 	                         Thread.sleep(1000);
 	                         safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-	             			log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
+	             		     log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
 	                         System.out.println("'See More Details' clicked.");
 	                     }
 	                   
@@ -959,25 +961,15 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                    //driver.close();
 	                	genericUtility.smoothScrollToElement(showMoreOnlyIndividualPage);
 	                	Thread.sleep(1000);
-	                	
 	                	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
 	                	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
 	        			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
-
-	                   Thread.sleep(2000);
 	        			log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
 	                    genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 	        			log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
 	                    continue;
 	                }
 
-	                // ✅ Collect details here before closing the tab
-//	                String productTitle = safeAct.safeFindElement(productPage.productNameIndividualPage).getText();
-//	                String keyFeatureBlockText = safeAct.safeFindElement(productPage.productKeyFeatureBlock).getText();
-//	                String aboutBlockText = safeAct.safeFindElement(productPage.aboutThisItemBulletPoint).getText();
-//	                String techDetailsBlockText = safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage).getText();
-
-    	    	    log.info("[{}] Extracting 'productTitle','keyFeatureBlockText','aboutBlockText' ,'techDetailsBlockText' , index and applied filter ->"+p+str, ThreadContext.get("testName"));
 
 	                Map<String, Object> result = new HashMap<>();
 	                result.put("filter", str);
@@ -986,44 +978,26 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                result.put("about", about);
 	                result.put("techDetails", techDetails);
     	    	    log.info("[{}] Adding the data to the 'result' Map, index and applied filter ->"+p+str, ThreadContext.get("testName"));
-
 	                allResults.add(result);
     	    	    log.info("[{}] Adding the 'result' Map to 'allResults' i.e List of maps index and applied filter ->"+p+str, ThreadContext.get("testName"));
 
-
 	                // ✅ Now safe to close
 	                genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-
 	            } catch (Exception e) {
 	                System.out.println("❌ Failed to validate product at index " + p + " for filter: " + str);
 	                continue;
 	            }
 	        }
 
-	        
-//	        // Clear applied filter
-//	        try {
-//	            if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
-//	                safeAct.safeClick(productPage.clearButtonBy);
-//    	    	    log.info("[{}] Clearing the applied filter ,and applied filter ->"+str, ThreadContext.get("testName"));
-//
-//	            }
-//	        } catch (Exception e) {
-//	            driver.navigate().back();
-//	    	    log.info("[{}] Cannot click clear Button,and applied filter ->"+str, ThreadContext.get("testName"));
-//
-//	        }
+	       
 	        safeAct.safeClick(productPage.clearButtonBy);
-
 	        if (i % 10 == 0 && i != 0) {
 	            driver.navigate().refresh();
 	    	    log.info("[{}] Refreshing the page to avoid storage issue ->"+str, ThreadContext.get("testName"));
-
 	        }
 	    }
 
 	    log.info("[{}] Returning the Master data 'allResults'  ->", ThreadContext.get("testName"));
-
 	    return allResults;
 	}
 
