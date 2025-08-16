@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "50 17 * * *"   # 11:20 PM IST daily
-    - cron: "30 22 * * *"   # 4:00 AM IST daily
+
 
 env:
   JAVA_DISTRIBUTION: temurin
