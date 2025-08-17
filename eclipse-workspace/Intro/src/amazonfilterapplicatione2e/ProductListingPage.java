@@ -746,11 +746,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	    ProductListingPage productPage = new ProductListingPage();
 	    GenericUtility genericUtility = new GenericUtility();
 
-//	    safeAct.safeFindElement(productPage.seeMoreButtonUnderBrandFilter);
-//	    genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
 	    log.info("[{}] Scrolling to the 'More' Button under brands filter section", ThreadContext.get("testName"));
-
-//	    safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
 	    if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
             genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
             safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
@@ -782,11 +778,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	            Thread.sleep(1000);
 	        }
 
-	        String str = inloopParent.get(i).getText().trim();
-	       // genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(filterName, str));
-	        
-	      //  safeAct.safeClick(productPage.getfilterByTypeAndName(filterName, str));
-	        
+	        String str = inloopParent.get(i).getText().trim();      
 	        if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 	            System.out.println("Filter click failed for: " + str);
 	    	    log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
