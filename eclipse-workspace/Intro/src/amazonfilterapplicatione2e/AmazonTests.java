@@ -806,18 +806,6 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-//	        	log.error("[{}] â�Œ Discount filter '{}' not found in product.", ThreadContext.get("testName"), filter);
-//	            log.debug("[{}] ðŸ”� Title: {}\nðŸ”� Key Features: {}\nðŸ”� About: {}\nðŸ”� Tech Details: {}",
-//	                    ThreadContext.get("testName"), title, keyFeatures, about, techDetails);
-//	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-//
-//	            softAssert.fail("â�Œ Brand filter '" + filter + "' not found in product details:\n"
-//	                          + "Title: " + title + "\n"
-//	                          + "Key Features: " + keyFeatures + "\n"
-//	                          + "About: " + about + "\n"
-//	                          + "Tech Details: " + techDetails + "\n");
-//	            System.out.println("---------------------------------------------------------------");
-	        	
 
 	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
 	        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
