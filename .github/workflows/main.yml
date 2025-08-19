@@ -146,3 +146,19 @@ jobs:
           timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
 
           curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"}" "$DISCORD_WEBHOOK"
+
+      - name: Publish Extent Report to master for GitHub Pages
+        if: always()
+        run: |
+          # Copy the latest report into repo root (or docs if you configured Pages to serve from docs/)
+          cp ${{ env.WORKDIR }}/artifacts/extent/index.html ./index.html
+
+          # Configure Git
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+
+          # Commit and push (ignore if nothing changed)
+          git add index.html
+          git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
+          git push
+
