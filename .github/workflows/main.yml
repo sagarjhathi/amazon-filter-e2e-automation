@@ -151,19 +151,17 @@ jobs:
           curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"}" "$DISCORD_WEBHOOK"
 
 
-      - name: Publish Extent Report to master for GitHub Pages
-        if: always()
-        run: |
-          # Copy latest ExtentReport.html directly as root index.html
-          cp ${{ env.WORKDIR }}/artifacts/extent/ExtentReports/ExtentReport.html ./index.html
+  -name: Publish Extent Report to master for GitHub Pages
+  if: always()
+  run: |
+    # Copy the generated ExtentReport.html as root index.html
+    cp ${{ env.WORKDIR }}/artifacts/extent/ExtentReports/ExtentReport.html ./index.html
 
-          # Configure Git
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
+    # Configure Git
+    git config --global user.name "github-actions"
+    git config --global user.email "github-actions@github.com"
 
-          # Commit and push
-          git add index.html
-          git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
-          git push origin master --force
-
-
+    # Commit and push only the updated index.html
+    git add index.html
+    git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
+    git push origin master
