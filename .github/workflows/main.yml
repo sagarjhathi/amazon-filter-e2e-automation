@@ -165,6 +165,6 @@ jobs:
           # Commit and push (ignore if nothing changed)
           git add public
           git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
-          git push
+          git push origin master --force
 
 
