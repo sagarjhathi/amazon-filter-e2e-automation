@@ -164,4 +164,4 @@ jobs:
     # Commit and push only the updated index.html
     git add index.html
     git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
-    git push origin master
+    git push origin master --force
