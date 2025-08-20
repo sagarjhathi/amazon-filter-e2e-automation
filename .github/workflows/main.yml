@@ -153,15 +153,18 @@ jobs:
       - name: Publish Extent Report to master for GitHub Pages
         if: always()
         run: |
-          # Copy the latest report into repo root (or docs if you configured Pages to serve from docs/)
-          cp ${{ env.WORKDIR }}/artifacts/extent/index.html ./index.html
+          # Prepare public folder
+          mkdir -p public
+          cp -r ${{ env.WORKDIR }}/artifacts/extent/ExtentReports/* public/
+          mv public/ExtentReport.html public/index.html
 
           # Configure Git
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
 
           # Commit and push (ignore if nothing changed)
-          git add index.html
+          git add public
           git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
           git push
+
 
