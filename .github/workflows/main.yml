@@ -11,6 +11,8 @@ on:
   schedule:
     - cron: "50 17 * * *"   # 11:20 PM IST daily
 
+permissions:
+  contents: write   # ✅ allow pushing index.html back to repo
 
 env:
   JAVA_DISTRIBUTION: temurin
@@ -28,6 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: true   # ✅ ensures GITHUB_TOKEN is kept for pushing
 
       - name: Set up JDK
         uses: actions/setup-java@v4
