@@ -5,6 +5,10 @@
     <classes>
       <class name="amazonfilterapplicatione2e.AmazonTests">
 
+<methods>
+                        <include name="verifyingDiscountFilterFunctionality"/>
+                      
+                    </methods>
       </class>
     </classes>
   </test>
