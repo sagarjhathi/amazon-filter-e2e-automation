@@ -514,14 +514,7 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-//	        	log.error("[{}] â�Œ Processor Speed filter '{}' not found.\nðŸ”� Details:\n- Title: {}\n- Key Features: {}\n- About: {}\n- Tech Details: {}\n-------------------------------------------------------------",
-//	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-//	            softAssert.fail("â�Œ Brand filter '" + filter + "' not found in product details:\n"
-//	                          + "Title: " + title + "\n"
-//	                          + "Key Features: " + keyFeatures + "\n"
-//	                          + "About: " + about + "\n"
-//	                          + "Tech Details: " + techDetails + "\n");
-//	            System.out.println("---------------------------------------------------------------");
+
 	        	
 
 	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
@@ -585,16 +578,6 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-//	        	log.error("[{}] â�Œ Display Type filter '{}' not found.\nðŸ”� Title: {}\nðŸ”� Key Features: {}\nðŸ”� About: {}\nðŸ”� Tech Details: {}",
-//	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-//	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-//	            softAssert.fail("â�Œ Brand filter '" + filter + "' not found in product details:\n"
-//	                          + "Title: " + title + "\n"
-//	                          + "Key Features: " + keyFeatures + "\n"
-//	                          + "About: " + about + "\n"
-//	                          + "Tech Details: " + techDetails + "\n");
-//	            System.out.println("---------------------------------------------------------------");
-	        	
 
 	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
 	        	log.debug("[{}] Key Features: {}", ThreadContext.get("testName"), keyFeatures);
@@ -658,17 +641,8 @@ public class AmazonTests extends BaseTest {
 	                        || about.contains(filter) || techDetails.contains(filter);
 
 	        if (!isMatch) {
-//	        	log.error("[{}] â�Œ OS Version filter '{}' not found.\nðŸ”� Title: {}\nðŸ”� Key Features: {}\nðŸ”� About: {}\nðŸ”� Tech Details: {}",
-//	                    ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-//	            log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-//	            softAssert.fail("â�Œ Brand filter '" + filter + "' not found in product details:\n"
-//	                          + "Title: " + title + "\n"
-//	                          + "Key Features: " + keyFeatures + "\n"
-//	                          + "About: " + about + "\n"
-//	                          + "Tech Details: " + techDetails + "\n");
-//	            System.out.println("---------------------------------------------------------------");
-	        	
 
+	        
 	        	log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
 	        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
 	        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
@@ -731,17 +705,8 @@ public class AmazonTests extends BaseTest {
 		                        || about.contains(filter) || techDetails.contains(filter);
 
 		        if (!isMatch) {
-//		        	 log.error("[{}] â�Œ Camera Resolution filter '{}' not matched in product details.\nðŸ”� Title: {}\nðŸ”� Key Features: {}\nðŸ”� About: {}\nðŸ”� Tech Details: {}",
-//		                     ThreadContext.get("testName"), filter, title, keyFeatures, about, techDetails);
-//		             log.info("[{}] -------------------------------------------------------------", ThreadContext.get("testName"));
-//		            softAssert.fail("â�Œ Brand filter '" + filter + "' not found in product details:\n"
-//		                          + "Title: " + title + "\n"
-//		                          + "Key Features: " + keyFeatures + "\n"
-//		                          + "About: " + about + "\n"
-//		                          + "Tech Details: " + techDetails + "\n");
-//		            System.out.println("---------------------------------------------------------------");
-		        	
 
+		        
 		        	log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
 		        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
 		        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
