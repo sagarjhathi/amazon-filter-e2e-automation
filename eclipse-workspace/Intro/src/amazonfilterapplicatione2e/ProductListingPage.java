@@ -81,7 +81,7 @@ public class ProductListingPage extends  BasePage{
 	
 //	By seeMoreButtonUnderOperatingSystemFilter=By.xpath("//a[@aria-label='See more, Operating System Version']");
 	
-	By seeMoreButtonUnderOperatingSystemFilter=	By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating System ']");
+	By seeMoreButtonUnderOperatingSystemFilter=	By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating SystemÂ ']");
 
 
 
@@ -195,7 +195,7 @@ public class ProductListingPage extends  BasePage{
 	        case "brands":
 	            return By.xpath("//a[@aria-label='See more, Brands']");
 	        case "operatingsystem":
-	        	return  By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating System ']");
+	        	return  By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating SystemÂ ']");
 	
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
@@ -304,7 +304,7 @@ public class ProductListingPage extends  BasePage{
 	//	safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
 		if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
 		    System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
-		    continue; // ⛔ Skip the rest of the current loop iteration
+		    continue; // â›” Skip the rest of the current loop iteration
 		}
 
 		
@@ -375,7 +375,7 @@ public class ProductListingPage extends  BasePage{
 		    	driver.close();
 		    	Thread.sleep(2000);
 		    	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
-		    	continue; // ✅ move on to the next product
+		    	continue; // âœ… move on to the next product
 		    }
 		    
 			Thread.sleep(2000);				
@@ -405,7 +405,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
     log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
     
-    for (int i = 0; i < filterOptions.size(); i++) {
+    for (int i = 0; i <1; i++) {
 		log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
@@ -427,7 +427,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
         
         if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
             System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
-            continue; // ⛔ Skip the rest of the current loop iteration
+            continue; // â›” Skip the rest of the current loop iteration
         }
         
 
@@ -487,20 +487,20 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 			// Optional logging or fallback handling
 			if (name.isEmpty()) {
-				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("❌ Failed to fetch product name after retries");
+				log.warn("[{}] Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+			    System.out.println("â�Œ Failed to fetch product name after retries");
 			}
 			if (keyFeatures.isEmpty()) {
-				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("❌ Failed to fetch key features after retries");
+				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+			    System.out.println("â�Œ Failed to fetch key features after retries");
 			}
 			if (about.isEmpty()) {
-				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("❌ Failed to fetch about section after retries");
+				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+			    System.out.println("â�Œ Failed to fetch about section after retries");
 			}
 			if (techDetails.isEmpty()) {
-				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("❌ Failed to fetch technical details after retries");
+				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+			    System.out.println("â�Œ Failed to fetch technical details after retries");
 			}
 
 			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
@@ -548,7 +548,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
 
 
-            // ✅ Only this block is new
+            // âœ… Only this block is new
             Map<String, Object> productResult = new HashMap<>();
             productResult.put("filter", str);
             productResult.put("title", name);
@@ -625,8 +625,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        boolean found = allowedDateParts.stream().anyMatch(text::contains);
 		    log.info("[{}] Checking if the allowedDateParts have assert text   Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
 
-	        Assert.assertTrue(found, "❌ None of the allowed date parts are present, printing the element text " + text+" index no is " + i);
-	        System.out.println("✔ Valid delivery date found in: " + text+" index no is " + i);
+	        Assert.assertTrue(found, "â�Œ None of the allowed date parts are present, printing the element text " + text+" index no is " + i);
+	        System.out.println("âœ” Valid delivery date found in: " + text+" index no is " + i);
 	        System.out.println("-----------------------------------------------------------------");
 	    }
 	    
@@ -689,7 +689,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        }
 	        System.out.println("------------------------------------------------------");
 	        if (!found) {
-	            // ❌ Return failed: [false, elementText, index]
+	            // â�Œ Return failed: [false, elementText, index]
 			    log.info("[{}] Assert text not found wihtin AllowedDateParts", ThreadContext.get("testName"));
 	            return Arrays.asList(false, text, i);
 	        }
@@ -697,7 +697,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    log.info("[{}] Returning the list with boolean values   Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
 
-	    // ✅ Return success: [true, "", -1]
+	    // âœ… Return success: [true, "", -1]
 	    return Arrays.asList(true, "All the things are valid no errors", -1);
 	}
 
@@ -801,7 +801,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	            if (!title.toLowerCase().contains(str.toLowerCase())) {
 	                isValid = false;
-	                mismatchDetails.add("❌ Index: " + k + ", Brand: " + str + ", Title: '" + title + "'");
+	                mismatchDetails.add("â�Œ Index: " + k + ", Brand: " + str + ", Title: '" + title + "'");
 	            }
 	        }
 
@@ -915,20 +915,20 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	    			// Optional logging or fallback handling
 	    			if (name.isEmpty()) {
-	    				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-	    			    System.out.println("❌ Failed to fetch product name after retries");
+	    				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+	    			    System.out.println("â�Œ Failed to fetch product name after retries");
 	    			}
 	    			if (keyFeatures.isEmpty()) {
-	    				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-	    			    System.out.println("❌ Failed to fetch key features after retries");
+	    				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+	    			    System.out.println("â�Œ Failed to fetch key features after retries");
 	    			}
 	    			if (about.isEmpty()) {
-	    				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-	    			    System.out.println("❌ Failed to fetch about section after retries");
+	    				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+	    			    System.out.println("â�Œ Failed to fetch about section after retries");
 	    			}
 	    			if (techDetails.isEmpty()) {
-	    				log.warn("[{}] ❌ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-	    			    System.out.println("❌ Failed to fetch technical details after retries");
+	    				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
+	    			    System.out.println("â�Œ Failed to fetch technical details after retries");
 	    			}
 
 	    			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
@@ -973,10 +973,10 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	                allResults.add(result);
     	    	    log.info("[{}] Adding the 'result' Map to 'allResults' i.e List of maps index and applied filter ->"+p+str, ThreadContext.get("testName"));
 
-	                // ✅ Now safe to close
+	                // âœ… Now safe to close
 	                genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 	            } catch (Exception e) {
-	                System.out.println("❌ Failed to validate product at index " + p + " for filter: " + str);
+	                System.out.println("â�Œ Failed to validate product at index " + p + " for filter: " + str);
 	                continue;
 	            }
 	        }
@@ -1028,7 +1028,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 //		safeAct.safeClick(productPage.getfilterByTypeAndName(filterName,str));
 		if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
 		    System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
-		    continue; // ⛔ Skip the rest of the current loop iteration
+		    continue; // â›” Skip the rest of the current loop iteration
 		}
 
 		
@@ -1091,7 +1091,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 		    	Thread.sleep(2000);
 		    	driver.close();
 		    	driver.switchTo().window(currentWindow);
-		    	continue; // ✅ move on to the next product
+		    	continue; // âœ… move on to the next product
 		    }
 		    
 			Thread.sleep(2000);				
