@@ -154,13 +154,17 @@ jobs:
       - name: Copy latest ExtentReport to repo root
         if: always()
         shell: bash
-        working-directory: ${{ env.WORKDIR }}
+
         run: |
-          if [ -f "test-output/ExtentReports/ExtentReport.html" ]; then
-            cp test-output/ExtentReports/ExtentReport.html ../../index.html
-          else
-            echo "⚠️ ExtentReport.html not found!"
-          fi
+            REPORT_SOURCE="${{ github.workspace }}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
+            REPORT_TARGET="${{ github.workspace }}/index.html"
+
+            if [ -f "$REPORT_SOURCE" ]; then
+              cp "$REPORT_SOURCE" "$REPORT_TARGET"
+            echo "✅ Copied ExtentReport to index.html at repo root"
+            else
+              echo "⚠️ ExtentReport.html not found at $REPORT_SOURCE"
+            fi
 
       - name: Commit and Push Report to GitHub Pages
         if: always()
@@ -171,4 +175,6 @@ jobs:
           git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
           git push --force
         
+      
+
       
