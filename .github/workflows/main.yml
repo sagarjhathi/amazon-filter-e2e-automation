@@ -185,11 +185,11 @@ jobs:
           git add index.html reports/logs || echo "No changes to commit"
           git commit -m "Update ExtentReport + Logs [skip ci]" || echo "No changes to commit"
           git push --force
-        
+         
       
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./reports
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./reports
