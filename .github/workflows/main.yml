@@ -154,7 +154,12 @@ jobs:
       - name: Copy logs to report folder
         run: |
            mkdir -p reports/logs
-           cp -r logs/* reports/logs/
+           if [ -d "${{ env.WORKDIR }}/logs" ]; then
+           cp -r ${{ env.WORKDIR }}/logs/* reports/logs/
+           echo "✅ Logs copied to reports/logs/"
+           else
+           echo "⚠️ No logs found in ${{ env.WORKDIR }}/logs"
+           fi
 
 
       - name: Copy latest ExtentReport to repo root
@@ -177,8 +182,8 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add index.html
-          git commit -m "Update ExtentReport [skip ci]" || echo "No changes to commit"
+          git add index.html reports/logs || echo "No changes to commit"
+          git commit -m "Update ExtentReport + Logs [skip ci]" || echo "No changes to commit"
           git push --force
         
       
