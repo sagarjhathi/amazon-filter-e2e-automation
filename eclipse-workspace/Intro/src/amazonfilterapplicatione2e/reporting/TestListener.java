@@ -103,7 +103,7 @@ public class TestListener implements ITestListener {
             String logFileName = ThreadContext.get("logFileName");
             if (logFileName != null) {
                 // Relative path for CI/GitHub Pages
-                String relativePath = "eclipse-workspace/Intro/logs/" + logFileName + ".log";
+                String relativePath = "Intro/logs/" + logFileName + ".log";
 
                
                 // Absolute file:// path for local viewing
@@ -116,6 +116,13 @@ public class TestListener implements ITestListener {
                 ExtentTestManager.getTest().info(
                     "<a href='" + localFileUrl + "' target='_blank'>View Log (Local)</a>"
                 );
+                
+                String githubRawUrl = "https://raw.githubusercontent.com/sagarjhathi/google-shopping-aggregator-automation/master/logs/"
+                        + logFileName + ".log";
+
+  ExtentTestManager.getTest().info(
+      "<a href='" + githubRawUrl + "' target='_blank'>View Log (GitHub Repo)</a>"
+  );
             }
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
