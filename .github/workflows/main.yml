@@ -151,6 +151,12 @@ jobs:
           curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"}" "$DISCORD_WEBHOOK"
 
 
+      - name: Copy logs to report folder
+        run: |
+           mkdir -p reports/logs
+           cp -r logs/* reports/logs/
+
+
       - name: Copy latest ExtentReport to repo root
         if: always()
         shell: bash
