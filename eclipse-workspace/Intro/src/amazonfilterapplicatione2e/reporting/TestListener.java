@@ -103,8 +103,9 @@ public class TestListener implements ITestListener {
             String logFileName = ThreadContext.get("logFileName");
             if (logFileName != null) {
                 // Relative path for CI/GitHub Pages
-                String relativePath = "logs/" + logFileName + ".log";
+                String relativePath = "eclipse-workspace/Intro/logs/" + logFileName + ".log";
 
+               
                 // Absolute file:// path for local viewing
                 String localFileUrl = "file:///" + System.getProperty("user.dir").replace("\\", "/") + "/" + relativePath;
 
