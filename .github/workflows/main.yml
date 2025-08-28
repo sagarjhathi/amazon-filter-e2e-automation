@@ -162,34 +162,21 @@ jobs:
            fi
 
 
-      - name: Copy latest ExtentReport to repo root
-        if: always()
-        shell: bash
-
+      - name: Copy ExtentReports to docs
         run: |
-            REPORT_SOURCE="${{ github.workspace }}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
-            REPORT_TARGET="${{ github.workspace }}/index.html"
+               rm -rf docs/*
+               mkdir -p docs
+               cp -r test-output/ExtentReports/* docs/
 
-            if [ -f "$REPORT_SOURCE" ]; then
-              cp "$REPORT_SOURCE" "$REPORT_TARGET"
-            echo "✅ Copied ExtentReport to index.html at repo root"
-            else
-              echo "⚠️ ExtentReport.html not found at $REPORT_SOURCE"
-            fi
-
-      - name: Commit and Push Report to GitHub Pages
-        if: always()
+      - name: Commit report to docs
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git add index.html reports/logs || echo "No changes to commit"
-          git commit -m "Update ExtentReport + Logs [skip ci]" || echo "No changes to commit"
-          git push --force
+               git config --global user.name "github-actions"
+               git config --global user.email "actions@github.com"
+               git add docs
+               git commit -m "Update ExtentReports [skip ci]" || echo "No changes to commit"
+               git push --force
+
          
       
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./reports
+    
