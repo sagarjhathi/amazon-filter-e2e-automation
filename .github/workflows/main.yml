@@ -151,24 +151,18 @@ jobs:
           curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"}" "$DISCORD_WEBHOOK"
 
 
-      - name: Copy logs to report folder
-        run: |
-           mkdir -p reports/logs
-           if [ -d "${{ env.WORKDIR }}/logs" ]; then
-           cp -r ${{ env.WORKDIR }}/logs/* reports/logs/
-           echo "✅ Logs copied to reports/logs/"
-           else
-           echo "⚠️ No logs found in ${{ env.WORKDIR }}/logs"
-           fi
+
 
 
       - name: Copy ExtentReports to docs
+        if: always()
         run: |
                rm -rf docs/*
                mkdir -p docs
                cp -r test-output/ExtentReports/* docs/
 
       - name: Commit report to docs
+        if: always()
         run: |
                git config --global user.name "github-actions"
                git config --global user.email "actions@github.com"
