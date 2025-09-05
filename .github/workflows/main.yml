@@ -154,21 +154,7 @@ jobs:
 
 
 
-      - name: Copy ExtentReports to docs
-        if: always()
-        run: |
-               rm -rf docs/*
-               mkdir -p docs
-               cp -r test-output/ExtentReports/* docs/
-
-      - name: Commit report to docs
-        if: always()
-        run: |
-               git config --global user.name "github-actions"
-               git config --global user.email "actions@github.com"
-               git add docs
-               git commit -m "Update ExtentReports [skip ci]" || echo "No changes to commit"
-               git push --force
+   
 
          
       
