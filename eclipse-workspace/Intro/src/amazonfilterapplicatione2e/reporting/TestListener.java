@@ -98,36 +98,24 @@ public class TestListener implements ITestListener {
     
     
     
+
     private void attachLogFile() {
         try {
             String logFileName = ThreadContext.get("logFileName");
             if (logFileName != null) {
-                // Relative path for CI/GitHub Pages
-                String relativePath = "Intro/logs/" + logFileName + ".log";
+                // relative path inside ExtentReports bundle
+                String relativePath = "logs/" + logFileName + ".log";
 
-               
-                // Absolute file:// path for local viewing
-                String localFileUrl = "file:///" + System.getProperty("user.dir").replace("\\", "/") + "/" + relativePath;
-
-                // Attach both links
+                // Works when opening locally, unzipped artifact, or served on Pages
                 ExtentTestManager.getTest().info(
-                    "<a href='" + relativePath + "' target='_blank'>View Log (CI/GitHub)</a>"
+                    "<a href='" + relativePath + "' target='_blank'>View Log</a>"
                 );
-                ExtentTestManager.getTest().info(
-                    "<a href='" + localFileUrl + "' target='_blank'>View Log (Local)</a>"
-                );
-                
-                String githubRawUrl = "https://raw.githubusercontent.com/sagarjhathi/google-shopping-aggregator-automation/master/logs/"
-                        + logFileName + ".log";
-
-  ExtentTestManager.getTest().info(
-      "<a href='" + githubRawUrl + "' target='_blank'>View Log (GitHub Repo)</a>"
-  );
             }
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
 
 
     
