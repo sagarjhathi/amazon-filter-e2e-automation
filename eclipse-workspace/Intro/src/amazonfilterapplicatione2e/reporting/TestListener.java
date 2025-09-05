@@ -152,6 +152,7 @@ public class TestListener implements ITestListener {
                 html.append("</details>");
 
                 ExtentTestManager.getTest().info(html.toString());
+                
             }
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Could not attach screenshot folder: " + e.getMessage());
