@@ -5,10 +5,12 @@
     <classes>
       <class name="amazonfilterapplicatione2e.AmazonTests">
 
-<methods>
+             <methods>
               <include name="verifyingOperatingSystemVersionFilterFunctionality"/>
+               <include name="verifyingDiscountFilterFunctionality"/>
               
-            </methods>
+             </methods>
+             
       </class>
     </classes>
   </test>
