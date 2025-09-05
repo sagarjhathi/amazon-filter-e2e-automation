@@ -18,7 +18,8 @@ public class AmazonLandingPage extends BasePage{
 	WebElement submitSearchButton;
 	
 	
-	public void givingInputWithinSearchBar(String input) {
+	public void givingInputWithinSearchBar(String input) throws InterruptedException {
+		Thread.sleep(2000);	
 		searchBarLandingPage.click();
 		searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
