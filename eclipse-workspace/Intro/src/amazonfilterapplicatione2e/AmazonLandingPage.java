@@ -2,6 +2,7 @@ package amazonfilterapplicatione2e;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,13 +15,17 @@ public class AmazonLandingPage extends BasePage{
 	@FindBy(xpath="//input[@id='twotabsearchtextbox']")
 	WebElement searchBarLandingPage;
 	
+	By searchBarLandingPageBy=By.xpath("//input[@id='twotabsearchtextbox']");
+	
 	@FindBy(xpath="//input[@id='nav-search-submit-button']")
 	WebElement submitSearchButton;
 	
 	
 	public void givingInputWithinSearchBar(String input) throws InterruptedException {
-		Thread.sleep(2000);	
-		searchBarLandingPage.click();
+		SafeActions safeAct=new SafeActions();
+		safeAct.safeClick(searchBarLandingPageBy);		
+	//	searchBarLandingPage.click();
+		safeAct.safeFindElement(searchBarLandingPageBy);
 		searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
 
