@@ -79,42 +79,42 @@ public class TestListener implements ITestListener {
         ExtentManager.getInstance().flush();
     }
 
-//    private void attachLogFile() {
-//        try {
-//            String logFileName = ThreadContext.get("logFileName");
-//            if (logFileName != null) {
-//            	 String relativePath = "./logs/" + logFileName + ".log";
-//                String absolutePath = System.getProperty("user.dir") + "/logs/" + logFileName + ".log";
-//                String absolutePathNew = "C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/" + logFileName + ".log";
-//
-//                String fileUrl = "file:///" + absolutePathNew.replace("\\", "/");
-//
-//                ExtentTestManager.getTest().info("📄 <a href='" + fileUrl + "' target='_blank'>Click to view log file</a>");
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
-//        }
-//    }
-    
-    
-    
-
     private void attachLogFile() {
         try {
             String logFileName = ThreadContext.get("logFileName");
             if (logFileName != null) {
-                // relative path inside ExtentReports bundle
-                String relativePath = "logs/" + logFileName + ".log";
+            	 String relativePath = "./logs/" + logFileName + ".log";
+                String absolutePath = System.getProperty("user.dir") + "/logs/" + logFileName + ".log";
+                String absolutePathNew = "C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/" + logFileName + ".log";
 
-                // Works when opening locally, unzipped artifact, or served on Pages
-                ExtentTestManager.getTest().info(
-                    "<a href='" + relativePath + "' target='_blank'>View Log</a>"
-                );
+                String fileUrl = "file:///" + absolutePathNew.replace("\\", "/");
+
+                ExtentTestManager.getTest().info("📄 <a href='" + fileUrl + "' target='_blank'>Click to view log file</a>");
             }
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+    
+    
+    
+//
+//    private void attachLogFile() {
+//        try {
+//            String logFileName = ThreadContext.get("logFileName");
+//            if (logFileName != null) {
+//                // relative path inside ExtentReports bundle
+//                String relativePath = "logs/" + logFileName + ".log";
+//
+//                // Works when opening locally, unzipped artifact, or served on Pages
+//                ExtentTestManager.getTest().info(
+//                    "<a href='" + relativePath + "' target='_blank'>View Log</a>"
+//                );
+//            }
+//        } catch (Exception e) {
+//            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
+//        }
+//    }
 
 
 
