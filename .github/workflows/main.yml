@@ -175,10 +175,12 @@ jobs:
           actor="${{ github.actor }}"
           timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
 
-          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n💡 *After downloading, extract all files and open ExtentReport.html in a browser to see the full report with screenshots.*\"}" "$DISCORD_WEBHOOK"
+          pagesUrl="https://sagarjhathi.github.io/google-shopping-aggregator-automation/"
 
-
-
+          curl -H "Content-Type: application/json" \
+               -X POST \
+               -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n🌐 [Open Latest Report on GitHub Pages]($pagesUrl)\"}" \
+               "$DISCORD_WEBHOOK"
 
 
    
