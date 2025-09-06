@@ -79,6 +79,33 @@ jobs:
         run: |
           mvn -B -ntp clean test
 
+      - name: Copy ExtentReport and publish to GitHub Pages
+        if: always()
+        shell: bash
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+          set -euo pipefail
+
+          REPORT_SRC="test-output/ExtentReports/ExtentReport.html"
+          REPO_ROOT="$GITHUB_WORKSPACE"
+
+          if [ ! -f "$REPORT_SRC" ]; then
+            echo "No ExtentReport found at $REPORT_SRC"
+            exit 0
+          fi
+
+          echo "Copying report from $REPORT_SRC to $REPO_ROOT/index.html"
+          cp "$REPORT_SRC" "$REPO_ROOT/index.html"
+
+          cd "$REPO_ROOT"
+
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+
+          git add index.html
+          git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
+          git push origin HEAD
+
       - name: Package Extent Report bundle with screenshots and logs
         if: always()
         shell: bash
