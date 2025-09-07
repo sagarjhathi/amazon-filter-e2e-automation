@@ -1,17 +1,23 @@
 package amazonfilterapplicatione2e;
 
+import java.time.Duration;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class AmazonLandingPage extends BasePage{
 
 	private  final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
 
 	SafeActions safeAct=new SafeActions();
+	
+	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
 	
 	@FindBy(xpath="//input[@placeholder='Search Amazon.in']")
 	WebElement searchBarLandingPage;
@@ -26,13 +32,18 @@ public class AmazonLandingPage extends BasePage{
 	
 	public void givingInputWithinSearchBar(String input) throws InterruptedException {
 		
-		safeAct.safeClick(searchBarLandingPageBy);		
+		WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBarLandingPageBy));
+		log.info("[{}] Within givinginput method waiting for the visibility of the element", ThreadContext.get("testName"));
+		searchBox.click();
+		searchBox.clear();
+		searchBox.sendKeys(input);
 	//	searchBarLandingPage.click();
-		safeAct.safeFindElement(searchBarLandingPageBy);
-		searchBarLandingPage.sendKeys(input);
+//		safeAct.safeFindElement(searchBarLandingPageBy);
+//		searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
 
 	}
+	
 	
 	
 	public void selectingFromRecommendations() {	
