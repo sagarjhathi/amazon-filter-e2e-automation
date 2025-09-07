@@ -13,10 +13,10 @@ public class AmazonLandingPage extends BasePage{
 
 	SafeActions safeAct=new SafeActions();
 	
-	@FindBy(xpath="//input[@id='twotabsearchtextbox']")
+	@FindBy(xpath="//input[@placeholder='Search Amazon.in']")
 	WebElement searchBarLandingPage;
 	
-	By searchBarLandingPageBy=By.xpath("//input[@id='twotabsearchtextbox']");
+	By searchBarLandingPageBy=By.xpath("//input[@placeholder='Search Amazon.in']");
 	
 	@FindBy(xpath="//input[@id='nav-search-submit-button']")
 	WebElement submitSearchButton;
