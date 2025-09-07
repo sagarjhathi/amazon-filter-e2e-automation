@@ -31,7 +31,7 @@ public class DriverManager {
 			options.addArguments("--no-sandbox");
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 			options.setExperimentalOption("useAutomationExtension", false);
-		    //options.addArguments("--headless=new");
+		   // options.addArguments("--headless");
 
 			
 			driver.set(new ChromeDriver(options));

@@ -11,6 +11,7 @@ public class AmazonLandingPage extends BasePage{
 
 	private  final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
 
+	SafeActions safeAct=new SafeActions();
 	
 	@FindBy(xpath="//input[@id='twotabsearchtextbox']")
 	WebElement searchBarLandingPage;
@@ -21,8 +22,10 @@ public class AmazonLandingPage extends BasePage{
 	WebElement submitSearchButton;
 	
 	
+	By submitSearchButtonBy=By.xpath("//input[@id='nav-search-submit-button']");
+	
 	public void givingInputWithinSearchBar(String input) throws InterruptedException {
-		SafeActions safeAct=new SafeActions();
+		
 		safeAct.safeClick(searchBarLandingPageBy);		
 	//	searchBarLandingPage.click();
 		safeAct.safeFindElement(searchBarLandingPageBy);
@@ -38,7 +41,8 @@ public class AmazonLandingPage extends BasePage{
 	
 	
 	public void clickingOnSubmitSearchButton() {
-		submitSearchButton.click();
+		safeAct.safeClick(submitSearchButtonBy);
+		//submitSearchButton.click();
 		log.info("[{}] Clicking on the submit in the search bar", ThreadContext.get("testName"));
 
 	}
