@@ -5,10 +5,9 @@
     <classes>
       <class name="amazonfilterapplicatione2e.AmazonTests">
         <methods>
+          <include name="verifyingDiscountFilterFunctionality"/>
           <include name="setUp"/>
-          <include name="verifyingTheBrandsFilterFunctionality"/>
-          <include name="verifyingGetItByTomorrowFilterFunctionality" invocation-numbers="0 1 2"/>
-          <include name="verifyingGetItIn2DaysFilterFunctionality" invocation-numbers="0 1 2 4"/>
+          <include name="verifyingOperatingSystemVersionFilterFunctionality"/>
           <include name="tearDown"/>
         </methods>
       </class> <!-- amazonfilterapplicatione2e.AmazonTests -->

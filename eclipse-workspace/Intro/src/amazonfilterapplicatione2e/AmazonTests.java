@@ -730,6 +730,8 @@ public class AmazonTests extends BaseTest {
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
+		
+		
 		am.openingLandingPage();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
