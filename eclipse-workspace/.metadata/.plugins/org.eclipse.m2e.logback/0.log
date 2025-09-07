@@ -21011,3 +21011,4 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.google.gu
 2025-09-05 23:19:01,405 [Worker-74: Building] WARN  o.a.m.s.f.DefaultMavenResourcesFiltering - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 2025-09-05 23:19:01,407 [Worker-74: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - skip non existing resourceDirectory C:\Sagar\google-shopping-aggregator-automation\eclipse-workspace\Intro\src\test\resources
 2025-09-06 22:34:08,362 [Worker-7: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2025-09-07 11:40:18,460 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
