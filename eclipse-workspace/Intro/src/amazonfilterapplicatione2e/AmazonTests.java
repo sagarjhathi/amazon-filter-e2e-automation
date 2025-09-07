@@ -600,14 +600,17 @@ public class AmazonTests extends BaseTest {
 
 	@Test(priority=11, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
-		
+		GenericUtility genericUtility=new GenericUtility();
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		genericUtility.refreshIfServiceUnavailable();
 		am.givingInputWithinSearchBar("Mobile");
+		genericUtility.refreshIfServiceUnavailable();
 		am.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
 		
 	
-		GenericUtility genericUtility=new GenericUtility();	
+			
 		ProductListingPage productPage=new ProductListingPage();
 		genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
