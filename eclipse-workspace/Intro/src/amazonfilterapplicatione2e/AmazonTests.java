@@ -607,6 +607,8 @@ public class AmazonTests extends BaseTest {
 		AmazonLandingPage am=new AmazonLandingPage();
 		
 		String src = driver.getPageSource().toLowerCase();
+        log.warn("[{}]  Logging the page src data =="+src+"                      ", ThreadContext.get("testName"));
+
 		am.openingLandingPage();
 		 
 		Thread.sleep(2000);
