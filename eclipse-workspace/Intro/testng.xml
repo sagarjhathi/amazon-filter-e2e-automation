@@ -6,7 +6,7 @@
       <class name="amazonfilterapplicatione2e.AmazonTests">
 
              <methods>
-              <include name="verifyingOperatingSystemVersionFilterFunctionality"/>
+              
                <include name="verifyingDiscountFilterFunctionality"/>
               
              </methods>
