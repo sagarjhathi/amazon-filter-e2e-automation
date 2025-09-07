@@ -602,6 +602,7 @@ public class AmazonTests extends BaseTest {
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		GenericUtility genericUtility=new GenericUtility();
 		AmazonLandingPage am=new AmazonLandingPage();
+		genericUtility.refreshIfServiceUnavailable();
 		am.openingLandingPage();
 		genericUtility.refreshIfServiceUnavailable();
 		am.givingInputWithinSearchBar("Mobile");
