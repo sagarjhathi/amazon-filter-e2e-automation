@@ -605,9 +605,10 @@ public class AmazonTests extends BaseTest {
 		
 
 		AmazonLandingPage am=new AmazonLandingPage();
+		String src = driver.getPageSource().toLowerCase();
 		am.openingLandingPage();
 		
-         String src = driver.getPageSource().toLowerCase();
+         
 		Thread.sleep(2000);
 		if (src.contains("click the button below to continue shopping") || src.contains("continue shopping")) {
 			   System.out.println("Found the captcha hence refreshing the page to test");
