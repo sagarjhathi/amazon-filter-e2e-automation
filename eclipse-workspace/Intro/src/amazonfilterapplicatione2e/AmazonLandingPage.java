@@ -36,6 +36,8 @@ public class AmazonLandingPage extends BasePage{
 		ScreenshotUtil.capture("search bar error capture");
 		searchBarLandingPage.click();
 		searchBarLandingPage.sendKeys(input);
+		//safeAct.safeClick(searchBarLandingPageBy);
+	//	searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
 
 	}
