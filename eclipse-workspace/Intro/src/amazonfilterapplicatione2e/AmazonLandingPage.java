@@ -35,7 +35,6 @@ public class AmazonLandingPage extends BasePage{
 	
 		ScreenshotUtil.capture("search bar error capture");
 		searchBarLandingPage.click();
-//		safeAct.safeFindElement(searchBarLandingPageBy);
 		searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
 
@@ -48,7 +47,7 @@ public class AmazonLandingPage extends BasePage{
 	}
 	
 	
-	public void clickingOnSubmitSearchButton() {
+	public void clickingOnSubmitSearchButton() throws InterruptedException{
 		safeAct.safeClick(submitSearchButtonBy);
 		//submitSearchButton.click();
 		log.info("[{}] Clicking on the submit in the search bar", ThreadContext.get("testName"));

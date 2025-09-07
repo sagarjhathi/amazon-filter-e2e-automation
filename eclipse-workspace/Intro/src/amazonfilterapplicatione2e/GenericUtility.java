@@ -176,8 +176,19 @@ public class GenericUtility extends ProductListingPage{
 	    }
 	}
     
+    
+    public void handleCaptcha() throws InterruptedException {
+    	String src = driver.getPageSource().toLowerCase();
+    	Thread.sleep(1000);
+		if (src.contains("click the button below to continue shopping") || src.contains("continue shopping")) {
+			   System.out.println("Found the captcha hence refreshing the page to test");
+		        log.warn("[{}]  Found the captcha hence refreshing the page to test", ThreadContext.get("testName"));
+		        driver.navigate().refresh();
+			}
+    }
+    
 	
-    public void printFilterNamesOnly(By filterName) {
+    public void printFilterNamesOnly(By filterName) throws InterruptedException {
 		log.info("[{}] Within printFilterNamesOnly method", ThreadContext.get("testName"));
 		SafeActions safeAct=new SafeActions();
 		List<WebElement> filterOptions=safeAct.safeFindElements(filterName);		
@@ -282,7 +293,7 @@ public class GenericUtility extends ProductListingPage{
 	                Thread.sleep(500); // brief wait before retry
 	            }
 	        } catch (Exception e) {
-	            System.out.println("⚠️ Exception while fetching element text: " + e.getMessage());
+	            System.out.println("Exception while fetching element text: " + e.getMessage());
 	        }
 
 	        retryCount++;

@@ -17,9 +17,10 @@ public class SafeActions extends BasePage{
 	private  final Logger log = LoggerUtility.getLogger(SafeActions.class);
 
 
-	public void safeClick(By locator) {
+	public void safeClick(By locator) throws InterruptedException {
 		log.info("[{}] Within safeClick method", ThreadContext.get("testName"));
-
+		GenericUtility genericUtility=new GenericUtility();
+		genericUtility.handleCaptcha();
 	    int attempts = 0;
 	    while (attempts < 2) {
 	        try {
@@ -45,7 +46,9 @@ public class SafeActions extends BasePage{
 	}
 
 	
-	public List<WebElement> safeFindElements(By locator) {
+	public List<WebElement> safeFindElements(By locator) throws InterruptedException {
+		GenericUtility genericUtility=new GenericUtility();
+		genericUtility.handleCaptcha();
 		log.info("[{}] Within safeFindElements ", ThreadContext.get("testName"));
 
 	    int attempts = 0;
@@ -78,7 +81,9 @@ public class SafeActions extends BasePage{
 
 		
 		
-		public WebElement safeFindElement(By locator) {
+		public WebElement safeFindElement(By locator) throws InterruptedException {
+			GenericUtility genericUtility=new GenericUtility();
+			genericUtility.handleCaptcha();
 			log.info("[{}] Within safeFindElement method", ThreadContext.get("testName"));
 
 		    int attempts = 0;
@@ -114,9 +119,11 @@ public class SafeActions extends BasePage{
 		
 		
 		public boolean safeClickBoolean(By locator) throws InterruptedException {
+			GenericUtility genericUtility=new GenericUtility();
+			genericUtility.handleCaptcha();
 			log.info("[{}] Within safeClickBoolean method", ThreadContext.get("testName"));
 
-				GenericUtility genericUtility=new GenericUtility();
+				
 				ProductListingPage productPage=new ProductListingPage();
 								
 				//ScreenshotUtil screenUtil=new ScreenshotUtil();
@@ -160,9 +167,10 @@ public class SafeActions extends BasePage{
 		
 		
 		public boolean safeClickBooleanWithScreenShot(By locator,String filterName,String filterOption) throws InterruptedException {
+			GenericUtility genericUtility=new GenericUtility();
+			genericUtility.handleCaptcha();
 			    log.info("[{}] Within safeClickBooleanWithScreenShot method", ThreadContext.get("testName"));
 
-				GenericUtility genericUtility=new GenericUtility();
 				SafeActions safeAct=new SafeActions();
 				ProductListingPage productPage=new ProductListingPage();
 				String testName = ThreadContext.get("logFileName");
