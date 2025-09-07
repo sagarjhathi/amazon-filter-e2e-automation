@@ -85,6 +85,7 @@ public class AmazonTests extends BaseTest {
 	    Assert.assertTrue(isValid," Delivery date mismatch at index " + index + ". Text: " + text);
 	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);  
 		    
+			
 		}
 	
 	
