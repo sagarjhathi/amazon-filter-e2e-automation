@@ -33,7 +33,7 @@ public class DriverManager {
 			options.addArguments("--no-sandbox");
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 			options.setExperimentalOption("useAutomationExtension", false);
-			options.addArguments("--headless=new");        // use new headless mode
+		//	options.addArguments("--headless=new");        // use new headless mode
 			options.addArguments("--disable-extensions");
 			options.addArguments("--window-size=1920,1080"); // important for responsive pages
 		 //   options.addArguments("--headless");

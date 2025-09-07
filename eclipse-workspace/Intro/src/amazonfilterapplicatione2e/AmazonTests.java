@@ -601,14 +601,22 @@ public class AmazonTests extends BaseTest {
 	@Test(priority=11, retryAnalyzer = RetryFailedTest.class)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		GenericUtility genericUtility=new GenericUtility();
+		
+		
+
 		AmazonLandingPage am=new AmazonLandingPage();
-		driver.navigate().refresh();
+		String src = driver.getPageSource().toLowerCase();
+		
+		if (src.contains("captcha") || src.contains("are you a robot") || src.contains("validatecaptcha")) {
+		   System.out.println("Found the captcha hence refreshing the page to test");
+	        log.warn("[{}]  Found the captcha hence refreshing the page to test", ThreadContext.get("testName"));
+	        driver.navigate().refresh();
+		}
+		
 		am.openingLandingPage();
-		driver.navigate().refresh();
 		am.givingInputWithinSearchBar("Mobile");
-		driver.navigate().refresh();
 		am.clickingOnSubmitSearchButton();
-		driver.navigate().refresh();
+		
 
 		
 	
