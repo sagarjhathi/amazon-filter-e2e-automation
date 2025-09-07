@@ -32,14 +32,11 @@ public class AmazonLandingPage extends BasePage{
 	
 	public void givingInputWithinSearchBar(String input) throws InterruptedException {
 		
-		WebElement searchBox = wait.until(ExpectedConditions.visibilityOfElementLocated(searchBarLandingPageBy));
-		log.info("[{}] Within givinginput method waiting for the visibility of the element", ThreadContext.get("testName"));
-		searchBox.click();
-		searchBox.clear();
-		searchBox.sendKeys(input);
-	//	searchBarLandingPage.click();
+	
+		ScreenshotUtil.capture("search bar error capture");
+		searchBarLandingPage.click();
 //		safeAct.safeFindElement(searchBarLandingPageBy);
-//		searchBarLandingPage.sendKeys(input);
+		searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
 
 	}
