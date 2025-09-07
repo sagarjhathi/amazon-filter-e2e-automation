@@ -9,6 +9,7 @@
               
                <include name="verifyingDiscountFilterFunctionality"/>
               
+              
              </methods>
              
       </class>
