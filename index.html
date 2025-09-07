@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary">Amazon Filter Automation Report</span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sep 7, 2025 05:11:12 PM</span></a>
+<a href="#"><span class="badge badge-primary">Sep 7, 2025 05:28:10 PM</span></a>
 </li>
 </ul>
 </div>
@@ -66,7 +66,8 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
-<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<a class="dropdown-item" status="skip" href="#"><span>Skip</span><span class="status warning"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
 </ul>
@@ -74,25 +75,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="pass" test-id="1"
+        <li class="test-item"  status="skip" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
             <p class="name">verifyingOperatingSystemVersionFilterFunctionality</p>
             <p class="text-sm">
-              <span>5:11:12 PM</span> / <span>00:07:21:183</span>
-              <span class="badge pass-bg log float-right">Pass</span>
+              <span>5:28:10 PM</span> / <span>00:00:01:000</span>
+              <span class="badge skip-bg log float-right">Skip</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-pass">verifyingOperatingSystemVersionFilterFunctionality</h5>
-<span class='badge badge-success'>09.07.2025 5:11:12 PM</span>
-<span class='badge badge-danger'>09.07.2025 5:18:34 PM</span>
-<span class='badge badge-default'>00:07:21:183</span>
+<h5 class="test-status text-skip">verifyingOperatingSystemVersionFilterFunctionality</h5>
+<span class='badge badge-success'>09.07.2025 5:28:10 PM</span>
+<span class='badge badge-danger'>09.07.2025 5:28:11 PM</span>
+<span class='badge badge-default'>00:00:01:000</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -105,23 +106,108 @@
   <tbody>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>5:11:12 PM</td>
+        <td>5:28:10 PM</td>
         <td>
           🔹 Test Started: verifyingOperatingSystemVersionFilterFunctionality
         </td>
       </tr>
       <tr class="event-row">
+        <td><span class="badge log skip-bg">Skip</span></td>
+        <td>5:28:11 PM</td>
+        <td>
+          Test Skipped: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search Amazon.in']"}
+  (Session info: chrome=139.0.7258.155)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows Server 2022', os.arch: 'amd64', os.version: '10.0', java.version: '24.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c88e24bddb1a99e43705c06d4f08c3b7, findElement {value=//input[@placeholder='Search Amazon.in'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.155, chrome: {chromedriverVersion: 139.0.7258.154 (9e0d6b2b47f..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62204}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62204/devtoo..., se:cdpVersion: 139.0.7258.155, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c88e24bddb1a99e43705c06d4f08c3b7
+        </td>
+      </tr>
+      <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>5:18:34 PM</td>
+        <td>5:28:11 PM</td>
         <td>
           📄 <a href='file:///C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/verifyingOperatingSystemVersionFilterFunctionality.log' target='_blank'>Click to view log file</a>
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>5:18:34 PM</td>
+        <td>5:28:11 PM</td>
         <td>
-          <details><summary>📂 Open Screenshots</summary><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 10.0__2025-09-07_171502.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 10.0__2025-09-07_171502.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 10.0__2025-09-07_171502.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 10.0__2025-09-07_171538.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 10.0__2025-09-07_171538.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 10.0__2025-09-07_171538.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 11.0__2025-09-07_171614.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 11.0__2025-09-07_171614.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 11.0__2025-09-07_171614.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 11.0__2025-09-07_171649.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 11.0__2025-09-07_171649.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 11.0__2025-09-07_171649.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 12.0__2025-09-07_171727.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 12.0__2025-09-07_171727.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 12.0__2025-09-07_171727.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 12.0__2025-09-07_171804.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 12.0__2025-09-07_171804.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 12.0__2025-09-07_171804.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 13.0__2025-09-07_171243.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 13.0__2025-09-07_171243.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 13.0__2025-09-07_171243.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 13.0__2025-09-07_171319.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 13.0__2025-09-07_171319.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 13.0__2025-09-07_171319.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 14__2025-09-07_171127.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 14__2025-09-07_171127.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 14__2025-09-07_171127.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Android 14__2025-09-07_171206.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 14__2025-09-07_171206.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Android 14__2025-09-07_171206.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Symbian 9.1__2025-09-07_171356.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Symbian 9.1__2025-09-07_171356.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Symbian 9.1__2025-09-07_171356.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 Filter Applied is Symbian 9.1__2025-09-07_171429.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Symbian 9.1__2025-09-07_171429.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/Filter Applied is Symbian 9.1__2025-09-07_171429.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 search bar error capture__2025-09-07_171116.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_171116.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1711/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_171116.png' style='max-width:600px; border:1px solid #ddd;'/></a></div></details>
+          <details><summary>📂 Open Screenshots</summary><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 search bar error capture__2025-09-07_172811.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1728/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_172811.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1728/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_172811.png' style='max-width:600px; border:1px solid #ddd;'/></a></div></details>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingOperatingSystemVersionFilterFunctionality</p>
+            <p class="text-sm">
+              <span>5:28:13 PM</span> / <span>00:00:01:727</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingOperatingSystemVersionFilterFunctionality</h5>
+<span class='badge badge-success'>09.07.2025 5:28:13 PM</span>
+<span class='badge badge-danger'>09.07.2025 5:28:14 PM</span>
+<span class='badge badge-default'>00:00:01:727</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:28:13 PM</td>
+        <td>
+          🔹 Test Started: verifyingOperatingSystemVersionFilterFunctionality
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:28:14 PM</td>
+        <td>
+          no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search Amazon.in']"}
+  (Session info: chrome=139.0.7258.155)
+For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
+Build info: version: '4.27.0', revision: 'd6e718d134'
+System info: os.name: 'Windows Server 2022', os.arch: 'amd64', os.version: '10.0', java.version: '24.0.2'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [ec96b58ca59ad71c741f7e2a5c1560e0, findElement {value=//input[@placeholder='Search Amazon.in'], using=xpath}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 139.0.7258.155, chrome: {chromedriverVersion: 139.0.7258.154 (9e0d6b2b47f..., userDataDir: C:\Windows\SystemTemp\scope...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:62223}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:62223/devtoo..., se:cdpVersion: 139.0.7258.155, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: ec96b58ca59ad71c741f7e2a5c1560e0
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:28:14 PM</td>
+        <td>
+          📄 <a href='file:///C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/verifyingOperatingSystemVersionFilterFunctionality.log' target='_blank'>Click to view log file</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:28:14 PM</td>
+        <td>
+          <details><summary>📂 Open Screenshots</summary><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 search bar error capture__2025-09-07_172811.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1728/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_172811.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1728/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_172811.png' style='max-width:600px; border:1px solid #ddd;'/></a></div><div style='margin-top:10px; border:1px solid #ccc; padding:5px;'><div style='font-weight:bold; margin-bottom:3px;'>📸 search bar error capture__2025-09-07_172814.png</div><a href='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1728/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_172814.png' target='_blank'><img src='file:///D:/a/google-shopping-aggregator-automation/google-shopping-aggregator-automation/eclipse-workspace/Intro/test-output/screenshots/Run_2025-09-07_1728/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-09-07_172814.png' style='max-width:600px; border:1px solid #ddd;'/></a></div></details>
         </td>
       </tr>
   </tbody>
@@ -143,25 +229,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sep 7, 2025 05:11:12 PM</h3>
+<h3>Sep 7, 2025 05:28:10 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sep 7, 2025 05:18:35 PM</h3>
+<h3>Sep 7, 2025 05:28:14 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>1</h3>
+<h3>0</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 </div>
@@ -177,13 +263,13 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='100%'>
-<b>1</b> tests passed
+<div><small data-tooltip='0%'>
+<b>0</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='0%'><b>0</b> tests failed,
-<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+<small data-tooltip='50%'><b>1</b> tests failed,
+<b>1</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
 </div>
@@ -202,8 +288,8 @@
 <div class="card-footer">
 <div><small data-tooltip='0%'><b>0</b> events passed</small></div>
 <div>
-<small data-tooltip='0%'><b>0</b> events failed,
-<b data-tooltip='%'>3</b> others
+<small data-tooltip='12%'><b>1</b> events failed,
+<b data-tooltip='%'>7</b> others
 </small>
 </div>
 </div>
@@ -219,7 +305,7 @@
 </div></div>
 <script>
 var timeline = {
-"verifyingOperatingSystemVersionFilterFunctionality":441.183
+"verifyingOperatingSystemVersionFilterFunctionality":1,"verifyingOperatingSystemVersionFilterFunctionality":1.727
 };
 </script>
 <div class="row">
@@ -250,10 +336,10 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 1,
-failParent: 0,
+passParent: 0,
+failParent: 1,
 warningParent: 0,
-skipParent: 0,
+skipParent: 1,
 childCount: 5,
 passChild: 0,
 failChild: 0,
@@ -268,10 +354,10 @@ skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
 passEvents: 0,
-failEvents: 0,
+failEvents: 1,
 warningEvents: 0,
-skipEvents: 0,
-infoEvents: 3
+skipEvents: 1,
+infoEvents: 6
 };
 </script>        </div>
       </div>
