@@ -179,7 +179,7 @@ public class GenericUtility extends ProductListingPage{
     
     public void handleCaptcha() throws InterruptedException {
     	String src = driver.getPageSource().toLowerCase();
-    	Thread.sleep(1000);
+    	Thread.sleep(2000);
 		if (src.contains("click the button below to continue shopping") || src.contains("continue shopping")) {
 			   System.out.println("Found the captcha hence refreshing the page to test");
 		        log.warn("[{}]  Found the captcha hence refreshing the page to test", ThreadContext.get("testName"));
