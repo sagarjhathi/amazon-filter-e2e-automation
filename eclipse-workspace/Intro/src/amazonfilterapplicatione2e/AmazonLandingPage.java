@@ -57,7 +57,9 @@ public class AmazonLandingPage extends BasePage{
 	}
 	
 	public void openingLandingPage() {
-		driver.get("https://www.amazon.in/");
+		String url = ConfigManager.get("Url");
+		//driver.get("https://www.amazon.in/");
+		driver.get(url);
 		log.info("[{}] Opening amazon Landing page", ThreadContext.get("testName"));
 
 	}
