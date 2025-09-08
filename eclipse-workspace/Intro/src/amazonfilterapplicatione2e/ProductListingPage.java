@@ -51,7 +51,7 @@ public class ProductListingPage extends  BasePage{
 	
 	By listBrandsOptionsBy=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
 	
-	By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base']");
+	By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base']");
 	
 	By listDisplayTypeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base']");
 	
@@ -138,7 +138,7 @@ public class ProductListingPage extends  BasePage{
 	        case "batterycapacity":
 	            return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base' and text()='" + filterOption + "']");
 	        case "displaysize" :
-	         	return By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
+	         	return By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "displaytype":
 	        	return By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "operatingsystem":
@@ -170,7 +170,7 @@ public class ProductListingPage extends  BasePage{
 	        case "batterycapacity":
 	            return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
 	        case "displaysize" :
-	         	return By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
+	         	return By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 	        case "displaytype":
 	        	return By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 	        case "operatingsystem":
@@ -826,11 +826,11 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	        }
 
-	        if (i % 10 == 0 && i != 0) {
-	            driver.navigate().refresh();
-     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
-
-	        }
+//	        if (i % 10 == 0 && i != 0) {
+//	            driver.navigate().refresh();
+//     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
+//
+//	        }
 	    }
 			log.info("[" + ThreadContext.get("testName") + "] Returning the allResults List of Maps containing the data");
 
