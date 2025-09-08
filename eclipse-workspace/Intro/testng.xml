@@ -5,9 +5,7 @@
     <classes>
       <class name="amazonfilterapplicatione2e.AmazonTests">
              
-             <methods>
-              <include name="verifyingOperatingSystemVersionFilterFunctionality"/>
-               </methods>
+    
       </class>
     </classes>
   </test>

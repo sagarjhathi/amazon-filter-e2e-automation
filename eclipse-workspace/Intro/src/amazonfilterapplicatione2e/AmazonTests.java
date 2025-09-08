@@ -60,6 +60,8 @@ public class AmazonTests extends BaseTest {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
         am.openingLandingPage();
+        CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
         am.givingInputWithinSearchBar(input);
         am.clickingOnSubmitSearchButton();                   
 		
@@ -96,6 +98,8 @@ public class AmazonTests extends BaseTest {
 		 ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		 AmazonLandingPage am=new AmazonLandingPage();
          am.openingLandingPage();
+         CaptchaHandler capHandler=new CaptchaHandler();
+ 		capHandler.handleCaptcha();
          am.givingInputWithinSearchBar(input);
          am.clickingOnSubmitSearchButton();
 
@@ -131,6 +135,8 @@ public class AmazonTests extends BaseTest {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
         am.openingLandingPage();
+        CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
         am.givingInputWithinSearchBar(input);
         am.clickingOnSubmitSearchButton();
 
@@ -170,6 +176,8 @@ public class AmazonTests extends BaseTest {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
@@ -221,6 +229,8 @@ public class AmazonTests extends BaseTest {
 		
 		AmazonLandingPage amazonPage=new AmazonLandingPage();
 		amazonPage.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		amazonPage.givingInputWithinSearchBar(input);
 		amazonPage.clickingOnSubmitSearchButton();
 		
@@ -287,6 +297,8 @@ public class AmazonTests extends BaseTest {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
@@ -344,6 +356,8 @@ public class AmazonTests extends BaseTest {
 
 	    AmazonLandingPage am = new AmazonLandingPage();
 	    am.openingLandingPage();
+	    CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 	    am.givingInputWithinSearchBar(input);
 	    am.clickingOnSubmitSearchButton();
 
@@ -411,6 +425,8 @@ public class AmazonTests extends BaseTest {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
@@ -477,6 +493,8 @@ public class AmazonTests extends BaseTest {
 				
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
@@ -542,6 +560,8 @@ public class AmazonTests extends BaseTest {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
@@ -606,19 +626,7 @@ public class AmazonTests extends BaseTest {
 		GenericUtility genericUtility=new GenericUtility();
 		AmazonLandingPage am=new AmazonLandingPage();
 		
-		
-		am.openingLandingPage();
-		String src = driver.getPageSource().toLowerCase();
-//        log.warn("[{}]  Logging the page src data =="+src+"                      ", ThreadContext.get("testName"));
-//
-//		Thread.sleep(2000);
-//		if (src.contains("click the button below to continue shopping") || src.contains("continue shopping")) {
-//			   System.out.println("Found the captcha hence refreshing the page to test");
-//		        log.warn("[{}]  Found the captcha hence refreshing the page to test", ThreadContext.get("testName"));
-//		        driver.navigate().refresh();
-//			}
-		
-		
+		am.openingLandingPage();		
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
 		
@@ -685,6 +693,8 @@ public class AmazonTests extends BaseTest {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
@@ -751,6 +761,8 @@ public class AmazonTests extends BaseTest {
 		
 		
 		am.openingLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar("Mobile");
 		am.clickingOnSubmitSearchButton();
 		
