@@ -19,6 +19,7 @@ public class WaitUtility {
                 .until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+    
     public WebElement waitUntilClickable(By locator, int timeoutInSeconds) {
         return new WebDriverWait(driver, Duration.ofSeconds(timeoutInSeconds))
                 .until(ExpectedConditions.elementToBeClickable(locator));

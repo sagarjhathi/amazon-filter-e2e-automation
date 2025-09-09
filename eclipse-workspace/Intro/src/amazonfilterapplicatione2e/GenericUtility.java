@@ -259,25 +259,6 @@ public class GenericUtility extends ProductListingPage{
         }
     }
     
-//    public void closeCurrentWindowAndSwitchBack(String currentWindow) {
-//        log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
-//
-//        Set<String> allWindowHandles = driver.getWindowHandles();
-//        for (String handle : allWindowHandles) {
-//            if (handle.equals(currentWindow)) {
-//                log.debug("Closing the current popup window");
-//                driver.close(); // Close the child or popup window
-//
-//                log.debug("Waiting for number of windows to reduce");
-//                new WebDriverWait(driver, Duration.ofSeconds(10))
-//                    .until(driver -> driver.getWindowHandles().size() == 1);
-//
-//                log.debug("Switching back to main window");
-//                driver.switchTo().window(handle); // Switch back to original
-//                break;
-//            }
-//        }
-//    }
 
 
  public String fetchTextWithRetries(By locator, SafeActions safeAct) {

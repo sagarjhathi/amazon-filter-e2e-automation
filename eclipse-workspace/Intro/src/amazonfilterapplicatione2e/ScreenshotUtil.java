@@ -68,12 +68,8 @@ public class ScreenshotUtil {
         return captureInternal(testName, customName);
     }
     
-//    private static String sanitizeFileName(String input) {
-//        if (input == null) return "screenshot";
-//        // Replace anything not a letter, digit, dash, underscore, or dot with underscore
-//        return input.replaceAll("[^a-zA-Z0-9-_\\.]", "_");
-//    }
-//    
+
+    
     
     private static String captureInternal(String testName, String customName) {
         String timestamp = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
