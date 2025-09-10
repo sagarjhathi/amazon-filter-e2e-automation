@@ -175,9 +175,7 @@ public class SafeActions extends BasePage{
 		        try {
                 	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
                 	
-//                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-//                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
-//                	}
+
             
                 	if(testName.equals(os) || testName.equals(brands)) {
                 		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
@@ -192,9 +190,7 @@ public class SafeActions extends BasePage{
 		            
 		            genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
 		            Thread.sleep(1000);             
-//		            if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-//                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
-//                	}
+
 		            
 		            if(testName.equals(os) || testName.equals(brands)) {
                 		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
@@ -218,15 +214,10 @@ public class SafeActions extends BasePage{
 		            	
 		                   driver.navigate().refresh();
 		                	Thread.sleep(1000);		
-//		                	By batteryHeader=By.xpath("//div[@id='p_n_g-101015098008111-title']");
 		                	log.info("[{}] Cannot apply filter taking failed screenshot for ->"+filterOption ,ThreadContext.get("testName"));
 		                	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
 		                	Thread.sleep(2000);
-//		                	genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 
-//		                	if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-//		                		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
-//		                	}
 		                	
 		                	if(testName.equals(os) || testName.equals(brands)) {
 		                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
