@@ -3,9 +3,11 @@
 # Eclipse metadata
 .metadata/
 
+
 # Test & build outputs
 test-output/
 target/
 logs/
 eclipse-workspace/.metadata/.plugins/
 eclipse-workspace/Intro/target/
+Intro/test-output/
