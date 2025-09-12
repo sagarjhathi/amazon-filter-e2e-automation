@@ -67,6 +67,7 @@ public class DriverManager {
 			//options.addArguments("--headless");
 			
 			driver.set(new ChromeDriver(options));
+			driver.get().manage().deleteAllCookies();
 		}
 	}
 	
