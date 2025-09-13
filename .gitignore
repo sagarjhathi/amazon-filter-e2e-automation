@@ -11,3 +11,10 @@ logs/
 eclipse-workspace/.metadata/.plugins/
 eclipse-workspace/Intro/target/
 Intro/test-output/
+
+test-output/
+target/
+logs/
+eclipse-workspace/.metadata/.plugins/
+eclipse-workspace/Intro/target/
+Intro/test-output/
