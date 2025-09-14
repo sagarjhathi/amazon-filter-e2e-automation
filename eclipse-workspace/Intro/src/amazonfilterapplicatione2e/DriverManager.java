@@ -53,9 +53,6 @@ public class DriverManager {
 			
 		//	options.addArguments("user-agent=" + userAgent);
 		//	options.addArguments("--disable-gpu");
-			options.addArguments("--disable-blink-features=AutomationControlled");
-			options.addArguments("--no-sandbox");
-			options.addArguments("--disable-dev-shm-usage");
 			//options.addArguments("--lang=en");
 			options.addArguments("--disable-blink-features=AutomationControlled");
 		//	options.addArguments("--start-maximized");
