@@ -1,7 +1,0 @@
-2025-08-28 06:26:33.240 PM [TestNG-test=Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
-2025-08-28 06:26:45.575 PM [TestNG-test=Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
-2025-08-28 06:26:47.268 PM [TestNG-test=Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Giving input within the search bar
-2025-08-28 06:26:48.127 PM [TestNG-test=Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Clicking on the submit in the search bar
-2025-08-28 06:26:48.238 PM [TestNG-test=Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Checking if element visible on UI via isElementVisibleOnUI Method
-2025-08-28 06:27:01.304 PM [TestNG-test=Test-1] WARN  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] � Filter option 'Get It by Tomorrow' does not exist. Skipping the test.
-2025-08-28 06:27:01.314 PM [TestNG-test=Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality

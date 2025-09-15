@@ -1,20 +1,15 @@
+# Logs
+eclipse-workspace/Intro/logs/
+*.log
 
-
-# Eclipse metadata
-.metadata/
-
-
-# Test & build outputs
-test-output/
-target/
-logs/
-eclipse-workspace/.metadata/.plugins/
+# Build output
 eclipse-workspace/Intro/target/
-Intro/test-output/
 
-test-output/
-target/
-logs/
-eclipse-workspace/.metadata/.plugins/
-eclipse-workspace/Intro/target/
-Intro/test-output/
+# Test reports
+eclipse-workspace/Intro/test-output/
+
+# Eclipse specific files
+eclipse-workspace/.metadata/
+eclipse-workspace/.settings/
+*.classpath
+*.project
