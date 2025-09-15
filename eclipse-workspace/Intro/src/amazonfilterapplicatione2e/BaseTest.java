@@ -36,7 +36,6 @@ public class BaseTest {
 	    	    ThreadContext.put("testName", testName);     // ✅ Add this for use in logs
 	    	    ThreadContext.put("logFileName", testName); // ✅ must come before logger is called
 	    	    log = LogManager.getLogger(testName); 
-	    	    
 	    	    System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
 	    	    log.info("🔹 Starting test method: " + testName);
 	    	    

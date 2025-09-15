@@ -42,7 +42,7 @@ public class GenericUtility extends ProductListingPage{
 	}
 	
 
-	
+//	
 	public boolean isElementInViewport(By locator) {
 	    try {
     		log.info("[{}] Checking if element within view port via isElementInViewport method", ThreadContext.get("testName"));
