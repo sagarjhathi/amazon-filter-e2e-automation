@@ -13,3 +13,7 @@ eclipse-workspace/.metadata/
 eclipse-workspace/.settings/
 *.classpath
 *.project
+
+
+# Eclipse workspace metadata
+eclipse-workspace/.metadata/
