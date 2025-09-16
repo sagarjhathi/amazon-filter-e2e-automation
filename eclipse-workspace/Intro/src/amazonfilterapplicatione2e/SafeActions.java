@@ -168,8 +168,8 @@ public class SafeActions extends BasePage{
 				String testName = ThreadContext.get("logFileName");
 				String filterOptionToPass=filterOption;
 				
-		    	String os="verifyingOperatingSystemVersionFilterFunctionality";
-            	String brands ="verifyingTheBrandsFilterFunctionality";
+//		    	String os="verifyingOperatingSystemVersionFilterFunctionality";
+//            	String brands ="verifyingTheBrandsFilterFunctionality";
 		    int attempts = 0;
 		    while (attempts < 1) {
 		        try {

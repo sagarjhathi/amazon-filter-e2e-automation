@@ -18,14 +18,8 @@ public class DriverManager {
 	public static void initDriver() {
 		if(driver.get()==null) {
 
-			//String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.6422.112 Safari/537.36";
-			ChromeOptions options = new ChromeOptions();
-			
-		//	String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-		//		    + "AppleWebKit/537.36 (KHTML, like Gecko) "
-		//		    + "Chrome/119.0.6045.200 Safari/537.36";
-			
-			
+		     	ChromeOptions options = new ChromeOptions();
+					
 	            String ua = ConfigManager.get("userAgent");
 	            if (ua != null && !ua.isBlank()) {
 	                options.addArguments("user-agent=" + ua);
@@ -51,18 +45,12 @@ public class DriverManager {
 	            }
 	            
 			
-		//	options.addArguments("user-agent=" + userAgent);
-		//	options.addArguments("--disable-gpu");
-			//options.addArguments("--lang=en");
 			options.addArguments("--disable-blink-features=AutomationControlled");
-		//	options.addArguments("--start-maximized");
 			options.addArguments("--disable-dev-shm-usage");
 			options.addArguments("--no-sandbox");
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.addArguments("--disable-extensions");
-			//options.addArguments("--headless");
-			
 			driver.set(new ChromeDriver(options));
 			driver.get().manage().deleteAllCookies();
 		}
