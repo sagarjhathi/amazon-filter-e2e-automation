@@ -177,7 +177,7 @@ public class SafeActions extends BasePage{
                 	
 
             
-                	if(testName.equals(os) || testName.equals(brands)) {
+                	if(testName.equals(filterName)) {
                 		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
                     		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
                     	}
@@ -192,7 +192,7 @@ public class SafeActions extends BasePage{
 		            Thread.sleep(1000);             
 
 		            
-		            if(testName.equals(os) || testName.equals(brands)) {
+		            if(testName.equals(filterName)) {
                 		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
                     		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
                     	}
@@ -219,7 +219,7 @@ public class SafeActions extends BasePage{
 		                	Thread.sleep(2000);
 
 		                	
-		                	if(testName.equals(os) || testName.equals(brands)) {
+		                	if(testName.equals(filterName)) {
 		                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
 		                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
 		                    	}
