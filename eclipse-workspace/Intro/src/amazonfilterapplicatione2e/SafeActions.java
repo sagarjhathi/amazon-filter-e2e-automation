@@ -103,8 +103,7 @@ public class SafeActions extends BasePage{
 		        }
 		    }
 
-//		    throw new RuntimeException("Failed to find element after multiple retries: " + locator);
-		    // Element not found after retries — skip the action
+
 			log.info("[{}] Skipping action: Element not found after "+attempts+"   attemps", ThreadContext.get("testName"));
 
 		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
