@@ -47,7 +47,6 @@ public class TestListener implements ITestListener {
         Throwable cause = result.getThrowable();
 
         // Log failure in Extent Report
-//        ExtentTestManager.getTest().log(Status.FAIL,
 
         Throwable throwable = result.getThrowable();
         if (throwable != null) {
@@ -97,26 +96,6 @@ public class TestListener implements ITestListener {
     }
     
     
-    
-//
-//    private void attachLogFile() {
-//        try {
-//            String logFileName = ThreadContext.get("logFileName");
-//            if (logFileName != null) {
-//                // relative path inside ExtentReports bundle
-//                String relativePath = "logs/" + logFileName + ".log";
-//
-//                // Works when opening locally, unzipped artifact, or served on Pages
-//                ExtentTestManager.getTest().info(
-//                    "<a href='" + relativePath + "' target='_blank'>View Log</a>"
-//                );
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
-//        }
-//    }
-
-
 
     
     
