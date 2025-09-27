@@ -1,6 +1,6 @@
 package googleaggregatorpomupdated;
 
-import java.time.Duration;  
+import java.time.Duration;   
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -11,8 +11,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-import googleaggregator.AllFunctions;
-import googleaggregator.GenericHelper;
+import googleaggregatorPOM.GenericHelper;
+
+
 
 public class POMTesting {
 

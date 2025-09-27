@@ -1,6 +1,6 @@
 package googleaggregatorpomupdated;
 
-import java.time.Duration;
+import java.time.Duration; 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -18,7 +18,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import googleaggregator.GenericHelper;
+import googleaggregatorPOM.GenericHelper;
+
 
 public class GoogleShoppingMainPage {
 
