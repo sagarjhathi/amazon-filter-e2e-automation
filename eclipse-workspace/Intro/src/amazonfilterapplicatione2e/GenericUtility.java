@@ -23,7 +23,7 @@ public class GenericUtility extends ProductListingPage{
 
 	public boolean filterCheckUnderList(String filterName) {
 		log.info("[{}] Within filterCheckUnderList method", ThreadContext.get("testName"));
-
+		
 	    String target = filterName.trim().toLowerCase();
 
 	    for (WebElement el : listOfFilterNameInLeftNav) {
