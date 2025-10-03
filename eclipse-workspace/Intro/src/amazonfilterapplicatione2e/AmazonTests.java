@@ -1,5 +1,5 @@
 package amazonfilterapplicatione2e;
-import static org.testng.Assert.expectThrows;   
+import static org.testng.Assert.expectThrows;    
 import java.time.Duration; 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,6 +30,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import amazonfilterapplicatione2e.pages.AmazonLandingPage;
+import amazonfilterapplicatione2e.pages.ProductListingPage;
 import amazonfilterapplicatione2e.reporting.ExtentTestManager;
 
 import java.time.LocalDate;

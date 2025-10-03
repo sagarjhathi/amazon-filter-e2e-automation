@@ -1,6 +1,6 @@
-package amazonfilterapplicatione2e;
+package amazonfilterapplicatione2e.pages;
 
-import java.time.Duration;
+import java.time.Duration; 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -30,6 +30,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import amazonfilterapplicatione2e.BasePage;
+import amazonfilterapplicatione2e.GenericUtility;
+import amazonfilterapplicatione2e.LoggerUtility;
+import amazonfilterapplicatione2e.SafeActions;
+import amazonfilterapplicatione2e.ScreenshotUtil;
 import amazonfilterapplicatione2e.reporting.ExtentTestManager;
 
 public class ProductListingPage extends  BasePage{
@@ -45,38 +50,39 @@ public class ProductListingPage extends  BasePage{
 	WebElement productDeliveryDayListingPage;
 	
 	@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
+	protected
 	List<WebElement> listOfFilterNameInLeftNav;
 	
-	By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
+	public By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	
-	By listBrandsOptionsBy=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
+	public By listBrandsOptionsBy=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
 	
-	By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base']");
+	public By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base']");
 	
-	By listDisplayTypeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base']");
+	public By listDisplayTypeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base']");
 	
-	By listDiscountOptionsBy=By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']");
+	public By listDiscountOptionsBy=By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']");
 	
-    By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base']");
+    public By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base']");
     
    
 	//By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']
-	By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']");
+	public By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']");
 
 	// 
 	By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
 	
-	By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
+	public By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
 	
-	By listOperatingSystemVersionOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base']");
+	public By listOperatingSystemVersionOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base']");
 	
 	
-	By getItByTomorrowUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']");
+	public By getItByTomorrowUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']");
 	
-	By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
+	public By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
 	
-	By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
+	public By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
 	
 	
 //	By seeMoreButtonUnderOperatingSystemFilter=By.xpath("//a[@aria-label='See more, Operating System Version']");

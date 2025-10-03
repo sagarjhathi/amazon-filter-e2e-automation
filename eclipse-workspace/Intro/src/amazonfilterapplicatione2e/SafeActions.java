@@ -6,6 +6,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import amazonfilterapplicatione2e.pages.ProductListingPage;
 import amazonfilterapplicatione2e.reporting.ExtentTestManager;
 
 import java.time.Duration;

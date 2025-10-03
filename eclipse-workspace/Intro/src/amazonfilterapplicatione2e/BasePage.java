@@ -15,9 +15,9 @@ import io.opentelemetry.api.logs.Logger;
 
 public class BasePage {
 
-	WebDriver driver;
+	protected WebDriver driver;
 	WebDriverWait wait;
-	WaitUtility waitUtil;
+	protected WaitUtility waitUtil;
 	public BasePage() {
 		
         this.driver = DriverManager.getDriver();
