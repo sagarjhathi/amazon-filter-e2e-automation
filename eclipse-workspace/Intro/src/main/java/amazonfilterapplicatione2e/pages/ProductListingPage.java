@@ -1,6 +1,7 @@
-package amazonfilterapplicatione2e.pages;
+package main.java.amazonfilterapplicatione2e.pages;
 
 import java.time.Duration; 
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -30,12 +31,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import amazonfilterapplicatione2e.BasePage;
-import amazonfilterapplicatione2e.GenericUtility;
-import amazonfilterapplicatione2e.LoggerUtility;
-import amazonfilterapplicatione2e.SafeActions;
-import amazonfilterapplicatione2e.ScreenshotUtil;
-import amazonfilterapplicatione2e.reporting.ExtentTestManager;
+import main.java.amazonfilterapplicatione2e.GenericUtility;
+import main.java.amazonfilterapplicatione2e.LoggerUtility;
+import main.java.amazonfilterapplicatione2e.SafeActions;
+import main.java.amazonfilterapplicatione2e.ScreenshotUtil;
+import main.java.amazonfilterapplicatione2e.base.BasePage;
 
 public class ProductListingPage extends  BasePage{
 

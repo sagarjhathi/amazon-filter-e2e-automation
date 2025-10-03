@@ -1,6 +1,6 @@
-package amazonfilterapplicatione2e;
+package main.java.amazonfilterapplicatione2e;
 
-import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FileUtils; 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -9,7 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
 
-import amazonfilterapplicatione2e.reporting.ExtentManager;
+import main.java.amazonfilterapplicatione2e.reporting.*;
 
 import java.io.File;
 import java.io.IOException;

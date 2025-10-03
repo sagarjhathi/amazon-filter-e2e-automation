@@ -1,5 +1,8 @@
-package amazonfilterapplicatione2e;
-import static org.testng.Assert.expectThrows;    
+
+package test.java.tests;
+import static org.testng.Assert.expectThrows;   
+ 
+
 import java.time.Duration; 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -30,12 +33,18 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import amazonfilterapplicatione2e.pages.AmazonLandingPage;
-import amazonfilterapplicatione2e.pages.ProductListingPage;
-import amazonfilterapplicatione2e.reporting.ExtentTestManager;
+import main.java.amazonfilterapplicatione2e.reporting.*;
+import main.java.amazonfilterapplicatione2e.pages.*;
+import main.java.amazonfilterapplicatione2e.CaptchaHandler;
+import main.java.amazonfilterapplicatione2e.GenericUtility;
+import main.java.amazonfilterapplicatione2e.LoggerUtility;
+import main.java.amazonfilterapplicatione2e.base.BaseTest;
+import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
+import main.java.amazonfilterapplicatione2e.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 
 public class AmazonTests extends BaseTest {
 

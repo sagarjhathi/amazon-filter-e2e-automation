@@ -1,7 +1,6 @@
-package amazonfilterapplicatione2e;
-
-
+package main.java.amazonfilterapplicatione2e.base;
 import java.io.File;
+import main.java.amazonfilterapplicatione2e.*;
 import java.lang.reflect.Method;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,7 +15,7 @@ import org.testng.annotations.Listeners;
 import org.apache.logging.log4j.ThreadContext;
 
 
-@Listeners(amazonfilterapplicatione2e.reporting.TestListener.class)
+@Listeners(main.java.amazonfilterapplicatione2e.reporting.TestListener.class)
 public class BaseTest {
  
 	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
