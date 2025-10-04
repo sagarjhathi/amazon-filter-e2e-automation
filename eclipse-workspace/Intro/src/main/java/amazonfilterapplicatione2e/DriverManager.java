@@ -51,6 +51,14 @@ public class DriverManager {
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.addArguments("--disable-extensions");
+		       options.addArguments("--disable-gpu");
+		        options.addArguments("--remote-allow-origins=*");
+		        options.addArguments("--disable-infobars");
+		        options.addArguments("--disable-popup-blocking");
+		        options.addArguments("--disable-notifications");
+		        options.addArguments("--disable-backgrounding-occluded-windows");
+		        options.addArguments("--disable-renderer-backgrounding");
+		        options.addArguments("--disable-background-timer-throttling");
 			driver.set(new ChromeDriver(options));
 			driver.get().manage().deleteAllCookies();
 		}
