@@ -819,11 +819,14 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	        }
 
-//	        if (i % 10 == 0 && i != 0) {
+	        if (i % 10 == 0 && i != 0) {
+	        	JavascriptExecutor js = (JavascriptExecutor) driver;
+	            js.executeScript("location.reload(true);");
 //	            driver.navigate().refresh();
-//     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
-//
-//	        }
+	            Thread.sleep(2000);
+     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
+
+	        }
 	    }
 	    
 			log.info("[" + ThreadContext.get("testName") + "] Returning the allResults List of Maps containing the data");

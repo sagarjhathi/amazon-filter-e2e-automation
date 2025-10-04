@@ -60,20 +60,24 @@ public class AmazonTests extends BaseTest {
 	
 
 	
-	
+
 	@Test(priority=1, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
+		GenericUtility genericUtility=new GenericUtility();
         am.openingLandingPage();
+        genericUtility.refreshIfServiceUnavailable();
         CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
         am.givingInputWithinSearchBar(input);
-        am.clickingOnSubmitSearchButton();                   
+        genericUtility.refreshIfServiceUnavailable();
+        am.clickingOnSubmitSearchButton();  
+        genericUtility.refreshIfServiceUnavailable();
 		
         ProductListingPage productPage=new ProductListingPage();
-        GenericUtility genericUtility=new GenericUtility();
+       
         genericUtility.refreshIfServiceUnavailable();
        
         if (!genericUtility.isElementVisibleOnUI(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
@@ -104,13 +108,17 @@ public class AmazonTests extends BaseTest {
 		
 		 ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		 AmazonLandingPage am=new AmazonLandingPage();
+		 GenericUtility genericUtility=new GenericUtility();
          am.openingLandingPage();
+         genericUtility.refreshIfServiceUnavailable();  
          CaptchaHandler capHandler=new CaptchaHandler();
- 		capHandler.handleCaptcha();
+ 		 capHandler.handleCaptcha();
          am.givingInputWithinSearchBar(input);
+         genericUtility.refreshIfServiceUnavailable();  
          am.clickingOnSubmitSearchButton();
+         genericUtility.refreshIfServiceUnavailable();  
 
-         GenericUtility genericUtility=new GenericUtility();
+        
 		 ProductListingPage productPage=new ProductListingPage();
 		 genericUtility.refreshIfServiceUnavailable();   
 		 
@@ -141,13 +149,17 @@ public class AmazonTests extends BaseTest {
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
+		GenericUtility genericUtility=new GenericUtility();
         am.openingLandingPage();
+        genericUtility.refreshIfServiceUnavailable();
         CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
         am.givingInputWithinSearchBar(input);
+        genericUtility.refreshIfServiceUnavailable();
         am.clickingOnSubmitSearchButton();
+        genericUtility.refreshIfServiceUnavailable();
 
-        GenericUtility genericUtility=new GenericUtility();
+       
  		ProductListingPage productPage=new ProductListingPage();
  		genericUtility.refreshIfServiceUnavailable();
  		if (!genericUtility.isElementVisibleOnUI(productPage.getItTodayUnderDeliveryDayFilterBy)) {
@@ -182,16 +194,20 @@ public class AmazonTests extends BaseTest {
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
+		GenericUtility genericUtility=new GenericUtility();
 		am.openingLandingPage();
+		genericUtility.refreshIfServiceUnavailable();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
 		am.givingInputWithinSearchBar(input);
+		genericUtility.refreshIfServiceUnavailable();
 		am.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
 		
 		ProductListingPage productPage=new ProductListingPage();
 		
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
-		GenericUtility genericUtility=new GenericUtility();
+		
 		genericUtility.refreshIfServiceUnavailable();
 		
 		if (!genericUtility.filterCheckUnderList("brands")) {
@@ -200,6 +216,7 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
+		genericUtility.refreshIfServiceUnavailable();
   List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsBy, "brands");
   SoftAssert softAssert = new SoftAssert();
 
@@ -235,13 +252,18 @@ public class AmazonTests extends BaseTest {
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException {
 		
 		AmazonLandingPage amazonPage=new AmazonLandingPage();
+		GenericUtility genericUtility=new GenericUtility();
 		amazonPage.openingLandingPage();
+		genericUtility.refreshIfServiceUnavailable();
+		
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
 		amazonPage.givingInputWithinSearchBar(input);
+		genericUtility.refreshIfServiceUnavailable();
 		amazonPage.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
 		
-		GenericUtility genericUtility=new GenericUtility();
+		
 		ProductListingPage productPage=new ProductListingPage();
 		
 		genericUtility.refreshIfServiceUnavailable();

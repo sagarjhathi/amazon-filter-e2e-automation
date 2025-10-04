@@ -28,8 +28,8 @@ public class BaseTest {
 	    	    String testName = method.getName(); // The actual test method name
 	    	    String threadName = testName + "-" + Thread.currentThread().threadId();
 	    	    String logName = method.getName() + "_" + Thread.currentThread().getId();
-	    	   // ThreadContext.put("logFileName", logName);  // ✅ Very important
-	    	   // ThreadContext.put("threadName", threadName); // Used in file name routing (if needed)
+	    	    ThreadContext.put("logFileName", logName);  // ✅ Very important
+	    	    ThreadContext.put("threadName", threadName); // Used in file name routing (if needed)
 	    	    ThreadContext.put("testName", testName);     // ✅ Add this for use in logs
 	    	    ThreadContext.put("logFileName", testName); // ✅ must come before logger is called
 	    	    log = LogManager.getLogger(testName); 

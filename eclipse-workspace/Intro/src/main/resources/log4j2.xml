@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
 <Properties>
-<Property name="LOG_PATTERN">%d{yyyy-MM-dd hh:mm:ss.SSS a} %-5level [%X{testName}] %msg%n</Property>
+<Property name="LOG_PATTERN">%d{yyyy-MM-dd hh:mm:ss.SSS a} [%t] %-5level [%X{logFileName}] %msg%n</Property>
 </Properties>
 
 
