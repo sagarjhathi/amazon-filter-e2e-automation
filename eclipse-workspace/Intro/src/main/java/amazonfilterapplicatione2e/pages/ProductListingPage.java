@@ -65,12 +65,8 @@ public class ProductListingPage extends  BasePage{
 	
     public By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base']");
     
-   
-	//By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_twenty-nine_browse-bin']//span[@class='a-size-base a-color-base']");
-	//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']
 	public By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']");
 
-	// 
 	By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
 	
 	public By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
@@ -83,15 +79,9 @@ public class ProductListingPage extends  BasePage{
 	public By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
 	
 	public By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
-	
-	
-//	By seeMoreButtonUnderOperatingSystemFilter=By.xpath("//a[@aria-label='See more, Operating System Version']");
-	
+		
 	By seeMoreButtonUnderOperatingSystemFilter=	By.xpath("//div[@class='a-row a-expander-container a-expander-extend-container']//a[@aria-label='See more, Operating SystemÂ ']");
 
-
-
-	
 	By seeMoreButtonUnderBrandFilter=By.xpath("//a[@aria-label='See more, Brands']");
 	
 	By listProductCardsBy=By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
@@ -127,11 +117,11 @@ public class ProductListingPage extends  BasePage{
 	By reportAnIssue=By.xpath("//div[@id='CardInstanceCnrYlcUauBaBV5oi0X1UVw']");
 	
 	By showMoreOnlyIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
+	
 	private  final Logger log = LoggerUtility.getLogger(ProductListingPage.class);
 
 	
 	    public By getfilterByTypeAndName(String filterName, String filterOption) {
-	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
 			log.info("[{}] Within getfilterByTypeAndName method", ThreadContext.get("testName"));
 
 	        switch (filterName.toLowerCase()) {
@@ -155,15 +145,13 @@ public class ProductListingPage extends  BasePage{
 	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 	        case "Operating System Version":
 	        	return By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
-	    }
+	        }
 	    }
 	    
 	    
 	    public By getAppliedfilterByTypeAndName(String filterName, String filterOption) {
-	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
 			log.info("[{}] Within getAppliedfilterByTypeAndName method", ThreadContext.get("testName"));
 
 	        switch (filterName.toLowerCase()) {
@@ -187,14 +175,13 @@ public class ProductListingPage extends  BasePage{
 	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
-	    }
+	        }
 	    }
 	    
 	    
 	    
 	    
 	    public By getMoreButtonByFilterTypeAndName(String filterName) {
-	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
 			log.info("[{}] Within getMoreButtonByFilterTypeAndName method", ThreadContext.get("testName"));
 
 	        switch (filterName.toLowerCase()) {
@@ -205,12 +192,11 @@ public class ProductListingPage extends  BasePage{
 	
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
-	    }
+	        }
 	    }
 	    
 	    
 	    public String getDeliveryDayFilterByName(String filterName) {
-	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
 			log.info("[{}] Within getMoreButtonByFilterTypeAndName method", ThreadContext.get("testName"));
 
 	        switch (filterName) {
@@ -222,12 +208,11 @@ public class ProductListingPage extends  BasePage{
 	        	return  "Get It By Today";
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
-	    }
+	         }
 	    }
 	    
 	    
 	    public By getfilterHeaderByTypeAndName(String filterName) {
-	        //return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterName + "']");
 			log.info("[{}] Within getAppliedfilterByTypeAndName method", ThreadContext.get("testName"));
 
 	        switch (filterName.toLowerCase()) {
@@ -251,7 +236,7 @@ public class ProductListingPage extends  BasePage{
 	        	return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']");
 	        default:
 	            throw new IllegalArgumentException("Unknown filter type: " + filterName);
-	    }
+	        }
 	    }
     
 
@@ -445,7 +430,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         
-        for (int p = 1; p <2; p++) {
+        for (int p = 1; p <productNameListingPage.size(); p++) {
         	
         	 productIndex = p-1;
 
@@ -544,7 +529,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             }
             
             
-//            String productNamePlusIndex="Product Index="+productIndex;
+//          String productNamePlusIndex="Product Index="+productIndex;
 //        	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
 //			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
 
@@ -575,7 +560,9 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 		log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
 		log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
-
+		
+		driver.navigate().refresh();
+		
     }
 	log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));
     return results;
@@ -838,6 +825,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 //
 //	        }
 	    }
+	    
 			log.info("[" + ThreadContext.get("testName") + "] Returning the allResults List of Maps containing the data");
 
 	    return allResults;
@@ -897,7 +885,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        String currentWindow = driver.getWindowHandle();
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
-	        for (int p = 1; p <2; p++) {
+	        for (int p = 1; p <productNameListingPage.size(); p++) {
 	    	    log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 	    	    int productIndex=p-1;
 	            try {
