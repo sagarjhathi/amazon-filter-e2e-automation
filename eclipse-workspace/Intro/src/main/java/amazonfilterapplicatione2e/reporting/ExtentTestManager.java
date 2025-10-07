@@ -1,4 +1,4 @@
-package amazonfilterapplicatione2e.reporting;
+package main.java.amazonfilterapplicatione2e.reporting;
 
 
 import com.aventstack.extentreports.ExtentReports;

@@ -1,13 +1,16 @@
-package amazonfilterapplicatione2e;
+package main.java.amazonfilterapplicatione2e.safeActions;
 
-import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.Logger; 
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import amazonfilterapplicatione2e.pages.ProductListingPage;
-import amazonfilterapplicatione2e.reporting.ExtentTestManager;
+import main.java.amazonfilterapplicatione2e.base.BasePage;
+import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
+import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
+import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 import java.time.Duration;
 import java.util.List;

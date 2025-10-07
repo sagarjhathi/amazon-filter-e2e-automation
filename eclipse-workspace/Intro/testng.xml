@@ -3,10 +3,7 @@
 <suite thread-count="2" parallel="methods" name="Suite">
   <test thread-count="2" parallel="methods" name="Test">
     <classes>
-      <class name="amazonfilterapplicatione2e.AmazonTests">
-             
-    
-      </class>
+      <class name="test.java.tests.AmazonTests"/>
     </classes>
-  </test>
-</suite>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

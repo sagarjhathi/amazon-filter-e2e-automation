@@ -1,6 +1,6 @@
-package amazonfilterapplicatione2e;
+package main.java.amazonfilterapplicatione2e.utilities;
 
-import java.time.Duration; 
+import java.time.Duration;  
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,7 +15,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import amazonfilterapplicatione2e.pages.ProductListingPage;
+import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
+import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
+import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 
 
 public class GenericUtility extends ProductListingPage{

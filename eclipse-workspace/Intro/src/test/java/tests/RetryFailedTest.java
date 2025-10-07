@@ -1,4 +1,4 @@
-package amazonfilterapplicatione2e;
+package test.java.tests;
 
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;

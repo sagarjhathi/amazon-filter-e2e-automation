@@ -1,4 +1,4 @@
-package amazonfilterapplicatione2e;
+package main.java.amazonfilterapplicatione2e.logger;
 
 
 //File: LoggerUtility.java
