@@ -1,15 +1,17 @@
-package amazonfilterapplicatione2e;
+package main.java.amazonfilterapplicatione2e.driverManager;
 
-import java.util.Map;
+import java.util.Map; 
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
+
 public class DriverManager {
 
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+    protected static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
 	public static WebDriver getDriver() {
 		return driver.get();

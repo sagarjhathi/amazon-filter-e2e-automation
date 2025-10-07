@@ -1,7 +1,5 @@
-package amazonfilterapplicatione2e.reporting;
+package main.java.amazonfilterapplicatione2e.reporting;
 
-import amazonfilterapplicatione2e.DriverManager;
-import amazonfilterapplicatione2e.ScreenshotUtil;
 
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
