@@ -17,7 +17,7 @@ public final class ConfigManager {
 
     static {
         // 1) External file override (useful for CI): -Dconfig.file=/path/UtilData.properties
-        String external = System.getProperty("config.file");
+        String external = System.getProperty("UtilData.file");
         if (external != null && !external.isBlank()) {
             try (FileInputStream fis = new FileInputStream(external)) {
                 props.load(fis);
@@ -45,7 +45,6 @@ public final class ConfigManager {
     /** Simple get: system property -> env var -> properties file */
     public static String get(String key) {
         String sys = System.getProperty(key);
-        System.out.printf("ConfigManager.get(): %s = %s%n", key, sys);
         if (sys != null) return sys;
         String env = System.getenv(key.toUpperCase().replace('.', '_'));
         if (env != null) return env;
@@ -54,22 +53,16 @@ public final class ConfigManager {
 
     public static String get(String key, String defaultValue) {
         String v = get(key);
-        System.out.printf("ConfigManager.get(): %s = %s%n", key, v);
-
         return v != null ? v : defaultValue;
     }
 
     public static boolean getBoolean(String key, boolean defaultValue) {
         String v = get(key);
-        System.out.printf("ConfigManager.get(): %s = %s%n", key, v);
-
         return v == null || v.isBlank() ? defaultValue : Boolean.parseBoolean(v.trim());
     }
 
     public static int getInt(String key, int defaultValue) {
         String v = get(key);
-        System.out.printf("ConfigManager.get(): %s = %s%n", key, v);
-
         if (v == null || v.isBlank()) return defaultValue;
         try { return Integer.parseInt(v.trim()); } catch (NumberFormatException e) { return defaultValue; }
     }
