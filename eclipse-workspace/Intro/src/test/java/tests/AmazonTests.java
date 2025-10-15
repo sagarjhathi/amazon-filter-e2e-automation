@@ -38,6 +38,7 @@ import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.reporting.ExtentTestManager;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
+import test.java.retry.RetryFailedTest;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

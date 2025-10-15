@@ -3,6 +3,8 @@
 <suite thread-count="2" parallel="methods" name="Suite">
   <test thread-count="2" parallel="methods" name="Test">
     <classes>
+     <class name="main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup"/>
+
       <class name="test.java.tests.AmazonTests"/>
     </classes>
   </test> <!-- Test -->
