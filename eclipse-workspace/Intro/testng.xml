@@ -5,7 +5,14 @@
     <classes>
      <class name="main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup"/>
 
-      <class name="test.java.tests.AmazonTests"/>
+      <class name="test.java.tests.AmazonTests">
+      
+      
+      <methods>
+      <include name="verifyingStorageCapacityFilterFunctionality"></include>
+      </methods>
+      </class>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
