@@ -22,8 +22,10 @@ import java.util.Date;
 
 public class TestListener implements ITestListener {
 
-    private static final String RUN_TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
-    private static final String SCREENSHOT_BASE_DIR = System.getProperty("user.dir") + "/test-output/screenshots/Run_" + RUN_TIMESTAMP;
+    //private static final String RUN_TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd_HHmmss").format(new Date());
+  //  public static final String RUN_TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+    private static final String SCREENSHOT_BASE_DIR = System.getProperty("user.dir") + "/test-output/screenshots/Run_" + ExtentManager.RUN_TIMESTAMP;
 
     
 
@@ -34,10 +36,10 @@ public class TestListener implements ITestListener {
         ExtentTestManager.startTest(testName).log(Status.INFO, "🔹 Test Started: " + testName);
        
         // create a per-test file name (no extension)
-        String perTestName = testName; // or testName + "_" + timestamp if you want uniqueness
-        org.apache.logging.log4j.ThreadContext.put("logFileName", perTestName);
-        result.setAttribute("logFileName", perTestName);
-        ExtentTestManager.startTest(testName).log(Status.INFO, "Test started");
+//        String perTestName = testName; // or testName + "_" + timestamp if you want uniqueness
+//        org.apache.logging.log4j.ThreadContext.put("logFileName", perTestName);
+//        result.setAttribute("logFileName", perTestName);
+//        ExtentTestManager.startTest(testName).log(Status.INFO, "Test started");
     }
 
     @Override
@@ -125,48 +127,78 @@ public class TestListener implements ITestListener {
 //        }
 //    }
     
-    private void attachLogFile(ITestResult result) {
-        try {
-            String testName = result.getMethod().getMethodName();
-
-            // 1️⃣  Build the absolute path to the log file in your root-level "logs" folder
-            Path logFilePath = Paths.get(
-                    System.getProperty("user.dir"),
-                    "logs",
-                    "run_" + ExtentManager.RUN_TIMESTAMP,
-                    testName + ".log"
-            );
-
-            File logFile = logFilePath.toFile();
-
-            // 2️⃣  Check if the file actually exists
-            if (!logFile.exists()) {
-                ExtentTestManager.getTest().info("⚠️ Log file not found: " + logFilePath);
-                return;
-            }
-
-            // 3️⃣  Compute a **relative path from the ExtentReports folder** to this log file
-            Path reportDir = Paths.get(
-                    System.getProperty("user.dir"),
-                    "test-output",
-                    "ExtentReports"
-            );
-
-            String relativePath = reportDir.relativize(logFilePath).toString().replace("\\", "/");
-
-            // 4️⃣  Add a clickable relative link into the Extent report
-            ExtentTestManager.getTest()
-                    .info("📄 <a href='" + relativePath + "' target='_blank'>Open log file</a>");
-
-        } catch (Exception e) {
-            ExtentTestManager.getTest()
-                    .warning("Failed to attach log file: " + e.getMessage());
-        }
-    }
+//    private void attachLogFile(ITestResult result) {
+//        try {
+//            String testName = result.getMethod().getMethodName();
+//
+//            // 1️⃣  Build the absolute path to the log file in your root-level "logs" folder
+//            Path logFilePath = Paths.get(
+//                    System.getProperty("user.dir"),
+//                    "logs",
+//                    "run_" + ExtentManager.RUN_TIMESTAMP,
+//                    testName + ".log"
+//            );
+//
+//            File logFile = logFilePath.toFile();
+//
+//            // 2️⃣  Check if the file actually exists
+//            if (!logFile.exists()) {
+//                ExtentTestManager.getTest().info("⚠️ Log file not found: " + logFilePath);
+//                return;
+//            }
+//
+//            // 3️⃣  Compute a **relative path from the ExtentReports folder** to this log file
+//            Path reportDir = Paths.get(
+//                    System.getProperty("user.dir"),
+//                    "test-output",
+//                    "ExtentReports"
+//            );
+//
+//            String relativePath = reportDir.relativize(logFilePath).toString().replace("\\", "/");
+//
+//            // 4️⃣  Add a clickable relative link into the Extent report
+//            ExtentTestManager.getTest()
+//                    .info("📄 <a href='" + relativePath + "' target='_blank'>Open log file</a>");
+//
+//        } catch (Exception e) {
+//            ExtentTestManager.getTest()
+//                    .warning("Failed to attach log file: " + e.getMessage());
+//        }
+//    }
 
 
     
     
+//    private void attachLogFile(ITestResult result) {
+//        try {
+//            String perTestName = (String) result.getAttribute("logFileName");
+//            if (perTestName == null) {
+//                // fallback to method name if attribute missing
+//                perTestName = result.getMethod().getMethodName();
+//            }
+//
+//            // Build relative path to log file (project-root relative)
+//            String relativePath = "./logs/run_" + ExtentManager.RUN_TIMESTAMP + "/" + perTestName + ".log";
+//            File logFile = new File(System.getProperty("user.dir"), relativePath);
+//
+//            if (logFile.exists()) {
+//                // compute path relative to report folder so links work when opening report bundle
+//                Path reportDir = Paths.get(System.getProperty("user.dir"), "test-output", "ExtentReports");
+//                String href;
+//                try {
+//                    href = reportDir.relativize(logFile.toPath()).toString().replace("\\", "/");
+//                } catch (Exception ex) {
+//                    href = relativePath.replace("\\", "/");
+//                }
+//                ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+//            } else {
+//                ExtentTestManager.getTest().info("⚠️ Log file not found: " + logFile.getAbsolutePath());
+//            }
+//        } catch (Exception e) {
+//            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
+//        }
+//    }
+
 
     
     
@@ -210,11 +242,81 @@ public class TestListener implements ITestListener {
 //    }
     
     
+    
+    
+    
+    private void attachLogFile(ITestResult result) {
+        try {
+            if (result == null) return;
+            String testName = result.getMethod().getMethodName();
+
+            // 1) Try expected exact path first (fast)
+            Path expected = Paths.get(System.getProperty("user.dir"),
+                                      "logs",
+                                      "run_" + ExtentManager.RUN_TIMESTAMP,
+                                      testName + ".log");
+            File found = expected.toFile();
+            if (!found.exists()) {
+                // 2) Fallback: deep search under ./logs for any file whose name contains the testName
+                File logsRoot = new File(System.getProperty("user.dir"), "logs");
+                if (logsRoot.exists() && logsRoot.isDirectory()) {
+                    File best = null;
+                    long bestTime = 0L;
+                    java.util.Queue<File> q = new java.util.ArrayDeque<>();
+                    q.add(logsRoot);
+                    while (!q.isEmpty()) {
+                        File dir = q.poll();
+                        File[] children = dir.listFiles();
+                        if (children == null) continue;
+                        for (File c : children) {
+                            if (c.isDirectory()) q.add(c);
+                            else {
+                                String name = c.getName().toLowerCase();
+                                if (name.contains(testName.toLowerCase()) && name.endsWith(".log")) {
+                                    long t = c.lastModified();
+                                    // pick the most recently modified candidate
+                                    if (best == null || t > bestTime) {
+                                        best = c;
+                                        bestTime = t;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (best != null) found = best;
+                }
+            }
+
+            if (found != null && found.exists()) {
+                // compute relative href from report folder so links remain portable
+                Path reportDir = Paths.get(System.getProperty("user.dir"), "test-output", "ExtentReports");
+                Path target = found.toPath().toAbsolutePath();
+                String href;
+                try {
+                    href = reportDir.relativize(target).toString().replace("\\", "/");
+                } catch (Exception e) {
+                    // fallback: project-root relative path
+                    Path proj = Paths.get(System.getProperty("user.dir"));
+                    href = "./" + proj.relativize(target).toString().replace("\\", "/");
+                }
+
+                ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+            } else {
+                ExtentTestManager.getTest().info("⚠️ Log file not found: " + expected.toAbsolutePath().toString());
+            }
+        } catch (Exception ex) {
+            ExtentTestManager.getTest().warning("Could not attach log file: " + ex.getMessage());
+        }
+    }
+
+    
+    
+    
     private void attachScreenshotFolder(ITestResult result) {
         try {
             String testName = result.getMethod().getMethodName();
-            String relativeFolderPath = "./screenshots/Run_" + RUN_TIMESTAMP + "/" + testName;
-            String absoluteFolderPath = System.getProperty("user.dir") + "/screenshots/Run_" + RUN_TIMESTAMP + "/" + testName;
+            String relativeFolderPath = "./screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName;
+            String absoluteFolderPath = System.getProperty("user.dir") + "/screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName;
             File testFolder = new File(absoluteFolderPath);
 
             if (testFolder.exists()) {
