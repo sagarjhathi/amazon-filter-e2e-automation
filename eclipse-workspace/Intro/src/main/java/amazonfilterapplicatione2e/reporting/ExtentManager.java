@@ -22,8 +22,16 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 	   // public static final String RUN_TIMESTAMP = new SimpleDateFormat("yyyy-MM-dd_HHmm").format(new Date());
 	 // include dashes between hour/minute as required: yyyy-MM-dd-HH-mm
 	 // ExtentManager.java
-	    public static final String RUN_TIMESTAMP = new java.text.SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new java.util.Date());
+	//    public static final String RUN_TIMESTAMP = new java.text.SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new java.util.Date());
 
+	    
+	 // ExtentManager.java (replace RUN_TIMESTAMP line)
+	    public static final String RUN_TIMESTAMP =
+	        (System.getProperty("runTimestamp") != null && !System.getProperty("runTimestamp").isEmpty())
+	            ? System.getProperty("runTimestamp")
+	            : new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss").format(new Date());
+
+	    
 	    public static final String BASE_SCREENSHOT_DIR = System.getProperty("user.dir") + "/test-output/ExtentReports/screenshots/Run_" + RUN_TIMESTAMP;
 	    public static final String REPORT_PATH = System.getProperty("user.dir") + "/test-output/ExtentReports/ExtentReport.html";
 
