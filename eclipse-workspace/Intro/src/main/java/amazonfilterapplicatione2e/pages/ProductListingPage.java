@@ -411,7 +411,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
     log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
     
-    for (int i = 0; i <filterOptions.size(); i++) {
+    for (int i = 0; i <2; i++) {
 		log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);

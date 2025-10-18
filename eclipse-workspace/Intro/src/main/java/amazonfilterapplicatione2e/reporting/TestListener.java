@@ -13,6 +13,8 @@ import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.WebDriver;
 
 import java.io.File;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -30,6 +32,12 @@ public class TestListener implements ITestListener {
     public void onTestStart(ITestResult result) {
         String testName = result.getMethod().getMethodName();
         ExtentTestManager.startTest(testName).log(Status.INFO, "🔹 Test Started: " + testName);
+       
+        // create a per-test file name (no extension)
+        String perTestName = testName; // or testName + "_" + timestamp if you want uniqueness
+        org.apache.logging.log4j.ThreadContext.put("logFileName", perTestName);
+        result.setAttribute("logFileName", perTestName);
+        ExtentTestManager.startTest(testName).log(Status.INFO, "Test started");
     }
 
     @Override
@@ -117,67 +125,45 @@ public class TestListener implements ITestListener {
 //        }
 //    }
     
-    
     private void attachLogFile(ITestResult result) {
         try {
             String testName = result.getMethod().getMethodName();
 
-            // 1) expected folder using existing timestamp (fast path)
-            String expectedRel = "./logs/run_" + ExtentManager.RUN_TIMESTAMP;
-            File expectedFolder = new File(System.getProperty("user.dir"), expectedRel);
+            // 1️⃣  Build the absolute path to the log file in your root-level "logs" folder
+            Path logFilePath = Paths.get(
+                    System.getProperty("user.dir"),
+                    "logs",
+                    "run_" + ExtentManager.RUN_TIMESTAMP,
+                    testName + ".log"
+            );
 
-            File chosenRunFolder = null;
+            File logFile = logFilePath.toFile();
 
-            if (expectedFolder.exists() && expectedFolder.isDirectory()) {
-                chosenRunFolder = expectedFolder;
-            } else {
-                // 2) fallback: find the latest run_* folder under ./logs
-                File logsRoot = new File(System.getProperty("user.dir"), "./logs");
-                if (logsRoot.exists() && logsRoot.isDirectory()) {
-                    File[] runDirs = logsRoot.listFiles(f -> f.isDirectory() && f.getName().toLowerCase().startsWith("run_"));
-                    if (runDirs != null && runDirs.length > 0) {
-                        // pick folder with newest lastModified timestamp
-                        Arrays.sort(runDirs, Comparator.comparingLong(File::lastModified).reversed());
-                        chosenRunFolder = runDirs[0];
-                    }
-                }
-            }
-
-            if (chosenRunFolder == null) {
-                ExtentTestManager.getTest().info("⚠️ Log run folder not found under ./logs (expected: " + expectedRel + ")");
+            // 2️⃣  Check if the file actually exists
+            if (!logFile.exists()) {
+                ExtentTestManager.getTest().info("⚠️ Log file not found: " + logFilePath);
                 return;
             }
 
-            // 3) build the relative log file path for the specific test
-            String relativeLogPath = "./logs/" + chosenRunFolder.getName() + "/" + testName + ".log";
-            File logFile = new File(System.getProperty("user.dir"), relativeLogPath);
+            // 3️⃣  Compute a **relative path from the ExtentReports folder** to this log file
+            Path reportDir = Paths.get(
+                    System.getProperty("user.dir"),
+                    "test-output",
+                    "ExtentReports"
+            );
 
-            if (!logFile.exists()) {
-                // optional: attempt to find a file that contains the testName as substring
-                File[] candidates = chosenRunFolder.listFiles((d, name) ->
-                       name.toLowerCase().contains(testName.toLowerCase()) && name.toLowerCase().endsWith(".log"));
-                if (candidates != null && candidates.length > 0) {
-                    logFile = candidates[0];
-                    // recompute relative path from chosenRunFolder (safe)
-                    relativeLogPath = "./logs/" + chosenRunFolder.getName() + "/" + logFile.getName();
-                }
-            }
+            String relativePath = reportDir.relativize(logFilePath).toString().replace("\\", "/");
 
-            if (logFile.exists()) {
-                // use relative href (same style as your screenshots). URL-encode path portion if needed.
-                String href = relativeLogPath.replace("\\", "/");
-                // minimal encode of spaces and special chars
-                href = href.replace(" ", "%20");
-
-                ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
-            } else {
-                ExtentTestManager.getTest().info("⚠️ Log file not found for test: " + testName + " (tried: " + relativeLogPath + ")");
-            }
+            // 4️⃣  Add a clickable relative link into the Extent report
+            ExtentTestManager.getTest()
+                    .info("📄 <a href='" + relativePath + "' target='_blank'>Open log file</a>");
 
         } catch (Exception e) {
-            ExtentTestManager.getTest().warning("Could not attach log file: " + e.getMessage());
+            ExtentTestManager.getTest()
+                    .warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
 
     
     
