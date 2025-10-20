@@ -2,18 +2,18 @@
 <testng-results ignored="12" total="13" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-19T02:33:08 IST" name="Suite" finished-at="2025-10-19T02:34:02 IST" duration-ms="54581">
+  <suite started-at="2025-10-20T20:28:45 IST" name="Suite" finished-at="2025-10-20T20:29:40 IST" duration-ms="54828">
     <groups>
     </groups>
-    <test started-at="2025-10-19T02:33:08 IST" name="Test" finished-at="2025-10-19T02:34:02 IST" duration-ms="54581">
+    <test started-at="2025-10-20T20:28:45 IST" name="Test" finished-at="2025-10-20T20:29:40 IST" duration-ms="54828">
       <class name="main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup">
-        <test-method is-config="true" signature="createLogFolderForRun()[pri:0, instance:main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup@223191a6]" started-at="2025-10-19T02:33:08 IST" name="createLogFolderForRun" finished-at="2025-10-19T02:33:08 IST" duration-ms="17" status="PASS">
+        <test-method is-config="true" signature="createLogFolderForRun()[pri:0, instance:main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup@223191a6]" started-at="2025-10-20T20:28:45 IST" name="createLogFolderForRun" finished-at="2025-10-20T20:28:45 IST" duration-ms="15" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createLogFolderForRun -->
       </class> <!-- main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup -->
       <class name="test.java.tests.AmazonTests">
-        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-19T02:33:08 IST" name="setUp" finished-at="2025-10-19T02:33:11 IST" duration-ms="2859" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-20T20:28:45 IST" name="setUp" finished-at="2025-10-20T20:28:50 IST" duration-ms="4723" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,7 +24,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyingStorageCapacityFilterFunctionality(java.lang.String)[pri:5, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-19T02:33:11 IST" name="verifyingStorageCapacityFilterFunctionality" data-provider="Data" finished-at="2025-10-19T02:34:02 IST" duration-ms="51287" status="FAIL">
+        <test-method signature="verifyingStorageCapacityFilterFunctionality(java.lang.String)[pri:5, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-20T20:28:50 IST" name="verifyingStorageCapacityFilterFunctionality" data-provider="Data" finished-at="2025-10-20T20:29:39 IST" duration-ms="49679" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -37,56 +37,56 @@
               <![CDATA[The following asserts failed:
  filter 'up to 3.9 gb' not found in product details.
 -------------------------------------------------------------
- Title: nokia 105 classic | single sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio, without charger | charcoal
- Key Features: brand nokia
-operating system s30+
-ram memory installed size 0.03 gb
+ Title: micromax all-new x1i smart dual sim keypad phone | big 2.4" display |type c usb port | bright torch| wireless fm | auto call recording | blue |
+ Key Features: brand micromax
+operating system nucleus os
+ram memory installed size 32 mb
 cpu model snapdragon
-memory storage capacity 0.03 gb
+memory storage capacity 32 mb
  About: about this item
-send and receive upi payments with built-in upi app
-stay entertained for hours with wireless fm
-long lasting battery life
-classic nokia keypad phone
-snake game built-in
+6.1 cm(2.4")screen
+type c usb port
+1200 mah battery with power saving mode
+strong torch light
+digital camera
 › see more product details
- Tech Details: nokia 105 classic mobile phone information
+ Tech Details: product information
 technical details
-os s30+
-ram 0.03 gb
-product dimensions 11.5 x 5 x 1.4 cm; 73 g
+os nucleus os
+product dimensions 14.9 x 7.2 x 1 cm; 200 g
 batteries 1 lithium ion batteries required. (included)
-item model number nokia 105
+item model number x1i smart - blue
 wireless communication technologies cellular
-connectivity technologies bluetooth, usb
+connectivity technologies bluetooth
 gps false
-special features radio
+special features digital camera, strong torch light, type c usb port, vibration mode, wireless fm radio
 other display features wireless
 device interface - primary keypad
 resolution 720p
+other camera features rear
 audio jack 3.5 mm
 form factor bar
-colour charcoal
-battery power rating 800
-phone talk time 12 hours
-whats in the box phone, battery, ug
-manufacturer for and on behalf of hmd mobile india private limited
-country of origin india
-item weight 73 g
+colour blue
+battery power rating 1200
+whats in the box one each of transceiver, battery, charger, user manual
+manufacturer shenzhen huitengda electronics technology company limited
+country of origin china
+item weight 200 g
 additional information
-asin b0cjmgtmhs
-customer reviews 3.8
-20,419 ratings
-3.8 out of 5 stars
+asin b0ctkqykxk
+customer reviews 3.3
+46 ratings
+3.3 out of 5 stars
 best sellers rank
-#50 in electronics (see top 100 in electronics)
-#2 in basic mobiles
-date first available 22 september 2023
-manufacturer for and on behalf of hmd mobile india private limited, pioneer urban square complex, no 510 5th floor, tower c, golf course extension road, sector 62, gurgaon, haryana, 122102, india
-packer padget electronics pvt. ltd . plot no 154c, exculuding the first floor of building, a block, sector 63, gautam buddha nagar, uttar pradesh, 201301 india.
-item dimensions lxwxh 11.5 x 5 x 1.4 centimeters
-net quantity 1 piece
-generic name feature phone
+#845 in electronics (see top 100 in electronics)
+#10 in basic mobiles
+date first available 30 january 2024
+manufacturer shenzhen huitengda electronics technology company limited, shenzhen huitengda electronics technology company limited
+packer shenzhen huitengda electronics technology company limited
+importer micromax informatics ltd, phase 2, nariana, delhi
+item dimensions lxwxh 14.9 x 7.2 x 1 centimeters
+net quantity 1 count
+generic name basic keypad phone
 feedback
 would you like to tell us about a lower price?
 -------------------------------------------------------------]]>
@@ -95,56 +95,56 @@ would you like to tell us about a lower price?
               <![CDATA[java.lang.AssertionError: The following asserts failed:
  filter 'up to 3.9 gb' not found in product details.
 -------------------------------------------------------------
- Title: nokia 105 classic | single sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio, without charger | charcoal
- Key Features: brand nokia
-operating system s30+
-ram memory installed size 0.03 gb
+ Title: micromax all-new x1i smart dual sim keypad phone | big 2.4" display |type c usb port | bright torch| wireless fm | auto call recording | blue |
+ Key Features: brand micromax
+operating system nucleus os
+ram memory installed size 32 mb
 cpu model snapdragon
-memory storage capacity 0.03 gb
+memory storage capacity 32 mb
  About: about this item
-send and receive upi payments with built-in upi app
-stay entertained for hours with wireless fm
-long lasting battery life
-classic nokia keypad phone
-snake game built-in
+6.1 cm(2.4")screen
+type c usb port
+1200 mah battery with power saving mode
+strong torch light
+digital camera
 › see more product details
- Tech Details: nokia 105 classic mobile phone information
+ Tech Details: product information
 technical details
-os s30+
-ram 0.03 gb
-product dimensions 11.5 x 5 x 1.4 cm; 73 g
+os nucleus os
+product dimensions 14.9 x 7.2 x 1 cm; 200 g
 batteries 1 lithium ion batteries required. (included)
-item model number nokia 105
+item model number x1i smart - blue
 wireless communication technologies cellular
-connectivity technologies bluetooth, usb
+connectivity technologies bluetooth
 gps false
-special features radio
+special features digital camera, strong torch light, type c usb port, vibration mode, wireless fm radio
 other display features wireless
 device interface - primary keypad
 resolution 720p
+other camera features rear
 audio jack 3.5 mm
 form factor bar
-colour charcoal
-battery power rating 800
-phone talk time 12 hours
-whats in the box phone, battery, ug
-manufacturer for and on behalf of hmd mobile india private limited
-country of origin india
-item weight 73 g
+colour blue
+battery power rating 1200
+whats in the box one each of transceiver, battery, charger, user manual
+manufacturer shenzhen huitengda electronics technology company limited
+country of origin china
+item weight 200 g
 additional information
-asin b0cjmgtmhs
-customer reviews 3.8
-20,419 ratings
-3.8 out of 5 stars
+asin b0ctkqykxk
+customer reviews 3.3
+46 ratings
+3.3 out of 5 stars
 best sellers rank
-#50 in electronics (see top 100 in electronics)
-#2 in basic mobiles
-date first available 22 september 2023
-manufacturer for and on behalf of hmd mobile india private limited, pioneer urban square complex, no 510 5th floor, tower c, golf course extension road, sector 62, gurgaon, haryana, 122102, india
-packer padget electronics pvt. ltd . plot no 154c, exculuding the first floor of building, a block, sector 63, gautam buddha nagar, uttar pradesh, 201301 india.
-item dimensions lxwxh 11.5 x 5 x 1.4 centimeters
-net quantity 1 piece
-generic name feature phone
+#845 in electronics (see top 100 in electronics)
+#10 in basic mobiles
+date first available 30 january 2024
+manufacturer shenzhen huitengda electronics technology company limited, shenzhen huitengda electronics technology company limited
+packer shenzhen huitengda electronics technology company limited
+importer micromax informatics ltd, phase 2, nariana, delhi
+item dimensions lxwxh 14.9 x 7.2 x 1 centimeters
+net quantity 1 count
+generic name basic keypad phone
 feedback
 would you like to tell us about a lower price?
 -------------------------------------------------------------
@@ -170,7 +170,7 @@ at java.base/java.lang.Thread.run(Thread.java:1583)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyingStorageCapacityFilterFunctionality -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-19T02:34:02 IST" name="tearDown" finished-at="2025-10-19T02:34:02 IST" duration-ms="404" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-20T20:29:39 IST" name="tearDown" finished-at="2025-10-20T20:29:40 IST" duration-ms="391" status="PASS">
           <params>
             <param index="0">
               <value>
