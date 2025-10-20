@@ -166,6 +166,16 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
+
+      - name: Deploy Extent Report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ env.WORKDIR }}/artifacts/extent
+          publish_branch: master
+          keep_files: true
+ 
       - name: Upload Raw Logs (optional)
         if: always()
         uses: actions/upload-artifact@v4
