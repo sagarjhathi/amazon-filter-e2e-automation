@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI Pipeline - Publish Extent (gh-pages)
 
 on:
   push:
@@ -9,10 +9,10 @@ on:
       - "**"
   workflow_dispatch:
   schedule:
-    - cron: "50 17 * * *"   # 11:20 PM IST daily
+    - cron: "50 17 * * *"   # daily
 
 permissions:
-  contents: write   # ✅ allow pushing index.html back to repo
+  contents: write   # allow peaceiris to push to gh-pages
 
 env:
   JAVA_DISTRIBUTION: temurin
@@ -30,7 +30,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          persist-credentials: true   # ✅ ensures GITHUB_TOKEN is kept for pushing
+          persist-credentials: true
 
       - name: Set up JDK
         uses: actions/setup-java@v4
@@ -38,16 +38,6 @@ jobs:
           distribution: ${{ env.JAVA_DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
           cache: maven
-
-      - name: Cache Maven target and .m2 repo (optional)
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.m2/repository
-            ${{ env.WORKDIR }}/target
-          key: maven-${{ runner.os }}-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            maven-${{ runner.os }}-
 
       - name: Print environment info
         shell: bash
@@ -59,41 +49,25 @@ jobs:
           echo "Working directory: ${{ env.WORKDIR }}"
           echo "Runner OS: $RUNNER_OS"
 
-      - name: Notify Discord – Start of Test
-        if: always()
-        shell: bash
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: |
-          runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
-          actor="${{ github.actor }}"
-          branch="${{ github.ref_name }}"
-          job_name="${{ github.job }}"
-
-          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"🚀 **CI Test Started - $job_name**\\n👤 Triggered by: $actor\\n🌿 Branch: $branch\\n🕒 Start Time: $timestamp\\n🔗 [View Run]($runUrl)\"}" "$DISCORD_WEBHOOK"
-
-
       - name: Set RUN_TIMESTAMP (Windows runner)
         id: set_ts
         shell: pwsh
         run: |
-          # produce format yyyy-MM-dd_HH-mm-ss (matches local format)
           $ts = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'
           Write-Host "RUN_TIMESTAMP = $ts"
-          # export to GITHUB_ENV for subsequent steps
           Add-Content -Path $env:GITHUB_ENV -Value "RUN_TIMESTAMP=$ts"
 
-      - name: Run Maven Tests
+      - name: Run Maven Tests (enforce logs.dir + runTimestamp)
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
-            ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
-            echo "Setting logs.dir = $ABS_LOGS_DIR"
-            mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR"
+          # absolute logs folder inside the WORKDIR (so packaging picks it up reliably)
+          ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
+          echo "Setting logs.dir = $ABS_LOGS_DIR"
+          mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR" | tee mvn-output.txt
+          tail -n 200 mvn-output.txt || true
 
-
-      - name: Debug - verify created logs and artifact layout (CRITICAL)
+      - name: Debug - verify created logs and artifact layout (non-failing)
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
@@ -104,45 +78,19 @@ jobs:
           echo "List logs under WORKDIR/logs:"
           ls -la logs || true
           echo "Find any run_* folders under WORKDIR:"
-          find . -maxdepth 5 -type d -name 'run_*' -print || true
+          find . -maxdepth 6 -type d -name 'run_*' -print || true
           echo "List test-output/ExtentReports:"
           ls -la test-output/ExtentReports || true
           echo "Show artifacts/extent (pre-packaging) if present:"
           ls -la artifacts/extent || true
-
-
-      - name: Copy ExtentReport and publish to GitHub Pages
-        if: always()
-        shell: bash
-        working-directory: ${{ env.WORKDIR }}
-        run: |
-          set -euo pipefail
-
-          REPORT_SRC="test-output/ExtentReports/ExtentReport.html"
-          REPO_ROOT="$GITHUB_WORKSPACE"
-
-          if [ ! -f "$REPORT_SRC" ]; then
-            echo "No ExtentReport found at $REPORT_SRC"
-            exit 0
-          fi
-
-          echo "Copying report from $REPORT_SRC to $REPO_ROOT/index.html"
-          cp "$REPORT_SRC" "$REPO_ROOT/index.html"
-
-          cd "$REPO_ROOT"
-
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-
-          git add index.html
-          git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
-          git push origin HEAD
 
       - name: Package Extent Report bundle with screenshots and logs
         if: always()
         shell: bash
         working-directory: ${{ env.WORKDIR }}
         run: |
+          set -euo pipefail
+          rm -rf artifacts/extent
           mkdir -p artifacts/extent
           if [ -d "test-output/ExtentReports" ]; then
             cp -r test-output/ExtentReports artifacts/extent/ExtentReports
@@ -153,16 +101,14 @@ jobs:
           if [ -d "logs" ]; then
             cp -r logs artifacts/extent/logs
           fi
-          echo "<html><body><h3>Artifacts</h3><ul><li><a href='ExtentReports/ExtentReport.html'>Open Extent Report</a></li></ul></body></html>" > artifacts/extent/index.html
-
-      # - name: Upload Surefire Reports
-      #   if: always()
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: surefire-reports
-      #     path: ${{ env.WORKDIR }}/target/surefire-reports
-      #     retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
-      #     if-no-files-found: warn
+          # create a tiny index that links directly to the Extent report (optional convenience)
+          cat > artifacts/extent/index.html <<'HTML'
+          <!doctype html>
+          <html>
+          <head><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=ExtentReports/ExtentReport.html"><title>Latest Test Report</title></head>
+          <body>If you are not redirected, <a href="ExtentReports/ExtentReport.html">open the report</a>.</body>
+          </html>
+          HTML
 
       - name: Upload Extent Report Bundle (HTML + screenshots + logs)
         if: always()
@@ -173,16 +119,15 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
-
-      - name: Deploy Extent Report to GitHub Pages
+      - name: Deploy Extent Report to GitHub Pages (gh-pages)
         if: always()
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ env.WORKDIR }}/artifacts/extent
-          publish_branch: master
+          publish_branch: gh-pages
           keep_files: true
- 
+
       - name: Upload Raw Logs (optional)
         if: always()
         uses: actions/upload-artifact@v4
@@ -193,7 +138,7 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: ignore
 
-      - name: Notify Discord – End of Test
+      - name: Notify Discord – End of Test (optional)
         if: always()
         shell: bash
         env:
@@ -202,32 +147,10 @@ jobs:
           runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
           artifactUrl="${runUrl}#artifacts"
           status="${{ job.status }}"
-
-          if [ "$status" = "success" ]; then
-            status_emoji="✅"
-          elif [ "$status" = "failure" ]; then
-            status_emoji="❌"
-          else
-            status_emoji="⚠️"
-          fi
-
-          commit_sha="${{ github.sha }}"
-          commit_short="${commit_sha:0:7}"
+          if [ "$status" = "success" ]; then status_emoji="✅"; elif [ "$status" = "failure" ]; then status_emoji="❌"; else status_emoji="⚠️"; fi
+          commit_short="${{ github.sha }}"
           branch="${{ github.ref_name }}"
           actor="${{ github.actor }}"
           timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
-
           pagesUrl="https://sagarjhathi.github.io/amazon-filter-e2e-automation/"
-
-          curl -H "Content-Type: application/json" \
-               -X POST \
-               -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n🌐 [Open Latest Report on GitHub Pages]($pagesUrl)\"}" \
-               "$DISCORD_WEBHOOK"
-
-
-   
-
-         
-      
-
-    
+          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Run]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n🌐 [Open Latest Report on GitHub Pages]($pagesUrl)\"}" "$DISCORD_WEBHOOK" || true
