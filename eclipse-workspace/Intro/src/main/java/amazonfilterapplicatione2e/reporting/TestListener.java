@@ -88,22 +88,7 @@ public class TestListener implements ITestListener {
         ExtentManager.getInstance().flush();
     }
 
-//    private void attachLogFile() {
-//        try {
-//            String logFileName = ThreadContext.get("logFileName");
-//            if (logFileName != null) {
-//            	String relativePath = "./logs/" + logFileName + ".log";
-//                String absolutePath = System.getProperty("user.dir") + "/logs/" + logFileName + ".log";
-//                String absolutePathNew = "C:/Sagar/google-shopping-aggregator-automation/eclipse-workspace/Intro/logs/" + logFileName + ".log";
-//
-//                String fileUrl = "file:///" + absolutePathNew.replace("\\", "/");
-//
-//                ExtentTestManager.getTest().info("📄 <a href='" + fileUrl + "' target='_blank'>Click to view log file</a>");
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
-//        }
-//    }
+
     
 //    
 //    private void attachLogFile(ITestResult result) {
@@ -245,70 +230,131 @@ public class TestListener implements ITestListener {
     
     
     
+//    private void attachLogFile(ITestResult result) {
+//        try {
+//            if (result == null) return;
+//            String testName = result.getMethod().getMethodName();
+//
+//            // 1) Try expected exact path first (fast)
+//            Path expected = Paths.get(System.getProperty("user.dir"),
+//                                      "logs",
+//                                      "run_" + ExtentManager.RUN_TIMESTAMP,
+//                                      testName + ".log");
+//            File found = expected.toFile();
+//            if (!found.exists()) {
+//                // 2) Fallback: deep search under ./logs for any file whose name contains the testName
+//                File logsRoot = new File(System.getProperty("user.dir"), "logs");
+//                if (logsRoot.exists() && logsRoot.isDirectory()) {
+//                    File best = null;
+//                    long bestTime = 0L;
+//                    java.util.Queue<File> q = new java.util.ArrayDeque<>();
+//                    q.add(logsRoot);
+//                    while (!q.isEmpty()) {
+//                        File dir = q.poll();
+//                        File[] children = dir.listFiles();
+//                        if (children == null) continue;
+//                        for (File c : children) {
+//                            if (c.isDirectory()) q.add(c);
+//                            else {
+//                                String name = c.getName().toLowerCase();
+//                                if (name.contains(testName.toLowerCase()) && name.endsWith(".log")) {
+//                                    long t = c.lastModified();
+//                                    // pick the most recently modified candidate
+//                                    if (best == null || t > bestTime) {
+//                                        best = c;
+//                                        bestTime = t;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    if (best != null) found = best;
+//                }
+//            }
+//
+//            if (found != null && found.exists()) {
+//                // compute relative href from report folder so links remain portable
+//                Path reportDir = Paths.get(System.getProperty("user.dir"), "test-output", "ExtentReports");
+//                Path target = found.toPath().toAbsolutePath();
+//                String href;
+//                try {
+//                    href = reportDir.relativize(target).toString().replace("\\", "/");
+//                } catch (Exception e) {
+//                    // fallback: project-root relative path
+//                    Path proj = Paths.get(System.getProperty("user.dir"));
+//                    href = "./" + proj.relativize(target).toString().replace("\\", "/");
+//                }
+//
+//                ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+//            } else {
+//                ExtentTestManager.getTest().info("⚠️ Log file not found: " + expected.toAbsolutePath().toString());
+//            }
+//        } catch (Exception ex) {
+//            ExtentTestManager.getTest().warning("Could not attach log file: " + ex.getMessage());
+//        }
+//    }
+
+    
     private void attachLogFile(ITestResult result) {
         try {
             if (result == null) return;
-            String testName = result.getMethod().getMethodName();
 
-            // 1) Try expected exact path first (fast)
-            Path expected = Paths.get(System.getProperty("user.dir"),
-                                      "logs",
-                                      "run_" + ExtentManager.RUN_TIMESTAMP,
-                                      testName + ".log");
-            File found = expected.toFile();
-            if (!found.exists()) {
-                // 2) Fallback: deep search under ./logs for any file whose name contains the testName
-                File logsRoot = new File(System.getProperty("user.dir"), "logs");
-                if (logsRoot.exists() && logsRoot.isDirectory()) {
-                    File best = null;
-                    long bestTime = 0L;
-                    java.util.Queue<File> q = new java.util.ArrayDeque<>();
-                    q.add(logsRoot);
-                    while (!q.isEmpty()) {
-                        File dir = q.poll();
-                        File[] children = dir.listFiles();
-                        if (children == null) continue;
-                        for (File c : children) {
-                            if (c.isDirectory()) q.add(c);
-                            else {
-                                String name = c.getName().toLowerCase();
-                                if (name.contains(testName.toLowerCase()) && name.endsWith(".log")) {
-                                    long t = c.lastModified();
-                                    // pick the most recently modified candidate
-                                    if (best == null || t > bestTime) {
-                                        best = c;
-                                        bestTime = t;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (best != null) found = best;
-                }
+            // 1) determine per-test filename (set earlier in onTestStart())
+            String perTestName = (String) result.getAttribute("logFileName");
+            if (perTestName == null || perTestName.isEmpty()) {
+                perTestName = result.getMethod().getMethodName();
             }
 
-            if (found != null && found.exists()) {
-                // compute relative href from report folder so links remain portable
-                Path reportDir = Paths.get(System.getProperty("user.dir"), "test-output", "ExtentReports");
-                Path target = found.toPath().toAbsolutePath();
-                String href;
+            // 2) absolute path to the log file (project-root/logs/run_<timestamp>/<perTestName>.log)
+            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
+            Path logFilePath = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
+
+            File logFile = logFilePath.toFile();
+            if (!logFile.exists()) {
+                ExtentTestManager.getTest().info("⚠️ Log file not found: " + logFilePath.toString());
+                return;
+            }
+
+            // 3) candidate report directories (where ExtentReport.html may live)
+            // prefer the test-output/ExtentReports folder, but also try project root and artifacts folder
+            Path[] candidates = new Path[] {
+                projectRoot.resolve(Paths.get("test-output", "ExtentReports")),     // typical local output
+                projectRoot.resolve("ExtentReports"),                              // sometimes copied to repo root/ExtentReports
+                projectRoot,                                                       // if report is at repo root (index.html)
+            };
+
+            String href = null;
+            for (Path reportDir : candidates) {
                 try {
-                    href = reportDir.relativize(target).toString().replace("\\", "/");
-                } catch (Exception e) {
-                    // fallback: project-root relative path
-                    Path proj = Paths.get(System.getProperty("user.dir"));
-                    href = "./" + proj.relativize(target).toString().replace("\\", "/");
-                }
+                    if (reportDir == null) continue;
+                    Path reportDirAbs = reportDir.toAbsolutePath();
+                    // only attempt if folder exists OR it's a plausible target (we still test relativize)
+                    Path relative = reportDirAbs.relativize(logFilePath.toAbsolutePath());
+                    String relStr = relative.toString().replace("\\", "/");
+                    // Ensure no accidental leading slash (so it's not absolute to the site root)
+                    if (relStr.startsWith("/")) relStr = relStr.substring(1);
 
-                ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
-            } else {
-                ExtentTestManager.getTest().info("⚠️ Log file not found: " + expected.toAbsolutePath().toString());
+                    // Accept this relative path (it may contain ../ which is fine)
+                    href = relStr;
+                    break;
+                } catch (Exception e) {
+                    // ignore and try next candidate
+                }
             }
-        } catch (Exception ex) {
-            ExtentTestManager.getTest().warning("Could not attach log file: " + ex.getMessage());
+
+            // 4) fallback: project-root relative (safe)
+            if (href == null) {
+                Path projRel = projectRoot.relativize(logFilePath.toAbsolutePath());
+                href = "./" + projRel.toString().replace("\\", "/");
+            }
+
+            // 5) add link to Extent report (relative link)
+            ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+
+        } catch (Exception e) {
+            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
-
     
     
     
