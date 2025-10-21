@@ -359,6 +359,7 @@ public class TestListener implements ITestListener {
     
     
     
+    
     private void attachScreenshotFolder(ITestResult result) {
         try {
             String testName = result.getMethod().getMethodName();
