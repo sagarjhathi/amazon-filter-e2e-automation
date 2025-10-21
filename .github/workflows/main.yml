@@ -93,18 +93,23 @@ jobs:
             mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR"
 
 
-      - name: Debug - show run timestamp and created folders
+      - name: Debug - verify created logs and artifact layout (CRITICAL)
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
           echo "RUN_TIMESTAMP = $RUN_TIMESTAMP"
-          echo "PWD = $(pwd)"
-          echo "Listing logs root (if exists):"
+          echo "Working dir = $(pwd)"
+          echo "Absolute logs dir we intended:"
+          echo "${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
+          echo "List logs under WORKDIR/logs:"
           ls -la logs || true
-          echo "List run_* folders under logs (if any):"
-          ls -la logs | grep run_ || true
-          echo "Listing ExtentReports folder (if exists):"
+          echo "Find any run_* folders under WORKDIR:"
+          find . -maxdepth 5 -type d -name 'run_*' -print || true
+          echo "List test-output/ExtentReports:"
           ls -la test-output/ExtentReports || true
+          echo "Show artifacts/extent (pre-packaging) if present:"
+          ls -la artifacts/extent || true
+
 
       - name: Copy ExtentReport and publish to GitHub Pages
         if: always()
