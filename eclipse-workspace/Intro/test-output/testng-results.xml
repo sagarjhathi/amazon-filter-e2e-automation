@@ -2,18 +2,18 @@
 <testng-results ignored="12" total="13" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-20T20:28:45 IST" name="Suite" finished-at="2025-10-20T20:29:40 IST" duration-ms="54828">
+  <suite started-at="2025-10-21T14:41:29 IST" name="Suite" finished-at="2025-10-21T14:42:35 IST" duration-ms="66167">
     <groups>
     </groups>
-    <test started-at="2025-10-20T20:28:45 IST" name="Test" finished-at="2025-10-20T20:29:40 IST" duration-ms="54828">
+    <test started-at="2025-10-21T14:41:29 IST" name="Test" finished-at="2025-10-21T14:42:35 IST" duration-ms="66167">
       <class name="main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup">
-        <test-method is-config="true" signature="createLogFolderForRun()[pri:0, instance:main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup@223191a6]" started-at="2025-10-20T20:28:45 IST" name="createLogFolderForRun" finished-at="2025-10-20T20:28:45 IST" duration-ms="15" status="PASS">
+        <test-method is-config="true" signature="createLogFolderForRun()[pri:0, instance:main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup@223191a6]" started-at="2025-10-21T14:41:29 IST" name="createLogFolderForRun" finished-at="2025-10-21T14:41:29 IST" duration-ms="14" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createLogFolderForRun -->
       </class> <!-- main.java.amazonfilterapplicatione2e.logger.LoggerFolderSetup -->
       <class name="test.java.tests.AmazonTests">
-        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-20T20:28:45 IST" name="setUp" finished-at="2025-10-20T20:28:50 IST" duration-ms="4723" status="PASS">
+        <test-method is-config="true" signature="setUp(java.lang.reflect.Method)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-21T14:41:29 IST" name="setUp" finished-at="2025-10-21T14:41:46 IST" duration-ms="16689" status="PASS">
           <params>
             <param index="0">
               <value>
@@ -24,7 +24,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="verifyingStorageCapacityFilterFunctionality(java.lang.String)[pri:5, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-20T20:28:50 IST" name="verifyingStorageCapacityFilterFunctionality" data-provider="Data" finished-at="2025-10-20T20:29:39 IST" duration-ms="49679" status="FAIL">
+        <test-method signature="verifyingStorageCapacityFilterFunctionality(java.lang.String)[pri:5, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-21T14:41:46 IST" name="verifyingStorageCapacityFilterFunctionality" data-provider="Data" finished-at="2025-10-21T14:42:35 IST" duration-ms="49081" status="FAIL">
           <params>
             <param index="0">
               <value>
@@ -89,6 +89,62 @@ net quantity 1 count
 generic name basic keypad phone
 feedback
 would you like to tell us about a lower price?
+-------------------------------------------------------------,
+ filter '4 gb' not found in product details.
+-------------------------------------------------------------
+ Title: jiophone prima 2 4g keypad phone with premium design, youtube, jiotv, jiohotstar, jiosaavn, jiopay(upi), video calling, led torch, digital cameras | luxe blue | locked for jionetwork
+ Key Features: brand jio
+operating system kaios 2.5.3
+ram memory installed size 512 mb
+cpu model snapdragon
+cpu speed 1 ghz
+ About: about this item
+curved premium design
+prime entertainement apps - youtube, jiotv, jiohotstar, jiosaavn, jionews
+prime social connectivity - jiochat, facebook
+prime connectivity - 4g connection
+battery capacty 2000mah
+device will work with jio sim card only.
+› see more product details
+ Tech Details: jiophone prima 2 4g keypad phone mobile phone information
+technical details
+os kaios 2.5.3
+product dimensions 12.3 x 5.6 x 1.5 cm; 120 g
+batteries 1 lithium ion batteries required. (included)
+item model number jfp1ae
+wireless communication technologies cellular
+connectivity technologies bluetooth, usb, wi-fi
+gps glonass
+special features 2.4" screen size, 4g band - band 3,5,40, battery capacity - 2000mah, expandable memory - 128gb, nano sim, single, jiolocked
+other display features wireless
+device interface - primary keypad
+resolution 720p
+other camera features front, rear
+audio jack 3.5 mm
+form factor bar
+colour luxe blue
+battery power rating 2000
+whats in the box handset, power adapter, battery pack, qsg, warranty card
+manufacturer united telelinks neolyncs private limited
+country of origin india
+item weight 120 g
+additional information
+asin b0dc71y7ml
+customer reviews 3.4
+1,387 ratings
+3.4 out of 5 stars
+best sellers rank
+#513 in electronics (see top 100 in electronics)
+#6 in basic mobiles
+date first available 9 september 2024
+manufacturer united telelinks neolyncs private liimted, survey nos 228, 229 and 230, it park, kurukalva village, renigunta manda, chittoor, andhra ppradesh - 517520, united telelinks neolyncs private limited
+packer united telelinks neolyncs private liimted, survey nos 228, 229 and 230, it park, kurukalva village, renigunta manda, chittoor, andhra ppradesh - 517520
+importer united telelinks neolyncs private liimted, survey nos 228, 229 and 230, it park, kurukalva village, renigunta manda, chittoor, andhra ppradesh - 517520
+item dimensions lxwxh 12.3 x 5.6 x 1.5 centimeters
+net quantity 1 count
+generic name mobile phone
+feedback
+would you like to tell us about a lower price?
 -------------------------------------------------------------]]>
             </message>
             <full-stacktrace>
@@ -147,6 +203,62 @@ net quantity 1 count
 generic name basic keypad phone
 feedback
 would you like to tell us about a lower price?
+-------------------------------------------------------------,
+ filter '4 gb' not found in product details.
+-------------------------------------------------------------
+ Title: jiophone prima 2 4g keypad phone with premium design, youtube, jiotv, jiohotstar, jiosaavn, jiopay(upi), video calling, led torch, digital cameras | luxe blue | locked for jionetwork
+ Key Features: brand jio
+operating system kaios 2.5.3
+ram memory installed size 512 mb
+cpu model snapdragon
+cpu speed 1 ghz
+ About: about this item
+curved premium design
+prime entertainement apps - youtube, jiotv, jiohotstar, jiosaavn, jionews
+prime social connectivity - jiochat, facebook
+prime connectivity - 4g connection
+battery capacty 2000mah
+device will work with jio sim card only.
+› see more product details
+ Tech Details: jiophone prima 2 4g keypad phone mobile phone information
+technical details
+os kaios 2.5.3
+product dimensions 12.3 x 5.6 x 1.5 cm; 120 g
+batteries 1 lithium ion batteries required. (included)
+item model number jfp1ae
+wireless communication technologies cellular
+connectivity technologies bluetooth, usb, wi-fi
+gps glonass
+special features 2.4" screen size, 4g band - band 3,5,40, battery capacity - 2000mah, expandable memory - 128gb, nano sim, single, jiolocked
+other display features wireless
+device interface - primary keypad
+resolution 720p
+other camera features front, rear
+audio jack 3.5 mm
+form factor bar
+colour luxe blue
+battery power rating 2000
+whats in the box handset, power adapter, battery pack, qsg, warranty card
+manufacturer united telelinks neolyncs private limited
+country of origin india
+item weight 120 g
+additional information
+asin b0dc71y7ml
+customer reviews 3.4
+1,387 ratings
+3.4 out of 5 stars
+best sellers rank
+#513 in electronics (see top 100 in electronics)
+#6 in basic mobiles
+date first available 9 september 2024
+manufacturer united telelinks neolyncs private liimted, survey nos 228, 229 and 230, it park, kurukalva village, renigunta manda, chittoor, andhra ppradesh - 517520, united telelinks neolyncs private limited
+packer united telelinks neolyncs private liimted, survey nos 228, 229 and 230, it park, kurukalva village, renigunta manda, chittoor, andhra ppradesh - 517520
+importer united telelinks neolyncs private liimted, survey nos 228, 229 and 230, it park, kurukalva village, renigunta manda, chittoor, andhra ppradesh - 517520
+item dimensions lxwxh 12.3 x 5.6 x 1.5 centimeters
+net quantity 1 count
+generic name mobile phone
+feedback
+would you like to tell us about a lower price?
 -------------------------------------------------------------
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
 at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
@@ -170,7 +282,7 @@ at java.base/java.lang.Thread.run(Thread.java:1583)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- verifyingStorageCapacityFilterFunctionality -->
-        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-20T20:29:39 IST" name="tearDown" finished-at="2025-10-20T20:29:40 IST" duration-ms="391" status="PASS">
+        <test-method is-config="true" signature="tearDown(org.testng.ITestResult)[pri:0, instance:test.java.tests.AmazonTests@2d36e77e]" started-at="2025-10-21T14:42:35 IST" name="tearDown" finished-at="2025-10-21T14:42:35 IST" duration-ms="367" status="PASS">
           <params>
             <param index="0">
               <value>
