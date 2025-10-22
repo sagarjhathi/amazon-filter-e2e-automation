@@ -9,10 +9,10 @@ on:
       - "**"
   workflow_dispatch:
   schedule:
-    - cron: "50 17 * * *"   # daily
+    - cron: "50 17 * * *"
 
 permissions:
-  contents: write   # allow peaceiris to push to gh-pages
+  contents: write
 
 env:
   JAVA_DISTRIBUTION: temurin
@@ -39,16 +39,6 @@ jobs:
           java-version: ${{ env.JAVA_VERSION }}
           cache: maven
 
-      - name: Print environment info
-        shell: bash
-        run: |
-          echo "Java version:"
-          java -version
-          echo "Maven version:"
-          mvn -v
-          echo "Working directory: ${{ env.WORKDIR }}"
-          echo "Runner OS: $RUNNER_OS"
-
       - name: Set RUN_TIMESTAMP (Windows runner)
         id: set_ts
         shell: pwsh
@@ -61,28 +51,10 @@ jobs:
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
-          # absolute logs folder inside the WORKDIR (so packaging picks it up reliably)
           ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
           echo "Setting logs.dir = $ABS_LOGS_DIR"
           mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR" | tee mvn-output.txt
           tail -n 200 mvn-output.txt || true
-
-      - name: Debug - verify created logs and artifact layout (non-failing)
-        working-directory: ${{ env.WORKDIR }}
-        shell: bash
-        run: |
-          echo "RUN_TIMESTAMP = $RUN_TIMESTAMP"
-          echo "Working dir = $(pwd)"
-          echo "Absolute logs dir we intended:"
-          echo "${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
-          echo "List logs under WORKDIR/logs:"
-          ls -la logs || true
-          echo "Find any run_* folders under WORKDIR:"
-          find . -maxdepth 6 -type d -name 'run_*' -print || true
-          echo "List test-output/ExtentReports:"
-          ls -la test-output/ExtentReports || true
-          echo "Show artifacts/extent (pre-packaging) if present:"
-          ls -la artifacts/extent || true
 
       - name: Package Extent Report bundle with screenshots and logs
         if: always()
@@ -93,26 +65,21 @@ jobs:
           rm -rf artifacts/extent
           mkdir -p artifacts/extent
 
-          # Copy ExtentReports folder if present
           if [ -d "test-output/ExtentReports" ]; then
             cp -r test-output/ExtentReports artifacts/extent/ExtentReports
           fi
 
-          # Copy screenshots if present
           if [ -d "test-output/screenshots" ]; then
             cp -r test-output/screenshots artifacts/extent/screenshots
           fi
 
-          # Copy only the logs for this run (logs/run_<timestamp>) into the deployed folder
           mkdir -p artifacts/extent/logs
           if [ -d "logs/run_${RUN_TIMESTAMP}" ]; then
             cp -r "logs/run_${RUN_TIMESTAMP}" artifacts/extent/logs/
           else
-            # fallback: copy any run_* (non-fatal)
             cp -r logs/run_* artifacts/extent/logs/ || true
           fi
 
-          # Create a convenience index that redirects to the Extent report
           cat > artifacts/extent/index.html <<'HTML'
           <!doctype html>
           <html>
@@ -121,7 +88,7 @@ jobs:
           </html>
           HTML
 
-      - name: Upload Extent Report Bundle (HTML + screenshots + logs)
+      - name: Upload Extent Report Bundle (HTML + screenshots + logs)  # optional, keeps copy on run
         if: always()
         uses: actions/upload-artifact@v4
         with:
@@ -130,12 +97,12 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
+      # <-- DEPLOY STEP: skip when running on gh-pages itself to avoid "deploy from gh-pages to gh-pages" error -->
       - name: Deploy Extent Report to GitHub Pages (gh-pages)
-        if: always()
+        if: ${{ always() && github.ref_name != 'gh-pages' }}
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # use absolute path to avoid OS/working-dir ambiguity
           publish_dir: ${{ github.workspace }}/${{ env.WORKDIR }}/artifacts/extent
           publish_branch: gh-pages
           keep_files: false
@@ -152,20 +119,3 @@ jobs:
             ${{ env.WORKDIR }}/logs
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: ignore
-
-      - name: Notify Discord – End of Test (optional)
-        if: always()
-        shell: bash
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-        run: |
-          runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
-          artifactUrl="${runUrl}#artifacts"
-          status="${{ job.status }}"
-          if [ "$status" = "success" ]; then status_emoji="✅"; elif [ "$status" = "failure" ]; then status_emoji="❌"; else status_emoji="⚠️"; fi
-          commit_short="${{ github.sha }}"
-          branch="${{ github.ref_name }}"
-          actor="${{ github.actor }}"
-          timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
-          pagesUrl="https://sagarjhathi.github.io/amazon-filter-e2e-automation/"
-          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Run]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n🌐 [Open Latest Report on GitHub Pages]($pagesUrl)\"}" "$DISCORD_WEBHOOK" || true
