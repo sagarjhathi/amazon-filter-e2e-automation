@@ -92,16 +92,27 @@ jobs:
           set -euo pipefail
           rm -rf artifacts/extent
           mkdir -p artifacts/extent
+
+          # Copy ExtentReports folder if present
           if [ -d "test-output/ExtentReports" ]; then
             cp -r test-output/ExtentReports artifacts/extent/ExtentReports
           fi
+
+          # Copy screenshots if present
           if [ -d "test-output/screenshots" ]; then
             cp -r test-output/screenshots artifacts/extent/screenshots
           fi
-          if [ -d "logs" ]; then
-            cp -r logs artifacts/extent/logs
+
+          # Copy only the logs for this run (logs/run_<timestamp>) into the deployed folder
+          mkdir -p artifacts/extent/logs
+          if [ -d "logs/run_${RUN_TIMESTAMP}" ]; then
+            cp -r "logs/run_${RUN_TIMESTAMP}" artifacts/extent/logs/
+          else
+            # fallback: copy any run_* (non-fatal)
+            cp -r logs/run_* artifacts/extent/logs/ || true
           fi
-          # create a tiny index that links directly to the Extent report (optional convenience)
+
+          # Create a convenience index that redirects to the Extent report
           cat > artifacts/extent/index.html <<'HTML'
           <!doctype html>
           <html>
@@ -121,12 +132,16 @@ jobs:
 
       - name: Deploy Extent Report to GitHub Pages (gh-pages)
         if: always()
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.WORKDIR }}/artifacts/extent
+          # use absolute path to avoid OS/working-dir ambiguity
+          publish_dir: ${{ github.workspace }}/${{ env.WORKDIR }}/artifacts/extent
           publish_branch: gh-pages
-          keep_files: true
+          keep_files: false
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "ci: publish extent report and assets (${{ env.RUN_TIMESTAMP }}) [skip ci]"
 
       - name: Upload Raw Logs (optional)
         if: always()
