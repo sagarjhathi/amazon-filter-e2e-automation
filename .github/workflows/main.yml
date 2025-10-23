@@ -93,22 +93,7 @@ jobs:
             mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR"
 
 
-      - name: Debug - verify created logs and artifact layout (CRITICAL)
-        working-directory: ${{ env.WORKDIR }}
-        shell: bash
-        run: |
-          echo "RUN_TIMESTAMP = $RUN_TIMESTAMP"
-          echo "Working dir = $(pwd)"
-          echo "Absolute logs dir we intended:"
-          echo "${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
-          echo "List logs under WORKDIR/logs:"
-          ls -la logs || true
-          echo "Find any run_* folders under WORKDIR:"
-          find . -maxdepth 5 -type d -name 'run_*' -print || true
-          echo "List test-output/ExtentReports:"
-          ls -la test-output/ExtentReports || true
-          echo "Show artifacts/extent (pre-packaging) if present:"
-          ls -la artifacts/extent || true
+      
 
 
       - name: Copy ExtentReport and publish to GitHub Pages
@@ -166,14 +151,7 @@ jobs:
           if-no-files-found: warn
 
 
-      - name: Deploy Extent Report to GitHub Pages
-        if: always()
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ${{ env.WORKDIR }}/artifacts/extent
-          publish_branch: master
-          keep_files: true
+      
  
       - name: Upload Raw Logs (optional)
         if: always()
