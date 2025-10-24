@@ -125,43 +125,63 @@ jobs:
 
 
 
-
-      - name: Copy ExtentReport and publish to gh-pages
+      - name: Copy ExtentReport and publish to gh-pages (safe, stash-based)
         if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
         shell: bash
         working-directory: ${{ env.WORKDIR }}
         run: |
           set -euo pipefail
 
-          REPORT_SRC="test-output/ExtentReports/ExtentReport.html"
+          # absolute paths
+          REPORT_SRC="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
           if [ ! -f "$REPORT_SRC" ]; then
             echo "No ExtentReport found at $REPORT_SRC — skipping publish"
             exit 0
           fi
 
-          echo "Copying report to gh-pages branch..."
+          echo "Preparing to publish report to gh-pages..."
 
-          # Move to repo root
-          cd "$GITHUB_WORKSPACE"
+          # preserve a copy outside the repo working tree
+          TMPDIR="$(mktemp -d)"
+          cp "$REPORT_SRC" "$TMPDIR/index.html"
 
-          # Configure git identity
+          # configure git identity for commits
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Fetch gh-pages branch and check it out
-          git fetch origin gh-pages
+          # stash any local changes so checkout won't fail (safe: stash may be empty)
+          git stash push -u -m "ci: temporary stash before gh-pages checkout" >/dev/null 2>&1 || true
+          STASHED=$?
+
+          # fetch and checkout gh-pages
+          git fetch origin gh-pages || true
           git checkout gh-pages
 
-          # Copy Extent report to index.html
-          cp "${{ env.WORKDIR }}/$REPORT_SRC" "index.html"
+          # copy the prepared index into the gh-pages branch root
+          cp "$TMPDIR/index.html" "$GITHUB_WORKSPACE/index.html"
 
-          # Commit and push only index.html
+          # commit and push only index.html
           git add index.html
-          git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
-          git push origin gh-pages
+          if git diff --staged --quiet; then
+            echo "No changes to index.html on gh-pages"
+          else
+            git commit -m "ci: publish ExtentReport [skip ci]"
+            git push origin gh-pages
+          fi
 
-          # Go back to original branch (so the workflow stays clean)
-          git checkout -
+          # return to original branch
+          git checkout - >/dev/null 2>&1 || true
+
+          # try to restore stashed changes (if any)
+          if git rev-parse --verify --quiet refs/stash >/dev/null; then
+            git stash pop >/dev/null 2>&1 || true
+          fi
+
+          # cleanup
+          rm -rf "$TMPDIR"
+
+          echo "Published report to gh-pages (if changed)."
+
 
       - name: Package Extent Report bundle with screenshots and logs
         if: always()
