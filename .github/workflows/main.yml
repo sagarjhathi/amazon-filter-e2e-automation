@@ -141,6 +141,9 @@ jobs:
           echo "<html><body><h3>Artifacts</h3><ul><li><a href='ExtentReports/ExtentReport.html'>Open Extent Report</a></li></ul></body></html>" > artifacts/extent/index.html
 
 
+    
+
+
       - name: Upload Extent Report Bundle (HTML + screenshots + logs)
         if: always()
         uses: actions/upload-artifact@v4
@@ -150,6 +153,39 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
+
+
+      - name: Upload Extent Report Bundle (HTML + screenshots + logs)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: extent-report-bundle
+          path: ${{ env.WORKDIR }}/artifacts/extent
+          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
+          if-no-files-found: warn
+
+      - name: Deploy to gh-pages (safe)
+        if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
+        shell: bash
+        run: |
+          # sanity: ensure folder exists before running deploy action
+          PUBLISH_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/artifacts/extent"
+          if [ ! -d "$PUBLISH_DIR" ]; then
+            echo "Publish dir not found: $PUBLISH_DIR — skipping deploy"
+            exit 0
+          fi
+        # The next step is the deploy action which will actually push the folder
+      - name: Deploy to gh-pages (action)
+        if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ${{ github.workspace }}/${{ env.WORKDIR }}/artifacts/extent
+          publish_branch: gh-pages
+          keep_files: false
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "ci: publish extent report (${{ env.RUN_TIMESTAMP }}) [skip ci]"
 
       
  
