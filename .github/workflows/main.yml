@@ -96,32 +96,72 @@ jobs:
       
 
 
-      - name: Copy ExtentReport and publish to GitHub Pages
-        if: always()
+      # - name: Copy ExtentReport and publish to GitHub Pages
+      #   if: always()
+      #   shell: bash
+      #   working-directory: ${{ env.WORKDIR }}
+      #   run: |
+      #     set -euo pipefail
+
+      #     REPORT_SRC="test-output/ExtentReports/ExtentReport.html"
+      #     REPO_ROOT="$GITHUB_WORKSPACE"
+
+      #     if [ ! -f "$REPORT_SRC" ]; then
+      #       echo "No ExtentReport found at $REPORT_SRC"
+      #       exit 0
+      #     fi
+
+      #     echo "Copying report from $REPORT_SRC to $REPO_ROOT/index.html"
+      #     cp "$REPORT_SRC" "$REPO_ROOT/index.html"
+
+      #     cd "$REPO_ROOT"
+
+      #     git config user.name "github-actions"
+      #     git config user.email "actions@github.com"
+
+      #     git add index.html
+      #     git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
+      #     git push origin HEAD
+
+
+
+
+      - name: Copy ExtentReport and publish to gh-pages
+        if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
         shell: bash
         working-directory: ${{ env.WORKDIR }}
         run: |
           set -euo pipefail
 
           REPORT_SRC="test-output/ExtentReports/ExtentReport.html"
-          REPO_ROOT="$GITHUB_WORKSPACE"
-
           if [ ! -f "$REPORT_SRC" ]; then
-            echo "No ExtentReport found at $REPORT_SRC"
+            echo "No ExtentReport found at $REPORT_SRC — skipping publish"
             exit 0
           fi
 
-          echo "Copying report from $REPORT_SRC to $REPO_ROOT/index.html"
-          cp "$REPORT_SRC" "$REPO_ROOT/index.html"
+          echo "Copying report to gh-pages branch..."
 
-          cd "$REPO_ROOT"
+          # Move to repo root
+          cd "$GITHUB_WORKSPACE"
 
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
+          # Configure git identity
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Fetch gh-pages branch and check it out
+          git fetch origin gh-pages
+          git checkout gh-pages
+
+          # Copy Extent report to index.html
+          cp "${{ env.WORKDIR }}/$REPORT_SRC" "index.html"
+
+          # Commit and push only index.html
           git add index.html
           git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
-          git push origin HEAD
+          git push origin gh-pages
+
+          # Go back to original branch (so the workflow stays clean)
+          git checkout -
 
       - name: Package Extent Report bundle with screenshots and logs
         if: always()
