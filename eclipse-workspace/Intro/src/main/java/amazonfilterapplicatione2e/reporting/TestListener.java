@@ -1,24 +1,29 @@
 package main.java.amazonfilterapplicatione2e.reporting;
 
 
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
-import com.aventstack.extentreports.markuputils.ExtentColor;
-import com.aventstack.extentreports.markuputils.MarkupHelper;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Comparator;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
-import org.apache.logging.log4j.ThreadContext;
-import org.openqa.selenium.WebDriver;
 
-import java.io.File;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Date;
+import com.aventstack.extentreports.Status;
+import com.google.common.io.Files;
+
+
 
 public class TestListener implements ITestListener {
 
@@ -246,42 +251,44 @@ public class TestListener implements ITestListener {
         try {
             if (result == null) return;
 
+            // test-specific name
             String perTestName = (String) result.getAttribute("logFileName");
             if (perTestName == null || perTestName.isEmpty()) {
                 perTestName = result.getMethod().getMethodName();
             }
 
             Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
-            Path expectedLog = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
 
-            File logFile = expectedLog.toFile();
-            if (!logFile.exists()) {
-                ExtentTestManager.getTest().info("⚠️ Log file not found at expected path: " + expectedLog.toString());
-                File logsRoot = projectRoot.resolve("logs").toFile();
-                if (logsRoot.exists()) {
-                    File found = null;
-                    long latest = 0;
-                    java.util.Queue<File> q = new java.util.ArrayDeque<>();
-                    q.add(logsRoot);
-                    while (!q.isEmpty()) {
-                        File d = q.poll();
-                        File[] children = d.listFiles();
-                        if (children == null) continue;
-                        for (File c : children) {
-                            if (c.isDirectory()) q.add(c);
-                            else if (c.getName().equalsIgnoreCase(perTestName + ".log")) {
-                                if (c.lastModified() > latest) { found = c; latest = c.lastModified(); }
-                            }
+            // preferred location: logs/run_<timestamp>/<test>.log
+            Path expected = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
+            Path logPath = expected;
+            	
+            
+            if (!Files.exists(logPath)) {
+                Path logsRoot = projectRoot.resolve("logs");
+                if (Files.exists(logsRoot)) {
+                    final String logName = perTestName; // ✅ make it effectively final for lambda use
+                    try (Stream<Path> walk = Files.walk(logsRoot)) {
+                        Optional<Path> found = walk
+                            .filter(p -> Files.isRegularFile(p) &&
+                                         p.getFileName().toString().equalsIgnoreCase(logName + ".log"))
+                            .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
+                        if (found.isPresent()) {
+                            logPath = found.get();
                         }
+                    } catch (IOException ignored) {
+                        // ignore search errors (best-effort)
                     }
-                    if (found != null) logFile = found;
                 }
-                if (!logFile.exists()) return;
+                if (!Files.exists(logPath)) {
+                    // nothing to attach
+                    return;
+                }
             }
 
-            Path logPath = logFile.toPath().toAbsolutePath();
 
-            Path[] reportCandidates = new Path[] {
+            // candidate report locations (where report may live relative to logs)
+            Path[] candidates = new Path[] {
                 projectRoot.resolve(Paths.get("test-output", "ExtentReports")),
                 projectRoot.resolve(Paths.get("artifacts", "extent", "ExtentReports")),
                 projectRoot.resolve("ExtentReports"),
@@ -289,14 +296,12 @@ public class TestListener implements ITestListener {
             };
 
             String href = null;
-            for (Path reportDir : reportCandidates) {
+            for (Path candidate : candidates) {
                 try {
-                    Path reportAbs = reportDir.toAbsolutePath();
-                    Path rel = reportAbs.relativize(logPath);
-                    String relStr = rel.toString().replace("\\", "/"); // normalize separators
-                    // Make relative: remove a leading slash if any so link is repo-relative, not site-root absolute
+                    Path candAbs = candidate.toAbsolutePath();
+                    Path rel = candAbs.relativize(logPath.toAbsolutePath());
+                    String relStr = rel.toString().replace("\\", "/");
                     if (relStr.startsWith("/")) relStr = relStr.substring(1);
-                    // Avoid leading "./" for cleanliness (still relative)
                     if (relStr.startsWith("./")) relStr = relStr.substring(2);
                     href = relStr;
                     break;
@@ -306,10 +311,23 @@ public class TestListener implements ITestListener {
             }
 
             if (href == null) {
-                Path projRel = projectRoot.relativize(logPath);
+                // fallback: project-root relative
+                Path projRel = projectRoot.relativize(logPath.toAbsolutePath());
                 href = projRel.toString().replace("\\", "/");
                 if (href.startsWith("/")) href = href.substring(1);
                 if (href.startsWith("./")) href = href.substring(2);
+            }
+
+            // If running in GitHub Actions, prefix with /<repo>/ so Pages resolves correctly
+            String gha = System.getenv("GITHUB_ACTIONS");
+            if ("true".equalsIgnoreCase(gha)) {
+                String ghRepo = System.getenv("GITHUB_REPOSITORY"); // owner/repo
+                if (ghRepo != null && ghRepo.contains("/")) {
+                    String repoName = ghRepo.substring(ghRepo.indexOf('/') + 1);
+                    if (!repoName.isEmpty()) {
+                        href = "/" + repoName + "/" + href;
+                    }
+                }
             }
 
             ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
@@ -317,6 +335,7 @@ public class TestListener implements ITestListener {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
 
     
     

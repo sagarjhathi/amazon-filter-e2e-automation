@@ -123,25 +123,6 @@ jobs:
       #     git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
       #     git push origin HEAD
 
-      - name: Fix report links for GitHub Pages (simple)
-        if: ${{ always() }}
-        shell: bash
-        run: |
-          REPORT="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
-          REPO="amazon-filter-e2e-automation"
-          if [ -f "$REPORT" ]; then
-            sed -i "s#href=\"/logs/#href=\"/${REPO}/logs/#g; \
-                    s#src=\"/logs/#src=\"/${REPO}/logs/#g; \
-                    s#href=\"/screenshots/#href=\"/${REPO}/screenshots/#g; \
-                    s#src=\"/screenshots/#src=\"/${REPO}/screenshots/#g#" "$REPORT"
-            echo "✅ Fixed report links for GitHub Pages (/logs → /${REPO}/logs)"
-          else
-            echo "⚠️ Report not found at $REPORT"
-          fi
-
-  
-
-
 
       - name: Copy ExtentReport and publish to gh-pages (fixed)
         if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
