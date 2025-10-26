@@ -154,20 +154,20 @@ public class TestListener implements ITestListener {
         try {
             if (result == null) return;
 
-            // Determine test-specific name
+            // test-specific name
             String perTestName = (String) result.getAttribute("logFileName");
             if (perTestName == null || perTestName.isEmpty()) {
                 perTestName = result.getMethod().getMethodName();
             }
             final String logName = perTestName;
 
-            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
+            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
 
-            // Preferred location: logs/run_<timestamp>/<test>.log
-            Path expected = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
+            // preferred location: logs/run_<timestamp>/<test>.log
+            Path expected = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log")).normalize();
             Path logPath = expected;
 
-            // If not found, deep search under logs/ for latest match
+            // if not found, deep search under logs/ for latest match
             if (!java.nio.file.Files.exists(logPath)) {
                 Path logsRoot = projectRoot.resolve("logs");
                 if (java.nio.file.Files.exists(logsRoot)) {
@@ -177,108 +177,101 @@ public class TestListener implements ITestListener {
                                       && p.getFileName().toString().equalsIgnoreCase(logName + ".log"))
                             .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
                         if (found.isPresent()) {
-                            logPath = found.get();
+                            logPath = found.get().toAbsolutePath().normalize();
                         }
                     } catch (IOException ignored) {
-                        // ignore search errors
+                        // ignore search errors (best-effort)
                     }
                 }
                 if (!java.nio.file.Files.exists(logPath)) return; // nothing found
+            } else {
+                logPath = logPath.toAbsolutePath().normalize();
             }
 
-            // Candidate report locations (where ExtentReport may live)
+            // Candidate report locations (where the report will be when published or local)
             Path[] candidates = new Path[] {
-                projectRoot.resolve(Paths.get("test-output", "ExtentReports")),
-                projectRoot.resolve(Paths.get("artifacts", "extent", "ExtentReports")),
-                projectRoot.resolve("ExtentReports"),
-                projectRoot
+                projectRoot.resolve(Paths.get("test-output", "ExtentReports")).toAbsolutePath().normalize(),
+                projectRoot.resolve(Paths.get("artifacts", "extent", "ExtentReports")).toAbsolutePath().normalize(),
+                projectRoot.resolve("ExtentReports").toAbsolutePath().normalize(),
+                projectRoot.toAbsolutePath().normalize()
             };
 
             String href = null;
+            Path logAbs = logPath.toAbsolutePath().normalize();
+
+            // Try only candidates that exist and are ancestors of the log file
             for (Path candidate : candidates) {
                 try {
-                    Path candAbs = candidate.toAbsolutePath();
-                    Path rel = candAbs.relativize(logPath.toAbsolutePath());
-                    String relStr = rel.toString().replace("\\", "/");
-                    if (relStr.startsWith("/")) relStr = relStr.substring(1);
-                    if (relStr.startsWith("./")) relStr = relStr.substring(2);
-                    href = relStr;
-                    break;
+                    if (!java.nio.file.Files.exists(candidate)) continue;
+                    if (logAbs.startsWith(candidate)) {
+                        Path rel = candidate.relativize(logAbs);
+                        String relStr = rel.toString().replace("\\", "/");
+                        // clean prefixes
+                        if (relStr.startsWith("./")) relStr = relStr.substring(2);
+                        if (relStr.startsWith("/")) relStr = relStr.substring(1);
+                        href = relStr;
+                        break;
+                    }
                 } catch (Exception ex) {
-                    // not relative to this candidate, try next
+                    // try next candidate
                 }
             }
 
+            // If no candidate matched, try project-root relative *only if log is inside project root*
             if (href == null) {
-                // Fallback: project-root relative if possible
                 try {
-                    Path projRel = projectRoot.relativize(logPath.toAbsolutePath());
-                    href = projRel.toString().replace("\\", "/");
-                    if (href.startsWith("/")) href = href.substring(1);
-                    if (href.startsWith("./")) href = href.substring(2);
-                } catch (Exception e) {
-                    // could not relativize (different roots) — set href to absolute path string for now
-                    href = logPath.toAbsolutePath().toString().replace("\\", "/");
-                }
+                    if (logAbs.startsWith(projectRoot)) {
+                        Path projRel = projectRoot.relativize(logAbs);
+                        String relStr = projRel.toString().replace("\\", "/");
+                        if (relStr.startsWith("./")) relStr = relStr.substring(2);
+                        if (relStr.startsWith("/")) relStr = relStr.substring(1);
+                        href = relStr;
+                    }
+                } catch (Exception ignored) { }
             }
 
-            // ===== NEW: If href looks like an absolute filesystem path, convert to project-relative or filename only =====
-            // Detect Windows drive (e.g. "C:/") or leading '/' absolute
-            boolean looksAbsolute = href.matches("^[A-Za-z]:/.*") || href.startsWith("/");
-            if (looksAbsolute) {
-                String projectRootStr = projectRoot.toString().replace("\\", "/");
-                String logPathStr = logPath.toAbsolutePath().toString().replace("\\", "/");
-                if (logPathStr.startsWith(projectRootStr)) {
-                    // remove projectRoot prefix -> make it relative
-                    href = logPathStr.substring(projectRootStr.length());
-                    if (href.startsWith("/")) href = href.substring(1);
-                } else {
-                    // fallback: use filename only (safer than C:/... in the href)
-                    href = logPath.getFileName().toString();
-                }
+            // If still null or empty, fallback to filename only (safe)
+            if (href == null || href.trim().isEmpty()) {
+                href = logAbs.getFileName().toString(); // safe fallback: no drive prefix, just filename
             }
 
-            // Normalize to a clean relative path
-            if (href == null) href = "";
+            // Normalize and sanitize
             href = href.replace("\\", "/");
-            if (href.startsWith("./")) href = href.substring(2);
-
-            // Remove any leading "../" so prefix is not cancelled by path traversal
-            while (href.startsWith("../")) {
-                href = href.substring(3);
-            }
-
-            // Remove leading slash (we want "logs/..." not "/logs/...")
+            // remove leading "./" or "../" segments
+            while (href.startsWith("./")) href = href.substring(2);
+            while (href.startsWith("../")) href = href.substring(3);
+            // remove leading slash
             if (href.startsWith("/")) href = href.substring(1);
 
-            // REPORT_BASE logic (CI-controlled)
+            // REPORT_BASE logic (CI-controlled) - prefix only when explicit env var set
             String reportBase = System.getenv("REPORT_BASE"); // e.g. "/amazon-filter-e2e-automation/"
             if (reportBase != null && !reportBase.trim().isEmpty()) {
                 reportBase = reportBase.trim();
                 if (!reportBase.startsWith("/")) reportBase = "/" + reportBase;
                 if (!reportBase.endsWith("/")) reportBase = reportBase + "/";
 
+                // avoid double-prefixing: check both with and without leading slash
                 if (!href.startsWith(reportBase) && !href.startsWith(reportBase.substring(1))) {
                     href = reportBase + href;
-                    href = href.replaceAll("//+", "/"); // collapse accidental double slashes
+                    href = href.replaceAll("//+", "/");
                 }
             }
 
-            // Optional debug log — remove once verified
+            // Debug: write the final href to report/console (remove after verification)
             System.out.println("DEBUG: final log href -> " + href);
             ExtentTestManager.getTest().info("DEBUG: final log href -> " + href);
 
-            // Attach the final link to Extent Report
+            // Attach only if non-empty
             if (href == null || href.trim().isEmpty()) {
                 ExtentTestManager.getTest().info("⚠️ Log path could not be resolved for: " + logName);
             } else {
                 ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
             }
-
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
 
 
 
