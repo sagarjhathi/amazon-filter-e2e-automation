@@ -154,41 +154,39 @@ public class TestListener implements ITestListener {
         try {
             if (result == null) return;
 
-            // test-specific name
+            // Determine test-specific name
             String perTestName = (String) result.getAttribute("logFileName");
             if (perTestName == null || perTestName.isEmpty()) {
                 perTestName = result.getMethod().getMethodName();
             }
-
-            // final copy for lambdas
             final String logName = perTestName;
 
             Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
 
-            // preferred location: logs/run_<timestamp>/<test>.log
+            // Preferred location: logs/run_<timestamp>/<test>.log
             Path expected = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
             Path logPath = expected;
 
-            // if not found, search logs/ tree for the newest matching file
+            // If not found, deep search under logs/ for latest match
             if (!java.nio.file.Files.exists(logPath)) {
                 Path logsRoot = projectRoot.resolve("logs");
                 if (java.nio.file.Files.exists(logsRoot)) {
                     try (Stream<Path> walk = java.nio.file.Files.walk(logsRoot)) {
                         Optional<Path> found = walk
-                            .filter(p -> java.nio.file.Files.isRegularFile(p) &&
-                                         p.getFileName().toString().equalsIgnoreCase(logName + ".log"))
+                            .filter(p -> java.nio.file.Files.isRegularFile(p)
+                                      && p.getFileName().toString().equalsIgnoreCase(logName + ".log"))
                             .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
                         if (found.isPresent()) {
                             logPath = found.get();
                         }
                     } catch (IOException ignored) {
-                        // ignore search errors (best-effort)
+                        // ignore search errors
                     }
                 }
-                if (!java.nio.file.Files.exists(logPath)) return; // nothing to attach
+                if (!java.nio.file.Files.exists(logPath)) return; // nothing found
             }
 
-            // candidate report locations (where report may live relative to logs)
+            // Candidate report locations (where ExtentReport may live)
             Path[] candidates = new Path[] {
                 projectRoot.resolve(Paths.get("test-output", "ExtentReports")),
                 projectRoot.resolve(Paths.get("artifacts", "extent", "ExtentReports")),
@@ -207,59 +205,61 @@ public class TestListener implements ITestListener {
                     href = relStr;
                     break;
                 } catch (Exception ex) {
-                    // not relative or other error: try next candidate
+                    // try next candidate
                 }
             }
 
             if (href == null) {
-                // fallback: project-root relative
+                // Fallback: project-root relative
                 Path projRel = projectRoot.relativize(logPath.toAbsolutePath());
                 href = projRel.toString().replace("\\", "/");
                 if (href.startsWith("/")) href = href.substring(1);
                 if (href.startsWith("./")) href = href.substring(2);
             }
 
-            // normalize
+            // ✅ Normalize to a clean relative path
             if (href == null) href = "";
             href = href.replace("\\", "/");
             if (href.startsWith("./")) href = href.substring(2);
+
+            // ✅ Remove any leading "../" so prefix is not cancelled by path traversal
+            while (href.startsWith("../")) {
+                href = href.substring(3);
+            }
+
+            // ✅ Remove leading slash (we want "logs/..." not "/logs/...")
             if (href.startsWith("/")) href = href.substring(1);
 
-            // determine repo name robustly (env or fallback)
-            String repoName = null;
-            String ghRepoEnv = System.getenv("GITHUB_REPOSITORY");
-            if (ghRepoEnv != null && ghRepoEnv.contains("/")) {
-                repoName = ghRepoEnv.substring(ghRepoEnv.indexOf('/') + 1);
-            }
-            if (repoName == null || repoName.isEmpty()) {
-                repoName = System.getenv().getOrDefault("PAGES_REPO", "amazon-filter-e2e-automation");
-                // you can set PAGES_REPO env in CI to avoid hardcoding
-            }
+            // ✅ Apply REPORT_BASE prefix (for GitHub Pages)
+            String reportBase = System.getenv("REPORT_BASE"); // e.g. "/amazon-filter-e2e-automation/"
+            if (reportBase != null && !reportBase.trim().isEmpty()) {
+                reportBase = reportBase.trim();
+                if (!reportBase.startsWith("/")) reportBase = "/" + reportBase;
+                if (!reportBase.endsWith("/")) reportBase = reportBase + "/";
 
-            // prefix only on CI
-            boolean isCI = "true".equalsIgnoreCase(System.getenv("GITHUB_ACTIONS"));
-            if (isCI && !href.isEmpty()) {
-                if (!href.startsWith(repoName + "/") && !href.startsWith("/" + repoName + "/")) {
-                    href = "/" + repoName + "/" + href;
+                if (!href.startsWith(reportBase) && !href.startsWith(reportBase.substring(1))) {
+                    href = reportBase + href;
+                    href = href.replaceAll("//+", "/"); // collapse accidental double slashes
                 }
             }
 
-            // debug only in CI — remove or comment out after verification
-            if (isCI) {
-                System.out.println("DEBUG: final log href -> " + href);
-                ExtentTestManager.getTest().info("DEBUG: final log href -> " + href);
-            }
+            // Optional debug log — remove once verified
+            System.out.println("DEBUG: final log href -> " + href);
+            ExtentTestManager.getTest().info("DEBUG: final log href -> " + href);
 
-            // attach only if we have a non-empty href
+            // ✅ Attach the final link to Extent Report
             if (href == null || href.trim().isEmpty()) {
                 ExtentTestManager.getTest().info("⚠️ Log path could not be resolved for: " + logName);
             } else {
                 ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
             }
+
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
+
 
 
 
