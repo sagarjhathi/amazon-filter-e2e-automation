@@ -123,35 +123,22 @@ jobs:
       #     git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
       #     git push origin HEAD
 
-
-      - name: Fix report base href for GitHub Pages (CI only)
+      - name: Fix report links for GitHub Pages (simple)
         if: ${{ always() }}
         shell: bash
         run: |
-              REPORT="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
-              REPO_NAME="${{ github.event.repository.name }}"        # e.g. amazon-filter-e2e-automation
-              # fallback if repo name unset
-              if [ -z "$REPO_NAME" ]; then
-              REPO_NAME="$(echo $GITHUB_REPOSITORY | awk -F/ '{print $2}')"
-              fi
+          REPORT="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
+          REPO="amazon-filter-e2e-automation"
+          if [ -f "$REPORT" ]; then
+            sed -i "s#href=\"/logs/#href=\"/${REPO}/logs/#g; \
+                    s#src=\"/logs/#src=\"/${REPO}/logs/#g; \
+                    s#href=\"/screenshots/#href=\"/${REPO}/screenshots/#g; \
+                    s#src=\"/screenshots/#src=\"/${REPO}/screenshots/#g#" "$REPORT"
+            echo "✅ Fixed report links for GitHub Pages (/logs → /${REPO}/logs)"
+          else
+            echo "⚠️ Report not found at $REPORT"
+          fi
 
-              if [ -f "$REPORT" ]; then
-              echo "Patching report to include base href for Pages: /$REPO_NAME/"
-              # insert base tag directly after the first <head> tag if not already present
-              if ! grep -q "<base href" "$REPORT"; then
-              awk -v base="/$REPO_NAME/" '{
-              print
-              if (!inserted && tolower($0) ~ /<head>/) {
-                print "  <base href=\"" base "\">"
-                inserted=1
-              }
-              }' "$REPORT" > "$REPORT.tmp" && mv "$REPORT.tmp" "$REPORT"
-              else
-                echo "Report already contains a base tag; skipping."
-              fi
-              else
-                echo "Report not found at $REPORT — skipping base href patch."
-              fi
   
 
 
