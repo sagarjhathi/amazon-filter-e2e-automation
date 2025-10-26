@@ -264,27 +264,22 @@ public class TestListener implements ITestListener {
             Path logPath = expected;
             	
             
-            if (!Files.exists(logPath)) {
+            if (!java.nio.file.Files.exists(logPath)) {
                 Path logsRoot = projectRoot.resolve("logs");
-                if (Files.exists(logsRoot)) {
-                    final String logName = perTestName; // ✅ make it effectively final for lambda use
-                    try (Stream<Path> walk = Files.walk(logsRoot)) {
+                if (java.nio.file.Files.exists(logsRoot)) {
+                    try (Stream<Path> walk = java.nio.file.Files.walk(logsRoot)) {
                         Optional<Path> found = walk
-                            .filter(p -> Files.isRegularFile(p) &&
+                            .filter(p -> java.nio.file.Files.isRegularFile(p) &&
                                          p.getFileName().toString().equalsIgnoreCase(logName + ".log"))
                             .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
                         if (found.isPresent()) {
                             logPath = found.get();
                         }
-                    } catch (IOException ignored) {
-                        // ignore search errors (best-effort)
-                    }
+                    } catch (IOException ignored) { }
                 }
-                if (!Files.exists(logPath)) {
-                    // nothing to attach
-                    return;
-                }
+                if (!java.nio.file.Files.exists(logPath)) return;
             }
+
 
 
             // candidate report locations (where report may live relative to logs)
