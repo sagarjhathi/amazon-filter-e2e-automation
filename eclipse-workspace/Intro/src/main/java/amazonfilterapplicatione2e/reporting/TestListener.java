@@ -150,8 +150,6 @@ public class TestListener implements ITestListener {
 
     
     
-    	
-
     private void attachLogFile(ITestResult result) {
         try {
             if (result == null) return;
@@ -162,7 +160,7 @@ public class TestListener implements ITestListener {
                 perTestName = result.getMethod().getMethodName();
             }
 
-            // keep a final copy for lambda usage
+            // final copy for lambdas
             final String logName = perTestName;
 
             Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
@@ -187,9 +185,7 @@ public class TestListener implements ITestListener {
                         // ignore search errors (best-effort)
                     }
                 }
-                if (!java.nio.file.Files.exists(logPath)) {
-                    return; // nothing to attach
-                }
+                if (!java.nio.file.Files.exists(logPath)) return; // nothing to attach
             }
 
             // candidate report locations (where report may live relative to logs)
@@ -211,7 +207,7 @@ public class TestListener implements ITestListener {
                     href = relStr;
                     break;
                 } catch (Exception ex) {
-                    // try next candidate
+                    // not relative or other error: try next candidate
                 }
             }
 
@@ -223,23 +219,48 @@ public class TestListener implements ITestListener {
                 if (href.startsWith("./")) href = href.substring(2);
             }
 
-            // If running in GitHub Actions, prefix with /<repo>/ so Pages resolves correctly
-            String gha = System.getenv("GITHUB_ACTIONS");
-            if ("true".equalsIgnoreCase(gha)) {
-                String ghRepo = System.getenv("GITHUB_REPOSITORY"); // owner/repo
-                if (ghRepo != null && ghRepo.contains("/")) {
-                    String repoName = ghRepo.substring(ghRepo.indexOf('/') + 1);
-                    if (!repoName.isEmpty() && !href.startsWith("/" + repoName + "/")) {
-                        href = "/" + repoName + "/" + href;
-                    }
+            // normalize
+            if (href == null) href = "";
+            href = href.replace("\\", "/");
+            if (href.startsWith("./")) href = href.substring(2);
+            if (href.startsWith("/")) href = href.substring(1);
+
+            // determine repo name robustly (env or fallback)
+            String repoName = null;
+            String ghRepoEnv = System.getenv("GITHUB_REPOSITORY");
+            if (ghRepoEnv != null && ghRepoEnv.contains("/")) {
+                repoName = ghRepoEnv.substring(ghRepoEnv.indexOf('/') + 1);
+            }
+            if (repoName == null || repoName.isEmpty()) {
+                repoName = System.getenv().getOrDefault("PAGES_REPO", "amazon-filter-e2e-automation");
+                // you can set PAGES_REPO env in CI to avoid hardcoding
+            }
+
+            // prefix only on CI
+            boolean isCI = "true".equalsIgnoreCase(System.getenv("GITHUB_ACTIONS"));
+            if (isCI && !href.isEmpty()) {
+                if (!href.startsWith(repoName + "/") && !href.startsWith("/" + repoName + "/")) {
+                    href = "/" + repoName + "/" + href;
                 }
             }
 
-            ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+            // debug only in CI — remove or comment out after verification
+            if (isCI) {
+                System.out.println("DEBUG: final log href -> " + href);
+                ExtentTestManager.getTest().info("DEBUG: final log href -> " + href);
+            }
+
+            // attach only if we have a non-empty href
+            if (href == null || href.trim().isEmpty()) {
+                ExtentTestManager.getTest().info("⚠️ Log path could not be resolved for: " + logName);
+            } else {
+                ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+            }
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
 
 
     
