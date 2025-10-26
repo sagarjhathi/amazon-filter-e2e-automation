@@ -124,43 +124,49 @@ jobs:
       #     git push origin HEAD
 
 
-
-      - name: Copy ExtentReport and publish to gh-pages (safe, stash-based)
+      - name: Copy ExtentReport and publish to gh-pages (fixed)
         if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
         shell: bash
-        working-directory: ${{ env.WORKDIR }}
         run: |
           set -euo pipefail
 
-          # absolute paths
+          # absolute path to the generated report
           REPORT_SRC="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
           if [ ! -f "$REPORT_SRC" ]; then
             echo "No ExtentReport found at $REPORT_SRC — skipping publish"
             exit 0
           fi
 
-          echo "Preparing to publish report to gh-pages..."
-
-          # preserve a copy outside the repo working tree
+          echo "Preparing report..."
           TMPDIR="$(mktemp -d)"
           cp "$REPORT_SRC" "$TMPDIR/index.html"
 
-          # configure git identity for commits
+          # ensure git identity
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # stash any local changes so checkout won't fail (safe: stash may be empty)
+          # work from the repo root so git commands and cp target align
+          cd "$GITHUB_WORKSPACE"
+
+          # stash any local changes so checkout won't be blocked
           git stash push -u -m "ci: temporary stash before gh-pages checkout" >/dev/null 2>&1 || true
-          STASHED=$?
 
-          # fetch and checkout gh-pages
+          # fetch and check whether gh-pages exists remotely
           git fetch origin gh-pages || true
-          git checkout gh-pages
+          if git show-ref --verify --quiet refs/remotes/origin/gh-pages; then
+            git checkout gh-pages
+          else
+            # create orphan gh-pages branch if it does not exist
+            git checkout --orphan gh-pages
+            git rm -rf . >/dev/null 2>&1 || true
+            git commit --allow-empty -m "init gh-pages branch [skip ci]" || true
+            git push origin HEAD:gh-pages
+          fi
 
-          # copy the prepared index into the gh-pages branch root
-          cp "$TMPDIR/index.html" "$GITHUB_WORKSPACE/index.html"
+          # copy prepared index into the branch root (we are at repo root)
+          cp "$TMPDIR/index.html" index.html
 
-          # commit and push only index.html
+          # commit only index.html and push
           git add index.html
           if git diff --staged --quiet; then
             echo "No changes to index.html on gh-pages"
@@ -169,18 +175,17 @@ jobs:
             git push origin gh-pages
           fi
 
-          # return to original branch
+          # return to previous branch
           git checkout - >/dev/null 2>&1 || true
 
-          # try to restore stashed changes (if any)
-          if git rev-parse --verify --quiet refs/stash >/dev/null; then
+          # restore stash (if any)
+          if git rev-parse --verify --quiet refs/stash >/dev/null 2>&1; then
             git stash pop >/dev/null 2>&1 || true
           fi
 
-          # cleanup
           rm -rf "$TMPDIR"
+          echo "Publish step complete."
 
-          echo "Published report to gh-pages (if changed)."
 
 
       - name: Package Extent Report bundle with screenshots and logs
