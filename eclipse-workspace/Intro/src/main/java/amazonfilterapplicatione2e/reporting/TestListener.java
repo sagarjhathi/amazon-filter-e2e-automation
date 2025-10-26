@@ -205,32 +205,53 @@ public class TestListener implements ITestListener {
                     href = relStr;
                     break;
                 } catch (Exception ex) {
-                    // try next candidate
+                    // not relative to this candidate, try next
                 }
             }
 
             if (href == null) {
-                // Fallback: project-root relative
-                Path projRel = projectRoot.relativize(logPath.toAbsolutePath());
-                href = projRel.toString().replace("\\", "/");
-                if (href.startsWith("/")) href = href.substring(1);
-                if (href.startsWith("./")) href = href.substring(2);
+                // Fallback: project-root relative if possible
+                try {
+                    Path projRel = projectRoot.relativize(logPath.toAbsolutePath());
+                    href = projRel.toString().replace("\\", "/");
+                    if (href.startsWith("/")) href = href.substring(1);
+                    if (href.startsWith("./")) href = href.substring(2);
+                } catch (Exception e) {
+                    // could not relativize (different roots) — set href to absolute path string for now
+                    href = logPath.toAbsolutePath().toString().replace("\\", "/");
+                }
             }
 
-            // ✅ Normalize to a clean relative path
+            // ===== NEW: If href looks like an absolute filesystem path, convert to project-relative or filename only =====
+            // Detect Windows drive (e.g. "C:/") or leading '/' absolute
+            boolean looksAbsolute = href.matches("^[A-Za-z]:/.*") || href.startsWith("/");
+            if (looksAbsolute) {
+                String projectRootStr = projectRoot.toString().replace("\\", "/");
+                String logPathStr = logPath.toAbsolutePath().toString().replace("\\", "/");
+                if (logPathStr.startsWith(projectRootStr)) {
+                    // remove projectRoot prefix -> make it relative
+                    href = logPathStr.substring(projectRootStr.length());
+                    if (href.startsWith("/")) href = href.substring(1);
+                } else {
+                    // fallback: use filename only (safer than C:/... in the href)
+                    href = logPath.getFileName().toString();
+                }
+            }
+
+            // Normalize to a clean relative path
             if (href == null) href = "";
             href = href.replace("\\", "/");
             if (href.startsWith("./")) href = href.substring(2);
 
-            // ✅ Remove any leading "../" so prefix is not cancelled by path traversal
+            // Remove any leading "../" so prefix is not cancelled by path traversal
             while (href.startsWith("../")) {
                 href = href.substring(3);
             }
 
-            // ✅ Remove leading slash (we want "logs/..." not "/logs/...")
+            // Remove leading slash (we want "logs/..." not "/logs/...")
             if (href.startsWith("/")) href = href.substring(1);
 
-            // ✅ Apply REPORT_BASE prefix (for GitHub Pages)
+            // REPORT_BASE logic (CI-controlled)
             String reportBase = System.getenv("REPORT_BASE"); // e.g. "/amazon-filter-e2e-automation/"
             if (reportBase != null && !reportBase.trim().isEmpty()) {
                 reportBase = reportBase.trim();
@@ -247,7 +268,7 @@ public class TestListener implements ITestListener {
             System.out.println("DEBUG: final log href -> " + href);
             ExtentTestManager.getTest().info("DEBUG: final log href -> " + href);
 
-            // ✅ Attach the final link to Extent Report
+            // Attach the final link to Extent Report
             if (href == null || href.trim().isEmpty()) {
                 ExtentTestManager.getTest().info("⚠️ Log path could not be resolved for: " + logName);
             } else {
@@ -258,6 +279,9 @@ public class TestListener implements ITestListener {
             ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
+
+
 
 
 
