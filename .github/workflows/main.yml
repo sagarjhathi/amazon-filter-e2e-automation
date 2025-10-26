@@ -124,6 +124,38 @@ jobs:
       #     git push origin HEAD
 
 
+      - name: Fix report base href for GitHub Pages (CI only)
+        if: ${{ always() }}
+        shell: bash
+        run: |
+              REPORT="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/test-output/ExtentReports/ExtentReport.html"
+              REPO_NAME="${{ github.event.repository.name }}"        # e.g. amazon-filter-e2e-automation
+              # fallback if repo name unset
+              if [ -z "$REPO_NAME" ]; then
+              REPO_NAME="$(echo $GITHUB_REPOSITORY | awk -F/ '{print $2}')"
+              fi
+
+              if [ -f "$REPORT" ]; then
+              echo "Patching report to include base href for Pages: /$REPO_NAME/"
+              # insert base tag directly after the first <head> tag if not already present
+              if ! grep -q "<base href" "$REPORT"; then
+              awk -v base="/$REPO_NAME/" '{
+              print
+              if (!inserted && tolower($0) ~ /<head>/) {
+                print "  <base href=\"" base "\">"
+                inserted=1
+              }
+              }' "$REPORT" > "$REPORT.tmp" && mv "$REPORT.tmp" "$REPORT"
+              else
+                echo "Report already contains a base tag; skipping."
+              fi
+              else
+                echo "Report not found at $REPORT — skipping base href patch."
+              fi
+  
+
+
+
       - name: Copy ExtentReport and publish to gh-pages (fixed)
         if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
         shell: bash
@@ -218,16 +250,6 @@ jobs:
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
-
-
-      - name: Upload Extent Report Bundle (HTML + screenshots + logs)
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: extent-report-bundle
-          path: ${{ env.WORKDIR }}/artifacts/extent
-          retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
-          if-no-files-found: warn
 
       - name: Deploy to gh-pages (safe)
         if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
