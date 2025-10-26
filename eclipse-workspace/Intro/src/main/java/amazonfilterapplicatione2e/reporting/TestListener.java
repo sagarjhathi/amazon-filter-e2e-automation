@@ -6,13 +6,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Comparator;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Comparator;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -20,8 +13,12 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
 import com.aventstack.extentreports.Status;
-import com.google.common.io.Files;
+
 
 
 
@@ -32,20 +29,11 @@ public class TestListener implements ITestListener {
 
 
     private static final String SCREENSHOT_BASE_DIR = System.getProperty("user.dir") + "/test-output/screenshots/Run_" + ExtentManager.RUN_TIMESTAMP;
-
-    
-
     
     @Override
     public void onTestStart(ITestResult result) {
         String testName = result.getMethod().getMethodName();
         ExtentTestManager.startTest(testName).log(Status.INFO, "🔹 Test Started: " + testName);
-       
-        // create a per-test file name (no extension)
-//        String perTestName = testName; // or testName + "_" + timestamp if you want uniqueness
-//        org.apache.logging.log4j.ThreadContext.put("logFileName", perTestName);
-//        result.setAttribute("logFileName", perTestName);
-//        ExtentTestManager.startTest(testName).log(Status.INFO, "Test started");
     }
 
     @Override
@@ -163,90 +151,7 @@ public class TestListener implements ITestListener {
     
     
     	
-    
-//    
-//    
-//    private void attachLogFile(ITestResult result) {
-//        try {
-//            if (result == null) return;
-//
-//            String perTestName = (String) result.getAttribute("logFileName");
-//            if (perTestName == null || perTestName.isEmpty()) {
-//                perTestName = result.getMethod().getMethodName();
-//            }
-//
-//            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
-//            Path expectedLog = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
-//
-//            File logFile = expectedLog.toFile();
-//            if (!logFile.exists()) {
-//                // helpful diagnostic for CI logs and debugging
-//                ExtentTestManager.getTest().info("⚠️ Log file not found at expected path: " + expectedLog.toString());
-//                // attempt to find it anywhere under project logs (best-effort)
-//                File logsRoot = projectRoot.resolve("logs").toFile();
-//                if (logsRoot.exists()) {
-//                    File found = null;
-//                    long latest = 0;
-//                    java.util.Queue<File> q = new java.util.ArrayDeque<>();
-//                    q.add(logsRoot);
-//                    while (!q.isEmpty()) {
-//                        File d = q.poll();
-//                        File[] children = d.listFiles();
-//                        if (children == null) continue;
-//                        for (File c : children) {
-//                            if (c.isDirectory()) q.add(c);
-//                            else if (c.getName().equalsIgnoreCase(perTestName + ".log")) {
-//                                if (c.lastModified() > latest) { found = c; latest = c.lastModified(); }
-//                            }
-//                        }
-//                    }
-//                    if (found != null) logFile = found;
-//                }
-//                if (!logFile.exists()) return;
-//            }
-//
-//            Path logPath = logFile.toPath().toAbsolutePath();
-//
-//            // Candidate report directories (where ExtentReport.html may be when published or in artifact)
-//            Path[] reportCandidates = new Path[] {
-//                projectRoot.resolve(Paths.get("test-output", "ExtentReports")),       // local default
-//                projectRoot.resolve(Paths.get("artifacts", "extent", "ExtentReports")), // packaged artifact layout
-//                projectRoot.resolve("ExtentReports"),                                 // sometimes placed at repo root
-//                projectRoot                                                             // if report copied to repo root (index.html)
-//            };
-//
-//            String href = null;
-//            for (Path reportDir : reportCandidates) {
-//                try {
-//                    Path reportAbs = reportDir.toAbsolutePath();
-//                    // only try relativize if reportDir exists or is plausible
-//                    if (!reportAbs.toFile().exists()) {
-//                        // still attempt relativize (works even if folder not present) but be safe
-//                    }
-//                    Path rel = reportAbs.relativize(logPath);
-//                    String relStr = rel.toString().replace("\\", "/");
-//                    if (relStr.startsWith("/")) relStr = relStr.substring(1);
-//                    href = relStr;
-//                    // if relStr contains ".." that's OK (relative link)
-//                    break;
-//                } catch (Exception ex) {
-//                    // try next candidate
-//                }
-//            }
-//
-//            if (href == null) {
-//                // fallback to project-root relative
-//                Path projRel = projectRoot.relativize(logPath);
-//                href = "./" + projRel.toString().replace("\\", "/");
-//            }
-//
-//            ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
-//        }
-//    }
 
-    
     private void attachLogFile(ITestResult result) {
         try {
             if (result == null) return;
@@ -257,13 +162,16 @@ public class TestListener implements ITestListener {
                 perTestName = result.getMethod().getMethodName();
             }
 
+            // keep a final copy for lambda usage
+            final String logName = perTestName;
+
             Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath();
 
             // preferred location: logs/run_<timestamp>/<test>.log
             Path expected = projectRoot.resolve(Paths.get("logs", "run_" + ExtentManager.RUN_TIMESTAMP, perTestName + ".log"));
             Path logPath = expected;
-            	
-            
+
+            // if not found, search logs/ tree for the newest matching file
             if (!java.nio.file.Files.exists(logPath)) {
                 Path logsRoot = projectRoot.resolve("logs");
                 if (java.nio.file.Files.exists(logsRoot)) {
@@ -275,12 +183,14 @@ public class TestListener implements ITestListener {
                         if (found.isPresent()) {
                             logPath = found.get();
                         }
-                    } catch (IOException ignored) { }
+                    } catch (IOException ignored) {
+                        // ignore search errors (best-effort)
+                    }
                 }
-                if (!java.nio.file.Files.exists(logPath)) return;
+                if (!java.nio.file.Files.exists(logPath)) {
+                    return; // nothing to attach
+                }
             }
-
-
 
             // candidate report locations (where report may live relative to logs)
             Path[] candidates = new Path[] {
@@ -319,7 +229,7 @@ public class TestListener implements ITestListener {
                 String ghRepo = System.getenv("GITHUB_REPOSITORY"); // owner/repo
                 if (ghRepo != null && ghRepo.contains("/")) {
                     String repoName = ghRepo.substring(ghRepo.indexOf('/') + 1);
-                    if (!repoName.isEmpty()) {
+                    if (!repoName.isEmpty() && !href.startsWith("/" + repoName + "/")) {
                         href = "/" + repoName + "/" + href;
                     }
                 }
