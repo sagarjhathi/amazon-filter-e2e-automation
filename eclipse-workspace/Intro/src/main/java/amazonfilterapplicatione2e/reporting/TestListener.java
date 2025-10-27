@@ -370,6 +370,7 @@ public class TestListener implements ITestListener {
     public void onFinish(ITestContext context) {
         ExtentManager.getInstance().flush();
     }
+    
 
     /** =======================================================================
      *  LOG LINK (deterministic URL, never from OS path)
