@@ -375,6 +375,10 @@ public class TestListener implements ITestListener {
      *  LOG LINK (deterministic URL, never from OS path)
      *  ======================================================================= */
     private void attachLogFile(ITestResult result) {
+    	System.out.println("VMARK: TestListener class = " + this.getClass().getName());
+    	System.out.println("VMARK: CodeSource = " + this.getClass().getProtectionDomain().getCodeSource().getLocation());
+    	System.out.println("VMARK: entering attachLogFile()");
+
         try {
             if (result == null) return;
 
