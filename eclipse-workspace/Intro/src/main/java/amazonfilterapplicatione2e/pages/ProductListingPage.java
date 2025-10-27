@@ -411,7 +411,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
     log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
     
-    for (int i = 0; i <2; i++) {
+    for (int i = 0; i <filterOptions.size(); i++) {
 		log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
         List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
@@ -445,7 +445,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
         List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
         
-        for (int p = 1; p <2; p++) {
+        for (int p = 1; p <productNameListingPage.size(); p++) {
         	
         	 productIndex = p-1;
 
@@ -897,7 +897,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 	        String currentWindow = driver.getWindowHandle();
 	        List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
-	        for (int p = 1; p <2; p++) {
+	        for (int p = 1; p <productNameListingPage.size(); p++) {
 	    	    log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 	    	    int productIndex=p-1;
 	            try {
