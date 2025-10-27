@@ -472,25 +472,30 @@ public class TestListener implements ITestListener {
      *  - CI/Pages: prefix with REPORT_BASE (e.g. "/amazon-filter-e2e-automation/")
      *  - Local:    make it relative from ExtentReports/ExtentReport.html  -> "../../<rel>"
      */
-    private String buildPublicUrl(String relativeFromSiteRoot) {
-        // normalize: no leading slash inside the site path
-        String rel = relativeFromSiteRoot.replace("\\", "/");
-        while (rel.startsWith("./")) rel = rel.substring(2);
-        while (rel.startsWith("../")) rel = rel.substring(3);
-        if (rel.startsWith("/")) rel = rel.substring(1);
+    private String buildPublicUrl(String rel) {
+        // CLEAN the input: force it to be purely relative inside the site
+        rel = rel.replace("\\", "/");
 
-        String base = System.getenv("REPORT_BASE"); // set in CI job env
+        // Strip drive letters or Program Files or anything absolute
+        rel = rel.replaceAll("(?i)[A-Za-z]:/+", "");
+        rel = rel.replaceAll("(?i)^(.*/)?Program Files/[^/]+/", "");
+        while (rel.startsWith("./"))  rel = rel.substring(2);
+        while (rel.startsWith("../")) rel = rel.substring(3);
+        if (rel.startsWith("/"))      rel = rel.substring(1);
+
+        // Determine base
+        String base = System.getenv("REPORT_BASE"); // only set on CI
         if (base != null && !base.trim().isEmpty()) {
             base = base.trim();
             if (!base.startsWith("/")) base = "/" + base;
-            if (!base.endsWith("/"))  base = base + "/";
-            String out = (base + rel).replaceAll("//+", "/");
-            return out;
-        } else {
-            // local: ExtentReport is at test-output/ExtentReports/ExtentReport.html
-            return ("../../" + rel).replaceAll("//+", "/");
+            if (!base.endsWith("/"))   base = base + "/";
+            return (base + rel).replaceAll("//+", "/");
         }
+
+        // Local run: relative from ExtentReport.html -> "../../logs/..."
+        return ("../../" + rel).replaceAll("//+", "/");
     }
+
 
     private String formatFailureMessage(String message) {
         if (message != null && message.contains("Brand filter") && message.contains("📦 Title:")) {
