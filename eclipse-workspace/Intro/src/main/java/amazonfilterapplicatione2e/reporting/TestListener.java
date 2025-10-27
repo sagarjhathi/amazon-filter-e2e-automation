@@ -163,24 +163,29 @@ public class TestListener implements ITestListener {
 
             // Preferred expected log file path
             Path expected = projectRoot.resolve(Paths.get(
-                "logs", 
-                "run_" + ExtentManager.RUN_TIMESTAMP, 
+                "logs",
+                "run_" + ExtentManager.RUN_TIMESTAMP,
                 perTestName + ".log"
             )).normalize();
 
             Path logPath = expected;
 
-            // Search logs folder if expected exact path not found
+            // If not found, search logs/ for the newest matching file (lambda needs effectively-final capture)
             if (!java.nio.file.Files.exists(logPath)) {
                 Path logsRoot = projectRoot.resolve("logs");
                 if (java.nio.file.Files.exists(logsRoot)) {
+                    final String expectedFileName = perTestName + ".log";  // <-- effectively final for lambda
                     try (Stream<Path> walk = java.nio.file.Files.walk(logsRoot)) {
-                        logPath = walk
+                        Optional<Path> found = walk
                             .filter(p -> java.nio.file.Files.isRegularFile(p)
-                                    && p.getFileName().toString().equalsIgnoreCase(perTestName + ".log"))
-                            .max(Comparator.comparingLong(p -> p.toFile().lastModified()))
-                            .orElse(null);
-                    } catch (Exception ignored) {}
+                                      && p.getFileName().toString().equalsIgnoreCase(expectedFileName))
+                            .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
+                        if (found.isPresent()) {
+                            logPath = found.get().toAbsolutePath().normalize();
+                        }
+                    } catch (Exception ignored) {
+                        // best-effort search; ignore errors
+                    }
                 }
             }
 
@@ -190,32 +195,32 @@ public class TestListener implements ITestListener {
                 return;
             }
 
-            // ✅ SAFEST WAY: build the relative/public URL directly
-            String testLogFile = logPath.getFileName().toString();
-            String runFolder = "run_" + ExtentManager.RUN_TIMESTAMP;
+            // ==== SAFE, DETERMINISTIC URL (no filesystem absolute paths) ====
+            final String testLogFile = logPath.getFileName().toString();        // e.g., verifyingXxx.log
+            final String runFolder   = "run_" + ExtentManager.RUN_TIMESTAMP;    // e.g., run_2025-10-27_12-34-56
 
             String href;
-            String reportBase = System.getenv("REPORT_BASE"); // set in CI only
-
+            String reportBase = System.getenv("REPORT_BASE"); // set in CI to "/amazon-filter-e2e-automation/"
             if (reportBase != null && !reportBase.trim().isEmpty()) {
-                // CI / GitHub Pages URL
                 reportBase = reportBase.trim();
                 if (!reportBase.startsWith("/")) reportBase = "/" + reportBase;
                 if (!reportBase.endsWith("/")) reportBase = reportBase + "/";
-                href = reportBase + "logs/" + runFolder + "/" + testLogFile;
+                // On GitHub Pages the site root contains logs/ alongside ExtentReports/
+                href = reportBase + "logs/" + runFolder + "/" + testLogFile;   // -> /repo/logs/run_.../file.log
             } else {
-                // Local run: navigate up from test-output/ExtentReports/index.html
-                href = "../../logs/" + runFolder + "/" + testLogFile;
+                // Local run: report is at test-output/ExtentReports/ExtentReport.html
+                // logs are at projectRoot/logs/... so go up two levels
+                href = "../../logs/" + runFolder + "/" + testLogFile;          // -> ../../logs/run_.../file.log
             }
 
             // Normalize double slashes
             href = href.replaceAll("//+", "/");
 
-            // Debug output (remove when confident)
+            // Debug (remove once verified)
             System.out.println("DEBUG: final log href -> " + href);
             ExtentTestManager.getTest().info("DEBUG: final log href -> " + href);
 
-            // ✅ Attach log link to Extent
+            // Attach link to Extent
             ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
 
         } catch (Exception e) {
