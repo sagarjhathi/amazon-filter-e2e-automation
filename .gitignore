@@ -3,6 +3,11 @@
 # Build output
 eclipse-workspace/Intro/target/
 
+screenshots/
+eclipse-workspace/Intro/test-output/
+eclipse-workspace/Intro/logs/
+logs/
+
 
 # Eclipse specific files
 eclipse-workspace/.metadata/
