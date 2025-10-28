@@ -1,0 +1,11 @@
+2025-10-28 05:38:17.940 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] 🔹 Starting test method: verifyingGetItByTodayFilterFunctionality
+2025-10-28 05:38:20.718 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Opening amazon Landing page
+2025-10-28 05:38:26.844 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Capturing screenshot: search bar error capture__2025-10-28_173826.png
+2025-10-28 05:38:27.001 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-10-28_17-37-23/verifyingGetItByTodayFilterFunctionality/search bar error capture__2025-10-28_173826.png
+2025-10-28 05:38:27.328 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Giving input within the search bar
+2025-10-28 05:38:27.329 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Within safeClick method
+2025-10-28 05:38:37.866 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (399aab48a1eec7a4985474cbe9e594d5)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-10-28 05:38:37.866 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicking on the submit in the search bar
+2025-10-28 05:38:37.987 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Checking if element visible on UI via isElementVisibleOnUI Method
+2025-10-28 05:38:51.265 PM [TestNG-test-Test-2] WARN  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality]  Filter option 'Get It Today' does not exist. Skipping the test.
+2025-10-28 05:38:51.269 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality] ✅ Finished test method: verifyingGetItByTodayFilterFunctionality
