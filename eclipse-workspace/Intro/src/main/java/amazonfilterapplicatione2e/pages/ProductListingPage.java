@@ -240,7 +240,7 @@ public class ProductListingPage extends  BasePage{
 	        case "batterycapacity":
 	            return By.xpath("//ul[@id='filter-p_n_g-101015098008111']");
 	        case "displaysize" :
-	         	return By.xpath("//ul[@id='filter-p_n_feature_six_browse-bin']");
+	         	return By.xpath("//div[@id='p_n_g-1004194492091-title']");
 	        case "displaytype":
 	        	return By.xpath("//ul[@id='filter-p_n_g-101013595158111']");
 	        case "operatingsystem":
@@ -536,7 +536,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
     			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
 
-               Thread.sleep(2000);
+               Thread.sleep(4000);
     			log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
                 genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
     			log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
@@ -549,7 +549,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 //			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
 
            
-            Thread.sleep(2000);
+            Thread.sleep(4000);
             genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
 
@@ -832,11 +832,11 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
 
 	        }
 
-//	        if (i % 10 == 0 && i != 0) {
-//	            driver.navigate().refresh();
-//     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
-//
-//	        }
+	        if (i % 10 == 0 && i != 0) {
+	            driver.navigate().refresh();
+     			log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);
+
+	        }
 	    }
 			log.info("[" + ThreadContext.get("testName") + "] Returning the allResults List of Maps containing the data");
 

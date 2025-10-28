@@ -256,7 +256,7 @@ public class GenericUtility extends ProductListingPage{
             	System.out.println("In the closeCurrentWindowAndSwitchBack from genetic utility");
             	Thread.sleep(1000);
                 driver.close(); // Close the current popup or child window
-                Thread.sleep(1000);
+                Thread.sleep(3000);
                 System.out.println("Switching back to the listing page");
                 driver.switchTo().window(handle); // Switch back to original window
             }
