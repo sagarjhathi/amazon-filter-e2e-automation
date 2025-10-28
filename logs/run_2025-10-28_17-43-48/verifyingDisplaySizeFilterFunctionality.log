@@ -1,0 +1,12 @@
+2025-10-28 07:24:44.369 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] 🔹 Starting test method: verifyingDisplaySizeFilterFunctionality
+2025-10-28 07:24:49.203 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Opening amazon Landing page
+2025-10-28 07:24:49.458 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Capturing screenshot: search bar error capture__2025-10-28_192449.png
+2025-10-28 07:24:49.575 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-10-28_17-43-48/verifyingDisplaySizeFilterFunctionality/search bar error capture__2025-10-28_192449.png
+2025-10-28 07:24:49.732 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Giving input within the search bar
+2025-10-28 07:24:49.732 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Within safeClick method
+2025-10-28 07:24:50.044 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (3ce33816c7f5c4cea15e86d332828242)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-10-28 07:24:50.044 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Clicking on the submit in the search bar
+2025-10-28 07:24:50.382 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Within filterCheckUnderList method
+2025-10-28 07:24:50.393 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality] Filter option does not exist within the filter check List
+2025-10-28 07:24:50.393 PM [TestNG-test-Test-1] WARN  [verifyingDisplaySizeFilterFunctionality] [verifyingDisplaySizeFilterFunctionality]  Filter option 'Display Size' does not exist in the list. Skipping the test.
+2025-10-28 07:24:50.395 PM [TestNG-test-Test-1] INFO  [verifyingDisplaySizeFilterFunctionality] ✅ Finished test method: verifyingDisplaySizeFilterFunctionality
