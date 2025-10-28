@@ -1,0 +1,12 @@
+2025-10-28 06:14:58.400 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] 🔹 Starting test method: verifyingProcessorSpeedFilterFunctionality
+2025-10-28 06:15:01.588 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Opening amazon Landing page
+2025-10-28 06:15:01.931 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Capturing screenshot: search bar error capture__2025-10-28_181501.png
+2025-10-28 06:15:02.052 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-10-28_17-19-55/verifyingProcessorSpeedFilterFunctionality/search bar error capture__2025-10-28_181501.png
+2025-10-28 06:15:02.254 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Giving input within the search bar
+2025-10-28 06:15:02.254 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Within safeClick method
+2025-10-28 06:15:02.727 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (eff142db5726349200e563f3f671a488)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-10-28 06:15:02.727 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Clicking on the submit in the search bar
+2025-10-28 06:15:02.917 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Within filterCheckUnderList method
+2025-10-28 06:15:02.930 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality] Filter option does not exist within the filter check List
+2025-10-28 06:15:02.930 PM [TestNG-test-Test-1] WARN  [verifyingProcessorSpeedFilterFunctionality] [verifyingProcessorSpeedFilterFunctionality]  Filter option 'Processor Speed' not available. Skipping test.
+2025-10-28 06:15:02.932 PM [TestNG-test-Test-1] INFO  [verifyingProcessorSpeedFilterFunctionality] ✅ Finished test method: verifyingProcessorSpeedFilterFunctionality
