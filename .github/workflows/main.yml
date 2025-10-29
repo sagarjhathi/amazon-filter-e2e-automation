@@ -289,7 +289,7 @@
 
  name: CI Pipeline
 
-on:
+ on: 
   push:
     branches:
       - "**"
@@ -300,16 +300,16 @@ on:
   schedule:
     - cron: "50 17 * * *"   # 11:20 PM IST daily
 
-permissions:
+ permissions:
   contents: write
 
-env:
+ env:
   JAVA_DISTRIBUTION: temurin
   JAVA_VERSION: 24
   WORKDIR: eclipse-workspace/Intro
   ARTIFACT_RETENTION_DAYS: 7
 
-jobs:
+ jobs:
   test:
     runs-on: windows-latest
     timeout-minutes: 300
