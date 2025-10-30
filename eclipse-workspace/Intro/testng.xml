@@ -9,8 +9,7 @@
       <methods>
       
       <include name="verifyingStorageCapacityFilterFunctionality"></include>
-        <include name="verifyingBatteryCapacityFilterFunctionality"></include>
-         <include name="verifyingTheBrandsFilterFunctionality"></include>
+        
       </methods>
 
      
