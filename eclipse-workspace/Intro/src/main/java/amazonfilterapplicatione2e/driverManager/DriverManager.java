@@ -1,5 +1,6 @@
 package main.java.amazonfilterapplicatione2e.driverManager;
 
+import java.util.List;
 import java.util.Map; 
 
 import org.openqa.selenium.JavascriptExecutor;
@@ -53,6 +54,9 @@ public class DriverManager {
 			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
 			options.setExperimentalOption("useAutomationExtension", false);
 			options.addArguments("--disable-extensions");
+			options.setCapability("goog:chromeOptions", Map.of("args", List.of("--no-sandbox")));
+			options.setCapability("se:commandTimeout", 180); // seconds — increase default 60s to 180s
+
 			driver.set(new ChromeDriver(options));
 			driver.get().manage().deleteAllCookies();
 		}
