@@ -247,21 +247,67 @@ public class GenericUtility extends ProductListingPage{
 
  
     
- public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
-		log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
+// public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
+//		log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
+//
+//        Set<String> allWindowHandles = driver.getWindowHandles();
+//        for (String handle : allWindowHandles) {
+//            if (handle.equals(currentWindow)) {
+//            	System.out.println("In the closeCurrentWindowAndSwitchBack from genetic utility");
+//            	Thread.sleep(1000);
+//                driver.close(); // Close the current popup or child window
+//                Thread.sleep(3000);
+//                System.out.println("Switching back to the listing page");
+//                driver.switchTo().window(handle); // Switch back to original window
+//            }
+//        }
+//    }
+    
+//    public void closeCurrentWindowAndSwitchBack(String originalWindow) {
+//        Set<String> allWindows = driver.getWindowHandles();
+//        for (String handle : allWindows) {
+//            if (!handle.equals(originalWindow)) {
+//                driver.switchTo().window(handle);
+//                driver.close(); // close the child
+//            }
+//        }
+//        driver.switchTo().window(originalWindow); // return to parent
+//    }
+    
+    
+    public void closeCurrentWindowAndSwitchBack(String originalWindow) throws InterruptedException {
+        log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
+        
+        try {
+            Set<String> allWindowHandles = driver.getWindowHandles();
+            log.info("[{}] Total open windows/tabs count -> {}", ThreadContext.get("testName"), allWindowHandles.size());
+            log.info("[{}] Original window handle -> {}", ThreadContext.get("testName"), originalWindow);
 
-        Set<String> allWindowHandles = driver.getWindowHandles();
-        for (String handle : allWindowHandles) {
-            if (handle.equals(currentWindow)) {
-            	System.out.println("In the closeCurrentWindowAndSwitchBack from genetic utility");
-            	Thread.sleep(1000);
-                driver.close(); // Close the current popup or child window
-                Thread.sleep(3000);
-                System.out.println("Switching back to the listing page");
-                driver.switchTo().window(handle); // Switch back to original window
+            for (String handle : allWindowHandles) {
+                if (!handle.equals(originalWindow)) {
+                    log.info("[{}] Found new tab/window handle -> {} (will be closed)", ThreadContext.get("testName"), handle);
+                    try {
+                        driver.switchTo().window(handle);
+                        log.info("[{}] Successfully switched to new tab/window -> {}", ThreadContext.get("testName"), handle);
+                        driver.close();
+                        log.info("[{}] Closed the newly opened tab/window -> {}", ThreadContext.get("testName"), handle);
+                    } catch (Exception e) {
+                        log.warn("[{}] Failed to close or switch to window handle -> {} due to {}", 
+                                 ThreadContext.get("testName"), handle, e.getMessage());
+                    }
+                }
             }
+
+            Thread.sleep(1000);
+            driver.switchTo().window(originalWindow);
+            log.info("[{}] Switched back to the original window -> {}", ThreadContext.get("testName"), originalWindow);
+
+        } catch (Exception e) {
+            log.error("[{}] Exception while closing current window and switching back: {}", 
+                      ThreadContext.get("testName"), e.getMessage(), e);
         }
     }
+
     
 
 
