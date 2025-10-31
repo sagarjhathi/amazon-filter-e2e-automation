@@ -1,0 +1,12 @@
+2025-10-31 05:52:44.690 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] 🔹 Starting test method: verifyingStorageCapacityFilterFunctionality
+2025-10-31 05:52:47.864 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Opening amazon Landing page
+2025-10-31 05:52:56.139 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Capturing screenshot: search bar error capture__2025-10-31_175256.png
+2025-10-31 05:52:56.269 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-10-31_17-51-50/verifyingStorageCapacityFilterFunctionality/search bar error capture__2025-10-31_175256.png
+2025-10-31 05:52:56.468 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Giving input within the search bar
+2025-10-31 05:52:56.469 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Within safeClick method
+2025-10-31 05:52:57.019 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (a0c0ae3c066e187a5f9c05e2843f67ff)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-10-31 05:52:57.021 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Clicking on the submit in the search bar
+2025-10-31 05:52:57.418 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Within filterCheckUnderList method
+2025-10-31 05:52:57.432 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality] Filter option does not exist within the filter check List
+2025-10-31 05:52:57.432 PM [TestNG-test-Test-2] WARN  [verifyingStorageCapacityFilterFunctionality] [verifyingStorageCapacityFilterFunctionality]  Filter option 'Storage Capacity' does not exist in the list. Skipping the test.
+2025-10-31 05:52:57.438 PM [TestNG-test-Test-2] INFO  [verifyingStorageCapacityFilterFunctionality] ✅ Finished test method: verifyingStorageCapacityFilterFunctionality
