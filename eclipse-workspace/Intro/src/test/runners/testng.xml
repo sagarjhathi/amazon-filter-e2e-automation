@@ -8,10 +8,7 @@
       <class name="test.java.tests.AmazonTests">
     
 
-	<methods>
 	
-	<include name="verifyingStorageCapacityFilterFunctionality"></include>
-	</methods>
      
     </class>
       

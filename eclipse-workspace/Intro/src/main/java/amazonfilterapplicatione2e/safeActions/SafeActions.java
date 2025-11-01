@@ -33,7 +33,8 @@ public class SafeActions extends BasePage{
 	    		log.info("[{}] Clicked the  "+element+"   using safeClick", ThreadContext.get("testName"));
 	            System.out.println("Clicked using safeClick");
 	            return;
-	        } catch (TimeoutException |ElementClickInterceptedException | StaleElementReferenceException e) {
+	            
+	        } catch (TimeoutException |ElementClickInterceptedException | StaleElementReferenceException  e) {
 	            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
 	    		log.info("[{}] Cannot click the butto using safeClick, trying again", ThreadContext.get("testName"));
 	            attempts++;
