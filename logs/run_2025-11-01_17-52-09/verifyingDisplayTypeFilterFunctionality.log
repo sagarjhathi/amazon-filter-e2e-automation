@@ -1,0 +1,12 @@
+2025-11-01 06:26:20.505 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2025-11-01 06:26:24.284 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2025-11-01 06:26:24.862 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Capturing screenshot: search bar error capture__2025-11-01_182624.png
+2025-11-01 06:26:25.166 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-01_17-52-09/verifyingDisplayTypeFilterFunctionality/search bar error capture__2025-11-01_182624.png
+2025-11-01 06:26:25.490 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Giving input within the search bar
+2025-11-01 06:26:25.490 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Within safeClick method
+2025-11-01 06:26:25.954 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (62167358e5dac5dd3b02cca96a198d34)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-01 06:26:25.954 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Clicking on the submit in the search bar
+2025-11-01 06:26:26.209 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Within filterCheckUnderList method
+2025-11-01 06:26:26.225 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Filter option does not exist within the filter check List
+2025-11-01 06:26:26.225 PM [TestNG-test-Test-1] WARN  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality]  Filter option 'Display Type' does not exist. Skipping the test.
+2025-11-01 06:26:26.227 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality
