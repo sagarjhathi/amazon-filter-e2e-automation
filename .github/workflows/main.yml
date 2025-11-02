@@ -177,7 +177,20 @@ jobs:
           echo "<html><body><h3>Artifacts</h3><ul><li><a href='ExtentReports/ExtentReport.html'>Open Extent Report</a></li></ul></body></html>" > artifacts/extent/index.html
 
 
-    
+      - name: Patch report links for local artifact viewing
+        if: always()
+        shell: bash
+        working-directory: ${{ env.WORKDIR }}
+        run: |
+             set -e
+             REPORT="${{ github.workspace }}/${{ env.WORKDIR }}/artifacts/extent/index.html"
+             if [ -f "$REPORT" ]; then
+             cp "$REPORT" "$REPORT.bak"
+             sed 's#file:///C:/amazon-filter-e2e-automation/#./#g; s#/amazon-filter-e2e-automation/#./#g' "$REPORT.bak" > "$REPORT"
+             echo "Patched $REPORT for local viewing"
+             fi
+
+
 
 
       - name: Upload Extent Report Bundle (HTML + screenshots + logs)
