@@ -254,55 +254,55 @@ public class TestListener implements ITestListener {
 //    }
 //
 //
-//    /** Build a URL that works in both environments:
-//     *  - CI/Pages: prefix with REPORT_BASE (e.g. "/amazon-filter-e2e-automation/")
-//     *  - Local:    make it relative from ExtentReports/ExtentReport.html  -> "../../<rel>"
-//     */
-//    private String buildPublicUrl(String relativeFromSiteRoot) {
-//
-//        System.out.println("VMARK: buildPublicUrl input='" + relativeFromSiteRoot + "'");
-//
-//        // sanitize purely relative
-//        String rel = relativeFromSiteRoot.replace("\\", "/");
-//        while (rel.startsWith("./"))  rel = rel.substring(2);
-//        while (rel.startsWith("../")) rel = rel.substring(3);
-//        if (rel.startsWith("/"))      rel = rel.substring(1);
-//
-//        // read possibly corrupted REPORT_BASE (CI)
-//        String base = System.getenv("REPORT_BASE");
-//        if (base != null) base = base.trim();
-//
-//        // detect invalid REPORT_BASE (Windows absolute paths)
-//        boolean invalid =
-//            (base == null || base.isEmpty()) ||
-//            base.matches("(?i).*[A-Za-z]:.*") ||
-//            base.toLowerCase().contains("program files");
-//
-//        if (invalid) {
-//            // repair using official GitHub env
-//            String ghRepo = System.getenv("GITHUB_REPOSITORY"); // e.g. "username/repo"
-//            if (ghRepo != null && ghRepo.contains("/")) {
-//                String repoName = ghRepo.substring(ghRepo.indexOf('/') + 1).trim();
-//                if (!repoName.isEmpty()) {
-//                    base = "/" + repoName + "/"; // correct Pages prefix
-//                }
-//            }
-//        }
-//
-//        // final URL construction
-//        String out;
-//        if (base != null && !base.isEmpty()) {
-//            if (!base.startsWith("/")) base = "/" + base;
-//            if (!base.endsWith("/"))   base = base + "/";
-//            out = (base + rel).replaceAll("//+", "/");
-//        } else {
-//            out = ("../../" + rel).replaceAll("//+", "/");
-//        }
-//
-//        System.out.println("VMARK: buildPublicUrl output='" + out + "'");
-//        return out;
-//    }
-//
+    /** Build a URL that works in both environments:
+     *  - CI/Pages: prefix with REPORT_BASE (e.g. "/amazon-filter-e2e-automation/")
+     *  - Local:    make it relative from ExtentReports/ExtentReport.html  -> "../../<rel>"
+     */
+    private String buildPublicUrl(String relativeFromSiteRoot) {
+
+        System.out.println("VMARK: buildPublicUrl input='" + relativeFromSiteRoot + "'");
+
+        // sanitize purely relative
+        String rel = relativeFromSiteRoot.replace("\\", "/");
+        while (rel.startsWith("./"))  rel = rel.substring(2);
+        while (rel.startsWith("../")) rel = rel.substring(3);
+        if (rel.startsWith("/"))      rel = rel.substring(1);
+
+        // read possibly corrupted REPORT_BASE (CI)
+        String base = System.getenv("REPORT_BASE");
+        if (base != null) base = base.trim();
+
+        // detect invalid REPORT_BASE (Windows absolute paths)
+        boolean invalid =
+            (base == null || base.isEmpty()) ||
+            base.matches("(?i).*[A-Za-z]:.*") ||
+            base.toLowerCase().contains("program files");
+
+        if (invalid) {
+            // repair using official GitHub env
+            String ghRepo = System.getenv("GITHUB_REPOSITORY"); // e.g. "username/repo"
+            if (ghRepo != null && ghRepo.contains("/")) {
+                String repoName = ghRepo.substring(ghRepo.indexOf('/') + 1).trim();
+                if (!repoName.isEmpty()) {
+                    base = "/" + repoName + "/"; // correct Pages prefix
+                }
+            }
+        }
+
+        // final URL construction
+        String out;
+        if (base != null && !base.isEmpty()) {
+            if (!base.startsWith("/")) base = "/" + base;
+            if (!base.endsWith("/"))   base = base + "/";
+            out = (base + rel).replaceAll("//+", "/");
+        } else {
+            out = ("../../" + rel).replaceAll("//+", "/");
+        }
+
+        System.out.println("VMARK: buildPublicUrl output='" + out + "'");
+        return out;
+    }
+
 
 
 
