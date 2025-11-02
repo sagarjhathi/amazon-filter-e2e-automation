@@ -192,7 +192,7 @@ jobs:
 
 
         # Insert this BEFORE the upload-artifact step that currently uploads artifacts/extent
-        -name: Prepare self-contained artifact (safe copy + patch)
+      - name: Prepare self-contained artifact (safe copy + patch)
         if: always()
         shell: bash
         working-directory: ${{ env.WORKDIR }}
