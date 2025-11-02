@@ -177,19 +177,77 @@ jobs:
           echo "<html><body><h3>Artifacts</h3><ul><li><a href='ExtentReports/ExtentReport.html'>Open Extent Report</a></li></ul></body></html>" > artifacts/extent/index.html
 
 
-      - name: Patch report links for local artifact viewing
+      # - name: Patch report links for local artifact viewing
+      #   if: always()
+      #   shell: bash
+      #   working-directory: ${{ env.WORKDIR }}
+      #   run: |
+      #        set -e
+      #        REPORT="${{ github.workspace }}/${{ env.WORKDIR }}/artifacts/extent/index.html"
+      #        if [ -f "$REPORT" ]; then
+      #        cp "$REPORT" "$REPORT.bak"
+      #        sed 's#file:///C:/amazon-filter-e2e-automation/#./#g; s#/amazon-filter-e2e-automation/#./#g' "$REPORT.bak" > "$REPORT"
+      #        echo "Patched $REPORT for local viewing"
+      #        fi
+
+
+        # Insert this BEFORE the upload-artifact step that currently uploads artifacts/extent
+        -name: Prepare self-contained artifact (safe copy + patch)
         if: always()
         shell: bash
         working-directory: ${{ env.WORKDIR }}
         run: |
-             set -e
-             REPORT="${{ github.workspace }}/${{ env.WORKDIR }}/artifacts/extent/index.html"
-             if [ -f "$REPORT" ]; then
-             cp "$REPORT" "$REPORT.bak"
-             sed 's#file:///C:/amazon-filter-e2e-automation/#./#g; s#/amazon-filter-e2e-automation/#./#g' "$REPORT.bak" > "$REPORT"
-             echo "Patched $REPORT for local viewing"
-             fi
+              set -euo pipefail
 
+              SRC="artifacts/extent"
+              DST="artifacts/extent-artifact"
+         
+              # remove old copy and recreate
+              rm -rf "$DST"
+              mkdir -p "$DST"
+         
+              # copy everything (preserve structure)
+              cp -r "$SRC/." "$DST/"
+         
+              # determine repo name, fallback to simple name if env missing
+              if [ -n "${GITHUB_REPOSITORY:-}" ] && echo "$GITHUB_REPOSITORY" | grep -q '/'; then
+                REPO="$(echo $GITHUB_REPOSITORY | awk -F/ '{print $2}')"
+              else
+                REPO="amazon-filter-e2e-automation"
+              fi
+         
+              # find the report in the copied DST (two common locations)
+              if [ -f "${DST}/index.html" ]; then
+                REPORT="${DST}/index.html"
+                REL_PREFIX="./"
+              elif [ -f "${DST}/ExtentReports/ExtentReport.html" ]; then
+                REPORT="${DST}/ExtentReports/ExtentReport.html"
+                # if report is inside ExtentReports/ and logs/screenshots are siblings of ExtentReports,
+                # the correct local relative prefix is "../"
+                REL_PREFIX="../"
+              else
+                echo "No report file found in $DST to patch; uploading unpatched copy"
+                exit 0
+              fi
+         
+              # backup
+              cp "$REPORT" "${REPORT}.bak"
+         
+              # Replacement rules (cover common variants):
+              #  - file:///C:/.../<repo>/    -> REL_PREFIX
+              #  - /<repo>/                  -> REL_PREFIX
+              #  - file:///C:\...\<repo>\    -> REL_PREFIX  (backup variant)
+              #
+              # Use perl for robust replacement (handles special characters)
+              perl -0777 -pe "
+                \$repo = quotemeta('$REPO');
+                \$rel = '$REL_PREFIX';
+                s#file:///[A-Za-z]:[^\"'>]*?/\$repo/#\$rel#g;
+                s#file:///[A-Za-z]:[^\"'>]*?\\\\\$repo\\\\#\$rel#g;
+                s#/\$repo/(\S?)#\$rel\$1#g;
+              " "${REPORT}.bak" > "$REPORT"
+         
+              echo "Prepared patched artifact copy at $DST (patched $REPORT)"
 
 
 
@@ -198,7 +256,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: extent-report-bundle
-          path: ${{ env.WORKDIR }}/artifacts/extent
+          path: ${{ env.WORKDIR }}/artifacts/extent-artifact
           retention-days: ${{ env.ARTIFACT_RETENTION_DAYS }}
           if-no-files-found: warn
 
