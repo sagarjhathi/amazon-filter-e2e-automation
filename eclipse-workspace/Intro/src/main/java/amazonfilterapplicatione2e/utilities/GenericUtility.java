@@ -1,20 +1,13 @@
 package main.java.amazonfilterapplicatione2e.utilities;
-
-import java.time.Duration;  
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
-
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
@@ -243,37 +236,7 @@ public class GenericUtility extends ProductListingPage{
         } catch (Exception e) {
             log.error("[{}] Error while scrolling to element: {} - {}", ThreadContext.get("testName"), locator, e.getMessage());
         }
-    }
-
- 
-    
-// public void closeCurrentWindowAndSwitchBack(String currentWindow) throws InterruptedException {
-//		log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));
-//
-//        Set<String> allWindowHandles = driver.getWindowHandles();
-//        for (String handle : allWindowHandles) {
-//            if (handle.equals(currentWindow)) {
-//            	System.out.println("In the closeCurrentWindowAndSwitchBack from genetic utility");
-//            	Thread.sleep(1000);
-//                driver.close(); // Close the current popup or child window
-//                Thread.sleep(3000);
-//                System.out.println("Switching back to the listing page");
-//                driver.switchTo().window(handle); // Switch back to original window
-//            }
-//        }
-//    }
-    
-//    public void closeCurrentWindowAndSwitchBack(String originalWindow) {
-//        Set<String> allWindows = driver.getWindowHandles();
-//        for (String handle : allWindows) {
-//            if (!handle.equals(originalWindow)) {
-//                driver.switchTo().window(handle);
-//                driver.close(); // close the child
-//            }
-//        }
-//        driver.switchTo().window(originalWindow); // return to parent
-//    }
-    
+    }    
     
     public void closeCurrentWindowAndSwitchBack(String originalWindow) throws InterruptedException {
         log.info("[{}] Within closeCurrentWindowAndSwitchBack method", ThreadContext.get("testName"));

@@ -1,13 +1,9 @@
 package main.java.amazonfilterapplicatione2e.driverManager;
-
-import java.util.List;
+import java.util.List; 
 import java.util.Map; 
-
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 
 public class DriverManager {

@@ -1,15 +1,8 @@
 package main.java.amazonfilterapplicatione2e.configManager;
-
-import java.io.FileInputStream;
+import java.io.FileInputStream; 
 import java.io.IOException;
 import java.util.Properties;
-import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Properties;
-import java.util.stream.Collectors;
 
 public final class ConfigManager {
     private static final Properties props = new Properties();

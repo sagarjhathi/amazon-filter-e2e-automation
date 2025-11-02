@@ -2,15 +2,10 @@ package main.java.amazonfilterapplicatione2e.base;
 import java.time.Duration;     
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-import io.opentelemetry.api.logs.Logger;
 import main.java.amazonfilterapplicatione2e.driverManager.DriverManager;
 import main.java.amazonfilterapplicatione2e.utilities.WaitUtility;
 
