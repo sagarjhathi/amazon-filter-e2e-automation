@@ -72,7 +72,7 @@ jobs:
           branch="${{ github.ref_name }}"
           job_name="${{ github.job }}"
 
-          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"🚀 **CI Test Started - $job_name**\\n👤 Triggered by: $actor\\n🌿 Branch: $branch\\n🕒 Start Time: $timestamp\\n🔗 [View Run]($runUrl)\"}" "$DISCORD_WEBHOOK"
+          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"**CI Test Started - $job_name**\\n Triggered by: $actor\\n Branch: $branch\\n Start Time: $timestamp\\n [View Run]($runUrl)\"}" "$DISCORD_WEBHOOK"
 
 
       - name: Set RUN_TIMESTAMP (Windows runner)
@@ -93,36 +93,6 @@ jobs:
             echo "Setting logs.dir = $ABS_LOGS_DIR"
             mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR"
 
-
-      
-
-
-      # - name: Copy ExtentReport and publish to GitHub Pages
-      #   if: always()
-      #   shell: bash
-      #   working-directory: ${{ env.WORKDIR }}
-      #   run: |
-      #     set -euo pipefail
-
-      #     REPORT_SRC="test-output/ExtentReports/ExtentReport.html"
-      #     REPO_ROOT="$GITHUB_WORKSPACE"
-
-      #     if [ ! -f "$REPORT_SRC" ]; then
-      #       echo "No ExtentReport found at $REPORT_SRC"
-      #       exit 0
-      #     fi
-
-      #     echo "Copying report from $REPORT_SRC to $REPO_ROOT/index.html"
-      #     cp "$REPORT_SRC" "$REPO_ROOT/index.html"
-
-      #     cd "$REPO_ROOT"
-
-      #     git config user.name "github-actions"
-      #     git config user.email "actions@github.com"
-
-      #     git add index.html
-      #     git commit -m "Publish ExtentReport [skip ci]" || echo "No changes to commit"
-      #     git push origin HEAD
 
 
       - name: Copy ExtentReport and publish to gh-pages (fixed)
@@ -283,5 +253,5 @@ jobs:
 
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n👤 Triggered by: $actor\\n🔖 Commit: \`$commit_short\`\\n🕒 Completed at: $timestamp\\n🔗 [View Full Run Details]($runUrl)\\n📦 [Download Extent Report & Artifacts]($artifactUrl)\\n🌐 [Open Latest Report on GitHub Pages]($pagesUrl)\"}" \
+               -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n Triggered by: $actor\\n Commit: \`$commit_short\`\\n Completed at: $timestamp\\n [View Full Run Details]($runUrl)\\n [Download Extent Report & Artifacts]($artifactUrl)\\n [Open Latest Report on GitHub Pages]($pagesUrl)\"}" \
                "$DISCORD_WEBHOOK"

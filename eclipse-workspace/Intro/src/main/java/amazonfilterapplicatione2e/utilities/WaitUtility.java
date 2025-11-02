@@ -1,9 +1,6 @@
 package main.java.amazonfilterapplicatione2e.utilities;
-
-
-import org.openqa.selenium.*;
+import org.openqa.selenium.*; 
 import org.openqa.selenium.support.ui.*;
-
 import java.time.Duration;
 
 public class WaitUtility {

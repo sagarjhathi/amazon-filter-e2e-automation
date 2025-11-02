@@ -1,23 +1,19 @@
 package main.java.amazonfilterapplicatione2e.utilities;
 
-import org.apache.commons.io.FileUtils; 
-import org.apache.logging.log4j.LogManager;
+import org.apache.commons.io.FileUtils;  
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-
 import main.java.amazonfilterapplicatione2e.driverManager.DriverManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.reporting.ExtentManager;
-
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeoutException;
 
 public class ScreenshotUtil {
 
