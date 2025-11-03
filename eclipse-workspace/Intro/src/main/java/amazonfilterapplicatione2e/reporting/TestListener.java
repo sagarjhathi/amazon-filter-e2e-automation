@@ -64,55 +64,134 @@ public class TestListener implements ITestListener {
     /** =======================================================================
      *  LOG LINK (deterministic URL, never from OS path)
      *  ======================================================================= */
-    private void attachLogFile(ITestResult result) {
+//    private void attachLogFile(ITestResult result) {
+//    
+//        try {
+//            if (result == null) return;
+//
+//            String perTestName = (String) result.getAttribute("logFileName");
+//            if (perTestName == null || perTestName.isEmpty()) {
+//                perTestName = result.getMethod().getMethodName();
+//            }
+//
+//            // --- Find the log on disk (for sanity/artifacts), but DO NOT use this path to build the URL.
+//            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
+//            Path expected = projectRoot.resolve(Paths.get("logs", RUN_FOLDER, perTestName + ".log")).normalize();
+//            Path logPath = expected;
+//
+//            if (!java.nio.file.Files.exists(logPath)) {
+//                Path logsRoot = projectRoot.resolve("logs");
+//                if (java.nio.file.Files.exists(logsRoot)) {
+//                    final String expectedFileName = perTestName + ".log"; // effectively-final for lambda
+//                    try (Stream<Path> walk = java.nio.file.Files.walk(logsRoot)) {
+//                        Optional<Path> found = walk
+//                                .filter(p -> java.nio.file.Files.isRegularFile(p)
+//                                        && p.getFileName().toString().equalsIgnoreCase(expectedFileName))
+//                                .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
+//                        if (found.isPresent()) {
+//                            logPath = found.get();
+//                        }
+//                    } catch (IOException ignored) {}
+//                }
+//            }
+//            if (logPath == null || !java.nio.file.Files.exists(logPath)) {
+//                ExtentTestManager.getTest().info("⚠️ Log file missing for test: " + perTestName);
+//                return;
+//            }
+//
+//            // --- Build the PUBLIC URL deterministically (never from absolute OS path)
+//            System.out.println("VMARK: passing rel = " + ("logs/" + RUN_FOLDER + "/" + perTestName + ".log"));
+//            System.out.println("VMARK: REPORT_BASE env = " + System.getenv("REPORT_BASE"));
+//
+//            final String fileName = perTestName + ".log";
+//            String href = buildPublicUrl("logs/" + RUN_FOLDER + "/" + fileName);
+//
+//            ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
+//            return; // ensure nothing else overwrites href
+//
+//        } catch (Exception e) {
+//            ExtentTestManager.getTest().warning("❌ Failed to attach log file: " + e.getMessage());
+//        }
+//    }
     
+    
+    
+    
+    private void attachLogFile(ITestResult result) {
         try {
             if (result == null) return;
 
+            // determine test name (allow custom attribute)
             String perTestName = (String) result.getAttribute("logFileName");
             if (perTestName == null || perTestName.isEmpty()) {
                 perTestName = result.getMethod().getMethodName();
             }
 
-            // --- Find the log on disk (for sanity/artifacts), but DO NOT use this path to build the URL.
-            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
-            Path expected = projectRoot.resolve(Paths.get("logs", RUN_FOLDER, perTestName + ".log")).normalize();
-            Path logPath = expected;
+            final String runFolder = "run_" + ExtentManager.RUN_TIMESTAMP;
+            final String fileName = perTestName + ".log";
+            final String relPath = "logs/" + runFolder + "/" + fileName; // normalized relative path (posix-style)
 
-            if (!java.nio.file.Files.exists(logPath)) {
+            // find OS path for diagnostics only (do not use as href)
+            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
+            Path foundLogPath = projectRoot.resolve(Paths.get("logs", runFolder, fileName)).normalize();
+            if (!java.nio.file.Files.exists(foundLogPath)) {
                 Path logsRoot = projectRoot.resolve("logs");
                 if (java.nio.file.Files.exists(logsRoot)) {
-                    final String expectedFileName = perTestName + ".log"; // effectively-final for lambda
+                    final String expectedFileName = fileName; // effectively-final for lambda
                     try (Stream<Path> walk = java.nio.file.Files.walk(logsRoot)) {
                         Optional<Path> found = walk
-                                .filter(p -> java.nio.file.Files.isRegularFile(p)
-                                        && p.getFileName().toString().equalsIgnoreCase(expectedFileName))
-                                .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
+                            .filter(p -> java.nio.file.Files.isRegularFile(p)
+                                && p.getFileName().toString().equalsIgnoreCase(expectedFileName))
+                            .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
                         if (found.isPresent()) {
-                            logPath = found.get();
+                            foundLogPath = found.get().toAbsolutePath().normalize();
                         }
-                    } catch (IOException ignored) {}
+                    } catch (IOException ignored) { }
                 }
             }
-            if (logPath == null || !java.nio.file.Files.exists(logPath)) {
-                ExtentTestManager.getTest().info("⚠️ Log file missing for test: " + perTestName);
+
+            if (foundLogPath == null || !java.nio.file.Files.exists(foundLogPath)) {
+                ExtentTestManager.getTest().info("Log file not found for: " + perTestName);
                 return;
             }
 
-            // --- Build the PUBLIC URL deterministically (never from absolute OS path)
-            System.out.println("VMARK: passing rel = " + ("logs/" + RUN_FOLDER + "/" + perTestName + ".log"));
-            System.out.println("VMARK: REPORT_BASE env = " + System.getenv("REPORT_BASE"));
+            // 1) GitHub Pages absolute path (if env present)
+            String pagesHref = "";
+            String ghRepo = System.getenv("GITHUB_REPOSITORY"); // owner/repo
+            if (ghRepo != null && ghRepo.contains("/")) {
+                String repoName = ghRepo.substring(ghRepo.indexOf('/') + 1).trim();
+                if (!repoName.isEmpty()) {
+                    pagesHref = ("/" + repoName + "/" + relPath).replaceAll("//+", "/");
+                }
+            }
 
-            final String fileName = perTestName + ".log";
-            String href = buildPublicUrl("logs/" + RUN_FOLDER + "/" + fileName);
+            // 2) local/artifact relative fallbacks (cover common depths)
+            String hrefDot    = ("./"  + relPath).replaceAll("//+", "/"); // if index.html sits next to logs/
+            String hrefUp1    = ("../" + relPath).replaceAll("//+", "/"); // if report sits one level under root
+            String hrefUp2    = ("../../" + relPath).replaceAll("//+", "/"); // if report sits two levels under (ExtentReports under test-output)
+            // include all anchors in the snippet - user will click the one that works
 
-            ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
-            return; // ensure nothing else overwrites href
+            StringBuilder html = new StringBuilder();
+            html.append("<div style='margin:6px 0; padding:6px; border-left:3px solid #999;'>");
+            html.append("<div style='font-weight:bold; margin-bottom:4px;'>Open log — choose the link that works in your environment</div>");
+            if (!pagesHref.isEmpty()) {
+                html.append("<div><a href='").append(pagesHref).append("' target='_blank'>Open (GitHub Pages)</a></div>");
+            }
+            html.append("<div><a href='").append(hrefDot).append("' target='_blank'>Open (artifact root / index.html)</a></div>");
+            html.append("<div><a href='").append(hrefUp1).append("' target='_blank'>Open (report one level deep)</a></div>");
+            html.append("<div><a href='").append(hrefUp2).append("' target='_blank'>Open (report inside ExtentReports/test-output)</a></div>");
+            html.append("<div style='margin-top:6px;color:#666;font-size:0.9em;'>Detected log on disk: ");
+            html.append(foundLogPath.toString().replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;"));
+            html.append("</div>");
+            html.append("</div>");
+
+            ExtentTestManager.getTest().info(html.toString());
 
         } catch (Exception e) {
-            ExtentTestManager.getTest().warning("❌ Failed to attach log file: " + e.getMessage());
+            ExtentTestManager.getTest().warning("Failed to attach log file: " + e.getMessage());
         }
     }
+
 
     /** =======================================================================
      *  SCREENSHOTS (same deterministic approach)
