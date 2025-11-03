@@ -51,7 +51,8 @@ public class AmazonTests extends BaseTest {
 	@DataProvider(name = "Data")
 	public Object[][] getBrands() {
 	    return new Object[][] {
-	        {"Mobile"}
+	        {"Mobile"},
+	        {"Tab"}
 	    };
 	}
 	
