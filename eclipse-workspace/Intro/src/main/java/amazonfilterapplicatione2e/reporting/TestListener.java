@@ -235,78 +235,156 @@ public class TestListener implements ITestListener {
 //    }
     
     
+//    private void attachScreenshotFolder(ITestResult result) {
+//        try {
+//            if (result == null) return;
+//            String testName = result.getMethod().getMethodName();
+//            String runFolder = "Run_" + ExtentManager.RUN_TIMESTAMP;
+//
+//            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
+//            Path reportDir = projectRoot.resolve(Paths.get("test-output", "ExtentReports")).toAbsolutePath().normalize();
+//            Path folder = projectRoot.resolve(Paths.get("test-output","screenshots", runFolder, testName));
+//            if (!Files.exists(folder)) folder = projectRoot.resolve(Paths.get("screenshots", runFolder, testName));
+//            if (!Files.exists(folder) || !Files.isDirectory(folder)) {
+//                ExtentTestManager.getTest().info("Screenshot folder not found for test: " + testName);
+//                return;
+//            }
+//
+//            List<Path> images = new ArrayList<>();
+//            try (Stream<Path> s = Files.list(folder)) {
+//                s.filter(p -> { String n=p.getFileName().toString().toLowerCase(); return n.endsWith(".png")||n.endsWith(".jpg")||n.endsWith(".jpeg"); })
+//                 .forEach(images::add);
+//            }
+//
+//            if (images.isEmpty()) {
+//                ExtentTestManager.getTest().info("No screenshots found in: " + folder.toString());
+//                return;
+//            }
+//
+//            images.sort(Comparator.comparing(p -> p.getFileName().toString()));
+//            StringBuilder html = new StringBuilder();
+//            html.append("<details><summary>Open Screenshots (").append(testName).append(")</summary><div>");
+//
+//            boolean isCI = "true".equalsIgnoreCase(System.getenv("GITHUB_ACTIONS"));
+//
+//            for (Path img : images) {
+//                try {
+//                    Path imgAbs = img.toAbsolutePath().normalize();
+//
+//                    // LOCAL: prefer relative path from report dir -> prevents file:///C:/... in browser
+//                    String localRel = null;
+//                    try {
+//                        Path rel = reportDir.relativize(imgAbs);
+//                        localRel = rel.toString().replace("\\", "/");
+//                    } catch (Exception e) {
+//                        // fallback: project-root relative with ../.. prefix
+//                        Path projRel = projectRoot.relativize(imgAbs);
+//                        localRel = "../" + projRel.toString().replace("\\", "/");
+//                    }
+//
+//                    // site-relative used on CI / Pages
+//                    String siteRel = "screenshots/" + runFolder + "/" + testName + "/" +
+//                                     java.net.URLEncoder.encode(img.getFileName().toString(), java.nio.charset.StandardCharsets.UTF_8).replace("+","%20");
+//
+//                    String href = isCI ? buildPublicUrl(siteRel) : localRel;
+//
+//                    // Debug helper (optional): uncomment to log href into report for one run
+//                    // ExtentTestManager.getTest().info("DEBUG_IMG_HREF: " + href);
+//
+//                    html.append("<div style='margin-top:8px;padding:6px;border:1px solid #ddd;'>")
+//                        .append("<div style='font-weight:bold;margin-bottom:6px;'>").append(img.getFileName().toString()).append("</div>")
+//                        .append("<a href='").append(href).append("' target='_blank'>")
+//                        .append("<img src='").append(href).append("' style='max-width:600px;border:1px solid #ccc;'/>")
+//                        .append("</a></div>");
+//
+//                } catch (Exception ex) { /* ignore single-file issues */ }
+//            }
+//
+//            html.append("</div></details>");
+//            ExtentTestManager.getTest().info(html.toString());
+//
+//        } catch (Exception e) {
+//            ExtentTestManager.getTest().warning("Could not attach screenshot folder: " + e.getMessage());
+//        }
+//    }
+    
+    
+    
     private void attachScreenshotFolder(ITestResult result) {
         try {
-            if (result == null) return;
             String testName = result.getMethod().getMethodName();
-            String runFolder = "Run_" + ExtentManager.RUN_TIMESTAMP;
+            String runTs = ExtentManager.RUN_TIMESTAMP;
+            String relFolder = "screenshots/Run_" + runTs + "/" + testName;
 
-            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
-            Path reportDir = projectRoot.resolve(Paths.get("test-output", "ExtentReports")).toAbsolutePath().normalize();
-            Path folder = projectRoot.resolve(Paths.get("test-output","screenshots", runFolder, testName));
-            if (!Files.exists(folder)) folder = projectRoot.resolve(Paths.get("screenshots", runFolder, testName));
-            if (!Files.exists(folder) || !Files.isDirectory(folder)) {
-                ExtentTestManager.getTest().info("Screenshot folder not found for test: " + testName);
+            // Absolute folder where screenshots are written during the run
+            Path absFolder = Paths.get(System.getProperty("user.dir"))
+                    .resolve("test-output").resolve(relFolder).normalize();
+
+            if (!java.nio.file.Files.exists(absFolder)) {
+                ExtentTestManager.getTest().info("Screenshot folder not found: " + relFolder);
                 return;
             }
 
-            List<Path> images = new ArrayList<>();
-            try (Stream<Path> s = Files.list(folder)) {
-                s.filter(p -> { String n=p.getFileName().toString().toLowerCase(); return n.endsWith(".png")||n.endsWith(".jpg")||n.endsWith(".jpeg"); })
-                 .forEach(images::add);
-            }
+            // Where the report typically sits (we use this to compute local-relative links)
+            Path reportDir = Paths.get(System.getProperty("user.dir"))
+                    .resolve("test-output").resolve("ExtentReports").normalize();
 
-            if (images.isEmpty()) {
-                ExtentTestManager.getTest().info("No screenshots found in: " + folder.toString());
-                return;
-            }
+            // candidate local prefixes (from the report to the screenshots folder)
+            String[] localPrefixes = new String[] { "../", "../../", "./" };
 
-            images.sort(Comparator.comparing(p -> p.getFileName().toString()));
             StringBuilder html = new StringBuilder();
-            html.append("<details><summary>Open Screenshots (").append(testName).append(")</summary><div>");
+            html.append("<details><summary>Screenshots for ").append(testName).append("</summary>");
 
-            boolean isCI = "true".equalsIgnoreCase(System.getenv("GITHUB_ACTIONS"));
+            try (Stream<Path> files = java.nio.file.Files.list(absFolder)) {
+                files.filter(p -> p.getFileName().toString().toLowerCase().endsWith(".png"))
+                     .sorted()
+                     .forEach(p -> {
+                         String fileName = p.getFileName().toString();
 
-            for (Path img : images) {
-                try {
-                    Path imgAbs = img.toAbsolutePath().normalize();
+                         // CI / Pages link (absolute to site root + repo name handled elsewhere)
+                         String ciLink = buildPublicUrl(relFolder + "/" + fileName);
 
-                    // LOCAL: prefer relative path from report dir -> prevents file:///C:/... in browser
-                    String localRel = null;
-                    try {
-                        Path rel = reportDir.relativize(imgAbs);
-                        localRel = rel.toString().replace("\\", "/");
-                    } catch (Exception e) {
-                        // fallback: project-root relative with ../.. prefix
-                        Path projRel = projectRoot.relativize(imgAbs);
-                        localRel = "../" + projRel.toString().replace("\\", "/");
-                    }
+                         // find a local prefix that actually points to the file from reportDir
+                         String chosenLocalLink = null;
+                         for (String prefix : localPrefixes) {
+                             try {
+                                 Path candidate = reportDir.resolve(prefix + relFolder + "/" + fileName).normalize();
+                                 if (java.nio.file.Files.exists(candidate)) {
+                                     // convert to forward slashes for URLs
+                                     chosenLocalLink = (prefix + relFolder + "/" + fileName).replace("\\", "/");
+                                     break;
+                                 }
+                             } catch (Exception ex) {
+                                 // try next prefix
+                             }
+                         }
+                         // fallback: assume '../' (most common: report under test-output/ExtentReports)
+                         if (chosenLocalLink == null) {
+                             chosenLocalLink = ("../" + relFolder + "/" + fileName).replace("\\", "/");
+                         }
 
-                    // site-relative used on CI / Pages
-                    String siteRel = "screenshots/" + runFolder + "/" + testName + "/" +
-                                     java.net.URLEncoder.encode(img.getFileName().toString(), java.nio.charset.StandardCharsets.UTF_8).replace("+","%20");
-
-                    String href = isCI ? buildPublicUrl(siteRel) : localRel;
-
-                    // Debug helper (optional): uncomment to log href into report for one run
-                    // ExtentTestManager.getTest().info("DEBUG_IMG_HREF: " + href);
-
-                    html.append("<div style='margin-top:8px;padding:6px;border:1px solid #ddd;'>")
-                        .append("<div style='font-weight:bold;margin-bottom:6px;'>").append(img.getFileName().toString()).append("</div>")
-                        .append("<a href='").append(href).append("' target='_blank'>")
-                        .append("<img src='").append(href).append("' style='max-width:600px;border:1px solid #ccc;'/>")
-                        .append("</a></div>");
-
-                } catch (Exception ex) { /* ignore single-file issues */ }
+                         html.append("<div style='margin-top:10px; border:1px solid #ccc; padding:5px;'>")
+                             .append("<div style='font-weight:bold; margin-bottom:5px;'>").append(fileName).append("</div>")
+                             // show Pages link (works on CI/Pages)
+                             .append("<div style='margin-bottom:6px;'><a href='").append(ciLink)
+                             .append("' target='_blank'>View on GitHub Pages</a></div>")
+                             // show thumbnail (local/artifact-friendly link)
+                             .append("<a href='").append(chosenLocalLink).append("' target='_blank'>")
+                             .append("<img src='").append(chosenLocalLink)
+                             .append("' style='max-width:600px; border:1px solid #ddd;'/>")
+                             .append("</a></div>");
+                     });
             }
 
-            html.append("</div></details>");
+            html.append("</details>");
             ExtentTestManager.getTest().info(html.toString());
 
         } catch (Exception e) {
             ExtentTestManager.getTest().warning("Could not attach screenshot folder: " + e.getMessage());
         }
     }
+
+
 
 
 
