@@ -31,29 +31,105 @@ public class TestListener implements ITestListener {
         attachScreenshotFolder(result);
     }
 
+//    @Override
+//    public void onTestFailure(ITestResult result) {
+//        Throwable t = result.getThrowable();
+//        if (t != null && t.getMessage() != null) {
+//            ExtentTestManager.getTest().fail(formatFailureMessage(t.getMessage()));
+//
+//        } else {
+//            ExtentTestManager.getTest().fail("Test failed.");
+//        }
+//        attachLogFile(result);
+//        attachScreenshotFolder(result);
+//    }
+    
+    
     @Override
     public void onTestFailure(ITestResult result) {
         Throwable t = result.getThrowable();
-        if (t != null && t.getMessage() != null) {
-            ExtentTestManager.getTest().fail(formatFailureMessage(t.getMessage()));
+        if (t != null) {
+            String msg = t.getMessage();
+            if (msg == null || msg.trim().isEmpty()) {
+                msg = t.toString();
+            }
 
+            // Build a compact HTML-safe block: message + first few stack frames
+            StringBuilder sb = new StringBuilder();
+            sb.append("<div>");
+            sb.append("<b>Failure:</b> ");
+            sb.append(escapeHtml(msg));
+            sb.append("</div>");
+
+            sb.append("<pre style='margin-top:8px; font-size:12px;'>");
+            StackTraceElement[] ste = t.getStackTrace();
+            int limit = Math.min(10, ste.length); // keep stacktrace short
+            for (int i = 0; i < limit; i++) {
+                sb.append(escapeHtml(ste[i].toString())).append("\n");
+            }
+            if (ste.length > limit) {
+                sb.append("... (").append(ste.length - limit).append(" more stack frames)\n");
+            }
+            sb.append("</pre>");
+
+            ExtentTestManager.getTest().fail(sb.toString());
         } else {
             ExtentTestManager.getTest().fail("Test failed.");
         }
+
+        // Keep attaching logs and screenshots as before
         attachLogFile(result);
         attachScreenshotFolder(result);
     }
 
+
+//
+//    @Override
+//    public void onTestSkipped(ITestResult result) {
+//        if (result.getThrowable() != null) {
+//            ExtentTestManager.getTest().skip("Test Skipped: " + result.getThrowable().getMessage());
+//        } else {
+//            ExtentTestManager.getTest().skip("Test Skipped (no exception)");
+//        }
+//        attachLogFile(result);
+//        attachScreenshotFolder(result);
+//    }
+    
+    
     @Override
     public void onTestSkipped(ITestResult result) {
-        if (result.getThrowable() != null) {
-            ExtentTestManager.getTest().skip("Test Skipped: " + result.getThrowable().getMessage());
-        } else {
-            ExtentTestManager.getTest().skip("Test Skipped (no exception)");
+        try {
+            String testName = result.getMethod().getMethodName();
+            Throwable t = result.getThrowable();
+
+            if (t != null) {
+                String reason = t.getMessage() == null ? t.toString() : t.getMessage();
+                StringBuilder sb = new StringBuilder();
+                sb.append("<b>Test skipped:</b> ").append(escapeHtml(testName)).append("<br/>")
+                  .append("<b>Reason:</b> ").append(escapeHtml(reason)).append("<br/>");
+
+                // attach a couple of stack frames for context (not whole trace)
+                StackTraceElement[] trace = t.getStackTrace();
+                int limit = Math.min(5, trace.length);
+                sb.append("<pre>");
+                for (int i = 0; i < limit; i++) {
+                    sb.append(escapeHtml(trace[i].toString())).append("\n");
+                }
+                if (trace.length > limit) sb.append("... (").append(trace.length - limit).append(" more frames)");
+                sb.append("</pre>");
+
+                ExtentTestManager.getTest().skip(sb.toString());
+            } else {
+                ExtentTestManager.getTest().skip("Test skipped: " + escapeHtml(testName));
+            }
+
+            attachLogFile(result);
+            attachScreenshotFolder(result);
+        } catch (Exception e) {
+            ExtentTestManager.getTest().warning("Failed in onTestSkipped: " + e.getMessage());
         }
-        attachLogFile(result);
-        attachScreenshotFolder(result);
     }
+
 
     @Override
     public void onFinish(ITestContext context) {
@@ -235,78 +311,7 @@ public class TestListener implements ITestListener {
 //    }
     
     
-//    private void attachScreenshotFolder(ITestResult result) {
-//        try {
-//            if (result == null) return;
-//            String testName = result.getMethod().getMethodName();
-//            String runFolder = "Run_" + ExtentManager.RUN_TIMESTAMP;
-//
-//            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
-//            Path reportDir = projectRoot.resolve(Paths.get("test-output", "ExtentReports")).toAbsolutePath().normalize();
-//            Path folder = projectRoot.resolve(Paths.get("test-output","screenshots", runFolder, testName));
-//            if (!Files.exists(folder)) folder = projectRoot.resolve(Paths.get("screenshots", runFolder, testName));
-//            if (!Files.exists(folder) || !Files.isDirectory(folder)) {
-//                ExtentTestManager.getTest().info("Screenshot folder not found for test: " + testName);
-//                return;
-//            }
-//
-//            List<Path> images = new ArrayList<>();
-//            try (Stream<Path> s = Files.list(folder)) {
-//                s.filter(p -> { String n=p.getFileName().toString().toLowerCase(); return n.endsWith(".png")||n.endsWith(".jpg")||n.endsWith(".jpeg"); })
-//                 .forEach(images::add);
-//            }
-//
-//            if (images.isEmpty()) {
-//                ExtentTestManager.getTest().info("No screenshots found in: " + folder.toString());
-//                return;
-//            }
-//
-//            images.sort(Comparator.comparing(p -> p.getFileName().toString()));
-//            StringBuilder html = new StringBuilder();
-//            html.append("<details><summary>Open Screenshots (").append(testName).append(")</summary><div>");
-//
-//            boolean isCI = "true".equalsIgnoreCase(System.getenv("GITHUB_ACTIONS"));
-//
-//            for (Path img : images) {
-//                try {
-//                    Path imgAbs = img.toAbsolutePath().normalize();
-//
-//                    // LOCAL: prefer relative path from report dir -> prevents file:///C:/... in browser
-//                    String localRel = null;
-//                    try {
-//                        Path rel = reportDir.relativize(imgAbs);
-//                        localRel = rel.toString().replace("\\", "/");
-//                    } catch (Exception e) {
-//                        // fallback: project-root relative with ../.. prefix
-//                        Path projRel = projectRoot.relativize(imgAbs);
-//                        localRel = "../" + projRel.toString().replace("\\", "/");
-//                    }
-//
-//                    // site-relative used on CI / Pages
-//                    String siteRel = "screenshots/" + runFolder + "/" + testName + "/" +
-//                                     java.net.URLEncoder.encode(img.getFileName().toString(), java.nio.charset.StandardCharsets.UTF_8).replace("+","%20");
-//
-//                    String href = isCI ? buildPublicUrl(siteRel) : localRel;
-//
-//                    // Debug helper (optional): uncomment to log href into report for one run
-//                    // ExtentTestManager.getTest().info("DEBUG_IMG_HREF: " + href);
-//
-//                    html.append("<div style='margin-top:8px;padding:6px;border:1px solid #ddd;'>")
-//                        .append("<div style='font-weight:bold;margin-bottom:6px;'>").append(img.getFileName().toString()).append("</div>")
-//                        .append("<a href='").append(href).append("' target='_blank'>")
-//                        .append("<img src='").append(href).append("' style='max-width:600px;border:1px solid #ccc;'/>")
-//                        .append("</a></div>");
-//
-//                } catch (Exception ex) { /* ignore single-file issues */ }
-//            }
-//
-//            html.append("</div></details>");
-//            ExtentTestManager.getTest().info(html.toString());
-//
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("Could not attach screenshot folder: " + e.getMessage());
-//        }
-//    }
+
     
     
     
@@ -453,6 +458,17 @@ public class TestListener implements ITestListener {
             return html.toString();
         }
         return message == null ? "" : message;
+    }
+    
+    
+    /** Simple HTML escaper to avoid broken markup in report output. */
+    private static String escapeHtml(String s) {
+        if (s == null) return "";
+        return s.replace("&", "&amp;")
+                .replace("<", "&lt;")
+                .replace(">", "&gt;")
+                .replace("\"", "&quot;")
+                .replace("'", "&#39;");
     }
 }
 
