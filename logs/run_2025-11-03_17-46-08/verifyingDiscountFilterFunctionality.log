@@ -1,0 +1,12 @@
+2025-11-03 05:48:45.497 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-11-03 05:48:48.830 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-11-03 05:48:52.107 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Capturing screenshot: search bar error capture__2025-11-03_174852.png
+2025-11-03 05:48:52.247 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-03_17-46-08/verifyingDiscountFilterFunctionality/search bar error capture__2025-11-03_174852.png
+2025-11-03 05:48:52.468 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Giving input within the search bar
+2025-11-03 05:48:52.468 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Within safeClick method
+2025-11-03 05:48:53.008 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (914d010e63e6aa317b0253c3f6cfa6b2)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-03 05:48:53.008 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Clicking on the submit in the search bar
+2025-11-03 05:48:53.163 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Within filterCheckUnderList method
+2025-11-03 05:48:53.176 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Filter option does not exist within the filter check List
+2025-11-03 05:48:53.176 PM [TestNG-test-Test-1] WARN  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality]   Filter 'Discount' not available. Skipping test.
+2025-11-03 05:48:53.180 PM [TestNG-test-Test-1] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
