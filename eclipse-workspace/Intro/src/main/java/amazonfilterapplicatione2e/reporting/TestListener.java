@@ -367,7 +367,7 @@ public class TestListener implements ITestListener {
                              .append("<div style='font-weight:bold; margin-bottom:5px;'>").append(fileName).append("</div>")
                              // show Pages link (works on CI/Pages)
                              .append("<div style='margin-bottom:6px;'><a href='").append(ciLink)
-                             .append("' target='_blank'>View on GitHub Pages</a></div>")
+                           //  .append("' target='_blank'>View on GitHub Pages</a></div>")
                              // show thumbnail (local/artifact-friendly link)
                              .append("<a href='").append(chosenLocalLink).append("' target='_blank'>")
                              .append("<img src='").append(chosenLocalLink)
