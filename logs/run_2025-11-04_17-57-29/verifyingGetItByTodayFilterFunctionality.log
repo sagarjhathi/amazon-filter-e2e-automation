@@ -1,0 +1,22 @@
+2025-11-04 05:57:38.407 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] 🔹 Starting test method: verifyingGetItByTodayFilterFunctionality
+2025-11-04 05:58:01.911 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Opening amazon Landing page
+2025-11-04 05:58:02.637 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Capturing screenshot: search bar error capture__2025-11-04_175802.png
+2025-11-04 05:58:02.885 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-04_17-57-29/verifyingGetItByTodayFilterFunctionality/search bar error capture__2025-11-04_175802.png
+2025-11-04 05:58:03.367 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Giving input within the search bar
+2025-11-04 05:58:03.368 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Within safeClick method
+2025-11-04 05:58:06.269 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (eb45ec7187e37121d195fbabeb87501d)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-04 05:58:06.270 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicking on the submit in the search bar
+2025-11-04 05:58:06.810 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Checking if element visible on UI via isElementVisibleOnUI Method
+2025-11-04 05:58:19.872 PM [TestNG-test-Test-3] WARN  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality]  Filter option 'Get It Today' does not exist. Skipping the test.
+2025-11-04 05:58:19.880 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] ✅ Finished test method: verifyingGetItByTodayFilterFunctionality
+2025-11-04 05:58:21.260 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] 🔹 Starting test method: verifyingGetItByTodayFilterFunctionality
+2025-11-04 05:58:24.609 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Opening amazon Landing page
+2025-11-04 05:58:25.123 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Capturing screenshot: search bar error capture__2025-11-04_175825.png
+2025-11-04 05:58:25.484 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-04_17-57-29/verifyingGetItByTodayFilterFunctionality/search bar error capture__2025-11-04_175825.png
+2025-11-04 05:58:25.830 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Giving input within the search bar
+2025-11-04 05:58:25.831 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Within safeClick method
+2025-11-04 05:58:28.264 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (cd4d6d820072f0117c717b3502834899)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-04 05:58:28.264 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicking on the submit in the search bar
+2025-11-04 05:58:28.415 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Checking if element visible on UI via isElementVisibleOnUI Method
+2025-11-04 05:58:41.577 PM [TestNG-test-Test-3] WARN  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality]  Filter option 'Get It Today' does not exist. Skipping the test.
+2025-11-04 05:58:41.583 PM [TestNG-test-Test-3] INFO  [verifyingGetItByTodayFilterFunctionality] ✅ Finished test method: verifyingGetItByTodayFilterFunctionality
