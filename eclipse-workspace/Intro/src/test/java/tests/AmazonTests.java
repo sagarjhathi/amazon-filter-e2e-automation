@@ -39,6 +39,7 @@ import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.reporting.ExtentTestManager;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
 import test.java.retry.RetryFailedTest;
+import test.testDataProvider.TestDataProvider;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -48,18 +49,13 @@ public class AmazonTests extends BaseTest {
 	private  final Logger log = LoggerUtility.getLogger(AmazonTests.class);
 	
 	
-	@DataProvider(name = "Data")
-	public Object[][] getBrands() {
-	    return new Object[][] {
-	        {"Mobile"},
-	        {"Tab"}
-	    };
-	}
 	
-
-	
-	
-	@Test(priority=1, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	@Test(
+			priority=1,
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
@@ -97,7 +93,11 @@ public class AmazonTests extends BaseTest {
 	
 	
 
-	@Test(priority=2, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException{
 		
 		 ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
@@ -134,7 +134,11 @@ public class AmazonTests extends BaseTest {
 
 
 
-	@Test(priority = 3, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
@@ -174,8 +178,11 @@ public class AmazonTests extends BaseTest {
 		            		  
 	
 	
-	//brands need separate handling of screenshot
-	@Test(priority=4, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException {
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
@@ -229,7 +236,11 @@ public class AmazonTests extends BaseTest {
 	
 	
 
-	@Test(priority=5, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException {
 		
 		AmazonLandingPage amazonPage=new AmazonLandingPage();
@@ -296,8 +307,11 @@ public class AmazonTests extends BaseTest {
 	}
 
 	
-	//Price filter needs separate handlng of screenshot
-	@Test(priority=6, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -355,7 +369,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority = 7, retryAnalyzer = RetryFailedTest.class,dataProvider = "Data")
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException {
 		ExtentTestManager.getTest().info("ðŸ§ª Test Input Parameter: <b>" + input + "</b>");
 
@@ -425,7 +443,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority=8, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingDisplaySizeFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -493,7 +515,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority=9, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingProcessorSpeedFilterFunctionality() throws InterruptedException {
 				
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -560,7 +586,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority=10, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingDisplayTypeFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -624,7 +654,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority=11, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
 		
 		
@@ -693,7 +727,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority=12, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -759,7 +797,11 @@ public class AmazonTests extends BaseTest {
 
 	
 
-	@Test(priority=13, retryAnalyzer = RetryFailedTest.class)
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
 	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
 		
 		AmazonLandingPage am=new AmazonLandingPage();
