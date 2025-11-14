@@ -1,0 +1,12 @@
+2025-11-14 12:21:45.901 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] 🔹 Starting test method: verifyingPriceSilderFunctionality
+2025-11-14 12:21:48.100 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Opening amazon Landing page
+2025-11-14 12:21:58.936 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Capturing screenshot: search bar error capture__2025-11-14_122158.png
+2025-11-14 12:21:59.085 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-14_12-13-58/verifyingPriceSilderFunctionality/search bar error capture__2025-11-14_122158.png
+2025-11-14 12:21:59.266 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Giving input within the search bar
+2025-11-14 12:21:59.266 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Within safeClick method
+2025-11-14 12:22:00.941 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Clicked the  [[ChromeDriver: chrome on windows (9256fa1f80921124b63d24c852fd86c7)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-14 12:22:00.942 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Clicking on the submit in the search bar
+2025-11-14 12:22:01.148 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Within filterCheckUnderList method
+2025-11-14 12:22:01.159 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality] Filter option does not exist within the filter check List
+2025-11-14 12:22:01.160 PM [TestNG-test-Test-1] WARN  [verifyingPriceSilderFunctionality] [verifyingPriceSilderFunctionality]   Filter option 'Price' does not exist in the list. Skipping the test.
+2025-11-14 12:22:01.162 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality] ✅ Finished test method: verifyingPriceSilderFunctionality

@@ -1,0 +1,11 @@
+2025-11-14 12:21:12.795 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] 🔹 Starting test method: verifyingGetItIn2DaysFilterFunctionality
+2025-11-14 12:21:17.741 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Opening amazon Landing page
+2025-11-14 12:21:17.961 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Capturing screenshot: search bar error capture__2025-11-14_122117.png
+2025-11-14 12:21:18.106 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-14_12-13-58/verifyingGetItIn2DaysFilterFunctionality/search bar error capture__2025-11-14_122117.png
+2025-11-14 12:21:18.258 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Giving input within the search bar
+2025-11-14 12:21:18.258 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Within safeClick method
+2025-11-14 12:21:19.976 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (5e826de1a2ab67489c80f3590f5b7e17)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-14 12:21:19.977 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Clicking on the submit in the search bar
+2025-11-14 12:21:20.170 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality] Checking if element within view port via isElementInViewport method
+2025-11-14 12:21:20.183 PM [TestNG-test-Test-1] WARN  [verifyingGetItIn2DaysFilterFunctionality] [verifyingGetItIn2DaysFilterFunctionality]  Filter option 'Get It in 2 Days' does not exist. Skipping the test.
+2025-11-14 12:21:20.185 PM [TestNG-test-Test-1] INFO  [verifyingGetItIn2DaysFilterFunctionality] ✅ Finished test method: verifyingGetItIn2DaysFilterFunctionality
