@@ -20,6 +20,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.testng.Assert;
 import main.java.amazonfilterapplicatione2e.base.BasePage;
+import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
@@ -398,8 +399,17 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
     List<Map<String, Object>> results = new ArrayList<>();
 
     log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
-
-    for (int i = 0; i <filterOptions.size(); i++) {
+    
+    int filterOptionSize=filterOptions.size();
+    
+   boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
+   if(runAll==false) {
+	   filterOptionSize=1;
+   }
+    	
+    
+    
+    for (int i = 0; i <filterOptionSize; i++) {
     	
 		log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 

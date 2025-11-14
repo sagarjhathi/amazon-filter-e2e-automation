@@ -33,7 +33,7 @@ public final class ConfigManager {
         }
     }
 
-    private ConfigManager() { /* utility class */ }
+    public ConfigManager() { /* utility class */ }
 
     /** Simple get: system property -> env var -> properties file */
     public static String get(String key) {

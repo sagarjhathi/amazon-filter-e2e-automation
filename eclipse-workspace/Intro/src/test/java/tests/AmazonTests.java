@@ -242,7 +242,7 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException {
-		
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage amazonPage=new AmazonLandingPage();
 		amazonPage.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -312,13 +312,13 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingPriceSilderFunctionality() throws InterruptedException {
-		
+	public void verifyingPriceSilderFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 		GenericUtility genericUtility=new GenericUtility();
@@ -448,13 +448,13 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingDisplaySizeFilterFunctionality() throws InterruptedException {
-		
+	public void verifyingDisplaySizeFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
         GenericUtility genericUtility=new GenericUtility();
@@ -520,13 +520,13 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingProcessorSpeedFilterFunctionality() throws InterruptedException {
-				
+	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 	
@@ -591,13 +591,13 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingDisplayTypeFilterFunctionality() throws InterruptedException {
-		
+	public void verifyingDisplayTypeFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 		ProductListingPage productPage=new ProductListingPage();
@@ -659,8 +659,8 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingOperatingSystemVersionFilterFunctionality() throws InterruptedException {
-		
+	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		GenericUtility genericUtility=new GenericUtility();
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -669,7 +669,7 @@ public class AmazonTests extends BaseTest {
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
 		
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 
@@ -732,13 +732,13 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality() throws InterruptedException {
-		
+	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 		GenericUtility genericUtility= new GenericUtility();
@@ -802,15 +802,15 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingDiscountFilterFunctionality() throws InterruptedException {
-		
+	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException {
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		
 		
 		am.openingLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar("Mobile");
+		am.givingInputWithinSearchBar(input);
 		am.clickingOnSubmitSearchButton();
 		
 		
