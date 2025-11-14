@@ -2,11 +2,18 @@ package main.java.amazonfilterapplicatione2e.configManager;
 import java.io.FileInputStream; 
 import java.io.IOException;
 import java.util.Properties;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.io.InputStream;
 
 public final class ConfigManager {
+	 private static  final Logger log = LogManager.getLogger(ConfigManager.class);
+	 
     private static final Properties props = new Properties();
     private static final String RESOURCE = "UtilData.properties";
+    private static ConfigManager instance;
 
     static {
         // 1) External file override (useful for CI): -Dconfig.file=/path/UtilData.properties
@@ -59,6 +66,43 @@ public final class ConfigManager {
         if (v == null || v.isBlank()) return defaultValue;
         try { return Integer.parseInt(v.trim()); } catch (NumberFormatException e) { return defaultValue; }
     }
+    
+    
+    public static synchronized ConfigManager getInstance() {
+        if (instance == null) {
+            instance = new ConfigManager();
+        }
+        return instance;
+    }
+    
+    
+    
+    private String resolveValue(String key) {
+        String val = props.getProperty(key);
+        if (val != null && !val.isEmpty()) {
+            log.debug("Resolved key '{}' = '{}'", key, val);
+            return val;
+        } else {
+            log.debug("Key '{}' not found in properties file.", key);
+            return null;
+        }
+    }
+
+    // --- Public getters ---
+
+    public String getString(String key) {
+        return resolveValue(key);
+    }
+
+    public String getString(String key, String defaultValue) {
+        String v = resolveValue(key);
+        if (v == null) {
+            log.debug("Key '{}' missing, using default '{}'", key, defaultValue);
+        }
+        return v != null ? v : defaultValue;
+    }
+    
+    
  
 }
 
