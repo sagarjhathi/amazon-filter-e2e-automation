@@ -446,6 +446,7 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             System.out.println("inside the loop and product name is " + productNameListingPage.get(productIndex).getText());
             
             try {
+            	int before = driver.getWindowHandles().size();
                 WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
 				log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
 
@@ -461,8 +462,19 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
                 System.out.println("Product clicked with Ctrl+Click to open in new tab.");
 				log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", ThreadContext.get("testName"));
 
-              //  Thread.sleep(2000);
+                Thread.sleep(2000);
 
+                int after = driver.getWindowHandles().size();
+                
+                if (after == before) {
+                	System.out.println("Before click and AFTER CLICK count is same , trying again");
+                	 actions
+                     .keyDown(Keys.CONTROL)
+                     .click(productElement)
+                     .keyUp(Keys.CONTROL)
+                     .build()
+                     .perform();
+                }
             } catch (Exception e) {
 				log.info("[{}] Failed to Ctrl+Click product index " + p+"  for filter value->"+filterValue, ThreadContext.get("testName"));
                 System.out.println("Failed to Ctrl+Click product index " + p);
@@ -472,9 +484,8 @@ public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By fil
             System.out.println("Clicked on the producct name new pop-up should open");
 			log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", ThreadContext.get("testName"));
 
-         //   Thread.sleep(2000);
+            Thread.sleep(2000);
             
-        //    productPage.switchToNewWindow(currentWindow);
 			waitForNewWindowAndSwitch(currentWindow);
 			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
 
@@ -774,6 +785,14 @@ public void waitForNewWindowAndSwitch(String originalWindow) {
 	    List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 	    genericUtility.printFilterNamesOnly(filterOptionsBy);
 
+	    
+	    int filterOptionSize=filterOptions.size();
+	    
+	    boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
+	    if(runAll==false) {
+	 	   filterOptionSize=1;
+	    }
+	    
 	    List<Map<Object, Object>> allResults = new ArrayList<>();
 
 	    for (int i = 1; i < filterOptions.size(); i++) {
@@ -877,6 +896,14 @@ public void waitForNewWindowAndSwitch(String originalWindow) {
 
 	    log.info("[{}] Within OS fucntion , this is the filterOptions size ->"+filterOptions.size(), ThreadContext.get("testName"));
 
+	    
+	    int filterOptionSize=filterOptions.size();
+	    
+	    boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
+	    if(runAll==false) {
+	 	   filterOptionSize=1;
+	    }
+	    
 	    for (int i = 0; i < filterOptions.size(); i++) {
 		    log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
 
