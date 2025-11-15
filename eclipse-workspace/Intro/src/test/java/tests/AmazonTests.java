@@ -859,7 +859,7 @@ public class AmazonTests extends BaseTest {
 	        	softAssert.fail(failureMessage.toString());
 	        } else {
 	            log.info("[{}]  Filter '{}' matched in at least one product section.", ThreadContext.get("testName"), filter);
-	            System.out.println("âœ” Filter '" + filter + "' matched in at least one section of product details.");
+	            System.out.println("Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
 
