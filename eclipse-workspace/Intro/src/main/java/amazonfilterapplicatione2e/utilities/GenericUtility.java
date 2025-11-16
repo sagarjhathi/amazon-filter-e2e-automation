@@ -1,13 +1,19 @@
 package main.java.amazonfilterapplicatione2e.utilities;
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
@@ -39,66 +45,15 @@ public class GenericUtility extends ProductListingPage{
 	}
 	
 
-//	
-	public boolean isElementInViewport(By locator) {
+
+	
+	
+	public boolean isElementInViewport(By locator) throws TimeoutException {
+	    log.info("[{}] Waiting until element is visible in viewport", ThreadContext.get("testName"));
+
 	    try {
-    		log.info("[{}] Checking if element within view port via isElementInViewport method", ThreadContext.get("testName"));
-
-	        List<WebElement> elements = driver.findElements(locator);
-	        if (elements.isEmpty()) {
-	        	return false;
-	        }
-    		
-
-
-	        WebElement element = elements.get(0);
-	        if (!element.isDisplayed()) {
-	        	return false;
-	        }
-    		
-
-
-	        JavascriptExecutor js = (JavascriptExecutor) driver;
-
-	        return (Boolean) js.executeScript(
-	            "var elem = arguments[0],                 " +
-	            "  box = elem.getBoundingClientRect(),    " +
-	            "  cx = box.left + box.width / 2,         " +
-	            "  cy = box.top + box.height / 2,         " +
-	            "  e = document.elementFromPoint(cx, cy); " +
-	            "for (; e; e = e.parentElement) {         " +
-	            "  if (e === elem)                        " +
-	            "    return true;                         " +
-	            "}                                        " +
-	            "return false;", element);
-	    } catch (Exception e) {
-	        return false;
-	    }
-	    
-	}
-
-
-	
-	
-	
-	public boolean isElementVisibleOnUI(By locator) throws InterruptedException {
-		
-		log.info("[{}] Checking if element visible on UI via isElementVisibleOnUI Method", ThreadContext.get("testName"));
-
-		System.out.println("Checking if the filter and options visible on UI via isElementVisibleOnUI");
-		Thread.sleep(3000);
-	    try {
-	    	waitUtil.waitUntilClickable(locator, 10);
-	        List<WebElement> elements = driver.findElements(locator); // Returns empty list if not found
-	        if (elements.isEmpty()) {
-	        	System.out.println("Filter and Filter options not visible on Ui hence Returning from the function");
-	            return false;
-	        }
-
-	        WebElement element = elements.get(0);
-	        if (!element.isDisplayed()) {
-	            return false;
-	        }
+	        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+	        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 
 	        JavascriptExecutor js = (JavascriptExecutor) driver;
 	        return (Boolean) js.executeScript(
@@ -112,13 +67,14 @@ public class GenericUtility extends ProductListingPage{
 	            "    return true;                         " +
 	            "}                                        " +
 	            "return false;", element);
+
 	    } catch (Exception e) {
 	        return false;
 	    }
 	}
 
 
-
+	
 	
 	public boolean isElementPresent(By locator) {
 		log.info("[{}] Checking if present via isElementPresent Method", ThreadContext.get("testName"));

@@ -158,7 +158,7 @@ public class SafeActions extends BasePage{
 		
 		
 		
-		public boolean safeClickBooleanWithScreenShot(By locator,String filterName,String filterOption) throws InterruptedException {
+		public boolean safeClickBooleanWithScreenShot(By locator,String filterName,String filterOption) throws InterruptedException, java.util.concurrent.TimeoutException {
 			    log.info("[{}] Within safeClickBooleanWithScreenShot method", ThreadContext.get("testName"));
 
 				GenericUtility genericUtility=new GenericUtility();

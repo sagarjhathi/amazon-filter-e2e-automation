@@ -9,6 +9,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.TimeoutException;
+
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
@@ -381,7 +383,7 @@ public class ProductListingPage extends  BasePage{
 
 
 
-	public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
+	public List<Map<String, Object>> applyFilterAndValidateProductsWithResult(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult method", ThreadContext.get("testName"));
 
@@ -434,7 +436,7 @@ public class ProductListingPage extends  BasePage{
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			for (int p = 1; p <productNameListingPage.size(); p++) {
-
+				
 				productIndex = p-1;
 				productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
 				log.info("[{}] Within productNameListingPage loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
@@ -443,16 +445,14 @@ public class ProductListingPage extends  BasePage{
 				try {
 					int before = driver.getWindowHandles().size();
 					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
 					log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
 
 					System.out.println(productElement.getText()+"Printing the name in try catch ");
-					Actions actions = new Actions(driver);
-					actions
-					.keyDown(Keys.CONTROL)
-					.click(productElement)
-					.keyUp(Keys.CONTROL)
-					.build()
-					.perform();
+
+					Thread.sleep(1000);
+					
+					safeAct.safeClick(productPage.getProductByIndex(p));
 
 					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
 					log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", ThreadContext.get("testName"));
@@ -463,12 +463,8 @@ public class ProductListingPage extends  BasePage{
 
 					if (after == before) {
 						System.out.println("Before click and AFTER CLICK count is same , trying again");
-						actions
-						.keyDown(Keys.CONTROL)
-						.click(productElement)
-						.keyUp(Keys.CONTROL)
-						.build()
-						.perform();
+						JavascriptExecutor js=(JavascriptExecutor)driver;
+					    js.executeScript("arguments[0].click();", productElement);
                 }
             } catch (Exception e) {
 				log.info("[{}] Failed to Ctrl+Click product index " + p+"  for filter value->"+filterValue, ThreadContext.get("testName"));
@@ -766,7 +762,7 @@ public class ProductListingPage extends  BasePage{
 			
 	
 	
-	public List<Map<Object, Object>> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException {
+	public List<Map<Object, Object>> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 		log.info("[{}] Within applyFilterAndValidateBrandsFilterWithResult method", ThreadContext.get("testName"));
 
 		SafeActions safeAct = new SafeActions();
@@ -876,7 +872,7 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	
-	public List<Map<String, Object>> applyOperatingSystemFilterAndValidateProductsWithResults(By filterOptionsBy, String filterName) throws InterruptedException {
+	public List<Map<String, Object>> applyOperatingSystemFilterAndValidateProductsWithResults(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 		log.info("[{}] Within applyOperatingSystemFilterAndValidateProductsWithResults method", ThreadContext.get("testName"));
 
 
@@ -939,11 +935,14 @@ public class ProductListingPage extends  BasePage{
 				int productIndex=p-1;
 				try {
 					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-					new Actions(driver)
-					.keyDown(Keys.CONTROL)
-					.click(productElement)
-					.keyUp(Keys.CONTROL)
-					.build().perform();
+//					new Actions(driver)
+//					.keyDown(Keys.CONTROL)
+//					.click(productElement)
+//					.keyUp(Keys.CONTROL)
+//					.build().perform();
+					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
+					Thread.sleep(1000);
+					safeAct.safeClick(productPage.getProductByIndex(p));
 					log.info("[{}] Clicking on the Product , product inedx ->" +p+"and filter applied->"+"   "+str, ThreadContext.get("testName"));
 
 					Thread.sleep(2000);
@@ -1038,7 +1037,7 @@ public class ProductListingPage extends  BasePage{
 	
 	
 	
-	public void applyOperatingSystemFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
+	public void applyOperatingSystemFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 
 		SafeActions safeAct = new SafeActions();
 		ProductListingPage productPage = new ProductListingPage();
@@ -1084,13 +1083,16 @@ public class ProductListingPage extends  BasePage{
 				try {
 					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
 
-					Actions actions = new Actions(driver);
-					actions
-					.keyDown(Keys.CONTROL)
-					.click(productElement)
-					.keyUp(Keys.CONTROL)
-					.build()
-					.perform();
+//					Actions actions = new Actions(driver);
+//					actions
+//					.keyDown(Keys.CONTROL)
+//					.click(productElement)
+//					.keyUp(Keys.CONTROL)
+//					.build()
+//					.perform();
+					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
+					Thread.sleep(1000);
+					safeAct.safeClick(productPage.getProductByIndex(p));
 
 					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
 					Thread.sleep(2000); 

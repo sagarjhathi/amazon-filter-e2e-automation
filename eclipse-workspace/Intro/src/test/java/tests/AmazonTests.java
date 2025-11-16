@@ -56,7 +56,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException{
+	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -70,7 +70,7 @@ public class AmazonTests extends BaseTest {
         GenericUtility genericUtility=new GenericUtility();
         genericUtility.refreshIfServiceUnavailable();
        
-        if (!genericUtility.isElementVisibleOnUI(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
+        if (!genericUtility.isElementInViewport(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
 		    log.warn("[{}]   Filter option 'Get It by Tomorrow' does not exist. Skipping the test.", ThreadContext.get("testName"));
 		    return;
@@ -98,7 +98,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException{
+	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
 		 ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		 AmazonLandingPage am=new AmazonLandingPage();
@@ -139,7 +139,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException{
+	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -152,7 +152,7 @@ public class AmazonTests extends BaseTest {
         GenericUtility genericUtility=new GenericUtility();
  		ProductListingPage productPage=new ProductListingPage();
  		genericUtility.refreshIfServiceUnavailable();
- 		if (!genericUtility.isElementVisibleOnUI(productPage.getItTodayUnderDeliveryDayFilterBy)) {
+ 		if (!genericUtility.isElementInViewport(productPage.getItTodayUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It Today' does not exist. Skipping the test.");
  		   log.warn("[{}]  Filter option 'Get It Today' does not exist. Skipping the test.", ThreadContext.get("testName"));
  		    return;
@@ -183,7 +183,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
@@ -241,7 +241,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage amazonPage=new AmazonLandingPage();
 		amazonPage.openingLandingPage();
@@ -355,7 +355,7 @@ public class AmazonTests extends BaseTest {
 		        } else {
 		            log.info("[{}]  Price range validated successfully: {} - {}", ThreadContext.get("testName"), min, max);
 
-		            System.out.println("âœ” Price range validated: " + min + " - " + max);
+		            System.out.println("Price range validated: " + min + " - " + max);
 		        }
 		        System.out.println("------------------------------------------------------------");		
 		        log.info("[{}] ------------------------------------------------------------", ThreadContext.get("testName"));
@@ -374,7 +374,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("ðŸ§ª Test Input Parameter: <b>" + input + "</b>");
 
 	    AmazonLandingPage am = new AmazonLandingPage();
@@ -448,7 +448,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingDisplaySizeFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingDisplaySizeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
@@ -520,7 +520,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
@@ -591,7 +591,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingDisplayTypeFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingDisplayTypeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
@@ -659,7 +659,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		GenericUtility genericUtility=new GenericUtility();
@@ -716,7 +716,7 @@ public class AmazonTests extends BaseTest {
 	        	softAssert.fail(failureMessage.toString());
 	        } else {
 	            log.info("[{}]  Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-	            System.out.println("âœ” Filter '" + filter + "' matched in at least one section of product details.");
+	            System.out.println("Filter '" + filter + "' matched in at least one section of product details.");
 	        }
 	    }
 
@@ -732,7 +732,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		am.openingLandingPage();
@@ -802,7 +802,7 @@ public class AmazonTests extends BaseTest {
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
 		)
-	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException {
+	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage am=new AmazonLandingPage();
 		

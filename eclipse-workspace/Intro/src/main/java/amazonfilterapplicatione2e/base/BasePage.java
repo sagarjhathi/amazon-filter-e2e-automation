@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.base;
-import java.time.Duration;     
+import java.time.Duration;      
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
