@@ -42,7 +42,7 @@ public class ProductListingPage extends  BasePage{
 	@FindBy(xpath="//div[@data-cy='delivery-recipe']")
 	WebElement productDeliveryDayListingPage;
 	
-	@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
+	//@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
 
 	public By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
 	
@@ -935,11 +935,6 @@ public class ProductListingPage extends  BasePage{
 				int productIndex=p-1;
 				try {
 					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-//					new Actions(driver)
-//					.keyDown(Keys.CONTROL)
-//					.click(productElement)
-//					.keyUp(Keys.CONTROL)
-//					.build().perform();
 					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
 					Thread.sleep(1000);
 					safeAct.safeClick(productPage.getProductByIndex(p));
@@ -991,7 +986,7 @@ public class ProductListingPage extends  BasePage{
 						}
 
 					} catch (Exception e1) {
-						//driver.close();
+						
 						genericUtility.smoothScrollToElement(showMoreOnlyIndividualPage);
 						Thread.sleep(1000);
 						String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
