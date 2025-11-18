@@ -904,7 +904,7 @@ public class ProductListingPage extends  BasePage{
 			filterOptionSize=1;
 		}
 
-		for (int i = 0; i < filterOptions.size(); i++) {
+		for (int i = 0; i <filterOptionSize; i++) {
 			log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
 
 			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
