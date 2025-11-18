@@ -881,11 +881,13 @@ public class ProductListingPage extends  BasePage{
 		GenericUtility genericUtility = new GenericUtility();
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		genericUtility.printFilterNamesOnly(filterOptionsBy);
+		
 		if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
 			genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 			safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 			Thread.sleep(1000);
+			filterOptions = safeAct.safeFindElements(filterOptionsBy);
+			genericUtility.printFilterNamesOnly(filterOptionsBy);
 		}
 		log.info("[{}] Clicked 'More' Button under the OS filter section", ThreadContext.get("testName"));
 
@@ -948,6 +950,7 @@ public class ProductListingPage extends  BasePage{
 					String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
 					String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
 
+			
 					log.info("[{}] Extracting 'productTitle','keyFeatureBlockText','aboutBlockText' ,'techDetailsBlockText' , index and applied filter ->"+p+str, ThreadContext.get("testName"));
 
 					if (name.isEmpty()) {
@@ -967,35 +970,23 @@ public class ProductListingPage extends  BasePage{
 						System.out.println("â�Œ Failed to fetch technical details after retries");
 					}
 
+					
 					log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
 
 
 					try {
-						if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage)) {
+						if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty() ) {
 							String productNamePlusIndex="Product Index="+productIndex;
 							genericUtility.smoothScrollToElement(reportAnIssue);
 							Thread.sleep(1000);
 							ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
 							log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
-						}else {
-							genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
-							Thread.sleep(1000);
-							safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-							log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
-							System.out.println("'See More Details' clicked.");
 						}
 
 					} catch (Exception e1) {
 						
-						genericUtility.smoothScrollToElement(showMoreOnlyIndividualPage);
-						Thread.sleep(1000);
-						String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
-						ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-						log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
-						log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
-						genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-						log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
-						continue;
+						log.info("[{}] Within catch block  failed to execute the Try statements incase of empty tech details and visible showMore button on ui", ThreadContext.get("testName"));
+
 					}
 
 
