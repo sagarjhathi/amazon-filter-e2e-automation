@@ -43,35 +43,110 @@ public class ProductListingPage extends  BasePage{
 	WebElement productDeliveryDayListingPage;
 	
 
-	public By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
+//	public By listProcessorSpeedOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base']");
+//	
+//	public By listBrandsOptionsBy=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
+//	
+//	public By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base']");
+//	
+//	public By listDisplayTypeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base']");
+//	
+//	public By listDiscountOptionsBy=By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']");
+//	
+//    public By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base']");
+//    
+//	public By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']");
+// 
+//	public By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
+//	
+//	public By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
+//	
+//	public By listOperatingSystemVersionOptionsBy=By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']");
+//	
+//	public By getItByTomorrowUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']");
+//	
+//	public By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
+//	
+//	public By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
 	
-	public By listBrandsOptionsBy=By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
 	
-	public By listDisplaySizeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base']");
 	
-	public By listDisplayTypeOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base']");
-	
-	public By listDiscountOptionsBy=By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base']");
-	
-    public By listBatteryCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base']");
-    
-	public By listStorageCapacityOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base']");
- 
-	public By listDeliveryDayOptionsBy=By.xpath("//ul[@id='filter-p_90']//span[@class='a-list-item']");
-	
-	public By listMobilePhonePrimaryCameraResolutionOptionsBy=By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base']");
-	
-	//public By listOperatingSystemVersionOptionsBy=By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base']");
-	
-	//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul
-	public By listOperatingSystemVersionOptionsBy=By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']");
+	// Processor Speed
+	public By listProcessorSpeedOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Processor Speed']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
 
+	// Brand
+	public By listBrandsOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brand']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Display Size
+	public By listDisplaySizeOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Display Size']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Display Type
+	public By listDisplayTypeOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Display Type']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Discount
+	public By listDiscountOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Discount']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Battery Capacity
+	public By listBatteryCapacityOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Battery Capacity']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Storage Capacity / Internal Storage
+	public By listStorageCapacityOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Internal Storage']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Delivery Day
+	public By listDeliveryDayOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Mobile Phone Primary Camera Resolution
+	public By listMobilePhonePrimaryCameraResolutionOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Mobile Phone Primary Camera Resolution']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
+
+	// Operating System (already updated, just keeping here for completeness)
+	public By listOperatingSystemVersionOptionsBy = By.xpath(
+	    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']" +
+	    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+	);
 	
-	public By getItByTomorrowUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']");
-	
-	public By getItInTwoDaysUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']");
-	
-	public By getItTodayUnderDeliveryDayFilterBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Get It Today']");
+	public By getItByTomorrowUnderDeliveryDayFilterBy = By.xpath(
+		    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']" +
+		    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']"
+		);
+
+		public By getItInTwoDaysUnderDeliveryDayFilterBy = By.xpath(
+		    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']" +
+		    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']"
+		);
+
+		public By getItTodayUnderDeliveryDayFilterBy = By.xpath(
+		    "//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']" +
+		    "/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It Today']"
+		);
+
+
 		
 	By seeMoreButtonUnderOperatingSystemFilter=	By.xpath("//a[@aria-label='See more, Operating System']");
 
@@ -883,17 +958,17 @@ public class ProductListingPage extends  BasePage{
 		ProductListingPage productPage = new ProductListingPage();
 		GenericUtility genericUtility = new GenericUtility();
 
+		
+		
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 		
-		if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+		if(safeAct.safeFindElement(productPage.seeMoreButtonUnderOperatingSystemFilter).isDisplayed()) {
 			genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 			safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 			Thread.sleep(1000);
 			filterOptions = safeAct.safeFindElements(filterOptionsBy);
 			genericUtility.printFilterNamesOnly(filterOptionsBy);
 		}
-		log.info("[{}] Clicked 'More' Button under the OS filter section", ThreadContext.get("testName"));
-
 		
 		
 		String testName = ThreadContext.get("logFileName");
@@ -906,7 +981,7 @@ public class ProductListingPage extends  BasePage{
 
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
-			filterOptionSize=1;
+			filterOptionSize=2;
 		}
 
 		for (int i = 0; i <filterOptionSize; i++) {
@@ -917,16 +992,21 @@ public class ProductListingPage extends  BasePage{
 				return allResults;
 			}
 
-			if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+
+			
+			if(safeAct.safeFindElement(productPage.seeMoreButtonUnderOperatingSystemFilter).isDisplayed()) {
+				System.out.println("In the Loop test");
 				genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 				safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
 				Thread.sleep(1000);
+				filterOptions = safeAct.safeFindElements(filterOptionsBy);
+				genericUtility.printFilterNamesOnly(filterOptionsBy);
 			}
 
 
 			String str = inloopParent.get(i).getText().trim();
 			String filterValue = str;
-			System.out.println("Printing the STR FILTER NAME HERE    "+str);
+			
 			Thread.sleep(1000);
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 				System.out.println("Filter click failed for: " + str);
@@ -938,7 +1018,7 @@ public class ProductListingPage extends  BasePage{
 			String currentWindow = driver.getWindowHandle();
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
-			for (int p = 1; p <2; p++) {
+			for (int p = 1; p <productNameListingPage.size(); p++) {
 				log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 				int productIndex=p-1;
 				try {
