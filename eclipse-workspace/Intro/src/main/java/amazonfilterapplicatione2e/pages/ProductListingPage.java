@@ -1304,13 +1304,15 @@ public class ProductListingPage extends  BasePage{
 
 
 		ProductListingPage productPage = new ProductListingPage();
+		GenericUtility genericUtility=new GenericUtility();
 		SafeActions safeAct = new SafeActions();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 
 		List<Map<String, Object>> results = new ArrayList<>();
 
 		// Scroll to make slider visible
-		js.executeScript("window.scrollBy(0, 300);");
+		genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
+	
 		Thread.sleep(2000);
 
 		// Locate sliders	    
@@ -1369,6 +1371,13 @@ public class ProductListingPage extends  BasePage{
 				maxPriceApplied = maxPriceApplied.replaceAll("[^\\d]", "");
 				minPriceApplied = minPriceApplied.replaceAll("[^\\d]", "");
 
+				log.info("[{}] Checking if the Product price from the Product card in landing page is empty=>  "+productPrice, ThreadContext.get("testName"));
+
+				if(productPrice.isEmpty()) {
+					log.info("[{}]  Product price from the Product card in landing page is empty hence returning  "+productPrice, ThreadContext.get("testName"));
+					productPrice="0000000000000";
+
+				}
 				int productPriceInt = Integer.parseInt(productPrice);
 				int maxPriceFilterAppliedInt = Integer.parseInt(maxPriceApplied);
 				int minPriceFilterAppliedInt = Integer.parseInt(minPriceApplied);

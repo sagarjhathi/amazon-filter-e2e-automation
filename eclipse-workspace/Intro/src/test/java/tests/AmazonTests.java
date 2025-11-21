@@ -302,7 +302,7 @@ public class AmazonTests extends BaseTest {
 			}
 		}
 
-		softAssert.assertAll(); // ðŸš¨ Important to report all failures
+		softAssert.assertAll(); 
 
 	}
 
