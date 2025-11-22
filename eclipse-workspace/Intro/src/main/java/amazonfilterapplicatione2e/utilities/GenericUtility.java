@@ -252,6 +252,35 @@ public class GenericUtility extends ProductListingPage{
 	    return text;
 	}
 
+ 
+ 
+ public void setSliderValue(WebElement slider, int value) {
 
+	 JavascriptExecutor js= (JavascriptExecutor)driver;
+
+	 js.executeScript(
+			 "arguments[0].value = arguments[1];" +
+					 "arguments[0].dispatchEvent(new Event('input',  { bubbles: true }));" +
+					 "arguments[0].dispatchEvent(new Event('change', { bubbles: true }));",
+					 slider, String.valueOf(value)
+			 );
+	 log.info("[{}] in the setSliderValue method with value "+value, ThreadContext.get("testName"));
+ }
+
+ 
+ 
+ public static String extractIntOrFail(String input) {
+	    if (input == null) {
+	        return "000000000000"; // or maybe -1 or throw Exception
+	    }
+
+	    String digits = input.replaceAll("\\D", "");
+
+	    if (digits.isEmpty()) {
+	        digits = "000000000000";
+	    }
+
+	    return digits;
+	}
     
 }

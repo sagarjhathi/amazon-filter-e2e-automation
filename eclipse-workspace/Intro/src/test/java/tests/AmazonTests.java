@@ -330,8 +330,8 @@ public class AmazonTests extends BaseTest {
 		    return ;
 		}
 		
-		List<Integer> minValues = Arrays.asList(60, 90, 130);
-		List<Integer> maxValues = Arrays.asList(80, 120, 160);
+		List<Integer> minValues = Arrays.asList(61, 91, 131);
+		List<Integer> maxValues = Arrays.asList(81, 121, 161);
 		
 		
 		List<Map<String, Object>> results = productPage.applyPriceSliderAndValidateWithResult(minValues, maxValues);

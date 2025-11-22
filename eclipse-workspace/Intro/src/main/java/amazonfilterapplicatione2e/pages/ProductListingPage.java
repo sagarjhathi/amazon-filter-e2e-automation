@@ -1306,13 +1306,13 @@ public class ProductListingPage extends  BasePage{
 		ProductListingPage productPage = new ProductListingPage();
 		GenericUtility genericUtility=new GenericUtility();
 		SafeActions safeAct = new SafeActions();
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-
+		
+		
 		List<Map<String, Object>> results = new ArrayList<>();
 
 		// Scroll to make slider visible
 		genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
-	
+
 		Thread.sleep(2000);
 
 		// Locate sliders	    
@@ -1322,31 +1322,23 @@ public class ProductListingPage extends  BasePage{
 		for (int i = 0; i < minValues.size(); i++) {
 			int min = minValues.get(i);
 			int max = maxValues.get(i);
-
-			// Set min slider
-			js.executeScript(
-					"arguments[0].value = arguments[1];" +
-							"arguments[0].dispatchEvent(new Event('input'));" +
-							"arguments[0].dispatchEvent(new Event('change'));",
-							minSlider, String.valueOf(min)
-					);
+			
+			genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
+			//Applying Min slider
+			genericUtility.setSliderValue(minSlider, min);
 			log.info("[{}] Applying the Min filter , Min filter value->"+min, ThreadContext.get("testName"));
 
+			//Applying Max slider
+			genericUtility.setSliderValue(maxSlider, max);
 
-			// Set max slider
-			js.executeScript(
-					"arguments[0].value = arguments[1];" +
-							"arguments[0].dispatchEvent(new Event('input'));" +
-							"arguments[0].dispatchEvent(new Event('change'));",
-							maxSlider, String.valueOf(max)
-					);
 			log.info("[{}] Applying the Max filter , Max filter value->"+max, ThreadContext.get("testName"));
 
 
 			Thread.sleep(1000);
+			
 			// Click 'Go' / Apply
-			safeAct.safeFindElement(productPage.priceSliderSubmitButton);
-			log.info("[{}] Hitting the submit button"+max, ThreadContext.get("testName"));
+			safeAct.safeClick(productPage.priceSliderSubmitButton);
+			log.info("[{}] Hitting the submit button", ThreadContext.get("testName"));
 
 			Thread.sleep(2000);
 
@@ -1366,25 +1358,19 @@ public class ProductListingPage extends  BasePage{
 			ScreenshotUtil.capture(testName,appliedFilter);
 
 			for (int j = 0; j < prices.size(); j++) {
+				
 				String productPrice = prices.get(j).getText();
-				productPrice = productPrice.replaceAll("[^\\d]", "");
-				maxPriceApplied = maxPriceApplied.replaceAll("[^\\d]", "");
-				minPriceApplied = minPriceApplied.replaceAll("[^\\d]", "");
+				productPrice= GenericUtility.extractIntOrFail(productPrice);
+				maxPriceApplied=GenericUtility.extractIntOrFail(maxPriceApplied);
+				minPriceApplied=GenericUtility.extractIntOrFail(minPriceApplied);
 
-				log.info("[{}] Checking if the Product price from the Product card in landing page is empty=>  "+productPrice, ThreadContext.get("testName"));
-
-				if(productPrice.isEmpty()) {
-					log.info("[{}]  Product price from the Product card in landing page is empty hence returning  "+productPrice, ThreadContext.get("testName"));
-					productPrice="0000000000000";
-
-				}
 				int productPriceInt = Integer.parseInt(productPrice);
 				int maxPriceFilterAppliedInt = Integer.parseInt(maxPriceApplied);
 				int minPriceFilterAppliedInt = Integer.parseInt(minPriceApplied);
 
 
 				boolean bool = true;
-				if (productPriceInt <= maxPriceFilterAppliedInt) {
+				if (productPriceInt <= maxPriceFilterAppliedInt &&  productPriceInt>=minPriceFilterAppliedInt) {
 					log.info("[{}] Checking if the product price is <= then the max filter applied, Product price and Max applied ->"+productPriceInt+"  "+max, ThreadContext.get("testName"));
 
 					System.out.println("Product price is within limits --> product index and applied filter and product price is " 
