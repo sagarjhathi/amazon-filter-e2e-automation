@@ -1,7 +1,9 @@
 package main.java.amazonfilterapplicatione2e.utilities;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
@@ -282,5 +284,113 @@ public class GenericUtility extends ProductListingPage{
 
 	    return digits;
 	}
+ 
+ 
+ 
+ public void clickMoreButtonIfPresent( SafeActions safeAct, GenericUtility genericUtility, By moreButton ) throws InterruptedException {
+	 
+	try {
+		 
+		 if(safeAct.safeFindElement(moreButton).isDisplayed()) {
+				genericUtility.smoothScrollToElement(moreButton);
+				safeAct.safeClick(moreButton);
+				Thread.sleep(1000);
+			}
+	}catch(Exception e) {
+	
+		 log.info("[{}] checkMoreButtonScrollClick failed: {}",
+	             ThreadContext.get("testName"), e.getMessage());
+	}
+	 
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ public Map<String, Object>applyFilterOptionsAndFetchProductDetails(
+	 
+	 
+		        int productListIndex,
+		        String filterValue,
+		       String currentWindow,
+		        SafeActions safeAct
+		        ){
+
+		    String testName = ThreadContext.get("logFileName");
+		    int productIndex = productListIndex - 1;
+
+		    try {
+		        WebElement productElement = driver.findElement(getProductByIndex(productListIndex));
+		        smoothScrollToElement(getProductByIndex(productListIndex));
+		        Thread.sleep(1000);
+		        safeAct.safeClick(getProductByIndex(productListIndex));
+		        log.info("[{}] Clicking product index={} for filter='{}'",
+		                 ThreadContext.get("testName"), productListIndex, filterValue);
+
+		        Thread.sleep(2000);
+		        switchToNewWindow(currentWindow);
+
+		        String name        = fetchTextWithRetries(productNameIndividualPage, safeAct);
+		        String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
+		        String about       = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
+		        String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
+
+		        if (name.isEmpty()) {
+		            log.warn("[{}] Failed to fetch NAME for filter='{}' index={}", testName, filterValue, productListIndex);
+		        }
+		        if (keyFeatures.isEmpty()) {
+		            log.warn("[{}] Failed to fetch KEY FEATURES for filter='{}' index={}", testName, filterValue, productListIndex);
+		        }
+		        if (about.isEmpty()) {
+		            log.warn("[{}] Failed to fetch ABOUT for filter='{}' index={}", testName, filterValue, productListIndex);
+		        }
+		        if (techDetails.isEmpty()) {
+		            log.warn("[{}] Failed to fetch TECH DETAILS for filter='{}' index={}", testName, filterValue, productListIndex);
+		        }
+
+		        try {
+		            if (isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
+		                String productNamePlusIndex = "Product Index=" + productIndex;
+		                smoothScrollToElement(reportAnIssue);
+		                Thread.sleep(1000);
+		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
+		                         ThreadContext.get("testName"));
+		            }
+		        } catch (Exception screenshotEx) {
+		            log.info("[{}] Failed screenshot flow for empty tech details",
+		                     ThreadContext.get("testName"));
+		        }
+
+		        Map<String, Object> result = new HashMap<>();
+		        result.put("filter", filterValue);
+		        result.put("title", name);
+		        result.put("keyFeatures", keyFeatures);
+		        result.put("about", about);
+		        result.put("techDetails", techDetails);
+
+		        return result;
+
+		    } catch (Exception e) {
+		        System.out.println("Failed to validate product at index " + productListIndex + " for filter: " + filterValue);
+		        log.warn("[{}] Exception while processing product index={} filter='{}': {}",
+		                 ThreadContext.get("testName"), productListIndex, filterValue, e.getMessage());
+		        return null;
+		    } finally {
+		        try {
+		            closeCurrentWindowAndSwitchBack(currentWindow);
+		        } catch (Exception ignored) {
+		            log.warn("[{}] Failed to close product window or switch back", ThreadContext.get("testName"));
+		        }
+		    }
+		    
+		}
+
+ }
+ 
+
     
-}
+
