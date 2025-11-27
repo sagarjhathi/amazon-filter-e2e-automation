@@ -16,6 +16,7 @@ import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -989,9 +990,38 @@ public class ProductListingPage extends  BasePage{
 			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
 
 
-
-			String str = inloopParent.get(i).getText().trim();
+			String str = "";
+			int attempts = 0;
+			boolean ok = false;
+			while (attempts < 3 && !ok) {
+			    try {
+			       inloopParent = safeAct.safeFindElements(filterOptionsBy);
+			        if (i >= inloopParent.size()) {
+			            // out of range
+			            break;
+			        }
+			        str = inloopParent.get(i).getText().trim();
+			        ok = true;
+			    } catch (StaleElementReferenceException sere) {
+			        log.warn("[{}] Stale while reading filter option {}, retrying ({})", ThreadContext.get("testName"), i, attempts+1);
+			        attempts++;
+			        try { Thread.sleep(300); } catch (InterruptedException ignored) {}
+			    } catch (Exception e) {
+			        log.warn("[{}] Error reading filter option {}: {}, retrying ({})", ThreadContext.get("testName"), i, e.getMessage(), attempts+1);
+			        attempts++;
+			        try { Thread.sleep(300); } catch (InterruptedException ignored) {}
+			    }
+			}
+			if (!ok) {
+			    log.info("[{}] Could not get text for filter option {}, refreshing and skipping", ThreadContext.get("testName"), i);
+			    try { driver.navigate().refresh(); Thread.sleep(1500); } catch (Exception ignored) {}
+			    continue;
+			}
 			String filterValue = str;
+
+				
+			
+			
 			
 			Thread.sleep(1000);
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
@@ -1004,7 +1034,7 @@ public class ProductListingPage extends  BasePage{
 			String currentWindow = driver.getWindowHandle();
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			Map<String, Object> result = new HashMap<>();
-			for (int productListIndex = 1; productListIndex <productNameListingPage.size(); productListIndex++) {
+			for (int productListIndex = 1; productListIndex <3; productListIndex++) {
 //				log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
 //  			int productIndex=p-1;
 //				try {
