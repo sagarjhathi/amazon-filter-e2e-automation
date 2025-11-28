@@ -959,24 +959,20 @@ public class ProductListingPage extends  BasePage{
 		ProductListingPage productPage = new ProductListingPage();
 		GenericUtility genericUtility = new GenericUtility();
 
-		
-		
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 		genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
 		
 		
-		String testName = ThreadContext.get("logFileName");
 		List<Map<String, Object>> allResults = new ArrayList<>();
-
 		log.info("[{}] Within OS fucntion , this is the filterOptions size ->"+filterOptions.size(), ThreadContext.get("testName"));
 
 
 		int filterOptionSize=filterOptions.size();
-
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
 			filterOptionSize=2;
 		}
+		
 
 		for (int i = 0; i <filterOptionSize; i++) {
 			log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
@@ -986,9 +982,7 @@ public class ProductListingPage extends  BasePage{
 				return allResults;
 			}
 
-			
 			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
-
 
 			String str = "";
 			int attempts = 0;
@@ -1017,11 +1011,7 @@ public class ProductListingPage extends  BasePage{
 			    try { driver.navigate().refresh(); Thread.sleep(1500); } catch (Exception ignored) {}
 			    continue;
 			}
-			String filterValue = str;
-
-				
-			
-			
+		
 			
 			Thread.sleep(1000);
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
@@ -1035,81 +1025,7 @@ public class ProductListingPage extends  BasePage{
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			Map<String, Object> result = new HashMap<>();
 			for (int productListIndex = 1; productListIndex <3; productListIndex++) {
-//				log.info("[{}] Within the productNameListingPage Loop for Filter Option->"+str, ThreadContext.get("testName"));
-//  			int productIndex=p-1;
-//				try {
-//					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-//					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
-//					Thread.sleep(1000);
-//					safeAct.safeClick(productPage.getProductByIndex(p));
-//					log.info("[{}] Clicking on the Product , product inedx ->" +p+"and filter applied->"+"   "+str, ThreadContext.get("testName"));
-//
-//					Thread.sleep(2000);
-//					productPage.switchToNewWindow(currentWindow);
-//
-//					String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
-//					String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
-//					String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
-//					String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
-//
-//			
-//					log.info("[{}] Extracting 'productTitle','keyFeatureBlockText','aboutBlockText' ,'techDetailsBlockText' , index and applied filter ->"+p+str, ThreadContext.get("testName"));
-//
-//					if (name.isEmpty()) {
-//						log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-//						System.out.println("â�Œ Failed to fetch product name after retries");
-//					}
-//					if (keyFeatures.isEmpty()) {
-//						log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-//						System.out.println("â�Œ Failed to fetch key features after retries");
-//					}
-//					if (about.isEmpty()) {
-//						log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-//						System.out.println("â�Œ Failed to fetch about section after retries");
-//					}
-//					if (techDetails.isEmpty()) {
-//						log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-//						System.out.println("â�Œ Failed to fetch technical details after retries");
-//					}
-//
-//					
-//					log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
-//
-//
-//					try {
-//						if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty() ) {
-//							String productNamePlusIndex="Product Index="+productIndex;
-//							genericUtility.smoothScrollToElement(reportAnIssue);
-//							Thread.sleep(1000);
-//							ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-//							log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
-//						}
-//
-//					} catch (Exception e1) {
-//						
-//						log.info("[{}] Within catch block  failed to execute the Try statements incase of empty tech details and visible showMore button on ui", ThreadContext.get("testName"));
-//
-//					}
-//
-//
-//					Map<String, Object> result = new HashMap<>();
-//					result.put("filter", str);
-//					result.put("title", name);
-//					result.put("keyFeatures", keyFeatures);
-//					result.put("about", about);
-//					result.put("techDetails", techDetails);
-//					log.info("[{}] Adding the data to the 'result' Map, index and applied filter ->"+p+str, ThreadContext.get("testName"));
-//					allResults.add(result);
-//					log.info("[{}] Adding the 'result' Map to 'allResults' i.e List of maps index and applied filter ->"+p+str, ThreadContext.get("testName"));
-//
-//					genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-//				} catch (Exception e) {
-//					System.out.println("â�Œ Failed to validate product at index " + p + " for filter: " + str);
-//					continue;
-//				}
-				
-				result = genericUtility.applyFilterOptionsAndFetchProductDetails(productListIndex, str, currentWindow, safeAct);
-						
+				result = genericUtility.applyFilterOptionsAndFetchProductDetails(productListIndex, str, currentWindow, safeAct);		
 			}
 
 			allResults.add(result);

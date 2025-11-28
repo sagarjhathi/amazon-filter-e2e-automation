@@ -112,6 +112,47 @@ public class SafeActions extends BasePage{
 		
 		
 		
+		
+		
+		public WebElement safeFindElementUpdated(By locator) {
+			log.info("[{}] Within safeFindElement method", ThreadContext.get("testName"));
+
+		    int attempts = 0;
+		    while (attempts < 2) {
+		        try {
+		        	
+		         //   WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		        	
+		        	
+		        			WebElement element = wait.until(ExpectedConditions.refreshed(
+		        			        ExpectedConditions.elementToBeClickable(locator)
+		        			));
+					log.info("[{}]Found the element returning it ,element ->"+element, ThreadContext.get("testName"));
+		            System.out.println("Found the element: " + locator);
+		            return element;
+		        } catch (Exception e) {
+					log.info("[{}]Retrying findElement for: ->"+locator, ThreadContext.get("testName"));
+
+		            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
+		            attempts++;
+		            try {
+		                driver.navigate().refresh();
+						log.info("[{}]Refrehsing the page , while trying to safely find : ->"+locator, ThreadContext.get("testName"));
+		                System.out.println("Refreshing the page in safeFindElement Method");
+		                Thread.sleep(1000);
+		            } catch (InterruptedException ignored) {}
+		        }
+		    }
+
+
+			log.info("[{}] Skipping action: Element not found after "+attempts+"   attemps", ThreadContext.get("testName"));
+
+		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
+		    return null;
+		}
+		
+		
+		
 		public boolean safeClickBoolean(By locator) throws InterruptedException {
 			log.info("[{}] Within safeClickBoolean method", ThreadContext.get("testName"));
 
