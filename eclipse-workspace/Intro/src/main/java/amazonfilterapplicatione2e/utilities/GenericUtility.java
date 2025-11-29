@@ -12,7 +12,9 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -290,7 +292,6 @@ public class GenericUtility extends ProductListingPage{
  public void clickMoreButtonIfPresent( SafeActions safeAct, GenericUtility genericUtility, By moreButton ) throws InterruptedException {
 	 
 	try {
-		 
 		 if(safeAct.safeFindElement(moreButton).isDisplayed()) {
 				genericUtility.smoothScrollToElement(moreButton);
 				safeAct.safeClick(moreButton);
@@ -388,6 +389,149 @@ public class GenericUtility extends ProductListingPage{
 		    }
 		    
 		}
+ 
+ 
+ 
+ 
+ public Map<String, Object>applyFilterOptionsAndFetchProductDetailsGlobal(
+		 
+		    int productIndex,
+		    String filterValue,
+	        String currentWindow,
+	        SafeActions safeAct
+	        
+		 ) throws InterruptedException{
+ 
+
+	 String testName = ThreadContext.get("logFileName");
+
+	try {
+		int before = driver.getWindowHandles().size();
+		WebElement productElement = driver.findElement(getProductByIndex(productIndex));
+		smoothScrollToElement(getProductByIndex(productIndex));
+		log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
+		
+		
+
+		System.out.println(productElement.getText()+"Printing the name in try catch ");
+
+		Thread.sleep(1000);
+		
+	
+		Actions actions = new Actions(driver);
+		actions
+		.keyDown(Keys.CONTROL) 
+		.click(productElement)
+		.keyUp(Keys.CONTROL)
+		.build()
+		.perform();
+
+
+		System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+		log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", ThreadContext.get("testName"));
+
+		Thread.sleep(2000);
+
+		int after = driver.getWindowHandles().size();
+
+		if (after == before) {
+			System.out.println("Before click and AFTER CLICK count is same , trying again");
+			safeAct.safeClick(getProductByIndex(productIndex));
+         }
+		
+		
+} catch (Exception e) {
+	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, ThreadContext.get("testName"));
+    System.out.println("Failed to Ctrl+Click product index " + productIndex);
+  //  continue;
+}
+
+System.out.println("Clicked on the producct name new pop-up should open");
+log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", ThreadContext.get("testName"));
+
+Thread.sleep(2000);
+
+waitForNewWindowAndSwitch(currentWindow);
+log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
+
+String name = fetchTextWithRetries(productNameIndividualPage, safeAct);
+String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
+String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
+String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
+
+// Optional logging or fallback handling
+if (name.isEmpty()) {
+	log.warn("[{}] Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+    System.out.println("â�Œ Failed to fetch product name after retries");
+}
+if (keyFeatures.isEmpty()) {
+	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+    System.out.println("â�Œ Failed to fetch key features after retries");
+}
+if (about.isEmpty()) {
+	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+    System.out.println("â�Œ Failed to fetch about section after retries");
+}
+if (techDetails.isEmpty()) {
+	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+    System.out.println("â�Œ Failed to fetch technical details after retries");
+}
+
+log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
+scrollByPixel(0, 700);
+
+try {
+	 if(isElementInViewport(showMoreOnlyIndividualPage)) {
+     	String productNamePlusIndex="Product Index="+productIndex;
+     	smoothScrollToElement(reportAnIssue);
+     	Thread.sleep(1000);
+     	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
+     }else {
+    	 smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
+         Thread.sleep(1000);
+         safeAct.safeClick(seeMoreProductDetailsButtonIndividualPageBy);
+			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
+         System.out.println("'See More Details' clicked.");
+     }
+   
+} catch (Exception e1) {
+    
+	smoothScrollToElement(showMoreOnlyIndividualPage);
+	Thread.sleep(1000);
+	
+	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
+	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
+
+    Thread.sleep(1000);
+	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
+    closeCurrentWindowAndSwitchBack(currentWindow);
+	log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
+  //  continue;
+}
+
+
+
+Thread.sleep(1000);
+closeCurrentWindowAndSwitchBack(currentWindow);
+log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
+
+String str=filterValue;
+
+Map<String, Object> productResult = new HashMap<>();
+productResult.put("filter", str);
+productResult.put("title", name);
+productResult.put("keyFeatures", keyFeatures);
+productResult.put("about", about);
+productResult.put("techDetails", techDetails);
+ 
+ return  productResult;
+ 
+ 
+ }
+ 
+ 
 
  }
  

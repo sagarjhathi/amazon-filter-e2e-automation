@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.TimeoutException;
 
@@ -496,11 +497,9 @@ public class ProductListingPage extends  BasePage{
 				return results;
 			}
 
-			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-			String str = inloopParent.get(i).getText().trim();
-			String testName = ThreadContext.get("logFileName");
-			String filterValue = str; 
 
+			String str = safeAct.safeGetFilterOptionText(filterOptionsBy, i);
+			String filterValue = str;
 
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 				System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
@@ -514,140 +513,31 @@ public class ProductListingPage extends  BasePage{
 			System.out.println(" Printing current window  " + currentWindow);
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
-			for (int p = 1; p <productNameListingPage.size(); p++) {
-				
-				productIndex = p-1;
+			for (int p = 1; p <=productNameListingPage.size()-1; p++) {
+
+				productIndex = p;
 				productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
 				log.info("[{}] Within productNameListingPage loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 				System.out.println("inside the loop and product name is " + productNameListingPage.get(productIndex).getText());
 
-				try {
-					int before = driver.getWindowHandles().size();
-					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
-					log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
+				Map<String, Object> productResult = genericUtility.applyFilterOptionsAndFetchProductDetailsGlobal(productIndex, filterValue, currentWindow, safeAct);
+				log.info("[{}]  Added 'filter','title','keyFeatures', 'about', 'techDetails' into the Map -> productResult", ThreadContext.get("testName"));
 
-					System.out.println(productElement.getText()+"Printing the name in try catch ");
+				results.add(productResult);
+				log.info("[{}]  Added 'productResult' Map into the 'results' i.e list of maps ", ThreadContext.get("testName"));
+				log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
 
-					Thread.sleep(1000);
-					
-					safeAct.safeClick(productPage.getProductByIndex(p));
-
-					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
-					log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", ThreadContext.get("testName"));
-
-					Thread.sleep(2000);
-
-					int after = driver.getWindowHandles().size();
-
-					if (after == before) {
-						System.out.println("Before click and AFTER CLICK count is same , trying again");
-						JavascriptExecutor js=(JavascriptExecutor)driver;
-					    js.executeScript("arguments[0].click();", productElement);
-                }
-            } catch (Exception e) {
-				log.info("[{}] Failed to Ctrl+Click product index " + p+"  for filter value->"+filterValue, ThreadContext.get("testName"));
-                System.out.println("Failed to Ctrl+Click product index " + p);
-                continue;
-            }
-
-            System.out.println("Clicked on the producct name new pop-up should open");
-			log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", ThreadContext.get("testName"));
-
-            Thread.sleep(2000);
-            
-			waitForNewWindowAndSwitch(currentWindow);
-			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
-
-			String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
-			String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
-			String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
-			String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
-
-			// Optional logging or fallback handling
-			if (name.isEmpty()) {
-				log.warn("[{}] Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("â�Œ Failed to fetch product name after retries");
-			}
-			if (keyFeatures.isEmpty()) {
-				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("â�Œ Failed to fetch key features after retries");
-			}
-			if (about.isEmpty()) {
-				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("â�Œ Failed to fetch about section after retries");
-			}
-			if (techDetails.isEmpty()) {
-				log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+p, testName);
-			    System.out.println("â�Œ Failed to fetch technical details after retries");
 			}
 
-			log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
-            genericUtility.scrollByPixel(0, 700);
+			safeAct.safeClick(productPage.clearButtonBy);
+			log.info("[{}] Clearing the filter value ->"+filterValue+"within productNameListingPage loop", ThreadContext.get("testName"));
 
-            try {
-            	 if(genericUtility.isElementInViewport(showMoreOnlyIndividualPage)) {
-                 	String productNamePlusIndex="Product Index="+productIndex;
-                 	genericUtility.smoothScrollToElement(reportAnIssue);
-                 	Thread.sleep(1000);
-                 	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-         			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
-                 }else {
-                	 genericUtility.smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
-                     Thread.sleep(1000);
-                     safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-         			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
-                     System.out.println("'See More Details' clicked.");
-                 }
-               
-            } catch (Exception e1) {
-                
-            	genericUtility.smoothScrollToElement(showMoreOnlyIndividualPage);
-            	Thread.sleep(1000);
-            	
-            	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
-            	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-    			log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
-
-                Thread.sleep(1000);
-    			log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
-                genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-    			log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
-                continue;
-            }
-            
-            
-           
-            Thread.sleep(1000);
-            genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
-			log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
-
-
-            
-            Map<String, Object> productResult = new HashMap<>();
-            productResult.put("filter", str);
-            productResult.put("title", name);
-            productResult.put("keyFeatures", keyFeatures);
-            productResult.put("about", about);
-            productResult.put("techDetails", techDetails);
-            
-			log.info("[{}]  Added 'filter','title','keyFeatures', 'about', 'techDetails' into the Map -> productResult", ThreadContext.get("testName"));
-
-            results.add(productResult);
-			log.info("[{}]  Added 'productResult' Map into the 'results' i.e list of maps ", ThreadContext.get("testName"));
+			log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
 			log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
 
-        }
-
-        safeAct.safeClick(productPage.clearButtonBy);
-		log.info("[{}] Clearing the filter value ->"+filterValue+"within productNameListingPage loop", ThreadContext.get("testName"));
-
-		log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
-		log.info("[{}]==========================================================================================================", ThreadContext.get("testName"));
-
-    }
-	log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));
-    return results;
+		}
+		log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));
+		return results;
 }
 
 
@@ -960,7 +850,7 @@ public class ProductListingPage extends  BasePage{
 		GenericUtility genericUtility = new GenericUtility();
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
+	//	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
 		
 		
 		List<Map<String, Object>> allResults = new ArrayList<>();
@@ -982,36 +872,9 @@ public class ProductListingPage extends  BasePage{
 				return allResults;
 			}
 
-			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
+		//	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
 
-			String str = "";
-			int attempts = 0;
-			boolean ok = false;
-			while (attempts < 3 && !ok) {
-			    try {
-			       inloopParent = safeAct.safeFindElements(filterOptionsBy);
-			        if (i >= inloopParent.size()) {
-			            // out of range
-			            break;
-			        }
-			        str = inloopParent.get(i).getText().trim();
-			        ok = true;
-			    } catch (StaleElementReferenceException sere) {
-			        log.warn("[{}] Stale while reading filter option {}, retrying ({})", ThreadContext.get("testName"), i, attempts+1);
-			        attempts++;
-			        try { Thread.sleep(300); } catch (InterruptedException ignored) {}
-			    } catch (Exception e) {
-			        log.warn("[{}] Error reading filter option {}: {}, retrying ({})", ThreadContext.get("testName"), i, e.getMessage(), attempts+1);
-			        attempts++;
-			        try { Thread.sleep(300); } catch (InterruptedException ignored) {}
-			    }
-			}
-			if (!ok) {
-			    log.info("[{}] Could not get text for filter option {}, refreshing and skipping", ThreadContext.get("testName"), i);
-			    try { driver.navigate().refresh(); Thread.sleep(1500); } catch (Exception ignored) {}
-			    continue;
-			}
-		
+			String str = safeAct.safeGetFilterOptionText(filterOptionsBy, i);
 			
 			Thread.sleep(1000);
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
@@ -1024,6 +887,7 @@ public class ProductListingPage extends  BasePage{
 			String currentWindow = driver.getWindowHandle();
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			Map<String, Object> result = new HashMap<>();
+			
 			for (int productListIndex = 1; productListIndex <3; productListIndex++) {
 				result = genericUtility.applyFilterOptionsAndFetchProductDetails(productListIndex, str, currentWindow, safeAct);		
 			}

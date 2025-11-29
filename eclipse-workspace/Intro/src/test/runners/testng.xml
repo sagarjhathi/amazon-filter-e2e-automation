@@ -8,12 +8,7 @@
 
       <class name="test.java.tests.AmazonTests">
  
- 
- <methods>
- 
- <include name="verifyingOperatingSystemVersionFilterFunctionality"></include>
- </methods>
- 	
+
 
     </class>
       

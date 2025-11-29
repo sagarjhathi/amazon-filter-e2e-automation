@@ -211,14 +211,14 @@ public class SafeActions extends BasePage{
 		    int attempts = 0;
 		    while (attempts < 1) {
 		        try {
+		        	
                 	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
-                	
+                
+                	try {
+                    	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.getMoreButtonByFilterTypeAndName(filterName));
 
-            
-                	if(testName.equals(filterName)) {
-                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
-                    	}
+                	}catch(Exception e) {
+        			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
                 	}
                 	
 		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
@@ -229,12 +229,13 @@ public class SafeActions extends BasePage{
 		            genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
 		            Thread.sleep(1000);             
 
-		            
-		            if(testName.equals(filterName)) {
-                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
-                    	}
+		    
+		            try {
+                    	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.getMoreButtonByFilterTypeAndName(filterName));
+                	}catch(Exception e) {
+        			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
                 	}
+		            
 		            Thread.sleep(1000);
                 	
 		            genericUtility.smoothScrollToElement(productPage.getAppliedfilterByTypeAndName(filterName, filterOption));
@@ -256,11 +257,11 @@ public class SafeActions extends BasePage{
 		                	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
 		                	Thread.sleep(2000);
 
-		                	
-		                	if(testName.equals(filterName)) {
-		                		if(genericUtility.isElementInViewport(productPage.getMoreButtonByFilterTypeAndName(filterName))) {
-		                    		safeAct.safeClick(productPage.getMoreButtonByFilterTypeAndName(filterName));
-		                    	}
+		                	try {
+		                    	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.getMoreButtonByFilterTypeAndName(filterName));
+
+		                	}catch(Exception E) {
+		        			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
 		                	}
 		                	
 		                	Thread.sleep(1000);
@@ -277,6 +278,48 @@ public class SafeActions extends BasePage{
 		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
 		    return false; // failure
 		}
+		
+		
+		
+		
+		
+		public String safeGetFilterOptionText(By locator, int index) {
+
+		    for (int attempt = 1; attempt <= 3; attempt++) {
+		        try {
+		            log.info("[{}] Trying to read filter option {} (attempt {}/3)",
+		                     ThreadContext.get("testName"), index, attempt);
+
+		            List<WebElement> list = driver.findElements(locator);
+
+		            if (index >= list.size()) {
+		                log.warn("[{}] Index {} out of bounds (size={})",
+		                         ThreadContext.get("testName"), index, list.size());
+		                return "";
+		            }
+
+		            String text = list.get(index).getText().trim();
+		            log.info("[{}] Successfully read filter option {} = '{}'",
+		                     ThreadContext.get("testName"), index, text);
+		            return text;   // SUCCESS
+
+		        } catch (StaleElementReferenceException sere) {
+		            log.warn("[{}] Stale element for index {} on attempt {}/3 — retrying...",
+		                     ThreadContext.get("testName"), index, attempt);
+		        } catch (Exception e) {
+		            log.warn("[{}] Error reading filter option {} on attempt {}/3 — {}",
+		                     ThreadContext.get("testName"), index, attempt, e.getMessage());
+		        }
+
+		        try { Thread.sleep(300); } catch (Exception ignored) {}
+		    }
+
+		    log.error("[{}] Failed to read filter option {} after 3 attempts",
+		              ThreadContext.get("testName"), index);
+
+		    return "";
+		}
+
 
 }
 
