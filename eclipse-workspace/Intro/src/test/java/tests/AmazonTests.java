@@ -205,7 +205,7 @@ public class AmazonTests extends BaseTest {
 			return ;
 		}
 
-		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsBy, "brands");
+		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 		SoftAssert softAssert = new SoftAssert();
 
 		for (Map<Object, Object> result : allResults) {
