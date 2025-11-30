@@ -54,10 +54,17 @@ public class ProductListingPage extends  BasePage{
 			);
 
 	public By listBrandsOptionsBy = By.xpath(
-			"//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brand']" +
-					"/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+//			"//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brand']" +
+//					"/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
+			"//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']"
 			);
 
+	
+//	
+//	public By listBrandsOptionsBy = By.xpath(
+//			"//div[@id='brandsRefinements']//ul[@class='a-unordered-list a-nostyle a-vertical']//li[@aria-labelledby='-title']"
+//			);
+	
 	public By listDisplaySizeOptionsBy = By.xpath(
 			"//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Display Size']" +
 					"/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
@@ -431,18 +438,18 @@ public class ProductListingPage extends  BasePage{
 
 
 
-		for (int i = 0; i <filterOptionSize; i++) {
+		for (int filterOption = 0; filterOption <filterOptionSize; filterOption++) {
 
 			log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
 			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
-			if (i > inloopParent.size() - 1) {
+			if (filterOption > inloopParent.size() - 1) {
 				log.info("[{}] Limiting traversal to in-loop size to prevent IndexOutOfBoundsException in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
 				return results;
 			}
 
-			String filterValue = safeAct.safeGetFilterOptionText(filterOptionsBy, i);
+			String filterValue = safeAct.safeGetFilterOptionText(filterOptionsBy, filterOption);
 
 			if (!safeAct.safeClickBooleanWithScreenShot(getfilterByTypeAndName(filterName, filterValue),filterName,filterValue)) {
 				System.out.println("Filter click failed for: " + filterValue + ". Skipping this filter option.");
@@ -623,18 +630,21 @@ public class ProductListingPage extends  BasePage{
 		GenericUtility genericUtility = new GenericUtility();
 
 		log.info("[{}] Scrolling to the 'More' Button under brands filter section", ThreadContext.get("testName"));
-		if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
-			genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-			safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-			log.info("[{}] Clicking the 'More' Button under brands filter section before the loop ", ThreadContext.get("testName"));
-			Thread.sleep(1000);
-		}
+//		if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
+//			genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+//			safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+//			log.info("[{}] Clicking the 'More' Button under brands filter section before the loop ", ThreadContext.get("testName"));
+//			Thread.sleep(1000);
+//		}
+		
+		genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderBrandFilter);
+
 
 		log.info("[{}] Clicked the 'More' Button under brands filter section", ThreadContext.get("testName"));
 
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		genericUtility.printFilterNamesOnly(filterOptionsBy);
+		//genericUtility.printFilterNamesOnly(filterOptionsBy);
 
 
 		int filterOptionSize=filterOptions.size();
@@ -646,7 +656,7 @@ public class ProductListingPage extends  BasePage{
 
 		List<Map<Object, Object>> allResults = new ArrayList<>();
 
-		for (int i = 1; i < filterOptions.size(); i++) {
+		for (int i = 1; i <filterOptionSize; i++) {
 			log.info("[{}] Within the filterOptions loop ", ThreadContext.get("testName"));
 
 			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
@@ -655,12 +665,15 @@ public class ProductListingPage extends  BasePage{
 				continue;
 			}
 
-			if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
-				genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
-				safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
-				log.info("[{}] Clicked the 'More' Button under brands filter section within the loop ", ThreadContext.get("testName"));
-				Thread.sleep(1000);
-			}
+//			if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderBrandFilter)) {
+//				genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderBrandFilter);
+//				safeAct.safeClick(productPage.seeMoreButtonUnderBrandFilter);
+//				log.info("[{}] Clicked the 'More' Button under brands filter section within the loop ", ThreadContext.get("testName"));
+//				Thread.sleep(1000);
+//			}
+			
+			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderBrandFilter);
+
 
 			String str = inloopParent.get(i).getText().trim();      
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {

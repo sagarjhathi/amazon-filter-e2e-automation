@@ -317,41 +317,48 @@ public class GenericUtility extends ProductListingPage{
 	 
 		        int productListIndex,
 		        String filterValue,
-		       String currentWindow,
+		        String currentWindow,
 		        SafeActions safeAct
 		        ){
 
 		    String testName = ThreadContext.get("logFileName");
 		    int productIndex = productListIndex - 1;
 
+		    Map<String, Object> result = new HashMap<>();
+	        result.put("filter", filterValue);
+	        int before = driver.getWindowHandles().size();
 		    try {
+				
+
 		        WebElement productElement = driver.findElement(getProductByIndex(productListIndex));
 		        smoothScrollToElement(getProductByIndex(productListIndex));
 		        Thread.sleep(1000);
-		        safeAct.safeClick(getProductByIndex(productListIndex));
+		  
+      
+		        openClickOnNewPage(productElement,before);
 		        log.info("[{}] Clicking product index={} for filter='{}'",
 		                 ThreadContext.get("testName"), productListIndex, filterValue);
 
+		        
+		    	int after = driver.getWindowHandles().size();
+
+				if (after == before) {
+					System.out.println("Before click and AFTER CLICK count is same , trying again");
+					safeAct.safeClick(getProductByIndex(productIndex));
+		         }
+				
 		        Thread.sleep(2000);
 		        switchToNewWindow(currentWindow);
 
-		        String name        = fetchTextWithRetries(productNameIndividualPage, safeAct);
+		        String name = fetchTextWithRetries(productNameIndividualPage, safeAct);
 		        String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
-		        String about       = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
+		        String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
 		        String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
 
-		        if (name.isEmpty()) {
-		            log.warn("[{}] Failed to fetch NAME for filter='{}' index={}", testName, filterValue, productListIndex);
-		        }
-		        if (keyFeatures.isEmpty()) {
-		            log.warn("[{}] Failed to fetch KEY FEATURES for filter='{}' index={}", testName, filterValue, productListIndex);
-		        }
-		        if (about.isEmpty()) {
-		            log.warn("[{}] Failed to fetch ABOUT for filter='{}' index={}", testName, filterValue, productListIndex);
-		        }
-		        if (techDetails.isEmpty()) {
-		            log.warn("[{}] Failed to fetch TECH DETAILS for filter='{}' index={}", testName, filterValue, productListIndex);
-		        }
+		        addFieldIfPresent("title",name ,filterValue,productIndex,result);
+		        addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,result);
+		        addFieldIfPresent("about",about ,filterValue,productIndex,result);
+		        addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,result);
 
 		        try {
 		            if (isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
@@ -366,14 +373,6 @@ public class GenericUtility extends ProductListingPage{
 		            log.info("[{}] Failed screenshot flow for empty tech details",
 		                     ThreadContext.get("testName"));
 		        }
-
-		        Map<String, Object> result = new HashMap<>();
-		        result.put("filter", filterValue);
-		        result.put("title", name);
-		        result.put("keyFeatures", keyFeatures);
-		        result.put("about", about);
-		        result.put("techDetails", techDetails);
-
 		        return result;
 
 		    } catch (Exception e) {
@@ -405,99 +404,56 @@ public class GenericUtility extends ProductListingPage{
  
 
 	 String testName = ThreadContext.get("logFileName");
-
+	 int beforeProductClick = driver.getWindowHandles().size();
+	
+	 
+	 Map<String, Object> productResult = new HashMap<>();
+	 productResult.put("filter", filterValue);
+	 
 	try {
-		int before = driver.getWindowHandles().size();
+		
 		WebElement productElement = safeAct.safeFindElement(getProductByIndex(productIndex));
 		smoothScrollToElement(getProductByIndex(productIndex));
-		log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
+		log.info("[{}] Getting product by index in productNameListingPage loop", testName);
 		
-		
-		System.out.println(productElement.getText()+"Printing the name in try catch ");
-
 		Thread.sleep(1000);
-		
-	
-		Actions actions = new Actions(driver);
-		actions
-		.keyDown(Keys.CONTROL) 
-		.click(productElement)
-		.keyUp(Keys.CONTROL)
-		.build()
-		.perform();
-
+		boolean isWindowOpened=openClickOnNewPage(productElement,beforeProductClick);
 
 		System.out.println("Product clicked with Ctrl+Click to open in new tab.");
-		log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", ThreadContext.get("testName"));
+		log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", testName);
 
-		Thread.sleep(2000);
-
-		int after = driver.getWindowHandles().size();
-
-		if (after == before) {
-			System.out.println("Before click and AFTER CLICK count is same , trying again");
-			safeAct.safeClick(getProductByIndex(productIndex));
-         }
-		
-		
+		if(isWindowOpened) {
+			waitForNewWindowAndSwitch(currentWindow,beforeProductClick);
+			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", testName);
+		}else {
+			 log.warn("[{}] Could not open product in a new tab", testName);
+		}
 } catch (Exception e) {
-	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, ThreadContext.get("testName"));
+	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, testName);
     System.out.println("Failed to Ctrl+Click product index " + productIndex);
 }
 
 System.out.println("Clicked on the producct name new pop-up should open");
-log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", ThreadContext.get("testName"));
+log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", testName);
 
-Thread.sleep(2000);
-
-Map<String, Object> productResult = new HashMap<>();
-
-productResult.put("filter", filterValue);
-
-waitForNewWindowAndSwitch(currentWindow);
-log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
-
-String name = fetchTextWithRetries(productNameIndividualPage, safeAct);
+String name="";
+try {
+name = fetchTextWithRetries(productNameIndividualPage, safeAct);
 String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
 String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
 String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
 
-// Optional logging or fallback handling
-//if (!name.isEmpty()) {
-//	productResult.put("title", name);
-//	log.warn("[{}] Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-//    System.out.println("â�Œ Failed to fetch product name after retries");
-//}
 addFieldIfPresent("title",name ,filterValue,productIndex,productResult);
-
-//if (!keyFeatures.isEmpty()) {
-//	productResult.put("keyFeatures", keyFeatures);
-//	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-//    System.out.println("â�Œ Failed to fetch key features after retries");
-//}
 addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,productResult);
-
-//if (!about.isEmpty()) {
-//    productResult.put("about", about);
-//	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-//    System.out.println("â�Œ Failed to fetch about section after retries");
-//}
 addFieldIfPresent("about",about ,filterValue,productIndex,productResult);
-
-//if (!techDetails.isEmpty()) {
-//	productResult.put("techDetails", techDetails);
-//	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-//    System.out.println("â�Œ Failed to fetch technical details after retries");
-//}
 addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,productResult);
+log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", testName);
 
+}catch(Exception e) {
+	log.info("[{}] Something went wrong while switching or extracting the details", testName);
 
+}
 
-
-
-
-log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
-scrollByPixel(0, 700);
 
 try {
 	 if(isElementInViewport(showMoreOnlyIndividualPage)) {
@@ -505,12 +461,12 @@ try {
      	smoothScrollToElement(reportAnIssue);
      	Thread.sleep(1000);
      	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
+			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
      }else {
     	 smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
          Thread.sleep(1000);
          safeAct.safeClick(seeMoreProductDetailsButtonIndividualPageBy);
-			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", ThreadContext.get("testName"));
+			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", testName);
          System.out.println("'See More Details' clicked.");
      }
    
@@ -521,32 +477,52 @@ try {
 	
 	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
 	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", ThreadContext.get("testName"));
+	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", testName);
 
     Thread.sleep(1000);
-	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
-    closeCurrentWindowAndSwitchBack(currentWindow);
-	log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
+	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
  
+}finally {
+	Thread.sleep(1000);
+	closeCurrentWindowAndSwitchBack(currentWindow);
+	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
 }
 
 
-
-Thread.sleep(1000);
-closeCurrentWindowAndSwitchBack(currentWindow);
-log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
-
-
-
-
-
-
- 
  return  productResult;
  
  
  }
  
+ 
+
+ 
+ 
+ private boolean openClickOnNewPage(WebElement element, int beforeCount) {
+	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+	    try {
+	        
+	        new Actions(driver)
+	            .keyDown(Keys.CONTROL)
+	            .click(element)
+	            .keyUp(Keys.CONTROL)
+	            .perform();
+
+	        wait.until(ExpectedConditions.numberOfWindowsToBe(beforeCount + 1));
+	        return true; // success
+	    } catch (Exception e) {
+	        
+	        try {
+	            element.click();
+	            wait.until(ExpectedConditions.numberOfWindowsToBe(beforeCount + 1));
+	            return true;
+	        } catch (Exception ex) {
+	            return false; 
+	        }
+	    }
+	}
+
  
  
  private void addFieldIfPresent(String key,String value,String filterValue,int productIndex,  Map<String, Object> result) {
@@ -593,11 +569,11 @@ log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBac
  
  
  
-	public void waitForNewWindowAndSwitch(String originalWindow) {
+	public void waitForNewWindowAndSwitch(String originalWindow, int beforeCount) {
 		log.info("[{}] Waiting for new window to open...", ThreadContext.get("testName"));
 
 
-		wait.until((ExpectedCondition<Boolean>) d -> d != null && d.getWindowHandles().size() > 1);
+		  wait.until(ExpectedConditions.numberOfWindowsToBe(beforeCount + 1));
 
 		for (String handle : driver.getWindowHandles()) {
 			if (!handle.equals(originalWindow)) {
