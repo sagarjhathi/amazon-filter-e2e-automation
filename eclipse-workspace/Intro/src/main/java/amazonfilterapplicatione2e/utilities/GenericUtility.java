@@ -15,6 +15,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -531,6 +532,46 @@ productResult.put("techDetails", techDetails);
  
  }
  
+ 
+ 
+ 
+ 
+ public void switchToNewWindow(String currentWindowHandle) {
+		log.info("[{}] Within switchToNewWindow method", ThreadContext.get("testName"));
+
+		Set<String> allWindowHandles = driver.getWindowHandles();
+
+		for (String handle : allWindowHandles) {
+			if (!handle.equals(currentWindowHandle)) {
+				System.out.println("Found the new window. Switching now...");
+				driver.switchTo().window(handle);
+				return;
+			}
+		}
+
+		System.out.println("No new window found to switch to.");
+	}
+ 
+ 
+ 
+ 
+	public void waitForNewWindowAndSwitch(String originalWindow) {
+		log.info("[{}] Waiting for new window to open...", ThreadContext.get("testName"));
+
+
+		wait.until((ExpectedCondition<Boolean>) d -> d != null && d.getWindowHandles().size() > 1);
+
+		for (String handle : driver.getWindowHandles()) {
+			if (!handle.equals(originalWindow)) {
+				driver.switchTo().window(handle);
+				log.info("[{}] Switched to new window -> {}", ThreadContext.get("testName"), handle);
+				return;
+			}
+		}
+
+		log.error("[{}] Timeout after {}s: no new window detected", ThreadContext.get("testName"));
+		throw new RuntimeException("Timeout waiting for new window");
+	}
  
 
  }

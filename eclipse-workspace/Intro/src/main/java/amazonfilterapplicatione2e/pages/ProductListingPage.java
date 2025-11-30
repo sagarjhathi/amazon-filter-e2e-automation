@@ -283,26 +283,7 @@ public class ProductListingPage extends  BasePage{
 	}
 	 
 	 
-	 
-	 
-	public void switchToNewWindow(String currentWindowHandle) {
-		log.info("[{}] Within switchToNewWindow method", ThreadContext.get("testName"));
-
-		Set<String> allWindowHandles = driver.getWindowHandles();
-
-		for (String handle : allWindowHandles) {
-			if (!handle.equals(currentWindowHandle)) {
-				System.out.println("Found the new window. Switching now...");
-				driver.switchTo().window(handle);
-				return;
-			}
-		}
-
-		System.out.println("No new window found to switch to.");
-	}
-
 	
-		
 			
 	public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
 
@@ -378,7 +359,7 @@ public class ProductListingPage extends  BasePage{
 				log.info("[{}] Clicked on the producct name new pop-up should open  via productNameListingPage loop", ThreadContext.get("testName"));
 
 				Thread.sleep(2000);		
-				productPage.switchToNewWindow(currentWindow);
+				genericUtility.switchToNewWindow(currentWindow);
 				log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
 
 				safeAct.safeFindElement(productPage.productNameIndividualPage);
@@ -419,7 +400,6 @@ public class ProductListingPage extends  BasePage{
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult method", ThreadContext.get("testName"));
 
 		SafeActions safeAct = new SafeActions();
-//		ProductListingPage productPage = new ProductListingPage();
 		GenericUtility genericUtility = new GenericUtility();
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
@@ -456,7 +436,7 @@ public class ProductListingPage extends  BasePage{
 			}
 
 
-			//int productIndex;
+			
 			Thread.sleep(1000);
 			String currentWindow = driver.getWindowHandle();
 
@@ -487,28 +467,6 @@ public class ProductListingPage extends  BasePage{
 		log.info("[{}] returning the 'results' i.e list of Maps", ThreadContext.get("testName"));
 		return results;
 }
-
-
-	
-	
-
-	public void waitForNewWindowAndSwitch(String originalWindow) {
-		log.info("[{}] Waiting for new window to open...", ThreadContext.get("testName"));
-
-
-		wait.until((ExpectedCondition<Boolean>) d -> d != null && d.getWindowHandles().size() > 1);
-
-		for (String handle : driver.getWindowHandles()) {
-			if (!handle.equals(originalWindow)) {
-				driver.switchTo().window(handle);
-				log.info("[{}] Switched to new window -> {}", ThreadContext.get("testName"), handle);
-				return;
-			}
-		}
-
-		log.error("[{}] Timeout after {}s: no new window detected", ThreadContext.get("testName"));
-		throw new RuntimeException("Timeout waiting for new window");
-	}
 
 
 	
@@ -640,40 +598,39 @@ public class ProductListingPage extends  BasePage{
 	}
 
 	
-	
-	
-	
-	public List<Object> validateDeliveryFilterOptionsUpdated(By filterOptions) throws InterruptedException {
-
-		System.out.println("Within the Function validateDeliveryFilterOptionsUpdate ");
-
-		ProductListingPage productPage = new ProductListingPage();
-		SafeActions safeAct = new SafeActions();
-		safeAct.safeClick(filterOptions);
-		Thread.sleep(2000);
-
-
-		// Find product card elements
-		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
-
-		// Format today and tomorrow's dates
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
-		String todayFormatted = LocalDate.now().format(formatter);
-		String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
-
-		// Build allowed date parts
-		Set<String> allowedDateParts = new HashSet<>();
-		Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
-		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
-		allowedDateParts.add("Today");
-		allowedDateParts.add("Tomorrow");
-
-		List<Object> returnAble=new ArrayList<>();
-		returnAble.add(deliveryElements);
-		returnAble.add(allowedDateParts);
-		return returnAble;
-
-	}
+//	
+//	
+//		public List<Object> validateDeliveryFilterOptionsUpdated(By filterOptions) throws InterruptedException {
+//
+//		System.out.println("Within the Function validateDeliveryFilterOptionsUpdate ");
+//
+//		ProductListingPage productPage = new ProductListingPage();
+//		SafeActions safeAct = new SafeActions();
+//		safeAct.safeClick(filterOptions);
+//		Thread.sleep(2000);
+//
+//
+//		// Find product card elements
+//		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
+//
+//		// Format today and tomorrow's dates
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+//		String todayFormatted = LocalDate.now().format(formatter);
+//		String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
+//
+//		// Build allowed date parts
+//		Set<String> allowedDateParts = new HashSet<>();
+//		Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+//		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+//		allowedDateParts.add("Today");
+//		allowedDateParts.add("Tomorrow");
+//
+//		List<Object> returnAble=new ArrayList<>();
+//		returnAble.add(deliveryElements);
+//		returnAble.add(allowedDateParts);
+//		return returnAble;
+//
+//	}
 	
 	
 			
@@ -924,7 +881,7 @@ public class ProductListingPage extends  BasePage{
 
 				System.out.println("Clicked on the producct name new pop-up should open");
 				Thread.sleep(2000);		
-				productPage.switchToNewWindow(currentWindow);
+				genericUtility.switchToNewWindow(currentWindow);
 
 				safeAct.safeFindElement(productPage.productNameIndividualPage);
 

@@ -9,7 +9,10 @@
       <class name="test.java.tests.AmazonTests">
  
 
-
+	<methods>
+	<include name="verifyingDisplayTypeFilterFunctionality"></include>
+	
+	</methods>
     </class>
       
     </classes>
