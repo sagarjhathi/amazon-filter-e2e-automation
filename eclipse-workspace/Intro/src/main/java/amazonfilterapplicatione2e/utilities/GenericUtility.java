@@ -311,7 +311,7 @@ public class GenericUtility extends ProductListingPage{
  
  
  
- public Map<String, Object>applyFilterOptionsAndFetchProductDetails(
+ public Map<String, Object>applyFilterOptionsAndFetchProductDetailsForOS(
 	 
 	 
 		        int productListIndex,
