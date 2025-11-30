@@ -408,12 +408,11 @@ public class GenericUtility extends ProductListingPage{
 
 	try {
 		int before = driver.getWindowHandles().size();
-		WebElement productElement = driver.findElement(getProductByIndex(productIndex));
+		WebElement productElement = safeAct.safeFindElement(getProductByIndex(productIndex));
 		smoothScrollToElement(getProductByIndex(productIndex));
 		log.info("[{}] Getting product by index in productNameListingPage loop", ThreadContext.get("testName"));
 		
 		
-
 		System.out.println(productElement.getText()+"Printing the name in try catch ");
 
 		Thread.sleep(1000);
@@ -444,13 +443,16 @@ public class GenericUtility extends ProductListingPage{
 } catch (Exception e) {
 	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, ThreadContext.get("testName"));
     System.out.println("Failed to Ctrl+Click product index " + productIndex);
-  //  continue;
 }
 
 System.out.println("Clicked on the producct name new pop-up should open");
 log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", ThreadContext.get("testName"));
 
 Thread.sleep(2000);
+
+Map<String, Object> productResult = new HashMap<>();
+
+productResult.put("filter", filterValue);
 
 waitForNewWindowAndSwitch(currentWindow);
 log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
@@ -461,22 +463,38 @@ String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
 String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
 
 // Optional logging or fallback handling
-if (name.isEmpty()) {
-	log.warn("[{}] Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-    System.out.println("â�Œ Failed to fetch product name after retries");
-}
-if (keyFeatures.isEmpty()) {
-	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-    System.out.println("â�Œ Failed to fetch key features after retries");
-}
-if (about.isEmpty()) {
-	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-    System.out.println("â�Œ Failed to fetch about section after retries");
-}
-if (techDetails.isEmpty()) {
-	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
-    System.out.println("â�Œ Failed to fetch technical details after retries");
-}
+//if (!name.isEmpty()) {
+//	productResult.put("title", name);
+//	log.warn("[{}] Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+//    System.out.println("â�Œ Failed to fetch product name after retries");
+//}
+addFieldIfPresent("title",name ,filterValue,productIndex,productResult);
+
+//if (!keyFeatures.isEmpty()) {
+//	productResult.put("keyFeatures", keyFeatures);
+//	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+//    System.out.println("â�Œ Failed to fetch key features after retries");
+//}
+addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,productResult);
+
+//if (!about.isEmpty()) {
+//    productResult.put("about", about);
+//	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+//    System.out.println("â�Œ Failed to fetch about section after retries");
+//}
+addFieldIfPresent("about",about ,filterValue,productIndex,productResult);
+
+//if (!techDetails.isEmpty()) {
+//	productResult.put("techDetails", techDetails);
+//	log.warn("[{}] â�Œ Failed to fetch product name after retries for filter value ->"+filterValue+" and index->"+productIndex, testName);
+//    System.out.println("â�Œ Failed to fetch technical details after retries");
+//}
+addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,productResult);
+
+
+
+
+
 
 log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", ThreadContext.get("testName"));
 scrollByPixel(0, 700);
@@ -509,7 +527,7 @@ try {
 	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", ThreadContext.get("testName"));
     closeCurrentWindowAndSwitchBack(currentWindow);
 	log.info("[{}] Within catch block Cannot click 'see more details' hence going back to product listing", ThreadContext.get("testName"));
-  //  continue;
+ 
 }
 
 
@@ -518,14 +536,11 @@ Thread.sleep(1000);
 closeCurrentWindowAndSwitchBack(currentWindow);
 log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", ThreadContext.get("testName"));
 
-String str=filterValue;
 
-Map<String, Object> productResult = new HashMap<>();
-productResult.put("filter", str);
-productResult.put("title", name);
-productResult.put("keyFeatures", keyFeatures);
-productResult.put("about", about);
-productResult.put("techDetails", techDetails);
+
+
+
+
  
  return  productResult;
  
@@ -533,6 +548,29 @@ productResult.put("techDetails", techDetails);
  }
  
  
+ 
+ private void addFieldIfPresent(String key,String value,String filterValue,int productIndex,  Map<String, Object> result) {
+
+	 String testName = ThreadContext.get("testName");
+
+	 if (value != null && !value.isEmpty()) {
+		 result.put(key, value);
+	 } else {
+		 result.put(key, null);  // 👈 ensures consistent keys
+		 log.warn("[{}] Failed to fetch {} after retries for filter value -> {} and index -> {}",
+		         testName, key, filterValue, productIndex);
+	 }
+
+}
+
+ 
+ 
+ 
+ public String safeLower(Object value) {
+	    if (value == null) return "";
+	    return value.toString().toLowerCase();
+	}
+
  
  
  

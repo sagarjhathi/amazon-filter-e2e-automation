@@ -43,6 +43,9 @@ public class ProductListingPage extends  BasePage{
 
 	@FindBy(xpath="//div[@data-cy='delivery-recipe']")
 	WebElement productDeliveryDayListingPage;
+	
+	@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
+	public List<WebElement> listOfFilterNameInLeftNav;
 
 
 	public By listProcessorSpeedOptionsBy = By.xpath(
@@ -122,25 +125,36 @@ public class ProductListingPage extends  BasePage{
 	public By priceMinSliderButton=By.id("p_36/range-slider_slider-item_lower-bound-slider");
 
 	public By priceMaxSliderButton=By.id("p_36/range-slider_slider-item_upper-bound-slider");
+	
 	public By priceSliderSubmitButton=By.xpath("//div[@class='a-section sf-submit-range-button']");
+	
 	public By maxPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_upper-bound-slider']");
+	
 	public By minPriceFilterApplied=By.xpath("//label[@for='p_36/range-slider_slider-item_lower-bound-slider']");
+	
 	public By productPriceFromProductCards=By.xpath("//span[@class='a-price-whole']");
+	
 	public  By productNameListingPageBy=By.xpath("//div[@data-cy='title-recipe']");
+	
 	public By productNameIndividualPage=By.xpath("//span[@id='productTitle']");
+	
 	public By productKeyFeatureBlock= By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']");
+	
 	public By aboutThisItemBulletPoint=By.xpath("//div[@id='feature-bullets']");
+	
 	public By technicalDetailsBlockIndividualPage =By.xpath("//div[@id='prodDetails']");
+	
 	public 	By seeMoreProductDetailsButtonIndividualPageBy=By.xpath("//a[@id='seeMoreDetailsLink']");
+	
 	public By clearButtonBy=By.xpath("//span[@class='a-size-base a-color-base' and text()='Clear']");
 
 	public By seeMoreButtonIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
+	
 	public By reportAnIssue=By.xpath("//div[@id='CardInstanceCnrYlcUauBaBV5oi0X1UVw']");
 
 	public By showMoreOnlyIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
 
-	@FindBy(xpath="//div[@id='s-refinements']//span[@class='a-size-base a-color-base puis-bold-weight-text']")
-	public List<WebElement> listOfFilterNameInLeftNav;
+	
 
 	
 
@@ -597,41 +611,6 @@ public class ProductListingPage extends  BasePage{
 		return Arrays.asList(true, "All the things are valid no errors", -1);
 	}
 
-	
-//	
-//	
-//		public List<Object> validateDeliveryFilterOptionsUpdated(By filterOptions) throws InterruptedException {
-//
-//		System.out.println("Within the Function validateDeliveryFilterOptionsUpdate ");
-//
-//		ProductListingPage productPage = new ProductListingPage();
-//		SafeActions safeAct = new SafeActions();
-//		safeAct.safeClick(filterOptions);
-//		Thread.sleep(2000);
-//
-//
-//		// Find product card elements
-//		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
-//
-//		// Format today and tomorrow's dates
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
-//		String todayFormatted = LocalDate.now().format(formatter);
-//		String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
-//
-//		// Build allowed date parts
-//		Set<String> allowedDateParts = new HashSet<>();
-//		Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
-//		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
-//		allowedDateParts.add("Today");
-//		allowedDateParts.add("Tomorrow");
-//
-//		List<Object> returnAble=new ArrayList<>();
-//		returnAble.add(deliveryElements);
-//		returnAble.add(allowedDateParts);
-//		return returnAble;
-//
-//	}
-	
 	
 			
 	

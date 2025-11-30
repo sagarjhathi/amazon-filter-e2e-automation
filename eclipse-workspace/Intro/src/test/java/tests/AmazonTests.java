@@ -268,16 +268,16 @@ public class AmazonTests extends BaseTest {
 		SoftAssert softAssert = new SoftAssert();
 
 		for (Map<String, Object> product : results) {
-			String filter = ((String) product.get("filter")).toLowerCase();
-			String title = ((String) product.get("title")).toLowerCase();
-			String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-			String about = ((String) product.get("about")).toLowerCase();
-			String techDetails = ((String) product.get("techDetails")).toLowerCase();
+			String filter = genericUtility.safeLower(product.get("filter"));
+    	    String title = genericUtility.safeLower(product.get("title"));
+    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+    	    String about = genericUtility.safeLower(product.get("about"));
+    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-			log.info("[{}]  Checking if filter '{}' is found in product details.", ThreadContext.get("testName"), filter);
-
-			boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-					|| about.contains(filter) || techDetails.contains(filter);
+    	    boolean isMatch = title.contains(filter)
+    	                   || keyFeatures.contains(filter)
+    	                   || about.contains(filter)
+    	                   || techDetails.contains(filter);
 
 			if (!isMatch) {
 
@@ -403,14 +403,16 @@ public class AmazonTests extends BaseTest {
 	   softAssert.fail();
    }
 	    for (Map<String, Object> product : results) {
-	        String filter = ((String) product.get("filter")).toLowerCase();
-	        String title = ((String) product.get("title")).toLowerCase();
-	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-	        String about = ((String) product.get("about")).toLowerCase();
-	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+	    	String filter = genericUtility.safeLower(product.get("filter"));
+    	    String title = genericUtility.safeLower(product.get("title"));
+    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+    	    String about = genericUtility.safeLower(product.get("about"));
+    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-	                        || about.contains(filter) || techDetails.contains(filter);
+    	    boolean isMatch = title.contains(filter)
+    	                   || keyFeatures.contains(filter)
+    	                   || about.contains(filter)
+    	                   || techDetails.contains(filter);
 
 	        if (!isMatch) {
 
@@ -472,14 +474,16 @@ public class AmazonTests extends BaseTest {
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
-	        String filter = ((String) product.get("filter")).toLowerCase();
-	        String title = ((String) product.get("title")).toLowerCase();
-	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-	        String about = ((String) product.get("about")).toLowerCase();
-	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+	    	String filter = genericUtility.safeLower(product.get("filter"));
+    	    String title = genericUtility.safeLower(product.get("title"));
+    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+    	    String about = genericUtility.safeLower(product.get("about"));
+    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-	                        || about.contains(filter) || techDetails.contains(filter);
+    	    boolean isMatch = title.contains(filter)
+    	                   || keyFeatures.contains(filter)
+    	                   || about.contains(filter)
+    	                   || techDetails.contains(filter);
 
 	        if (!isMatch) {
 	        	
@@ -544,14 +548,16 @@ public class AmazonTests extends BaseTest {
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
-	        String filter = ((String) product.get("filter")).toLowerCase();
-	        String title = ((String) product.get("title")).toLowerCase();
-	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-	        String about = ((String) product.get("about")).toLowerCase();
-	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+	    	String filter = genericUtility.safeLower(product.get("filter"));
+    	    String title = genericUtility.safeLower(product.get("title"));
+    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+    	    String about = genericUtility.safeLower(product.get("about"));
+    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-	                        || about.contains(filter) || techDetails.contains(filter);
+    	    boolean isMatch = title.contains(filter)
+    	                   || keyFeatures.contains(filter)
+    	                   || about.contains(filter)
+    	                   || techDetails.contains(filter);
 
 	        if (!isMatch) {
 
@@ -614,15 +620,17 @@ public class AmazonTests extends BaseTest {
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
-	        String filter = ((String) product.get("filter")).toLowerCase();
-	        String title = ((String) product.get("title")).toLowerCase();
-	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-	        String about = ((String) product.get("about")).toLowerCase();
-	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+	        	String filter = genericUtility.safeLower(product.get("filter"));
+	    	    String title = genericUtility.safeLower(product.get("title"));
+	    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+	    	    String about = genericUtility.safeLower(product.get("about"));
+	    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-	                        || about.contains(filter) || techDetails.contains(filter);
-
+	    	    boolean isMatch = title.contains(filter)
+	    	                   || keyFeatures.contains(filter)
+	    	                   || about.contains(filter)
+	    	                   || techDetails.contains(filter);
+	    	    
 	        if (!isMatch) {
 
 	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
@@ -686,14 +694,16 @@ public class AmazonTests extends BaseTest {
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
-	        String filter = ((String) product.get("filter")).toLowerCase();
-	        String title = ((String) product.get("title")).toLowerCase();
-	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-	        String about = ((String) product.get("about")).toLowerCase();
-	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+	    	String filter = genericUtility.safeLower(product.get("filter"));
+    	    String title = genericUtility.safeLower(product.get("title"));
+    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+    	    String about = genericUtility.safeLower(product.get("about"));
+    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-	                        || about.contains(filter) || techDetails.contains(filter);
+    	    boolean isMatch = title.contains(filter)
+    	                   || keyFeatures.contains(filter)
+    	                   || about.contains(filter)
+    	                   || techDetails.contains(filter);
 
 	        if (!isMatch) {
 
@@ -756,14 +766,16 @@ public class AmazonTests extends BaseTest {
 		 SoftAssert softAssert = new SoftAssert();
 
 		    for (Map<String, Object> product : results) {
-		        String filter = ((String) product.get("filter")).toLowerCase();
-		        String title = ((String) product.get("title")).toLowerCase();
-		        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-		        String about = ((String) product.get("about")).toLowerCase();
-		        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+		    	String filter = genericUtility.safeLower(product.get("filter"));
+	    	    String title = genericUtility.safeLower(product.get("title"));
+	    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+	    	    String about = genericUtility.safeLower(product.get("about"));
+	    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-		        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-		                        || about.contains(filter) || techDetails.contains(filter);
+	    	    boolean isMatch = title.contains(filter)
+	    	                   || keyFeatures.contains(filter)
+	    	                   || about.contains(filter)
+	    	                   || techDetails.contains(filter);
 
 		        if (!isMatch) {
 
@@ -830,14 +842,16 @@ public class AmazonTests extends BaseTest {
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
-	        String filter = ((String) product.get("filter")).toLowerCase();
-	        String title = ((String) product.get("title")).toLowerCase();
-	        String keyFeatures = ((String) product.get("keyFeatures")).toLowerCase();
-	        String about = ((String) product.get("about")).toLowerCase();
-	        String techDetails = ((String) product.get("techDetails")).toLowerCase();
+	    	String filter = genericUtility.safeLower(product.get("filter"));
+    	    String title = genericUtility.safeLower(product.get("title"));
+    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+    	    String about = genericUtility.safeLower(product.get("about"));
+    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        boolean isMatch = title.contains(filter) || keyFeatures.contains(filter)
-	                        || about.contains(filter) || techDetails.contains(filter);
+    	    boolean isMatch = title.contains(filter)
+    	                   || keyFeatures.contains(filter)
+    	                   || about.contains(filter)
+    	                   || techDetails.contains(filter);
 
 	        if (!isMatch) {
 
