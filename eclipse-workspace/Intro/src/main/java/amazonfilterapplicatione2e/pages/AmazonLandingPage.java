@@ -19,7 +19,7 @@ public class AmazonLandingPage extends BasePage{
 
 	SafeActions safeAct=new SafeActions();
 	
-	WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
 	
 	@FindBy(xpath="//input[@placeholder='Search Amazon.in']")
 	WebElement searchBarLandingPage;
@@ -38,8 +38,6 @@ public class AmazonLandingPage extends BasePage{
 		ScreenshotUtil.capture("search bar error capture");
 		searchBarLandingPage.click();
 		searchBarLandingPage.sendKeys(input);
-		//safeAct.safeClick(searchBarLandingPageBy);
-	//	searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
 
 	}
@@ -53,7 +51,6 @@ public class AmazonLandingPage extends BasePage{
 	
 	public void clickingOnSubmitSearchButton() throws InterruptedException{
 		safeAct.safeClick(submitSearchButtonBy);
-		//submitSearchButton.click();
 		log.info("[{}] Clicking on the submit in the search bar", ThreadContext.get("testName"));
 
 	}

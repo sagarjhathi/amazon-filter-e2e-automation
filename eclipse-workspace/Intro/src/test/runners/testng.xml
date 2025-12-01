@@ -9,10 +9,6 @@
       <class name="test.java.tests.AmazonTests">
  
 
-	<methods>
-	<include name="verifyingTheBrandsFilterFunctionality"></include>
-	
-	</methods>
     </class>
       
     </classes>

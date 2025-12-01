@@ -220,7 +220,7 @@ public class ProductListingPage extends  BasePage{
 			return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 		case "discount":
 			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-		case "brandsOld":
+		case "brandsold":
 			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
 		default:
 			throw new IllegalArgumentException("Unknown filter type: " + filterName);
@@ -289,7 +289,7 @@ public class ProductListingPage extends  BasePage{
 			return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']");
 		case "discount":
 			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']");
-		case "brandsOld":
+		case "brandsold":
 			return By.xpath("//ul[@id='filter-p_123']");
 		default:
 			throw new IllegalArgumentException("Unknown filter type: " + filterName);
@@ -640,12 +640,11 @@ public class ProductListingPage extends  BasePage{
 
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+		
 		if(filterOptions==null) {
-			
 			filterOptions = safeAct.safeFindElements(listBrandsOptionsByOld);
 			filterOptionsBy=listBrandsOptionsByOld;
-			filterName="brandsOld";
-			
+			filterName="brandsold";
 		}
 	
 
@@ -661,8 +660,14 @@ public class ProductListingPage extends  BasePage{
 
 		for (int i = 1; i <=filterOptionSize-1; i++) {
 			log.info("[{}] Within the filterOptions loop ", ThreadContext.get("testName"));
-
-			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
+			
+			List<WebElement> inloopParent;
+			if(filterOptions==null) {
+				inloopParent = safeAct.safeFindElements(listBrandsOptionsByOld);
+				}else {
+				 inloopParent = safeAct.safeFindElements(listBrandsOptionsByNew);
+				}
+			
 			if (i > inloopParent.size() - 1) {
 				log.info("[{}] Avoiding out of bouns by only iterating over the innerLoopParent ", ThreadContext.get("testName"));
 				continue;
@@ -673,7 +678,13 @@ public class ProductListingPage extends  BasePage{
 			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderBrandFilter);
 
 
-			String str = filterOptions.get(i).getText().trim();      
+			if(filterOptions==null) {
+				inloopParent = safeAct.safeFindElements(listBrandsOptionsByOld);
+				}else {
+				 inloopParent = safeAct.safeFindElements(listBrandsOptionsByNew);
+				}
+			
+			String str = inloopParent.get(i).getText().trim();      
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 				System.out.println("Filter click failed for: " + str);
 				log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
