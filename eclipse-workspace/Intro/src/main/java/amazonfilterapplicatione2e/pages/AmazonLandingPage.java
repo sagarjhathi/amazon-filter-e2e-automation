@@ -18,9 +18,7 @@ public class AmazonLandingPage extends BasePage{
 	private  final Logger log = LoggerUtility.getLogger(AmazonLandingPage.class);
 
 	SafeActions safeAct=new SafeActions();
-	
 
-	
 	@FindBy(xpath="//input[@placeholder='Search Amazon.in']")
 	WebElement searchBarLandingPage;
 	
@@ -33,9 +31,6 @@ public class AmazonLandingPage extends BasePage{
 	By submitSearchButtonBy=By.xpath("//input[@id='nav-search-submit-button']");
 	
 	public void givingInputWithinSearchBar(String input) throws InterruptedException {
-		
-	
-		ScreenshotUtil.capture("search bar error capture");
 		searchBarLandingPage.click();
 		searchBarLandingPage.sendKeys(input);
 		log.info("[{}] Giving input within the search bar", ThreadContext.get("testName"));
