@@ -435,7 +435,8 @@ public class ProductListingPage extends  BasePage{
 		int filterOptionSize=filterOptions.size();
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
-			filterOptionSize=1;
+			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 4);
+			System.out.println(filterOptionSize +" is the  filterOptionSize");
 		}
 
 
@@ -464,7 +465,16 @@ public class ProductListingPage extends  BasePage{
 			String currentWindow = driver.getWindowHandle();
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productNameListingPageBy);
-			for (int productIndex = 1; productIndex <=productNameListingPage.size()-1; productIndex++) {
+			int productNameListingPageSize=0;
+			boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
+			if(runAllProducts==false) {
+				productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 5);
+				System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+			}
+			
+			
+	
+			for (int productIndex = 1; productIndex <=productNameListingPageSize-1; productIndex++) {
 
 			
 				productNameListingPage=safeAct.safeFindElements(productNameListingPageBy);
