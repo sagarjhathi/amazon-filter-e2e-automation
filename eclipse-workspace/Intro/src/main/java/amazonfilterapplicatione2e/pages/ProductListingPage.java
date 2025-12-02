@@ -171,7 +171,7 @@ public class ProductListingPage extends  BasePage{
 		case "storagecapacity":
 			return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 		case "brands":
-			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
+			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::div[@class='a-section a-spacing-medium sf-navigation-searchable-content']//span[@class='a-size-base a-color-base' and text()='"+filterOption+"']");
 		case "batterycapacity":
 			return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base' and text()='" + filterOption + "']");
 		case "displaysize" :
@@ -186,8 +186,8 @@ public class ProductListingPage extends  BasePage{
 			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 		case "Operating System Version":
 			return By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-		case "brandsOld":
-			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
+		case "brandsold":
+			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 			
 		default:
 			throw new IllegalArgumentException("Unknown filter type: " + filterName);
@@ -207,7 +207,7 @@ public class ProductListingPage extends  BasePage{
 		case "storagecapacity":
 			return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 		case "brands":
-			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base'and text()='"+ filterOption + "']");
+			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base a-text-bold'and text()='"+ filterOption + "']");
 		case "batterycapacity":
 			return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
 		case "displaysize" :
@@ -221,7 +221,7 @@ public class ProductListingPage extends  BasePage{
 		case "discount":
 			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 		case "brandsold":
-			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base']");
+			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base a-text-bold'and text()='"+ filterOption + "']");
 		default:
 			throw new IllegalArgumentException("Unknown filter type: " + filterName);
 		}
@@ -290,7 +290,7 @@ public class ProductListingPage extends  BasePage{
 		case "discount":
 			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']");
 		case "brandsold":
-			return By.xpath("//ul[@id='filter-p_123']");
+			return By.xpath("//div[@id='p_123-title']");
 		default:
 			throw new IllegalArgumentException("Unknown filter type: " + filterName);
 		}
@@ -649,13 +649,13 @@ public class ProductListingPage extends  BasePage{
 		log.info("[{}] Clicked the 'More' Button under brands filter section", ThreadContext.get("testName"));
 
 
-		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		
-		if(filterOptions==null) {
-			filterOptions = safeAct.safeFindElements(listBrandsOptionsByOld);
-			filterOptionsBy=listBrandsOptionsByOld;
-			filterName="brandsold";
-		}
+	List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+//		
+//		if(filterOptions==null) {
+//			filterOptions = safeAct.safeFindElements(listBrandsOptionsByOld);
+//			filterOptionsBy=listBrandsOptionsByOld;
+//			filterName="brandsold";
+//		}
 	
 
 
@@ -671,12 +671,10 @@ public class ProductListingPage extends  BasePage{
 		for (int i = 1; i <=filterOptionSize-1; i++) {
 			log.info("[{}] Within the filterOptions loop ", ThreadContext.get("testName"));
 			
-			List<WebElement> inloopParent;
-			if(filterOptions==null) {
-				inloopParent = safeAct.safeFindElements(listBrandsOptionsByOld);
-				}else {
-				 inloopParent = safeAct.safeFindElements(listBrandsOptionsByNew);
-				}
+			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
+
+				
+			
 			
 			if (i > inloopParent.size() - 1) {
 				log.info("[{}] Avoiding out of bouns by only iterating over the innerLoopParent ", ThreadContext.get("testName"));
@@ -686,13 +684,8 @@ public class ProductListingPage extends  BasePage{
 
 			
 			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderBrandFilter);
-
-
-			if(filterOptions==null) {
-				inloopParent = safeAct.safeFindElements(listBrandsOptionsByOld);
-				}else {
-				 inloopParent = safeAct.safeFindElements(listBrandsOptionsByNew);
-				}
+			
+			inloopParent = safeAct.safeFindElements(filterOptionsBy);
 			
 			String str = inloopParent.get(i).getText().trim();      
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {

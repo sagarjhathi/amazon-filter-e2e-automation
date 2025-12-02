@@ -37,6 +37,7 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.reporting.ExtentTestManager;
+import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
 import test.java.retry.RetryFailedTest;
 import test.testDataProvider.TestDataProvider;
@@ -194,6 +195,7 @@ public class AmazonTests extends BaseTest {
 		am.clickingOnSubmitSearchButton();
 
 		ProductListingPage productPage=new ProductListingPage();
+		SafeActions safeAct=new SafeActions();
 
 		// the iteration will not work here it has to be changed a bit similar to the price filter as well
 		GenericUtility genericUtility=new GenericUtility();
@@ -204,8 +206,19 @@ public class AmazonTests extends BaseTest {
 			log.warn("[{}] Filter option 'brands' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
 			return ;
 		}
+		
+		
+	  List<WebElement> filterOptions = safeAct.safeFindElements(productPage.listBrandsOptionsByNew);
+	  List<Map<Object, Object>> allResults=null;
+		
+		if(filterOptions==null) {
+			allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByOld, "brandsold");
+		}else {
+		    allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 
-		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
+		}
+
+//		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 		SoftAssert softAssert = new SoftAssert();
 
 		for (Map<Object, Object> result : allResults) {
