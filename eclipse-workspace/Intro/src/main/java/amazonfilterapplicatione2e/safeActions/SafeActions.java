@@ -3,11 +3,16 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import main.java.amazonfilterapplicatione2e.base.BasePage;
+import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
 import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
+
+import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -15,6 +20,15 @@ public class SafeActions extends BasePage{
    
 	private  final Logger log = LoggerUtility.getLogger(SafeActions.class);
 
+	
+	private WebDriverWait safeWait;
+
+	private WebDriverWait getSafeWait() {
+	    if (safeWait == null) {
+	        safeWait = new WebDriverWait(driver, Duration.ofSeconds(ConfigManager.getInt("safeActionsWaitTime", 10)));
+	    }
+	    return safeWait;
+	}
 
 	public void safeClick(By locator) {
 		log.info("[{}] Within safeClick method", ThreadContext.get("testName"));
@@ -23,7 +37,7 @@ public class SafeActions extends BasePage{
 	    while (attempts < 2) {
 	        try {
 	        	
-	            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+	            WebElement element = getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 	            element.click();
 	    		log.info("[{}] Clicked the  "+element+"   using safeClick", ThreadContext.get("testName"));
 	            System.out.println("Clicked using safeClick");
@@ -51,7 +65,7 @@ public class SafeActions extends BasePage{
 	    int attempts = 0;
 	    while (attempts < 2) {
 	        try {
-	            List<WebElement> elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	            List<WebElement> elements = getSafeWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 	    		log.info("[{}] Returning the  "+elements+" from the safeFindElements method", ThreadContext.get("testName"));
 
 	            System.out.println("Found the elements: " + locator);
@@ -85,7 +99,7 @@ public class SafeActions extends BasePage{
 		    while (attempts < 2) {
 		        try {
 		        	
-		            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+		            WebElement element = getSafeWait().until(ExpectedConditions.presenceOfElementLocated(locator));
 					log.info("[{}]Found the element returning it ,element ->"+element, ThreadContext.get("testName"));
 		            System.out.println("Found the element: " + locator);
 		            return element;
@@ -112,44 +126,6 @@ public class SafeActions extends BasePage{
 		
 		
 		
-		
-		
-		public WebElement safeFindElementUpdated(By locator) {
-			log.info("[{}] Within safeFindElement method", ThreadContext.get("testName"));
-
-		    int attempts = 0;
-		    while (attempts < 2) {
-		        try {
-		        	
-		         //   WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-		        	
-		        	
-		        			WebElement element = wait.until(ExpectedConditions.refreshed(
-		        			        ExpectedConditions.elementToBeClickable(locator)
-		        			));
-					log.info("[{}]Found the element returning it ,element ->"+element, ThreadContext.get("testName"));
-		            System.out.println("Found the element: " + locator);
-		            return element;
-		        } catch (Exception e) {
-					log.info("[{}]Retrying findElement for: ->"+locator, ThreadContext.get("testName"));
-
-		            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
-		            attempts++;
-		            try {
-		                driver.navigate().refresh();
-						log.info("[{}]Refrehsing the page , while trying to safely find : ->"+locator, ThreadContext.get("testName"));
-		                System.out.println("Refreshing the page in safeFindElement Method");
-		                Thread.sleep(1000);
-		            } catch (InterruptedException ignored) {}
-		        }
-		    }
-
-
-			log.info("[{}] Skipping action: Element not found after "+attempts+"   attemps", ThreadContext.get("testName"));
-
-		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
-		    return null;
-		}
 		
 		
 		
@@ -166,7 +142,7 @@ public class SafeActions extends BasePage{
 		    while (attempts < 2) {
 		        try {
 					log.info("[{}] Within safeClickBoolean method Try block after the scroll line", ThreadContext.get("testName"));
-		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		            WebElement element = getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
 		            Thread.sleep(2000);
@@ -221,7 +197,7 @@ public class SafeActions extends BasePage{
         			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
                 	}
                 	
-		            WebElement element = wait.until(ExpectedConditions.elementToBeClickable(locator));
+		            WebElement element = getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
 		            Thread.sleep(1000);
@@ -290,7 +266,8 @@ public class SafeActions extends BasePage{
 		            log.info("[{}] Trying to read filter option {} (attempt {}/3)",
 		                     ThreadContext.get("testName"), index, attempt);
 
-		            List<WebElement> list = driver.findElements(locator);
+		       //     List<WebElement> list = driver.findElements(locator);
+		            List<WebElement> list= getSafeWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 
 		            if (index >= list.size()) {
 		                log.warn("[{}] Index {} out of bounds (size={})",
