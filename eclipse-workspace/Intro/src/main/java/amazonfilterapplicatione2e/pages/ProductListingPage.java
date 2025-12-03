@@ -83,7 +83,7 @@ public class ProductListingPage extends  BasePage{
 			);
 
 	public By listStorageCapacityOptionsBy = By.xpath(
-			"//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Internal Storage']" +
+			"//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Storage Capacity']" +
 					"/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base']"
 			);
 
@@ -426,7 +426,7 @@ public class ProductListingPage extends  BasePage{
 		GenericUtility genericUtility = new GenericUtility();
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		genericUtility.printFilterNamesOnly(filterOptionsBy); 
+//		genericUtility.printFilterNamesOnly(filterOptionsBy); 
 		List<Map<String, Object>> results = new ArrayList<>();
 
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
@@ -435,7 +435,7 @@ public class ProductListingPage extends  BasePage{
 		int filterOptionSize=filterOptions.size();
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
-			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 4);
+			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 			System.out.println(filterOptionSize +" is the  filterOptionSize");
 		}
 
@@ -468,7 +468,7 @@ public class ProductListingPage extends  BasePage{
 			int productNameListingPageSize=0;
 			boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
 			if(runAllProducts==false) {
-				productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 5);
+				productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
 				System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
 			}
 			
@@ -650,20 +650,14 @@ public class ProductListingPage extends  BasePage{
 
 
 	List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-//		
-//		if(filterOptions==null) {
-//			filterOptions = safeAct.safeFindElements(listBrandsOptionsByOld);
-//			filterOptionsBy=listBrandsOptionsByOld;
-//			filterName="brandsold";
-//		}
-	
+
 
 
 		int filterOptionSize=filterOptions.size();
 
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
-			filterOptionSize=2;
+			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 		}
 
 		List<Map<Object, Object>> allResults = new ArrayList<>();
@@ -769,7 +763,7 @@ public class ProductListingPage extends  BasePage{
 		int filterOptionSize=filterOptions.size();
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
-			filterOptionSize=2;
+			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 		}
 		
 
@@ -797,7 +791,15 @@ public class ProductListingPage extends  BasePage{
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			Map<String, Object> result = new HashMap<>();
 			
-			for (int productListIndex = 1; productListIndex <productNameListingPage.size(); productListIndex++) {
+			
+			int productNameListingPageSize=0;
+			boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
+			if(runAllProducts==false) {
+				productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
+				System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+			}
+			
+			for (int productListIndex = 1; productListIndex <productNameListingPageSize-1; productListIndex++) {
 				result = genericUtility.applyFilterOptionsAndFetchProductDetailsForOS(productListIndex, str, currentWindow, safeAct);		
 			}
 

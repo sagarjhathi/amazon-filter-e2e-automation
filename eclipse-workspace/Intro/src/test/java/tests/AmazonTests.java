@@ -47,6 +47,7 @@ import java.time.format.DateTimeFormatter;
 
 public class AmazonTests extends BaseTest {
 
+	
 	private  final Logger log = LoggerUtility.getLogger(AmazonTests.class);
 	
 	
