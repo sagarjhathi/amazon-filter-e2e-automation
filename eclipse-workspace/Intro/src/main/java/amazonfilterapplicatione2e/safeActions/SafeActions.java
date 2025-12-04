@@ -135,7 +135,6 @@ public class SafeActions extends BasePage{
 				GenericUtility genericUtility=new GenericUtility();
 				ProductListingPage productPage=new ProductListingPage();
 								
-				//ScreenshotUtil screenUtil=new ScreenshotUtil();
 				String testName = ThreadContext.get("logFileName");
 				
 		    int attempts = 0;
@@ -266,7 +265,7 @@ public class SafeActions extends BasePage{
 		            log.info("[{}] Trying to read filter option {} (attempt {}/3)",
 		                     ThreadContext.get("testName"), index, attempt);
 
-		       //     List<WebElement> list = driver.findElements(locator);
+		   
 		            List<WebElement> list= getSafeWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
 
 		            if (index >= list.size()) {
