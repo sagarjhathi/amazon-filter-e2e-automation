@@ -31,18 +31,6 @@ public class TestListener implements ITestListener {
         attachScreenshotFolder(result);
     }
 
-//    @Override
-//    public void onTestFailure(ITestResult result) {
-//        Throwable t = result.getThrowable();
-//        if (t != null && t.getMessage() != null) {
-//            ExtentTestManager.getTest().fail(formatFailureMessage(t.getMessage()));
-//
-//        } else {
-//            ExtentTestManager.getTest().fail("Test failed.");
-//        }
-//        attachLogFile(result);
-//        attachScreenshotFolder(result);
-//    }
     
     
     @Override
@@ -83,17 +71,6 @@ public class TestListener implements ITestListener {
     }
 
 
-//
-//    @Override
-//    public void onTestSkipped(ITestResult result) {
-//        if (result.getThrowable() != null) {
-//            ExtentTestManager.getTest().skip("Test Skipped: " + result.getThrowable().getMessage());
-//        } else {
-//            ExtentTestManager.getTest().skip("Test Skipped (no exception)");
-//        }
-//        attachLogFile(result);
-//        attachScreenshotFolder(result);
-//    }
     
     
     @Override
@@ -140,56 +117,7 @@ public class TestListener implements ITestListener {
     /** =======================================================================
      *  LOG LINK (deterministic URL, never from OS path)
      *  ======================================================================= */
-//    private void attachLogFile(ITestResult result) {
-//    
-//        try {
-//            if (result == null) return;
-//
-//            String perTestName = (String) result.getAttribute("logFileName");
-//            if (perTestName == null || perTestName.isEmpty()) {
-//                perTestName = result.getMethod().getMethodName();
-//            }
-//
-//            // --- Find the log on disk (for sanity/artifacts), but DO NOT use this path to build the URL.
-//            Path projectRoot = Paths.get(System.getProperty("user.dir")).toAbsolutePath().normalize();
-//            Path expected = projectRoot.resolve(Paths.get("logs", RUN_FOLDER, perTestName + ".log")).normalize();
-//            Path logPath = expected;
-//
-//            if (!java.nio.file.Files.exists(logPath)) {
-//                Path logsRoot = projectRoot.resolve("logs");
-//                if (java.nio.file.Files.exists(logsRoot)) {
-//                    final String expectedFileName = perTestName + ".log"; // effectively-final for lambda
-//                    try (Stream<Path> walk = java.nio.file.Files.walk(logsRoot)) {
-//                        Optional<Path> found = walk
-//                                .filter(p -> java.nio.file.Files.isRegularFile(p)
-//                                        && p.getFileName().toString().equalsIgnoreCase(expectedFileName))
-//                                .max(Comparator.comparingLong(p -> p.toFile().lastModified()));
-//                        if (found.isPresent()) {
-//                            logPath = found.get();
-//                        }
-//                    } catch (IOException ignored) {}
-//                }
-//            }
-//            if (logPath == null || !java.nio.file.Files.exists(logPath)) {
-//                ExtentTestManager.getTest().info("⚠️ Log file missing for test: " + perTestName);
-//                return;
-//            }
-//
-//            // --- Build the PUBLIC URL deterministically (never from absolute OS path)
-//            System.out.println("VMARK: passing rel = " + ("logs/" + RUN_FOLDER + "/" + perTestName + ".log"));
-//            System.out.println("VMARK: REPORT_BASE env = " + System.getenv("REPORT_BASE"));
-//
-//            final String fileName = perTestName + ".log";
-//            String href = buildPublicUrl("logs/" + RUN_FOLDER + "/" + fileName);
-//
-//            ExtentTestManager.getTest().info("📄 <a href='" + href + "' target='_blank'>Open log file</a>");
-//            return; // ensure nothing else overwrites href
-//
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("❌ Failed to attach log file: " + e.getMessage());
-//        }
-//    }
-    
+
     
     
     
@@ -274,46 +202,9 @@ public class TestListener implements ITestListener {
      *  Expected on disk: test-output/screenshots/Run_<ts>/<testName>/*.png
      *  Published beside report: artifacts/extent/screenshots/Run_<ts>/<testName>/*.png
      *  ======================================================================= */
-//    private void attachScreenshotFolder(ITestResult result) {
-//        try {
-//            String testName = result.getMethod().getMethodName();
-//            String relFolder = "screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName;
-//
-//            // Build a publicly accessible URL example to the folder, plus inline thumbs:
-//            java.nio.file.Path absFolder = Paths.get(System.getProperty("user.dir"))
-//                    .resolve("test-output").resolve(relFolder).normalize();
-//
-//            if (java.nio.file.Files.exists(absFolder)) {
-//                StringBuilder html = new StringBuilder();
-//                html.append("<details><summary>📂 Open Screenshots (").append(testName).append(")</summary>");
-//
-//                try (Stream<Path> files = java.nio.file.Files.list(absFolder)) {
-//                    files.filter(p -> p.getFileName().toString().toLowerCase().endsWith(".png"))
-//                         .sorted()
-//                         .forEach(p -> {
-//                             String href = buildPublicUrl(relFolder + "/" + p.getFileName().toString());
-//                             html.append("<div style='margin-top:10px; border:1px solid #ccc; padding:5px;'>")
-//                                 .append("<div style='font-weight:bold; margin-bottom:3px;'>📸 ").append(p.getFileName()).append("</div>")
-//                                 .append("<a href='").append(href).append("' target='_blank'>")
-//                                 .append("<img src='").append(href).append("' style='max-width:600px; border:1px solid #ddd;'/>")
-//                                 .append("</a></div>");
-//                         });
-//                } catch (IOException ignored) {}
-//
-//                html.append("</details>");
-//                ExtentTestManager.getTest().info(html.toString());
-//            } else {
-//                ExtentTestManager.getTest().info("⚠️ Screenshot folder not found: " + relFolder);
-//            }
-//        } catch (Exception e) {
-//            ExtentTestManager.getTest().warning("Could not attach screenshot folder: " + e.getMessage());
-//        }
-//    }
-    
-    
 
     
-    
+        
     
     private void attachScreenshotFolder(ITestResult result) {
         try {
