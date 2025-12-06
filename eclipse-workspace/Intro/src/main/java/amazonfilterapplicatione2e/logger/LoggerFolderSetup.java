@@ -12,6 +12,7 @@ public class LoggerFolderSetup {
 	    public void createLogFolderForRun() {
 	        // Prefer CI-provided value; otherwise create one locally
 	        String runTs = System.getProperty("runTimestamp");
+	        
 	        if (runTs == null || runTs.isEmpty()) {
 	            runTs = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
 	        }
@@ -32,6 +33,7 @@ public class LoggerFolderSetup {
 	                System.err.println("Warning: could not create logs folder: " + folder.getAbsolutePath());
 	            }
 	        }
+	        
 	        File archive = new File(folder, "archive");
 	        if (!archive.exists()) {
 	            archive.mkdirs();

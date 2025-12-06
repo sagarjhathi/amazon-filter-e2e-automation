@@ -49,6 +49,7 @@ public class SharedFilterFlows extends BasePage {
 
 		
 		boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
+	
 		
 		int filterOptionSize=filterOptions.size();
 		if(isCron) {
@@ -58,6 +59,7 @@ public class SharedFilterFlows extends BasePage {
 			System.out.println("Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData");
 			
 			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptionsCI", false);
+			System.out.println("runAll is"+runAll);
 			if(runAll==false) {
 				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 				System.out.println(filterOptionSize +" is the  filterOptionSize");
