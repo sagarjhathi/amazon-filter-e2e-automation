@@ -48,11 +48,31 @@ public class SharedFilterFlows extends BasePage {
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
 		
+		boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
+		
 		int filterOptionSize=filterOptions.size();
+		if(isCron) {
+			
+			System.out.println("Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData");
+			
+			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptionsCI", false);
+			if(runAll==false) {
+				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
+				System.out.println(filterOptionSize +" is the  filterOptionSize");
+			}
+			
+			
+		}else {
+		
+		System.out.println("Execution is Not CRON Job Hence refering to normal keys from UtilData");
+			
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
 			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 			System.out.println(filterOptionSize +" is the  filterOptionSize");
+		   }
+		
+		
 		}
 
 
@@ -82,11 +102,25 @@ public class SharedFilterFlows extends BasePage {
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			int productNameListingPageSize=0;
-			boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
-			if(runAllProducts==false) {
-				productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
-				System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+			
+			
+			if(isCron) {
+				
+				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListingCI", false);
+				if(runAllProducts==false) {
+					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
+					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+				}
+			}else {
+				
+				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
+				if(runAllProducts==false) {
+					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
+					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+				}
 			}
+			
+			
 			
 			
 	
