@@ -53,6 +53,8 @@ public class SharedFilterFlows extends BasePage {
 		int filterOptionSize=filterOptions.size();
 		if(isCron) {
 			
+			log.info("[{}] Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData", ThreadContext.get("testName"));
+
 			System.out.println("Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData");
 			
 			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptionsCI", false);
@@ -64,6 +66,8 @@ public class SharedFilterFlows extends BasePage {
 			
 		}else {
 		
+			log.info("[{}] Execution is Not CRON Job Hence refering to normal keys from UtilData", ThreadContext.get("testName"));
+
 		System.out.println("Execution is Not CRON Job Hence refering to normal keys from UtilData");
 			
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
@@ -105,14 +109,19 @@ public class SharedFilterFlows extends BasePage {
 			
 			
 			if(isCron) {
-				
+				log.info("[{}] Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData", ThreadContext.get("testName"));
+
 				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListingCI", false);
 				if(runAllProducts==false) {
 					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
 					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+					log.info("[{}] Limiting traversal to in-loop size to prevent IndexOutOfBoundsException in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
+
 				}
 			}else {
 				
+				log.info("[{}] Execution is Not CRON Job Hence refering to normal keys from UtilData", ThreadContext.get("testName"));
+
 				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
 				if(runAllProducts==false) {
 					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
