@@ -33,6 +33,8 @@ import org.testng.asserts.SoftAssert;
 
 import main.java.amazonfilterapplicatione2e.base.BaseTest;
 import main.java.amazonfilterapplicatione2e.captcha.CaptchaHandler;
+import main.java.amazonfilterapplicatione2e.flows.BrandFilterFlows;
+import main.java.amazonfilterapplicatione2e.flows.DeliveryFilterFlows;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
@@ -79,8 +81,13 @@ public class AmazonTests extends BaseTest {
 		}
         
 	    genericUtility.printFilterNamesOnly(productPage.getItByTomorrowUnderDeliveryDayFilterBy); 
-	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
+	  //  List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
 
+        DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+ 		
+		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
+		
+		
 	    boolean isValid = (boolean) result.get(0);
 	    String text = (String) result.get(1);
 	    int index = (int) result.get(2);
@@ -121,8 +128,12 @@ public class AmazonTests extends BaseTest {
  		}                 
 		            		
  		genericUtility.printFilterNamesOnly(productPage.getItInTwoDaysUnderDeliveryDayFilterBy); 
-	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
+//	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
 
+        DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+ 		
+		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
+		
 	    boolean isValid = (boolean) result.get(0);
 	    String text = (String) result.get(1);
 	    int index = (int) result.get(2);
@@ -163,7 +174,10 @@ public class AmazonTests extends BaseTest {
 		            		
  		
  		genericUtility.printFilterNamesOnly(productPage.getItTodayUnderDeliveryDayFilterBy); 
-		List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItTodayUnderDeliveryDayFilterBy);
+ 		
+ 		DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+ 		
+		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItTodayUnderDeliveryDayFilterBy);
 		
 	    boolean isValid = (boolean) result.get(0);
 	    String text = (String) result.get(1);
@@ -212,11 +226,11 @@ public class AmazonTests extends BaseTest {
 	  List<WebElement> filterOptions = safeAct.safeFindElements(productPage.listBrandsOptionsByNew);
 	  List<Map<Object, Object>> allResults=null;
 		
+	  BrandFilterFlows brandFilterFlows = new BrandFilterFlows();
 		if(filterOptions==null) {
-			allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByOld, "brandsold");
+			allResults = brandFilterFlows.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByOld, "brandsold");
 		}else {
-		    allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
-
+		    allResults = brandFilterFlows.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 		}
 
 //		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");

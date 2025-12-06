@@ -1,5 +1,17 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-public class StorageCapacityFilterFlows {
+import org.apache.logging.log4j.Logger;
+
+import main.java.amazonfilterapplicatione2e.base.BasePage;
+import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
+
+public class StorageCapacityFilterFlows extends BasePage{
+
+	
+	
+	private  final Logger log = LoggerUtility.getLogger(StorageCapacityFilterFlows.class);
+	
+	
+	
 
 }
