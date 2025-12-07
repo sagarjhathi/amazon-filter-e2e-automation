@@ -22,6 +22,7 @@ import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 public class DeliveryFilterFlows extends BasePage{
 
+	private  final Logger log = LoggerUtility.getLogger(DeliveryFilterFlows.class);
 	
 	ProductListingPage productPage;
 	SafeActions safeAct ;
@@ -32,7 +33,7 @@ public class DeliveryFilterFlows extends BasePage{
 		this.safeAct = new SafeActions();
 	}
 	
-	private  final Logger log = LoggerUtility.getLogger(DeliveryFilterFlows.class);
+	
 
 	
 	public List<Object> validateDeliveryFilterOptionsWithResult(By filterOptions) throws InterruptedException {

@@ -9,7 +9,7 @@ public class StorageCapacityFilterFlows extends BasePage{
 
 	
 	
-	private  final Logger log = LoggerUtility.getLogger(StorageCapacityFilterFlows.class);
+	
 	
 	
 	

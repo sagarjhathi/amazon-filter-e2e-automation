@@ -35,6 +35,8 @@ import main.java.amazonfilterapplicatione2e.base.BaseTest;
 import main.java.amazonfilterapplicatione2e.captcha.CaptchaHandler;
 import main.java.amazonfilterapplicatione2e.flows.BrandFilterFlows;
 import main.java.amazonfilterapplicatione2e.flows.DeliveryFilterFlows;
+import main.java.amazonfilterapplicatione2e.flows.OperatingSystemFilterFlows;
+import main.java.amazonfilterapplicatione2e.flows.PriceSliderFlows;
 import main.java.amazonfilterapplicatione2e.flows.SharedFilterFlows;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
@@ -56,7 +58,6 @@ public class AmazonTests extends BaseTest {
 	
 	
 	@Test(
-			priority=1,
 		    dataProvider = "ExcelData",
 		    dataProviderClass = TestDataProvider.class,
 		    retryAnalyzer = RetryFailedTest.class
@@ -82,10 +83,9 @@ public class AmazonTests extends BaseTest {
 		}
         
 	    genericUtility.printFilterNamesOnly(productPage.getItByTomorrowUnderDeliveryDayFilterBy); 
-	  //  List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
 
+	    
         DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
- 		
 		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
 		
 		
@@ -129,8 +129,6 @@ public class AmazonTests extends BaseTest {
  		}                 
 		            		
  		genericUtility.printFilterNamesOnly(productPage.getItInTwoDaysUnderDeliveryDayFilterBy); 
-//	    List<Object> result = productPage.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
-
         DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
  		
 		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
@@ -234,7 +232,6 @@ public class AmazonTests extends BaseTest {
 		    allResults = brandFilterFlows.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 		}
 
-//		List<Map<Object, Object>> allResults = productPage.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 		SoftAssert softAssert = new SoftAssert();
 
 		for (Map<Object, Object> result : allResults) {
@@ -366,7 +363,8 @@ public class AmazonTests extends BaseTest {
 		List<Integer> maxValues = Arrays.asList(81, 121, 161);
 		
 		
-		List<Map<String, Object>> results = productPage.applyPriceSliderAndValidateWithResult(minValues, maxValues);
+		PriceSliderFlows priceSliderFlows = new PriceSliderFlows();
+		List<Map<String, Object>> results = priceSliderFlows.applyPriceSliderAndValidateWithResult(minValues, maxValues);
 		SoftAssert softAssert = new SoftAssert();
 
 		    for (Map<String, Object> result : results) {
@@ -431,7 +429,6 @@ public class AmazonTests extends BaseTest {
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
 		
 		
-  // List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
    SoftAssert softAssert = new SoftAssert();
    
    if(results.size()==0) {
@@ -508,7 +505,6 @@ public class AmazonTests extends BaseTest {
 		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
 		
-	//	List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -585,7 +581,6 @@ public class AmazonTests extends BaseTest {
 		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listProcessorSpeedOptionsBy,"processorspeed");
 		
-	//	List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listProcessorSpeedOptionsBy,"processorspeed");
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -660,7 +655,6 @@ public class AmazonTests extends BaseTest {
 		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplayTypeOptionsBy ,"displaytype");
 		
-	//	List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDisplayTypeOptionsBy ,"displaytype");
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -733,8 +727,9 @@ public class AmazonTests extends BaseTest {
 		    return;
 		}
 		
+		OperatingSystemFilterFlows operatingSystemFilterFlows = new OperatingSystemFilterFlows();
 		
-		List<Map<String, Object>> results = productPage.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
+		List<Map<String, Object>> results = operatingSystemFilterFlows.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {
@@ -810,7 +805,6 @@ public class AmazonTests extends BaseTest {
 			SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
 			List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
 			
-	//	 List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
 		 SoftAssert softAssert = new SoftAssert();
 
 		    for (Map<String, Object> product : results) {
@@ -889,7 +883,6 @@ public class AmazonTests extends BaseTest {
 		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
 		
-		//List<Map<String, Object>> results = productPage.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
 	    SoftAssert softAssert = new SoftAssert();
 
 	    for (Map<String, Object> product : results) {

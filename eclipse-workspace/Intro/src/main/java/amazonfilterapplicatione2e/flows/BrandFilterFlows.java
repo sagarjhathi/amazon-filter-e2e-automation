@@ -1,6 +1,6 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,8 +19,12 @@ import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
 
+
+
 public class BrandFilterFlows extends BasePage{
 
+	private  final Logger log = LoggerUtility.getLogger(BrandFilterFlows.class);
+	
 	    private ProductListingPage productPage;
 	    private SafeActions safeAct;
 	    private GenericUtility genericUtility;
@@ -32,7 +36,7 @@ public class BrandFilterFlows extends BasePage{
     }
 	
 	
-	private  final Logger log = LoggerUtility.getLogger(BrandFilterFlows.class);
+	
 
 	
 	
