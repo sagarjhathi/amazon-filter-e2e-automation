@@ -65,39 +65,39 @@ public class AmazonTests extends BaseTest {
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-        am.openingLandingPage();
-        CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-        am.givingInputWithinSearchBar(input);
-        am.clickingOnSubmitSearchButton();                   
 		
-        ProductListingPage productPage=new ProductListingPage();
-        GenericUtility genericUtility=new GenericUtility();
+		
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		ProductListingPage productPage=new ProductListingPage();
+	    GenericUtility genericUtility=new GenericUtility();
+	    DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+		
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();                   
+		
         genericUtility.refreshIfServiceUnavailable();
+        String testName=ThreadContext.get("testName");
        
         if (!genericUtility.isElementInViewport(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
-		    log.warn("[{}]   Filter option 'Get It by Tomorrow' does not exist. Skipping the test.", ThreadContext.get("testName"));
+		    log.warn("[{}]   Filter option 'Get It by Tomorrow' does not exist. Skipping the test.", testName);
 		    return;
 		}
         
-	    genericUtility.printFilterNamesOnly(productPage.getItByTomorrowUnderDeliveryDayFilterBy); 
-
-	    
-        DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+	
 		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItByTomorrowUnderDeliveryDayFilterBy);
-		
-		
-	    boolean isValid = (boolean) result.get(0);
-	    String text = (String) result.get(1);
-	    int index = (int) result.get(2);
+			
 	    
-	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
-	    ThreadContext.get("testName"), isValid, index, text);
-	    Assert.assertTrue(isValid," Delivery date mismatch at index " + index + ". Text: " + text);
-	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);  
-		    
+	    boolean isValid = (boolean) result.get(0);
+	    String productName = (String) result.get(1);
+	    int productIndex = (int) result.get(2);
+	    
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}",testName, isValid, productIndex, productName);
+	    Assert.assertTrue(isValid,"Delivery date mismatch at index " + productIndex + ". Text: " + productName);
+	    System.out.println(isValid+"  Text from function =>"+productName+" index no is "+productIndex);      
 			
 		}
 	
@@ -111,36 +111,39 @@ public class AmazonTests extends BaseTest {
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
 		 ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		 AmazonLandingPage am=new AmazonLandingPage();
-         am.openingLandingPage();
-         CaptchaHandler capHandler=new CaptchaHandler();
- 		capHandler.handleCaptcha();
-         am.givingInputWithinSearchBar(input);
-         am.clickingOnSubmitSearchButton();
-
-         GenericUtility genericUtility=new GenericUtility();
+		 
+		 AmazonLandingPage landingPage=new AmazonLandingPage();
+		 CaptchaHandler capHandler=new CaptchaHandler();
+		 GenericUtility genericUtility=new GenericUtility();
 		 ProductListingPage productPage=new ProductListingPage();
+		 DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+		 
+		 
+		 landingPage.openingLandingPage();
+ 		 capHandler.handleCaptcha();
+ 		 landingPage.givingInputWithinSearchBar(input);
+         landingPage.clickingOnSubmitSearchButton();
+
 		 genericUtility.refreshIfServiceUnavailable();   
+		 String testName=ThreadContext.get("testName");
+		 
 		 
  		if (!genericUtility.isElementInViewport(productPage.getItInTwoDaysUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It in 2 Days' does not exist. Skipping the test.");
- 		   log.warn("[{}]  Filter option 'Get It in 2 Days' does not exist. Skipping the test.", ThreadContext.get("testName"));
+ 		    log.warn("[{}]  Filter option 'Get It in 2 Days' does not exist. Skipping the test.", testName);
  		    return ;
  		}                 
-		            		
- 		genericUtility.printFilterNamesOnly(productPage.getItInTwoDaysUnderDeliveryDayFilterBy); 
-        DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
- 		
+		            	
 		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItInTwoDaysUnderDeliveryDayFilterBy);
 		
 	    boolean isValid = (boolean) result.get(0);
-	    String text = (String) result.get(1);
-	    int index = (int) result.get(2);
+	    String productName = (String) result.get(1);
+	    int productIndex = (int) result.get(2);
 	    
-	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
-	    ThreadContext.get("testName"), isValid, index, text);
-	    Assert.assertTrue(isValid,"Delivery date mismatch at index " + index + ". Text: " + text);
-	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);      		
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}",testName, isValid, productIndex, productName);
+	    Assert.assertTrue(isValid,"Delivery date mismatch at index " + productIndex + ". Text: " + productName);
+	    System.out.println(isValid+"  Text from function =>"+productName+" index no is "+productIndex);      		
+	    
 		}
 	
 
@@ -154,16 +157,20 @@ public class AmazonTests extends BaseTest {
 	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-        am.openingLandingPage();
-        CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-        am.givingInputWithinSearchBar(input);
-        am.clickingOnSubmitSearchButton();
-
-        GenericUtility genericUtility=new GenericUtility();
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		GenericUtility genericUtility=new GenericUtility();
  		ProductListingPage productPage=new ProductListingPage();
+ 		DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+		
+ 		
+ 		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
  		genericUtility.refreshIfServiceUnavailable();
+ 		
+ 		 String testName=ThreadContext.get("testName");
  		if (!genericUtility.isElementInViewport(productPage.getItTodayUnderDeliveryDayFilterBy)) {
  		    System.out.println("Filter option 'Get It Today' does not exist. Skipping the test.");
  		   log.warn("[{}]  Filter option 'Get It Today' does not exist. Skipping the test.", ThreadContext.get("testName"));
@@ -171,21 +178,15 @@ public class AmazonTests extends BaseTest {
  		}                   
 		            		
 		            		
- 		
- 		genericUtility.printFilterNamesOnly(productPage.getItTodayUnderDeliveryDayFilterBy); 
- 		
- 		DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
- 		
 		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.getItTodayUnderDeliveryDayFilterBy);
 		
-	    boolean isValid = (boolean) result.get(0);
-	    String text = (String) result.get(1);
-	    int index = (int) result.get(2);
+		boolean isValid = (boolean) result.get(0);
+	    String productName = (String) result.get(1);
+	    int productIndex = (int) result.get(2);
 	    
-	    Assert.assertTrue(isValid," Delivery date mismatch at index " + index + ". Text: " + text);
-	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}", 
-	    ThreadContext.get("testName"), isValid, index, text);
-	    System.out.println(isValid+"  Text from function =>"+text+" index no is "+index);             		  
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}",testName, isValid, productIndex, productName);
+	    Assert.assertTrue(isValid,"Delivery date mismatch at index " + productIndex + ". Text: " + productName);
+	    System.out.println(isValid+"  Text from function =>"+productName+" index no is "+productIndex);                 		  
 		            	    
 	    
 	}
@@ -201,63 +202,65 @@ public class AmazonTests extends BaseTest {
 	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
-		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
 
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
 		ProductListingPage productPage=new ProductListingPage();
 		SafeActions safeAct=new SafeActions();
-
-		// the iteration will not work here it has to be changed a bit similar to the price filter as well
 		GenericUtility genericUtility=new GenericUtility();
+		BrandFilterFlows brandFilterFlows = new BrandFilterFlows();
+		SoftAssert softAssert = new SoftAssert();
+
+
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
 		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
 
 		if (!genericUtility.filterCheckUnderList("brands")) {
 			System.out.println("Filter option 'brands' does not exist in the list. Skipping the test.");
-			log.warn("[{}] Filter option 'brands' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
+			log.warn("[{}] Filter option 'brands' does not exist in the list. Skipping the test.", testName);
 			return ;
 		}
-		
-		
-	  List<WebElement> filterOptions = safeAct.safeFindElements(productPage.listBrandsOptionsByNew);
-	  List<Map<Object, Object>> allResults=null;
-		
-	  BrandFilterFlows brandFilterFlows = new BrandFilterFlows();
+
+
+		List<WebElement> filterOptions = safeAct.safeFindElements(productPage.listBrandsOptionsByNew);
+		List<Map<Object, Object>> allResults=null;
+
+
 		if(filterOptions==null) {
 			allResults = brandFilterFlows.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByOld, "brandsold");
 		}else {
-		    allResults = brandFilterFlows.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
+			allResults = brandFilterFlows.applyFilterAndValidateBrandsFilterWithResult(productPage.listBrandsOptionsByNew, "brands");
 		}
 
-		SoftAssert softAssert = new SoftAssert();
 
 		for (Map<Object, Object> result : allResults) {
+
 			boolean isValid = (boolean) result.get("isValid");
 			String brand = (String) result.get("brand");
 			List<String> mismatches = (List<String>) result.get("mismatches");
 
 			if (!isValid) {
-				log.error("[{}] Brand validation failed for '{}'. {} mismatches found.", ThreadContext.get("testName"), brand, mismatches.size());
+				log.error("[{}] Brand validation failed for '{}'. {} mismatches found.", testName, brand, mismatches.size());
 				System.out.println("Brand validation failed for brand: " + brand);
 				for (String detail : mismatches) {
 					System.out.println(detail);
-					log.error("[{}]  Mismatch for '{}': {}", ThreadContext.get("testName"), brand, detail);
-
+					log.error("[{}]  Mismatch for '{}': {}", testName, brand, detail);
 					softAssert.fail(detail);
 				}
 			} else {
-				log.info("[{}] All product titles matched for brand: '{}'", ThreadContext.get("testName"), brand);
+				log.info("[{}] All product titles matched for brand: '{}'", testName, brand);
 				System.out.println("All product titles matched for brand: " + brand);
 			}
 		}
 
-		log.info("[{}]  Asserting all soft assertions now...", ThreadContext.get("testName"));
+		log.info("[{}]  Asserting all soft assertions now...", testName);
 		softAssert.assertAll();
-		
-		
+
+
 	}
 	
 	
@@ -268,18 +271,27 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
+		
+		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage amazonPage=new AmazonLandingPage();
-		amazonPage.openingLandingPage();
+		
+		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		amazonPage.givingInputWithinSearchBar(input);
-		amazonPage.clickingOnSubmitSearchButton();
-
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
-
+		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+		SoftAssert softAssert = new SoftAssert();
+		
+		
+		
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
 		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
+		
+		
 		if (!genericUtility.filterCheckUnderList("Storage Capacity")) {
 			System.out.println("Filter option 'Storage Capacity' does not exist in the list. Skipping the test.");
 			log.warn("[{}]  Filter option 'Storage Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
@@ -287,14 +299,9 @@ public class AmazonTests extends BaseTest {
 		}
 
 
-		//		 // â�¬ Call the main function and get result
-		
-		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listStorageCapacityOptionsBy,"storagecapacity");
+		log.info("[{}] Retrieved {} results from applyFilterAndValidateProductsWithResult.",testName,"And result size->" +results.size());
 		
-		log.info("[{}] Retrieved {} results from applyFilterAndValidateProductsWithResult.",
-				ThreadContext.get("testName"),"And result size->" +results.size());
-		SoftAssert softAssert = new SoftAssert();
 
 		for (Map<String, Object> product : results) {
 			String filter = genericUtility.safeLower(product.get("filter"));
@@ -310,10 +317,10 @@ public class AmazonTests extends BaseTest {
 
 			if (!isMatch) {
 
-				log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-				log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-				log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
-				log.debug("[{}]  Tech Details: {}", ThreadContext.get("testName"), techDetails);
+				log.error("[{}]  Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+				log.debug("[{}]  Key Features: {}", testName, keyFeatures);
+				log.debug("[{}]  About: {}", testName, about);
+				log.debug("[{}]  Tech Details: {}", testName, techDetails);
 
 
 				StringBuilder failureMessage = new StringBuilder();
@@ -342,58 +349,64 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingPriceSilderFunctionality(String input) throws InterruptedException {
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
-		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
 		
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
 		GenericUtility genericUtility=new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
-		genericUtility.refreshIfServiceUnavailable();
-		if (!genericUtility.filterCheckUnderList("Price")) {
-		    System.out.println("Filter option 'Price' does not exist in the list. Skipping the test.");
-	 		   log.warn("[{}]   Filter option 'Price' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
-		    return ;
-		}
-		
-		List<Integer> minValues = Arrays.asList(61, 91, 131);
-		List<Integer> maxValues = Arrays.asList(81, 121, 161);
-		
-		
 		PriceSliderFlows priceSliderFlows = new PriceSliderFlows();
-		List<Map<String, Object>> results = priceSliderFlows.applyPriceSliderAndValidateWithResult(minValues, maxValues);
 		SoftAssert softAssert = new SoftAssert();
 
-		    for (Map<String, Object> result : results) {
-		        boolean isValid = (boolean) result.get("isValid");
-		        int min = (int) result.get("min");
-		        int max = (int) result.get("max");
-		        List<String> mismatches = (List<String>) result.get("mismatches");
 
-		        if (!isValid) {
-		            log.error("[{}]  Validation failed for price range: {} - {}", ThreadContext.get("testName"), min, max);
-		            System.out.println(" Validation failed for price range: " + min + " - " + max);
-		            for (String msg : mismatches) {
-		                System.out.println(msg);
-		                log.error("[{}]  {}", ThreadContext.get("testName"), msg);
-		                softAssert.fail(msg);
-		            }
-		            
-		        } else {
-		            log.info("[{}]  Price range validated successfully: {} - {}", ThreadContext.get("testName"), min, max);
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
 
-		            System.out.println("Price range validated: " + min + " - " + max);
-		        }
-		        System.out.println("------------------------------------------------------------");		
-		        log.info("[{}] ------------------------------------------------------------", ThreadContext.get("testName"));
 
-		        }
-		    
-		    log.info("[{}]  Asserting all soft assertions now...", ThreadContext.get("testName"));
-		    softAssert.assertAll();
+		if (!genericUtility.filterCheckUnderList("Price")) {
+			System.out.println("Filter option 'Price' does not exist in the list. Skipping the test.");
+			log.warn("[{}]   Filter option 'Price' does not exist in the list. Skipping the test.", testName);
+			return ;
+		}
+
+
+		List<Integer> minValues = Arrays.asList(61, 91, 131);
+		List<Integer> maxValues = Arrays.asList(81, 121, 161);
+
+
+		List<Map<String, Object>> results = priceSliderFlows.applyPriceSliderAndValidateWithResult(minValues, maxValues);
+
+
+		for (Map<String, Object> result : results) {
+			boolean isValid = (boolean) result.get("isValid");
+			int min = (int) result.get("min");
+			int max = (int) result.get("max");
+			List<String> mismatches = (List<String>) result.get("mismatches");
+
+			if (!isValid) {
+				log.error("[{}]  Validation failed for price range: {} - {}", testName, min, max);
+				System.out.println(" Validation failed for price range: " + min + " - " + max);
+				for (String msg : mismatches) {
+					System.out.println(msg);
+					log.error("[{}]  {}", testName, msg);
+					softAssert.fail(msg);
+				}
+
+			} else {
+				log.info("[{}]  Price range validated successfully: {} - {}", testName, min, max);
+				System.out.println("Price range validated: " + min + " - " + max);
+			}
+			System.out.println("------------------------------------------------------------");		
+			log.info("[{}] ------------------------------------------------------------", testName);
+		}
+
+		log.info("[{}]  Asserting all soft assertions now...",testName);
+		softAssert.assertAll();
 					
 	}
 
@@ -405,74 +418,77 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
-		ExtentTestManager.getTest().info("ðŸ§ª Test Input Parameter: <b>" + input + "</b>");
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
-	    AmazonLandingPage am = new AmazonLandingPage();
-	    am.openingLandingPage();
-	    CaptchaHandler capHandler=new CaptchaHandler();
+		AmazonLandingPage landingPage = new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		ProductListingPage productPage =new ProductListingPage();
+		GenericUtility genericUtility=new GenericUtility();
+		SoftAssert softAssert = new SoftAssert();
+		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+
+
+		landingPage.openingLandingPage();
 		capHandler.handleCaptcha();
-	    am.givingInputWithinSearchBar(input);
-	    am.clickingOnSubmitSearchButton();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
 
-	    ProductListingPage productPage =new ProductListingPage();
-	    
-	   
-	    GenericUtility genericUtility=new GenericUtility();
-	    genericUtility.refreshIfServiceUnavailable();
 		if (!genericUtility.filterCheckUnderList("Battery Capacity")) {
-	        log.warn("[{}]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
-		    System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
-		    return ;
+			log.warn("[{}]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.", testName);
+			System.out.println("Filter option 'Battery Capacity' does not exist in the list. Skipping the test.");
+			return ;
 		}
 
-		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listBatteryCapacityOptionsBy,"batterycapacity");
-		
-		
-   SoftAssert softAssert = new SoftAssert();
-   
-   if(results.size()==0) {
-	   softAssert.fail();
-   }
-	    for (Map<String, Object> product : results) {
-	    	String filter = genericUtility.safeLower(product.get("filter"));
-    	    String title = genericUtility.safeLower(product.get("title"));
-    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-    	    String about = genericUtility.safeLower(product.get("about"));
-    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-    	    boolean isMatch = title.contains(filter)
-    	                   || keyFeatures.contains(filter)
-    	                   || about.contains(filter)
-    	                   || techDetails.contains(filter);
 
-	        if (!isMatch) {
 
-	        	log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-	        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-	        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
-	        	log.debug("[{}]  Tech Details: {}", ThreadContext.get("testName"), techDetails);
-	        	
 
-	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
-	        	              .append("---------------------------------------------------------------------------------------\n")
-	        	              .append(" Title: ").append(title).append("\n")
-	        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-	        	              .append(" About: ").append(about).append("\n")
-	        	              .append(" Tech Details: ").append(techDetails).append("\n")
-	        	              .append("-----------------------------------------------------------------------------------------");
+		if(results.size()==0) {
+			softAssert.fail();
+		}
+		for (Map<String, Object> product : results) {
+			String filter = genericUtility.safeLower(product.get("filter"));
+			String title = genericUtility.safeLower(product.get("title"));
+			String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+			String about = genericUtility.safeLower(product.get("about"));
+			String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        	softAssert.fail(failureMessage.toString());
-	        	
-	        } else {
-	            log.info("[{}]  Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
-	            System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
-	        }
-	    }
+			boolean isMatch = title.contains(filter)
+					|| keyFeatures.contains(filter)
+					|| about.contains(filter)
+					|| techDetails.contains(filter);
 
-	    log.info("[{}] Asserting all soft assertions now...", ThreadContext.get("testName"));
-	    softAssert.assertAll(); 
+			if (!isMatch) {
+
+				log.error("[{}]  Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+				log.debug("[{}]  Key Features: {}", testName, keyFeatures);
+				log.debug("[{}]  About: {}", testName, about);
+				log.debug("[{}]  Tech Details: {}", testName, techDetails);
+
+
+				StringBuilder failureMessage = new StringBuilder();
+				failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
+				.append("---------------------------------------------------------------------------------------\n")
+				.append(" Title: ").append(title).append("\n")
+				.append(" Key Features: ").append(keyFeatures).append("\n")
+				.append(" About: ").append(about).append("\n")
+				.append(" Tech Details: ").append(techDetails).append("\n")
+				.append("-----------------------------------------------------------------------------------------");
+
+				softAssert.fail(failureMessage.toString());
+
+			} else {
+				log.info("[{}]  Filter '{}' matched in product details.", testName, filter);
+				System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
+			}
+		}
+
+		log.info("[{}] Asserting all soft assertions now...", testName);
+		softAssert.assertAll(); 
 	}
 
 	
@@ -483,71 +499,77 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingDisplaySizeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
+		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
+		
+		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
-		
-        GenericUtility genericUtility=new GenericUtility();
+		GenericUtility genericUtility=new GenericUtility();
         ProductListingPage productPage=new ProductListingPage();
+        SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+        SoftAssert softAssert = new SoftAssert();
+        
+
+        landingPage.openingLandingPage();
+        capHandler.handleCaptcha();
+        landingPage.givingInputWithinSearchBar(input);
+        landingPage.clickingOnSubmitSearchButton();
         genericUtility.refreshIfServiceUnavailable();
-  		
-		if (!genericUtility.filterCheckUnderList("Display Size")) {
-	        log.warn("[{}]  Filter option 'Display Size' does not exist in the list. Skipping the test.", ThreadContext.get("testName"));
-		    System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
-		    return ;
-		}
-		
-		
-		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
-		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
-		
-	    SoftAssert softAssert = new SoftAssert();
+        String testName=ThreadContext.get("testName");
 
-	    for (Map<String, Object> product : results) {
-	    	String filter = genericUtility.safeLower(product.get("filter"));
-    	    String title = genericUtility.safeLower(product.get("title"));
-    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-    	    String about = genericUtility.safeLower(product.get("about"));
-    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
+        if (!genericUtility.filterCheckUnderList("Display Size")) {
+        	log.warn("[{}]  Filter option 'Display Size' does not exist in the list. Skipping the test.", testName);
+        	System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
+        	return ;
+        }
 
-    	    boolean isMatch = title.contains(filter)
-    	                   || keyFeatures.contains(filter)
-    	                   || about.contains(filter)
-    	                   || techDetails.contains(filter);
 
-	        if (!isMatch) {
-	        	
-	        	log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-	        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-	        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
-	        	log.debug("[{}]  Tech Details: {}", ThreadContext.get("testName"), techDetails);
-	        	
 
-	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append("filter '").append(filter).append("' not found in product details.\n")
-	        	              .append("--------------------------------------------------------------------------------------\n")
-	        	              .append(" Title: ").append(title).append("\n")
-	        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-	        	              .append(" About: ").append(about).append("\n")
-	        	              .append(" Tech Details: ").append(techDetails).append("\n")
-	        	              .append("------------------------------------------------------------------------------------------");
+        List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
 
-	        	softAssert.fail(failureMessage.toString());
-	        	
-	        	
-	        } else {
-	            log.info("[{}]  Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
 
-	            System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
-	        }
-	    }
 
-	    log.info("[{}]  Final assertion for display size filter validation starting...", ThreadContext.get("testName"));
-	    softAssert.assertAll(); 
+        for (Map<String, Object> product : results) {
+        	String filter = genericUtility.safeLower(product.get("filter"));
+        	String title = genericUtility.safeLower(product.get("title"));
+        	String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+        	String about = genericUtility.safeLower(product.get("about"));
+        	String techDetails = genericUtility.safeLower(product.get("techDetails"));
+
+        	boolean isMatch = title.contains(filter)
+        			|| keyFeatures.contains(filter)
+        			|| about.contains(filter)
+        			|| techDetails.contains(filter);
+
+        	if (!isMatch) {
+
+        		log.error("[{}]  Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+        		log.debug("[{}]  Key Features: {}", testName, keyFeatures);
+        		log.debug("[{}]  About: {}", testName, about);
+        		log.debug("[{}]  Tech Details: {}", testName, techDetails);
+
+
+        		StringBuilder failureMessage = new StringBuilder();
+        		failureMessage.append("filter '").append(filter).append("' not found in product details.\n")
+        		.append("--------------------------------------------------------------------------------------\n")
+        		.append(" Title: ").append(title).append("\n")
+        		.append(" Key Features: ").append(keyFeatures).append("\n")
+        		.append(" About: ").append(about).append("\n")
+        		.append(" Tech Details: ").append(techDetails).append("\n")
+        		.append("------------------------------------------------------------------------------------------");
+
+        		softAssert.fail(failureMessage.toString());
+
+
+        	} else {
+        		log.info("[{}]  Filter '{}' matched in at least one section.",testName, filter);
+
+        		System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
+        	}
+        }
+
+        log.info("[{}]  Final assertion for display size filter validation starting...", testName);
+        softAssert.assertAll(); 
 	
 	}
 
@@ -559,70 +581,77 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException, TimeoutException {
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
-		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
 		
-	
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
 		ProductListingPage productPage=new ProductListingPage();
         GenericUtility genericUtility =new GenericUtility();
-        
+        SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+        SoftAssert softAssert = new SoftAssert();
+        StringBuilder failureMessage = new StringBuilder();
+		
+       
+        landingPage.openingLandingPage();
+        capHandler.handleCaptcha();
+        landingPage.givingInputWithinSearchBar(input);
+        landingPage.clickingOnSubmitSearchButton();
         genericUtility.refreshIfServiceUnavailable();
-		if (!genericUtility.filterCheckUnderList("Processor Speed")) {
-	        log.warn("[{}]  Filter option 'Processor Speed' not available. Skipping test.", ThreadContext.get("testName"));
-		    return ;
-		}
-		
-		
-		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
-		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listProcessorSpeedOptionsBy,"processorspeed");
-		
-	    SoftAssert softAssert = new SoftAssert();
+        String testName=ThreadContext.get("testName");
 
-	    for (Map<String, Object> product : results) {
-	    	String filter = genericUtility.safeLower(product.get("filter"));
-    	    String title = genericUtility.safeLower(product.get("title"));
-    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-    	    String about = genericUtility.safeLower(product.get("about"));
-    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-    	    boolean isMatch = title.contains(filter)
-    	                   || keyFeatures.contains(filter)
-    	                   || about.contains(filter)
-    	                   || techDetails.contains(filter);
+        if (!genericUtility.filterCheckUnderList("Processor Speed")) {
+        	log.warn("[{}]  Filter option 'Processor Speed' not available. Skipping test.", testName);
+        	return ;
+        }
 
-	        if (!isMatch) {
 
-	        	
 
-	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-	        	log.debug("[{}] Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-	        	log.debug("[{}] About: {}", ThreadContext.get("testName"), about);
-	        	log.debug("[{}] Tech Details: {}", ThreadContext.get("testName"), techDetails);
-	        	
+        List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listProcessorSpeedOptionsBy,"processorspeed");
 
-	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
-	        	              .append("-------------------------------------------------------------\n")
-	        	              .append(" Title: ").append(title).append("\n")
-	        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-	        	              .append(" About: ").append(about).append("\n")
-	        	              .append(" Tech Details: ").append(techDetails).append("\n")
-	        	              .append("-------------------------------------------------------------");
 
-	        	softAssert.fail(failureMessage.toString());
-	        } else {
-	            log.info("[{}]  Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-	            System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
-	        }
-	    }
-	    
-	    log.info("[{}] Final assertion for processor speed filter validation starting...", ThreadContext.get("testName"));
-	    softAssert.assertAll(); 
+
+        for (Map<String, Object> product : results) {
+        	String filter = genericUtility.safeLower(product.get("filter"));
+        	String title = genericUtility.safeLower(product.get("title"));
+        	String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+        	String about = genericUtility.safeLower(product.get("about"));
+        	String techDetails = genericUtility.safeLower(product.get("techDetails"));
+
+        	boolean isMatch = title.contains(filter)
+        			|| keyFeatures.contains(filter)
+        			|| about.contains(filter)
+        			|| techDetails.contains(filter);
+
+        	if (!isMatch) {
+
+
+
+        		log.error("[{}] Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+        		log.debug("[{}] Key Features: {}", testName, keyFeatures);
+        		log.debug("[{}] About: {}", testName, about);
+        		log.debug("[{}] Tech Details: {}", testName, techDetails);
+
+
+
+        		failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
+        		.append("-------------------------------------------------------------\n")
+        		.append(" Title: ").append(title).append("\n")
+        		.append(" Key Features: ").append(keyFeatures).append("\n")
+        		.append(" About: ").append(about).append("\n")
+        		.append(" Tech Details: ").append(techDetails).append("\n")
+        		.append("-------------------------------------------------------------");
+
+        		softAssert.fail(failureMessage.toString());
+        	} else {
+        		log.info("[{}]  Filter '{}' matched in at least one section.", testName, filter);
+        		System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
+        	}
+        }
+
+        log.info("[{}] Final assertion for processor speed filter validation starting...", testName);
+        softAssert.assertAll(); 
 		
 	}
 
@@ -634,67 +663,74 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingDisplayTypeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
-		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
 		
+		
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
 		ProductListingPage productPage=new ProductListingPage();
 		GenericUtility genericUtility=new GenericUtility();
-		genericUtility.refreshIfServiceUnavailable();
-		
-		if (!genericUtility.filterCheckUnderList("Display Type")){
-		    System.out.println("Filter option 'Display Type' does not exist. Skipping the test.");
-	        log.warn("[{}]  Filter option 'Display Type' does not exist. Skipping the test.", ThreadContext.get("testName"));
-		    return ;
-		}
-		
 		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+		SoftAssert softAssert = new SoftAssert();
+
+
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
+
+		if (!genericUtility.filterCheckUnderList("Display Type")){
+			System.out.println("Filter option 'Display Type' does not exist. Skipping the test.");
+			log.warn("[{}]  Filter option 'Display Type' does not exist. Skipping the test.", testName);
+			return ;
+		}
+
+
 		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplayTypeOptionsBy ,"displaytype");
-		
-	    SoftAssert softAssert = new SoftAssert();
 
-	    for (Map<String, Object> product : results) {
-	        	String filter = genericUtility.safeLower(product.get("filter"));
-	    	    String title = genericUtility.safeLower(product.get("title"));
-	    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-	    	    String about = genericUtility.safeLower(product.get("about"));
-	    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	    	    boolean isMatch = title.contains(filter)
-	    	                   || keyFeatures.contains(filter)
-	    	                   || about.contains(filter)
-	    	                   || techDetails.contains(filter);
-	    	    
-	        if (!isMatch) {
 
-	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-	        	log.debug("[{}] Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-	        	log.debug("[{}] About: {}", ThreadContext.get("testName"), about);
-	        	log.debug("[{}] Tech Details: {}", ThreadContext.get("testName"), techDetails);
-	        	
+		for (Map<String, Object> product : results) {
+			String filter = genericUtility.safeLower(product.get("filter"));
+			String title = genericUtility.safeLower(product.get("title"));
+			String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+			String about = genericUtility.safeLower(product.get("about"));
+			String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
-	        	              .append("-------------------------------------------------------------\n")
-	        	              .append(" Title: ").append(title).append("\n")
-	        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-	        	              .append(" About: ").append(about).append("\n")
-	        	              .append(" Tech Details: ").append(techDetails).append("\n")
-	        	              .append("-------------------------------------------------------------");
+			boolean isMatch = title.contains(filter)
+					|| keyFeatures.contains(filter)
+					|| about.contains(filter)
+					|| techDetails.contains(filter);
 
-	        	softAssert.fail(failureMessage.toString());
-	        } else {
-	            log.info("[{}]  Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-	            System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
-	        }
-	    }
+			if (!isMatch) {
 
-	    log.info("[{}]  Final assertion for display type filter validation...", ThreadContext.get("testName"));
-	    softAssert.assertAll(); 
+				log.error("[{}] Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+				log.debug("[{}] Key Features: {}", testName, keyFeatures);
+				log.debug("[{}] About: {}", testName, about);
+				log.debug("[{}] Tech Details: {}", testName, techDetails);
+
+
+				StringBuilder failureMessage = new StringBuilder();
+				failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
+				.append("-------------------------------------------------------------\n")
+				.append(" Title: ").append(title).append("\n")
+				.append(" Key Features: ").append(keyFeatures).append("\n")
+				.append(" About: ").append(about).append("\n")
+				.append(" Tech Details: ").append(techDetails).append("\n")
+				.append("-------------------------------------------------------------");
+
+				softAssert.fail(failureMessage.toString());
+			} else {
+				log.info("[{}]  Filter '{}' matched in at least one section.", testName, filter);
+				System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
+			}
+		}
+
+		log.info("[{}]  Final assertion for display type filter validation...", testName);
+		softAssert.assertAll(); 
 	    
 		}
 
@@ -706,71 +742,76 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
+		
+		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		GenericUtility genericUtility=new GenericUtility();
-		AmazonLandingPage am=new AmazonLandingPage();
-		
-		am.openingLandingPage();		
+		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
-		
-
 		ProductListingPage productPage=new ProductListingPage();
-		genericUtility.refreshIfServiceUnavailable();
-		if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
-		    System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
-	        log.warn("[{}]  Filter option 'Operating System' or 'Operating System Version' not found. Skipping test.", ThreadContext.get("testName"));
-		    return;
-		}
-		
 		OperatingSystemFilterFlows operatingSystemFilterFlows = new OperatingSystemFilterFlows();
+		SoftAssert softAssert = new SoftAssert();
 		
-		List<Map<String, Object>> results = operatingSystemFilterFlows.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
-	    SoftAssert softAssert = new SoftAssert();
+		
+		  landingPage.openingLandingPage();		
+		  capHandler.handleCaptcha();
+		  landingPage.givingInputWithinSearchBar(input);
+		  landingPage.clickingOnSubmitSearchButton();
+		  genericUtility.refreshIfServiceUnavailable();
+		  String testName=ThreadContext.get("testName");
 
-	    for (Map<String, Object> product : results) {
-	    	String filter = genericUtility.safeLower(product.get("filter"));
-    	    String title = genericUtility.safeLower(product.get("title"));
-    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-    	    String about = genericUtility.safeLower(product.get("about"));
-    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
+		  if (!genericUtility.filterCheckUnderList("Operating System", "Operating System Version")) {
+			  System.out.println("Filter option 'Operating System' or 'Operating System Version' does not exist in the list. Skipping the test.");
+			  log.warn("[{}]  Filter option 'Operating System' or 'Operating System Version' not found. Skipping test.", ThreadContext.get("testName"));
+			  return;
+		  }
 
-    	    boolean isMatch = title.contains(filter)
-    	                   || keyFeatures.contains(filter)
-    	                   || about.contains(filter)
-    	                   || techDetails.contains(filter);
 
-	        if (!isMatch) {
 
-	        
-	        	log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-	        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-	        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
-	        	log.debug("[{}]  Tech Details: {}", ThreadContext.get("testName"), techDetails);
-	        	
+		  List<Map<String, Object>> results = operatingSystemFilterFlows.applyOperatingSystemFilterAndValidateProductsWithResults(productPage.listOperatingSystemVersionOptionsBy, "operatingsystem");
 
-	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
-	        	              .append("-------------------------------------------------------------\n")
-	        	              .append(" Title: ").append(title).append("\n")
-	        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-	        	              .append(" About: ").append(about).append("\n")
-	        	              .append(" Tech Details: ").append(techDetails).append("\n")
-	        	              .append("-------------------------------------------------------------");
 
-	        	softAssert.fail(failureMessage.toString());
-	        } else {
-	            log.info("[{}]  Filter '{}' matched in at least one section.", ThreadContext.get("testName"), filter);
-	            System.out.println("Filter '" + filter + "' matched in at least one section of product details.");
-	        }
-	    }
 
-	    log.info("[{}]  Final assertion for OS Version filter validation...", ThreadContext.get("testName"));
-	    softAssert.assertAll(); 
+		  for (Map<String, Object> product : results) {
+			  String filter = genericUtility.safeLower(product.get("filter"));
+			  String title = genericUtility.safeLower(product.get("title"));
+			  String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+			  String about = genericUtility.safeLower(product.get("about"));
+			  String techDetails = genericUtility.safeLower(product.get("techDetails"));
+
+			  boolean isMatch = title.contains(filter)
+					  || keyFeatures.contains(filter)
+					  || about.contains(filter)
+					  || techDetails.contains(filter);
+
+			  if (!isMatch) {
+
+
+				  log.error("[{}]  Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+				  log.debug("[{}]  Key Features: {}", testName, keyFeatures);
+				  log.debug("[{}]  About: {}", testName, about);
+				  log.debug("[{}]  Tech Details: {}", testName, techDetails);
+
+
+				  StringBuilder failureMessage = new StringBuilder();
+				  failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
+				  .append("-------------------------------------------------------------\n")
+				  .append(" Title: ").append(title).append("\n")
+				  .append(" Key Features: ").append(keyFeatures).append("\n")
+				  .append(" About: ").append(about).append("\n")
+				  .append(" Tech Details: ").append(techDetails).append("\n")
+				  .append("-------------------------------------------------------------");
+
+				  softAssert.fail(failureMessage.toString());
+			  } else {
+				  log.info("[{}]  Filter '{}' matched in at least one section.", testName, filter);
+				  System.out.println("Filter '" + filter + "' matched in at least one section of product details.");
+			  }
+		  }
+
+		  log.info("[{}]  Final assertion for OS Version filter validation...", testName);
+		  softAssert.assertAll(); 
 		
 	}
 
@@ -782,70 +823,77 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
-		am.openingLandingPage();
-		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
 		
+		
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
 		GenericUtility genericUtility= new GenericUtility();
 		ProductListingPage productPage=new ProductListingPage();
+		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
+		SoftAssert softAssert = new SoftAssert();
+		StringBuilder failureMessage = new StringBuilder();
+
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
 		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
 
-			if (!genericUtility.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
-			    System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
-			    log.warn("[{}]   Filter 'Mobile Phone Primary Camera Resolution' not found. Skipping test.",
-		        ThreadContext.get("testName"));
-			    return;
+		if (!genericUtility.filterCheckUnderList("Mobile Phone Primary Camera Resolution")) {
+			System.out.println("Filter option 'Mobile Phone Primary Camera Resolution' does not exist in the list. Skipping the test.");
+			log.warn("[{}]   Filter 'Mobile Phone Primary Camera Resolution' not found. Skipping test.",
+					ThreadContext.get("testName"));
+			return;
+		}
+
+
+
+		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
+
+
+
+		for (Map<String, Object> product : results) {
+			String filter = genericUtility.safeLower(product.get("filter"));
+			String title = genericUtility.safeLower(product.get("title"));
+			String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+			String about = genericUtility.safeLower(product.get("about"));
+			String techDetails = genericUtility.safeLower(product.get("techDetails"));
+
+			boolean isMatch = title.contains(filter)
+					|| keyFeatures.contains(filter)
+					|| about.contains(filter)
+					|| techDetails.contains(filter);
+
+			if (!isMatch) {
+
+
+				log.error("[{}]  Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+				log.debug("[{}]  Key Features: {}",testName, keyFeatures);
+				log.debug("[{}]  About: {}", testName, about);
+				log.debug("[{}]  Tech Details: {}", testName, techDetails);
+
+
+
+				failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
+				.append("-------------------------------------------------------------\n")
+				.append(" Title: ").append(title).append("\n")
+				.append(" Key Features: ").append(keyFeatures).append("\n")
+				.append(" About: ").append(about).append("\n")
+				.append(" Tech Details: ").append(techDetails).append("\n")
+				.append("-------------------------------------------------------------");
+
+				softAssert.fail(failureMessage.toString());
+			} else {
+				log.info("[{}]  Filter '{}' matched in product details.", testName, filter);
+				System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
 			}
-		
-			
-			SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
-			List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listMobilePhonePrimaryCameraResolutionOptionsBy, "mobilephoneprimarycameraresolution");
-			
-		 SoftAssert softAssert = new SoftAssert();
+		}
 
-		    for (Map<String, Object> product : results) {
-		    	String filter = genericUtility.safeLower(product.get("filter"));
-	    	    String title = genericUtility.safeLower(product.get("title"));
-	    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-	    	    String about = genericUtility.safeLower(product.get("about"));
-	    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
-
-	    	    boolean isMatch = title.contains(filter)
-	    	                   || keyFeatures.contains(filter)
-	    	                   || about.contains(filter)
-	    	                   || techDetails.contains(filter);
-
-		        if (!isMatch) {
-
-		        
-		        	log.error("[{}]  Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-		        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-		        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
-		        	log.debug("[{}]  Tech Details: {}", ThreadContext.get("testName"), techDetails);
-		        	
-
-		        	StringBuilder failureMessage = new StringBuilder();
-		        	failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
-		        	              .append("-------------------------------------------------------------\n")
-		        	              .append(" Title: ").append(title).append("\n")
-		        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-		        	              .append(" About: ").append(about).append("\n")
-		        	              .append(" Tech Details: ").append(techDetails).append("\n")
-		        	              .append("-------------------------------------------------------------");
-
-		        	softAssert.fail(failureMessage.toString());
-		        } else {
-		            log.info("[{}]  Filter '{}' matched in product details.", ThreadContext.get("testName"), filter);
-		            System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
-		        }
-		    }
-		    
-		    log.info("[{}]  Final assertion for Camera Resolution filter validation...", ThreadContext.get("testName"));
-		    softAssert.assertAll(); 
+		log.info("[{}]  Final assertion for Camera Resolution filter validation...", testName);
+		softAssert.assertAll(); 
 		    
 	}
 
@@ -857,72 +905,77 @@ public class AmazonTests extends BaseTest {
 		    retryAnalyzer = RetryFailedTest.class
 		)
 	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException, TimeoutException {
+		
+		
 		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
-		AmazonLandingPage am=new AmazonLandingPage();
 		
 		
-		am.openingLandingPage();
+		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
-		capHandler.handleCaptcha();
-		am.givingInputWithinSearchBar(input);
-		am.clickingOnSubmitSearchButton();
-		
-		
 		ProductListingPage productPage=new ProductListingPage();
 		GenericUtility genericUtility=new GenericUtility();
-		genericUtility.refreshIfServiceUnavailable();
-		
-		if (!genericUtility.filterCheckUnderList("Discount")) {
-	        log.warn("[{}]   Filter 'Discount' not available. Skipping test.", ThreadContext.get("testName"));
-		    System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");
-		    return ;
-		}
-		
-		
-		
 		SharedFilterFlows sharedFilterFlows = new SharedFilterFlows();
-		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
+		SoftAssert softAssert = new SoftAssert();
 		
-	    SoftAssert softAssert = new SoftAssert();
 
-	    for (Map<String, Object> product : results) {
-	    	String filter = genericUtility.safeLower(product.get("filter"));
-    	    String title = genericUtility.safeLower(product.get("title"));
-    	    String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
-    	    String about = genericUtility.safeLower(product.get("about"));
-    	    String techDetails = genericUtility.safeLower(product.get("techDetails"));
+		landingPage.openingLandingPage();
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
+		genericUtility.refreshIfServiceUnavailable();
+		String testName=ThreadContext.get("testName");
 
-    	    boolean isMatch = title.contains(filter)
-    	                   || keyFeatures.contains(filter)
-    	                   || about.contains(filter)
-    	                   || techDetails.contains(filter);
+		if (!genericUtility.filterCheckUnderList("Discount")) {
+			log.warn("[{}]   Filter 'Discount' not available. Skipping test.", ThreadContext.get("testName"));
+			System.out.println("Filter option 'Discount' does not exist in the list. Skipping the test.");
+			return ;
+		}
 
-	        if (!isMatch) {
 
-	        	log.error("[{}] Mismatch found for filter '{}' on product '{}'",ThreadContext.get("testName"), filter, title);
-	        	log.debug("[{}]  Key Features: {}", ThreadContext.get("testName"), keyFeatures);
-	        	log.debug("[{}]  About: {}", ThreadContext.get("testName"), about);
-	        	log.debug("[{}]  Tech Details: {}", ThreadContext.get("testName"), techDetails);
-	        	
 
-	        	StringBuilder failureMessage = new StringBuilder();
-	        	failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
-	        	              .append("-------------------------------------------------------------\n")
-	        	              .append(" Title: ").append(title).append("\n")
-	        	              .append(" Key Features: ").append(keyFeatures).append("\n")
-	        	              .append(" About: ").append(about).append("\n")
-	        	              .append(" Tech Details: ").append(techDetails).append("\n")
-	        	              .append("-------------------------------------------------------------");
 
-	        	softAssert.fail(failureMessage.toString());
-	        } else {
-	            log.info("[{}]  Filter '{}' matched in at least one product section.", ThreadContext.get("testName"), filter);
-	            System.out.println("Filter '" + filter + "' matched in at least one section of product details.");
-	        }
-	    }
+		List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDiscountOptionsBy,"discount");
 
-	    log.info("[{}]  Final assertion for Discount filter validation...", ThreadContext.get("testName"));
-	    softAssert.assertAll(); 
+
+
+		for (Map<String, Object> product : results) {
+			String filter = genericUtility.safeLower(product.get("filter"));
+			String title = genericUtility.safeLower(product.get("title"));
+			String keyFeatures = genericUtility.safeLower(product.get("keyFeatures"));
+			String about = genericUtility.safeLower(product.get("about"));
+			String techDetails = genericUtility.safeLower(product.get("techDetails"));
+
+			boolean isMatch = title.contains(filter)
+					|| keyFeatures.contains(filter)
+					|| about.contains(filter)
+					|| techDetails.contains(filter);
+
+			if (!isMatch) {
+
+				log.error("[{}] Mismatch found for filter '{}' on product '{}'",testName, filter, title);
+				log.debug("[{}]  Key Features: {}", testName, keyFeatures);
+				log.debug("[{}]  About: {}", testName, about);
+				log.debug("[{}]  Tech Details: {}", testName, techDetails);
+
+
+				StringBuilder failureMessage = new StringBuilder();
+				failureMessage.append(" filter '").append(filter).append("' not found in product details.\n")
+				.append("-------------------------------------------------------------\n")
+				.append(" Title: ").append(title).append("\n")
+				.append(" Key Features: ").append(keyFeatures).append("\n")
+				.append(" About: ").append(about).append("\n")
+				.append(" Tech Details: ").append(techDetails).append("\n")
+				.append("-------------------------------------------------------------");
+
+				softAssert.fail(failureMessage.toString());
+			} else {
+				log.info("[{}]  Filter '{}' matched in at least one product section.", testName, filter);
+				System.out.println("Filter '" + filter + "' matched in at least one section of product details.");
+			}
+		}
+
+		log.info("[{}]  Final assertion for Discount filter validation...", testName);
+		softAssert.assertAll(); 
 	}
 }
 

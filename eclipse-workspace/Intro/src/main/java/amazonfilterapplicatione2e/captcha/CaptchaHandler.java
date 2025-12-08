@@ -33,7 +33,7 @@ public class CaptchaHandler extends BasePage{
 	    }
 
 	    // Try to handle captcha by clicking or refreshing
-	    public  void handleCaptcha() {
+	    public   void handleCaptcha() {
 	        int maxRetries = 3;
 	        int attempt = 0;
 	        long waitMs = 1000L;
