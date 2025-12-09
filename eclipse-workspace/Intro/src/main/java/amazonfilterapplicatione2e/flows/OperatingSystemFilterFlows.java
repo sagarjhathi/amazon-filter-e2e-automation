@@ -9,6 +9,7 @@ import java.util.concurrent.TimeoutException;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import main.java.amazonfilterapplicatione2e.base.BasePage;
@@ -94,6 +95,115 @@ public class OperatingSystemFilterFlows extends BasePage{
 
 		log.info("[{}] Returning the Master data 'allResults'  ->", ThreadContext.get("testName"));
 		return allResults;
+	}
+	
+	
+	
+	
+	
+	
+	public void applyOperatingSystemFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
+
+		SafeActions safeAct = new SafeActions();
+		ProductListingPage productPage = new ProductListingPage();
+		GenericUtility genericUtility = new GenericUtility();
+
+		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+		genericUtility.printFilterNamesOnly(filterOptionsBy); 
+		genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+
+		for (int i = 1; i < filterOptions.size(); i++) {
+
+			List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
+			if(i>inloopParent.size()-1) {
+				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+				return;
+			}
+
+			if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
+				genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
+				safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
+				Thread.sleep(1000);
+			}
+
+			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+
+			String str = inloopParent.get(i).getText().trim();			
+
+			if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
+				System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
+				continue; // â›” Skip the rest of the current loop iteration
+			}
+
+
+			Thread.sleep(1000);
+			String currentWindow=driver.getWindowHandle();
+			System.out.println("Printing current window  "+ currentWindow);
+
+			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+			for(int p=1;p<productNameListingPage.size();p++) {
+
+				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
+				try {
+					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+
+//					Actions actions = new Actions(driver);
+//					actions
+//					.keyDown(Keys.CONTROL)
+//					.click(productElement)
+//					.keyUp(Keys.CONTROL)
+//					.build()
+//					.perform();
+					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
+					Thread.sleep(1000);
+					safeAct.safeClick(productPage.getProductByIndex(p));
+
+					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+					Thread.sleep(2000); 
+
+				} catch (Exception e) {
+					System.out.println("Failed to Ctrl+Click product index " + p);
+					continue;
+				}
+
+
+				System.out.println("Clicked on the producct name new pop-up should open");
+				Thread.sleep(2000);		
+				genericUtility.switchToNewWindow(currentWindow);
+
+				safeAct.safeFindElement(productPage.productNameIndividualPage);
+
+				safeAct.safeFindElement(productPage.productKeyFeatureBlock);
+
+				safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
+
+				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
+
+				genericUtility.scrollByPixel(0, 700);
+
+				try {					
+
+					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+					((JavascriptExecutor) driver).executeScript(
+							"arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
+					Thread.sleep(500);
+
+					safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+					System.out.println("'See More Details' clicked.");
+
+				} catch (Exception e1) {
+					Thread.sleep(2000);
+					driver.close();
+					driver.switchTo().window(currentWindow);
+					continue; 
+				}
+
+				Thread.sleep(2000);				
+				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
+			}
+			safeAct.safeClick(productPage.clearButtonBy);
+		}
 	}
 
 }

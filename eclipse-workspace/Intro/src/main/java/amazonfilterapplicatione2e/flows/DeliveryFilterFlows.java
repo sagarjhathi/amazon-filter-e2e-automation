@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 
 import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
@@ -97,5 +98,80 @@ public class DeliveryFilterFlows extends BasePage{
 
 		return Arrays.asList(true, "All the things are valid no errors", -1);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void validateDeliveryFilterOptions(By filterOptions) throws InterruptedException {
+		log.info("[{}] Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+
+		System.out.println("Within the Function validateDeliveryFilterOptions ");
+
+		ProductListingPage productPage = new ProductListingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeClick(filterOptions);
+		log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
+
+
+
+
+		// Find product card elements
+		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
+
+		// Format today and tomorrow's dates
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
+		String todayFormatted = LocalDate.now().format(formatter);
+		String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
+
+		// Build allowed date parts
+		Set<String> allowedDateParts = new HashSet<>();
+		Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
+		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
+		allowedDateParts.add("Today");
+		allowedDateParts.add("Tomorrow");
+		log.info("[{}] Created hashset with required data to assert with Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+
+
+
+		log.info("[" + ThreadContext.get("testName") + "] this is the set  " + allowedDateParts);
+
+		//Printing the Allowed Date to see the contents
+		System.out.println("Printing the Allowed date parts set : " + allowedDateParts);
+
+
+		// Validate each element's delivery date
+		for (int i = 0; i < deliveryElements.size(); i++) {
+			log.info("[{}] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+
+			String text = deliveryElements.get(i).getText();
+			System.out.println("The text from delivery element --> "+text + "  and size of the list is " + deliveryElements.size() + " index no is " + i);
+
+			boolean found = allowedDateParts.stream().anyMatch(text::contains);
+			log.info("[{}] Checking if the allowedDateParts have assert text   Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+
+			Assert.assertTrue(found, "â�Œ None of the allowed date parts are present, printing the element text " + text+" index no is " + i);
+			System.out.println("âœ” Valid delivery date found in: " + text+" index no is " + i);
+			System.out.println("-----------------------------------------------------------------");
+		}
+
+		// Clear the delivery filter
+		safeAct.safeClick(productPage.clearButtonBy);
+		System.out.println("Clicking clear under validateDeliveryFilterOptions");
+
+	}
+	
+	
+	
+	
+	
+	
 	
 }

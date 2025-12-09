@@ -8,7 +8,9 @@ import java.util.concurrent.TimeoutException;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
@@ -162,4 +164,115 @@ public class SharedFilterFlows extends BasePage {
 		return results;
 }
 
+	
+	public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
+
+		log.info("[{}] Within applyFilterAndValidateProducts method", ThreadContext.get("testName"));
+
+		SafeActions safeAct = new SafeActions();
+		ProductListingPage productPage = new ProductListingPage();
+		GenericUtility genericUtility = new GenericUtility();
+
+		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
+		genericUtility.printFilterNamesOnly(filterOptionsBy); 
+
+		for (int i = 0; i < filterOptions.size(); i++) {
+			log.info("[{}] Within filterOptions loop within applyFilterAndValidateProducts", ThreadContext.get("testName"));
+
+			List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
+			if(i>inloopParent.size()-1) {
+				log.info("[{}] Avoiding out of bounds issue by traversing only upto the inloop size within applyFilterAndValidateProducts", ThreadContext.get("testName"));
+
+				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
+				return;
+			}
+
+			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
+			String str = inloopParent.get(i).getText().trim();			
+
+			if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
+				System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
+				continue; 
+			}
+
+
+			Thread.sleep(1000);
+			String currentWindow=driver.getWindowHandle();
+			System.out.println("Printing current window  "+ currentWindow);
+
+			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+			System.out.println(productNameListingPage.get(0).getText()+"  printing the 1st product here before the loop");
+
+			for(int p=1;p<=productNameListingPage.size()-1;p++) {	
+				log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProducts", ThreadContext.get("testName"));
+
+				Thread.sleep(3000);
+				System.out.println("inside the loop and product name is  and index is "+p+"  "+productNameListingPage.get(p).getText());				
+
+				try {
+					waitUtil.waitUntilClickable(productPage.getProductByIndex(p), 10);		
+					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
+					log.info("[{}] Getting product by index  within productNameListingPage loop", ThreadContext.get("testName"));
+
+
+					Actions actions = new Actions(driver);
+					actions
+					.keyDown(Keys.CONTROL) 
+					.click(productElement)
+					.keyUp(Keys.CONTROL)
+					.build()
+					.perform();
+
+					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+					log.info("[{}] Product clicked with Ctrl+Click to open in new tab  within productNameListingPage loop", ThreadContext.get("testName"));
+
+					Thread.sleep(2000); // Allow time for tab to open
+
+				} catch (Exception e) {
+					log.info("[{}] Failed to Ctrl+Click product index " + p+"  within productNameListingPage loop", ThreadContext.get("testName"));
+					System.out.println("Failed to Ctrl+Click product index " + p);
+					continue;
+				}
+
+
+				System.out.println("Clicked on the producct name new pop-up should open");
+				log.info("[{}] Clicked on the producct name new pop-up should open  via productNameListingPage loop", ThreadContext.get("testName"));
+
+				Thread.sleep(2000);		
+				genericUtility.switchToNewWindow(currentWindow);
+				log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
+
+				safeAct.safeFindElement(productPage.productNameIndividualPage);
+
+				safeAct.safeFindElement(productPage.productKeyFeatureBlock);
+
+				safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
+
+				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
+
+				genericUtility.scrollByPixel(0, 700);
+
+				try {					
+					genericUtility.smoothScrollToElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+					Thread.sleep(500);
+					safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
+					System.out.println("'See More Details' clicked.");
+				} catch (Exception e1) {
+					driver.close();
+					Thread.sleep(2000);
+					genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
+					continue; 
+				}
+
+				Thread.sleep(2000);				
+				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
+			}
+			safeAct.safeClick(productPage.clearButtonBy);
+		}
+	}
+	
+	
+	
+	
+	
 }
