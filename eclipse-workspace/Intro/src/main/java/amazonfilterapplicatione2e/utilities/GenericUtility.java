@@ -312,83 +312,83 @@ public class GenericUtility extends ProductListingPage{
  
  
  
- public Map<String, Object>applyFilterOptionsAndFetchProductDetailsForOS(
-	 
-	 
-		        int productListIndex,
-		        String filterValue,
-		        String currentWindow,
-		        SafeActions safeAct
-		        ){
-
-		    String testName = ThreadContext.get("logFileName");
-		    int productIndex = productListIndex - 1;
-
-		    Map<String, Object> result = new HashMap<>();
-	        result.put("filter", filterValue);
-	        int before = driver.getWindowHandles().size();
-		    try {
-				
-
-		        WebElement productElement = driver.findElement(getProductByIndex(productListIndex));
-		        smoothScrollToElement(getProductByIndex(productListIndex));
-		        Thread.sleep(1000);
-		  
-      
-		        openClickOnNewPage(productElement,before);
-		        log.info("[{}] Clicking product index={} for filter='{}'",
-		                 ThreadContext.get("testName"), productListIndex, filterValue);
-
-		        
-		    	int after = driver.getWindowHandles().size();
-
-				if (after == before) {
-					System.out.println("Before click and AFTER CLICK count is same , trying again");
-					safeAct.safeClick(getProductByIndex(productIndex));
-		         }
-				
-		        Thread.sleep(2000);
-		        switchToNewWindow(currentWindow);
-
-		        String name = fetchTextWithRetries(productNameIndividualPage, safeAct);
-		        String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
-		        String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
-		        String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
-
-		        addFieldIfPresent("title",name ,filterValue,productIndex,result);
-		        addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,result);
-		        addFieldIfPresent("about",about ,filterValue,productIndex,result);
-		        addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,result);
-
-		        try {
-		            if (isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
-		                String productNamePlusIndex = "Product Index=" + productIndex;
-		                smoothScrollToElement(reportAnIssue);
-		                Thread.sleep(1000);
-		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
-		                         ThreadContext.get("testName"));
-		            }
-		        } catch (Exception screenshotEx) {
-		            log.info("[{}] Failed screenshot flow for empty tech details",
-		                     ThreadContext.get("testName"));
-		        }
-		        return result;
-
-		    } catch (Exception e) {
-		        System.out.println("Failed to validate product at index " + productListIndex + " for filter: " + filterValue);
-		        log.warn("[{}] Exception while processing product index={} filter='{}': {}",
-		                 ThreadContext.get("testName"), productListIndex, filterValue, e.getMessage());
-		        return null;
-		    } finally {
-		        try {
-		            closeCurrentWindowAndSwitchBack(currentWindow);
-		        } catch (Exception ignored) {
-		            log.warn("[{}] Failed to close product window or switch back", ThreadContext.get("testName"));
-		        }
-		    }
-		    
-		}
+// public Map<String, Object>applyFilterOptionsAndFetchProductDetailsForOS(
+//	 
+//	 
+//		        int productListIndex,
+//		        String filterValue,
+//		        String currentWindow,
+//		        SafeActions safeAct
+//		        ){
+//
+//		    String testName = ThreadContext.get("logFileName");
+//		    int productIndex = productListIndex - 1;
+//
+//		    Map<String, Object> result = new HashMap<>();
+//	        result.put("filter", filterValue);
+//	        int before = driver.getWindowHandles().size();
+//		    try {
+//				
+//
+//		        WebElement productElement = driver.findElement(getProductByIndex(productListIndex));
+//		        smoothScrollToElement(getProductByIndex(productListIndex));
+//		        Thread.sleep(1000);
+//		  
+//      
+//		        openClickOnNewPage(productElement,before);
+//		        log.info("[{}] Clicking product index={} for filter='{}'",
+//		                 ThreadContext.get("testName"), productListIndex, filterValue);
+//
+//		        
+//		    	int after = driver.getWindowHandles().size();
+//
+//				if (after == before) {
+//					System.out.println("Before click and AFTER CLICK count is same , trying again");
+//					safeAct.safeClick(getProductByIndex(productIndex));
+//		         }
+//				
+//		        Thread.sleep(2000);
+//		        switchToNewWindow(currentWindow);
+//
+//		        String name = fetchTextWithRetries(productNameIndividualPage, safeAct);
+//		        String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
+//		        String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
+//		        String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
+//
+//		        addFieldIfPresent("title",name ,filterValue,productIndex,result);
+//		        addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,result);
+//		        addFieldIfPresent("about",about ,filterValue,productIndex,result);
+//		        addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,result);
+//
+//		        try {
+//		            if (isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
+//		                String productNamePlusIndex = "Product Index=" + productIndex;
+//		                smoothScrollToElement(reportAnIssue);
+//		                Thread.sleep(1000);
+//		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+//		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
+//		                         ThreadContext.get("testName"));
+//		            }
+//		        } catch (Exception screenshotEx) {
+//		            log.info("[{}] Failed screenshot flow for empty tech details",
+//		                     ThreadContext.get("testName"));
+//		        }
+//		        return result;
+//
+//		    } catch (Exception e) {
+//		        System.out.println("Failed to validate product at index " + productListIndex + " for filter: " + filterValue);
+//		        log.warn("[{}] Exception while processing product index={} filter='{}': {}",
+//		                 ThreadContext.get("testName"), productListIndex, filterValue, e.getMessage());
+//		        return null;
+//		    } finally {
+//		        try {
+//		            closeCurrentWindowAndSwitchBack(currentWindow);
+//		        } catch (Exception ignored) {
+//		            log.warn("[{}] Failed to close product window or switch back", ThreadContext.get("testName"));
+//		        }
+//		    }
+//		    
+//		}
  
  
  
@@ -498,7 +498,7 @@ try {
 
  
  
- private boolean openClickOnNewPage(WebElement element, int beforeCount) {
+ public boolean openClickOnNewPage(WebElement element, int beforeCount) {
 	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
 	    try {
@@ -525,7 +525,7 @@ try {
 
  
  
- private void addFieldIfPresent(String key,String value,String filterValue,int productIndex,  Map<String, Object> result) {
+ public void addFieldIfPresent(String key,String value,String filterValue,int productIndex,  Map<String, Object> result) {
 
 	 String testName = ThreadContext.get("testName");
 

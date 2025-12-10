@@ -18,12 +18,30 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 public class OperatingSystemFilterFlows extends BasePage{
 
 	
 	
 	private  final Logger log = LoggerUtility.getLogger(OperatingSystemFilterFlows.class);
+	
+	
+	
+	
+	
+    private ProductListingPage productPage;
+    private SafeActions safeAct;
+    private GenericUtility genericUtility;
+
+public OperatingSystemFilterFlows() {
+    this.productPage = new ProductListingPage();
+    this.safeAct = new SafeActions();
+    this.genericUtility = new GenericUtility();
+}
+
+
+
 
 	
 	public List<Map<String, Object>> applyOperatingSystemFilterAndValidateProductsWithResults(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
@@ -82,7 +100,7 @@ public class OperatingSystemFilterFlows extends BasePage{
 			}
 			
 			for (int productListIndex = 1; productListIndex <productNameListingPageSize-1; productListIndex++) {
-				result = genericUtility.applyFilterOptionsAndFetchProductDetailsForOS(productListIndex, str, currentWindow, safeAct);		
+				result = applyFilterOptionsAndFetchProductDetailsForOS(productListIndex, str, currentWindow, safeAct);		
 			}
 
 			allResults.add(result);
@@ -97,6 +115,93 @@ public class OperatingSystemFilterFlows extends BasePage{
 		return allResults;
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	 public Map<String, Object>applyFilterOptionsAndFetchProductDetailsForOS(
+			 
+			 
+		        int productListIndex,
+		        String filterValue,
+		        String currentWindow,
+		        SafeActions safeAct
+		        ){
+
+		    String testName = ThreadContext.get("logFileName");
+		    int productIndex = productListIndex - 1;
+
+		    Map<String, Object> result = new HashMap<>();
+	        result.put("filter", filterValue);
+	        int before = driver.getWindowHandles().size();
+		    try {
+				
+
+		        WebElement productElement = driver.findElement(productPage.getProductByIndex(productListIndex));
+		        genericUtility.smoothScrollToElement(productPage.getProductByIndex(productListIndex));
+		        Thread.sleep(1000);
+		  
+   
+		        genericUtility.openClickOnNewPage(productElement,before);
+		        log.info("[{}] Clicking product index={} for filter='{}'",
+		                 ThreadContext.get("testName"), productListIndex, filterValue);
+
+		        
+		    	int after = driver.getWindowHandles().size();
+
+				if (after == before) {
+					System.out.println("Before click and AFTER CLICK count is same , trying again");
+					safeAct.safeClick(productPage.getProductByIndex(productIndex));
+		         }
+				
+		        Thread.sleep(2000);
+		        genericUtility.switchToNewWindow(currentWindow);
+
+		        String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
+		        String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
+		        String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
+		        String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
+
+		        genericUtility.addFieldIfPresent("title",name ,filterValue,productIndex,result);
+		        genericUtility.addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,result);
+		        genericUtility.addFieldIfPresent("about",about ,filterValue,productIndex,result);
+		        genericUtility.addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,result);
+
+		        try {
+		            if (genericUtility.isElementInViewport(productPage.showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
+		                String productNamePlusIndex = "Product Index=" + productIndex;
+		                genericUtility.smoothScrollToElement(productPage.reportAnIssue);
+		                Thread.sleep(1000);
+		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
+		                         ThreadContext.get("testName"));
+		            }
+		        } catch (Exception screenshotEx) {
+		            log.info("[{}] Failed screenshot flow for empty tech details",
+		                     ThreadContext.get("testName"));
+		        }
+		        return result;
+
+		    } catch (Exception e) {
+		        System.out.println("Failed to validate product at index " + productListIndex + " for filter: " + filterValue);
+		        log.warn("[{}] Exception while processing product index={} filter='{}': {}",
+		                 ThreadContext.get("testName"), productListIndex, filterValue, e.getMessage());
+		        return null;
+		    } finally {
+		        try {
+		        	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
+		        } catch (Exception ignored) {
+		            log.warn("[{}] Failed to close product window or switch back", ThreadContext.get("testName"));
+		        }
+		    }
+		    
+		}
 	
 	
 	
