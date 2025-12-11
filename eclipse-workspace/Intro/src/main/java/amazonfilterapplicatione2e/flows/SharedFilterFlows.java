@@ -1,6 +1,7 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeoutException;
@@ -19,6 +20,7 @@ import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 public class SharedFilterFlows extends BasePage {
 
@@ -144,7 +146,7 @@ public class SharedFilterFlows extends BasePage {
 				log.info("[{}] Within productNameListingPage loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 				System.out.println("inside the loop and product name is " + productNameListingPage.get(productIndex).getText());
 
-				Map<String, Object> productResult = genericUtility.applyFilterOptionsAndFetchProductDetailsGlobal(productIndex, filterValue, currentWindow, safeAct);
+				Map<String, Object> productResult = applyFilterOptionsAndFetchProductDetailsGlobal(productIndex, filterValue, currentWindow, safeAct);
 				log.info("[{}]  Added 'filter','title','keyFeatures', 'about', 'techDetails' into the Map -> productResult", ThreadContext.get("testName"));
 
 				results.add(productResult);
@@ -164,6 +166,109 @@ public class SharedFilterFlows extends BasePage {
 		return results;
 }
 
+	
+	
+	
+	public Map<String, Object>applyFilterOptionsAndFetchProductDetailsGlobal(
+			 
+		    int productIndex,
+		    String filterValue,
+	        String currentWindow,
+	        SafeActions safeAct
+	        
+		 ) throws InterruptedException{
+ 
+
+	 String testName = ThreadContext.get("logFileName");
+	 int beforeProductClick = driver.getWindowHandles().size();
+	
+	 
+	 Map<String, Object> productResult = new HashMap<>();
+	 productResult.put("filter", filterValue);
+	 
+	try {
+		
+		WebElement productElement = safeAct.safeFindElement(productPage.getProductByIndex(productIndex));
+		genericUtility.smoothScrollToElement(productPage.getProductByIndex(productIndex));
+		log.info("[{}] Getting product by index in productNameListingPage loop", testName);
+		
+		Thread.sleep(1000);
+		boolean isWindowOpened=genericUtility.openClickOnNewPage(productElement,beforeProductClick);
+
+		System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+		log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", testName);
+
+		if(isWindowOpened) {
+			genericUtility.waitForNewWindowAndSwitch(currentWindow,beforeProductClick);
+			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", testName);
+		}else {
+			 log.warn("[{}] Could not open product in a new tab", testName);
+		}
+} catch (Exception e) {
+	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, testName);
+    System.out.println("Failed to Ctrl+Click product index " + productIndex);
+}
+
+System.out.println("Clicked on the producct name new pop-up should open");
+log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", testName);
+
+String name="";
+try {
+name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
+String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
+String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
+String techDetails = genericUtility.fetchTextWithRetries(productPage.technicalDetailsBlockIndividualPage, safeAct);
+
+genericUtility.addFieldIfPresent("title",name ,filterValue,productIndex,productResult);
+genericUtility.addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,productResult);
+genericUtility.addFieldIfPresent("about",about ,filterValue,productIndex,productResult);
+genericUtility.addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,productResult);
+log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", testName);
+
+}catch(Exception e) {
+	log.info("[{}] Something went wrong while switching or extracting the details", testName);
+
+}
+
+
+try {
+	 if(genericUtility.isElementInViewport(productPage.showMoreOnlyIndividualPage)) {
+     	String productNamePlusIndex="Product Index="+productIndex;
+     	genericUtility.smoothScrollToElement(productPage.reportAnIssue);
+     	Thread.sleep(1000);
+     	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
+     }else {
+    	 genericUtility.smoothScrollToElement(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
+         Thread.sleep(1000);
+         safeAct.safeClick(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
+			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", testName);
+         System.out.println("'See More Details' clicked.");
+     }
+   
+} catch (Exception e1) {
+    
+	genericUtility.smoothScrollToElement(productPage.showMoreOnlyIndividualPage);
+	Thread.sleep(1000);
+	
+	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
+	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", testName);
+
+    Thread.sleep(1000);
+	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
+ 
+}finally {
+	Thread.sleep(1000);
+	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
+	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
+}
+
+
+ return  productResult;
+ 
+ 
+ }
 	
 	public void applyFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException {
 

@@ -312,187 +312,111 @@ public class GenericUtility extends ProductListingPage{
  
  
  
-// public Map<String, Object>applyFilterOptionsAndFetchProductDetailsForOS(
+
+ 
+ 
+ 
+ 
+// public Map<String, Object>applyFilterOptionsAndFetchProductDetailsGlobal(
+//		 
+//		    int productIndex,
+//		    String filterValue,
+//	        String currentWindow,
+//	        SafeActions safeAct
+//	        
+//		 ) throws InterruptedException{
+// 
+//
+//	 String testName = ThreadContext.get("logFileName");
+//	 int beforeProductClick = driver.getWindowHandles().size();
+//	
 //	 
+//	 Map<String, Object> productResult = new HashMap<>();
+//	 productResult.put("filter", filterValue);
 //	 
-//		        int productListIndex,
-//		        String filterValue,
-//		        String currentWindow,
-//		        SafeActions safeAct
-//		        ){
+//	try {
+//		
+//		WebElement productElement = safeAct.safeFindElement(getProductByIndex(productIndex));
+//		smoothScrollToElement(getProductByIndex(productIndex));
+//		log.info("[{}] Getting product by index in productNameListingPage loop", testName);
+//		
+//		Thread.sleep(1000);
+//		boolean isWindowOpened=openClickOnNewPage(productElement,beforeProductClick);
 //
-//		    String testName = ThreadContext.get("logFileName");
-//		    int productIndex = productListIndex - 1;
+//		System.out.println("Product clicked with Ctrl+Click to open in new tab.");
+//		log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", testName);
 //
-//		    Map<String, Object> result = new HashMap<>();
-//	        result.put("filter", filterValue);
-//	        int before = driver.getWindowHandles().size();
-//		    try {
-//				
-//
-//		        WebElement productElement = driver.findElement(getProductByIndex(productListIndex));
-//		        smoothScrollToElement(getProductByIndex(productListIndex));
-//		        Thread.sleep(1000);
-//		  
-//      
-//		        openClickOnNewPage(productElement,before);
-//		        log.info("[{}] Clicking product index={} for filter='{}'",
-//		                 ThreadContext.get("testName"), productListIndex, filterValue);
-//
-//		        
-//		    	int after = driver.getWindowHandles().size();
-//
-//				if (after == before) {
-//					System.out.println("Before click and AFTER CLICK count is same , trying again");
-//					safeAct.safeClick(getProductByIndex(productIndex));
-//		         }
-//				
-//		        Thread.sleep(2000);
-//		        switchToNewWindow(currentWindow);
-//
-//		        String name = fetchTextWithRetries(productNameIndividualPage, safeAct);
-//		        String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
-//		        String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
-//		        String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
-//
-//		        addFieldIfPresent("title",name ,filterValue,productIndex,result);
-//		        addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,result);
-//		        addFieldIfPresent("about",about ,filterValue,productIndex,result);
-//		        addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,result);
-//
-//		        try {
-//		            if (isElementInViewport(showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
-//		                String productNamePlusIndex = "Product Index=" + productIndex;
-//		                smoothScrollToElement(reportAnIssue);
-//		                Thread.sleep(1000);
-//		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-//		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
-//		                         ThreadContext.get("testName"));
-//		            }
-//		        } catch (Exception screenshotEx) {
-//		            log.info("[{}] Failed screenshot flow for empty tech details",
-//		                     ThreadContext.get("testName"));
-//		        }
-//		        return result;
-//
-//		    } catch (Exception e) {
-//		        System.out.println("Failed to validate product at index " + productListIndex + " for filter: " + filterValue);
-//		        log.warn("[{}] Exception while processing product index={} filter='{}': {}",
-//		                 ThreadContext.get("testName"), productListIndex, filterValue, e.getMessage());
-//		        return null;
-//		    } finally {
-//		        try {
-//		            closeCurrentWindowAndSwitchBack(currentWindow);
-//		        } catch (Exception ignored) {
-//		            log.warn("[{}] Failed to close product window or switch back", ThreadContext.get("testName"));
-//		        }
-//		    }
-//		    
+//		if(isWindowOpened) {
+//			waitForNewWindowAndSwitch(currentWindow,beforeProductClick);
+//			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", testName);
+//		}else {
+//			 log.warn("[{}] Could not open product in a new tab", testName);
 //		}
- 
- 
- 
- 
- public Map<String, Object>applyFilterOptionsAndFetchProductDetailsGlobal(
-		 
-		    int productIndex,
-		    String filterValue,
-	        String currentWindow,
-	        SafeActions safeAct
-	        
-		 ) throws InterruptedException{
- 
-
-	 String testName = ThreadContext.get("logFileName");
-	 int beforeProductClick = driver.getWindowHandles().size();
-	
-	 
-	 Map<String, Object> productResult = new HashMap<>();
-	 productResult.put("filter", filterValue);
-	 
-	try {
-		
-		WebElement productElement = safeAct.safeFindElement(getProductByIndex(productIndex));
-		smoothScrollToElement(getProductByIndex(productIndex));
-		log.info("[{}] Getting product by index in productNameListingPage loop", testName);
-		
-		Thread.sleep(1000);
-		boolean isWindowOpened=openClickOnNewPage(productElement,beforeProductClick);
-
-		System.out.println("Product clicked with Ctrl+Click to open in new tab.");
-		log.info("[{}] Opened product in new tab via Ctrl+Click inside productNameListingPage loop", testName);
-
-		if(isWindowOpened) {
-			waitForNewWindowAndSwitch(currentWindow,beforeProductClick);
-			log.info("[{}] Swithcing to the new window  within productNameListingPage loop", testName);
-		}else {
-			 log.warn("[{}] Could not open product in a new tab", testName);
-		}
-} catch (Exception e) {
-	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, testName);
-    System.out.println("Failed to Ctrl+Click product index " + productIndex);
-}
-
-System.out.println("Clicked on the producct name new pop-up should open");
-log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", testName);
-
-String name="";
-try {
-name = fetchTextWithRetries(productNameIndividualPage, safeAct);
-String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
-String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
-String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
-
-addFieldIfPresent("title",name ,filterValue,productIndex,productResult);
-addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,productResult);
-addFieldIfPresent("about",about ,filterValue,productIndex,productResult);
-addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,productResult);
-log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", testName);
-
-}catch(Exception e) {
-	log.info("[{}] Something went wrong while switching or extracting the details", testName);
-
-}
-
-
-try {
-	 if(isElementInViewport(showMoreOnlyIndividualPage)) {
-     	String productNamePlusIndex="Product Index="+productIndex;
-     	smoothScrollToElement(reportAnIssue);
-     	Thread.sleep(1000);
-     	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
-     }else {
-    	 smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
-         Thread.sleep(1000);
-         safeAct.safeClick(seeMoreProductDetailsButtonIndividualPageBy);
-			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", testName);
-         System.out.println("'See More Details' clicked.");
-     }
-   
-} catch (Exception e1) {
-    
-	smoothScrollToElement(showMoreOnlyIndividualPage);
-	Thread.sleep(1000);
-	
-	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
-	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
-	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", testName);
-
-    Thread.sleep(1000);
-	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
- 
-}finally {
-	Thread.sleep(1000);
-	closeCurrentWindowAndSwitchBack(currentWindow);
-	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
-}
-
-
- return  productResult;
- 
- 
- }
+//} catch (Exception e) {
+//	log.info("[{}] Failed to Ctrl+Click product index " + productIndex+"  for filter value->"+filterValue, testName);
+//    System.out.println("Failed to Ctrl+Click product index " + productIndex);
+//}
+//
+//System.out.println("Clicked on the producct name new pop-up should open");
+//log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", testName);
+//
+//String name="";
+//try {
+//name = fetchTextWithRetries(productNameIndividualPage, safeAct);
+//String keyFeatures = fetchTextWithRetries(productKeyFeatureBlock, safeAct);
+//String about = fetchTextWithRetries(aboutThisItemBulletPoint, safeAct);
+//String techDetails = fetchTextWithRetries(technicalDetailsBlockIndividualPage, safeAct);
+//
+//addFieldIfPresent("title",name ,filterValue,productIndex,productResult);
+//addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productIndex,productResult);
+//addFieldIfPresent("about",about ,filterValue,productIndex,productResult);
+//addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,productResult);
+//log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", testName);
+//
+//}catch(Exception e) {
+//	log.info("[{}] Something went wrong while switching or extracting the details", testName);
+//
+//}
+//
+//
+//try {
+//	 if(isElementInViewport(showMoreOnlyIndividualPage)) {
+//     	String productNamePlusIndex="Product Index="+productIndex;
+//     	smoothScrollToElement(reportAnIssue);
+//     	Thread.sleep(1000);
+//     	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+//			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
+//     }else {
+//    	 smoothScrollToElement(seeMoreProductDetailsButtonIndividualPageBy);
+//         Thread.sleep(1000);
+//         safeAct.safeClick(seeMoreProductDetailsButtonIndividualPageBy);
+//			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", testName);
+//         System.out.println("'See More Details' clicked.");
+//     }
+//   
+//} catch (Exception e1) {
+//    
+//	smoothScrollToElement(showMoreOnlyIndividualPage);
+//	Thread.sleep(1000);
+//	
+//	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
+//	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+//	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", testName);
+//
+//    Thread.sleep(1000);
+//	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
+// 
+//}finally {
+//	Thread.sleep(1000);
+//	closeCurrentWindowAndSwitchBack(currentWindow);
+//	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
+//}
+//
+//
+// return  productResult;
+// 
+// 
+// }
  
  
 
