@@ -1,0 +1,36 @@
+2025-12-12 04:22:38.195 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] 🔹 Starting test method: verifyingGetItByTodayFilterFunctionality
+2025-12-12 04:22:38.287 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-12 04:22:38.318 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-12 04:22:39.704 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2025-12-12 04:22:40.366 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Opening amazon Landing page
+2025-12-12 04:22:45.049 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Giving input within the search bar
+2025-12-12 04:22:45.049 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Within safeClick method
+2025-12-12 04:22:46.939 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (14222228d6037c70a958f73b4df063b9)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-12-12 04:22:46.939 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicking on the submit in the search bar
+2025-12-12 04:22:47.186 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Waiting until element is visible in viewport
+2025-12-12 04:22:57.597 PM [TestNG-test-Test-1] WARN  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality]  Filter option 'Get It Today' does not exist. Skipping the test.
+2025-12-12 04:22:57.606 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] ✅ Finished test method: verifyingGetItByTodayFilterFunctionality
+2025-12-12 04:22:58.134 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] 🔹 Starting test method: verifyingGetItByTodayFilterFunctionality
+2025-12-12 04:22:58.134 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-12 04:22:58.640 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-12 04:22:59.971 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2025-12-12 04:23:00.714 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Opening amazon Landing page
+2025-12-12 04:23:06.471 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Giving input within the search bar
+2025-12-12 04:23:06.472 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Within safeClick method
+2025-12-12 04:23:09.032 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (c5095f3ff57a8e3cc0115d4ef61f6116)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-12-12 04:23:09.032 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicking on the submit in the search bar
+2025-12-12 04:23:09.263 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Waiting until element is visible in viewport
+2025-12-12 04:23:19.754 PM [TestNG-test-Test-1] WARN  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality]  Filter option 'Get It Today' does not exist. Skipping the test.
+2025-12-12 04:23:19.759 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] ✅ Finished test method: verifyingGetItByTodayFilterFunctionality
+2025-12-12 04:23:20.355 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] 🔹 Starting test method: verifyingGetItByTodayFilterFunctionality
+2025-12-12 04:23:20.355 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-12 04:23:20.369 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-12 04:23:21.941 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2025-12-12 04:23:22.129 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Opening amazon Landing page
+2025-12-12 04:23:28.230 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Giving input within the search bar
+2025-12-12 04:23:28.231 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Within safeClick method
+2025-12-12 04:23:32.635 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (0612a429793c6de8a3298cb4c744c587)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-12-12 04:23:32.635 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Clicking on the submit in the search bar
+2025-12-12 04:23:32.837 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality] Waiting until element is visible in viewport
+2025-12-12 04:23:43.171 PM [TestNG-test-Test-1] WARN  [verifyingGetItByTodayFilterFunctionality] [verifyingGetItByTodayFilterFunctionality]  Filter option 'Get It Today' does not exist. Skipping the test.
+2025-12-12 04:23:43.175 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTodayFilterFunctionality] ✅ Finished test method: verifyingGetItByTodayFilterFunctionality
