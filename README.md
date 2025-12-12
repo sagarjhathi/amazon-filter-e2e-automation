@@ -343,12 +343,5 @@ Email notifications are slower and often ignored. Discord provides real time not
 
 ---
 
-# GIF Placeholders
-Visual examples can be added here in the future to show CI notifications or GitHub Pages report previews.
 
-```
-[CI Start Notification GIF]
-[CI Completion GIF]
-[GitHub Pages Report GIF]
-```
 
