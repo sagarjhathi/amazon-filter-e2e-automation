@@ -76,8 +76,8 @@ public class SharedFilterFlows extends BasePage {
 
 		System.out.println("Execution is Not CRON Job Hence refering to normal keys from UtilData");
 			
-		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
-		if(runAll==false) {
+		    boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
+	     	if(runAll==false) {
 			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 			System.out.println(filterOptionSize +" is the  filterOptionSize");
 		   }
@@ -111,7 +111,7 @@ public class SharedFilterFlows extends BasePage {
 			String currentWindow = driver.getWindowHandle();
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
-			int productNameListingPageSize=0;
+			int productNameListingPageSize=productNameListingPage.size();
 			
 			
 			if(isCron) {
