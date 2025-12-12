@@ -8,6 +8,25 @@ This project is designed to feel polished, easy to understand, and impressive to
 
 ---
 
+
+# Table of Contents
+
+Use this index to quickly navigate the README. Click any entry to jump to that section.
+
+- [Technology Stack](#technology-stack)
+- [Key Highlights](#key-highlights)
+- [Architecture](#architecture)
+- [Execution Flow](#execution-flow)
+- [CI and Reporting Intelligence](#ci-and-reporting-intelligence)
+- [Discord Notifications](#discord-notifications)
+- [Folder Structure](#folder-structure)
+- [Running Tests](#running-tests)
+- [Engineering Decisions Explained](#engineering-decisions-explained)
+- [Extending the Framework](#extending-the-framework)
+- [Troubleshooting](#troubleshooting)
+
+
+
 # Technology Stack
 
 This framework is built using a rich, modern, and production oriented technology stack. The goal of this section is to clearly showcase every major technology, tool, subsystem, and engineering concept powering the project. This is one of the strongest aspects of the framework, so this version highlights it with the visibility it deserves.
