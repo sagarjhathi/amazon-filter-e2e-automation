@@ -64,7 +64,7 @@ public class PriceSliderFlows extends BasePage{
 			Thread.sleep(1000);
 			
 			// Click 'Go' / Apply
-			safeAct.safeClick(productPage.priceSliderSubmitButton);
+		
 			log.info("[{}] Hitting the submit button", ThreadContext.get("testName"));
 
 			Thread.sleep(2000);
@@ -88,6 +88,7 @@ public class PriceSliderFlows extends BasePage{
 			boolean isValid = true;
 
 			String testName = ThreadContext.get("logFileName");
+			genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
 			ScreenshotUtil.capture(testName,appliedFilter);
 
 			for (int j = 0; j < prices.size(); j++) {

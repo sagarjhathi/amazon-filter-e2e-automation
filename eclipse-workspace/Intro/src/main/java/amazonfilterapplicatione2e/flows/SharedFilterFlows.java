@@ -57,19 +57,19 @@ public class SharedFilterFlows extends BasePage {
 		
 		int filterOptionSize=filterOptions.size();
 		if(isCron) {
-			
+
 			log.info("[{}] Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData", ThreadContext.get("testName"));
 
 			System.out.println("Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData");
-			
+
 			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptionsCI", false);
 			System.out.println("runAll is"+runAll);
 			if(runAll==false) {
 				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 				System.out.println(filterOptionSize +" is the  filterOptionSize");
 			}
-			
-			
+
+
 		}else {
 		
 			log.info("[{}] Execution is Not CRON Job Hence refering to normal keys from UtilData", ThreadContext.get("testName"));
