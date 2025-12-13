@@ -9,7 +9,7 @@
       <class name="test.java.tests.AmazonTests">
           	
           	<methods>
-          	<include name="verifyingPriceSilderFunctionality"></include>
+          	<include name="verifyingDiscountFilterFunctionality"></include>
           	
           	</methods>
  	
