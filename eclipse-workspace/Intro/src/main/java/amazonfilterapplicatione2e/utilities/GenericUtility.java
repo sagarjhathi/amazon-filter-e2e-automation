@@ -401,6 +401,33 @@ public class GenericUtility extends ProductListingPage{
 		throw new RuntimeException("Timeout waiting for new window");
 	}
  
+	
+	
+	public boolean containsCheck(String toBeChecked,String toBeCheckedIn) {
+		
+		String[] list=toBeChecked.split("\\s+");
+		int trueCount=0;
+		int falseCount=0;
+		boolean bool=true;
+		for(int i=0;i<list.length;i++) {
+			String str=list[i];
+			
+			if(toBeCheckedIn.contains(str)) {
+				
+				trueCount++;
+				log.error("[{}] Text present within Under containsCheck Method, text checked is  "+list[i], ThreadContext.get("testName"));
+			}else {
+				bool=false;
+				falseCount++;
+				log.error("[{}] Text Not present within Under containsCheck Method, text checked is  "+list[i], ThreadContext.get("testName"));
+			}
+		}
+		
+		
+		return bool;
+		
+		
+	}
 
  }
  

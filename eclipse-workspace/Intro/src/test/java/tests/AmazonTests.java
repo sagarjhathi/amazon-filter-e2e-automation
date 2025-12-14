@@ -945,10 +945,10 @@ public class AmazonTests extends BaseTest {
 			String about = genericUtility.safeLower(product.get("about"));
 			String techDetails = genericUtility.safeLower(product.get("techDetails"));
 
-			boolean isMatch = title.contains(filter)
-					|| keyFeatures.contains(filter)
-					|| about.contains(filter)
-					|| techDetails.contains(filter);
+			boolean isMatch = genericUtility.containsCheck(filter, title)
+					|| genericUtility.containsCheck(filter,keyFeatures)
+					|| genericUtility.containsCheck(filter,about)
+					|| genericUtility.containsCheck(filter,techDetails);
 
 			if (!isMatch) {
 
