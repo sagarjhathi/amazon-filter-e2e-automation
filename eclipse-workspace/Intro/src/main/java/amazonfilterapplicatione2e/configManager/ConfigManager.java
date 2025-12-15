@@ -71,6 +71,16 @@ public final class ConfigManager {
 	    }
 	    
 	    
+	    
+	    public static int getInt(String key) {
+	        String v = get(key);
+	        try { 
+	            return Integer.parseInt(v.trim()); 
+	        } catch (NumberFormatException e) {
+	            return 0;
+	        }
+	    }
+	    
 	
 	    
 	    

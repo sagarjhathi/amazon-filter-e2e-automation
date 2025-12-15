@@ -65,7 +65,8 @@ public class SharedFilterFlows extends BasePage {
 			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptionsCI", false);
 			System.out.println("runAll is"+runAll);
 			if(runAll==false) {
-				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
+				int overideFilteOptionsCountDefault=ConfigManager.getInt("overideFilteOptionsCountDefault");
+				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", overideFilteOptionsCountDefault);
 				System.out.println(filterOptionSize +" is the  filterOptionSize");
 			}
 
@@ -74,11 +75,12 @@ public class SharedFilterFlows extends BasePage {
 		
 			log.info("[{}] Execution is Not CRON Job Hence refering to normal keys from UtilData", ThreadContext.get("testName"));
 
-		System.out.println("Execution is Not CRON Job Hence refering to normal keys from UtilData");
+	    	System.out.println("Execution is Not CRON Job Hence refering to normal keys from UtilData");
 			
 		    boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 	     	if(runAll==false) {
-			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
+	     	int overideFilteOptionsCountDefault=ConfigManager.getInt("overideFilteOptionsCountDefault");
+			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", overideFilteOptionsCountDefault);
 			System.out.println(filterOptionSize +" is the  filterOptionSize");
 		   }
 		
@@ -119,7 +121,8 @@ public class SharedFilterFlows extends BasePage {
 
 				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListingCI", false);
 				if(runAllProducts==false) {
-					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
+					int overideProductsListingCountDefault=ConfigManager.getInt("overideProductsListingCountDefault");
+					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", overideProductsListingCountDefault);
 					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
 					log.info("[{}] Limiting traversal to in-loop size to prevent IndexOutOfBoundsException in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
@@ -130,7 +133,10 @@ public class SharedFilterFlows extends BasePage {
 
 				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
 				if(runAllProducts==false) {
-					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
+					
+					int overideProductsListingCountDefault=ConfigManager.getInt("overideProductsListingCountDefault");
+
+					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", overideProductsListingCountDefault);
 					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
 				}
 			}
