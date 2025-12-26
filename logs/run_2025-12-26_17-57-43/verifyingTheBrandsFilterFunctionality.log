@@ -1,0 +1,36 @@
+2025-12-26 07:17:53.241 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] 🔹 Starting test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:53.244 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-26 07:17:53.252 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-26 07:17:54.460 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-26 07:17:54.945 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] [verifyingTheBrandsFilterFunctionality] Opening amazon Landing page
+2025-12-26 07:17:54.976 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ✅ Finished test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:55.111 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] 🔹 Starting test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:55.111 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-26 07:17:55.119 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-26 07:17:56.465 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-26 07:17:56.888 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] [verifyingTheBrandsFilterFunctionality] Opening amazon Landing page
+2025-12-26 07:17:56.950 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ✅ Finished test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:57.088 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] 🔹 Starting test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:57.088 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-26 07:17:57.095 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-26 07:17:58.343 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-26 07:17:58.391 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] [verifyingTheBrandsFilterFunctionality] Opening amazon Landing page
+2025-12-26 07:17:58.962 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ✅ Finished test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:59.132 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] 🔹 Starting test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:17:59.132 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-26 07:17:59.140 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-26 07:18:00.460 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-26 07:18:00.507 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] [verifyingTheBrandsFilterFunctionality] Opening amazon Landing page
+2025-12-26 07:18:01.033 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ✅ Finished test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:18:01.177 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] 🔹 Starting test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:18:01.177 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-26 07:18:01.183 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-26 07:18:02.384 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-26 07:18:02.772 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] [verifyingTheBrandsFilterFunctionality] Opening amazon Landing page
+2025-12-26 07:18:02.819 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ✅ Finished test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:18:02.964 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] 🔹 Starting test method: verifyingTheBrandsFilterFunctionality
+2025-12-26 07:18:02.964 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-26 07:18:02.971 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-26 07:18:04.310 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-26 07:18:04.667 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] [verifyingTheBrandsFilterFunctionality] Opening amazon Landing page
+2025-12-26 07:18:04.718 PM [TestNG-test-Test-2] INFO  [verifyingTheBrandsFilterFunctionality] ✅ Finished test method: verifyingTheBrandsFilterFunctionality
