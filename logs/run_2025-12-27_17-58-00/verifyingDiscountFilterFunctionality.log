@@ -1,0 +1,37 @@
+2025-12-27 05:58:16.908 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:16.936 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-27 05:58:16.943 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] Loaded config from classpath: UtilData.properties
+2025-12-27 05:58:19.417 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-27 05:58:26.542 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-27 05:58:28.536 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-12-27 05:58:28.622 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:28.810 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:28.810 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-27 05:58:29.071 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-27 05:58:31.431 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-27 05:58:32.090 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-12-27 05:58:32.238 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:32.447 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:32.447 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-27 05:58:32.463 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-27 05:58:34.758 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-27 05:58:35.412 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-12-27 05:58:35.475 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:35.684 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:35.684 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-27 05:58:35.700 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-27 05:58:37.967 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-27 05:58:38.624 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-12-27 05:58:38.716 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:38.950 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:38.951 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-27 05:58:38.979 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-27 05:58:40.371 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-27 05:58:41.100 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-12-27 05:58:41.235 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:41.495 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] 🔹 Starting test method: verifyingDiscountFilterFunctionality
+2025-12-27 05:58:41.495 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-12-27 05:58:41.509 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-12-27 05:58:43.002 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ChromeDriver initialized successfully for thread: 35
+2025-12-27 05:58:43.903 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] [verifyingDiscountFilterFunctionality] Opening amazon Landing page
+2025-12-27 05:58:43.941 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality] ✅ Finished test method: verifyingDiscountFilterFunctionality
