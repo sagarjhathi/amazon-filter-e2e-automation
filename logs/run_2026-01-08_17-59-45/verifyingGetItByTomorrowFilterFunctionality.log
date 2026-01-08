@@ -1,0 +1,36 @@
+2026-01-08 06:03:17.139 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:17.143 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-08 06:03:17.153 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-08 06:03:18.532 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-08 06:03:19.083 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
+2026-01-08 06:03:19.130 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:19.270 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:19.270 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-08 06:03:19.278 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-08 06:03:20.597 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-08 06:03:20.641 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
+2026-01-08 06:03:23.172 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:23.348 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:23.348 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-08 06:03:23.356 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-08 06:03:24.660 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-08 06:03:25.148 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
+2026-01-08 06:03:25.188 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:25.352 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:25.352 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-08 06:03:25.360 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-08 06:03:26.672 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-08 06:03:26.728 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
+2026-01-08 06:03:27.122 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:27.363 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:27.364 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-08 06:03:27.375 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-08 06:03:28.786 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-08 06:03:28.830 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
+2026-01-08 06:03:29.223 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:29.382 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] 🔹 Starting test method: verifyingGetItByTomorrowFilterFunctionality
+2026-01-08 06:03:29.382 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-08 06:03:29.392 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-08 06:03:30.799 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-08 06:03:30.857 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] [verifyingGetItByTomorrowFilterFunctionality] Opening amazon Landing page
+2026-01-08 06:03:31.330 PM [TestNG-test-Test-1] INFO  [verifyingGetItByTomorrowFilterFunctionality] ✅ Finished test method: verifyingGetItByTomorrowFilterFunctionality
