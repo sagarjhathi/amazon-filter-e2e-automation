@@ -1,0 +1,36 @@
+2026-01-15 07:03:17.939 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:17.941 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-15 07:03:17.952 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-15 07:03:19.215 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-15 07:03:19.319 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2026-01-15 07:03:19.858 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ✅ Finished test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:20.005 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:20.005 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-15 07:03:20.012 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-15 07:03:21.100 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-15 07:03:21.471 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2026-01-15 07:03:21.524 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ✅ Finished test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:21.651 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:21.651 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-15 07:03:21.658 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-15 07:03:22.794 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-15 07:03:22.849 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2026-01-15 07:03:23.216 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ✅ Finished test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:23.341 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:23.341 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-15 07:03:23.349 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-15 07:03:24.542 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-15 07:03:24.923 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2026-01-15 07:03:24.970 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ✅ Finished test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:25.109 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:25.109 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-15 07:03:25.116 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-15 07:03:26.328 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-15 07:03:26.695 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2026-01-15 07:03:26.794 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ✅ Finished test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:26.936 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2026-01-15 07:03:26.936 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-15 07:03:26.944 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-15 07:03:27.965 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-15 07:03:28.324 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2026-01-15 07:03:28.367 PM [TestNG-test-Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ✅ Finished test method: verifyingOperatingSystemVersionFilterFunctionality
