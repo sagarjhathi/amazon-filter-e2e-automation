@@ -1,5 +1,7 @@
 package main.java.amazonfilterapplicatione2e.reporting;
-import java.io.IOException;
+import java.io.IOException; 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -7,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -293,7 +296,7 @@ public class TestListener implements ITestListener {
         System.out.println("VMARK: buildPublicUrl input='" + relativeFromSiteRoot + "'");
 
         // sanitize purely relative
-        String rel = relativeFromSiteRoot.replace("\\", "/");
+        String rel = encodePath(relativeFromSiteRoot.replace("\\", "/"));
         while (rel.startsWith("./"))  rel = rel.substring(2);
         while (rel.startsWith("../")) rel = rel.substring(3);
         if (rel.startsWith("/"))      rel = rel.substring(1);
@@ -335,6 +338,14 @@ public class TestListener implements ITestListener {
 
 
 
+    private String encodePath(String path) {
+        return Stream.of(path.split("/"))
+            .map(seg -> URLEncoder.encode(seg, StandardCharsets.UTF_8)
+                    .replace("+", "%20")) // spaces
+            .collect(Collectors.joining("/"));
+    }
+    
+    
 
     private String formatFailureMessage(String message) {
         if (message != null && message.contains("Brand filter") && message.contains("📦 Title:")) {
