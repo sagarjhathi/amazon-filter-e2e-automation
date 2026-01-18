@@ -1,0 +1,36 @@
+2026-01-18 06:21:08.004 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:08.008 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:21:08.016 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:21:09.370 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:21:10.017 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:21:10.060 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:10.237 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:10.237 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:21:10.248 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:21:11.502 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:21:11.944 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:21:11.974 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:12.315 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:12.315 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:21:12.322 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:21:13.686 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:21:13.746 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:21:14.284 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:14.418 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:14.418 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:21:14.427 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:21:15.950 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:21:16.520 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:21:16.550 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:16.878 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:16.878 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:21:16.930 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:21:18.902 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:21:18.987 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:21:19.460 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:19.609 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] 🔹 Starting test method: verifyingDisplayTypeFilterFunctionality
+2026-01-18 06:21:19.609 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:21:19.622 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:21:21.145 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:21:21.224 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] [verifyingDisplayTypeFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:21:21.608 PM [TestNG-test-Test-1] INFO  [verifyingDisplayTypeFilterFunctionality] ✅ Finished test method: verifyingDisplayTypeFilterFunctionality

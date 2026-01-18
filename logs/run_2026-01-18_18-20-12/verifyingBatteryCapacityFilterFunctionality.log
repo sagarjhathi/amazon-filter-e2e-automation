@@ -1,0 +1,44 @@
+2026-01-18 06:20:22.690 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] 🔹 Starting test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:22.717 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:20:22.723 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] Loaded config from classpath: UtilData.properties
+2026-01-18 06:20:24.506 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:20:33.570 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:20:35.300 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:20:35.418 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ✅ Finished test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:35.570 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] 🔹 Starting test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:35.570 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:20:35.768 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:20:37.277 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:20:37.784 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:20:37.858 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ✅ Finished test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:37.988 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] 🔹 Starting test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:37.988 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:20:38.004 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:20:39.464 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:20:40.009 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:20:40.074 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ✅ Finished test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:40.291 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] 🔹 Starting test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:40.291 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:20:40.303 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:20:41.676 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:20:42.139 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:20:44.452 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Giving input within the search bar
+2026-01-18 06:20:44.452 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Within safeClick method
+2026-01-18 06:20:47.392 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (d94ee3657915a10c32b39e7cb14a4bf9)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2026-01-18 06:20:47.392 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Clicking on the submit in the search bar
+2026-01-18 06:20:47.603 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Within filterCheckUnderList method
+2026-01-18 06:20:48.091 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Filter option does not exist within the filter check List
+2026-01-18 06:20:48.091 PM [TestNG-test-Test-1] WARN  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.
+2026-01-18 06:20:48.095 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ✅ Finished test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:48.336 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] 🔹 Starting test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:48.337 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:20:48.351 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:20:50.014 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:20:50.403 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:20:50.450 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ✅ Finished test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:50.614 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] 🔹 Starting test method: verifyingBatteryCapacityFilterFunctionality
+2026-01-18 06:20:50.615 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-01-18 06:20:50.627 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] WebDriverManager: chromedriver setup OK
+2026-01-18 06:20:52.112 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ChromeDriver initialized successfully for thread: 34
+2026-01-18 06:20:52.542 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] [verifyingBatteryCapacityFilterFunctionality] Opening amazon Landing page
+2026-01-18 06:20:52.576 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality] ✅ Finished test method: verifyingBatteryCapacityFilterFunctionality
