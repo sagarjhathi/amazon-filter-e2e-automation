@@ -22,6 +22,8 @@ public class AmazonLandingPage extends BasePage{
 	@FindBy(xpath="//input[@placeholder='Search Amazon.in']")
 	WebElement searchBarLandingPage;
 	
+	public By amazonLogoLandingPage= By.xpath("//a[@id='nav-logo-sprites']");
+	
 	By searchBarLandingPageBy=By.xpath("//input[@placeholder='Search Amazon.in']");
 	
 	@FindBy(xpath="//input[@id='nav-search-submit-button']")

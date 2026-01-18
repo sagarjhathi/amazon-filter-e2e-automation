@@ -911,6 +911,7 @@ public class AmazonTests extends BaseTest {
 		
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
+		SafeActions act=new SafeActions();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		ProductListingPage productPage=new ProductListingPage();
 		GenericUtility genericUtility=new GenericUtility();
@@ -919,6 +920,7 @@ public class AmazonTests extends BaseTest {
 		
 
 		landingPage.openingLandingPage();
+		act.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
