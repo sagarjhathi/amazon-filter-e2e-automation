@@ -74,9 +74,17 @@ public class ScreenshotUtil {
         String folderPath = "test-output/screenshots/Run_" + ExtentManager.RUN_TIMESTAMP + "/" + testName;
         new File(folderPath).mkdirs();
 
-        String fileName = (customName != null && !customName.isEmpty())
-                ? customName + "__" + timestamp + ".png"
-                : testName + "__" + timestamp + ".png";
+//        String fileName = (customName != null && !customName.isEmpty())
+//                ? customName + "__" + timestamp + ".png"
+//                : testName + "__" + timestamp + ".png";
+        
+        String baseName = (customName != null && !customName.isEmpty())
+                ? customName
+                : testName;
+
+        baseName = safeFileName(baseName);
+
+        String fileName = baseName + "__" + timestamp + ".png";
 
         String fullPath = folderPath + "/" + fileName;
         WebDriver driver = DriverManager.getDriver();
@@ -112,6 +120,15 @@ public class ScreenshotUtil {
     
 
     
+    private static String safeFileName(String input) {
+        if (input == null) return "unknown";
+
+        return input
+                .replace("%", "percent")
+                .replaceAll("[^a-zA-Z0-9._-]", "_")
+                .replaceAll("_+", "_")
+                .trim();
+    }
 
 
     
