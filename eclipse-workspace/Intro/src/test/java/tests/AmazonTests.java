@@ -68,12 +68,15 @@ public class AmazonTests extends BaseTest {
 		
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
+		
 		CaptchaHandler capHandler=new CaptchaHandler();
 		ProductListingPage productPage=new ProductListingPage();
 	    GenericUtility genericUtility=new GenericUtility();
 	    DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
 		
 		landingPage.openingLandingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();                   
@@ -120,6 +123,8 @@ public class AmazonTests extends BaseTest {
 		 
 		 
 		 landingPage.openingLandingPage();
+			SafeActions safeAct = new SafeActions();
+			safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
  		 capHandler.handleCaptcha();
  		 landingPage.givingInputWithinSearchBar(input);
          landingPage.clickingOnSubmitSearchButton();
@@ -165,6 +170,8 @@ public class AmazonTests extends BaseTest {
 		
  		
  		landingPage.openingLandingPage();
+ 		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
@@ -213,6 +220,8 @@ public class AmazonTests extends BaseTest {
 
 
 		landingPage.openingLandingPage();
+	
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
@@ -285,6 +294,8 @@ public class AmazonTests extends BaseTest {
 		
 		
 		landingPage.openingLandingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
@@ -361,6 +372,8 @@ public class AmazonTests extends BaseTest {
 
 
 		landingPage.openingLandingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
@@ -429,6 +442,8 @@ public class AmazonTests extends BaseTest {
 
 
 		landingPage.openingLandingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
@@ -511,6 +526,8 @@ public class AmazonTests extends BaseTest {
         
 
         landingPage.openingLandingPage();
+    	SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
         capHandler.handleCaptcha();
         landingPage.givingInputWithinSearchBar(input);
         landingPage.clickingOnSubmitSearchButton();
@@ -594,6 +611,8 @@ public class AmazonTests extends BaseTest {
 		
        
         landingPage.openingLandingPage();
+    	SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
         capHandler.handleCaptcha();
         landingPage.givingInputWithinSearchBar(input);
         landingPage.clickingOnSubmitSearchButton();
@@ -676,6 +695,8 @@ public class AmazonTests extends BaseTest {
 
 
 		landingPage.openingLandingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
@@ -754,7 +775,9 @@ public class AmazonTests extends BaseTest {
 		SoftAssert softAssert = new SoftAssert();
 		
 		
-		  landingPage.openingLandingPage();		
+		  landingPage.openingLandingPage();	
+			SafeActions safeAct = new SafeActions();
+			safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		  capHandler.handleCaptcha();
 		  landingPage.givingInputWithinSearchBar(input);
 		  landingPage.clickingOnSubmitSearchButton();
@@ -836,6 +859,8 @@ public class AmazonTests extends BaseTest {
 		StringBuilder failureMessage = new StringBuilder();
 
 		landingPage.openingLandingPage();
+		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();

@@ -8,6 +8,7 @@ eclipse-workspace/Intro/test-output/
 eclipse-workspace/Intro/logs/
 logs/
 
+eclipse-workspace/Intro/bin
 
 # Eclipse specific files
 eclipse-workspace/.metadata/
