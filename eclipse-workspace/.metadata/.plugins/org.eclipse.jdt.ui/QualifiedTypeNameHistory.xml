@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="main.java.amazonfilterapplicatione2e.fileReader.FileReader"/>
-    <fullyQualifiedTypeName name="org.openqa.selenium.By"/>
-    <fullyQualifiedTypeName name="java.time.Duration"/>
-    <fullyQualifiedTypeName name="main.java.amazonfilterapplicatione2e.configManager.ConfigManager"/>
-    <fullyQualifiedTypeName name="java.lang.Thread"/>
-</qualifiedTypeNameHistroy>
