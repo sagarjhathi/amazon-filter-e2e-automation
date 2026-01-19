@@ -1,0 +1,12 @@
+2025-11-20 10:35:19.652 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] 🔹 Starting test method: verifyingOperatingSystemVersionFilterFunctionality
+2025-11-20 10:35:19.677 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2025-11-20 10:35:20.053 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] WebDriverManager: chromedriver setup OK
+2025-11-20 10:35:21.348 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] ChromeDriver initialized successfully for thread: 29
+2025-11-20 10:35:24.327 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Opening amazon Landing page
+2025-11-20 10:35:28.838 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Capturing screenshot: search bar error capture__2025-11-20_223528.png
+2025-11-20 10:35:29.174 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Screenshot saved at: test-output/screenshots/Run_2025-11-20_22-35-18/verifyingOperatingSystemVersionFilterFunctionality/search bar error capture__2025-11-20_223528.png
+2025-11-20 10:35:29.379 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Giving input within the search bar
+2025-11-20 10:35:29.379 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Within safeClick method
+2025-11-20 10:35:39.929 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Clicked the  [[ChromeDriver: chrome on windows (b455a92ea927a659c857a797ed256564)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+2025-11-20 10:35:39.930 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Clicking on the submit in the search bar
+2025-11-20 10:35:40.098 PM [TestNG-test=Test-1] INFO  [verifyingOperatingSystemVersionFilterFunctionality] [verifyingOperatingSystemVersionFilterFunctionality] Within filterCheckUnderList method
