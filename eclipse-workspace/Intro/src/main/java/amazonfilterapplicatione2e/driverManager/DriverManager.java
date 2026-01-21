@@ -26,7 +26,7 @@ public class DriverManager {
 
 			try {            	
 			
-				String browser = ConfigManager.get("browser", "chrome");
+				String browser=System.getProperty("browser")!=null?System.getProperty("browser"):ConfigManager.get("browser", "chrome");
 				if (browser != null) browser = browser.trim().toLowerCase(Locale.ENGLISH);
 
 				switch (browser) {
