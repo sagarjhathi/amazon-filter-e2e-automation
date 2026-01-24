@@ -1,5 +1,7 @@
 package main.java.amazonfilterapplicatione2e.driverManager;
-import java.util.List;
+import java.net.URI;
+import java.net.URL;
+import java.util.List; 
 import java.util.Locale;
 import java.util.Map;
 
@@ -7,10 +9,12 @@ import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 
-public class DriverManager {
+public class DriverManager  {
 
 	protected static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 	private  static Logger log = LoggerUtility.getLogger(DriverManager.class);
@@ -59,8 +63,16 @@ public class DriverManager {
 						String local = ConfigManager.get("webdriver.firefox.local.path", "");
 						if (!local.isBlank()) System.setProperty("webdriver.gecko.driver", local);
 					}
-
+				
 					WebDriver firefoxDriver = new org.openqa.selenium.firefox.FirefoxDriver(firefoxOptions);
+				
+					
+//					URI gridUri = URI.create("http://192.168.0.112:4444");
+//					URL gridUrl = gridUri.toURL();
+//
+//					WebDriver firefoxDriver =
+//					        new RemoteWebDriver(gridUrl, firefoxOptions);
+
 					driver.set(firefoxDriver);
 					try { firefoxDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
 
