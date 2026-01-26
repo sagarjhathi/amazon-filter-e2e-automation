@@ -15,7 +15,6 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 public class BaseTest {
  
 	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
-
 	protected WebDriver driver;
 	@BeforeMethod
 	public void setUp(Method method) {
@@ -30,6 +29,7 @@ public class BaseTest {
 
 		DriverManager.initDriver();
 		driver = DriverManager.getDriver();
+		
 	}
 
 	@AfterMethod
@@ -37,6 +37,7 @@ public class BaseTest {
 		log.info("✅ Finished test method: " + result.getName());
 		ThreadContext.clearAll();  //Critical to avoid context bleed
 		DriverManager.quitDriver();
+		
 	}
 
 
