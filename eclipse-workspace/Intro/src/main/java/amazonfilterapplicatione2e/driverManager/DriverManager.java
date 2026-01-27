@@ -165,11 +165,7 @@ public class DriverManager  {
 
 					org.openqa.selenium.chrome.ChromeOptions options = new org.openqa.selenium.chrome.ChromeOptions();
 
-					options.addArguments(
-						    "--blink-settings=imagesEnabled=false",
-						    "--disable-gpu",
-						    "--disable-extensions"
-						);
+					
 					
 					if (ConfigManager.getBoolean("chrome.arg.start_maximized", true)) {
 						options.addArguments("--start-maximized");
@@ -192,6 +188,13 @@ public class DriverManager  {
 					}
 					if(ConfigManager.getBoolean("chrome.headless", false)) {
 						options.addArguments("--headless");
+					}
+					if(ConfigManager.getBoolean("disable.image.loading", false)) {
+						options.addArguments(
+							    "--blink-settings=imagesEnabled=false",
+							    "--disable-gpu",
+							    "--disable-extensions"
+							);
 					}
 
 
