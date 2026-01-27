@@ -84,6 +84,13 @@ public class DriverManager  {
 					if (ConfigManager.getBoolean("firefox.headless", false)) {
 						firefoxOptions.addArguments("-headless");
 					}
+					if(ConfigManager.getBoolean("disable.image.loading", false)) {
+						firefoxOptions.addArguments(
+							    "--blink-settings=imagesEnabled=false",
+							    "--disable-gpu",
+							    "--disable-extensions"
+							);
+					}
 
 
 					try {
@@ -135,6 +142,13 @@ public class DriverManager  {
 					}
 					if(ConfigManager.getBoolean("chrome.headless", false)) {
 						edgeOptions.addArguments("--headless");
+					}
+					if(ConfigManager.getBoolean("disable.image.loading", false)) {
+						edgeOptions.addArguments(
+							    "--blink-settings=imagesEnabled=false",
+							    "--disable-gpu",
+							    "--disable-extensions"
+							);
 					}
 
 					boolean useExtEdge = ConfigManager.getBoolean("edge.use.automation.extension", false);
