@@ -27,6 +27,7 @@ import org.openqa.selenium.remote.http.Routable;
 
 import java.util.function.Predicate;
 
+import main.java.amazonfilterapplicatione2e.SeleniumGrid.GlobalGridUtility;
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 
@@ -41,15 +42,11 @@ import java.util.List;
 
 public class DriverManager  {
 	
-	
-	
-	
 
 	protected static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-	
-
 	private  static Logger log = LoggerUtility.getLogger(DriverManager.class);
 
+	
 	public static WebDriver getDriver() {
 		return driver.get();
 	}
@@ -104,13 +101,11 @@ public class DriverManager  {
 				
 					WebDriver firefoxDriver = new org.openqa.selenium.firefox.FirefoxDriver(firefoxOptions);
 				
+				
+					if(ConfigManager.getBoolean("firefox.runOnGrid", false)) {
+					firefoxDriver=GlobalGridUtility.createRemoteFirefoxDriver(ConfigManager.get("gridHubUrl"), firefoxOptions);
+					}
 					
-//					URI gridUri = URI.create("http://192.168.0.112:4444");
-//					URL gridUrl = gridUri.toURL();
-//
-//					WebDriver firefoxDriver =
-//					        new RemoteWebDriver(gridUrl, firefoxOptions);
-
 					driver.set(firefoxDriver);
 					try { firefoxDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
 
@@ -168,6 +163,11 @@ public class DriverManager  {
 
 
 					WebDriver edgeDriver = new org.openqa.selenium.edge.EdgeDriver(edgeOptions);
+					
+
+					if(ConfigManager.getBoolean("edge.runOnGrid", false)) {
+						edgeDriver=GlobalGridUtility.createRemoteEdgeDriver(ConfigManager.get("gridHubUrl"), edgeOptions);
+					}
 					driver.set(edgeDriver);
 					try { edgeDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
 					log.info("EdgeDriver initialized successfully for thread: {}", Thread.currentThread().threadId());
@@ -223,6 +223,9 @@ public class DriverManager  {
 
 					WebDriver chromeDriver = new org.openqa.selenium.chrome.ChromeDriver(options);
 					
+					if(ConfigManager.getBoolean("chrome.runOnGrid", false)) {
+						chromeDriver=GlobalGridUtility.createRemoteChromeDriver(ConfigManager.get("gridHubUrl"), options);
+					}
 					
 
 					driver.set(chromeDriver);
