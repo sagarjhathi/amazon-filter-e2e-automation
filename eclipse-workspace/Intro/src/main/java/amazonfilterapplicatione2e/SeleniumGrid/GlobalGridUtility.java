@@ -11,7 +11,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class GlobalGridUtility {
-
+//This file and methods are with respect to the situation where the Local machine acts as Grid,Hub and also the Node is present on the same local machine.
 	
 	public static WebDriver createRemoteFirefoxDriver(String gridHubUrl,FirefoxOptions firefoxOptions) {
 		
