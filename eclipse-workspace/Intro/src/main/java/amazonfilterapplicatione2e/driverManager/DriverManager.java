@@ -223,6 +223,7 @@ public class DriverManager  {
 
 					WebDriver chromeDriver = new org.openqa.selenium.chrome.ChromeDriver(options);
 					
+					
 					if(ConfigManager.getBoolean("chrome.runOnGrid", false)) {
 						chromeDriver=GlobalGridUtility.createRemoteChromeDriver(ConfigManager.get("gridHubUrl"), options);
 					}
