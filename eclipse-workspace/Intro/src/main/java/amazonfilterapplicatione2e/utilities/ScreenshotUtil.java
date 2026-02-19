@@ -84,7 +84,16 @@ public class ScreenshotUtil {
 
         baseName = safeFileName(baseName);
 
-        String fileName = baseName + "__" + timestamp + ".png";
+//        String screenshotFormat=ConfigManager.get("screenshotImageFormat");
+//        String fileName = baseName + "__" + timestamp + ".jpg";
+        String fileName;
+        try {
+        	String screenshotFormat=ConfigManager.get("screenshotImageFormat");
+             fileName = baseName + "__" + timestamp + screenshotFormat;
+        }catch(Exception e) {
+        	 fileName = baseName + "__" + timestamp + ".jpg";
+        	 log.info("[{}] format type fetching failed attaching jpg as default format", ThreadContext.get("testName"));
+        }
 
         String fullPath = folderPath + "/" + fileName;
         WebDriver driver = DriverManager.getDriver();
