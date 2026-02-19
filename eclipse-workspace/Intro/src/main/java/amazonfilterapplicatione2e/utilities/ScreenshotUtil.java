@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.utilities;
-
+import  main.java.amazonfilterapplicatione2e.configManager.*;
 import org.apache.commons.io.FileUtils;  
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -100,7 +100,18 @@ public class ScreenshotUtil {
             }
 
             File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(src, new File(fullPath));
+            
+            if(ConfigManager.getBoolean("compressImage", false)) {
+          	  try{
+          		double imageQuality=ConfigManager.getInt("imageCompressionQuality");
+          		ImageCompressor.compressImage(src, fullPath,imageQuality);
+          	  }catch(Exception e) {
+          		  log.warn("[{}] compression quality / compressImage method failed, handling it the default way[No compression].", ThreadContext.get("testName"));
+          		  FileUtils.copyFile(src, new File(fullPath));
+          	  }
+          	  
+            }
+          
 
             log.info("[{}] Screenshot saved at: {}", ThreadContext.get("testName"), fullPath);
         } catch (WebDriverException we) {
