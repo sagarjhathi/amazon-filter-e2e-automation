@@ -109,7 +109,7 @@ public class SharedFilterFlows extends BasePage {
 
 
 			
-			Thread.sleep(1000);
+		//	Thread.sleep(1000);
 			String currentWindow = driver.getWindowHandle();
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
@@ -198,7 +198,7 @@ public class SharedFilterFlows extends BasePage {
 		genericUtility.smoothScrollToElement(productPage.getProductByIndex(productIndex));
 		log.info("[{}] Getting product by index in productNameListingPage loop", testName);
 		
-		Thread.sleep(1000);
+	//	Thread.sleep(1000);
 		boolean isWindowOpened=genericUtility.openClickOnNewPage(productElement,beforeProductClick);
 
 		System.out.println("Product clicked with Ctrl+Click to open in new tab.");
@@ -241,12 +241,12 @@ try {
 	 if(genericUtility.isElementInViewport(productPage.showMoreOnlyIndividualPage)) {
      	String productNamePlusIndex="Product Index="+productIndex;
      	genericUtility.smoothScrollToElement(productPage.reportAnIssue);
-     	Thread.sleep(1000);
+     	//Thread.sleep(1000);
      	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
 			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
      }else {
     	 genericUtility.smoothScrollToElement(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
-         Thread.sleep(1000);
+       //  Thread.sleep(1000);
          safeAct.safeClick(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
 			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", testName);
          System.out.println("'See More Details' clicked.");
@@ -255,17 +255,17 @@ try {
 } catch (Exception e1) {
     
 	genericUtility.smoothScrollToElement(productPage.showMoreOnlyIndividualPage);
-	Thread.sleep(1000);
+	//Thread.sleep(1000);
 	
 	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
 	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
 	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", testName);
 
-    Thread.sleep(1000);
+   // Thread.sleep(1000);
 	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
  
 }finally {
-	Thread.sleep(1000);
+	//Thread.sleep(1000);
 	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
 }
@@ -307,7 +307,7 @@ try {
 			}
 
 
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			String currentWindow=driver.getWindowHandle();
 			System.out.println("Printing current window  "+ currentWindow);
 
@@ -317,7 +317,7 @@ try {
 			for(int p=1;p<=productNameListingPage.size()-1;p++) {	
 				log.info("[{}] Within productNameListingPage loop within applyFilterAndValidateProducts", ThreadContext.get("testName"));
 
-				Thread.sleep(3000);
+			//	Thread.sleep(3000);
 				System.out.println("inside the loop and product name is  and index is "+p+"  "+productNameListingPage.get(p).getText());				
 
 				try {
@@ -337,7 +337,7 @@ try {
 					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
 					log.info("[{}] Product clicked with Ctrl+Click to open in new tab  within productNameListingPage loop", ThreadContext.get("testName"));
 
-					Thread.sleep(2000); // Allow time for tab to open
+				//	Thread.sleep(2000); // Allow time for tab to open
 
 				} catch (Exception e) {
 					log.info("[{}] Failed to Ctrl+Click product index " + p+"  within productNameListingPage loop", ThreadContext.get("testName"));
@@ -349,7 +349,7 @@ try {
 				System.out.println("Clicked on the producct name new pop-up should open");
 				log.info("[{}] Clicked on the producct name new pop-up should open  via productNameListingPage loop", ThreadContext.get("testName"));
 
-				Thread.sleep(2000);		
+				//Thread.sleep(2000);		
 				genericUtility.switchToNewWindow(currentWindow);
 				log.info("[{}] Swithcing to the new window  within productNameListingPage loop", ThreadContext.get("testName"));
 
@@ -365,17 +365,17 @@ try {
 
 				try {					
 					genericUtility.smoothScrollToElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-					Thread.sleep(500);
+				//	Thread.sleep(500);
 					safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
 					System.out.println("'See More Details' clicked.");
 				} catch (Exception e1) {
 					driver.close();
-					Thread.sleep(2000);
+				//	Thread.sleep(2000);
 					genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
 					continue; 
 				}
 
-				Thread.sleep(2000);				
+			//	Thread.sleep(2000);				
 				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
 			}
 			safeAct.safeClick(productPage.clearButtonBy);

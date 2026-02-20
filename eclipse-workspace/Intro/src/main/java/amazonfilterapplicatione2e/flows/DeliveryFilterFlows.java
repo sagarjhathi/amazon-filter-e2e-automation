@@ -45,13 +45,13 @@ public class DeliveryFilterFlows extends BasePage{
 
 
 		String testName = ThreadContext.get("logFileName");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		String filterOption=productPage.getDeliveryDayFilterByName(testName);
 		ScreenshotUtil.capture(testName,filterOption);
 
 		log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
 

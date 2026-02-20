@@ -44,7 +44,7 @@ public class PriceSliderFlows extends BasePage{
 		// Scroll to make slider visible
 		genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
 
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		// Locate sliders	    
 		WebElement minSlider = safeAct.safeFindElement(productPage.priceMinSliderButton);
@@ -61,13 +61,14 @@ public class PriceSliderFlows extends BasePage{
 			//Applying Max slider
 			genericUtility.setSliderValue(maxSlider, max);
 
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			
 			// Click 'Go' / Apply
 		
 			log.info("[{}] Hitting the submit button", ThreadContext.get("testName"));
 
-			Thread.sleep(2000);
+			//Thread.sleep(2000);
+			
 
 			// Extract the applied max filter text and product prices
 			String maxPriceApplied = safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
@@ -133,7 +134,7 @@ public class PriceSliderFlows extends BasePage{
 			log.info("[{}] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->"+max, ThreadContext.get("testName"));
 
 
-			Thread.sleep(2000); // Small wait after each set
+		//	Thread.sleep(2000); // Small wait after each set
 		}
 		log.info("[{}] Returning the data here in the end", ThreadContext.get("testName"));
 
@@ -155,7 +156,7 @@ public class PriceSliderFlows extends BasePage{
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		// Scroll to make slider visible
 		js.executeScript("window.scrollBy(0, 300);");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 
 		// Locate sliders	    
 		WebElement minSlider=safeAct.safeFindElement(productPage.priceMinSliderButton);
@@ -181,10 +182,10 @@ public class PriceSliderFlows extends BasePage{
 							maxSlider, String.valueOf(max)
 					);
 
-			Thread.sleep(1000);
+		//	Thread.sleep(1000);
 			// Click 'Go' / Apply
 			safeAct.safeFindElement(productPage.priceSliderSubmitButton);
-			Thread.sleep(2000);
+		//	Thread.sleep(2000);
 
 			// Extract the applied max filter text and product prices
 			String maxPriceApplied=safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
@@ -211,7 +212,7 @@ public class PriceSliderFlows extends BasePage{
 					Assert.fail(errorMessage); 
 				}
 			}
-			Thread.sleep(2000); // Small wait after each set
+			//Thread.sleep(2000); // Small wait after each set
 		}
 	}
 	

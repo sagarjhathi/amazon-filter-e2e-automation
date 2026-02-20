@@ -79,14 +79,14 @@ public OperatingSystemFilterFlows() {
 
 			String str = safeAct.safeGetFilterOptionText(filterOptionsBy, i);
 			
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 				System.out.println("Filter click failed for: " + str);
 				log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
 				continue;
 			}
 
-			Thread.sleep(1000);
+			//Thread.sleep(1000);
 			String currentWindow = driver.getWindowHandle();
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 			Map<String, Object> result = new HashMap<>();
@@ -145,7 +145,7 @@ public OperatingSystemFilterFlows() {
 
 		        WebElement productElement = driver.findElement(productPage.getProductByIndex(productListIndex));
 		        genericUtility.smoothScrollToElement(productPage.getProductByIndex(productListIndex));
-		        Thread.sleep(1000);
+		       // Thread.sleep(1000);
 		  
    
 		        genericUtility.openClickOnNewPage(productElement,before);
@@ -160,7 +160,7 @@ public OperatingSystemFilterFlows() {
 					safeAct.safeClick(productPage.getProductByIndex(productIndex));
 		         }
 				
-		        Thread.sleep(2000);
+		     //   Thread.sleep(2000);
 		        genericUtility.switchToNewWindow(currentWindow);
 
 		        String name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
@@ -177,7 +177,7 @@ public OperatingSystemFilterFlows() {
 		            if (genericUtility.isElementInViewport(productPage.showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
 		                String productNamePlusIndex = "Product Index=" + productIndex;
 		                genericUtility.smoothScrollToElement(productPage.reportAnIssue);
-		                Thread.sleep(1000);
+		              //  Thread.sleep(1000);
 		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
 		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
 		                         ThreadContext.get("testName"));
@@ -229,7 +229,7 @@ public OperatingSystemFilterFlows() {
 			if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
 				genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
 				safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-				Thread.sleep(1000);
+				//Thread.sleep(1000);
 			}
 
 			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
@@ -242,7 +242,7 @@ public OperatingSystemFilterFlows() {
 			}
 
 
-			Thread.sleep(1000);
+		//	Thread.sleep(1000);
 			String currentWindow=driver.getWindowHandle();
 			System.out.println("Printing current window  "+ currentWindow);
 
@@ -261,11 +261,11 @@ public OperatingSystemFilterFlows() {
 //					.build()
 //					.perform();
 					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
-					Thread.sleep(1000);
+				//	Thread.sleep(1000);
 					safeAct.safeClick(productPage.getProductByIndex(p));
 
 					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
-					Thread.sleep(2000); 
+					//Thread.sleep(2000); 
 
 				} catch (Exception e) {
 					System.out.println("Failed to Ctrl+Click product index " + p);
@@ -274,7 +274,7 @@ public OperatingSystemFilterFlows() {
 
 
 				System.out.println("Clicked on the producct name new pop-up should open");
-				Thread.sleep(2000);		
+			//	Thread.sleep(2000);		
 				genericUtility.switchToNewWindow(currentWindow);
 
 				safeAct.safeFindElement(productPage.productNameIndividualPage);
@@ -292,19 +292,19 @@ public OperatingSystemFilterFlows() {
 					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
 					((JavascriptExecutor) driver).executeScript(
 							"arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
-					Thread.sleep(500);
+					//Thread.sleep(500);
 
 					safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
 					System.out.println("'See More Details' clicked.");
 
 				} catch (Exception e1) {
-					Thread.sleep(2000);
+					//Thread.sleep(2000);
 					driver.close();
 					driver.switchTo().window(currentWindow);
 					continue; 
 				}
 
-				Thread.sleep(2000);				
+			//	Thread.sleep(2000);				
 				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
 			}
 			safeAct.safeClick(productPage.clearButtonBy);
