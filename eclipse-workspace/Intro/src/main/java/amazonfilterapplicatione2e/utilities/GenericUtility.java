@@ -137,7 +137,7 @@ public class GenericUtility extends ProductListingPage{
     
     public void handleCaptcha() throws InterruptedException {
     	String src = driver.getPageSource().toLowerCase();
-    	Thread.sleep(2000);
+    	//Thread.sleep(2000);
 		if (src.contains("click the button below to continue shopping") || src.contains("continue shopping")) {
 			   System.out.println("Found the captcha hence refreshing the page to test");
 		        log.warn("[{}]  Found the captcha hence refreshing the page to test", ThreadContext.get("testName"));
@@ -168,12 +168,9 @@ public class GenericUtility extends ProductListingPage{
     	
 		log.info("[{}] Within scrollByPixel method", ThreadContext.get("testName"));
         ((JavascriptExecutor) driver).executeScript("window.scrollBy(arguments[0], arguments[1]);", x, y);
-        try {
-            Thread.sleep(2000); // Wait to allow scroll animation to complete
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt(); // Best practice to preserve interrupt status
-            e.printStackTrace();
-        }
+      
+        //    Thread.sleep(2000); // Wait to allow scroll animation to complete
+        
     }
     
     
@@ -222,7 +219,7 @@ public class GenericUtility extends ProductListingPage{
                 }
             }
 
-            Thread.sleep(1000);
+        //    Thread.sleep(1000);
             driver.switchTo().window(originalWindow);
             log.info("[{}] Switched back to the original window -> {}", ThreadContext.get("testName"), originalWindow);
 
@@ -245,7 +242,7 @@ public class GenericUtility extends ProductListingPage{
 	            if (element != null) {
 	                text = element.getText().trim();
 	            } else {
-	                Thread.sleep(500); // brief wait before retry
+	            //    Thread.sleep(500); // brief wait before retry
 	            }
 	        } catch (Exception e) {
 	            System.out.println("Exception while fetching element text: " + e.getMessage());
@@ -296,7 +293,7 @@ public class GenericUtility extends ProductListingPage{
 		 if(safeAct.safeFindElement(moreButton).isDisplayed()) {
 				genericUtility.smoothScrollToElement(moreButton);
 				safeAct.safeClick(moreButton);
-				Thread.sleep(1000);
+			//	Thread.sleep(1000);
 			}
 	}catch(Exception e) {
 	

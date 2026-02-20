@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.captcha;
-import java.time.Duration;  
+import java.time.Duration;   
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.SkipException;
 import main.java.amazonfilterapplicatione2e.base.BasePage;
+import main.java.amazonfilterapplicatione2e.configManager.*;
 
 public class CaptchaHandler extends BasePage{
 
@@ -114,7 +115,7 @@ public class CaptchaHandler extends BasePage{
 //	    }
 	
 	public void handleCaptcha() {
-	    int retries = 3;
+	    int retries = ConfigManager.getInt("handleCaptcha.retries", 2);
 
 	    for (int i = 1; i <= retries; i++) {
 
@@ -143,8 +144,10 @@ public class CaptchaHandler extends BasePage{
 	}
 	
 	private void waitForPageLoad() {
-	    new WebDriverWait(driver, Duration.ofSeconds(15))
-	        .until(wd -> ((JavascriptExecutor) wd)
+	    int timeout = ConfigManager.getInt("pageLoad.timeout", 15);
+
+	    new WebDriverWait(driver, Duration.ofSeconds(timeout))
+	        .until(d -> ((JavascriptExecutor) d)
 	        .executeScript("return document.readyState")
 	        .equals("complete"));
 	}

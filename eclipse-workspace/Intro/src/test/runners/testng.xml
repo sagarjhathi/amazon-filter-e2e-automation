@@ -10,7 +10,9 @@
           	
           
         
-          
+          <methods>
+          <include name="verifyingTheBrandsFilterFunctionality"></include>
+          </methods>
  	
     </class>
       
