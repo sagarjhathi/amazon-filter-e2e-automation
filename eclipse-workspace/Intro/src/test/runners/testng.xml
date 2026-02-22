@@ -9,10 +9,6 @@
       <class name="test.java.tests.AmazonTests">
           	
         
-        <methods>
-        
-        <include name="verifyingPriceSilderFunctionality"></include>
-        </methods>
        
        
     </class>
