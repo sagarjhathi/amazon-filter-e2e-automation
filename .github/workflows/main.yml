@@ -23,14 +23,6 @@ env:
 jobs:
   test:
     runs-on: windows-latest
-
-    strategy:
-      fail-fast: false
-      matrix:
-        suite: 
-            - DeliveryAndPrice.xml
-            - BrandsScreenSizeTypeCamEtc.xml
-            - BatteryProcessorOsStorage.xml
     timeout-minutes: 300
     env:
       REPORT_BASE: "/amazon-filter-e2e-automation/"
@@ -96,31 +88,14 @@ jobs:
 
 
 
-      - name: Debug Suite File
-        shell: bash
-        run: |
-              echo "Suite path:"
-              echo "src/test/runners/${{ matrix.suite }}"
-              ls -l src/test/runners/
-              cat src/test/runners/${{ matrix.suite }} || echo "File missing"
-
 
       - name: Run Maven Tests
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
-             echo "Runner Name: $RUNNER_NAME"
-             echo "Runner OS: $RUNNER_OS"
-             echo "Hostname: $(hostname)"
-             echo "Running suite: ${{ matrix.suite }}"
-
-             ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}_${{ matrix.suite }}"
+             ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
              echo "Setting logs.dir = $ABS_LOGS_DIR"
-
-             mvn -B -ntp clean test \
-                 -Dsurefire.suiteXmlFiles=src/test/runners/${{ matrix.suite }} \
-                 -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" \
-                 -Dlogs.dir="$ABS_LOGS_DIR"
+             mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR"
 
 
       - name: Copy ExtentReport and publish to gh-pages (fixed)
