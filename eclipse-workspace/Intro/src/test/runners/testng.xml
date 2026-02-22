@@ -9,7 +9,21 @@
       <class name="test.java.tests.AmazonTests">
           	
         
+       <methods>
+       <include name="verifyingDisplaySizeFilterFunctionality"></include>
+       <include name="verifyingBatteryCapacityFilterFunctionality"></include>
+       <include name="verifyingDiscountFilterFunctionality"></include>
+       <include name="verifyingFreeDeliveryFilterFunctionality"></include>
+       <include name="verifyingGetItByTodayFilterFunctionality"></include>
+       <include name="verifyingGetItByTomorrowFilterFunctionality"></include>
+       <include name="verifyingDisplayTypeFilterFunctionality"></include>
+       <include name="verifyingGetItIn2DaysFilterFunctionality"></include>
+       <include name="verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality"></include>
+       <include name="verifyingPriceSilderFunctionality"></include>
+       <include name="verifyingTheBrandsFilterFunctionality"></include>
+       <include name="verifyingOperatingSystemVersionFilterFunctionality"></include>
        
+       </methods>
        
     </class>
       
