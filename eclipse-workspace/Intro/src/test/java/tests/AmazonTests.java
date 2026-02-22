@@ -197,7 +197,52 @@ public class AmazonTests extends BaseTest {
 		            	    
 	    
 	}
+		    
+	
+	
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class,
+		    retryAnalyzer = RetryFailedTest.class
+		)
+	public void verifyingFreeDeliveryFilterFunctionality(String input) throws InterruptedException, TimeoutException{
+		
+		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		AmazonLandingPage landingPage=new AmazonLandingPage();
+		CaptchaHandler capHandler=new CaptchaHandler();
+		GenericUtility genericUtility=new GenericUtility();
+ 		ProductListingPage productPage=new ProductListingPage();
+ 		DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
+		
+ 		
+ 		landingPage.openingLandingPage();
+ 		SafeActions safeAct = new SafeActions();
+		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
+		capHandler.handleCaptcha();
+		landingPage.givingInputWithinSearchBar(input);
+		landingPage.clickingOnSubmitSearchButton();
+ 		genericUtility.refreshIfServiceUnavailable();
+ 		
+ 		 String testName=ThreadContext.get("testName");
+ 		if (!genericUtility.isElementInViewport(productPage.eligibleForFreeDelivery)) {
+ 		    System.out.println("Filter option 'Eligible for Free Delivery does not. Skipping the test.");
+ 		   log.warn("[{}]  Filter option 'Eligible for Free Delivery' does not exist. Skipping the test.", ThreadContext.get("testName"));
+ 		    return;
+ 		}                   
 		            		
+		            		
+		List<Object> result = deliveryFilterFlows.validateDeliveryFilterOptionsWithResult(productPage.eligibleForFreeDelivery);
+		
+		boolean isValid = (boolean) result.get(0);
+	    String productName = (String) result.get(1);
+	    int productIndex = (int) result.get(2);
+	    
+	    log.info("[{}] Asserting delivery filter: isValid={}, index={}, text={}",testName, isValid, productIndex, productName);
+	    Assert.assertTrue(isValid,"Delivery date mismatch at index " + productIndex + ". Text: " + productName);
+	    System.out.println(isValid+"  Text from function =>"+productName+" index no is "+productIndex);                 		  
+		            	    
+	    
+	}
 		            		  
 	
 	
@@ -534,7 +579,7 @@ public class AmazonTests extends BaseTest {
         genericUtility.refreshIfServiceUnavailable();
         String testName=ThreadContext.get("testName");
 
-        if (!genericUtility.filterCheckUnderList("Display Size")) {
+        if (!genericUtility.filterCheckUnderList("Screen Size")) {
         	log.warn("[{}]  Filter option 'Display Size' does not exist in the list. Skipping the test.", testName);
         	System.out.println("Filter option 'Display Size' does not exist in the list. Skipping the test.");
         	return ;
@@ -542,7 +587,7 @@ public class AmazonTests extends BaseTest {
 
 
 
-        List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"displaysize");
+        List<Map<String, Object>> results = sharedFilterFlows.applyFilterAndValidateProductsWithResult(productPage.listDisplaySizeOptionsBy,"screensize");
 
 
 

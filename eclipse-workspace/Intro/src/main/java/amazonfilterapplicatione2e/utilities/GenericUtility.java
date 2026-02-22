@@ -80,17 +80,6 @@ public class GenericUtility extends ProductListingPage{
 
 
 	
-	
-	public boolean isElementPresent(By locator) {
-		log.info("[{}] Checking if present via isElementPresent Method", ThreadContext.get("testName"));
-
-	    try {
-	        driver.findElement(locator);
-	        return true;
-	    } catch (NoSuchElementException e) {
-	        return false;
-	    }
-	}
 
     public boolean filterCheckUnderList(String filterName1,String filterName2) {
 	
