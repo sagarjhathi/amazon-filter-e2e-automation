@@ -37,7 +37,9 @@ public class SafeActions extends BasePage{
 	    while (attempts < 2) {
 	        try {
 	        	
-	            WebElement element = getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
+	        	WebElement element = getSafeWait().until(ExpectedConditions.presenceOfElementLocated(locator));
+	            getSafeWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+	            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 	            element.click();
 	    		log.info("[{}] Clicked the  "+element+"   using safeClick", ThreadContext.get("testName"));
 	            System.out.println("Clicked using safeClick");
@@ -66,6 +68,8 @@ public class SafeActions extends BasePage{
 	    while (attempts < 2) {
 	        try {
 	            List<WebElement> elements = getSafeWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
+	           // getSafeWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	           
 	    		log.info("[{}] Returning the  "+elements+" from the safeFindElements method", ThreadContext.get("testName"));
 
 	            System.out.println("Found the elements: " + locator);
@@ -102,6 +106,8 @@ public class SafeActions extends BasePage{
 		        try {
 		        	
 		            WebElement element = getSafeWait().until(ExpectedConditions.presenceOfElementLocated(locator));
+		            getSafeWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+		            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 					log.info("[{}]Found the element returning it ,element ->"+element, ThreadContext.get("testName"));
 		            System.out.println("Found the element: " + locator);
 		            return element;
@@ -145,7 +151,9 @@ public class SafeActions extends BasePage{
 		    while (attempts < 2) {
 		        try {
 					log.info("[{}] Within safeClickBoolean method Try block after the scroll line", ThreadContext.get("testName"));
-		            WebElement element = getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
+		            WebElement element = getSafeWait().until(ExpectedConditions.presenceOfElementLocated(locator));
+		            getSafeWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+		            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
 		          //  Thread.sleep(2000);
@@ -200,7 +208,10 @@ public class SafeActions extends BasePage{
         			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
                 	}
                 	
-		            WebElement element = getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
+
+                	WebElement element = getSafeWait().until(ExpectedConditions.presenceOfElementLocated(locator));
+		            getSafeWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
+		            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
 		          //  Thread.sleep(1000);

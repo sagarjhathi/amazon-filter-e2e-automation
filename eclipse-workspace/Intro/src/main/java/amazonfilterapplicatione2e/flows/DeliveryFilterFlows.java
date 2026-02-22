@@ -64,6 +64,7 @@ public class DeliveryFilterFlows extends BasePage{
 		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
 		allowedDateParts.add("Today");
 		allowedDateParts.add("Tomorrow");
+		allowedDateParts.add("FREE delivery");
 
 		log.info("[{}] Created hashset with required data to assert with Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
 
