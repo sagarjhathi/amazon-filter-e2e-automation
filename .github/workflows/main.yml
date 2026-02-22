@@ -23,6 +23,11 @@ env:
 jobs:
   test:
     runs-on: windows-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        suite: [DeliveryAndPrice.xml, BrandsScreenSizeTypeCamEtc.xml, BatteryProcessorOsStorage.xml]
     timeout-minutes: 300
     env:
       REPORT_BASE: "/amazon-filter-e2e-automation/"
@@ -90,11 +95,18 @@ jobs:
         working-directory: ${{ env.WORKDIR }}
         shell: bash
         run: |
-            ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}"
-            echo "Setting logs.dir = $ABS_LOGS_DIR"
-            mvn -B -ntp clean test -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" -Dlogs.dir="$ABS_LOGS_DIR"
+             echo "Runner Name: $RUNNER_NAME"
+             echo "Runner OS: $RUNNER_OS"
+             echo "Hostname: $(hostname)"
+             echo "Running suite: ${{ matrix.suite }}"
 
+             ABS_LOGS_DIR="${GITHUB_WORKSPACE}/${{ env.WORKDIR }}/logs/run_${{ env.RUN_TIMESTAMP }}_${{ matrix.suite }}"
+             echo "Setting logs.dir = $ABS_LOGS_DIR"
 
+             mvn -B -ntp clean test \
+                 -Dsurefire.suiteXmlFiles=${{ matrix.suite }} \
+                 -DrunTimestamp="${{ env.RUN_TIMESTAMP }}" \
+                 -Dlogs.dir="$ABS_LOGS_DIR"
 
       - name: Copy ExtentReport and publish to gh-pages (fixed)
         if: ${{ always() && github.ref != 'refs/heads/gh-pages' }}
