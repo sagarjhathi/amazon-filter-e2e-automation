@@ -51,7 +51,7 @@ public class SafeActions extends BasePage{
 	            attempts++;
 	            
 	                driver.navigate().refresh();
-	             //   Thread.sleep(1000); // small delay before retry
+	            
 	             
 	        }
 	    }
@@ -83,7 +83,7 @@ public class SafeActions extends BasePage{
 		    		log.info("[{}] Refreshing the page while trying to find :"+locator, ThreadContext.get("testName"));
 
 	                System.out.println("Refreshing the page in safeFindElements Method");
-	             //   Thread.sleep(1000);
+	            
 	             
 	        
 	    }
@@ -120,7 +120,7 @@ public class SafeActions extends BasePage{
 		                driver.navigate().refresh();
 						log.info("[{}]Refrehsing the page , while trying to safely find : ->"+locator, ThreadContext.get("testName"));
 		                System.out.println("Refreshing the page in safeFindElement Method");
-		              //  Thread.sleep(1000);
+		             
 		             
 		        }
 		    }
@@ -157,7 +157,7 @@ public class SafeActions extends BasePage{
 		                driver.navigate().refresh();
 						log.info("[{}]Refrehsing the page , while trying to safely find : ->"+locator, ThreadContext.get("testName"));
 		                System.out.println("Refreshing the page in safeFindElement Method");
-		              //  Thread.sleep(1000);
+		             
 		             
 		        }
 		    }
@@ -193,9 +193,9 @@ public class SafeActions extends BasePage{
 		            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
-		          //  Thread.sleep(2000);
+		          
 		            genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(testName, testName));
-		        //	Thread.sleep(2000);
+		        
 					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
 		            System.out.println("Clicking using safeClick");
 		            
@@ -210,7 +210,7 @@ public class SafeActions extends BasePage{
 		           
 		                driver.navigate().refresh();
 						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
-		             //   Thread.sleep(1000);
+		             
 		            
 		        }
 		    }
@@ -251,10 +251,10 @@ public class SafeActions extends BasePage{
 		            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
 		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
 		            element.click();
-		          //  Thread.sleep(1000);
+		         
 		            
 		            genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
-		        //    Thread.sleep(1000);             
+		                   
 		            
 		        
 		    
@@ -264,10 +264,10 @@ public class SafeActions extends BasePage{
         			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
                 	}
 		            
-		         //   Thread.sleep(1000);
+		    
                 	
 		            genericUtility.smoothScrollToElement(productPage.getAppliedfilterByTypeAndName(filterName, filterOption));
-		        //	Thread.sleep(1000);
+		    
 					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
 		            System.out.println("Clicking using safeClick");  
 		            ScreenshotUtil.capture(testName,filterOptionToPass);
@@ -280,10 +280,10 @@ public class SafeActions extends BasePage{
 		            try {
 		            	
 		                   driver.navigate().refresh();
-		                	//Thread.sleep(1000);		
+		                		
 		                	log.info("[{}] Cannot apply filter taking failed screenshot for ->"+filterOption ,ThreadContext.get("testName"));
 		                	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
-		                //	Thread.sleep(2000);
+		               
 
 		                	try {
 		                    	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.getMoreButtonByFilterTypeAndName(filterName));
@@ -292,12 +292,12 @@ public class SafeActions extends BasePage{
 		        			    log.info("[{}] could not find more button", ThreadContext.get("testName"));
 		                	}
 		                	
-		               // 	Thread.sleep(1000);
+		       
 				            ScreenshotUtil.capture(testName,filterOptionToPass,"failed filter apply screenshot-");
 		                
 		                
 						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
-		              //  Thread.sleep(1000);
+		              
 		        
 		    
 			log.info("[{}]Skipping click action: Element not clickable after"+attempts+"   attempts" ,ThreadContext.get("testName"));
@@ -348,7 +348,6 @@ public class SafeActions extends BasePage{
 		                     ThreadContext.get("testName"), index, attempt, e.getMessage());
 		        }
 
-//		        try { Thread.sleep(300); } catch (Exception ignored) {}
 		    }
 
 		    log.error("[{}] Failed to read filter option {} after 3 attempts",

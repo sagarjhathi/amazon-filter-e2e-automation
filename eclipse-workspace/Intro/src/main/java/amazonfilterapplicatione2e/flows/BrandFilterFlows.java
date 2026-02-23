@@ -96,7 +96,7 @@ public class BrandFilterFlows extends BasePage{
 
 			log.info("[" + ThreadContext.get("testName") + "] Clicked on " + str+"Within the filterOptions loop");
 
-			//Thread.sleep(1000);
+			
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
