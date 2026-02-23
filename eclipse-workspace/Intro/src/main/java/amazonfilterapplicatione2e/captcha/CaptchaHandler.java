@@ -114,8 +114,40 @@ public class CaptchaHandler extends BasePage{
 //	        throw new SkipException("Captcha persisted after retries. Skipping test.");
 //	    }
 	
+//	public void handleCaptcha() {
+//	    int retries = ConfigManager.getInt("handleCaptcha.retries", 2);
+//
+//	    for (int i = 1; i <= retries; i++) {
+//
+//	        if (!isCaptchaPage()) return;
+//
+//	        System.out.println("Captcha detected. Attempt " + i);
+//
+//	        try {
+//	            List<WebElement> buttons = driver.findElements(By.xpath(
+//	                "//*[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='continue shopping']"
+//	            ));
+//
+//	            if (!buttons.isEmpty() && buttons.get(0).isDisplayed()) {
+//	                buttons.get(0).click();
+//	                waitForPageLoad();
+//	            } else {
+//	                driver.navigate().refresh();
+//	                waitForPageLoad();
+//	            }
+//
+//	        } catch (Exception ignored) {}
+//
+//	    }
+//
+//	    throw new SkipException("Captcha persisted after retries.");
+//	}
+	
+	
+	
 	public void handleCaptcha() {
-	    int retries = ConfigManager.getInt("handleCaptcha.retries", 2);
+	    int retries = ConfigManager.getInt("handleCaptcha.retries", 3);
+	    long backoff = 1000;
 
 	    for (int i = 1; i <= retries; i++) {
 
@@ -128,16 +160,27 @@ public class CaptchaHandler extends BasePage{
 	                "//*[translate(normalize-space(.),'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz')='continue shopping']"
 	            ));
 
-	            if (!buttons.isEmpty() && buttons.get(0).isDisplayed()) {
-	                buttons.get(0).click();
-	                waitForPageLoad();
+	            if (!buttons.isEmpty()) {
+	                WebElement button = buttons.get(0);
+
+	                ((JavascriptExecutor) driver)
+	                    .executeScript("arguments[0].scrollIntoView(true);", button);
+
+	                new WebDriverWait(driver, Duration.ofSeconds(10))
+	                        .until(d -> button.isDisplayed() && button.isEnabled());
+
+	                button.click();
 	            } else {
 	                driver.navigate().refresh();
-	                waitForPageLoad();
 	            }
 
-	        } catch (Exception ignored) {}
+	            waitForPageLoad();
+	            Thread.sleep(backoff);
+	            backoff = Math.min(backoff * 2, 5000);
 
+	        } catch (Exception e) {
+	            System.out.println("Captcha handling attempt failed: " + e.getMessage());
+	        }
 	    }
 
 	    throw new SkipException("Captcha persisted after retries.");
