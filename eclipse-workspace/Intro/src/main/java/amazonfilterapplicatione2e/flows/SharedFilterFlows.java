@@ -52,10 +52,11 @@ public class SharedFilterFlows extends BasePage {
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
 		
-		boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
-	
+	//	boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
+		boolean isCron=true;
 		
 		int filterOptionSize=filterOptions.size();
+		
 		if(isCron) {
 
 			log.info("[{}] Execution is scheduled type /CRON Job on CI Hence refering to CI keys from UtilData", ThreadContext.get("testName"));

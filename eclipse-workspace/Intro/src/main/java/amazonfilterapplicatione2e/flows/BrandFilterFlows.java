@@ -43,9 +43,6 @@ public class BrandFilterFlows extends BasePage{
 	public List<Map<Object, Object>> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 		log.info("[{}] Within applyFilterAndValidateBrandsFilterWithResult method", ThreadContext.get("testName"));
 
-//		SafeActions safeAct = new SafeActions();
-//		ProductListingPage productPage = new ProductListingPage();
-//		GenericUtility genericUtility = new GenericUtility();
 
 		log.info("[{}] Scrolling to the 'More' Button under brands filter section", ThreadContext.get("testName"));
 		
