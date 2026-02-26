@@ -52,8 +52,8 @@ public class SharedFilterFlows extends BasePage {
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
 		
-	//	boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
-		boolean isCron=true;
+		boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
+		
 		
 		int filterOptionSize=filterOptions.size();
 		
