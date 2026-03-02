@@ -147,9 +147,14 @@ public class SharedFilterFlows extends BasePage {
 			
 	
 			for (int productIndex = 1; productIndex <=productNameListingPageSize-1; productIndex++) {
-
+				
+				
 			
 				productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
+				
+				if (productIndex >= productNameListingPage.size()) {
+				    break;
+				}
 				log.info("[{}] Within productNameListingPage loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 				System.out.println("inside the loop and product name is " + productNameListingPage.get(productIndex).getText());
 
