@@ -1,0 +1,3 @@
+2026-04-03 05:24:00.275 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Mobile_17-24-00] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:24:00.286 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Mobile_17-24-00] WebDriverManager: chromedriver setup OK
+2026-04-03 05:24:02.074 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Mobile_17-24-00] ChromeDriver initialized successfully for thread: 34

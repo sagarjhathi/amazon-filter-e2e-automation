@@ -1,0 +1,3 @@
+2026-04-03 05:24:30.372 PM [TestNG-test-Test-1] INFO  [verifyingTheBrandsFilterFunctionality_Tablet_17-24-30] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:24:30.403 PM [TestNG-test-Test-1] INFO  [verifyingTheBrandsFilterFunctionality_Tablet_17-24-30] WebDriverManager: chromedriver setup OK
+2026-04-03 05:24:32.416 PM [TestNG-test-Test-1] INFO  [verifyingTheBrandsFilterFunctionality_Tablet_17-24-30] ChromeDriver initialized successfully for thread: 34

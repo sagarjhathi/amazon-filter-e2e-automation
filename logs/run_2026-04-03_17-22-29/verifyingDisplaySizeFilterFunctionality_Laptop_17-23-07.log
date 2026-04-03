@@ -1,0 +1,3 @@
+2026-04-03 05:23:07.767 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Laptop_17-23-07] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:23:07.785 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Laptop_17-23-07] WebDriverManager: chromedriver setup OK
+2026-04-03 05:23:10.985 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Laptop_17-23-07] ChromeDriver initialized successfully for thread: 36

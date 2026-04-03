@@ -1,0 +1,3 @@
+2026-04-03 05:23:18.803 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality_Mobile_17-23-18] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:23:18.822 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality_Mobile_17-23-18] WebDriverManager: chromedriver setup OK
+2026-04-03 05:23:20.998 PM [TestNG-test-Test-2] INFO  [verifyingGetItByTodayFilterFunctionality_Mobile_17-23-18] ChromeDriver initialized successfully for thread: 35

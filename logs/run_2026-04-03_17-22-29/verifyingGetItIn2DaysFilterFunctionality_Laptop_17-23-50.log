@@ -1,0 +1,3 @@
+2026-04-03 05:23:50.175 PM [TestNG-test-Test-2] INFO  [verifyingGetItIn2DaysFilterFunctionality_Laptop_17-23-50] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:23:50.185 PM [TestNG-test-Test-2] INFO  [verifyingGetItIn2DaysFilterFunctionality_Laptop_17-23-50] WebDriverManager: chromedriver setup OK
+2026-04-03 05:23:53.298 PM [TestNG-test-Test-2] INFO  [verifyingGetItIn2DaysFilterFunctionality_Laptop_17-23-50] ChromeDriver initialized successfully for thread: 35

@@ -1,0 +1,3 @@
+2026-04-03 05:22:59.141 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality_Mobile_17-22-59] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:22:59.383 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality_Mobile_17-22-59] WebDriverManager: chromedriver setup OK
+2026-04-03 05:23:03.503 PM [TestNG-test-Test-1] INFO  [verifyingBatteryCapacityFilterFunctionality_Mobile_17-22-59] ChromeDriver initialized successfully for thread: 34

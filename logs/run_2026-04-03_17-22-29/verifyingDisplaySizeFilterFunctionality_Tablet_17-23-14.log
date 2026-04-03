@@ -1,0 +1,3 @@
+2026-04-03 05:23:14.020 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Tablet_17-23-14] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+2026-04-03 05:23:14.030 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Tablet_17-23-14] WebDriverManager: chromedriver setup OK
+2026-04-03 05:23:15.585 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Tablet_17-23-14] ChromeDriver initialized successfully for thread: 36
