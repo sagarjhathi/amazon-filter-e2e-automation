@@ -116,7 +116,7 @@ public class BaseTest {
 	  public void beforeTest(ITestResult result) {
 
 	      String baseName = result.getMethod().getMethodName();
-
+	      System.out.println(baseName+"  =======  BASE NAME HERE ");
 	      String params = Arrays.toString(result.getParameters())
 	              .replaceAll("[\\[\\] ]", "")
 	              .replace(",", "_");
@@ -134,6 +134,7 @@ public class BaseTest {
 	      ThreadContext.put("logFileName", testName);
 	      ThreadContext.put("logPath", logPathName);
 	      ThreadContext.put("testName", testName);
+	      ThreadContext.put("baseTestName",baseName);
 
 	      // ✅ Ensure folder exists BEFORE logging
 	      new File(logPathName).mkdirs();

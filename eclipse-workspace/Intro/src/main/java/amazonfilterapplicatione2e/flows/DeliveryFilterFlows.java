@@ -44,7 +44,7 @@ public class DeliveryFilterFlows extends BasePage{
 		safeAct.safeClick(filterOptions);
 
 
-		String testName = ThreadContext.get("logFileName");
+		String testName = ThreadContext.get("baseTestName");
 		
 		String filterOption=productPage.getDeliveryDayFilterByName(testName);
 		ScreenshotUtilUpdated.capture(testName,filterOption);

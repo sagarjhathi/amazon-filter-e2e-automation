@@ -120,7 +120,7 @@ public class AmazonTests extends BaseTest {
 		 ProductListingPage productPage=new ProductListingPage();
 		 DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
 		 
-		 
+		 ScreenshotUtilUpdated.capture(input);
 		 
 		 landingPage.openingLandingPage();
 			SafeActions safeAct = new SafeActions();
