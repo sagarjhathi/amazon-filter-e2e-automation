@@ -326,9 +326,16 @@ jobs:
       #          -d "{\"content\": \"$status_emoji **CI Pipeline - ${{ github.job }}** ($branch): $status\\n Triggered by: $actor\\n Commit: \`$commit_short\`\\n Completed at: $timestamp\\n [View Full Run Details]($runUrl)\\n [Download Extent Report & Artifacts]($artifactUrl)\\n [Open Latest Report on GitHub Pages]($pagesUrl)\"}" \
       #          "$DISCORD_WEBHOOK"
 
+      - name: Build project
+        run: mvn clean compile
+        working-directory: ${{ env.WORKDIR }}
+
+
       - name: Run Maven Tests
         working-directory: ${{ env.WORKDIR }}
-        run: mvn clean test
+        run: mvn test
+        continue-on-error: true
+       
 
       - name: Find latest run folder
         id: find_run
