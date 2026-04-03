@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.safeActions;
-import org.apache.logging.log4j.Logger;  
+import org.apache.logging.log4j.Logger;   
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,7 +10,7 @@ import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
 
 import java.time.Duration;
 import java.util.List;
@@ -270,7 +270,7 @@ public class SafeActions extends BasePage{
 		    
 					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
 		            System.out.println("Clicking using safeClick");  
-		            ScreenshotUtil.capture(testName,filterOptionToPass);
+		            ScreenshotUtilUpdated.capture(testName,filterOptionToPass);
 		            return true; // success
 		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
 		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
@@ -293,7 +293,7 @@ public class SafeActions extends BasePage{
 		                	}
 		                	
 		       
-				            ScreenshotUtil.capture(testName,filterOptionToPass,"failed filter apply screenshot-");
+				            ScreenshotUtilUpdated.capture(testName,filterOptionToPass,"failed filter apply screenshot-");
 		                
 		                
 						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));

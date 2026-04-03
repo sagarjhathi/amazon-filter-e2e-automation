@@ -1,37 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
-<Properties>
-  <Property name="logs.dir">${sys:logs.dir:-logs}</Property>
-  <Property name="LOG_PATTERN">%d{yyyy-MM-dd hh:mm:ss.SSS a} [%t] %-5level [%X{logFileName}] %msg%n</Property>
-</Properties>
+    
+    <Appenders>
 
-
-  <Appenders>
     <Console name="Console" target="SYSTEM_OUT">
-      <PatternLayout pattern="${LOG_PATTERN}" />
+        <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %X{testName} %logger - %msg%n"/>
     </Console>
 
     <Routing name="RoutingAppender">
-      <Routes pattern="${ctx:logFileName}">
+    <Routes pattern="$${ctx:logFileName}">
         <Route>
-          <RollingFile name="RollingFile-${ctx:logFileName}"
-                       fileName="${logs.dir}/${ctx:logFileName}.log"
-                       filePattern="${logs.dir}/archive/${ctx:logFileName}-%d{yyyy-MM-dd-HH-mm}.log"
-                       append="false">
-            <PatternLayout pattern="${LOG_PATTERN}" />
-            <Policies>
-              <SizeBasedTriggeringPolicy size="5MB"/>
-            </Policies>
-          </RollingFile>
+            <File name="FileAppender-${ctx:logFileName}"
+                  fileName="${ctx:logPath}/${ctx:logFileName}.log">
+                <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %X{testName} - %msg%n"/>
+            </File>
         </Route>
-      </Routes>
-    </Routing>
-  </Appenders>
+    </Routes>
+</Routing>
 
-  <Loggers>
+</Appenders>
+    
+    
+
+   <Loggers>
     <Root level="info">
-      <AppenderRef ref="Console"/>
-      <AppenderRef ref="RoutingAppender"/>
+        <AppenderRef ref="Console"/>
+        <AppenderRef ref="RoutingAppender"/>
     </Root>
-  </Loggers>
+</Loggers>
+
 </Configuration>
