@@ -15,7 +15,9 @@
     
     <classes>
       <class name="test.java.tests.AmazonTests">
-          	
+          		<methods>
+          		<include name="verifyingGetItIn2DaysFilterFunctionality"></include>
+          		</methods>
     </class>
       
     </classes>
