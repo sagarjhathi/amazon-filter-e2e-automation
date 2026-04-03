@@ -1,3 +1,0 @@
-2026-04-03 05:23:03.679 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality_Laptop_17-23-03] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:23:03.703 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality_Laptop_17-23-03] WebDriverManager: chromedriver setup OK
-2026-04-03 05:23:07.644 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality_Laptop_17-23-03] ChromeDriver initialized successfully for thread: 35

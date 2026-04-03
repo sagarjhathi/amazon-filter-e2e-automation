@@ -1,3 +1,0 @@
-2026-04-03 05:24:16.278 PM [TestNG-test-Test-2] INFO  [verifyingProcessorSpeedFilterFunctionality_Tablet_17-24-16] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:24:16.288 PM [TestNG-test-Test-2] INFO  [verifyingProcessorSpeedFilterFunctionality_Tablet_17-24-16] WebDriverManager: chromedriver setup OK
-2026-04-03 05:24:18.991 PM [TestNG-test-Test-2] INFO  [verifyingProcessorSpeedFilterFunctionality_Tablet_17-24-16] ChromeDriver initialized successfully for thread: 35

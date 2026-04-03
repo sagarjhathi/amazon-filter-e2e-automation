@@ -1,3 +1,0 @@
-2026-04-03 05:23:28.844 PM [TestNG-test-Test-1] INFO  [verifyingFreeDeliveryFilterFunctionality_Laptop_17-23-28] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:23:28.856 PM [TestNG-test-Test-1] INFO  [verifyingFreeDeliveryFilterFunctionality_Laptop_17-23-28] WebDriverManager: chromedriver setup OK
-2026-04-03 05:23:31.405 PM [TestNG-test-Test-1] INFO  [verifyingFreeDeliveryFilterFunctionality_Laptop_17-23-28] ChromeDriver initialized successfully for thread: 34

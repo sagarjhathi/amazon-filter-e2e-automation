@@ -1,3 +1,0 @@
-2026-04-03 05:23:55.913 PM [TestNG-test-Test-1] INFO  [verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-23-55] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:23:55.925 PM [TestNG-test-Test-1] INFO  [verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-23-55] WebDriverManager: chromedriver setup OK
-2026-04-03 05:23:58.599 PM [TestNG-test-Test-1] INFO  [verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-23-55] ChromeDriver initialized successfully for thread: 34

@@ -1,3 +1,0 @@
-2026-04-03 05:24:13.148 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Tablet_17-24-13] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:24:13.158 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Tablet_17-24-13] WebDriverManager: chromedriver setup OK
-2026-04-03 05:24:15.754 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Tablet_17-24-13] ChromeDriver initialized successfully for thread: 34

@@ -1,4 +1,0 @@
-2026-04-03 05:22:43.490 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Mobile_17-22-43] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:22:43.514 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Mobile_17-22-43] Loaded config from classpath: UtilData.properties
-2026-04-03 05:22:45.512 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Mobile_17-22-43] WebDriverManager: chromedriver setup OK
-2026-04-03 05:22:57.769 PM [TestNG-test-Test-3] INFO  [verifyingDisplaySizeFilterFunctionality_Mobile_17-22-43] ChromeDriver initialized successfully for thread: 36

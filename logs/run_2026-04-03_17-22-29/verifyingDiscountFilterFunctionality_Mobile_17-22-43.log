@@ -1,3 +1,0 @@
-2026-04-03 05:22:43.490 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality_Mobile_17-22-43] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:22:45.517 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality_Mobile_17-22-43] WebDriverManager: chromedriver setup OK
-2026-04-03 05:22:57.915 PM [TestNG-test-Test-2] INFO  [verifyingDiscountFilterFunctionality_Mobile_17-22-43] ChromeDriver initialized successfully for thread: 35

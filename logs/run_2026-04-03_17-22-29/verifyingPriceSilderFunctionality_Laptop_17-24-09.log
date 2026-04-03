@@ -1,3 +1,0 @@
-2026-04-03 05:24:09.936 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Laptop_17-24-09] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:24:09.946 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Laptop_17-24-09] WebDriverManager: chromedriver setup OK
-2026-04-03 05:24:12.598 PM [TestNG-test-Test-1] INFO  [verifyingPriceSilderFunctionality_Laptop_17-24-09] ChromeDriver initialized successfully for thread: 34

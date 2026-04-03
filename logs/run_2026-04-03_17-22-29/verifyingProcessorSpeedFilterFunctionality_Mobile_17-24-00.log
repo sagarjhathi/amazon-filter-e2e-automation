@@ -1,3 +1,0 @@
-2026-04-03 05:24:00.708 PM [TestNG-test-Test-2] INFO  [verifyingProcessorSpeedFilterFunctionality_Mobile_17-24-00] No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-2026-04-03 05:24:00.724 PM [TestNG-test-Test-2] INFO  [verifyingProcessorSpeedFilterFunctionality_Mobile_17-24-00] WebDriverManager: chromedriver setup OK
-2026-04-03 05:24:04.529 PM [TestNG-test-Test-2] INFO  [verifyingProcessorSpeedFilterFunctionality_Mobile_17-24-00] ChromeDriver initialized successfully for thread: 35
