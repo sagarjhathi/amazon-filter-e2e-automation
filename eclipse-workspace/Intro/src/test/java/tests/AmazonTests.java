@@ -169,11 +169,14 @@ public class AmazonTests extends BaseTest {
 		
  		
  		landingPage.openingLandingPage();
+ 		ScreenshotUtilUpdated.capture(input);
  		SafeActions safeAct = new SafeActions();
 		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
+		ScreenshotUtilUpdated.capture(input);
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
+		ScreenshotUtilUpdated.capture(input);
  		genericUtility.refreshIfServiceUnavailable();
  		
  		 String testName=ThreadContext.get("testName");
