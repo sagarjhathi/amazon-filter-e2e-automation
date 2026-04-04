@@ -1,0 +1,13 @@
+15:53:47 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+15:53:47 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - WebDriverManager: chromedriver setup OK
+15:53:49 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - ChromeDriver initialized successfully for thread: 36
+15:53:49 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Opening amazon Landing page
+15:53:49 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Within safeFindElement method
+15:53:52 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a4daee085a8cb46c55bd8bab0a8298e8)] -> xpath: //a[@id='nav-logo-sprites']]
+15:53:53 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Giving input within the search bar
+15:53:53 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Within safeClick method
+15:53:55 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Clicked the  [[ChromeDriver: chrome on windows (a4daee085a8cb46c55bd8bab0a8298e8)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+15:53:55 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Clicking on the submit in the search bar
+15:53:55 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Within filterCheckUnderList method
+15:53:56 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47] Filter option does not exist within the filter check List
+15:53:56 [TestNG-test-Test-3] WARN  verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47 - [verifyingStorageCapacityFilterFunctionality_Laptop_15-53-47]  Filter option 'Storage Capacity' does not exist in the list. Skipping the test.
