@@ -16,6 +16,9 @@
     <classes>
       <class name="test.java.tests.AmazonTests">
           		
+          		<methods>
+          		<include name="verifyingGetItByTodayFilterFunctionality"></include>
+          		</methods>
     </class>
       
     </classes>
