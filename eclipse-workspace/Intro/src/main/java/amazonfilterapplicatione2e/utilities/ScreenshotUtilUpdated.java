@@ -21,7 +21,7 @@ public class ScreenshotUtilUpdated {
 	        WebDriver driver = DriverManager.getDriver(); // ✅ get from ThreadLocal
 
 	        try {
-	//
+	
 	        	String testName = ThreadContext.get("testName");
 
 	        	String screenShotPath = PathManager.getScreenshotPath(testName);
@@ -36,9 +36,10 @@ public class ScreenshotUtilUpdated {
 	        	        "_" + System.nanoTime() + ".png";
 
 	        	
-	        //	String finalPath = screenShotPath + File.separator + fileName;
-	        	String finalPath = screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
+	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
+	        		System.out.println(finalPath+"   -->> final path if param exist");
 	        	
+	        //	String finalPath = screenShotPath + File.separator + fileName;
 	        	
 	        	
 	       

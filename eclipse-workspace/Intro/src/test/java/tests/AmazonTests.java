@@ -398,13 +398,10 @@ public class AmazonTests extends BaseTest {
 	}
 
 	
-	@Test(
-		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
-		)
-	public void verifyingPriceSilderFunctionality(String input) throws InterruptedException {
+	@Test
+	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
-		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+	//	ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -412,13 +409,14 @@ public class AmazonTests extends BaseTest {
 		ProductListingPage productPage=new ProductListingPage();
 		PriceSliderFlows priceSliderFlows = new PriceSliderFlows();
 		SoftAssert softAssert = new SoftAssert();
-
+		
 
 		landingPage.openingLandingPage();
+		ScreenshotUtilUpdated.capture("Test test ");
 		SafeActions safeAct = new SafeActions();
 		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
-		landingPage.givingInputWithinSearchBar(input);
+		landingPage.givingInputWithinSearchBar("Mobile");
 		landingPage.clickingOnSubmitSearchButton();
 		genericUtility.refreshIfServiceUnavailable();
 		String testName=ThreadContext.get("testName");
@@ -429,7 +427,6 @@ public class AmazonTests extends BaseTest {
 			log.warn("[{}]   Filter option 'Price' does not exist in the list. Skipping the test.", testName);
 			return ;
 		}
-
 
 		List<Integer> minValues = Arrays.asList(61, 91, 131);
 		List<Integer> maxValues = Arrays.asList(81, 121, 161);
