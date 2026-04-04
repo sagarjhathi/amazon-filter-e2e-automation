@@ -116,6 +116,7 @@ public class BaseTest {
 	  public void beforeTest(ITestResult result) {
 
 	      String baseName = result.getMethod().getMethodName();
+	      
 	      System.out.println(baseName+"  =======  BASE NAME HERE ");
 	      String params = Arrays.toString(result.getParameters())
 	              .replaceAll("[\\[\\] ]", "")
@@ -128,9 +129,11 @@ public class BaseTest {
 	              + (params.isEmpty() ? "" : "_" + params)
 	              + "_" + timestamp;
 
+	      
 	      String logPathName = PathManager.getLogPath(testName);
 
 	      // ✅ SET CONTEXT FIRST (VERY IMPORTANT)
+	      ThreadContext.put("testNameShort", params);
 	      ThreadContext.put("logFileName", testName);
 	      ThreadContext.put("logPath", logPathName);
 	      ThreadContext.put("testName", testName);

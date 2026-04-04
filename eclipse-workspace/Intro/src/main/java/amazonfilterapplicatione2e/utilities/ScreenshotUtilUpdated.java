@@ -36,9 +36,12 @@ public class ScreenshotUtilUpdated {
 	        	        "_" + System.nanoTime() + ".png";
 
 	        	
-	        	String finalPath = screenShotPath + File.separator + fileName;
+	        //	String finalPath = screenShotPath + File.separator + fileName;
+	        	String finalPath = screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
 	        	
 	        	
+	        	
+	       
 	        	// capture
 	        	File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	        	File dest = new File(finalPath);
