@@ -347,6 +347,15 @@ jobs:
       
           echo "RUN_FOLDER=$($runFolder.Name)" >> $env:GITHUB_ENV
 
+
+      - name: Upload test artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-${{ env.RUN_FOLDER }}
+          path: ${{ env.WORKDIR }}/${{ env.RUN_FOLDER }}
+          retention-days: 30
+
+
       - name: Save artifacts
         shell: pwsh
         run: |
@@ -400,4 +409,3 @@ jobs:
           git add .
           git commit -m "Update report" || echo "No changes"
           git push origin gh-pages --force
-          
