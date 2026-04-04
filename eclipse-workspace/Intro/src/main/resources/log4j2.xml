@@ -8,10 +8,10 @@
     </Console>
 
     <Routing name="RoutingAppender">
-    <Routes pattern="$${ctx:logFileName}">
+    <Routes pattern="$${ctx:testNameShort}">
         <Route>
-            <File name="FileAppender-${ctx:logFileName}"
-                  fileName="${ctx:logPath}/${ctx:logFileName}.log">
+            <File name="FileAppender-${ctx:testNameShort}"
+                  fileName="${ctx:logPath}/${ctx:testNameShort}.log">
                 <PatternLayout pattern="%d{HH:mm:ss} [%t] %-5level %X{testName} - %msg%n"/>
             </File>
         </Route>
@@ -21,7 +21,6 @@
 </Appenders>
     
     
-
    <Loggers>
     <Root level="info">
         <AppenderRef ref="Console"/>
