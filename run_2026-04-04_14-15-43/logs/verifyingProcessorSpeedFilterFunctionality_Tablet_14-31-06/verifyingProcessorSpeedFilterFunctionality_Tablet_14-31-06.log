@@ -1,0 +1,17 @@
+14:31:06 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+14:31:06 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - WebDriverManager: chromedriver setup OK
+14:31:08 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - ChromeDriver initialized successfully for thread: 34
+14:31:09 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Opening amazon Landing page
+14:31:09 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Within safeFindElement method
+14:31:14 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+14:31:14 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+14:31:19 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+14:31:20 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+14:31:20 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Skipping action: Element not found after 2   attemps
+14:31:27 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Giving input within the search bar
+14:31:27 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Within safeClick method
+14:31:31 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Clicked the  [[ChromeDriver: chrome on windows (dc68d04d0fd5a37d20c5a8519a68aed3)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+14:31:31 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Clicking on the submit in the search bar
+14:31:31 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Within filterCheckUnderList method
+14:31:32 [TestNG-test-Test-1] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06] Filter option does not exist within the filter check List
+14:31:32 [TestNG-test-Test-1] WARN  verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06 - [verifyingProcessorSpeedFilterFunctionality_Tablet_14-31-06]  Filter option 'Processor Speed' not available. Skipping test.
