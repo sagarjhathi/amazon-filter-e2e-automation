@@ -1,12 +1,13 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-import java.time.LocalDate;
+import java.time.LocalDate; 
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -19,7 +20,7 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
 
 public class DeliveryFilterFlows extends BasePage{
 
@@ -44,10 +45,10 @@ public class DeliveryFilterFlows extends BasePage{
 		safeAct.safeClick(filterOptions);
 
 
-		String testName = ThreadContext.get("logFileName");
+		String testName = ThreadContext.get("baseTestName");
 		
 		String filterOption=productPage.getDeliveryDayFilterByName(testName);
-		ScreenshotUtil.capture(testName,filterOption);
+		ScreenshotUtilUpdated.capture(testName,filterOption);
 
 		log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
 

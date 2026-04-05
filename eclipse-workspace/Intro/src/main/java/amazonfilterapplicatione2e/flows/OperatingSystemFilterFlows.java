@@ -1,6 +1,6 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,13 +12,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
+
 import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
 
 public class OperatingSystemFilterFlows extends BasePage{
 
@@ -178,7 +179,7 @@ public OperatingSystemFilterFlows() {
 		                String productNamePlusIndex = "Product Index=" + productIndex;
 		                genericUtility.smoothScrollToElement(productPage.reportAnIssue);
 		              
-		                ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+		                ScreenshotUtilUpdated.capture(testName, filterValue, productNamePlusIndex);
 		                log.info("[{}] Took screenshot for missing tech details; show-more visible",
 		                         ThreadContext.get("testName"));
 		            }

@@ -1,6 +1,6 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-import java.util.ArrayList;
+import java.util.ArrayList; 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +20,7 @@ import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
 
 public class SharedFilterFlows extends BasePage {
 
@@ -248,7 +248,7 @@ try {
      	String productNamePlusIndex="Product Index="+productIndex;
      	genericUtility.smoothScrollToElement(productPage.reportAnIssue);
      	
-     	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+     	ScreenshotUtilUpdated.capture(testName, filterValue, productNamePlusIndex);
 			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
      }else {
     	 genericUtility.smoothScrollToElement(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
@@ -264,7 +264,7 @@ try {
 	
 	
 	String productNamePlusIndex="Product Name="+name+"  "+"Product Index="+productIndex;
-	ScreenshotUtil.capture(testName, filterValue, productNamePlusIndex);
+	ScreenshotUtilUpdated.capture(testName, filterValue, productNamePlusIndex);
 	log.info("[{}] Within catch block Cannot click 'see more details' hence Taking screen shot available button on ui", testName);
 
    

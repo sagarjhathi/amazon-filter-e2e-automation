@@ -21,6 +21,7 @@ import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
 
 
 
+
 public class BrandFilterFlows extends BasePage{
 
 	private  final Logger log = LoggerUtility.getLogger(BrandFilterFlows.class);

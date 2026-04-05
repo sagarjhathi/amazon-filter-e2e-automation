@@ -1,5 +1,9 @@
 package main.java.amazonfilterapplicatione2e.base;
-import java.lang.reflect.Method; 
+import java.lang.reflect.Method;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -7,28 +11,43 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import main.java.amazonfilterapplicatione2e.driverManager.DriverManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 
-@Listeners(main.java.amazonfilterapplicatione2e.reporting.TestListener.class)
-public class BaseTest {
-<<<<<<< Updated upstream
- 
-	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
-	protected WebDriver driver;
-	@BeforeMethod
-	public void setUp(Method method) {
+public class BaseTest { 	
+	
 
-		String testName = method.getName(); // The actual test method name
-		ThreadContext.put("testName", testName);    
-		ThreadContext.put("logFileName", testName); // must come before logger is called
-		log = LogManager.getLogger(testName); 
-		
-		System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
-		log.info("🔹 Starting test method: " + testName);
-=======
- 	
+	
+	//	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
+//	protected WebDriver driver;
+//	@BeforeMethod
+//	public void setUp(Method method) {
+//
+//		String testName = method.getName(); // The actual test method name
+//		ThreadContext.put("testName", testName);    
+//		ThreadContext.put("logFileName", testName); // must come before logger is called
+//		log = LogManager.getLogger(testName); 
+//		
+//		System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
+//		log.info("🔹 Starting test method: " + testName);
+//
+//		DriverManager.initDriver();
+//		driver = DriverManager.getDriver();
+//		
+//	}
+//
+//	@AfterMethod
+//	public void tearDown(ITestResult result) {
+//		log.info("✅ Finished test method: " + result.getName());
+//		ThreadContext.clearAll();  //Critical to avoid context bleed
+//		DriverManager.quitDriver();
+//		
+//	}
+	
+	
+	
 	
 	public WebDriver driver;
 	  
@@ -52,26 +71,105 @@ public class BaseTest {
 	  }
 
 	    	    
+	    
+	  
+//	  @BeforeMethod(alwaysRun = true)
+//	  public void beforeTest(ITestResult result) {
+//
+//	      // 1. Driver
+//	      DriverManager.initDriver();
+//	      driver = DriverManager.getDriver();
+//	     
+//
+//	      String baseName = result.getMethod().getMethodName();
+//
+//	      String params = Arrays.toString(result.getParameters())
+//	              .replaceAll("[\\[\\] ]", "")
+//	              .replace(",", "_");
+//
+//	      String timestamp = LocalDateTime.now()
+//	              .format(DateTimeFormatter.ofPattern("HH-mm-ss"));
+//
+//	      String testName = baseName 
+//	              + (params.isEmpty() ? "" : "_" + params)
+//	              + "_" + timestamp;
+//	      
+//	      // 3. Build test folder
+//	      String path = PathManager.getRunFolderPath()
+//	              + File.separator + testName;
+//	    		  
+//	      String logPathName = PathManager.getLogPath(testName);
+//	    		  System.out.println(logPathName+"   here is the   logPathName");
+//	    		  System.out.println(testName+"   here is the   testName");
+//	      PathManager.setTestFolderPath(path);
+//	      
+//	      ThreadContext.put("logFileName", testName);
+//	      ThreadContext.put("logPath", logPathName);
+//	      ThreadContext.put("testName", testName);
+//	      	      
+//	  }
+	  
+	  
 	  
 	  @BeforeMethod(alwaysRun = true)
 	  public void beforeTest(ITestResult result) {
->>>>>>> Stashed changes
 
-		DriverManager.initDriver();
-		driver = DriverManager.getDriver();
-		
-	}
+	      String baseName = result.getMethod().getMethodName();
+	      
+	      System.out.println(baseName+"  =======  BASE NAME HERE ");
+	      String params = Arrays.toString(result.getParameters())
+	              .replaceAll("[\\[\\] ]", "")
+	              .replace(",", "_");
 
-	@AfterMethod
-	public void tearDown(ITestResult result) {
-		log.info("✅ Finished test method: " + result.getName());
-		ThreadContext.clearAll();  //Critical to avoid context bleed
-		DriverManager.quitDriver();
-		
-	}
+	      String timestamp = LocalDateTime.now()
+	              .format(DateTimeFormatter.ofPattern("HH-mm-ss"));
 
+	      String testName = baseName 
+	              + (params.isEmpty() ? "" : "_" + params)
+	              + "_" + timestamp;
 
-	
-	
-	
+	      
+	      String logPathName = PathManager.getLogPath(testName);
+
+	      // ✅ SET CONTEXT FIRST (VERY IMPORTANT)
+	      ThreadContext.put("testNameShort", params);
+	      ThreadContext.put("logFileName", testName);
+	      ThreadContext.put("logPath", logPathName);
+	      ThreadContext.put("testName", testName);
+	      ThreadContext.put("baseTestName",baseName);
+
+	      // ✅ Ensure folder exists BEFORE logging
+	      new File(logPathName).mkdirs();
+
+	      // Now safe to do anything else
+	      DriverManager.initDriver();
+	      driver = DriverManager.getDriver();
+
+	      String path = PathManager.getRunFolderPath()
+	              + File.separator + testName;
+
+	      PathManager.setTestFolderPath(path);
+	  }
+	    
+	  
+	  
+	  
+	  
+	  
+	  
+	  @AfterMethod(alwaysRun = true)
+	  public void afterTest(ITestResult result) {
+		  
+	      String testName = ThreadContext.get("testName");
+	      System.out.println(testName+"    checking the test name being null");
+	      	      
+	      System.out.println("Looking logs in: " + PathManager.getLogPath(testName));
+	      System.out.println("Looking screenshots in: " + PathManager.getScreenshotPath(testName));
+	     
+	      
+	      ThreadContext.clearAll();
+	      PathManager.clearTestFolder();
+	      DriverManager.quitDriver();
+	      
+	  }
 }
