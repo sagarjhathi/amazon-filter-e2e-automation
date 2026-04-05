@@ -1,0 +1,12 @@
+10:26:51 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+10:26:51 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - WebDriverManager: chromedriver setup OK
+10:26:53 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - ChromeDriver initialized successfully for thread: 36
+10:26:54 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Opening amazon Landing page
+10:26:58 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Within safeFindElement method
+10:26:58 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (3cca7eb16cde025b4d9ff3fd41a79546)] -> xpath: //a[@id='nav-logo-sprites']]
+10:27:00 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Giving input within the search bar
+10:27:00 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Within safeClick method
+10:27:03 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Clicked the  [[ChromeDriver: chrome on windows (3cca7eb16cde025b4d9ff3fd41a79546)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+10:27:03 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Clicking on the submit in the search bar
+10:27:03 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51] Waiting until element is visible in viewport
+10:27:13 [TestNG-test-Test-3] WARN  verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51 - [verifyingGetItByTodayFilterFunctionality_Laptop_10-26-51]  Filter option 'Get It Today' does not exist. Skipping the test.
