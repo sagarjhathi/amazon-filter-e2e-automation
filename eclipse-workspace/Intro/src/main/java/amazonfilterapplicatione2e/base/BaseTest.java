@@ -21,36 +21,6 @@ import main.java.amazonfilterapplicatione2e.reporting.ReportManager;
 
 public class BaseTest { 	
 	
-
-	
-	//	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
-//	protected WebDriver driver;
-//	@BeforeMethod
-//	public void setUp(Method method) {
-//
-//		String testName = method.getName(); // The actual test method name
-//		ThreadContext.put("testName", testName);    
-//		ThreadContext.put("logFileName", testName); // must come before logger is called
-//		log = LogManager.getLogger(testName); 
-//		
-//		System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
-//		log.info("🔹 Starting test method: " + testName);
-//
-//		DriverManager.initDriver();
-//		driver = DriverManager.getDriver();
-//		
-//	}
-//
-//	@AfterMethod
-//	public void tearDown(ITestResult result) {
-//		log.info("✅ Finished test method: " + result.getName());
-//		ThreadContext.clearAll();  //Critical to avoid context bleed
-//		DriverManager.quitDriver();
-//		
-//	}
-	
-	
-	
 	
 	public WebDriver driver;
 	  
@@ -73,46 +43,7 @@ public class BaseTest {
 	      runFolder.mkdirs();
 	  }
 
-	    	    
-	    
-	  
-//	  @BeforeMethod(alwaysRun = true)
-//	  public void beforeTest(ITestResult result) {
-//
-//	      // 1. Driver
-//	      DriverManager.initDriver();
-//	      driver = DriverManager.getDriver();
-//	     
-//
-//	      String baseName = result.getMethod().getMethodName();
-//
-//	      String params = Arrays.toString(result.getParameters())
-//	              .replaceAll("[\\[\\] ]", "")
-//	              .replace(",", "_");
-//
-//	      String timestamp = LocalDateTime.now()
-//	              .format(DateTimeFormatter.ofPattern("HH-mm-ss"));
-//
-//	      String testName = baseName 
-//	              + (params.isEmpty() ? "" : "_" + params)
-//	              + "_" + timestamp;
-//	      
-//	      // 3. Build test folder
-//	      String path = PathManager.getRunFolderPath()
-//	              + File.separator + testName;
-//	    		  
-//	      String logPathName = PathManager.getLogPath(testName);
-//	    		  System.out.println(logPathName+"   here is the   logPathName");
-//	    		  System.out.println(testName+"   here is the   testName");
-//	      PathManager.setTestFolderPath(path);
-//	      
-//	      ThreadContext.put("logFileName", testName);
-//	      ThreadContext.put("logPath", logPathName);
-//	      ThreadContext.put("testName", testName);
-//	      	      
-//	  }
-	  
-	  
+	    	    	  
 	  
 	  @BeforeMethod(alwaysRun = true)
 	  public void beforeTest(ITestResult result) {
