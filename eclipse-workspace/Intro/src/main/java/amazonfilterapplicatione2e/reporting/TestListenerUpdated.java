@@ -1,6 +1,6 @@
 package main.java.amazonfilterapplicatione2e.reporting;
 
-import org.apache.logging.log4j.ThreadContext;
+import org.apache.logging.log4j.ThreadContext; 
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
