@@ -10,7 +10,6 @@ import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 
 public class AmazonLandingPage extends BasePage{

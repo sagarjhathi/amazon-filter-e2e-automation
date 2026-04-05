@@ -1,4 +1,5 @@
 package main.java.amazonfilterapplicatione2e.base;
+import java.io.File;
 import java.lang.reflect.Method;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,6 +16,8 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import main.java.amazonfilterapplicatione2e.driverManager.DriverManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
+import main.java.amazonfilterapplicatione2e.pathManager.PathManager;
+import main.java.amazonfilterapplicatione2e.reporting.ReportManager;
 
 public class BaseTest { 	
 	

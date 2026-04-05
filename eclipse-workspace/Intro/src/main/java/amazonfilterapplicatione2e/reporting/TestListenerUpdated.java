@@ -9,7 +9,6 @@ import org.testng.ITestResult;
 public class TestListenerUpdated implements ITestListener{
 
 	
-	
 	@Override
     public void onTestStart(ITestResult result) {
 
