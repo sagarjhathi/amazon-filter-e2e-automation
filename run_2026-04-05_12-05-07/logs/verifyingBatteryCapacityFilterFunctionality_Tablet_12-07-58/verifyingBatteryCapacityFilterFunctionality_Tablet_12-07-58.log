@@ -1,0 +1,17 @@
+12:07:58 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+12:07:58 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - WebDriverManager: chromedriver setup OK
+12:08:00 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - ChromeDriver initialized successfully for thread: 34
+12:08:01 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Opening amazon Landing page
+12:08:01 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Within safeFindElement method
+12:08:06 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+12:08:06 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+12:08:11 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+12:08:12 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+12:08:12 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Skipping action: Element not found after 2   attemps
+12:08:16 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Giving input within the search bar
+12:08:16 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Within safeClick method
+12:08:18 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Clicked the  [[ChromeDriver: chrome on windows (ff643ff3b6042384bf94df1bfc179c03)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+12:08:18 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Clicking on the submit in the search bar
+12:08:18 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Within filterCheckUnderList method
+12:08:19 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58] Filter option does not exist within the filter check List
+12:08:19 [TestNG-test-Test-1] WARN  verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58 - [verifyingBatteryCapacityFilterFunctionality_Tablet_12-07-58]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.
