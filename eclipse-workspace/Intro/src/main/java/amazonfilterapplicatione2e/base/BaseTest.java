@@ -1,10 +1,5 @@
 package main.java.amazonfilterapplicatione2e.base;
-import java.io.File;
-import java.lang.reflect.Method;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
-
+import java.lang.reflect.Method; 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
@@ -12,13 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import main.java.amazonfilterapplicatione2e.driverManager.DriverManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
-import main.java.amazonfilterapplicatione2e.pathManager.PathManager;
-import main.java.amazonfilterapplicatione2e.reporting.ReportManager;
 
+@Listeners(main.java.amazonfilterapplicatione2e.reporting.TestListener.class)
 public class BaseTest {
 <<<<<<< Updated upstream
  
@@ -64,36 +57,18 @@ public class BaseTest {
 	  public void beforeTest(ITestResult result) {
 >>>>>>> Stashed changes
 
-	      // Now safe to do anything else
-	      DriverManager.initDriver();
-	      driver = DriverManager.getDriver();
+		DriverManager.initDriver();
+		driver = DriverManager.getDriver();
+		
+	}
 
-	      String path = PathManager.getRunFolderPath()
-	              + File.separator + testName;
-
-	      PathManager.setTestFolderPath(path);
-	  }
-	    
-	  
-	  
-	  
-	  
-	  
-	  @AfterMethod(alwaysRun = true)
-	  public void afterTest(ITestResult result) {
-		  
-	      String testName = ThreadContext.get("testName");
-	      System.out.println(testName+"    checking the test name being null");
-	      	      
-	      System.out.println("Looking logs in: " + PathManager.getLogPath(testName));
-	      System.out.println("Looking screenshots in: " + PathManager.getScreenshotPath(testName));
-	     
-	      
-	      ThreadContext.clearAll();
-	      PathManager.clearTestFolder();
-	      DriverManager.quitDriver();
-	      
-	  }
+	@AfterMethod
+	public void tearDown(ITestResult result) {
+		log.info("✅ Finished test method: " + result.getName());
+		ThreadContext.clearAll();  //Critical to avoid context bleed
+		DriverManager.quitDriver();
+		
+	}
 
 
 	

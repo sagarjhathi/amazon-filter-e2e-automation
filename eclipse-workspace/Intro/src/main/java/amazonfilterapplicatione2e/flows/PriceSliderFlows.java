@@ -1,6 +1,6 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-import java.time.Duration; 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +20,7 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 public class PriceSliderFlows extends BasePage{
 
@@ -92,7 +92,7 @@ public class PriceSliderFlows extends BasePage{
 
 			String testName = ThreadContext.get("logFileName");
 			genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
-			ScreenshotUtilUpdated.capture(testName,appliedFilter);
+			ScreenshotUtil.capture(testName,appliedFilter);
 
 			for (int j = 0; j < prices.size(); j++) {
 			

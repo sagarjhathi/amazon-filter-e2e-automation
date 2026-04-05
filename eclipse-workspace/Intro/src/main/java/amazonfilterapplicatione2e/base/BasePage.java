@@ -18,7 +18,6 @@ public class BasePage {
 	protected WaitUtility waitUtil;
 	public BasePage() {
 		
-		//This is branch change check made from eclipse ide
         this.driver = DriverManager.getDriver();
         PageFactory.initElements(driver, this);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(ConfigManager.getInt("globalWaitTimeExtendingBasePage", 20)));

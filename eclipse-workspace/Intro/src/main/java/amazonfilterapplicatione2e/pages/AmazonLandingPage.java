@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.pages;
-import java.time.Duration;    
+import java.time.Duration;   
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
@@ -10,6 +10,7 @@ import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 
 public class AmazonLandingPage extends BasePage{
