@@ -19,9 +19,12 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pathManager.PathManager;
 import main.java.amazonfilterapplicatione2e.reporting.ReportManager;
 
+
 public class BaseTest {
- 
-//	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
+
+
+
+	//	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
 //	protected WebDriver driver;
 //	@BeforeMethod
 //	public void setUp(Method method) {
@@ -174,8 +177,4 @@ public class BaseTest {
 	      
 	  }
 
-
-	
-	
-	
 }
