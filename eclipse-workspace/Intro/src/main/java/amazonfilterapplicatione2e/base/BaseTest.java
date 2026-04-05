@@ -13,6 +13,7 @@ import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 
 @Listeners(main.java.amazonfilterapplicatione2e.reporting.TestListener.class)
 public class BaseTest {
+<<<<<<< Updated upstream
  
 	private   Logger log = LoggerUtility.getLogger(BaseTest.class);
 	protected WebDriver driver;
@@ -26,6 +27,35 @@ public class BaseTest {
 		
 		System.out.println("🧪 logFileName: " + ThreadContext.get("logFileName"));	    	   
 		log.info("🔹 Starting test method: " + testName);
+=======
+ 	
+	
+	public WebDriver driver;
+	  
+	  @BeforeSuite(alwaysRun = true)
+	  public void createRunFolder() {
+		  
+	      String timestamp = LocalDateTime.now()
+        .format(DateTimeFormatter.ofPattern("yyyy-MM-dd_HH-mm-ss"));
+	      
+	      String runPath= System.getProperty("user.dir")
+	              + File.separator + "run_" + timestamp;
+	      
+	      System.out.println(runPath+"    RUN PATH HERE FOR TESTING");
+	      
+	      
+		  PathManager.setRunFolderPath(runPath);
+	      ReportManager.initReport(runPath);
+	 
+	      File runFolder = new File(runPath);
+	      runFolder.mkdirs();
+	  }
+
+	    	    
+	  
+	  @BeforeMethod(alwaysRun = true)
+	  public void beforeTest(ITestResult result) {
+>>>>>>> Stashed changes
 
 		DriverManager.initDriver();
 		driver = DriverManager.getDriver();
