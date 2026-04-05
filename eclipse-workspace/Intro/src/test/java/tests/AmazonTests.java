@@ -1,6 +1,6 @@
 package test.java.tests;
 
-import static org.testng.Assert.expectThrows;     
+import static org.testng.Assert.expectThrows;      
 import java.time.Duration; 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -41,15 +41,15 @@ import main.java.amazonfilterapplicatione2e.flows.SharedFilterFlows;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
-import main.java.amazonfilterapplicatione2e.reporting.ExtentTestManager;
+import main.java.amazonfilterapplicatione2e.reporting.ReportManager;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
+import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
 import test.java.retry.RetryFailedTest;
 import test.testDataProvider.TestDataProvider;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-
 public class AmazonTests extends BaseTest {
 
 	
@@ -59,12 +59,11 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
@@ -80,9 +79,10 @@ public class AmazonTests extends BaseTest {
 		capHandler.handleCaptcha();
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();                   
-		
+		ScreenshotUtilUpdated.capture(input);
         genericUtility.refreshIfServiceUnavailable();
         String testName=ThreadContext.get("testName");
+       
        
         if (!genericUtility.isElementInViewport(productPage.getItByTomorrowUnderDeliveryDayFilterBy)) {
 		    System.out.println("Filter option 'Get It by Tomorrow' does not exist. Skipping the test.");
@@ -108,12 +108,11 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
-		 ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		 
 		 AmazonLandingPage landingPage=new AmazonLandingPage();
 		 CaptchaHandler capHandler=new CaptchaHandler();
@@ -121,6 +120,7 @@ public class AmazonTests extends BaseTest {
 		 ProductListingPage productPage=new ProductListingPage();
 		 DeliveryFilterFlows deliveryFilterFlows = new DeliveryFilterFlows();
 		 
+		 ScreenshotUtilUpdated.capture(input);
 		 
 		 landingPage.openingLandingPage();
 			SafeActions safeAct = new SafeActions();
@@ -156,12 +156,11 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		GenericUtility genericUtility=new GenericUtility();
@@ -170,11 +169,14 @@ public class AmazonTests extends BaseTest {
 		
  		
  		landingPage.openingLandingPage();
+ 		ScreenshotUtilUpdated.capture(input);
  		SafeActions safeAct = new SafeActions();
 		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
+		ScreenshotUtilUpdated.capture(input);
 		landingPage.givingInputWithinSearchBar(input);
 		landingPage.clickingOnSubmitSearchButton();
+		ScreenshotUtilUpdated.capture(input);
  		genericUtility.refreshIfServiceUnavailable();
  		
  		 String testName=ThreadContext.get("testName");
@@ -202,12 +204,11 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingFreeDeliveryFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
 		GenericUtility genericUtility=new GenericUtility();
@@ -248,12 +249,11 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -321,13 +321,12 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -399,14 +398,10 @@ public class AmazonTests extends BaseTest {
 	}
 
 	
-	@Test(
-		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
-		)
-	public void verifyingPriceSilderFunctionality(String input) throws InterruptedException {
+	@Test
+	public void verifyingPriceSilderFunctionality() throws InterruptedException {
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+	//	ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -414,13 +409,14 @@ public class AmazonTests extends BaseTest {
 		ProductListingPage productPage=new ProductListingPage();
 		PriceSliderFlows priceSliderFlows = new PriceSliderFlows();
 		SoftAssert softAssert = new SoftAssert();
-
+		
 
 		landingPage.openingLandingPage();
+		ScreenshotUtilUpdated.capture("Test test ");
 		SafeActions safeAct = new SafeActions();
 		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
-		landingPage.givingInputWithinSearchBar(input);
+		landingPage.givingInputWithinSearchBar("Mobile");
 		landingPage.clickingOnSubmitSearchButton();
 		genericUtility.refreshIfServiceUnavailable();
 		String testName=ThreadContext.get("testName");
@@ -431,7 +427,6 @@ public class AmazonTests extends BaseTest {
 			log.warn("[{}]   Filter option 'Price' does not exist in the list. Skipping the test.", testName);
 			return ;
 		}
-
 
 		List<Integer> minValues = Arrays.asList(61, 91, 131);
 		List<Integer> maxValues = Arrays.asList(81, 121, 161);
@@ -472,11 +467,10 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
 		AmazonLandingPage landingPage = new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -555,12 +549,11 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingDisplaySizeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -639,12 +632,11 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -723,13 +715,12 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingDisplayTypeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -804,13 +795,12 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		GenericUtility genericUtility=new GenericUtility();
 		AmazonLandingPage landingPage=new AmazonLandingPage();
@@ -887,13 +877,12 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();
 		CaptchaHandler capHandler=new CaptchaHandler();
@@ -971,13 +960,12 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,
-		    retryAnalyzer = RetryFailedTest.class
+		    dataProviderClass = TestDataProvider.class
 		)
 	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
 		
-		ExtentTestManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
+		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 		
 		
 		AmazonLandingPage landingPage=new AmazonLandingPage();

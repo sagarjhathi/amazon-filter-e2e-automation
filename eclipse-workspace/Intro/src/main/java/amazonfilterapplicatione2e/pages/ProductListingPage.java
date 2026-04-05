@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.pages;
-import java.time.LocalDate; 
+import java.time.LocalDate;  
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +28,6 @@ import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
-import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtil;
 
 
 public class ProductListingPage extends  BasePage{
