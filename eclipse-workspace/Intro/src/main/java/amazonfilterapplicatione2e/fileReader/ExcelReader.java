@@ -36,12 +36,18 @@ public class ExcelReader {
 	                data[i - 1][0] = formatter.formatCellValue(row.getCell(0));
 	            }
 
+	            reader.closeWorkbook();
 	            return data;
+	            
 
 	        } catch (Exception e) {
 	            throw new RuntimeException("❌ Failed to read Excel", e);
 	        }
+	        
+	        
+	        
 	    }
 }
 	 
+
 
