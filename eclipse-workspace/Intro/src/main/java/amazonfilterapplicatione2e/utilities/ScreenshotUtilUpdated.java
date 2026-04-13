@@ -5,16 +5,24 @@ import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
+import main.java.amazonfilterapplicatione2e.configManager.ConfigManager;
 import main.java.amazonfilterapplicatione2e.driverManager.DriverManager;
+import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
+import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pathManager.PathManager;
 
 public class ScreenshotUtilUpdated {
 
+	
+	private  final static Logger log = LoggerUtility.getLogger(ScreenshotUtilUpdated.class);
+	
 	WebDriver driver;
 	
 	 public static String capture(String... names) {
@@ -44,10 +52,29 @@ public class ScreenshotUtilUpdated {
 	        	
 	       
 	        	// capture
-	        	File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-	        	File dest = new File(finalPath);
+	        		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+		        	File dest = new File(finalPath);
+	        		
+	        		
+	        		  if(ConfigManager.getBoolean("compressImage", false)) {
+	                  	try{
+	                  		String imageQuality=ConfigManager.get("imageCompressionQuality");
+	                  		System.out.println(imageQuality);
+	                  		
+	                  		double parseImageQuality=Double.parseDouble(imageQuality);
+	                  		System.out.println(parseImageQuality);
+	                  		ImageCompressor.compressImage(src, finalPath,parseImageQuality);
+	                  	  }catch(Exception e) {
+	                  		  log.warn("[{}] compression quality / compressImage method failed, handling it the default way[No compression].", ThreadContext.get("testName"));
+	                  		  FileUtils.copyFile(src, new File(finalPath));
+	                  	  }
+	                	  
+	                  }else {
+	                	  log.warn("[{}] handling it the default way[No compression].", ThreadContext.get("testName"));
+	            		  FileUtils.copyFile(src, new File(finalPath));
+	                  }
 
-	        	Files.copy(src.toPath(), dest.toPath());
+	        //	Files.copy(src.toPath(), dest.toPath());
 
 	        	return finalPath;
 
