@@ -1,0 +1,69 @@
+18:20:10 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:20:10 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - WebDriverManager: chromedriver setup OK
+18:20:13 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - ChromeDriver initialized successfully for thread: 35
+18:20:15 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Opening amazon Landing page
+18:20:15 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:20 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+18:20:20 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+18:20:26 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+18:20:26 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+18:20:26 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Skipping action: Element not found after 2   attemps
+18:20:38 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Giving input within the search bar
+18:20:38 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeClick method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Clicked the  [[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Clicking on the submit in the search bar
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within filterCheckUnderList method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Found the Filter within the filter check List
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within applyPriceSliderAndValidateWithResult method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within smoothScrollToElement method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> id: p_36/range-slider_slider-item_upper-bound-slider]
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] in the setSliderValue method with value 61
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] in the setSliderValue method with value 81
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //label[@for='p_36/range-slider_slider-item_upper-bound-slider']]
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:41 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //label[@for='p_36/range-slider_slider-item_lower-bound-slider']]
+18:20:42 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within smoothScrollToElement method
+18:20:42 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:43 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:20:43 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->81
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->81
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] in the setSliderValue method with value 91
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] in the setSliderValue method with value 121
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //label[@for='p_36/range-slider_slider-item_upper-bound-slider']]
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //label[@for='p_36/range-slider_slider-item_lower-bound-slider']]
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within smoothScrollToElement method
+18:20:44 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->121
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->121
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] in the setSliderValue method with value 131
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] in the setSliderValue method with value 161
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //label[@for='p_36/range-slider_slider-item_upper-bound-slider']]
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:46 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> xpath: //label[@for='p_36/range-slider_slider-item_lower-bound-slider']]
+18:20:47 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within smoothScrollToElement method
+18:20:47 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Within safeFindElement method
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (db6694f9ec31dc9e3502c918b126c31d)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->161
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->161
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] Returning the data here in the end
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]  Price range validated successfully: 61 - 81
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] ------------------------------------------------------------
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]  Price range validated successfully: 91 - 121
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] ------------------------------------------------------------
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]  Price range validated successfully: 131 - 161
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10] ------------------------------------------------------------
+18:20:48 [TestNG-test-Test-2] INFO  verifyingPriceSilderFunctionality_18-20-10 - [verifyingPriceSilderFunctionality_18-20-10]  Asserting all soft assertions now...
