@@ -1,3 +1,0 @@
-18:32:45 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_18-32-45 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-18:32:45 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_18-32-45 - WebDriverManager: chromedriver setup OK
-18:32:49 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_18-32-45 - ChromeDriver initialized successfully for thread: 36

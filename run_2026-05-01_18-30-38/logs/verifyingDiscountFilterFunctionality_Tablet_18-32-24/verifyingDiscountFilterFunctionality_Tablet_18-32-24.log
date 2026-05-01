@@ -1,3 +1,0 @@
-18:32:24 [TestNG-test-Test-2] INFO  verifyingDiscountFilterFunctionality_Tablet_18-32-24 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-18:32:24 [TestNG-test-Test-2] INFO  verifyingDiscountFilterFunctionality_Tablet_18-32-24 - WebDriverManager: chromedriver setup OK
-18:32:28 [TestNG-test-Test-2] INFO  verifyingDiscountFilterFunctionality_Tablet_18-32-24 - ChromeDriver initialized successfully for thread: 35

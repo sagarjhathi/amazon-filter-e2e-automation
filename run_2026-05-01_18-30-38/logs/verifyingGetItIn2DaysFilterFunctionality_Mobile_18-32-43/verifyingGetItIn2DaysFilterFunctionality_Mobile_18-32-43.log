@@ -1,3 +1,0 @@
-18:32:43 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_18-32-43 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
-18:32:43 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_18-32-43 - WebDriverManager: chromedriver setup OK
-18:32:46 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_18-32-43 - ChromeDriver initialized successfully for thread: 35
