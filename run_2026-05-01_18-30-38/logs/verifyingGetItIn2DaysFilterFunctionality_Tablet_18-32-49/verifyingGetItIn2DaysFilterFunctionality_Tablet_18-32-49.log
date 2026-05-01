@@ -1,0 +1,3 @@
+18:32:49 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_18-32-49 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:32:49 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_18-32-49 - WebDriverManager: chromedriver setup OK
+18:32:53 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_18-32-49 - ChromeDriver initialized successfully for thread: 35

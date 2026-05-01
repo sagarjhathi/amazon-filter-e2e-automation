@@ -1,0 +1,3 @@
+18:32:57 [TestNG-test-Test-2] INFO  verifyingOperatingSystemVersionFilterFunctionality_Laptop_18-32-57 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:32:57 [TestNG-test-Test-2] INFO  verifyingOperatingSystemVersionFilterFunctionality_Laptop_18-32-57 - WebDriverManager: chromedriver setup OK
+18:33:00 [TestNG-test-Test-2] INFO  verifyingOperatingSystemVersionFilterFunctionality_Laptop_18-32-57 - ChromeDriver initialized successfully for thread: 35

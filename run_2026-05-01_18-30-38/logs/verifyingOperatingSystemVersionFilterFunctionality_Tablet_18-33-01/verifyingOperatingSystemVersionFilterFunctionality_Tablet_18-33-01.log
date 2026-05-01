@@ -1,0 +1,3 @@
+18:33:01 [TestNG-test-Test-2] INFO  verifyingOperatingSystemVersionFilterFunctionality_Tablet_18-33-01 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:33:01 [TestNG-test-Test-2] INFO  verifyingOperatingSystemVersionFilterFunctionality_Tablet_18-33-01 - WebDriverManager: chromedriver setup OK
+18:33:05 [TestNG-test-Test-2] INFO  verifyingOperatingSystemVersionFilterFunctionality_Tablet_18-33-01 - ChromeDriver initialized successfully for thread: 35

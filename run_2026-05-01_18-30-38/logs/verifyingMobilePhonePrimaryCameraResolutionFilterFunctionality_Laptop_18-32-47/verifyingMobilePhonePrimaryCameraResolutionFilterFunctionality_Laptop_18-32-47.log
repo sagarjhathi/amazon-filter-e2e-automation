@@ -1,0 +1,3 @@
+18:32:47 [TestNG-test-Test-1] INFO  verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_18-32-47 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:32:47 [TestNG-test-Test-1] INFO  verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_18-32-47 - WebDriverManager: chromedriver setup OK
+18:32:50 [TestNG-test-Test-1] INFO  verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_18-32-47 - ChromeDriver initialized successfully for thread: 34

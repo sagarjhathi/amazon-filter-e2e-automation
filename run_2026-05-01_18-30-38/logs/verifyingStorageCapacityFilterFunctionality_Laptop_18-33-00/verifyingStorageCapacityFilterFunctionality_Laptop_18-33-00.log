@@ -1,0 +1,3 @@
+18:33:00 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_18-33-00 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:33:00 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_18-33-00 - WebDriverManager: chromedriver setup OK
+18:33:03 [TestNG-test-Test-3] INFO  verifyingStorageCapacityFilterFunctionality_Laptop_18-33-00 - ChromeDriver initialized successfully for thread: 36

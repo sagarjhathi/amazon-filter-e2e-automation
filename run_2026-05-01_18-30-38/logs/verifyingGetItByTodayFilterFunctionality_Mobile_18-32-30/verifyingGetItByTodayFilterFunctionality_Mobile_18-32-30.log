@@ -1,0 +1,3 @@
+18:32:30 [TestNG-test-Test-1] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_18-32-30 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:32:30 [TestNG-test-Test-1] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_18-32-30 - WebDriverManager: chromedriver setup OK
+18:32:34 [TestNG-test-Test-1] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_18-32-30 - ChromeDriver initialized successfully for thread: 34
