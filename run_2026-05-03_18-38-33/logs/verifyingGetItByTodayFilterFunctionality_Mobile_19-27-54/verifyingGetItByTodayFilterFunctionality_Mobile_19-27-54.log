@@ -1,0 +1,16 @@
+19:27:54 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:27:54 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - WebDriverManager: chromedriver setup OK
+19:27:55 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - ChromeDriver initialized successfully for thread: 36
+19:27:56 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Opening amazon Landing page
+19:27:56 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Within safeFindElement method
+19:28:01 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+19:28:01 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+19:28:06 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+19:28:07 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+19:28:07 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Skipping action: Element not found after 2   attemps
+19:28:11 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Giving input within the search bar
+19:28:11 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Within safeClick method
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Clicked the  [[ChromeDriver: chrome on windows (23b680d82e02bd86a41253a311214213)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Clicking on the submit in the search bar
+19:28:14 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54] Waiting until element is visible in viewport
+19:28:24 [TestNG-test-Test-3] WARN  verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54 - [verifyingGetItByTodayFilterFunctionality_Mobile_19-27-54]  Filter option 'Get It Today' does not exist. Skipping the test.
