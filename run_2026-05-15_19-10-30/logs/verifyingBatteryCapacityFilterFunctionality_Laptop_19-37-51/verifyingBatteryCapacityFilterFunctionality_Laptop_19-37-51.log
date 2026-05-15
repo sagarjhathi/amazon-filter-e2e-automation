@@ -1,0 +1,17 @@
+19:37:51 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:37:51 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - WebDriverManager: chromedriver setup OK
+19:37:54 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - ChromeDriver initialized successfully for thread: 34
+19:37:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Opening amazon Landing page
+19:37:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Within safeFindElement method
+19:38:02 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+19:38:02 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+19:38:07 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+19:38:08 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+19:38:08 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Skipping action: Element not found after 2   attemps
+19:38:11 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Giving input within the search bar
+19:38:11 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Within safeClick method
+19:38:13 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Clicked the  [[ChromeDriver: chrome on windows (6d42a09ae5d258278511e086cc92724c)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:38:13 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Clicking on the submit in the search bar
+19:38:13 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Within filterCheckUnderList method
+19:38:14 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51] Filter option does not exist within the filter check List
+19:38:14 [TestNG-test-Test-1] WARN  verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-37-51]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.
