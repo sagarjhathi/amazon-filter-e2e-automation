@@ -1,6 +1,6 @@
 package test.java.tests;
 
-import static org.testng.Assert.expectThrows;      
+import static org.testng.Assert.expectThrows;       
 import java.time.Duration; 
 import java.time.LocalDate;
 import java.util.ArrayList;
