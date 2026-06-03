@@ -1,0 +1,113 @@
+18:55:27 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:55:27 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - WebDriverManager: chromedriver setup OK
+18:55:29 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - ChromeDriver initialized successfully for thread: 36
+18:55:29 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Opening amazon Landing page
+18:55:39 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:39 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //a[@id='nav-logo-sprites']]
+18:55:40 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Giving input within the search bar
+18:55:40 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeClick method
+18:55:43 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Clicked the  [[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+18:55:43 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Clicking on the submit in the search bar
+18:55:43 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within filterCheckUnderList method
+18:55:44 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Found the Filter within the filter check List
+18:55:44 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within applyPriceSliderAndValidateWithResult method
+18:55:44 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within smoothScrollToElement method
+18:55:44 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> id: p_36/range-slider_slider-item_upper-bound-slider]
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] in the setSliderValue method with value 61
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] in the setSliderValue method with value 81
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //label[@for='p_36/range-slider_slider-item_upper-bound-slider']]
+18:55:45 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //label[@for='p_36/range-slider_slider-item_lower-bound-slider']]
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 10,499  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 9,920  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 11,999  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 13,999  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 12,999  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 7,997  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 12,478  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 14,999  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 11,499  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 8,899  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 12,499  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 13,999  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 13,918  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 8,299  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 14,749  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  ₹7,600   Product Price is 14,999  Max Price Applied is ₹15,300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within smoothScrollToElement method
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->10499
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 10,499  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->9920
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 9,920  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->11999
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 11,999  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->13999
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 13,999  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->12999
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 12,999  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->7997
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 7,997  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->12478
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 12,478  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->14999
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 14,999  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->11499
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 11,499  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->8899
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 8,899  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->12499
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 12,499  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->13999
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 13,999  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->13918
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 13,918  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->8299
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 8,299  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->14749
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 14,749  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Price Check <= Max & >= Min  Product Price is ->14999
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Min Price Applied is  7600   Product Price is 14,999  Max Price Applied is 15300
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->81
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->81
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] in the setSliderValue method with value 91
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] in the setSliderValue method with value 121
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //label[@for='p_36/range-slider_slider-item_upper-bound-slider']]
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:47 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //label[@for='p_36/range-slider_slider-item_lower-bound-slider']]
+18:55:48 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within smoothScrollToElement method
+18:55:48 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->121
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->121
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] in the setSliderValue method with value 131
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] in the setSliderValue method with value 161
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //label[@for='p_36/range-slider_slider-item_upper-bound-slider']]
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:49 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> xpath: //label[@for='p_36/range-slider_slider-item_lower-bound-slider']]
+18:55:50 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within smoothScrollToElement method
+18:55:50 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Within safeFindElement method
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a7a6fef6f0e82f260dec3aa425c09ea2)] -> id: p_36/range-slider_slider-item_lower-bound-slider]
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Successfully scrolled to element: By.id: p_36/range-slider_slider-item_lower-bound-slider
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Adding the data 'min','max','isValid' ,'mismatches' to 'result' Map->161
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Adding the 'results'  Map to the master 'allResults' i.e is List of maps->161
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] Returning the data here in the end
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]  Price range validated successfully: 61 - 81
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] ------------------------------------------------------------
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]  Price range validated successfully: 91 - 121
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] ------------------------------------------------------------
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]  Price range validated successfully: 131 - 161
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27] ------------------------------------------------------------
+18:55:51 [TestNG-test-Test-3] INFO  verifyingPriceSilderFunctionality_18-55-27 - [verifyingPriceSilderFunctionality_18-55-27]  Asserting all soft assertions now...
