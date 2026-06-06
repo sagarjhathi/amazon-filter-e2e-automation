@@ -1,0 +1,16 @@
+19:42:22 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:42:22 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - WebDriverManager: chromedriver setup OK
+19:42:24 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - ChromeDriver initialized successfully for thread: 36
+19:42:24 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Opening amazon Landing page
+19:42:24 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Within safeFindElement method
+19:42:30 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+19:42:30 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+19:42:35 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+19:42:36 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+19:42:36 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Skipping action: Element not found after 2   attemps
+19:42:43 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Giving input within the search bar
+19:42:43 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Within safeClick method
+19:42:47 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Clicked the  [[ChromeDriver: chrome on windows (d615e5888f3221bc0ec1dfd05cb3f886)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:42:47 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Clicking on the submit in the search bar
+19:42:47 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22] Waiting until element is visible in viewport
+19:42:57 [TestNG-test-Test-3] WARN  verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_19-42-22]   Filter option 'Get It by Tomorrow' does not exist. Skipping the test.
