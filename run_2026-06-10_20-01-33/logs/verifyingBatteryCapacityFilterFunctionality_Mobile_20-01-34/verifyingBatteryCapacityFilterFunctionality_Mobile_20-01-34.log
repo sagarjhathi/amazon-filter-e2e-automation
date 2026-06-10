@@ -1,0 +1,10 @@
+20:01:34 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:01:37 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - WebDriverManager: chromedriver setup OK
+20:02:06 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - ChromeDriver initialized successfully for thread: 34
+20:02:08 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34] Opening amazon Landing page
+20:02:08 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34] Within safeFindElement method
+20:02:13 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+20:02:13 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+20:02:19 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+20:02:19 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+20:02:19 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34 - [verifyingBatteryCapacityFilterFunctionality_Mobile_20-01-34] Skipping action: Element not found after 2   attemps

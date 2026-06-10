@@ -1,0 +1,14 @@
+20:38:39 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:38:39 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - WebDriverManager: chromedriver setup OK
+20:38:41 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - ChromeDriver initialized successfully for thread: 36
+20:38:41 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Opening amazon Landing page
+20:38:41 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Within safeFindElement method
+20:38:46 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+20:38:47 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+20:38:47 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (df50a21730bee0a12d1a7d248e8d8c64)] -> xpath: //a[@id='nav-logo-sprites']]
+20:38:48 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Giving input within the search bar
+20:38:48 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Within safeClick method
+20:38:51 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Clicked the  [[ChromeDriver: chrome on windows (df50a21730bee0a12d1a7d248e8d8c64)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+20:38:51 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Clicking on the submit in the search bar
+20:38:52 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39] Waiting until element is visible in viewport
+20:39:02 [TestNG-test-Test-3] WARN  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-38-39]  Filter option 'Get It in 2 Days' does not exist. Skipping the test.
