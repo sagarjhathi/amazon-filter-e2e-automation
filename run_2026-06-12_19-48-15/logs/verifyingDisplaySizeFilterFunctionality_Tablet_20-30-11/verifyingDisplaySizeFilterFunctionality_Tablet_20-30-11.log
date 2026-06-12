@@ -1,0 +1,15 @@
+20:30:11 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:30:11 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - WebDriverManager: chromedriver setup OK
+20:30:15 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - ChromeDriver initialized successfully for thread: 36
+20:30:18 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Opening amazon Landing page
+20:30:18 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Within safeFindElement method
+20:30:24 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+20:30:27 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+20:30:27 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (7024d80153ad818f2285e2201099d0a5)] -> xpath: //a[@id='nav-logo-sprites']]
+20:30:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Giving input within the search bar
+20:30:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Within safeClick method
+20:30:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Clicked the  [[ChromeDriver: chrome on windows (7024d80153ad818f2285e2201099d0a5)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+20:30:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Clicking on the submit in the search bar
+20:30:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Within filterCheckUnderList method
+20:30:31 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11] Filter option does not exist within the filter check List
+20:30:31 [TestNG-test-Test-3] WARN  verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-30-11]  Filter option 'Display Size' does not exist in the list. Skipping the test.
