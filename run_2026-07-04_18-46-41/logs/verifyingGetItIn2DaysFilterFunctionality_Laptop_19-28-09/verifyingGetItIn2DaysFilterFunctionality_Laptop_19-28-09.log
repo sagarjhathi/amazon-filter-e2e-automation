@@ -1,0 +1,12 @@
+19:28:09 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:28:09 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - WebDriverManager: chromedriver setup OK
+19:28:10 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - ChromeDriver initialized successfully for thread: 36
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Opening amazon Landing page
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Within safeFindElement method
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (8318d20fabdf3cd4b5cc2f0f1ae28d3d)] -> xpath: //a[@id='nav-logo-sprites']]
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Giving input within the search bar
+19:28:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Within safeClick method
+19:28:16 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Clicked the  [[ChromeDriver: chrome on windows (8318d20fabdf3cd4b5cc2f0f1ae28d3d)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:28:16 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Clicking on the submit in the search bar
+19:28:16 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09] Waiting until element is visible in viewport
+19:28:27 [TestNG-test-Test-3] WARN  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-28-09]  Filter option 'Get It in 2 Days' does not exist. Skipping the test.
