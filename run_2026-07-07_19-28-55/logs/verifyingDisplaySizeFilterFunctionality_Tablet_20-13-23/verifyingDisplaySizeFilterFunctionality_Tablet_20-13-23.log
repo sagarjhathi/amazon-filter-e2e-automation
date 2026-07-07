@@ -1,0 +1,13 @@
+20:13:23 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:13:23 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - WebDriverManager: chromedriver setup OK
+20:13:25 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - ChromeDriver initialized successfully for thread: 36
+20:13:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Opening amazon Landing page
+20:13:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Within safeFindElement method
+20:13:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (4ba700c9b0fcf4f9861f1584508d7562)] -> xpath: //a[@id='nav-logo-sprites']]
+20:13:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Giving input within the search bar
+20:13:28 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Within safeClick method
+20:13:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Clicked the  [[ChromeDriver: chrome on windows (4ba700c9b0fcf4f9861f1584508d7562)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+20:13:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Clicking on the submit in the search bar
+20:13:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Within filterCheckUnderList method
+20:13:30 [TestNG-test-Test-3] INFO  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23] Filter option does not exist within the filter check List
+20:13:30 [TestNG-test-Test-3] WARN  verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23 - [verifyingDisplaySizeFilterFunctionality_Tablet_20-13-23]  Filter option 'Display Size' does not exist in the list. Skipping the test.
