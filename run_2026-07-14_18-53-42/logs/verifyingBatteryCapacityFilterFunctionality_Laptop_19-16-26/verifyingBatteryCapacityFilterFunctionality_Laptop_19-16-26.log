@@ -1,0 +1,13 @@
+19:16:26 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:16:26 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - WebDriverManager: chromedriver setup OK
+19:16:29 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - ChromeDriver initialized successfully for thread: 34
+19:16:34 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Opening amazon Landing page
+19:16:34 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Within safeFindElement method
+19:16:34 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a97e4ff9e75d951e6a3d799e814804ea)] -> xpath: //a[@id='nav-logo-sprites']]
+19:16:34 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Giving input within the search bar
+19:16:34 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Within safeClick method
+19:16:37 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Clicked the  [[ChromeDriver: chrome on windows (a97e4ff9e75d951e6a3d799e814804ea)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:16:37 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Clicking on the submit in the search bar
+19:16:37 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Within filterCheckUnderList method
+19:16:38 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26] Filter option does not exist within the filter check List
+19:16:38 [TestNG-test-Test-1] WARN  verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26 - [verifyingBatteryCapacityFilterFunctionality_Laptop_19-16-26]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.
