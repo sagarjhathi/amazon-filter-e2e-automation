@@ -1,0 +1,13 @@
+20:36:54 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:36:54 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - WebDriverManager: chromedriver setup OK
+20:36:56 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - ChromeDriver initialized successfully for thread: 36
+20:36:57 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Opening amazon Landing page
+20:36:57 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Within safeFindElement method
+20:36:58 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (0db39e27244bbd824f7ba7b342361005)] -> xpath: //a[@id='nav-logo-sprites']]
+20:36:58 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Giving input within the search bar
+20:36:58 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Within safeClick method
+20:37:00 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Clicked the  [[ChromeDriver: chrome on windows (0db39e27244bbd824f7ba7b342361005)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+20:37:00 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Clicking on the submit in the search bar
+20:37:01 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Within filterCheckUnderList method
+20:37:01 [TestNG-test-Test-3] INFO  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54] Filter option does not exist within the filter check List
+20:37:01 [TestNG-test-Test-3] WARN  verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54 - [verifyingProcessorSpeedFilterFunctionality_Tablet_20-36-54]  Filter option 'Processor Speed' not available. Skipping test.
