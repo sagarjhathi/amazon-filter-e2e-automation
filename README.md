@@ -368,8 +368,6 @@ A visual reference generated directly from the codebase: the actual class-to-cla
 
 **[Preview dependency-map.html →](https://htmlpreview.github.io/?https://github.com/sagarjhathi/amazon-filter-e2e-automation/blob/master/dependency-map.html)**
 
-That link renders the file straight from this repo via [htmlpreview.github.io](https://htmlpreview.github.io) — it always reflects whatever version of [dependency-map.html](dependency-map.html) is currently pushed to `master`.
-
 ---
 
 
