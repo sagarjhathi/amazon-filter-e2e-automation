@@ -364,7 +364,11 @@ Email notifications are slower and often ignored. Discord provides real time not
 
 # Dependency Map
 
-[dependency-map.html](dependency-map.html) is a visual reference generated directly from the codebase: the actual class-to-class import wiring across every layer, the TestNG lifecycle for a single filter test, and the full CI/CD journey from a git push to the published Extent report. Open it in a browser for the diagrams.
+A visual reference generated directly from the codebase: the actual class-to-class import wiring across every layer, the TestNG lifecycle for a single filter test, and the full CI/CD journey from a git push to the published Extent report.
+
+**[Preview dependency-map.html →](https://htmlpreview.github.io/?https://github.com/sagarjhathi/amazon-filter-e2e-automation/blob/master/dependency-map.html)**
+
+That link renders the file straight from this repo via [htmlpreview.github.io](https://htmlpreview.github.io) — it always reflects whatever version of [dependency-map.html](dependency-map.html) is currently pushed to `master`.
 
 ---
 
