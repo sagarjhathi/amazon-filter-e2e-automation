@@ -1,5 +1,5 @@
 package main.java.amazonfilterapplicatione2e.driverManager;
-import java.net.URI; 
+import java.net.URI;  
 import java.net.URL;
 import java.util.List; 
 import java.util.Locale;
