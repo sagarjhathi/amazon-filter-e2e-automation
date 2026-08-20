@@ -362,5 +362,11 @@ Email notifications are slower and often ignored. Discord provides real time not
 
 ---
 
+# Dependency Map
+
+[dependency-map.html](dependency-map.html) is a visual reference generated directly from the codebase: the actual class-to-class import wiring across every layer, the TestNG lifecycle for a single filter test, and the full CI/CD journey from a git push to the published Extent report. Open it in a browser for the diagrams.
+
+---
+
 
 
