@@ -1,0 +1,13 @@
+18:41:49 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+18:41:49 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - WebDriverManager: chromedriver setup OK
+18:41:52 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - ChromeDriver initialized successfully for thread: 34
+18:41:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Opening amazon Landing page
+18:41:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Within safeFindElement method
+18:41:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (a006ad43b917418c60ade073989dc9e9)] -> xpath: //a[@id='nav-logo-sprites']]
+18:41:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Giving input within the search bar
+18:41:56 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Within safeClick method
+18:41:59 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Clicked the  [[ChromeDriver: chrome on windows (a006ad43b917418c60ade073989dc9e9)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+18:41:59 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Clicking on the submit in the search bar
+18:41:59 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Within filterCheckUnderList method
+18:42:00 [TestNG-test-Test-1] INFO  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49] Filter option does not exist within the filter check List
+18:42:00 [TestNG-test-Test-1] WARN  verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49 - [verifyingBatteryCapacityFilterFunctionality_Tablet_18-41-49]  Filter option 'Battery Capacity' does not exist in the list. Skipping the test.
