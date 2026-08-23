@@ -38,7 +38,7 @@ public class ReportManager {
 	    // 🔹 Get current test (used everywhere)
 	    public static ExtentTest getTest() {
 	        return test.get();
-	    }
+	    } 
 
 	    // 🔹 Flush report (write to file)
 	    public static void flush() {
