@@ -169,7 +169,7 @@ public class AmazonTests extends BaseTest {
 		
  		
  		landingPage.openingLandingPage();
- 		ScreenshotUtilUpdated.capture(input);
+ 		ScreenshotUtilUpdated.capture();
  		SafeActions safeAct = new SafeActions();
 		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();

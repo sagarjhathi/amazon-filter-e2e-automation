@@ -27,7 +27,8 @@ public class ScreenshotUtilUpdated {
 	
 	 public static String capture(String... names) {
 	        WebDriver driver = DriverManager.getDriver(); // ✅ get from ThreadLocal
-
+	        String inputNames=String.join(" | ", names);
+	        
 	        try {
 	        	//get the screenshot path
 	        	String screenShotPath = PathManager.getScreenshotPath(ThreadContext.get("testName"));
@@ -37,14 +38,13 @@ public class ScreenshotUtilUpdated {
 	        	folder.mkdirs();
 
 	        	//creating a final uniqe image file name
-	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
+	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+inputNames+".png";
 	        	System.out.println(finalPath+"   -->> final path if param exist");
 	        		        	
 	       
+	        	
 	        	// capture
 	        		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-//		        File dest = new File(finalPath);
-	        		
 	        		
 	        		  if(ConfigManager.getBoolean("compressImage", false)) {
 	                  	try{
