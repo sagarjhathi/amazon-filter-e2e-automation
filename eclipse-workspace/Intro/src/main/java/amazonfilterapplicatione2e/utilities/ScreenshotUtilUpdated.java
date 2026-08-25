@@ -46,10 +46,7 @@ public class ScreenshotUtilUpdated {
 	        	
 	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
 	        		System.out.println(finalPath+"   -->> final path if param exist");
-	        	
-	        //	String finalPath = screenShotPath + File.separator + fileName;
-	        	
-	        	
+	        		        	
 	       
 	        	// capture
 	        		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -73,8 +70,6 @@ public class ScreenshotUtilUpdated {
 	                	  log.warn("[{}] handling it the default way[No compression].", ThreadContext.get("testName"));
 	            		  FileUtils.copyFile(src, new File(finalPath));
 	                  }
-
-	        //	Files.copy(src.toPath(), dest.toPath());
 
 	        	return finalPath;
 
