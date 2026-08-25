@@ -29,28 +29,21 @@ public class ScreenshotUtilUpdated {
 	        WebDriver driver = DriverManager.getDriver(); // ✅ get from ThreadLocal
 
 	        try {
-	
-	        	String testName = ThreadContext.get("testName");
-
-	        	String screenShotPath = PathManager.getScreenshotPath(testName);
+	        	//get the screenshot path
+	        	String screenShotPath = PathManager.getScreenshotPath(ThreadContext.get("testName"));
 
 	        	// create folder
 	        	File folder = new File(screenShotPath);
 	        	folder.mkdirs();
 
-	        	// unique filename
-	        	String fileName = testName + "_" +
-	        	        LocalDateTime.now().format(DateTimeFormatter.ofPattern("HH-mm-ss-SSS")) +
-	        	        "_" + System.nanoTime() + ".png";
-
-	        	
+	        	//creating a final uniqe image file name
 	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
-	        		System.out.println(finalPath+"   -->> final path if param exist");
+	        	System.out.println(finalPath+"   -->> final path if param exist");
 	        		        	
 	       
 	        	// capture
 	        		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-		        	File dest = new File(finalPath);
+//		        File dest = new File(finalPath);
 	        		
 	        		
 	        		  if(ConfigManager.getBoolean("compressImage", false)) {
