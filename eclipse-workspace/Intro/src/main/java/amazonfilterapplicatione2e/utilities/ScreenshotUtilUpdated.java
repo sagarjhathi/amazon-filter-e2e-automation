@@ -1,10 +1,11 @@
 package main.java.amazonfilterapplicatione2e.utilities;
 
-import java.io.File; 
+import java.io.File;  
 import java.nio.file.Files;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
