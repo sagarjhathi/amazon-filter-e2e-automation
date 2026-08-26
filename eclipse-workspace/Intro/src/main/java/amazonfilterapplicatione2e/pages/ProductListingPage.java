@@ -159,76 +159,8 @@ public class ProductListingPage extends  BasePage{
 	public By showMoreOnlyIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
 
 	
-
 	
-
-//	public By getfilterByTypeAndName(String filterName, String filterOption) {
-//		log.info("[{}] Within getfilterByTypeAndName method", ThreadContext.get("testName"));
-//
-//		switch (filterName.toLowerCase()) {
-//		case "processorspeed":
-//			return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base' and text()='" + filterOption + "']");
-//		case "storagecapacity":
-//			return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "brands":
-//			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::div[@class='a-section a-spacing-medium sf-navigation-searchable-content']//span[@class='a-size-base a-color-base' and text()='"+filterOption+"']");
-//		case "batterycapacity":
-//			return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base' and text()='" + filterOption + "']");
-//		case "displaysize" :
-//			return By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "displaytype":
-//			return By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "operatingsystem":
-//			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");			
-//		case "mobilephoneprimarycameraresolution":
-//			return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "discount":
-//			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "Operating System Version":
-//			return By.xpath("//ul[@id='filter-p_n_g-1003517064111']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "brandsold":
-//			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//			
-//		default:
-//			throw new IllegalArgumentException("Unknown filter type: " + filterName);
-//		}
-//	}
-	
-	
-	
-//	
-//	public By getAppliedfilterByTypeAndName(String filterName, String filterOption) {
-//		log.info("[{}] Within getAppliedfilterByTypeAndName method", ThreadContext.get("testName"));
-//
-//		switch (filterName.toLowerCase()) {
-//		case "processorspeed":
-//			return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
-//		case "storagecapacity":
-//			return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "brands":
-//			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base a-text-bold'and text()='"+ filterOption + "']");
-//		case "batterycapacity":
-//			return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
-//		case "displaysize" :
-//			return By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "displaytype":
-//			return By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "operatingsystem":
-//			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "mobilephoneprimarycameraresolution":
-//			return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "discount":
-//			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "brandsold":
-//			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base a-text-bold'and text()='"+ filterOption + "']");
-//		default:
-//			throw new IllegalArgumentException("Unknown filter type: " + filterName);
-//		}
-//	}
-	
-	
-	
-	
+		
 	
 	public By getfilterByTypeAndName(String filterName, String filterOption) {
 		log.info("[{}] Within getfilterByTypeAndName method", ThreadContext.get("testName"));
@@ -303,40 +235,7 @@ public class ProductListingPage extends  BasePage{
 	}
 	
 	
-	
-
-//	    
-//	public By getAppliedfilterByTypeAndName(String filterName, String filterOption) {
-//		log.info("[{}] Within getAppliedfilterByTypeAndName method", ThreadContext.get("testName"));
-//
-//		switch (filterName.toLowerCase()) {
-//		case "processorspeed":
-//			return By.xpath("//ul[@id='filter-p_n_feature_nine_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
-//		case "storagecapacity":
-//			return By.xpath("//ul[@id='filter-p_n_g-1003492455111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "brands":
-//			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Brands']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base a-text-bold'and text()='"+ filterOption + "']");
-//		case "batterycapacity":
-//			return By.xpath("//ul[@id='filter-p_n_g-101015098008111']//span[@class='a-size-base a-color-base a-text-bold' and text()='" + filterOption + "']");
-//		case "displaysize" :
-//			return By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "displaytype":
-//			return By.xpath("//ul[@id='filter-p_n_g-101013595158111']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "operatingsystem":
-//			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
-//		case "mobilephoneprimarycameraresolution":
-//			return By.xpath("//ul[@id='filter-p_n_feature_fourteen_browse-bin']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "discount":
-//			return By.xpath("//ul[@id='filter-p_n_pct-off-with-tax']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		case "brandsold":
-//			return By.xpath("//ul[@id='filter-p_123']//span[@class='a-size-base a-color-base a-text-bold'and text()='"+ filterOption + "']");
-//		case "screensize" :
-//			return By.xpath("//ul[@id='filter-p_n_g-1004194492091']//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
-//		default:
-//			throw new IllegalArgumentException("Unknown filter type: " + filterName);
-//		}
-//	}
-	
+		
 	
 	    
 	    
