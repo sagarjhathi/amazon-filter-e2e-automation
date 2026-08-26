@@ -28,7 +28,7 @@ public class ScreenshotUtilUpdated {
 	
 	 public static String capture(String... names) {
 	        WebDriver driver = DriverManager.getDriver(); // ✅ get from ThreadLocal
-	        String inputNames=String.join(" | ", names);
+	        String inputNames=String.join("_", names);
 	        
 	        try {
 	        	//get the screenshot path

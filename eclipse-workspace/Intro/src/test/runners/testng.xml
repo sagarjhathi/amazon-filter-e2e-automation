@@ -12,11 +12,11 @@
  
     <classes>
       <class name="test.java.tests.AmazonTests">
-      <methods>
-      <include name="verifyingGetItByTodayFilterFunctionality"></include>
-      </methods>
-   
- 
+     
+     
+ 	<methods>
+ 	<include name="verifyingGetItByTomorrowFilterFunctionality"></include>
+ 	</methods>
     </class>
     
       
