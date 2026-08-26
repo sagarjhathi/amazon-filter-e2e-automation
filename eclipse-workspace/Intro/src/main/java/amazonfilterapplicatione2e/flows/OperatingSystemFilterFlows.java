@@ -54,7 +54,6 @@ public OperatingSystemFilterFlows() {
 		GenericUtility genericUtility = new GenericUtility();
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-	//	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
 		
 		
 		List<Map<String, Object>> allResults = new ArrayList<>();
@@ -76,7 +75,6 @@ public OperatingSystemFilterFlows() {
 				return allResults;
 			}
 
-		//	genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderOperatingSystemFilter);
 
 			String str = safeAct.safeGetFilterOptionText(filterOptionsBy, i);
 			
@@ -254,13 +252,6 @@ public OperatingSystemFilterFlows() {
 				try {
 					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
 
-//					Actions actions = new Actions(driver);
-//					actions
-//					.keyDown(Keys.CONTROL)
-//					.click(productElement)
-//					.keyUp(Keys.CONTROL)
-//					.build()
-//					.perform();
 					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
 				
 					safeAct.safeClick(productPage.getProductByIndex(p));
