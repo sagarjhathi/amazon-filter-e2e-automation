@@ -19,12 +19,8 @@ public class ExcelReader {
 	       FileReader reader  = new FileReader();
 	       reader.loadWorkbook(relativePath);
 	       reader.loadSheet(sheetName);
-	       
-	        
 
 	        try{
-
-	         
 	            int totalRows = reader.getRowCount();
 
 	            Object[][] data = new Object[totalRows - 1][1];  // one-column
