@@ -166,7 +166,7 @@ public class DriverManager  {
 					
 
 					if(ConfigManager.getBoolean("edge.runOnGrid", false)) {
-						edgeDriver=GlobalGridUtility.createRemoteEdgeDriver(ConfigManager.get("gridHubUrl"), edgeOptions);
+						edgeDriver=GlobalGridUtility.createRemoteEdgeDriver(ConfigManager.get("edge.runOnGrid"), edgeOptions);
 					}
 					driver.set(edgeDriver);
 					try { edgeDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
@@ -225,7 +225,7 @@ public class DriverManager  {
 					
 					
 					if(ConfigManager.getBoolean("chrome.runOnGrid", false)) {
-						chromeDriver=GlobalGridUtility.createRemoteChromeDriver(ConfigManager.get("gridHubUrl"), options);
+						chromeDriver=GlobalGridUtility.createRemoteChromeDriver(ConfigManager.get("chrome.gridHubUrl"), options);
 					}
 					
 
