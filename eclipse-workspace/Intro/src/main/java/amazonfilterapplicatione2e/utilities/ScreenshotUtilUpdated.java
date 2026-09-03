@@ -38,12 +38,12 @@ public class ScreenshotUtilUpdated {
 	        	File folder = new File(screenShotPath);
 	        	folder.mkdirs();
 
+	        	
 	        	//creating a final uniqe image file name
-	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+inputNames+".png";
+	        	String finalPath= screenShotPath + File.separator + ThreadContext.get("testNameShort")+System.nanoTime()+".png";
 	        	System.out.println(finalPath+"   -->> final path if param exist");
 	        		        	
 	       
-	        	
 	        	// capture
 	        		File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 	        		
