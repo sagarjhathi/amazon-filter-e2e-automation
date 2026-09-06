@@ -1,0 +1,12 @@
+05:18:42 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+05:18:42 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - WebDriverManager: chromedriver setup OK
+05:18:45 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - ChromeDriver initialized successfully for thread: 36
+05:18:48 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Opening amazon Landing page
+05:18:49 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Within safeFindElement method
+05:18:49 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (580e8549a05fe352360c46a39630e0e1)] -> xpath: //a[@id='nav-logo-sprites']]
+05:18:50 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Giving input within the search bar
+05:18:50 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Within safeClick method
+05:18:52 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Clicked the  [[ChromeDriver: chrome on windows (580e8549a05fe352360c46a39630e0e1)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+05:18:52 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Clicking on the submit in the search bar
+05:18:53 [TestNG-test-Test-3] INFO  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42] Waiting until element is visible in viewport
+05:19:03 [TestNG-test-Test-3] WARN  verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42 - [verifyingGetItByTodayFilterFunctionality_Tablet_05-18-42]  Filter option 'Get It Today' does not exist. Skipping the test.
