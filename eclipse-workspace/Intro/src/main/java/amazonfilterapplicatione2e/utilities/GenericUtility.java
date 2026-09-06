@@ -386,6 +386,14 @@ public class GenericUtility extends ProductListingPage{
 		log.error("[{}] Timeout after {}s: no new window detected", ThreadContext.get("testName"));
 		throw new RuntimeException("Timeout waiting for new window");
 	}
+	
+	
+	public static String truncate(String name, int maxLength) {
+	    if (name == null || name.length() <= maxLength) {
+	        return name;
+	    }
+	    return name.substring(0, maxLength);
+	}
  
 	
 	

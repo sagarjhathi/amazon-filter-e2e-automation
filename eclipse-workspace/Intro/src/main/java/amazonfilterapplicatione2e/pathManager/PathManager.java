@@ -5,6 +5,8 @@ package main.java.amazonfilterapplicatione2e.pathManager;
 
 import java.io.File;
 
+import main.java.amazonfilterapplicatione2e.utilities.GenericUtility;
+
 public class PathManager {
 
     private static String runFolderPath;
@@ -36,7 +38,6 @@ public class PathManager {
 
     	}else {
             return getRunFolder() + File.separator + "logs" + File.separator + "Default";
-
     	}
     }
 
@@ -47,4 +48,5 @@ public class PathManager {
             return getRunFolder() + File.separator + "screenshots" + File.separator + "Default";
     	}
     }
+   
 }
