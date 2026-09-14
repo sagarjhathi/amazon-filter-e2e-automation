@@ -44,6 +44,9 @@ public OperatingSystemFilterFlows() {
 
 
 	
+	// No Assert here on purpose — this is a flow method, not a test. It returns one
+	// result Map per product (filter/title/keyFeatures/about/techDetails keys) so the
+	// actual test in AmazonTests decides what to assert.
 	public List<Map<String, Object>> applyOperatingSystemFilterAndValidateProductsWithResults(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 		log.info("[{}] Within applyOperatingSystemFilterAndValidateProductsWithResults method", ThreadContext.get("testName"));
 
@@ -84,14 +87,21 @@ public OperatingSystemFilterFlows() {
 			log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
 
 			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
+			// Amazon's filter list is re-rendered dynamically as options get clicked/expanded,
+			// so the live element count can shift between fetches. Once the index we need no
+			// longer exists in that live list, the list state can't be trusted for the rest of
+			// this run, so we return the results gathered so far rather than continue on
+			// unreliable data — same defensive choice SharedFilterFlows makes for this case.
 			if (i > inloopParent.size() - 1) {
 				return allResults;
 			}
 
 
 			String str = safeAct.safeGetFilterOptionText(filterOptionsBy, i);
-			
-			
+
+
+			// safeClickBooleanWithScreenShot also clicks Amazon's "See more" toggle for this
+			// filter (before and after clicking the option) — expansion isn't done explicitly
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 				System.out.println("Filter click failed for: " + str);
 				log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
@@ -103,8 +113,7 @@ public OperatingSystemFilterFlows() {
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
 
-			// Default to the real fetched list size (matches SharedFilterFlows) so the
-			// "run all products" case has a real count instead of staying at 0.
+			// Default to the real fetched list size 
 			int productNameListingPageSize=productNameListingPage.size();
 			if(isCron) {
 				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListingCI", false);
@@ -122,15 +131,13 @@ public OperatingSystemFilterFlows() {
 				}
 			}
 
-			// One result per product, added inside the loop (matches SharedFilterFlows) — the
-			// old code kept only the last product's result per filter option, discarding the rest.
+			// One result per product, added inside the loop. A product that fails to open/scrape
+			// still comes back as a (partial) Map, not null — see the helper's catch block — so
+			// it surfaces as a visible, blank-fields assertion failure downstream in AmazonTests
+			// instead of silently vanishing from the results.
 			for (int productListIndex = 1; productListIndex <=productNameListingPageSize-1; productListIndex++) {
 				Map<String, Object> result = applyFilterOptionsAndFetchProductDetailsForOS(productListIndex, str, currentWindow, safeAct);
-				// The helper can return null on an internal exception (see its catch block) —
-				// skip adding it rather than passing a null Map downstream to AmazonTests.
-				if (result != null) {
-					allResults.add(result);
-				}
+				allResults.add(result);
 			}
 
 			safeAct.safeClick(productPage.clearButtonBy);
@@ -164,8 +171,14 @@ public OperatingSystemFilterFlows() {
 		        ){
 
 		    String testName = ThreadContext.get("logFileName");
+		    // productPage.getProductByIndex(int) builds a 1-based XPath position, so the caller's
+		    // productListIndex is kept for element lookups; this 0-based productIndex exists only
+		    // for the field-map/logging/screenshot labels below.
 		    int productIndex = productListIndex - 1;
 
+		    // filter/title/keyFeatures/about/techDetails keys — one Map per product, read by
+		    // AmazonTests.verifyingOperatingSystemVersionFilterFunctionality to check whether the
+		    // filter value appears in any of the 4 text fields.
 		    Map<String, Object> result = new HashMap<>();
 	        result.put("filter", filterValue);
 	        int before = driver.getWindowHandles().size();
@@ -186,9 +199,6 @@ public OperatingSystemFilterFlows() {
 
 				if (after == before) {
 					System.out.println("Before click and AFTER CLICK count is same , trying again");
-					// getProductByIndex builds a 1-based XPath position ([index]) — must reuse
-					// productListIndex here, not the 0-based productIndex, or this either clicks
-					// nothing ([0]) or the wrong product.
 					safeAct.safeClick(productPage.getProductByIndex(productListIndex));
 		         }
 				
@@ -205,6 +215,7 @@ public OperatingSystemFilterFlows() {
 		        genericUtility.addFieldIfPresent("about",about ,filterValue,productIndex,result);
 		        genericUtility.addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,result);
 
+		
 		        try {
 		            if (genericUtility.isElementInViewport(productPage.showMoreOnlyIndividualPage) && techDetails.isEmpty()) {
 		                String productNamePlusIndex = "Product Index=" + productIndex;
@@ -224,7 +235,11 @@ public OperatingSystemFilterFlows() {
 		        System.out.println("Failed to validate product at index " + productListIndex + " for filter: " + filterValue);
 		        log.warn("[{}] Exception while processing product index={} filter='{}': {}",
 		                 ThreadContext.get("testName"), productListIndex, filterValue, e.getMessage());
-		        return null;
+		        // Returns the partial result (matches SharedFilterFlows) instead of null — it
+		        // already has "filter" set, and safeLower(null) resolves to "" downstream in
+		        // AmazonTests, so this surfaces as a visible, blank-fields assertion failure
+		        // rather than the product silently disappearing from the results entirely.
+		        return result;
 		    } finally {
 		        try {
 		        	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
