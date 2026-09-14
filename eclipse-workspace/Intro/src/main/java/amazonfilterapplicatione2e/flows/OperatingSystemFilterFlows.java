@@ -9,7 +9,6 @@ import java.util.concurrent.TimeoutException;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 
@@ -60,12 +59,26 @@ public OperatingSystemFilterFlows() {
 		log.info("[{}] Within OS fucntion , this is the filterOptions size ->"+filterOptions.size(), ThreadContext.get("testName"));
 
 
+		// Nightly/CRON runs use separate *CI config keys so they can scale up independently
+		// of push runs (matches SharedFilterFlows) — without this, OS filter tests always ran
+		// at push-run depth even on the nightly full regression.
+		boolean isCron = Boolean.parseBoolean(System.getenv("IS_CRON"));
+
 		int filterOptionSize=filterOptions.size();
-		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
-		if(runAll==false) {
-			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
+		if(isCron) {
+			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptionsCI", false);
+			if(runAll==false) {
+				int overideFilteOptionsCountDefault=ConfigManager.getInt("overideFilteOptionsCountDefault");
+				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", overideFilteOptionsCountDefault);
+			}
+		} else {
+			boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
+			if(runAll==false) {
+				int overideFilteOptionsCountDefault=ConfigManager.getInt("overideFilteOptionsCountDefault");
+				filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", overideFilteOptionsCountDefault);
+			}
 		}
-		
+
 
 		for (int i = 0; i <filterOptionSize; i++) {
 			log.info("[{}] Within the FilterOptions loop", ThreadContext.get("testName"));
@@ -88,21 +101,38 @@ public OperatingSystemFilterFlows() {
 			
 			String currentWindow = driver.getWindowHandle();
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
-			Map<String, Object> result = new HashMap<>();
-			
-			
-			int productNameListingPageSize=0;
-			boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
-			if(runAllProducts==false) {
-				productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", 3);
-				System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
-			}
-			
-			for (int productListIndex = 1; productListIndex <productNameListingPageSize-1; productListIndex++) {
-				result = applyFilterOptionsAndFetchProductDetailsForOS(productListIndex, str, currentWindow, safeAct);		
+
+
+			// Default to the real fetched list size (matches SharedFilterFlows) so the
+			// "run all products" case has a real count instead of staying at 0.
+			int productNameListingPageSize=productNameListingPage.size();
+			if(isCron) {
+				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListingCI", false);
+				if(runAllProducts==false) {
+					int overideProductsListingCountDefault=ConfigManager.getInt("overideProductsListingCountDefault");
+					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", overideProductsListingCountDefault);
+					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+				}
+			} else {
+				boolean runAllProducts= ConfigManager.getBoolean("runForAllProductsUnderListing", false);
+				if(runAllProducts==false) {
+					int overideProductsListingCountDefault=ConfigManager.getInt("overideProductsListingCountDefault");
+					productNameListingPageSize=ConfigManager.getInt("overideProductsListingCount", overideProductsListingCountDefault);
+					System.out.println(productNameListingPageSize +" is the  overideProductsListingCount");
+				}
 			}
 
-			allResults.add(result);
+			// One result per product, added inside the loop (matches SharedFilterFlows) — the
+			// old code kept only the last product's result per filter option, discarding the rest.
+			for (int productListIndex = 1; productListIndex <=productNameListingPageSize-1; productListIndex++) {
+				Map<String, Object> result = applyFilterOptionsAndFetchProductDetailsForOS(productListIndex, str, currentWindow, safeAct);
+				// The helper can return null on an internal exception (see its catch block) —
+				// skip adding it rather than passing a null Map downstream to AmazonTests.
+				if (result != null) {
+					allResults.add(result);
+				}
+			}
+
 			safeAct.safeClick(productPage.clearButtonBy);
 			if (i % 10 == 0 && i != 0) {
 				driver.navigate().refresh();
@@ -156,7 +186,10 @@ public OperatingSystemFilterFlows() {
 
 				if (after == before) {
 					System.out.println("Before click and AFTER CLICK count is same , trying again");
-					safeAct.safeClick(productPage.getProductByIndex(productIndex));
+					// getProductByIndex builds a 1-based XPath position ([index]) — must reuse
+					// productListIndex here, not the 0-based productIndex, or this either clicks
+					// nothing ([0]) or the wrong product.
+					safeAct.safeClick(productPage.getProductByIndex(productListIndex));
 		         }
 				
 		     
@@ -206,101 +239,4 @@ public OperatingSystemFilterFlows() {
 	
 	
 	
-	public void applyOperatingSystemFilterAndValidateProducts(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
-
-		SafeActions safeAct = new SafeActions();
-		ProductListingPage productPage = new ProductListingPage();
-		GenericUtility genericUtility = new GenericUtility();
-
-		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		genericUtility.printFilterNamesOnly(filterOptionsBy); 
-		genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-		safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-
-		for (int i = 1; i < filterOptions.size(); i++) {
-
-			List<WebElement> inloopParent=safeAct.safeFindElements(filterOptionsBy);
-			if(i>inloopParent.size()-1) {
-				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
-				return;
-			}
-
-			if (genericUtility.isElementInViewport(productPage.seeMoreButtonUnderOperatingSystemFilter)) {
-				genericUtility.smoothScrollToElement(productPage.seeMoreButtonUnderOperatingSystemFilter);
-				safeAct.safeClick(productPage.seeMoreButtonUnderOperatingSystemFilter);
-				
-			}
-
-			System.out.println(inloopParent.get(i).getText() + "   size is in loop " + inloopParent.size());
-
-			String str = inloopParent.get(i).getText().trim();			
-
-			if (!safeAct.safeClickBoolean(productPage.getfilterByTypeAndName(filterName, str))) {
-				System.out.println("Filter click failed for: " + str + ". Skipping this filter option.");
-				continue; // â›” Skip the rest of the current loop iteration
-			}
-
-
-	
-			String currentWindow=driver.getWindowHandle();
-			System.out.println("Printing current window  "+ currentWindow);
-
-			List<WebElement> productNameListingPage=safeAct.safeFindElements(productPage.productNameListingPageBy);
-			for(int p=1;p<productNameListingPage.size();p++) {
-
-				System.out.println("inside the loop and product name is "+productNameListingPage.get(p).getText());				
-				try {
-					WebElement productElement = driver.findElement(productPage.getProductByIndex(p));
-
-					genericUtility.smoothScrollToElement(productPage.getProductByIndex(p));
-				
-					safeAct.safeClick(productPage.getProductByIndex(p));
-
-					System.out.println("Product clicked with Ctrl+Click to open in new tab.");
-					
-
-				} catch (Exception e) {
-					System.out.println("Failed to Ctrl+Click product index " + p);
-					continue;
-				}
-
-
-				System.out.println("Clicked on the producct name new pop-up should open");
-			
-				genericUtility.switchToNewWindow(currentWindow);
-
-				safeAct.safeFindElement(productPage.productNameIndividualPage);
-
-				safeAct.safeFindElement(productPage.productKeyFeatureBlock);
-
-				safeAct.safeFindElement(productPage.aboutThisItemBulletPoint);
-
-				safeAct.safeFindElement(productPage.technicalDetailsBlockIndividualPage);
-
-				genericUtility.scrollByPixel(0, 700);
-
-				try {					
-
-					WebElement seeMoreProductDetailsButtonIndividualPage = safeAct.safeFindElement(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-					((JavascriptExecutor) driver).executeScript(
-							"arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", seeMoreProductDetailsButtonIndividualPage);
-					
-
-					safeAct.safeClick(productPage.seeMoreProductDetailsButtonIndividualPageBy);
-					System.out.println("'See More Details' clicked.");
-
-				} catch (Exception e1) {
-					
-					driver.close();
-					driver.switchTo().window(currentWindow);
-					continue; 
-				}
-
-						
-				genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);	
-			}
-			safeAct.safeClick(productPage.clearButtonBy);
-		}
-	}
-
 }

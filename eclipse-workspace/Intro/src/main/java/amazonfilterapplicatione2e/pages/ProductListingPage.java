@@ -179,7 +179,7 @@ public class ProductListingPage extends  BasePage{
 		case "displaytype":
 			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Display Type']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 		case "operatingsystem":
-			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base' and text()='"+ filterOption + "']");			
+			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");			
 		case "mobilephoneprimarycameraresolution":
 			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Mobile Phone Primary Camera Resolution']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");
 		case "discount":
@@ -196,7 +196,6 @@ public class ProductListingPage extends  BasePage{
 		}
 	}
 
-	
 	
 	
 	
@@ -217,7 +216,7 @@ public class ProductListingPage extends  BasePage{
 		case "displaytype":
 			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Display Type']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 		case "operatingsystem":
-			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='"+ filterOption + "']");			
+			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Operating System']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");			
 		case "mobilephoneprimarycameraresolution":
 			return By.xpath("//span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Mobile Phone Primary Camera Resolution']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base a-text-bold' and text()='"+ filterOption + "']");
 		case "discount":
