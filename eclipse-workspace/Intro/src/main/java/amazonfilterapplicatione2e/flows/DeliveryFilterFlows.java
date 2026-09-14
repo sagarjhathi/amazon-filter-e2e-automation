@@ -13,11 +13,9 @@ import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
 
 import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
-import main.java.amazonfilterapplicatione2e.pages.AmazonLandingPage;
 import main.java.amazonfilterapplicatione2e.pages.ProductListingPage;
 import main.java.amazonfilterapplicatione2e.safeActions.SafeActions;
 import main.java.amazonfilterapplicatione2e.utilities.ScreenshotUtilUpdated;
@@ -46,42 +44,57 @@ public class DeliveryFilterFlows extends BasePage{
 
 
 		String testName = ThreadContext.get("baseTestName");
-		
+
+		// filterOption is derived from the calling test's method name (see the switch in
+		// ProductListingPage.getDeliveryDayFilterByName) — renaming that test method breaks this.
 		String filterOption=productPage.getDeliveryDayFilterByName(testName);
 		ScreenshotUtilUpdated.capture(testName,filterOption);
 
 		log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
 
-		
 
+
+		// Reads the whole card instead of the scoped data-cy='delivery-recipe' locator in
+		// ProductListingPage — not every card has that element due to Amazon's dynamic result
+		// layout, so scoping to it would throw/skip on cards where it's missing.
 		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
 
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
 		String todayFormatted = LocalDate.now().format(formatter);
 		String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
 
+		// Split into loose word/number fragments (not whole date strings) and matched with
+		// contains() below because Amazon's delivery text on the card is inconsistently
+		// formatted/dynamic — an exact or full-phrase match against the card text was too brittle.
 		Set<String> allowedDateParts = new HashSet<>();
 		Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
 		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
 		allowedDateParts.add("Today");
 		allowedDateParts.add("Tomorrow");
+		// Not date-based — this method also backs the Free Delivery filter test, which has no date to check.
 		allowedDateParts.add("FREE delivery");
 
-		log.info("[{}] Created hashset with required data to assert with Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+		
+		
+		log.info("[{}] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method", ThreadContext.get("testName"));
 
 		log.info("[" + ThreadContext.get("testName") + "] this is the set  " + allowedDateParts);
 
+		// No Assert here on purpose — this is a flow method, not a test. It just checks each
+		// card and returns (isValid, text, index) so the actual test in AmazonTests decides
+		// what to assert on.
 		for (int i = 0; i < deliveryElements.size(); i++) {
-			log.info("[{}] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+			log.info("[{}] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method", ThreadContext.get("testName"));
 
 			String text = deliveryElements.get(i).getText();
 
 			boolean found = false;
 			for (String part : allowedDateParts) {
 				if (text.contains(part)) {
-					log.info("[{}] Checking if the allowedDateParts have the assert text   Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
-					System.out.println("Found the The text from delivery element --> " + text + 
-							" | List size: " + deliveryElements.size() + 
+					log.info("[{}] Checking if the allowedDateParts have the assert text — index {}, text: {}",
+							ThreadContext.get("testName"), i, text);
+					System.out.println("Found the The text from delivery element --> " + text +
+							" | List size: " + deliveryElements.size() +
 							" | Index: " + i);
 					found = true;
 					break;
@@ -90,90 +103,20 @@ public class DeliveryFilterFlows extends BasePage{
 			System.out.println("------------------------------------------------------");
 			if (!found) {
 
-				log.info("[{}] Assert text not found wihtin AllowedDateParts", ThreadContext.get("testName"));
+				log.info("[{}] Assert text not found within AllowedDateParts — index {}, text: {}",
+						ThreadContext.get("testName"), i, text);
+				// Fails fast here instead of soft-asserting like the other filter flows —
+				// delivery filters are the most dynamic/often-missing ones, so richer
+				// per-product diagnostics weren't worth the investment for this flow specifically.
 				return Arrays.asList(false, text, i);
 			}
 		}
 
-		log.info("[{}] Returning the list with boolean values   Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
+		log.info("[{}] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method", ThreadContext.get("testName"));
 
 
 		return Arrays.asList(true, "All the things are valid no errors", -1);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void validateDeliveryFilterOptions(By filterOptions) throws InterruptedException {
-		log.info("[{}] Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
-
-		System.out.println("Within the Function validateDeliveryFilterOptions ");
-
-		ProductListingPage productPage = new ProductListingPage();
-		SafeActions safeAct = new SafeActions();
-		safeAct.safeClick(filterOptions);
-		log.info("[" + ThreadContext.get("testName") + "] Clicked on " + filterOptions);
-
-
-
-
-		// Find product card elements
-		List<WebElement> deliveryElements = safeAct.safeFindElements(productPage.listProductCardsBy);
-
-		// Format today and tomorrow's dates
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("E, dd MMM");
-		String todayFormatted = LocalDate.now().format(formatter);
-		String tomorrowFormatted = LocalDate.now().plusDays(1).format(formatter);
-
-		// Build allowed date parts
-		Set<String> allowedDateParts = new HashSet<>();
-		Collections.addAll(allowedDateParts, todayFormatted.replace(",", "").split(" "));
-		Collections.addAll(allowedDateParts, tomorrowFormatted.replace(",", "").split(" "));
-		allowedDateParts.add("Today");
-		allowedDateParts.add("Tomorrow");
-		log.info("[{}] Created hashset with required data to assert with Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
-
-
-
-		log.info("[" + ThreadContext.get("testName") + "] this is the set  " + allowedDateParts);
-
-		//Printing the Allowed Date to see the contents
-		System.out.println("Printing the Allowed date parts set : " + allowedDateParts);
-
-
-		// Validate each element's delivery date
-		for (int i = 0; i < deliveryElements.size(); i++) {
-			log.info("[{}] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
-
-			String text = deliveryElements.get(i).getText();
-			System.out.println("The text from delivery element --> "+text + "  and size of the list is " + deliveryElements.size() + " index no is " + i);
-
-			boolean found = allowedDateParts.stream().anyMatch(text::contains);
-			log.info("[{}] Checking if the allowedDateParts have assert text   Within validateDeliveryFilterOptions method", ThreadContext.get("testName"));
-
-			Assert.assertTrue(found, "â�Œ None of the allowed date parts are present, printing the element text " + text+" index no is " + i);
-			System.out.println("âœ” Valid delivery date found in: " + text+" index no is " + i);
-			System.out.println("-----------------------------------------------------------------");
-		}
-
-		// Clear the delivery filter
-		safeAct.safeClick(productPage.clearButtonBy);
-		System.out.println("Clicking clear under validateDeliveryFilterOptions");
-
-	}
-	
-	
-	
-	
-	
-	
+		
 	
 }
