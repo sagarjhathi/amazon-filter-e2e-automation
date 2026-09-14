@@ -41,6 +41,8 @@ public class BrandFilterFlows extends BasePage{
 
 	
 	
+	// No Assert here on purpose — this is a flow method, not a test. It returns per-brand
+	// results (brand, isValid, mismatches) so the actual test in AmazonTests decides what to assert.
 	public List<Map<Object, Object>> applyFilterAndValidateBrandsFilterWithResult(By filterOptionsBy, String filterName) throws InterruptedException, TimeoutException {
 		log.info("[{}] Within applyFilterAndValidateBrandsFilterWithResult method", ThreadContext.get("testName"));
 
@@ -59,33 +61,52 @@ public class BrandFilterFlows extends BasePage{
 
 		int filterOptionSize=filterOptions.size();
 
+		// Quick-run vs full-regression toggle: nightly/full runs test every brand, push/dev
+		// runs cap it to a small count so feedback stays fast.
 		boolean runAll= ConfigManager.getBoolean("runForAllFilterOptions", false);
 		if(runAll==false) {
 			filterOptionSize=ConfigManager.getInt("overideFilteOptionsCount", 3);
 		}
 
+		// One Map per brand tested — keys "brand" (String), "isValid" (boolean), "mismatches"
+		// (List<String>). AmazonTests reads these three keys to softAssert.fail() on every
+		// mismatch detail for a brand instead of just the first, then calls assertAll() once.
 		List<Map<Object, Object>> allResults = new ArrayList<>();
 
-		for (int i = 1; i <=filterOptionSize-1; i++) {
-			log.info("[{}] Within the filterOptions loop ", ThreadContext.get("testName"));
+		for (int i = 0; i <=filterOptionSize-1; i++) {
+			log.info("[{}] Within the filterOptions loop — iteration {} of {}", ThreadContext.get("testName"), i, filterOptionSize);
 			
+			// Re-fetched every iteration (not reused from before the loop) to avoid
+			// StaleElementReferenceException — the filter list re-renders after each click.
 			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
 
-				
-			
-			
+
+
+
+			// filterOptionSize was measured once, up front; the live list can be shorter now
+			// (layout/DOM changes between iterations), so this guards get(i) below from IndexOutOfBounds.
 			if (i > inloopParent.size() - 1) {
-				log.info("[{}] Avoiding out of bouns by only iterating over the innerLoopParent ", ThreadContext.get("testName"));
+				log.info("[{}] Avoiding out of bounds — index {} exceeds live list size {}", ThreadContext.get("testName"), i, inloopParent.size());
 				continue;
 			}
 
 
-			
+
+			// "More" can re-collapse or need re-triggering after a filter click, so this is
+			// called again here, not just once at the top of the method.
 			genericUtility.clickMoreButtonIfPresent(safeAct, genericUtility, productPage.seeMoreButtonUnderBrandFilter);
-			
+
 			inloopParent = safeAct.safeFindElements(filterOptionsBy);
-			
-			String str = inloopParent.get(i).getText().trim();      
+
+			// Re-checked here too — the first bounds check above ran against the list before
+			// this second fetch, which is the one actually indexed into below.
+			if (i > inloopParent.size() - 1) {
+				log.info("[{}] Avoiding out of bounds — index {} exceeds live list size {}", ThreadContext.get("testName"), i, inloopParent.size());
+				continue;
+			}
+
+			String str = inloopParent.get(i).getText().trim();
+			// Soft-skip on click failure — one flaky/stale brand checkbox shouldn't fail the whole loop.
 			if (!safeAct.safeClickBooleanWithScreenShot(productPage.getfilterByTypeAndName(filterName, str),filterName,str)) {
 				System.out.println("Filter click failed for: " + str);
 				log.info("[{}] Checking if The Filter is being applied else continuing to next filter , filter option ->"+str+"  ", ThreadContext.get("testName"));
@@ -99,16 +120,32 @@ public class BrandFilterFlows extends BasePage{
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
 
 			boolean isValid = true;
+			// Product-level detail nested under this one brand (filter) — one entry per
+			// mismatched product, not per brand, so AmazonTests can softAssert.fail() each
+			// mismatched product individually instead of lumping them into one message per brand.
 			List<String> mismatchDetails = new ArrayList<>();
 
-			for (int k = 0; k < productNameListingPage.size(); k++) {
+			// Zero products found is not a vacuous pass — it usually means the filter click
+			// didn't actually apply or the page didn't finish loading, so treat it as a mismatch
+			// instead of silently leaving isValid = true with nothing checked.
+			if (productNameListingPage.isEmpty()) {
+				isValid = false;
+				mismatchDetails.add("❌ No products found for brand '" + str + "' — filter may not have applied correctly");
+			} else {
+				for (int k = 0; k < productNameListingPage.size(); k++) {
 
-				String title = productNameListingPage.get(k).getText();
-				log.info("[" + ThreadContext.get("testName") + "] Within productNameListingPage loop with product index "+k +"and filter name "+ str);
+					String title = productNameListingPage.get(k).getText();
 
-				if (!title.toLowerCase().contains(str.toLowerCase())) {
-					isValid = false;
-					mismatchDetails.add("â�Œ Index: " + k + ", Brand: " + str + ", Title: '" + title + "'");
+					boolean titleMatches = title.toLowerCase().contains(str.toLowerCase());
+					log.info("[{}] Product index {} for brand '{}' — title: '{}', matches: {}",
+							ThreadContext.get("testName"), k, str, title, titleMatches);
+
+					if (!titleMatches) {
+						isValid = false;
+						mismatchDetails.add("❌ Index: " + k + ", Brand: " + str + ", Title: '" + title + "'");
+						log.warn("[{}] Brand mismatch — index {}, brand '{}', title: '{}'",
+								ThreadContext.get("testName"), k, str, title);
+					}
 				}
 			}
 
@@ -116,11 +153,14 @@ public class BrandFilterFlows extends BasePage{
 			result.put("brand", str);
 			result.put("isValid", isValid);
 			result.put("mismatches", mismatchDetails);
-			log.info("[" + ThreadContext.get("testName") + "] Creating 'result' Map for storing ,'brand','isValid','mismatches list' with map size ->"+result.size());
+			log.info("[{}] Result for brand '{}': isValid={}, mismatches={}",
+					ThreadContext.get("testName"), str, isValid, mismatchDetails.size());
 
 			allResults.add(result);
-			log.info("[" + ThreadContext.get("testName") + "] Adding 'result' with the data into 'allResults' i.e list of Map"+result.size());
+			log.info("[{}] allResults now has {} brand(s) recorded", ThreadContext.get("testName"), allResults.size());
 
+			// Two ways to reset state for the next brand: prefer clicking "clear", but if
+			// that button isn't there (layout changed), fall back to navigating back instead.
 			try {
 				if (genericUtility.isElementInViewport(productPage.clearButtonBy)) {
 					safeAct.safeClick(productPage.clearButtonBy);
@@ -133,6 +173,7 @@ public class BrandFilterFlows extends BasePage{
 
 			}
 
+			// Periodic refresh to mitigate browser memory/storage buildup over a long brand loop.
 			if (i % 10 == 0 && i != 0) {
 				driver.navigate().refresh();
 				log.info("[" + ThreadContext.get("testName") + "] Refreshing the page after 10 products to avoid storage issues for filter->"+str);

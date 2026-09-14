@@ -2,11 +2,6 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite thread-count="3" parallel="methods" name="Suite">
 
-<groups>
-<run>
-<include name="Delivery"></include>
-</run>
-</groups>
  <listeners>
         <listener class-name="test.java.retry.RetryListener"/>
         <listener class-name="main.java.amazonfilterapplicatione2e.reporting.TestListenerUpdated"/>
@@ -16,7 +11,9 @@
  
     <classes>
       <class name="test.java.tests.AmazonTests">
- 	
+ 		<methods>
+ 		<include name="verifyingTheBrandsFilterFunctionality"></include>
+ 		</methods>
     </class>
     </classes>
   </test> <!-- Test -->
