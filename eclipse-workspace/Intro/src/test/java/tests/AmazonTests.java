@@ -59,7 +59,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "Delivery" }
 		)
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -108,7 +108,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class,groups = { "Delivery" }
 		)
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -204,7 +204,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "Delivery" }
 		)
 	public void verifyingFreeDeliveryFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
