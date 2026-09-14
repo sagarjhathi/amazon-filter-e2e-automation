@@ -31,12 +31,10 @@ public class OperatingSystemFilterFlows extends BasePage{
 	
 	
     private ProductListingPage productPage;
-    private SafeActions safeAct;
     private GenericUtility genericUtility;
 
 public OperatingSystemFilterFlows() {
     this.productPage = new ProductListingPage();
-    this.safeAct = new SafeActions();
     this.genericUtility = new GenericUtility();
 }
 
