@@ -35,7 +35,7 @@
 <a href="#"><span class="badge badge-primary"></span></a>
 </li>
 <li class="m-r-10">
-<a href="#"><span class="badge badge-primary">Sep 15, 2026 01:56:10 PM</span></a>
+<a href="#"><span class="badge badge-primary">Sep 15, 2026 01:52:43 PM</span></a>
 </li>
 </ul>
 </div>
@@ -71,6 +71,7 @@
 <li class="dropdown">
 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
 <ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
 <a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
 <div class="dropdown-divider"></div>
 <a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
@@ -79,25 +80,25 @@
 </ul>
 </div>    <div class="test-list-wrapper scrollable">
       <ul class="test-list-item">
-        <li class="test-item"  status="fail" test-id="1"
+        <li class="test-item"  status="pass" test-id="1"
           author=""
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">verifyingPriceSilderFunctionality_Mobile_13-56-11</p>
+            <p class="name">verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43</p>
             <p class="text-sm">
-              <span>1:56:21 PM</span> / <span>00:00:12:893</span>
-              <span class="badge fail-bg log float-right">Fail</span>
+              <span>1:52:54 PM</span> / <span>00:02:53:945</span>
+              <span class="badge pass-bg log float-right">Pass</span>
             </p>
           </div>
           <div class="test-contents d-none">
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">verifyingPriceSilderFunctionality_Mobile_13-56-11</h5>
-<span class='badge badge-success'>09.15.2026 1:56:21 PM</span>
-<span class='badge badge-danger'>09.15.2026 1:56:34 PM</span>
-<span class='badge badge-default'>00:00:12:893</span>
+<h5 class="test-status text-pass">verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43</h5>
+<span class='badge badge-success'>09.15.2026 1:52:54 PM</span>
+<span class='badge badge-danger'>09.15.2026 1:55:47 PM</span>
+<span class='badge badge-default'>00:02:53:945</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -109,86 +110,49 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
-        <td><span class="badge log fail-bg">Fail</span></td>
-        <td>1:56:34 PM</td>
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>1:52:54 PM</td>
         <td>
-          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
-	Price out of range: ProductIndex=1, AppliedMin=9400, AppliedMax=34900, ActualPrice=8599,
-	Price out of range: ProductIndex=2, AppliedMin=9400, AppliedMax=34900, ActualPrice=8299,
-	Price out of range: ProductIndex=3, AppliedMin=9400, AppliedMax=34900, ActualPrice=6999,
-	Price out of range: ProductIndex=4, AppliedMin=9400, AppliedMax=34900, ActualPrice=8599,
-	Price out of range: ProductIndex=12, AppliedMin=9400, AppliedMax=34900, ActualPrice=8988,
-	Price out of range: ProductIndex=13, AppliedMin=9400, AppliedMax=34900, ActualPrice=9299,
-	Price out of range: ProductIndex=14, AppliedMin=9400, AppliedMax=34900, ActualPrice=8988,
-	Price out of range: ProductIndex=0, AppliedMin=28200, AppliedMax=70800, ActualPrice=11999,
-	Price out of range: ProductIndex=1, AppliedMin=28200, AppliedMax=70800, ActualPrice=16999,
-	Price out of range: ProductIndex=2, AppliedMin=28200, AppliedMax=70800, ActualPrice=14999,
-	Price out of range: ProductIndex=3, AppliedMin=28200, AppliedMax=70800, ActualPrice=20999,
-	Price out of range: ProductIndex=4, AppliedMin=28200, AppliedMax=70800, ActualPrice=18999,
-	Price out of range: ProductIndex=5, AppliedMin=28200, AppliedMax=70800, ActualPrice=23499,
-	Price out of range: ProductIndex=6, AppliedMin=28200, AppliedMax=70800, ActualPrice=16249,
-	Price out of range: ProductIndex=7, AppliedMin=28200, AppliedMax=70800, ActualPrice=19499,
-	Price out of range: ProductIndex=8, AppliedMin=28200, AppliedMax=70800, ActualPrice=12599,
-	Price out of range: ProductIndex=9, AppliedMin=28200, AppliedMax=70800, ActualPrice=15999,
-	Price out of range: ProductIndex=10, AppliedMin=28200, AppliedMax=70800, ActualPrice=9999,
-	Price out of range: ProductIndex=12, AppliedMin=28200, AppliedMax=70800, ActualPrice=11900,
-	Price out of range: ProductIndex=13, AppliedMin=28200, AppliedMax=70800, ActualPrice=11986,
-	Price out of range: ProductIndex=14, AppliedMin=28200, AppliedMax=70800, ActualPrice=12899,
-	Price out of range: ProductIndex=15, AppliedMin=28200, AppliedMax=70800, ActualPrice=25199,
-	Price out of range: ProductIndex=16, AppliedMin=28200, AppliedMax=70800, ActualPrice=20999
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
-	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at test.java.tests.AmazonTests.verifyingPriceSilderFunctionality(AmazonTests.java:466)
-	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
-	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
-	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
-	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
-	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
-	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
-	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
-	at java.base/java.lang.Thread.run(Thread.java:1447)
-</textarea>
-          
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>1:55:47 PM</td>
+        <td>
+          Test Passed
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
+        <td>1:55:47 PM</td>
         <td>
           📂 Logs:
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
+        <td>1:55:47 PM</td>
         <td>
-          📄 <a href='../logs/verifyingPriceSilderFunctionality_Mobile_13-56-11/verifyingPriceSilderFunctionality_Mobile_13-56-11.log' target='_blank'>verifyingPriceSilderFunctionality_Mobile_13-56-11.log</a>
+          📄 <a href='../logs/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43.log' target='_blank'>verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43.log</a>
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
+        <td>1:55:47 PM</td>
         <td>
           📸 Screenshots:
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
+        <td>1:55:47 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile261860426000.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile261860426000.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/Mobile193017996100.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/Mobile193017996100.png">
   
     
 
@@ -197,13 +161,13 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
+        <td>1:55:47 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile269843254700.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile269843254700.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/Mobile250658250000.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/Mobile250658250000.png">
   
     
 
@@ -212,28 +176,13 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
+        <td>1:55:47 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile270534197600.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile270534197600.png">
-  
-    
-
-    </div></div>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:34 PM</td>
-        <td>
-          
-    <div class="row mb-3"><div class="col-md-3">
-    
-
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile274160445100.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_13-56-11/Mobile274160445100.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/Mobile307360346500.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43/Mobile307360346500.png">
   
     
 
@@ -250,9 +199,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">verifyingPriceSilderFunctionality_Laptop_13-56-34</p>
+            <p class="name">verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48</p>
             <p class="text-sm">
-              <span>1:56:35 PM</span> / <span>00:00:09:854</span>
+              <span>1:55:50 PM</span> / <span>00:02:47:941</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -260,10 +209,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">verifyingPriceSilderFunctionality_Laptop_13-56-34</h5>
-<span class='badge badge-success'>09.15.2026 1:56:35 PM</span>
-<span class='badge badge-danger'>09.15.2026 1:56:45 PM</span>
-<span class='badge badge-default'>00:00:09:854</span>
+<h5 class="test-status text-fail">verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48</h5>
+<span class='badge badge-success'>09.15.2026 1:55:50 PM</span>
+<span class='badge badge-danger'>09.15.2026 1:58:38 PM</span>
+<span class='badge badge-default'>00:02:47:941</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -275,36 +224,113 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>1:55:50 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
           <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
-	Price out of range: ProductIndex=2, AppliedMin=46100, AppliedMax=171600, ActualPrice=33990,
-	Price out of range: ProductIndex=5, AppliedMin=46100, AppliedMax=171600, ActualPrice=39990,
-	Price out of range: ProductIndex=7, AppliedMin=46100, AppliedMax=171600, ActualPrice=44990,
-	Price out of range: ProductIndex=9, AppliedMin=46100, AppliedMax=171600, ActualPrice=35630,
-	Price out of range: ProductIndex=11, AppliedMin=46100, AppliedMax=171600, ActualPrice=32990,
-	Price out of range: ProductIndex=14, AppliedMin=46100, AppliedMax=171600, ActualPrice=42999,
-	Price out of range: ProductIndex=15, AppliedMin=46100, AppliedMax=171600, ActualPrice=34599,
-	Price out of range: ProductIndex=0, AppliedMin=138600, AppliedMax=348500, ActualPrice=49490,
-	Price out of range: ProductIndex=1, AppliedMin=138600, AppliedMax=348500, ActualPrice=58190,
-	Price out of range: ProductIndex=2, AppliedMin=138600, AppliedMax=348500, ActualPrice=49990,
-	Price out of range: ProductIndex=3, AppliedMin=138600, AppliedMax=348500, ActualPrice=60490,
-	Price out of range: ProductIndex=4, AppliedMin=138600, AppliedMax=348500, ActualPrice=46999,
-	Price out of range: ProductIndex=5, AppliedMin=138600, AppliedMax=348500, ActualPrice=73990,
-	Price out of range: ProductIndex=6, AppliedMin=138600, AppliedMax=348500, ActualPrice=56490,
-	Price out of range: ProductIndex=7, AppliedMin=138600, AppliedMax=348500, ActualPrice=61890,
-	Price out of range: ProductIndex=8, AppliedMin=138600, AppliedMax=348500, ActualPrice=52780,
-	Price out of range: ProductIndex=9, AppliedMin=138600, AppliedMax=348500, ActualPrice=68990,
-	Price out of range: ProductIndex=10, AppliedMin=138600, AppliedMax=348500, ActualPrice=47650,
-	Price out of range: ProductIndex=11, AppliedMin=138600, AppliedMax=348500, ActualPrice=61990,
-	Price out of range: ProductIndex=12, AppliedMin=138600, AppliedMax=348500, ActualPrice=48990,
-	Price out of range: ProductIndex=13, AppliedMin=138600, AppliedMax=348500, ActualPrice=73900,
-	Price out of range: ProductIndex=14, AppliedMin=138600, AppliedMax=348500, ActualPrice=67690,
-	Price out of range: ProductIndex=15, AppliedMin=138600, AppliedMax=348500, ActualPrice=47990
+	 filter 'windows 11 home' not found in product details.
+-------------------------------------------------------------
+ Title: dell 15 (previously inspiron) laptop, 14th gen intel core i3/core 3 100u processor, 16gb ddr4, 512 ssd, intel uhd graphics, 15.6" fhd 120hz ips ag 250 nit display, win 11 + office 2024, black, 1.63kg
+ Key Features: brand dell
+model name dell 15
+screen size 15 inches
+colour carbon black
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 16 gb
+ About: about this item
+processor: intel core 3 100u (6 cores, up to 4.70 ghz, 10mb cache)
+ram: 16gbx1, ddr4, 2666 mt/s & storage: 512gb ssd
+display: 15.6" nt fhd 120hz wva ips ag 250 nit narrow border led-backlit & graphics: intel uhd graphics
+keyboard: standard keyboard & software: win 11 + office h&s 2024
+ports: 1 usb 3.2 gen 1 type-a port + 1 usb 3.2 gen 1 type-c data only, 1 usb 3.2 gen 1 type-a port + 1 usb 3.2 gen 1 type-c full function, 1 usb 2.0 port, 1 headset jack, 1 hdmi 1.4 port*, 1 sd 3.0 card slot
+› see more product details
+ Tech Details: dell 15 (previously inspiron) laptop information
+additional details
+display
+memory
+battery
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+ports & slots
+input devices
+-------------------------------------------------------------,
+	 filter 'windows 10 pro' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗗𝗲𝗹𝗹modei 5420 touch laptop | core i5 11th gen (1145g7) | fast 8gb ddr4 ram | 256gb ssd | 14" full hd| win 10 pro |uhd graphics 620 | seller warranty | (pre-owned & tested)
+ Key Features: brand generic
+model name modei 5420 laptop
+screen size 14 inches
+colour silver
+hard disk size 256 gb
+cpu model core i5
+ram memory installed size 8 gb
+ About: about this item
+disclaimer: the laptop shown in the images is for reference only. as this is a pre-owned product, the actual unit may vary in appearance, including cosmetic differences, while maintaining the same specifications and functionality. this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 3 month seller warranty; box may be generic (warranty doesn't includes physical damage, battery issues and motherboard issues)
+2. smooth & fast performance: powered by intei core i5 11th gen processor with 8gb ddr4 ram for lag-free multitasking, office work, study, and daily use.
+3. fast ssd storage: 256gb ssd ensures quick boot-up, faster file access, and improved performance - say goodbye to slow loading systems.
+4. crisp full hd display: 14” full hd anti-glare display with intei uhd graphics delivers clear visuals, comfortable viewing, and better productivity for long work sessions.
+5. all essential ports: includes usb-c, usb 3.1, hdmi, lan, and more - perfect for office setup, online classes, and everyday connectivity needs.
+› see more product details
+ Tech Details: 𝗗𝗲𝗹𝗹modei 5420 touch laptop information
+additional details
+memory
+connectivity
+input devices
+audio
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+display
+battery
+ports & slots
+-------------------------------------------------------------,
+	 filter 'windows 10 pro' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗗𝗲𝗹𝗹modei 5420 laptop | core i5 11th gen (1145g7) | fast 8gb ddr4 ram | 256gb ssd | 14" fhd| win 10 |uhd graphics 620 | seller warranty | (pre-owned & tested)
+ Key Features: brand generic
+model name modei 5420 laptop
+screen size 14 inches
+colour silver
+hard disk size 256 gb
+cpu model core i5
+ram memory installed size 8 gb
+ About: about this item
+disclaimer: the laptop shown in the images is for reference only. as this is a pre-owned product, the actual unit may vary in appearance, including cosmetic differences, while maintaining the same specifications and functionality. this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 3 month seller warranty; box may be generic (warranty doesn't includes physical damage, battery issues and motherboard issues)
+2. smooth & fast performance: powered by intei core i5 11th gen processor with 8gb ddr4 ram for lag-free multitasking, office work, study, and daily use.
+3. fast ssd storage: 256gb ssd ensures quick boot-up, faster file access, and improved performance - say goodbye to slow loading systems.
+4. crisp full hd display: 14” full hd anti-glare display with intei uhd graphics delivers clear visuals, comfortable viewing, and better productivity for long work sessions.
+5. all essential ports: includes usb-c, usb 3.1, hdmi, lan, and more - perfect for office setup, online classes, and everyday connectivity needs.
+› see more product details
+ Tech Details: 𝗗𝗲𝗹𝗹modei 5420 laptop information
+additional details
+memory
+connectivity
+input devices
+audio
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+display
+battery
+ports & slots
+-------------------------------------------------------------
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at test.java.tests.AmazonTests.verifyingPriceSilderFunctionality(AmazonTests.java:466)
+	at test.java.tests.AmazonTests.verifyingOperatingSystemVersionFilterFunctionality(AmazonTests.java:872)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -327,34 +353,34 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
           📂 Logs:
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
-          📄 <a href='../logs/verifyingPriceSilderFunctionality_Laptop_13-56-34/verifyingPriceSilderFunctionality_Laptop_13-56-34.log' target='_blank'>verifyingPriceSilderFunctionality_Laptop_13-56-34.log</a>
+          📄 <a href='../logs/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48.log' target='_blank'>verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48.log</a>
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
           📸 Screenshots:
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop276284069100.png' src="../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop276284069100.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/Laptop370038467500.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/Laptop370038467500.png">
   
     
 
@@ -363,13 +389,13 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop283380323100.png' src="../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop283380323100.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/Laptop429794173000.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/Laptop429794173000.png">
   
     
 
@@ -378,28 +404,13 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
+        <td>1:58:38 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop283969163500.png' src="../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop283969163500.png">
-  
-    
-
-    </div></div>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:45 PM</td>
-        <td>
-          
-    <div class="row mb-3"><div class="col-md-3">
-    
-
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop285723681600.png' src="../screenshots/verifyingPriceSilderFunctionality_Laptop_13-56-34/Laptop285723681600.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/Laptop477551225100.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48/Laptop477551225100.png">
   
     
 
@@ -416,9 +427,9 @@
           tag=""
           device="">
           <div class="test-detail">
-            <p class="name">verifyingPriceSilderFunctionality_Tablet_13-56-45</p>
+            <p class="name">verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38</p>
             <p class="text-sm">
-              <span>1:56:46 PM</span> / <span>00:00:09:651</span>
+              <span>1:58:40 PM</span> / <span>00:01:48:012</span>
               <span class="badge fail-bg log float-right">Fail</span>
             </p>
           </div>
@@ -426,10 +437,10 @@
 <div class="detail-head">
 <div class="p-v-10">
 <div class="info">
-<h5 class="test-status text-fail">verifyingPriceSilderFunctionality_Tablet_13-56-45</h5>
-<span class='badge badge-success'>09.15.2026 1:56:46 PM</span>
-<span class='badge badge-danger'>09.15.2026 1:56:56 PM</span>
-<span class='badge badge-default'>00:00:09:651</span>
+<h5 class="test-status text-fail">verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38</h5>
+<span class='badge badge-success'>09.15.2026 1:58:40 PM</span>
+<span class='badge badge-danger'>09.15.2026 2:00:28 PM</span>
+<span class='badge badge-default'>00:01:48:012</span>
 &middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
 <span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
 <span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
@@ -441,47 +452,83 @@
   <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
   <tbody>
       <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>1:58:40 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
         <td><span class="badge log fail-bg">Fail</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
           <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
-	Price out of range: ProductIndex=0, AppliedMin=28800, AppliedMax=107000, ActualPrice=25999,
-	Price out of range: ProductIndex=1, AppliedMin=28800, AppliedMax=107000, ActualPrice=23999,
-	Price out of range: ProductIndex=4, AppliedMin=28800, AppliedMax=107000, ActualPrice=23999,
-	Price out of range: ProductIndex=5, AppliedMin=28800, AppliedMax=107000, ActualPrice=19999,
-	Price out of range: ProductIndex=7, AppliedMin=28800, AppliedMax=107000, ActualPrice=20990,
-	Price out of range: ProductIndex=8, AppliedMin=28800, AppliedMax=107000, ActualPrice=26999,
-	Price out of range: ProductIndex=9, AppliedMin=28800, AppliedMax=107000, ActualPrice=24999,
-	Price out of range: ProductIndex=10, AppliedMin=28800, AppliedMax=107000, ActualPrice=21999,
-	Price out of range: ProductIndex=11, AppliedMin=28800, AppliedMax=107000, ActualPrice=26998,
-	Price out of range: ProductIndex=15, AppliedMin=28800, AppliedMax=107000, ActualPrice=24889,
-	Price out of range: ProductIndex=0, AppliedMin=86500, AppliedMax=217300, ActualPrice=53999,
-	Price out of range: ProductIndex=1, AppliedMin=86500, AppliedMax=217300, ActualPrice=000000000000,
-	Price out of range: ProductIndex=2, AppliedMin=86500, AppliedMax=217300, ActualPrice=000000000000,
-	Price out of range: ProductIndex=3, AppliedMin=86500, AppliedMax=217300, ActualPrice=28861,
-	Price out of range: ProductIndex=4, AppliedMin=86500, AppliedMax=217300, ActualPrice=31999,
-	Price out of range: ProductIndex=5, AppliedMin=86500, AppliedMax=217300, ActualPrice=33999,
-	Price out of range: ProductIndex=6, AppliedMin=86500, AppliedMax=217300, ActualPrice=53999,
-	Price out of range: ProductIndex=7, AppliedMin=86500, AppliedMax=217300, ActualPrice=51999,
-	Price out of range: ProductIndex=8, AppliedMin=86500, AppliedMax=217300, ActualPrice=48999,
-	Price out of range: ProductIndex=9, AppliedMin=86500, AppliedMax=217300, ActualPrice=35771,
-	Price out of range: ProductIndex=10, AppliedMin=86500, AppliedMax=217300, ActualPrice=28999,
-	Price out of range: ProductIndex=11, AppliedMin=86500, AppliedMax=217300, ActualPrice=29999,
-	Price out of range: ProductIndex=12, AppliedMin=86500, AppliedMax=217300, ActualPrice=42999,
-	Price out of range: ProductIndex=13, AppliedMin=86500, AppliedMax=217300, ActualPrice=35999,
-	Price out of range: ProductIndex=14, AppliedMin=86500, AppliedMax=217300, ActualPrice=79999,
-	Price out of range: ProductIndex=15, AppliedMin=86500, AppliedMax=217300, ActualPrice=29999,
-	Price out of range: ProductIndex=16, AppliedMin=86500, AppliedMax=217300, ActualPrice=33999,
-	Price out of range: ProductIndex=17, AppliedMin=86500, AppliedMax=217300, ActualPrice=48999,
-	Price out of range: ProductIndex=18, AppliedMin=86500, AppliedMax=217300, ActualPrice=43999,
-	Price out of range: ProductIndex=19, AppliedMin=86500, AppliedMax=217300, ActualPrice=47999,
-	Price out of range: ProductIndex=20, AppliedMin=86500, AppliedMax=217300, ActualPrice=29499,
-	Price out of range: ProductIndex=21, AppliedMin=86500, AppliedMax=217300, ActualPrice=36543,
-	Price out of range: ProductIndex=22, AppliedMin=86500, AppliedMax=217300, ActualPrice=41999,
-	Price out of range: ProductIndex=23, AppliedMin=86500, AppliedMax=217300, ActualPrice=48999
+	 filter 'android' not found in product details.
+-------------------------------------------------------------
+ Title: redmi pad 2, wifi active pen support, 27.94cm(11") model, 2.5k sharp & clear display, 4gb, 128gb, all day & more 9000mah battery, ai-enabled, dolby atmos, hyperos 2, graphite grey
+ Key Features: brand redmi
+model name redmi pad 2
+memory storage capacity 128 gb
+screen size 11 inches
+display resolution maximum 2560x1600 pixels
+ About: about this item
+display: 11-inch (27.94 cm), lcd display, 2.5k sharp & clear resolution , 90hz refresh rate, 600 nits brightness, 274 ppi, tüv rheinland triple certification (tüv rheinland low blue light certified, tüv rheinland flicker free certified, tüv rheinland circadian friendly certified)
+ram & storage: 4 gb ram, 128 gb rom, expandable storage upto 2tb, up to 16gb ram*, lpddr4x ram
+connectivity: wi-fi 5 (802.11a/b/g/n/ac), wi-fi direct dual band support 2.4ghz & 5ghz, miracast, bluetooth 5.3, usb 2.0
+speakers & audio: quad speakers for immersive sound, supports dolby atmos and hi-res audio, 3.5mm headphone jack, mp3, flac, aac, ogg, wav, ota, midi, amr, 3gp, afpe, awb
+unique feature: active pen support, face unlock feature
+color & design: graphite grey (0.28" thickness), 0.5 wt.
+ai capabilities: ai enabled - gemini circle to search, xiaomi hyperos 2, interconnectivity, multi user profiles
+show more
+› see more product details
+ Tech Details: product information
+item details
+
+battery
+processor
+camera
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+connectivity
+features
+audio
+-------------------------------------------------------------,
+	 filter 'android' not found in product details.
+-------------------------------------------------------------
+ Title: lenovo {smartchoice} idea tab pro with pen plus|12.7" 3k display|144 hz refresh|8 gb ram, 128 gb rom|ai-enabled| mediatek dimensity 8300| quad jbl speakers| 10200 mah battery with 45 w charger|wifi 6e
+ Key Features: brand lenovo
+model name ideatab pro
+memory storage capacity 128 gb
+screen size 12.7 inches
+display resolution maximum 2944x1840 pixels
+ About: about this item
+smart performance for the modern professional: with wifi 6 for ultra-fast connectivity, microsd support for up to 1tb of expandable storage to keep all your files and projects handy, and ai-powered tools like google gemini and circle to search for instant research and on-screen assistance — the lenovo idea tab pro is designed to keep professionals focused, efficient, and always ahead.
+bigger screen, smoother experience – stay productive and entertained on a spacious 12.7-inch lcd display designed for immersive viewing and seamless multitasking. with a crisp 2944 × 1840 resolution, smooth 144hz refresh rate, and 400 nits brightness, enjoy sharper visuals and smoother navigation across apps and content.
+smooth everyday performance with ultra-fast connectivity – powered by the mediatek dimensity 8300 processor, this tablet offers efficient octa-core performance for work, study, and entertainment. combined with 128gb storage and wi-fi 6 support, it ensures faster downloads, smoother streaming, and reliable connectivity wherever you go.
+reliable performance with expandable storage – enjoy smooth app performance and efficient multitasking with 8gb lpddr5x memory paired with fast 128gb ufs 3.1 storage. with microsd card support up to 1tb, you get the flexibility to carry more files, entertainment, and work essentials wherever you go.
+cinematic audio with productivity-focused cameras – from streaming and gaming to meetings and content creation, the quad jbl speakers deliver dynamic dolby atmos audio for a premium experience. the 8mp front-facing camera supports seamless communication, while the 13mp rear camera with flashlight offers added convenience for photography, scanning, and productivity on the go.
+› see more product details
+ Tech Details: product information
+item details
+
+battery
+processor
+features
+audio
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+connectivity
+camera
+-------------------------------------------------------------
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
 	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
-	at test.java.tests.AmazonTests.verifyingPriceSilderFunctionality(AmazonTests.java:466)
+	at test.java.tests.AmazonTests.verifyingOperatingSystemVersionFilterFunctionality(AmazonTests.java:872)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -504,34 +551,34 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
           📂 Logs:
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
-          📄 <a href='../logs/verifyingPriceSilderFunctionality_Tablet_13-56-45/verifyingPriceSilderFunctionality_Tablet_13-56-45.log' target='_blank'>verifyingPriceSilderFunctionality_Tablet_13-56-45.log</a>
+          📄 <a href='../logs/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38.log' target='_blank'>verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38.log</a>
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
           📸 Screenshots:
         </td>
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet287602323600.png' src="../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet287602323600.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/Tablet530141557100.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/Tablet530141557100.png">
   
     
 
@@ -540,13 +587,13 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet294374999100.png' src="../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet294374999100.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/Tablet551515643600.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/Tablet551515643600.png">
   
     
 
@@ -555,28 +602,13 @@
       </tr>
       <tr class="event-row">
         <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
+        <td>2:00:28 PM</td>
         <td>
           
     <div class="row mb-3"><div class="col-md-3">
     
 
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet294992290500.png' src="../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet294992290500.png">
-  
-    
-
-    </div></div>
-        </td>
-      </tr>
-      <tr class="event-row">
-        <td><span class="badge log info-bg">Info</span></td>
-        <td>1:56:56 PM</td>
-        <td>
-          
-    <div class="row mb-3"><div class="col-md-3">
-    
-
-<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet296743886800.png' src="../screenshots/verifyingPriceSilderFunctionality_Tablet_13-56-45/Tablet296743886800.png">
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/Tablet587635919300.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38/Tablet587635919300.png">
   
     
 
@@ -608,15 +640,15 @@
 <li class="test-item">
 <div class="test-detail">
 <span class="meta">
-<span class='badge log badge-danger'>3</span>
+<span class='badge log badge-danger'>2</span>
 </span>
 <p class="name">java.lang.AssertionError</p>
-<p class="duration text-sm">3 tests</p>
+<p class="duration text-sm">2 tests</p>
 </div>
 <div class="test-contents d-none">
 <div class="info">
 <h4>java.lang.AssertionError</h4>
-<span status="fail" class='badge log badge-danger'>3 failed</span>
+<span status="fail" class='badge log badge-danger'>2 failed</span>
 </div>
 <table class='table table-sm mt-4'>
 <thead>
@@ -629,23 +661,16 @@
 <tbody>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>13:56:21 PM</td>
+<td>13:55:50 PM</td>
 <td>
-<a href="#" class="linked" test-id='1' id='1'>verifyingPriceSilderFunctionality_Mobile_13-56-11</a>
+<a href="#" class="linked" test-id='2' id='2'>verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48</a>
 </td>
 </tr>
 <tr class="tag-test-status" status="fail">
 <td><span class="badge log fail-bg">Fail</span></td>
-<td>13:56:35 PM</td>
+<td>13:58:40 PM</td>
 <td>
-<a href="#" class="linked" test-id='2' id='2'>verifyingPriceSilderFunctionality_Laptop_13-56-34</a>
-</td>
-</tr>
-<tr class="tag-test-status" status="fail">
-<td><span class="badge log fail-bg">Fail</span></td>
-<td>13:56:46 PM</td>
-<td>
-<a href="#" class="linked" test-id='3' id='3'>verifyingPriceSilderFunctionality_Tablet_13-56-45</a>
+<a href="#" class="linked" test-id='3' id='3'>verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38</a>
 </td>
 </tr>
 </tbody>
@@ -665,25 +690,25 @@
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Started</p>
-<h3>Sep 15, 2026 01:56:10 PM</h3>
+<h3>Sep 15, 2026 01:52:43 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0">Ended</p>
-<h3>Sep 15, 2026 01:56:56 PM</h3>
+<h3>Sep 15, 2026 02:00:28 PM</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-pass">Tests Passed</p>
-<h3>0</h3>
+<h3>1</h3>
 </div></div>
 </div>
 <div class="col-md-3">
 <div class="card"><div class="card-body">
 <p class="m-b-0 text-fail">Tests Failed</p>
-<h3>3</h3>
+<h3>2</h3>
 </div></div>
 </div>
 </div>
@@ -699,12 +724,12 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'>
-<b>0</b> tests passed
+<div><small data-tooltip='33%'>
+<b>1</b> tests passed
 </small>
 </div>
 <div>
-<small data-tooltip='100%'><b>3</b> tests failed,
+<small data-tooltip='66%'><b>2</b> tests failed,
 <b>0</b> skipped, <b data-tooltip='0%'>0</b> others
 </small>
 </div>
@@ -722,9 +747,9 @@
 </div>
 </div>
 <div class="card-footer">
-<div><small data-tooltip='0%'><b>0</b> events passed</small></div>
+<div><small data-tooltip='4%'><b>1</b> events passed</small></div>
 <div>
-<small data-tooltip='12%'><b>3</b> events failed,
+<small data-tooltip='8%'><b>2</b> events failed,
 <b data-tooltip='%'>21</b> others
 </small>
 </div>
@@ -741,7 +766,7 @@
 </div></div>
 <script>
 var timeline = {
-"verifyingPriceSilderFunctionality_Mobile_13-56-11":12.893,"verifyingPriceSilderFunctionality_Laptop_13-56-34":9.854,"verifyingPriceSilderFunctionality_Tablet_13-56-45":9.651
+"verifyingOperatingSystemVersionFilterFunctionality_Mobile_13-52-43":173.945,"verifyingOperatingSystemVersionFilterFunctionality_Laptop_13-55-48":167.941,"verifyingOperatingSystemVersionFilterFunctionality_Tablet_13-58-38":108.012
 };
 </script>
 <div class="row">
@@ -750,8 +775,8 @@ var timeline = {
 <script>
 var statusGroup = {
 parentCount: 5,
-passParent: 0,
-failParent: 3,
+passParent: 1,
+failParent: 2,
 warningParent: 0,
 skipParent: 0,
 childCount: 5,
@@ -767,8 +792,8 @@ warningGrandChild: 0,
 skipGrandChild: 0,
 infoGrandChild: 0,
 eventsCount: 5,
-passEvents: 0,
-failEvents: 3,
+passEvents: 1,
+failEvents: 2,
 warningEvents: 0,
 skipEvents: 0,
 infoEvents: 21
