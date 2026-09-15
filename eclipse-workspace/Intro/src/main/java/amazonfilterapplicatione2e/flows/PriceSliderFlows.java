@@ -43,19 +43,11 @@ public class PriceSliderFlows extends BasePage{
 		// Scroll to make slider visible
 		genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
 
-	
-
-		// Locate sliders	    
-		WebElement minSlider = safeAct.safeFindElement(productPage.priceMinSliderButton);
-		WebElement maxSlider = safeAct.safeFindElement(productPage.priceMaxSliderButton);
 
 		for (int i = 0; i < minValues.size(); i++) {
 			int min = minValues.get(i);
 			int max = maxValues.get(i);
 		
-			
-			WebElement oldFirst =
-				    safeAct.safeFindElements(productPage.productPriceFromProductCards).get(0);
 
 				// Apply slider
 				genericUtility.setSliderValue(safeAct.safeFindElement(productPage.priceMinSliderButton), min);
@@ -76,8 +68,6 @@ public class PriceSliderFlows extends BasePage{
 
 			
 			for(int k=0;k<prices.size();k++) {
-				
-			
 				log.info("[{}] Min Price Applied is  "+minPriceApplied+"   Product Price is "+prices.get(k)+"  Max Price Applied is "+maxPriceApplied, ThreadContext.get("testName"));
 			}
 			
