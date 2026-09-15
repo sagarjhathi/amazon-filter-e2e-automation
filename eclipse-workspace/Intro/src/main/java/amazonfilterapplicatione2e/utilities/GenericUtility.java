@@ -260,18 +260,27 @@ public class GenericUtility extends ProductListingPage{
 
  
  
- public static String extractIntOrFail(String input) {
+ // Strips currency symbols, thousands-separator commas and whitespace, but keeps the decimal
+ // point - a blanket "\D" strip would treat "1,299.50" the same as "1299" and "129950",
+ // silently corrupting any price that carries a fractional part.
+ public static String extractPriceOrFail(String input) {
 	    if (input == null) {
 	        throw new IllegalArgumentException("Cannot extract price: input is null");
 	    }
 
-	    String digits = input.replaceAll("\\D", "");
+	    String cleaned = input.replaceAll("[^0-9.]", "");
 
-	    if (digits.isEmpty()) {
+	    // Keep only the first decimal point in case stray "." characters slipped through.
+	    int firstDot = cleaned.indexOf('.');
+	    if (firstDot != -1) {
+	        cleaned = cleaned.substring(0, firstDot + 1) + cleaned.substring(firstDot + 1).replace(".", "");
+	    }
+
+	    if (cleaned.isEmpty() || cleaned.equals(".")) {
 	        throw new IllegalArgumentException("Cannot extract price: no digits found in input '" + input + "'");
 	    }
 
-	    return digits;
+	    return cleaned;
 	}
  
  

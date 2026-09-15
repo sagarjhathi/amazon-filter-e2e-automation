@@ -96,33 +96,29 @@ public class PriceSliderFlows extends BasePage{
 			genericUtility.smoothScrollToElement(productPage.priceMinSliderButton);
 			ScreenshotUtilUpdated.capture(testName,appliedFilter);
 
+			double maxPriceFilterAppliedVal = Double.parseDouble(GenericUtility.extractPriceOrFail(maxPriceApplied));
+			double minPriceFilterAppliedVal = Double.parseDouble(GenericUtility.extractPriceOrFail(minPriceApplied));
+
 			for (int j = 0; j < prices.size(); j++) {
-			
-			
+
+
 				String productPrice = prices.get(j);
-				productPrice= GenericUtility.extractIntOrFail(productPrice);
-				maxPriceApplied=GenericUtility.extractIntOrFail(maxPriceApplied);
-				minPriceApplied=GenericUtility.extractIntOrFail(minPriceApplied);
+				double productPriceVal = Double.parseDouble(GenericUtility.extractPriceOrFail(productPrice));
 
-				int productPriceInt = Integer.parseInt(productPrice);
-				int maxPriceFilterAppliedInt = Integer.parseInt(maxPriceApplied);
-				int minPriceFilterAppliedInt = Integer.parseInt(minPriceApplied);
-
-
-				if (productPriceInt <= maxPriceFilterAppliedInt &&  productPriceInt>=minPriceFilterAppliedInt) {
-					log.info("[{}] Price Check <= Max & >= Min  Product Price is ->"+productPriceInt, ThreadContext.get("testName"));
-					log.info("[{}] Min Price Applied is  "+minPriceApplied+"   Product Price is "+prices.get(j)+"  Max Price Applied is "+maxPriceApplied, ThreadContext.get("testName"));
+				if (productPriceVal <= maxPriceFilterAppliedVal &&  productPriceVal>=minPriceFilterAppliedVal) {
+					log.info("[{}] Price Check <= Max & >= Min  Product Price is ->"+productPriceVal, ThreadContext.get("testName"));
+					log.info("[{}] Min Price Applied is  "+minPriceFilterAppliedVal+"   Product Price is "+prices.get(j)+"  Max Price Applied is "+maxPriceFilterAppliedVal, ThreadContext.get("testName"));
 
 				} else {
 					log.info("[{}] Product Price Not Under the Range of Min & Max", ThreadContext.get("testName"));
-					log.info("[{}] Min Price Applied is  "+minPriceApplied+"   Product Price is "+prices.get(j)+"  Max Price Applied is "+maxPriceApplied, ThreadContext.get("testName"));
+					log.info("[{}] Min Price Applied is  "+minPriceFilterAppliedVal+"   Product Price is "+prices.get(j)+"  Max Price Applied is "+maxPriceFilterAppliedVal, ThreadContext.get("testName"));
 
 					String errorMessage =
 						    "Price out of range: " +
 						    "ProductIndex=" + j +
-						    ", AppliedMin=" + minPriceApplied +
-						    ", AppliedMax=" + maxPriceApplied +
-						    ", ActualPrice=" + productPrice;
+						    ", AppliedMin=" + minPriceFilterAppliedVal +
+						    ", AppliedMax=" + maxPriceFilterAppliedVal +
+						    ", ActualPrice=" + productPriceVal;
 					mismatches.add(errorMessage);
 					isValid = false;
 				}
