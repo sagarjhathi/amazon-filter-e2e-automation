@@ -1,6 +1,5 @@
 package main.java.amazonfilterapplicatione2e.flows;
 
-import java.time.Duration; 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -8,12 +7,8 @@ import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 
 import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
@@ -60,22 +55,23 @@ public class PriceSliderFlows extends BasePage{
 		
 			
 			WebElement oldFirst =
-				    driver.findElements(productPage.productPriceFromProductCards).get(0);
+				    safeAct.safeFindElements(productPage.productPriceFromProductCards).get(0);
 
 				// Apply slider
-				genericUtility.setSliderValue(minSlider, min);
-				genericUtility.setSliderValue(maxSlider, max);
+				genericUtility.setSliderValue(safeAct.safeFindElement(productPage.priceMinSliderButton), min);
+				genericUtility.setSliderValue(safeAct.safeFindElement(productPage.priceMaxSliderButton), max);
 
 				String maxPriceApplied = safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
 				String minPriceApplied = safeAct.safeFindElement(productPage.minPriceFilterApplied).getText();
 				// Wait for grid refresh
-				wait.until(ExpectedConditions.stalenessOf(oldFirst));
-
+				wait.until(ExpectedConditions.visibilityOfElementLocated(productPage.resetPriceRangeProductPage));
+				//wait.until(ExpectedConditions.stalenessOf(oldFirst));
+				
 				// Now safely fetch new prices
-				List<String> prices = driver.findElements(productPage.productPriceFromProductCards)
-				        .stream()
-				        .map(WebElement::getText)
-				        .toList();
+				List<String> prices = new ArrayList<>();
+				for (WebElement priceElement : safeAct.safeFindElements(productPage.productPriceFromProductCards)) {
+					prices.add(priceElement.getText());
+				}
 
 
 			
@@ -143,81 +139,5 @@ public class PriceSliderFlows extends BasePage{
 
 		return results;
 	}
-	
-	
-	
-	
-	public void applyPriceSliderAndValidate(List<Integer> minValues, List<Integer> maxValues) throws InterruptedException {
-
-		if (minValues.size() != maxValues.size()) {
-			throw new IllegalArgumentException("minValues and maxValues must be of same size");
-		}
-
-		ProductListingPage productPage=new ProductListingPage();
-		SafeActions safeAct=new SafeActions();
-
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		// Scroll to make slider visible
-		js.executeScript("window.scrollBy(0, 300);");
 		
-
-		// Locate sliders	    
-		WebElement minSlider=safeAct.safeFindElement(productPage.priceMinSliderButton);
-		WebElement maxSlider= safeAct.safeFindElement(productPage.priceMaxSliderButton);
-
-		for (int i = 0; i < minValues.size(); i++) {
-			int min = minValues.get(i);
-			int max = maxValues.get(i);
-
-			// Set min slider
-			js.executeScript(
-					"arguments[0].value = arguments[1];" +
-							"arguments[0].dispatchEvent(new Event('input'));" +
-							"arguments[0].dispatchEvent(new Event('change'));",
-							minSlider, String.valueOf(min)
-					);
-
-			// Set max slider
-			js.executeScript(
-					"arguments[0].value = arguments[1];" +
-							"arguments[0].dispatchEvent(new Event('input'));" +
-							"arguments[0].dispatchEvent(new Event('change'));",
-							maxSlider, String.valueOf(max)
-					);
-
-		
-			// Click 'Go' / Apply
-			safeAct.safeFindElement(productPage.priceSliderSubmitButton);
-		
-
-			// Extract the applied max filter text and product prices
-			String maxPriceApplied=safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
-			String minPriceApplied=safeAct.safeFindElement(productPage.minPriceFilterApplied).getText();
-			List<WebElement> prices=safeAct.safeFindElements(productPage.productPriceFromProductCards);
-
-
-			for (int j = 0; j < prices.size(); j++) {
-				String productPrice=prices.get(j).getText();
-				productPrice = productPrice.replaceAll("[^\\d]", "");
-				maxPriceApplied = maxPriceApplied.replaceAll("[^\\d]", "");
-				minPriceApplied=minPriceApplied.replaceAll("[^\\d]", "");
-
-				int productPriceInt=Integer.parseInt(productPrice);
-				int maxPriceFilterAppliedInt=Integer.parseInt(maxPriceApplied);
-
-				boolean bool=true;
-				if(productPriceInt<=maxPriceFilterAppliedInt) {
-					System.out.println("Product price is within limits --> product index and applied filter and product price is "+ j+"  "+maxPriceApplied+"  "+productPrice);
-				}else {
-					String errorMessage="Product price is above limit --> product index and applied filter is and  product price "+ j+"  "+maxPriceApplied+"  "+productPrice;
-					bool = false;
-					System.out.println(errorMessage);
-					Assert.fail(errorMessage); 
-				}
-			}
-			
-		}
-	}
-	
-	
 }
