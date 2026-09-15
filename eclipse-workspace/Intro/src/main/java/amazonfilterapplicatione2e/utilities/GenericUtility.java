@@ -262,13 +262,13 @@ public class GenericUtility extends ProductListingPage{
  
  public static String extractIntOrFail(String input) {
 	    if (input == null) {
-	        return "000000000000"; // or maybe -1 or throw Exception
+	        throw new IllegalArgumentException("Cannot extract price: input is null");
 	    }
 
 	    String digits = input.replaceAll("\\D", "");
 
 	    if (digits.isEmpty()) {
-	        digits = "000000000000";
+	        throw new IllegalArgumentException("Cannot extract price: no digits found in input '" + input + "'");
 	    }
 
 	    return digits;

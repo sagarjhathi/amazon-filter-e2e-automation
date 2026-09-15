@@ -8,7 +8,6 @@ import java.util.Map;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import main.java.amazonfilterapplicatione2e.base.BasePage;
 import main.java.amazonfilterapplicatione2e.logger.LoggerUtility;
@@ -49,19 +48,36 @@ public class PriceSliderFlows extends BasePage{
 			int max = maxValues.get(i);
 		
 
+				// Capture the URL before applying, so we can detect the round-trip below. Amazon's
+				// slider snaps to its own price brackets rather than the exact value we set via JS,
+				// so we can't reliably wait for an exact "low-price=61" match - we only know the URL
+				// will change once the (possibly snapped) filter is actually applied.
+				String urlBeforeApply = driver.getCurrentUrl();
+
 				// Apply slider
 				genericUtility.setSliderValue(safeAct.safeFindElement(productPage.priceMinSliderButton), min);
 				genericUtility.setSliderValue(safeAct.safeFindElement(productPage.priceMaxSliderButton), max);
 
+				// Wait for the URL to actually change and carry a price filter - this is what
+				// distinguishes "this iteration's filter applied" from stale state left over from
+				// the previous iteration (unlike waiting on resetPriceRangeProductPage, which stays
+				// visible across iterations and so never really waits after the first one). The
+				// exact applied values are read back from the labels below, not assumed here.
+				wait.until(d -> !d.getCurrentUrl().equals(urlBeforeApply)
+						&& d.getCurrentUrl().contains("low-price")
+						&& d.getCurrentUrl().contains("high-price"));
+
 				String maxPriceApplied = safeAct.safeFindElement(productPage.maxPriceFilterApplied).getText();
 				String minPriceApplied = safeAct.safeFindElement(productPage.minPriceFilterApplied).getText();
-				// Wait for grid refresh
-				wait.until(ExpectedConditions.visibilityOfElementLocated(productPage.resetPriceRangeProductPage));
-				//wait.until(ExpectedConditions.stalenessOf(oldFirst));
-				
+
 				// Now safely fetch new prices
 				List<String> prices = new ArrayList<>();
-				for (WebElement priceElement : safeAct.safeFindElements(productPage.productPriceFromProductCards)) {
+				List<WebElement> priceElements = safeAct.safeFindElements(productPage.productPriceFromProductCards);
+				if (priceElements == null) {
+					log.warn("[{}] No product price elements found for min={} max={}", ThreadContext.get("testName"), min, max);
+					priceElements = new ArrayList<>();
+				}
+				for (WebElement priceElement : priceElements) {
 					prices.add(priceElement.getText());
 				}
 
