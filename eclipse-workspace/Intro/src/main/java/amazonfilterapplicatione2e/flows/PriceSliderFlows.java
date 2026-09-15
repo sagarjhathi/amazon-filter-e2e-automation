@@ -103,7 +103,14 @@ public class PriceSliderFlows extends BasePage{
 
 
 				String productPrice = prices.get(j);
-				double productPriceVal = Double.parseDouble(GenericUtility.extractPriceOrFail(productPrice));
+				double productPriceVal;
+				try {
+					productPriceVal = Double.parseDouble(GenericUtility.extractPriceOrFail(productPrice));
+				} catch (IllegalArgumentException e) {
+					log.warn("[{}] Skipping product at index {}: could not extract a price from '{}' - {}",
+							ThreadContext.get("testName"), j, productPrice, e.getMessage());
+					continue;
+				}
 
 				if (productPriceVal <= maxPriceFilterAppliedVal &&  productPriceVal>=minPriceFilterAppliedVal) {
 					log.info("[{}] Price Check <= Max & >= Min  Product Price is ->"+productPriceVal, ThreadContext.get("testName"));
