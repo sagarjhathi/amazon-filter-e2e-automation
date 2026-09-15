@@ -12,7 +12,7 @@
     <classes>
       <class name="test.java.tests.AmazonTests">
  		<methods>
- 		<include name="verifyingOperatingSystemVersionFilterFunctionality"></include>
+ 		<include name="verifyingPriceSilderFunctionality"></include>
  		</methods>
     </class>
     </classes>

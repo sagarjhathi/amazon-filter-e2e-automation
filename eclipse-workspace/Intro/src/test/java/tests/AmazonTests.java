@@ -398,8 +398,12 @@ public class AmazonTests extends BaseTest {
 	}
 
 	
-	@Test
-	public void verifyingPriceSilderFunctionality() throws InterruptedException {
+	
+	@Test(
+		    dataProvider = "ExcelData",
+		    dataProviderClass = TestDataProvider.class
+		)
+	public void verifyingPriceSilderFunctionality(String str) throws InterruptedException {
 		
 	//	ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
 
@@ -416,7 +420,7 @@ public class AmazonTests extends BaseTest {
 		SafeActions safeAct = new SafeActions();
 		safeAct.safeFindElement(landingPage.amazonLogoLandingPage);
 		capHandler.handleCaptcha();
-		landingPage.givingInputWithinSearchBar("Mobile");
+		landingPage.givingInputWithinSearchBar(str);
 		landingPage.clickingOnSubmitSearchButton();
 		genericUtility.refreshIfServiceUnavailable();
 		String testName=ThreadContext.get("testName");
