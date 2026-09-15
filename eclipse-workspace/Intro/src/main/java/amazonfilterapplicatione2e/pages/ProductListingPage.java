@@ -158,7 +158,7 @@ public class ProductListingPage extends  BasePage{
 
 	public By showMoreOnlyIndividualPage=By.xpath("//span[@class='a-expander-prompt' and text()='Show More']");
 
-	
+	public By resetPriceRangeProductPage=By.xpath("//span[@class='a-size-base a-color-link' and text()='Reset price range']");
 	
 		
 	
