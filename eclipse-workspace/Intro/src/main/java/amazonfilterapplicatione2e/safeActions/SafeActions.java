@@ -233,9 +233,9 @@ public class SafeActions extends BasePage{
 				String filterOptionToPass=filterOption;
 				
 		    int attempts = 0;
-		    while (attempts < 1) {
+		    while (attempts < 3) {
 		        try {
-		        	
+
                 	genericUtility.smoothScrollToElement(productPage.getfilterHeaderByTypeAndName(filterName));
                 
                 	try {
@@ -297,22 +297,20 @@ public class SafeActions extends BasePage{
 		                
 		                
 						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
-		              
-		        
-		    
-			log.info("[{}]Skipping click action: Element not clickable after"+attempts+"   attempts" ,ThreadContext.get("testName"));
 
-		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
-		    
-		    return false;  // failure
+
+
 		     }
 		            catch(Exception ee) {
-		            	
+
 		            }
 		    }
 		    }
+			log.info("[{}]Skipping click action: Element not clickable after"+attempts+"   attempts" ,ThreadContext.get("testName"));
+
+		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
 			return false;
-		    }       
+		    }
 		
 		
 		

@@ -184,8 +184,8 @@ public class SharedFilterFlows extends BasePage {
 		    String filterValue,
 	        String currentWindow,
 	        SafeActions safeAct
-	        
-		 ) throws InterruptedException{
+
+		 ) throws InterruptedException, TimeoutException{
  
 
 	 String testName = ThreadContext.get("logFileName");
@@ -221,8 +221,14 @@ public class SharedFilterFlows extends BasePage {
 System.out.println("Clicked on the producct name new pop-up should open");
 log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", testName);
 
+boolean productPageLoaded = genericUtility.isElementInViewport(productPage.productNameIndividualPage);
+if (!productPageLoaded) {
+	log.warn("[{}] Product detail page did not load for index {} filter '{}'; skipping detail scrape to avoid redundant retries/timeouts", testName, productIndex, filterValue);
+}
+
 String name="";
 try {
+if (productPageLoaded) {
 name = genericUtility.fetchTextWithRetries(productPage.productNameIndividualPage, safeAct);
 String keyFeatures = genericUtility.fetchTextWithRetries(productPage.productKeyFeatureBlock, safeAct);
 String about = genericUtility.fetchTextWithRetries(productPage.aboutThisItemBulletPoint, safeAct);
@@ -233,6 +239,7 @@ genericUtility.addFieldIfPresent("keyFeatures",keyFeatures ,filterValue,productI
 genericUtility.addFieldIfPresent("about",about ,filterValue,productIndex,productResult);
 genericUtility.addFieldIfPresent("techDetails",techDetails ,filterValue,productIndex,productResult);
 log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within productNameListingPage loop", testName);
+}
 
 }catch(Exception e) {
 	log.info("[{}] Something went wrong while switching or extracting the details", testName);
@@ -241,20 +248,22 @@ log.info("[{}] Extracting 'name' , 'keyFeatures', 'about' , 'techDetails' within
 
 
 try {
+	if (productPageLoaded) {
 	 if(genericUtility.isElementInViewport(productPage.showMoreOnlyIndividualPage)) {
      	String productNamePlusIndex="Product Index="+productIndex;
      	genericUtility.smoothScrollToElement(productPage.reportAnIssue);
-     	
+
      	ScreenshotUtilUpdated.capture(testName, filterValue, productNamePlusIndex);
 			log.info("[{}] Within Try block  clicking 'show more' hence Taking screen shot available button on ui", testName);
      }else {
     	 genericUtility.smoothScrollToElement(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
-       
+
          safeAct.safeClick(genericUtility.seeMoreProductDetailsButtonIndividualPageBy);
 			 log.info("[{}] Within try block for clicking see more deatils within productNameListingPage loop", testName);
          System.out.println("'See More Details' clicked.");
      }
-   
+	}
+
 } catch (Exception e1) {
     
 	genericUtility.smoothScrollToElement(productPage.showMoreOnlyIndividualPage);
@@ -268,9 +277,12 @@ try {
 	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
  
 }finally {
-
+	if(!driver.getWindowHandle().equals(currentWindow)){
 	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
+	}else {
+		log.info("[{}]  Already on the original window -> {}; nothing to close", testName, currentWindow);
+	}
 }
 
 
