@@ -221,6 +221,9 @@ public class SharedFilterFlows extends BasePage {
 System.out.println("Clicked on the producct name new pop-up should open");
 log.info("[{}] Clicked product name to open in new tab from productNameListingPage loop", testName);
 
+// If the click didn't open a new tab, it may have navigated in the same tab (fine, keep going)
+// or done nothing at all (still on the listing page). This tells the two apart before we spend
+// time on the retry-heavy scrape/click calls below, which would otherwise just time out.
 boolean productPageLoaded = genericUtility.isElementInViewport(productPage.productNameIndividualPage);
 if (!productPageLoaded) {
 	log.warn("[{}] Product detail page did not load for index {} filter '{}'; skipping detail scrape to avoid redundant retries/timeouts", testName, productIndex, filterValue);
@@ -277,6 +280,9 @@ try {
 	log.info("[{}] Within catch block for clicking 'see more deatils' within productNameListingPage loop", testName);
  
 }finally {
+	// Only close/switch if we actually left the listing window; closeCurrentWindowAndSwitchBack
+	// closes every handle that isn't currentWindow, so calling it while already back on
+	// currentWindow (e.g. click never navigated) would otherwise close all other open windows.
 	if(!driver.getWindowHandle().equals(currentWindow)){
 	genericUtility.closeCurrentWindowAndSwitchBack(currentWindow);
 	log.info("[{}]  going back to product listing via closeCurrentWindowAndSwitchBack ", testName);
