@@ -1,0 +1,55 @@
+04:29:36 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+04:29:36 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - WebDriverManager: chromedriver setup OK
+04:29:37 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - ChromeDriver initialized successfully for thread: 36
+04:29:39 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Opening amazon Landing page
+04:29:39 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within safeFindElement method
+04:29:39 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (03dbc86d377ec6431043b165ac387636)] -> xpath: //a[@id='nav-logo-sprites']]
+04:29:41 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Giving input within the search bar
+04:29:41 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within safeClick method
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Clicked the  [[ChromeDriver: chrome on windows (03dbc86d377ec6431043b165ac387636)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Clicking on the submit in the search bar
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Waiting until element is visible in viewport
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within validateDeliveryFilterOptionsWithResult method
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within safeClick method
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Clicked the  [[ChromeDriver: chrome on windows (03dbc86d377ec6431043b165ac387636)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']]   using safeClick
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within getMoreButtonByFilterTypeAndName method
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']
+04:29:44 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within safeFindElements 
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Returning the  [[[ChromeDriver: chrome on windows (03dbc86d377ec6431043b165ac387636)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (03dbc86d377ec6431043b165ac387636)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (03dbc86d377ec6431043b165ac387636)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] this is the set  [Thu, Today, 16, FREE delivery, 17, Wed, Tomorrow, Sep]
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Checking if the allowedDateParts have the assert text — index 0, text: Samsung Galaxy M07 Mobile (Black, 4GB RAM, 64GB Storage) | MediaTek Helio G99 | AnTuTu 624K | IP54| 50MP Camera | 7.6mm Slim | 5000mAh Battery | 25W Fast Charging | 6 Gen OS Upgrades | Without Charger
+4.1
+(2.3K)
+5K+ bought in past month
+₹11,999
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Mon, 21 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Checking if the allowedDateParts have the assert text — index 1, text: iQOO Z10 Lite 5G (Titanium Blue 2026, 4GB RAM, 64GB Storage) | Dimensity 6300 5G Processor | 50MP Sony AI Camera | 6000 mAh Battery | IP64 Rated & Military Grade Shock-Resistance*
+4.1
+(386)
+2K+ bought in past month
+₹16,999
+M.R.P:
+₹27,999 (39% off)
+FREE delivery Mon, 21 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Checking if the allowedDateParts have the assert text — index 2, text: REDMI A7 Pro 5G (Mist Blue, 4GB RAM, 64GB Storage) | Segment's Fastest Processor | Segment's Largest Battery | Segment's Largest & Smoothest 6.9in 120Hz Display
+3.4
+(2.2K)
+2K+ bought in past month
+₹14,999
+M.R.P:
+₹26,999 (44% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Mon, 21 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+04:29:45 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36 - [verifyingFreeDeliveryFilterFunctionality_Mobile_04-29-36] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
