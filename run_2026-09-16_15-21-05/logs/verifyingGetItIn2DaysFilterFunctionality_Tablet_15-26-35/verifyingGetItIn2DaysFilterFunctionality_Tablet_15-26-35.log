@@ -1,0 +1,82 @@
+15:26:35 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+15:26:35 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - WebDriverManager: chromedriver setup OK
+15:26:37 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - ChromeDriver initialized successfully for thread: 35
+15:26:37 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Opening amazon Landing page
+15:26:37 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within safeFindElement method
+15:26:39 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //a[@id='nav-logo-sprites']]
+15:26:40 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Giving input within the search bar
+15:26:40 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within safeClick method
+15:26:43 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Clicked the  [[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+15:26:43 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Clicking on the submit in the search bar
+15:26:43 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Waiting until element is visible in viewport
+15:26:44 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within validateDeliveryFilterOptionsWithResult method
+15:26:44 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within safeClick method
+15:26:44 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Clicked the  [[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']]   using safeClick
+15:26:44 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within getMoreButtonByFilterTypeAndName method
+15:26:44 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']
+15:26:44 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within safeFindElements 
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Returning the  [[[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (93308b864ffcf9ef2c1b98507ae2102e)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] this is the set  [Thu, Today, 16, FREE delivery, 17, Wed, Tomorrow, Sep]
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Checking if the allowedDateParts have the assert text — index 0, text: Redmi Pad 2, 11-inch (27.94 CM CM), LCD Display - 2.5K Sharp & Clear, 4GB RAM, 128GB ROM, Wi-Fi, Quad Speakers, Dolby Atmos, Graphite Grey, AI Enabled
+4.2
+(563)
+500+ bought in past month
+₹19,654
+M.R.P:
+₹21,999 (11% off)
+Flat INR 500 Off on Select Bank Cards
+FREE delivery Mon, 21 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Checking if the allowedDateParts have the assert text — index 1, text: Samsung Galaxy Tab A11+ [Smartchoice], 11-inch (27.82 CM), LCD Display, 6GB RAM, 128GB ROM, Wi-Fi, Quad Speakers, Dolby Atmos, Gray, AI Enabled
+4.5
+(248)
+400+ bought in past month
+₹25,999
+M.R.P:
+₹27,999 (7% off)
+Flat INR 500 Off on Select Bank Cards
+FREE delivery Mon, 21 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Checking if the allowedDateParts have the assert text — index 2, text: Samsung Galaxy Tab S10 Lite [Smartchoice], 10.9-inch (27.7 CM), LCD Display, 6GB RAM, 128GB ROM, Wi-Fi, Dual Speakers, S Pen, Gray, AI Enabled
+4.6
+(443)
+500+ bought in past month
+₹35,749
+M.R.P:
+₹57,999 (38% off)
+Flat INR 500 Off on Select Bank Cards
+FREE delivery Mon, 21 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Checking if the allowedDateParts have the assert text — index 3, text: OnePlus Pad 2 (12.1 Inch),12GB RAM, 256GB Storage Snapdragon 8 Gen 3,144Hz Refresh Rate, 6 Speakers, 3K 12.1 Display, AI Features, 9610 mAh Battery, Wi-Fi with Cellular Data Sharing [Nimbus Gray]
+4.4
+(820)
+1K+ bought in past month
+₹33,999
+M.R.P:
+₹47,999 (29% off)
+Flat INR 500 Off on Select Bank Cards
+FREE delivery Mon, 21 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Checking if the allowedDateParts have the assert text — index 4, text: Lenovo Tab (Smartchoice)| 10.1" Display| 4G (LTE) + Wi-Fi (Calling)| 4 GB RAM + 64 GB ROM (Expandable up to 1 TB)| Metal Body| Dual Speakers with Dolby Atmos| Android 14| Color: Polar Blue
+4.0
+(273)
+100+ bought in past month
+₹18,999
+M.R.P:
+₹21,000 (10% off)
+Flat INR 500 Off on Select Bank Cards
+FREE delivery Mon, 21 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+15:26:45 [TestNG-test-Test-2] INFO  verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35 - [verifyingGetItIn2DaysFilterFunctionality_Tablet_15-26-35] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
