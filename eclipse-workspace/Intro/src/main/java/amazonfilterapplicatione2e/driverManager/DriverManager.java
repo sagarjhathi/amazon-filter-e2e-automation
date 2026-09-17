@@ -1,7 +1,7 @@
 package main.java.amazonfilterapplicatione2e.driverManager;
-import java.net.URI;  
+import java.net.URI;
 import java.net.URL;
-import java.util.List; 
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -41,23 +41,23 @@ import java.util.List;
 
 
 public class DriverManager  {
-	
+
 
 	protected static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 	private  static Logger log = LoggerUtility.getLogger(DriverManager.class);
 
-	
+
 	public static WebDriver getDriver() {
 		return driver.get();
 	}
-	
+
 	public static void initDriver() {
 		if(driver.get()==null) {
 
 			log.info("No existing WebDriver found for current thread. Initializing a new ChromeDriver...");
 
-			try {            	
-			
+			try {
+
 				String browser=System.getProperty("browser")!=null?System.getProperty("browser"):ConfigManager.get("browser", "chrome");
 				if (browser != null) browser = browser.trim().toLowerCase(Locale.ENGLISH);
 
@@ -66,22 +66,22 @@ public class DriverManager  {
 
 					org.openqa.selenium.firefox.FirefoxOptions firefoxOptions = new org.openqa.selenium.firefox.FirefoxOptions();
 
-					if (ConfigManager.getBoolean("firefox.arg.disable_gpu", true)) {
+					if (ConfigManager.getBoolean("firefox.disableGpu", true)) {
 						firefoxOptions.addArguments("--disable-gpu");
 					}
-					if (ConfigManager.getBoolean("firefox.arg.disable_dev_shm_usage", true)) {
+					if (ConfigManager.getBoolean("firefox.disableDevShmUsage", true)) {
 						firefoxOptions.addArguments("--disable-dev-shm-usage");
 					}
-					if (ConfigManager.getBoolean("firefox.arg.no_sandbox", true)) {
+					if (ConfigManager.getBoolean("firefox.noSandbox", true)) {
 						firefoxOptions.addArguments("--no-sandbox");
 					}
-					if (ConfigManager.getBoolean("firefox.arg.disable_extensions", true)) {
+					if (ConfigManager.getBoolean("firefox.disableExtensions", true)) {
 						firefoxOptions.addArguments("--disable-extensions");
 					}
 					if (ConfigManager.getBoolean("firefox.headless", false)) {
 						firefoxOptions.addArguments("-headless");
 					}
-					if(ConfigManager.getBoolean("disable.image.loading", false)) {
+					if(!ConfigManager.getBoolean("firefox.image.loading", true)) {
 						firefoxOptions.addArguments(
 							    "--blink-settings=imagesEnabled=false",
 							    "--disable-gpu",
@@ -98,18 +98,17 @@ public class DriverManager  {
 						String local = ConfigManager.get("webdriver.firefox.local.path", "");
 						if (!local.isBlank()) System.setProperty("webdriver.gecko.driver", local);
 					}
-				
+
 					WebDriver firefoxDriver = new org.openqa.selenium.firefox.FirefoxDriver(firefoxOptions);
-				
-				
+
 					if(ConfigManager.getBoolean("firefox.runOnGrid", false)) {
-					firefoxDriver=GlobalGridUtility.createRemoteFirefoxDriver(ConfigManager.get("gridHubUrl"), firefoxOptions);
+					firefoxDriver=GlobalGridUtility.createRemoteFirefoxDriver(ConfigManager.get("firefox.gridHubUrl"), firefoxOptions);
 					}
-					
+
 					driver.set(firefoxDriver);
 					try { firefoxDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
 
-					if (ConfigManager.getBoolean("firefox.arg.start_maximized", true)) {
+					if (ConfigManager.getBoolean("firefox.startMaximized", true)) {
 						try { firefoxDriver.manage().window().maximize(); } catch (Exception ignored) {}
 					}
 					log.info("FirefoxDriver initialized successfully for thread: {}", Thread.currentThread().threadId());
@@ -120,25 +119,25 @@ public class DriverManager  {
 
 					org.openqa.selenium.edge.EdgeOptions edgeOptions = new org.openqa.selenium.edge.EdgeOptions();
 
-					if (ConfigManager.getBoolean("edge.arg.start_maximized", true)) {
+					if (ConfigManager.getBoolean("edge.startMaximized", true)) {
 						edgeOptions.addArguments("--start-maximized");
 					}
-					if (ConfigManager.getBoolean("edge.arg.disable_gpu", true)) {
+					if (ConfigManager.getBoolean("edge.disableGpu", true)) {
 						edgeOptions.addArguments("--disable-gpu");
 					}
-					if (ConfigManager.getBoolean("edge.arg.disable_dev_shm_usage", true)) {
+					if (ConfigManager.getBoolean("edge.disableDevShmUsage", true)) {
 						edgeOptions.addArguments("--disable-dev-shm-usage");
 					}
-					if (ConfigManager.getBoolean("edge.arg.no_sandbox", true)) {
+					if (ConfigManager.getBoolean("edge.noSandbox", true)) {
 						edgeOptions.addArguments("--no-sandbox");
 					}
-					if (ConfigManager.getBoolean("edge.arg.disable_extensions", true)) {
+					if (ConfigManager.getBoolean("edge.disableExtensions", true)) {
 						edgeOptions.addArguments("--disable-extensions");
 					}
-					if(ConfigManager.getBoolean("chrome.headless", false)) {
+					if(ConfigManager.getBoolean("edge.headless", false)) {
 						edgeOptions.addArguments("--headless");
 					}
-					if(ConfigManager.getBoolean("disable.image.loading", false)) {
+					if(!ConfigManager.getBoolean("edge.image.loading", true)) {
 						edgeOptions.addArguments(
 							    "--blink-settings=imagesEnabled=false",
 							    "--disable-gpu",
@@ -163,10 +162,10 @@ public class DriverManager  {
 
 
 					WebDriver edgeDriver = new org.openqa.selenium.edge.EdgeDriver(edgeOptions);
-					
+
 
 					if(ConfigManager.getBoolean("edge.runOnGrid", false)) {
-						edgeDriver=GlobalGridUtility.createRemoteEdgeDriver(ConfigManager.get("edge.runOnGrid"), edgeOptions);
+						edgeDriver=GlobalGridUtility.createRemoteEdgeDriver(ConfigManager.get("edge.gridHubUrl"), edgeOptions);
 					}
 					driver.set(edgeDriver);
 					try { edgeDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
@@ -179,31 +178,31 @@ public class DriverManager  {
 
 					org.openqa.selenium.chrome.ChromeOptions options = new org.openqa.selenium.chrome.ChromeOptions();
 
-					
-					
-					if (ConfigManager.getBoolean("chrome.arg.start_maximized", true)) {
+
+
+					if (ConfigManager.getBoolean("chrome.startMaximized", true)) {
 						options.addArguments("--start-maximized");
 					}
-					if (ConfigManager.getBoolean("chrome.arg.disable_gpu", true)) {
+					if (ConfigManager.getBoolean("chrome.disableGpu", true)) {
 						options.addArguments("--disable-gpu");
 					}
-					if (ConfigManager.getBoolean("chrome.arg.disable_blink_features_automation_controlled", true)) {
+					if (ConfigManager.getBoolean("chrome.disableBlinkAutomationControl", true)) {
 						options.addArguments("--disable-blink-features=AutomationControlled");
 					}
-					if (ConfigManager.getBoolean("chrome.arg.disable_dev_shm_usage", true)) {
+					if (ConfigManager.getBoolean("chrome.disableDevShmUsage", true)) {
 						options.addArguments("--disable-dev-shm-usage");
 					}
-					if (ConfigManager.getBoolean("chrome.arg.no_sandbox", true)) {
+					if (ConfigManager.getBoolean("chrome.noSandbox", true)) {
 						options.addArguments("--no-sandbox");
 					}
-					if (ConfigManager.getBoolean("chrome.arg.disable_extensions", true)) {
+					if (ConfigManager.getBoolean("chrome.disableExtensions", true)) {
 						options.addArguments("--disable-extensions");
 
 					}
 					if(ConfigManager.getBoolean("chrome.headless", false)) {
 						options.addArguments("--headless");
 					}
-					if(ConfigManager.getBoolean("disable.image.loading", false)) {
+					if(!ConfigManager.getBoolean("chrome.image.loading", true)) {
 						options.addArguments(
 							    "--blink-settings=imagesEnabled=false",
 							    "--disable-gpu",
@@ -222,15 +221,15 @@ public class DriverManager  {
 					}
 
 					WebDriver chromeDriver = new org.openqa.selenium.chrome.ChromeDriver(options);
-					
-					
+
+
 					if(ConfigManager.getBoolean("chrome.runOnGrid", false)) {
 						chromeDriver=GlobalGridUtility.createRemoteChromeDriver(ConfigManager.get("chrome.gridHubUrl"), options);
 					}
-					
+
 
 					driver.set(chromeDriver);
-					
+
 					try { chromeDriver.manage().deleteAllCookies(); } catch (Exception ignored) {}
 					log.info("ChromeDriver initialized successfully for thread: {}", Thread.currentThread().threadId());
 					break;
@@ -243,16 +242,16 @@ public class DriverManager  {
 				throw new RuntimeException("WebDriver initialization failed", e);
 			}
 
-		} 
+		}
 		else {
 			log.info("Reusing existing WebDriver instance for thread: {}", Thread.currentThread().threadId());
 		}
 
 	}
-	
 
-	
-	
+
+
+
 	/** Quit and clean up WebDriver for current thread */
 	public static void quitDriver() {
 		WebDriver currentDriver = driver.get();
@@ -261,7 +260,7 @@ public class DriverManager  {
 			try {
 				currentDriver.quit();
 			} catch (Exception e) {
-				
+
 			} finally {
 				driver.remove();
 			}
@@ -269,10 +268,9 @@ public class DriverManager  {
 			log.warn("quitDriver() called but no WebDriver was found for thread: {}", Thread.currentThread().threadId());
 		}
 	}
-	
-	
-	
-	
+
+
+
 
 
 
