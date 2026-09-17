@@ -1,0 +1,3252 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary"></span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Sep 17, 2026 01:59:01 PM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02</p>
+            <p class="text-sm">
+              <span>1:59:18 PM</span> / <span>00:01:11:282</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02</h5>
+<span class='badge badge-success'>09.17.2026 1:59:18 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:00:29 PM</span>
+<span class='badge badge-default'>00:01:11:282</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>1:59:18 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:00:29 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	filter 'up to 12.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------,
+	filter 'up to 12.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: peace mi5 pro android smartphone | 4gb ram + 32gb storage | 4.05-inch qhd display | 8mp rear camera | 5mp front camera | dual sim 4g volte | 2500mah battery | orange
+ Key Features: brand peace
+operating system android 12.0
+ram memory installed size 4 gb
+memory storage capacity 32 gb
+screen size 4.05 inches
+ About: about this item
+compact 4.05-inch qhd display – comfortable one-hand operation with a bright and sharp display for videos, browsing and everyday use.
+4gb ram + 32gb storage – smooth multitasking with expandable storage support up to 128gb for photos, apps and media.
+octa-core processor – powered by a mediatek processor for reliable daily performance and faster app switching.
+8mp rear & 5mp front camera – capture clear photos, selfies and full hd videos with led flash support.
+2500mah battery – long-lasting battery designed for all-day calling, browsing and entertainment.
+dual sim 4g volte – supports dual nano sim, 4g volte, wi-fi, bluetooth 5.1, gps and google applications.
+› see more product details
+ Tech Details: peace mi5 pro android smartphone mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+video
+------------------------------------------------------------------------------------------,
+	filter '15 to 17.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------,
+	filter '15 to 17.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: redmi a7 pro 5g (mist blue, 4gb ram, 64gb storage) | segment's fastest processor | segment's largest battery | segment's largest & smoothest 6.9in 120hz display
+ Key Features: brand redmi
+operating system android 16, xiaomi hyperos
+ram memory installed size 4 gb
+memory storage capacity 64 gb
+screen size 6.9 inches
+ About: about this item
+segment's largest 6300mah battery | 15w quick charging | 7.5w wired reversed charging
+200% volume boost | 32mp ai dual camera | 8mp selfie shooter | google gemini and circle to search
+hyperos3 with xiaomi hyperisland
+› see more product details
+ Tech Details: redmi a7 pro 5g mobile phone information
+additional details
+item details
+
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+camera
+battery
+measurements
+------------------------------------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplaySizeFilterFunctionality(AmazonTests.java:631)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:00:29 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:00:29 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02/verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02.log' target='_blank'>verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:00:29 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:00:29 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02/Mobile459448409200.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02/Mobile459448409200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:00:29 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02/Mobile483173740400.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02/Mobile483173740400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDiscountFilterFunctionality_Mobile_13-59-02</p>
+            <p class="text-sm">
+              <span>1:59:18 PM</span> / <span>00:02:09:274</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDiscountFilterFunctionality_Mobile_13-59-02</h5>
+<span class='badge badge-success'>09.17.2026 1:59:18 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:01:27 PM</span>
+<span class='badge badge-default'>00:02:09:274</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>1:59:18 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: iqoo z10 lite 5g (titanium blue 2026, 4gb ram, 64gb storage) | dimensity 6300 5g processor | 50mp sony ai camera | 6000 mah battery | ip64 rated & military grade shock-resistance*
+ Key Features: brand iqoo
+operating system funtouch os 15 based on android 15
+ram memory installed size 4 gb
+cpu model mediatek dimensity 6300
+cpu speed 2.4 ghz
+ About: about this item
+segment's biggest battery 5g smartphone* - powered by a massive 6000mah battery & 15w flashcharge, keeping you ahead of the day with uninterrupted energy for entertainment, work, and everything in between
+dimensity 6300 5g processor with 433k+* antutu score - a highly power efficient 6nm chip with cpu speeds upgraded to reach 2.4 ghz delivering a lag-free everyday experience with low power consumption.
+ip64 rated & military grade shock-resistance* - fearless against the dust, rain, forging ahead. no need to worry about unexpected splashes in life with ip64 protection. also, enjoy protection from accidental drops from pockets or desks with military grade shock resistance.
+50mp sony ai camera - snap stunning photos with advanced ai features like ai erase, ai photo enhance, ai document mode & many more.
+1000 nits high brightness display - enjoy the ultimate viewing experience with 6.74" (17.13 cm) large display, 90hz refresh rate & 1000 nits high brightness mode
+› see more product details
+ Tech Details: iqoo z10 lite 5g mobile phone information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+navigation
+-------------------------------------------------------------,
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: redmi a7 pro 5g (mist blue, 4gb ram, 64gb storage) | segment's fastest processor | segment's largest battery | segment's largest & smoothest 6.9in 120hz display
+ Key Features: brand redmi
+operating system android 16, xiaomi hyperos
+ram memory installed size 4 gb
+memory storage capacity 64 gb
+screen size 6.9 inches
+ About: about this item
+segment's largest 6300mah battery | 15w quick charging | 7.5w wired reversed charging
+200% volume boost | 32mp ai dual camera | 8mp selfie shooter | google gemini and circle to search
+hyperos3 with xiaomi hyperisland
+› see more product details
+ Tech Details: redmi a7 pro 5g mobile phone information
+additional details
+item details
+
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+camera
+battery
+measurements
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: iqoo z10 lite 5g (titanium blue 2026, 4gb ram, 64gb storage) | dimensity 6300 5g processor | 50mp sony ai camera | 6000 mah battery | ip64 rated & military grade shock-resistance*
+ Key Features: brand iqoo
+operating system funtouch os 15 based on android 15
+ram memory installed size 4 gb
+cpu model mediatek dimensity 6300
+cpu speed 2.4 ghz
+ About: about this item
+segment's biggest battery 5g smartphone* - powered by a massive 6000mah battery & 15w flashcharge, keeping you ahead of the day with uninterrupted energy for entertainment, work, and everything in between
+dimensity 6300 5g processor with 433k+* antutu score - a highly power efficient 6nm chip with cpu speeds upgraded to reach 2.4 ghz delivering a lag-free everyday experience with low power consumption.
+ip64 rated & military grade shock-resistance* - fearless against the dust, rain, forging ahead. no need to worry about unexpected splashes in life with ip64 protection. also, enjoy protection from accidental drops from pockets or desks with military grade shock resistance.
+50mp sony ai camera - snap stunning photos with advanced ai features like ai erase, ai photo enhance, ai document mode & many more.
+1000 nits high brightness display - enjoy the ultimate viewing experience with 6.74" (17.13 cm) large display, 90hz refresh rate & 1000 nits high brightness mode
+› see more product details
+ Tech Details: iqoo z10 lite 5g mobile phone information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+navigation
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: redmi a7 pro 5g (mist blue, 4gb ram, 64gb storage) | segment's fastest processor | segment's largest battery | segment's largest & smoothest 6.9in 120hz display
+ Key Features: brand redmi
+operating system android 16, xiaomi hyperos
+ram memory installed size 4 gb
+memory storage capacity 64 gb
+screen size 6.9 inches
+ About: about this item
+segment's largest 6300mah battery | 15w quick charging | 7.5w wired reversed charging
+200% volume boost | 32mp ai dual camera | 8mp selfie shooter | google gemini and circle to search
+hyperos3 with xiaomi hyperisland
+› see more product details
+ Tech Details: redmi a7 pro 5g mobile phone information
+additional details
+item details
+
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+camera
+battery
+measurements
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: iqoo z10 lite 5g (titanium blue 2026, 4gb ram, 64gb storage) | dimensity 6300 5g processor | 50mp sony ai camera | 6000 mah battery | ip64 rated & military grade shock-resistance*
+ Key Features: brand iqoo
+operating system funtouch os 15 based on android 15
+ram memory installed size 4 gb
+cpu model mediatek dimensity 6300
+cpu speed 2.4 ghz
+ About: about this item
+segment's biggest battery 5g smartphone* - powered by a massive 6000mah battery & 15w flashcharge, keeping you ahead of the day with uninterrupted energy for entertainment, work, and everything in between
+dimensity 6300 5g processor with 433k+* antutu score - a highly power efficient 6nm chip with cpu speeds upgraded to reach 2.4 ghz delivering a lag-free everyday experience with low power consumption.
+ip64 rated & military grade shock-resistance* - fearless against the dust, rain, forging ahead. no need to worry about unexpected splashes in life with ip64 protection. also, enjoy protection from accidental drops from pockets or desks with military grade shock resistance.
+50mp sony ai camera - snap stunning photos with advanced ai features like ai erase, ai photo enhance, ai document mode & many more.
+1000 nits high brightness display - enjoy the ultimate viewing experience with 6.74" (17.13 cm) large display, 90hz refresh rate & 1000 nits high brightness mode
+› see more product details
+ Tech Details: iqoo z10 lite 5g mobile phone information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+navigation
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: redmi a7 pro 5g (mist blue, 4gb ram, 64gb storage) | segment's fastest processor | segment's largest battery | segment's largest & smoothest 6.9in 120hz display
+ Key Features: brand redmi
+operating system android 16, xiaomi hyperos
+ram memory installed size 4 gb
+memory storage capacity 64 gb
+screen size 6.9 inches
+ About: about this item
+segment's largest 6300mah battery | 15w quick charging | 7.5w wired reversed charging
+200% volume boost | 32mp ai dual camera | 8mp selfie shooter | google gemini and circle to search
+hyperos3 with xiaomi hyperisland
+› see more product details
+ Tech Details: redmi a7 pro 5g mobile phone information
+additional details
+item details
+
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+camera
+battery
+measurements
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDiscountFilterFunctionality(AmazonTests.java:1042)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDiscountFilterFunctionality_Mobile_13-59-02/verifyingDiscountFilterFunctionality_Mobile_13-59-02.log' target='_blank'>verifyingDiscountFilterFunctionality_Mobile_13-59-02.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Mobile_13-59-02/Mobile458931324600.png' src="../screenshots/verifyingDiscountFilterFunctionality_Mobile_13-59-02/Mobile458931324600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Mobile_13-59-02/Mobile500340728100.png' src="../screenshots/verifyingDiscountFilterFunctionality_Mobile_13-59-02/Mobile500340728100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:27 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Mobile_13-59-02/Mobile534193790700.png' src="../screenshots/verifyingDiscountFilterFunctionality_Mobile_13-59-02/Mobile534193790700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02</p>
+            <p class="text-sm">
+              <span>1:59:18 PM</span> / <span>00:02:06:280</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02</h5>
+<span class='badge badge-success'>09.17.2026 1:59:18 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:01:24 PM</span>
+<span class='badge badge-default'>00:02:06:280</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>1:59:18 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 2,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: iphone 18 pro (1 tb) - burgundy
+ Key Features: brand apple
+operating system ios
+memory storage capacity 1000 gb
+screen size 6.3 inches
+model name iphone 18 pro
+ About: about this item
+four gorgeous colours. one durable design — built to last with an aluminium unibody design featuring colour-matched back glass for a more uniform look.
+immersive pro display — a 15.93 cm (6.3″) super retina xdr display. brighter. better anti-reflection. promotion up to 120hz.
+durable ceramic shield. front and back — built to last with ceramic shield back — and ceramic shield 2 front, with 3x better scratch resistance than iphone 16 pro.
+ultimate pro camera system — 48mp fusion main camera with variable aperture for improved low-light photos and video and impressive depth of field. custom pro controls. and 8x optical-quality zoom.
+18mp center stage front camera — flexible ways to frame your shot. fit more people in the picture. front and rear dual capture video. and more.
+a20 pro chip with next-generation vapour chamber and dual 16-core neural engine. up to 40% better gpu performance than iphone 17 pro. purpose-built for ai.
+big leap in battery life — up to 3 more hours video playback than iphone 17 pro. up to 23 hours of use per charge. faster wired charging, up to 50% in around 15 minutes with compatible adapter.
+show more
+ Tech Details: iphone 18 pro mobile phone information
+technical details
+manufacturer apple
+country of origin china
+item model number mjt14hn/a
+product dimensions 0.87 x 7.19 x 15 cm; 212 g
+asin b0hjb696tw
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 212 g
+item dimensions lxwxh 9 x 72 x 150 millimeters
+net quantity 1 count
+included components usb-c charge cable, iphone 18 pro
+generic name iphone
+-----------------------------------------------------------------------------------------,
+	 filter 'up to 2,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: apple iphone 17 256 gb: 15.93 cm (6.3″) display with promotion, a19 chip, center stage front camera for smarter group selfies, improved scratch resistance, all-day battery life; black
+ Key Features: brand apple
+operating system ios
+ram memory installed size 0.1 gb
+cpu speed 0.1 ghz
+memory storage capacity 256 gb
+ About: about this item
+designed to delight. built to last — iphone 17 comes in five gorgeous colours, with a brighter 15.93 cm (6.3″) display and a ceramic shield 2 front that’s 3x more scratch resistant.
+smoother. brighter. brilliant — smooth scrolling with promotion up to 120hz, better outdoor contrast with 3,000 nits peak brightness and 33% fewer reflections compared with previous generation.
+18mp center stage front camera — flexible ways to frame your shot. smarter group selfies, dual capture video for simultaneous front and rear recording, and more.
+stunning shots — capture super-high-resolution shots by default with the 48mp dual fusion camera system, 4x optical zoom range and 48mp fusion ultra wide camera.
+a19 chip. power player. energy expert — with a 5-core gpu, the enhanced neural engine helps power everything you do on iphone — from apple intelligence to aaa games.
+charges fast. makes it last — all-day battery life with up to 30 hours of video playback. charge up to 50% in 20 minutes.
+ios — a fresh design with liquid glass. beautiful, delightful and instantly familiar. with a more vibrant lock screen, customisable backgrounds and polls in messages, call screening and more.
+show more
+ Tech Details: apple iphone 17 256 gb: 15.93 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mg6j4hn/a
+product dimensions 0.79 x 7.15 x 14.96 cm; 177 g
+asin b0fqfyxcc4
+additional information
+manufacturer apple, apple
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 177 g
+item dimensions lxwxh 8 x 71 x 150 millimeters
+net quantity 1 count
+included components usb-c charge cable, iphone 17
+generic name iphone 17
+-----------------------------------------------------------------------------------------,
+	 filter '3,000 to 3,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------,
+	 filter '3,000 to 3,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------,
+	 filter '4,000 to 4,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------,
+	 filter '4,000 to 4,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingBatteryCapacityFilterFunctionality(AmazonTests.java:549)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02.log' target='_blank'>verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/Mobile459701617800.png' src="../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/Mobile459701617800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/Mobile538888676200.png' src="../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/Mobile538888676200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:24 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/Mobile555316794500.png' src="../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02/Mobile555316794500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="4"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30</p>
+            <p class="text-sm">
+              <span>2:00:32 PM</span> / <span>00:01:14:864</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30</h5>
+<span class='badge badge-success'>09.17.2026 2:00:32 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:01:47 PM</span>
+<span class='badge badge-default'>00:01:14:864</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:00:32 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: redmi a7 pro 5g (mist blue, 4gb ram, 64gb storage) | segment's fastest processor | segment's largest battery | segment's largest & smoothest 6.9in 120hz display
+ Key Features: brand redmi
+operating system android 16, xiaomi hyperos
+ram memory installed size 4 gb
+memory storage capacity 64 gb
+screen size 6.9 inches
+ About: about this item
+segment's largest 6300mah battery | 15w quick charging | 7.5w wired reversed charging
+200% volume boost | 32mp ai dual camera | 8mp selfie shooter | google gemini and circle to search
+hyperos3 with xiaomi hyperisland
+› see more product details
+ Tech Details: redmi a7 pro 5g mobile phone information
+additional details
+item details
+
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+camera
+battery
+measurements
+-------------------------------------------------------------,
+	 filter 'oled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplayTypeFilterFunctionality(AmazonTests.java:794)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30.log' target='_blank'>verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/Mobile523978572000.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/Mobile523978572000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/Mobile536352478600.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/Mobile536352478600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:47 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/Mobile564807425300.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30/Mobile564807425300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="5"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25</p>
+            <p class="text-sm">
+              <span>2:01:26 PM</span> / <span>00:00:15:335</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25</h5>
+<span class='badge badge-success'>09.17.2026 2:01:26 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:01:42 PM</span>
+<span class='badge badge-default'>00:00:15:335</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:26 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>2:01:42 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:42 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:42 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25/verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25.log' target='_blank'>verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:42 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:42 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25/Mobile578394912800.png' src="../screenshots/verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25/Mobile578394912800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="6"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29</p>
+            <p class="text-sm">
+              <span>2:01:30 PM</span> / <span>00:00:24:207</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29</h5>
+<span class='badge badge-success'>09.17.2026 2:01:30 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:01:55 PM</span>
+<span class='badge badge-default'>00:00:24:207</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:30 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29.log' target='_blank'>verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/Mobile570012074900.png' src="../screenshots/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/Mobile570012074900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/Mobile578666998900.png' src="../screenshots/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/Mobile578666998900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:55 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/Mobile582398631800.png' src="../screenshots/verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29/Mobile582398631800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44</p>
+            <p class="text-sm">
+              <span>2:01:45 PM</span> / <span>00:00:14:657</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44</h5>
+<span class='badge badge-success'>09.17.2026 2:01:45 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:02:00 PM</span>
+<span class='badge badge-default'>00:00:14:657</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:45 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>2:02:00 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:00 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:00 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44/verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44.log' target='_blank'>verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:00 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:00 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44/Mobile594765635700.png' src="../screenshots/verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44/Mobile594765635700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:00 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44/Mobile596378193100.png' src="../screenshots/verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44/Mobile596378193100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="8"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48</p>
+            <p class="text-sm">
+              <span>2:01:49 PM</span> / <span>00:00:19:126</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48</h5>
+<span class='badge badge-success'>09.17.2026 2:01:49 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:02:08 PM</span>
+<span class='badge badge-default'>00:00:19:126</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:49 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>2:02:08 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:08 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:08 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48/verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48.log' target='_blank'>verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:08 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:08 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48/Mobile588219583900.png' src="../screenshots/verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48/Mobile588219583900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:08 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48/Mobile605333721200.png' src="../screenshots/verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48/Mobile605333721200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55</p>
+            <p class="text-sm">
+              <span>2:01:58 PM</span> / <span>00:01:36:216</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55</h5>
+<span class='badge badge-success'>09.17.2026 2:01:58 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:03:34 PM</span>
+<span class='badge badge-default'>00:01:36:216</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:01:58 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: nokia all-new 105 dual sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio | charcoal
+ Key Features: brand nokia
+operating system nokia series 30+
+ram memory installed size 4 mb
+cpu speed 0.21 ghz
+memory storage capacity 32 gb
+ About: about this item
+send and receive upi payments with built-in upi app
+brand new modern design
+long lasting battery life - 22 days standby time
+wireless fm radio
+space for 2,000 contacts and 500 sms
+› see more product details
+ Tech Details: nokia all-new 105 dual sim keypad phone mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+navigation
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: nokia all-new 105 dual sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio | charcoal
+ Key Features: brand nokia
+operating system nokia series 30+
+ram memory installed size 4 mb
+cpu speed 0.21 ghz
+memory storage capacity 32 gb
+ About: about this item
+send and receive upi payments with built-in upi app
+brand new modern design
+long lasting battery life - 22 days standby time
+wireless fm radio
+space for 2,000 contacts and 500 sms
+› see more product details
+ Tech Details: nokia all-new 105 dual sim keypad phone mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+navigation
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: nokia all-new 105 dual sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio | charcoal
+ Key Features: brand nokia
+operating system nokia series 30+
+ram memory installed size 4 mb
+cpu speed 0.21 ghz
+memory storage capacity 32 gb
+ About: about this item
+send and receive upi payments with built-in upi app
+brand new modern design
+long lasting battery life - 22 days standby time
+wireless fm radio
+space for 2,000 contacts and 500 sms
+› see more product details
+ Tech Details: nokia all-new 105 dual sim keypad phone mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+navigation
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: nokia all-new 105 dual sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio | charcoal
+ Key Features: brand nokia
+operating system nokia series 30+
+ram memory installed size 4 mb
+cpu speed 0.21 ghz
+memory storage capacity 32 gb
+ About: about this item
+send and receive upi payments with built-in upi app
+brand new modern design
+long lasting battery life - 22 days standby time
+wireless fm radio
+space for 2,000 contacts and 500 sms
+› see more product details
+ Tech Details: nokia all-new 105 dual sim keypad phone mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+navigation
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: oppo reno 11 pro 5g (pearl white, 12gb ram 256gb storage)
+ Key Features: brand oppo
+operating system android 14
+ram memory installed size 12 gb
+cpu model snapdragon
+cpu speed 3.4 ghz
+ About: about this item
+embark on a journey of visual storytelling with the ultra-clear portrait camera system – your passport for the best travel portraits. the 50mp sony imx709 with optical image stabilisation (ois) ensures each shot is a masterpiece, capturing the essence of your adventures.
+complemented by the 32mp telephoto portrait camera, 112° ultra-wide-angle camera, and a 32 mp ultra-clear selfie camera with autofocus, this flagship-level system guarantees crystal clear portraits from every angle.
+achieve photographic excellence with the 0.6x – 1x - 2x – 5x capabilities of the 32 mp telephoto portrait camera. whether you're capturing landscapes or focusing on intricate details, the professional composition ensures you stand out with studio-quality images, making your moments unforgettable.
+dial out distortion and revive every moment effortlessly with the portrait expert engine. this technology meticulously restores light and shadow, creating true-to-life and atmospheric pictures.
+the adjustable aperture in portrait mode allows you to blur backgrounds, adding studio-level finesse to your photos effortlessly.
+› see more product details
+ Tech Details: oppo reno 11 pro 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: nokia all-new 105 dual sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio | charcoal
+ Key Features: brand nokia
+operating system nokia series 30+
+ram memory installed size 4 mb
+cpu speed 0.21 ghz
+memory storage capacity 32 gb
+ About: about this item
+send and receive upi payments with built-in upi app
+brand new modern design
+long lasting battery life - 22 days standby time
+wireless fm radio
+space for 2,000 contacts and 500 sms
+› see more product details
+ Tech Details: nokia all-new 105 dual sim keypad phone mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+navigation
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: oppo reno 11 pro 5g (pearl white, 12gb ram 256gb storage)
+ Key Features: brand oppo
+operating system android 14
+ram memory installed size 12 gb
+cpu model snapdragon
+cpu speed 3.4 ghz
+ About: about this item
+embark on a journey of visual storytelling with the ultra-clear portrait camera system – your passport for the best travel portraits. the 50mp sony imx709 with optical image stabilisation (ois) ensures each shot is a masterpiece, capturing the essence of your adventures.
+complemented by the 32mp telephoto portrait camera, 112° ultra-wide-angle camera, and a 32 mp ultra-clear selfie camera with autofocus, this flagship-level system guarantees crystal clear portraits from every angle.
+achieve photographic excellence with the 0.6x – 1x - 2x – 5x capabilities of the 32 mp telephoto portrait camera. whether you're capturing landscapes or focusing on intricate details, the professional composition ensures you stand out with studio-quality images, making your moments unforgettable.
+dial out distortion and revive every moment effortlessly with the portrait expert engine. this technology meticulously restores light and shadow, creating true-to-life and atmospheric pictures.
+the adjustable aperture in portrait mode allows you to blur backgrounds, adding studio-level finesse to your photos effortlessly.
+› see more product details
+ Tech Details: oppo reno 11 pro 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: lava bold n4 lite (empire gold, 3gb ram, 32gb storage) | 6.56" qhd display | 8mp rear camera | 5000 mah battery | free service @ home | fingerprint reader | charger & phone-cover in box
+ Key Features: brand lava
+operating system android 16 go
+ram memory installed size 3 gb
+memory storage capacity 32 gb
+screen size 6.56 inches
+ About: about this item
+octa-core power | 190k+ antutu: unisoc sc9863a1 processor delivers smooth and reliable everyday performance.
+5000mah battery | 10w charger: all-day power with a 5000mah battery and convenient 10w charging.
+6.56” 60hz display: enjoy a big qhd screen with smooth scrolling and an immersive viewing experience.
+clean android 16 go | made in india: experience bloatware-free android 16 go, proudly made in india.
+8mp ai camera | 5mp front camera: capture everyday moments with the 8mp rear and 5mp front cameras.
+› see more product details
+ Tech Details: lava bold n4 lite mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: nokia all-new 105 dual sim keypad phone with built-in upi payments, long-lasting battery, wireless fm radio | charcoal
+ Key Features: brand nokia
+operating system nokia series 30+
+ram memory installed size 4 mb
+cpu speed 0.21 ghz
+memory storage capacity 32 gb
+ About: about this item
+send and receive upi payments with built-in upi app
+brand new modern design
+long lasting battery life - 22 days standby time
+wireless fm radio
+space for 2,000 contacts and 500 sms
+› see more product details
+ Tech Details: nokia all-new 105 dual sim keypad phone mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+navigation
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '4 - 7.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: oppo reno 11 pro 5g (pearl white, 12gb ram 256gb storage)
+ Key Features: brand oppo
+operating system android 14
+ram memory installed size 12 gb
+cpu model snapdragon
+cpu speed 3.4 ghz
+ About: about this item
+embark on a journey of visual storytelling with the ultra-clear portrait camera system – your passport for the best travel portraits. the 50mp sony imx709 with optical image stabilisation (ois) ensures each shot is a masterpiece, capturing the essence of your adventures.
+complemented by the 32mp telephoto portrait camera, 112° ultra-wide-angle camera, and a 32 mp ultra-clear selfie camera with autofocus, this flagship-level system guarantees crystal clear portraits from every angle.
+achieve photographic excellence with the 0.6x – 1x - 2x – 5x capabilities of the 32 mp telephoto portrait camera. whether you're capturing landscapes or focusing on intricate details, the professional composition ensures you stand out with studio-quality images, making your moments unforgettable.
+dial out distortion and revive every moment effortlessly with the portrait expert engine. this technology meticulously restores light and shadow, creating true-to-life and atmospheric pictures.
+the adjustable aperture in portrait mode allows you to blur backgrounds, adding studio-level finesse to your photos effortlessly.
+› see more product details
+ Tech Details: oppo reno 11 pro 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: lava bold n4 lite (empire gold, 3gb ram, 32gb storage) | 6.56" qhd display | 8mp rear camera | 5000 mah battery | free service @ home | fingerprint reader | charger & phone-cover in box
+ Key Features: brand lava
+operating system android 16 go
+ram memory installed size 3 gb
+memory storage capacity 32 gb
+screen size 6.56 inches
+ About: about this item
+octa-core power | 190k+ antutu: unisoc sc9863a1 processor delivers smooth and reliable everyday performance.
+5000mah battery | 10w charger: all-day power with a 5000mah battery and convenient 10w charging.
+6.56” 60hz display: enjoy a big qhd screen with smooth scrolling and an immersive viewing experience.
+clean android 16 go | made in india: experience bloatware-free android 16 go, proudly made in india.
+8mp ai camera | 5mp front camera: capture everyday moments with the 8mp rear and 5mp front cameras.
+› see more product details
+ Tech Details: lava bold n4 lite mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(AmazonTests.java:959)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55.log' target='_blank'>verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/Mobile613344195800.png' src="../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/Mobile613344195800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/Mobile639119082400.png' src="../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/Mobile639119082400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:34 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/Mobile660416903400.png' src="../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55/Mobile660416903400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="10"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00</p>
+            <p class="text-sm">
+              <span>2:02:02 PM</span> / <span>00:02:34:124</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00</h5>
+<span class='badge badge-success'>09.17.2026 2:02:02 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:04:36 PM</span>
+<span class='badge badge-default'>00:02:34:124</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:02 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00.log' target='_blank'>verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/Mobile619232607600.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/Mobile619232607600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/Mobile669197690000.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/Mobile669197690000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/Mobile733967739500.png' src="../screenshots/verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00/Mobile733967739500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="11"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingPriceSilderFunctionality_Mobile_14-02-13</p>
+            <p class="text-sm">
+              <span>2:02:15 PM</span> / <span>00:00:21:293</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingPriceSilderFunctionality_Mobile_14-02-13</h5>
+<span class='badge badge-success'>09.17.2026 2:02:15 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:02:36 PM</span>
+<span class='badge badge-default'>00:00:21:293</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingPriceSilderFunctionality_Mobile_14-02-13/verifyingPriceSilderFunctionality_Mobile_14-02-13.log' target='_blank'>verifyingPriceSilderFunctionality_Mobile_14-02-13.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile614655904200.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile614655904200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile630017996500.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile630017996500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile632492398400.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile632492398400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile635021573300.png' src="../screenshots/verifyingPriceSilderFunctionality_Mobile_14-02-13/Mobile635021573300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="12"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37</p>
+            <p class="text-sm">
+              <span>2:02:38 PM</span> / <span>00:01:58:795</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37</h5>
+<span class='badge badge-success'>09.17.2026 2:02:38 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:04:37 PM</span>
+<span class='badge badge-default'>00:01:58:795</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:02:38 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x 5g smartphone, lake green, 6gb ram, 128gb storage
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+battery life
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x 5g smartphone, lake green, 6gb ram, 128gb storage
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+battery life
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x 5g smartphone, lake green, 6gb ram, 128gb storage
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+battery life
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: motorola moto g37 5g (pantone impenetrable, 64gb storage, 4gb ram)
+ Key Features: brand motorola
+operating system android 16 with moto hello ui (android 17 upgrade + 3 years security updates)
+ram memory installed size 7.8 gb
+cpu model mediatek dimensity 6300
+cpu speed 1 ghz
+ About: about this item
+motorola moto g37 5g (pantone impenetrable, 128gb storage, 4gb ram) 6000
+› see more product details
+ Tech Details: motorola moto g37 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+battery life
+navigation
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x 5g smartphone, lake green, 6gb ram, 128gb storage
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+battery life
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: motorola moto g37 5g (pantone impenetrable, 64gb storage, 4gb ram)
+ Key Features: brand motorola
+operating system android 16 with moto hello ui (android 17 upgrade + 3 years security updates)
+ram memory installed size 7.8 gb
+cpu model mediatek dimensity 6300
+cpu speed 1 ghz
+ About: about this item
+motorola moto g37 5g (pantone impenetrable, 128gb storage, 4gb ram) 6000
+› see more product details
+ Tech Details: motorola moto g37 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+battery life
+navigation
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: peace nova17 pro 5g 6gb/64gb smartphone (orange)
+ Key Features: brand xifo
+operating system android 12.0
+ram memory installed size 6 gb
+cpu model mediatek mt8125
+cpu speed 1.4 ghz
+ About: about this item
+4g volte / 5g network support
+6 gb ram / 64 gb internal memory and microsd card support up to 256gb
+camera: 20+8+5 mp rear camera w and 8 mpix selfie front facing camera
+display: 6.56 inch hd capacitive touchscreen display with 720x1440 pixels
+battery: 5000 mah lithium ion battery providing talk-time of 13.2 hours
+android 12 with mtk6762 quad-core processor
+included in box: 10w rapid charger, usb cable, headset, back cover, headphone
+› see more product details
+ Tech Details: xifo peace nova17 pro 5g 6gb/64gb smartphone mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x 5g smartphone, lake green, 6gb ram, 128gb storage
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+battery life
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: motorola moto g37 5g (pantone impenetrable, 64gb storage, 4gb ram)
+ Key Features: brand motorola
+operating system android 16 with moto hello ui (android 17 upgrade + 3 years security updates)
+ram memory installed size 7.8 gb
+cpu model mediatek dimensity 6300
+cpu speed 1 ghz
+ About: about this item
+motorola moto g37 5g (pantone impenetrable, 128gb storage, 4gb ram) 6000
+› see more product details
+ Tech Details: motorola moto g37 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+battery life
+navigation
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: peace nova17 pro 5g 6gb/64gb smartphone (orange)
+ Key Features: brand xifo
+operating system android 12.0
+ram memory installed size 6 gb
+cpu model mediatek mt8125
+cpu speed 1.4 ghz
+ About: about this item
+4g volte / 5g network support
+6 gb ram / 64 gb internal memory and microsd card support up to 256gb
+camera: 20+8+5 mp rear camera w and 8 mpix selfie front facing camera
+display: 6.56 inch hd capacitive touchscreen display with 720x1440 pixels
+battery: 5000 mah lithium ion battery providing talk-time of 13.2 hours
+android 12 with mtk6762 quad-core processor
+included in box: 10w rapid charger, usb cable, headset, back cover, headphone
+› see more product details
+ Tech Details: xifo peace nova17 pro 5g 6gb/64gb smartphone mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+------------------------------------------------------------- filter '1.5 - 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x 5g smartphone, lake green, 6gb ram, 128gb storage
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+battery life
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: motorola moto g37 5g (pantone impenetrable, 64gb storage, 4gb ram)
+ Key Features: brand motorola
+operating system android 16 with moto hello ui (android 17 upgrade + 3 years security updates)
+ram memory installed size 7.8 gb
+cpu model mediatek dimensity 6300
+cpu speed 1 ghz
+ About: about this item
+motorola moto g37 5g (pantone impenetrable, 128gb storage, 4gb ram) 6000
+› see more product details
+ Tech Details: motorola moto g37 5g mobile phone information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+battery life
+navigation
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: peace nova17 pro 5g 6gb/64gb smartphone (orange)
+ Key Features: brand xifo
+operating system android 12.0
+ram memory installed size 6 gb
+cpu model mediatek mt8125
+cpu speed 1.4 ghz
+ About: about this item
+4g volte / 5g network support
+6 gb ram / 64 gb internal memory and microsd card support up to 256gb
+camera: 20+8+5 mp rear camera w and 8 mpix selfie front facing camera
+display: 6.56 inch hd capacitive touchscreen display with 720x1440 pixels
+battery: 5000 mah lithium ion battery providing talk-time of 13.2 hours
+android 12 with mtk6762 quad-core processor
+included in box: 10w rapid charger, usb cable, headset, back cover, headphone
+› see more product details
+ Tech Details: xifo peace nova17 pro 5g 6gb/64gb smartphone mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+------------------------------------------------------------- filter '1.5 - 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1.5 - 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme narzo 80 lite 4g (see blue,4gb+64gb) 2026 | 6300mah segment's biggest battery | 7.94mm slim design | 300% ultra volume | pulse light: 9 colors, 5 glow modes | ai assist
+ Key Features: brand realme
+operating system android 15
+ram memory installed size 4 gb
+cpu model others
+cpu speed 1.8 ghz
+ About: about this item
+6300mah massive battery: stay powered all day with a long-lasting battery built for nonstop performance.
+7.94mm slim design: sleek enough for your pocket. light enough for all-day carry.
+pulse light — lighting up every moment: supports 9 colors and 5 customizable glow modes that light up for calls, messages, app notifications, battery status, charging, photo countdown, and music rhythm.
+300% ultra volume: enjoy triple the sound for an immersive experience, without any unwanted noise.
+ip54 water & dust resistance: built to stay protected through dust, spills, and everyday messes.
+› see more product details
+ Tech Details: realme narzo 80 lite 4g mobile phone information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingProcessorSpeedFilterFunctionality(AmazonTests.java:714)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37.log' target='_blank'>verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/Mobile650223808300.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/Mobile650223808300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/Mobile673559489200.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/Mobile673559489200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:37 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/Mobile733555947000.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37/Mobile733555947000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="13"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36</p>
+            <p class="text-sm">
+              <span>2:03:39 PM</span> / <span>00:01:14:875</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36</h5>
+<span class='badge badge-success'>09.17.2026 2:03:39 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:04:54 PM</span>
+<span class='badge badge-default'>00:01:14:875</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=13</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:03:39 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 3.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 3.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '4 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '4 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '16 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '16 gb' not found in product details.
+-------------------------------------------------------------
+ Title: ai+ pulse 2, 6.745 inch hd+ display, 4gb ram, 64gb storage, 50mp rear camera, 6000mah battery, android 16, black
+ Key Features: brand ai+
+operating system android 16
+ram memory installed size 4 gb
+cpu model others
+cpu speed 1.8 ghz
+ About: about this item
+display: 17.13 cm (6.745 inch) hd+ punch-hole display with 720 x 1600 pixels resolution and 260 ppi for clear visuals and immersive viewing experience.
+camera: 50mp rear camera with led flash and full hd recording capability, paired with 8mp front camera featuring lcd background lighting for quality photography.
+memory & storage: available in 4gb ram with 64gb storage or 6gb ram with 128gb storage variants, expandable up to 1tb via dedicated memory card slot for ample space.
+processor & battery: powered by unisoc t7250 octa-core processor running at 1.8 ghz on android 16, backed by robust 6000 mah lithium polymer battery for extended usage.
+connectivity & features: dual sim with 4g volte support, bluetooth v5.0, wi-fi hotspot, gps, 3.5mm audio jack, ip64 rating, fingerprint sensor, and includes 10w charger with type c cable and tpu case.
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+battery life
+navigation
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingStorageCapacityFilterFunctionality(AmazonTests.java:396)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36.log' target='_blank'>verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/Mobile725998328900.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/Mobile725998328900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/Mobile741022323000.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/Mobile741022323000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:54 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/Mobile751434228700.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36/Mobile751434228700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="14"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingTheBrandsFilterFunctionality_Mobile_14-04-38</p>
+            <p class="text-sm">
+              <span>2:04:40 PM</span> / <span>00:01:13:472</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingTheBrandsFilterFunctionality_Mobile_14-04-38</h5>
+<span class='badge badge-success'>09.17.2026 2:04:40 PM</span>
+<span class='badge badge-danger'>09.17.2026 2:05:53 PM</span>
+<span class='badge badge-default'>00:01:13:472</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=14</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:04:40 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	❌ Index: 9, Brand: Motorola, Title: 'Moto g06 Power (Pantone Tendril, 64 GB) (4 GB RAM)'
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingTheBrandsFilterFunctionality(AmazonTests.java:315)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38.log' target='_blank'>verifyingTheBrandsFilterFunctionality_Mobile_14-04-38.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/Mobile797450800400.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/Mobile797450800400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/Mobile814543806300.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/Mobile814543806300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>2:05:53 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/Mobile831608652400.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_14-04-38/Mobile831608652400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>8</span>
+</span>
+<p class="name">java.lang.AssertionError</p>
+<p class="duration text-sm">8 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.AssertionError</h4>
+<span status="fail" class='badge log badge-danger'>8 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:59:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:59:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>13:59:18 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>verifyingDiscountFilterFunctionality_Mobile_13-59-02</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:00:32 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:01:58 PM</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:02:38 PM</td>
+<td>
+<a href="#" class="linked" test-id='12' id='12'>verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:03:39 PM</td>
+<td>
+<a href="#" class="linked" test-id='13' id='13'>verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>14:04:40 PM</td>
+<td>
+<a href="#" class="linked" test-id='14' id='14'>verifyingTheBrandsFilterFunctionality_Mobile_14-04-38</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Sep 17, 2026 01:59:01 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Sep 17, 2026 02:05:54 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>6</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>8</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='42%'>
+<b>6</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='57%'><b>8</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='5%'><b>6</b> events passed</small></div>
+<div>
+<small data-tooltip='7%'><b>8</b> events failed,
+<b data-tooltip='%'>93</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"verifyingDisplaySizeFilterFunctionality_Mobile_13-59-02":71.282,"verifyingDiscountFilterFunctionality_Mobile_13-59-02":129.274,"verifyingBatteryCapacityFilterFunctionality_Mobile_13-59-02":126.28,"verifyingDisplayTypeFilterFunctionality_Mobile_14-00-30":74.864,"verifyingFreeDeliveryFilterFunctionality_Mobile_14-01-25":15.335,"verifyingGetItByTodayFilterFunctionality_Mobile_14-01-29":24.207,"verifyingGetItByTomorrowFilterFunctionality_Mobile_14-01-44":14.657,"verifyingGetItIn2DaysFilterFunctionality_Mobile_14-01-48":19.126,"verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_14-01-55":96.216,"verifyingOperatingSystemVersionFilterFunctionality_Mobile_14-02-00":154.124,"verifyingPriceSilderFunctionality_Mobile_14-02-13":21.293,"verifyingProcessorSpeedFilterFunctionality_Mobile_14-02-37":118.795,"verifyingStorageCapacityFilterFunctionality_Mobile_14-03-36":74.875,"verifyingTheBrandsFilterFunctionality_Mobile_14-04-38":73.472
+};
+</script>
+<div class="row">
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 6,
+failParent: 8,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 6,
+failEvents: 8,
+warningEvents: 0,
+skipEvents: 0,
+infoEvents: 93
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c05cd28cde1617b9d0c05a831daff6cb97fd9fd5/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
