@@ -6,7 +6,7 @@ import main.java.amazonfilterapplicatione2e.fileReader.ExcelReader;
 
 public class TestDataProvider {
 
-	 @DataProvider(name = "ExcelData",indices = {0})
+	 @DataProvider(name = "ExcelData")
 	    public Object[][] excelData() {
 	        return ExcelReader.readSingleColumn("data/Products.xlsx", "Products");
 	    }
