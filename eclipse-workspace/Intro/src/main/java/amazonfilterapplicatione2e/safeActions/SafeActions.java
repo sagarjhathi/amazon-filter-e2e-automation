@@ -55,9 +55,9 @@ public class SafeActions extends BasePage{
 	             
 	        }
 	    }
-	    // After 3 attempts, skip the action without throwing exception
+	    // After 2 attempts, skip the action without throwing exception
 		log.info("[{}] Skipping click action: Element not clickable after- "+attempts, ThreadContext.get("testName"));
-	    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
+	    System.out.println("Skipping click action: Element not clickable after 2 attempts - " + locator);
 	}
 
 	
@@ -68,7 +68,7 @@ public class SafeActions extends BasePage{
 	    while (attempts < 2) {
 	        try {
 	            List<WebElement> elements = getSafeWait().until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-	           // getSafeWait().until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+	           
 	           
 	    		log.info("[{}] Returning the  "+elements+" from the safeFindElements method", ThreadContext.get("testName"));
 
@@ -87,8 +87,8 @@ public class SafeActions extends BasePage{
 	             
 	        
 	    }
-	    // After 3 attempts, return null instead of throwing exception
-	    System.out.println("Skipping action: Elements not found after 3 attempts - " + locator);
+	    // After 2 attempts, return null instead of throwing exception
+	    System.out.println("Skipping action: Elements not found after 2 attempts - " + locator);
 		log.info("[{}] Skipping action Elements not found after"+attempts+"  Attempts", ThreadContext.get("testName"));
 
 	    
@@ -111,7 +111,7 @@ public class SafeActions extends BasePage{
 					log.info("[{}]Found the element returning it ,element ->"+element, ThreadContext.get("testName"));
 		            System.out.println("Found the element: " + locator);
 		            return element;
-		        } catch (Exception e) {
+		        } catch (TimeoutException | StaleElementReferenceException e) {
 					log.info("[{}]Retrying findElement for: ->"+locator, ThreadContext.get("testName"));
 
 		            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
@@ -129,13 +129,13 @@ public class SafeActions extends BasePage{
 
 			log.info("[{}] Skipping action: Element not found after "+attempts+"   attemps", ThreadContext.get("testName"));
 
-		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
+		    System.out.println("Skipping action: Element not found after 2 attempts - " + locator);
 		    return null;
 		}
 
-		
-		
-		
+
+
+
 		public WebElement safeFindElement(WebElement locator) {
 			log.info("[{}] Within safeFindElement method", ThreadContext.get("testName"));
 
@@ -148,7 +148,7 @@ public class SafeActions extends BasePage{
 					log.info("[{}]Found the element returning it ,element ->"+element, ThreadContext.get("testName"));
 		            System.out.println("Found the element: " + locator);
 		            return element;
-		        } catch (Exception e) {
+		        } catch (TimeoutException | StaleElementReferenceException e) {
 					log.info("[{}]Retrying findElement for: ->"+locator, ThreadContext.get("testName"));
 
 		            System.out.println("Retrying findElement for: " + locator + " - Attempt " + (attempts + 1));
@@ -166,63 +166,16 @@ public class SafeActions extends BasePage{
 
 			log.info("[{}] Skipping action: Element not found after "+attempts+"   attemps", ThreadContext.get("testName"));
 
-		    System.out.println("Skipping action: Element not found after 3 attempts - " + locator);
+		    System.out.println("Skipping action: Element not found after 2 attempts - " + locator);
 		    return null;
 		}
 
-		
-		
-		
-		
-		
-		
-		public boolean safeClickBoolean(By locator) throws InterruptedException {
-			log.info("[{}] Within safeClickBoolean method", ThreadContext.get("testName"));
 
-				GenericUtility genericUtility=new GenericUtility();
-				ProductListingPage productPage=new ProductListingPage();
-								
-				String testName = ThreadContext.get("logFileName");
-				
-		    int attempts = 0;
-		    while (attempts < 2) {
-		        try {
-					log.info("[{}] Within safeClickBoolean method Try block after the scroll line", ThreadContext.get("testName"));
-		            WebElement element = getSafeWait().until(ExpectedConditions.presenceOfElementLocated(locator));
-		            getSafeWait().until(ExpectedConditions.visibilityOfElementLocated(locator));
-		            getSafeWait().until(ExpectedConditions.elementToBeClickable(locator));
-		            System.out.println(element+"  printing the element address from the safeBooleanClick from safeActions");
-		            element.click();
-		          
-		            genericUtility.smoothScrollToElement(productPage.getfilterByTypeAndName(testName, testName));
-		        
-					log.info("[{}] Clicked the element using safe click ,element is "+element ,ThreadContext.get("testName"));
-		            System.out.println("Clicking using safeClick");
-		            
-		          //  ScreenshotUtil.capture(testName);
-		            return true; // success
-		        } catch (TimeoutException | ElementClickInterceptedException | StaleElementReferenceException e) {
-		            System.out.println("Retrying click for: " + locator + " - Attempt " + (attempts + 1));
-					log.info("[{}] Cannot click the button, element ->"+locator ,ThreadContext.get("testName"));
-					
-				
-		            attempts++;
-		           
-		                driver.navigate().refresh();
-						log.info("[{}] Refrshing the page , while trying to click ->"+locator ,ThreadContext.get("testName"));
-		             
-		            
-		        }
-		    }
-			log.info("[{}]Skipping click action: Element not clickable after"+attempts+"   attempts" ,ThreadContext.get("testName"));
 
-		    System.out.println("Skipping click action: Element not clickable after 3 attempts - " + locator);
-		    return false; // failure
-		}
-		
-		
-		
-		
+
+
+
+
 		public boolean safeClickBooleanWithScreenShot(By locator,String filterName,String filterOption) throws InterruptedException, java.util.concurrent.TimeoutException {
 			    log.info("[{}] Within safeClickBooleanWithScreenShot method", ThreadContext.get("testName"));
 
