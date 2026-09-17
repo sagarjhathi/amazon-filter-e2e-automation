@@ -8,6 +8,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.InputStream;
 
+// Central place every flow/test reads tunable values from (retry counts, "run all vs override
+// count" toggles, timeouts, etc.) instead of hardcoding them, so CI and local runs can behave
+// differently without code changes - see the resolution order on get(String).
 public final class ConfigManager {
 	
 	
@@ -21,6 +24,9 @@ public final class ConfigManager {
 
 	private static void loadProperties() {
 	    try {
+	        // -DUtilData.file=<path> lets a run point at a different properties file (e.g. a CI-only
+	        // config) without touching the one packaged on the classpath; if it's not set, fall
+	        // back to the bundled configs/UtilData.properties below.
 	        String external = System.getProperty("UtilData.file");
 
 	        if (external != null && !external.isBlank()) {
@@ -55,6 +61,7 @@ public final class ConfigManager {
 	        String value = System.getProperty(key);
 
 	        if (value == null || value.isBlank()) {
+	            
 	            value = System.getenv(key.toUpperCase().replace('.', '_'));
 	        }
 
@@ -77,7 +84,9 @@ public final class ConfigManager {
 	                : Boolean.parseBoolean(value.trim());
 	    }
 
-	    public static int getInt(String key, int defaultValue) {
+	    // A malformed value (typo in the properties file, bad env var) falls back to defaultValue
+    // rather than throwing, since a broken config value shouldn't crash the whole test run.
+    public static int getInt(String key, int defaultValue) {
 	        String value = get(key);
 	        try {
 	            return (value == null || value.isBlank())
