@@ -1,0 +1,59 @@
+14:52:19 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+14:52:19 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - WebDriverManager: chromedriver setup OK
+14:52:26 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - ChromeDriver initialized successfully for thread: 35
+14:52:28 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Opening amazon Landing page
+14:52:28 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within safeFindElement method
+14:52:33 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+14:52:35 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+14:52:35 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (5d35ad698e589ea05feaf82f10fa27da)] -> xpath: //a[@id='nav-logo-sprites']]
+14:52:35 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Giving input within the search bar
+14:52:35 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within safeClick method
+14:52:46 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Clicked the  [[ChromeDriver: chrome on windows (5d35ad698e589ea05feaf82f10fa27da)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+14:52:46 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Clicking on the submit in the search bar
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Waiting until element is visible in viewport
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within validateDeliveryFilterOptionsWithResult method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within safeClick method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Clicked the  [[ChromeDriver: chrome on windows (5d35ad698e589ea05feaf82f10fa27da)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']]   using safeClick
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within getMoreButtonByFilterTypeAndName method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within safeFindElements 
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Returning the  [[[ChromeDriver: chrome on windows (5d35ad698e589ea05feaf82f10fa27da)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (5d35ad698e589ea05feaf82f10fa27da)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (5d35ad698e589ea05feaf82f10fa27da)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] this is the set  [Thu, Today, FREE delivery, 17, 18, Fri, Tomorrow, Sep]
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Checking if the allowedDateParts have the assert text — index 0, text: iQOO Z10 Lite 5G (Titanium Blue 2026, 4GB RAM, 64GB Storage) | Dimensity 6300 5G Processor | 50MP Sony AI Camera | 6000 mAh Battery | IP64 Rated & Military Grade Shock-Resistance*
+4.1
+(391)
+2K+ bought in past month
+₹16,999
+M.R.P:
+₹27,999 (39% off)
+FREE delivery Tue, 22 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Checking if the allowedDateParts have the assert text — index 1, text: REDMI A7 Pro 5G (Mist Blue, 4GB RAM, 64GB Storage) | Segment's Fastest Processor | Segment's Largest Battery | Segment's Largest & Smoothest 6.9in 120Hz Display
+3.4
+(2.2K)
+2K+ bought in past month
+₹14,999
+M.R.P:
+₹26,999 (44% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Tue, 22 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+14:52:47 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+14:52:48 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Checking if the allowedDateParts have the assert text — index 2, text: OnePlus N6 | 4GB+128GB | Midnight Green | Segment's Biggest 8000mAh Battery | Segment's Fastest 45W Charging | 48-Month Smoothness | Smooth 120Hz Display | 50MP Camera | Military-Grade Durability
+3.6
+(456)
+1K+ bought in past month
+₹24,999
+M.R.P:
+₹30,999 (19% off)
+Flat INR 500 Off on Select Bank Cards
+FREE delivery Tue, 22 Sept
+Or fastest delivery Tomorrow 8 am - 12 pm
+Add to cart
+14:52:48 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+14:52:48 [TestNG-test-Test-2] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_14-52-19] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
