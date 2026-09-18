@@ -57,7 +57,11 @@ public class BrandFilterFlows extends BasePage{
 
 	List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 
-
+		// safeFindElements returns null (not an empty list) once it exhausts its own retries.
+		if (filterOptions == null) {
+			log.warn("[{}] No filter options found for locator -> {}", ThreadContext.get("testName"), filterOptionsBy);
+			return new ArrayList<>();
+		}
 
 		int filterOptionSize=filterOptions.size();
 
@@ -85,8 +89,9 @@ public class BrandFilterFlows extends BasePage{
 
 			// filterOptionSize was measured once, up front; the live list can be shorter now
 			// (layout/DOM changes between iterations), so this guards get(i) below from IndexOutOfBounds.
-			if (i > inloopParent.size() - 1) {
-				log.info("[{}] Avoiding out of bounds — index {} exceeds live list size {}", ThreadContext.get("testName"), i, inloopParent.size());
+			// safeFindElements returns null (not an empty list) once it exhausts its own retries.
+			if (inloopParent == null || i > inloopParent.size() - 1) {
+				log.info("[{}] Avoiding out of bounds — index {} exceeds live list size {}", ThreadContext.get("testName"), i, inloopParent == null ? 0 : inloopParent.size());
 				continue;
 			}
 
@@ -100,8 +105,8 @@ public class BrandFilterFlows extends BasePage{
 
 			// Re-checked here too — the first bounds check above ran against the list before
 			// this second fetch, which is the one actually indexed into below.
-			if (i > inloopParent.size() - 1) {
-				log.info("[{}] Avoiding out of bounds — index {} exceeds live list size {}", ThreadContext.get("testName"), i, inloopParent.size());
+			if (inloopParent == null || i > inloopParent.size() - 1) {
+				log.info("[{}] Avoiding out of bounds — index {} exceeds live list size {}", ThreadContext.get("testName"), i, inloopParent == null ? 0 : inloopParent.size());
 				continue;
 			}
 
@@ -118,6 +123,9 @@ public class BrandFilterFlows extends BasePage{
 			
 
 			List<WebElement> productNameListingPage = safeAct.safeFindElements(productPage.productNameListingPageBy);
+			if (productNameListingPage == null) {
+				productNameListingPage = new ArrayList<>();
+			}
 
 			boolean isValid = true;
 			// Product-level detail nested under this one brand (filter) — one entry per

@@ -54,9 +54,16 @@ public OperatingSystemFilterFlows() {
 		GenericUtility genericUtility = new GenericUtility();
 
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
-		
-		
+
+
 		List<Map<String, Object>> allResults = new ArrayList<>();
+
+		// safeFindElements returns null (not an empty list) once it exhausts its own retries.
+		if (filterOptions == null) {
+			log.warn("[{}] No filter options found for locator -> {}", ThreadContext.get("testName"), filterOptionsBy);
+			return allResults;
+		}
+
 		log.info("[{}] Within OS fucntion , this is the filterOptions size ->"+filterOptions.size(), ThreadContext.get("testName"));
 
 
@@ -90,7 +97,9 @@ public OperatingSystemFilterFlows() {
 			// longer exists in that live list, the list state can't be trusted for the rest of
 			// this run, so we return the results gathered so far rather than continue on
 			// unreliable data — same defensive choice SharedFilterFlows makes for this case.
-			if (i > inloopParent.size() - 1) {
+			// safeFindElements returns null (not an empty list) once it exhausts its own retries,
+			// so that counts the same as "index no longer present" here.
+			if (inloopParent == null || i > inloopParent.size() - 1) {
 				return allResults;
 			}
 

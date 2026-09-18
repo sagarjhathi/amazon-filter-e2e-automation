@@ -46,6 +46,12 @@ public class SharedFilterFlows extends BasePage {
 		List<WebElement> filterOptions = safeAct.safeFindElements(filterOptionsBy);
 		List<Map<String, Object>> results = new ArrayList<>();
 
+		// safeFindElements returns null (not an empty list) once it exhausts its own retries.
+		if (filterOptions == null) {
+			log.warn("[{}] No filter options found for locator -> {}", ThreadContext.get("testName"), filterOptionsBy);
+			return results;
+		}
+
 		log.info("[{}] Within applyFilterAndValidateProductsWithResult filterOptions size is -> "+filterOptions.size(), ThreadContext.get("testName"));
 
 		
@@ -92,7 +98,7 @@ public class SharedFilterFlows extends BasePage {
 			log.info("[{}] Within filterOptions loop in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 
 			List<WebElement> inloopParent = safeAct.safeFindElements(filterOptionsBy);
-			if (filterOption > inloopParent.size() - 1) {
+			if (inloopParent == null || filterOption > inloopParent.size() - 1) {
 				log.info("[{}] Limiting traversal to in-loop size to prevent IndexOutOfBoundsException in applyFilterAndValidateProductsWithResult", ThreadContext.get("testName"));
 				System.out.println("Avoiding out of bounds issue by traversing only upto the inloop size");
 				return results;
