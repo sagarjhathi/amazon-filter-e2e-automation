@@ -1,0 +1,12 @@
+21:06:12 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+21:06:12 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - WebDriverManager: chromedriver setup OK
+21:06:14 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - ChromeDriver initialized successfully for thread: 36
+21:06:20 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Opening amazon Landing page
+21:06:20 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Within safeFindElement method
+21:06:20 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (1d7069dd4946733797d1d51bd1f52b50)] -> xpath: //a[@id='nav-logo-sprites']]
+21:06:21 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Giving input within the search bar
+21:06:21 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Within safeClick method
+21:06:21 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Clicked the  [[ChromeDriver: chrome on windows (1d7069dd4946733797d1d51bd1f52b50)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+21:06:21 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Clicking on the submit in the search bar
+21:06:32 [TestNG-test-Test-3] INFO  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12] Waiting until element is visible in viewport
+21:06:43 [TestNG-test-Test-3] WARN  verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12 - [verifyingGetItByTomorrowFilterFunctionality_Laptop_21-06-12]   Filter option 'Get It by Tomorrow' does not exist. Skipping the test.

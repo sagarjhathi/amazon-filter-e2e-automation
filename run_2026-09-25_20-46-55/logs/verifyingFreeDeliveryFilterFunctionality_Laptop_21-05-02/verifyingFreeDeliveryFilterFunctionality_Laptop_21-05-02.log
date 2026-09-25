@@ -1,0 +1,236 @@
+21:05:02 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+21:05:02 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - WebDriverManager: chromedriver setup OK
+21:05:04 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - ChromeDriver initialized successfully for thread: 36
+21:05:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Opening amazon Landing page
+21:05:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within safeFindElement method
+21:05:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //a[@id='nav-logo-sprites']]
+21:05:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Giving input within the search bar
+21:05:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within safeClick method
+21:05:16 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Clicked the  [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+21:05:16 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Clicking on the submit in the search bar
+21:05:17 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Waiting until element is visible in viewport
+21:05:17 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within validateDeliveryFilterOptionsWithResult method
+21:05:17 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within safeClick method
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Clicked the  [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']]   using safeClick
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within getMoreButtonByFilterTypeAndName method
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within safeFindElements 
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Returning the  [[[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (3d8b3c1ab2ad92dcb48ad4d1aa159104)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] this is the set  [Today, 25, 26, FREE delivery, Sat, Fri, Tomorrow, Sep]
+21:05:18 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 0, text: Lenovo V15 G4 AMD Ryzen 5 7520U 15.6 inch FHD Laptop
+15.6" FHD Laptop 16GB DDR5 5500MHz RAM | 512GB NVMe SSD | Windows 11
+4.0
+(500)
+400+ bought in past month
+₹58,240
+M.R.P:
+₹1,24,990 (53% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Tue, 29 Sept
+Service: Device Setup
+Add to cart
+Get it faster
+₹58,290
+M.R.P:
+₹95,900 (39% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Mon, 28 Sept
+Or fastest delivery Tomorrow, 27 Sept
+Service: Device Setup
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 1, text: HP 15, AMD Ryzen 3 7320U (8GB LPDDR4, 512GB SSD) FHD, Micro-Edge, 15.6"/39.6cm, Win 11, M365 Basic(1yr), Office24, Silver, 1.59kg, fc0499AU, AMD Radeon Graphics, 1080p FHD Camera Laptop
+4.2
+(399)
+50+ bought in past month
+₹49,840
+M.R.P:
+₹72,990 (32% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 29 Sept
+Service: Device Setup
+Add to cart
+Another way to buy
+₹49,890
+M.R.P:
+₹99,990 (50% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 29 Sept
+Or fastest delivery Tomorrow, 27 Sept
+Service: Device Setup
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 2, text: Dell 15 (Previously Inspiron) Laptop, 14th Gen Intel Core i3/Core 3 100U Processor, 16GB DDR4, 512 SSD, Intel UHD Graphics, 15.6" FHD 120Hz IPS AG 250 nit Display, Win 11 + Office 2024, Black, 1.63Kg
+4.0
+(1.1K)
+200+ bought in past month
+₹66,490
+M.R.P:
+₹72,781 (9% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 3, text: Dell 15 SmartChoice (Previously Inspiron), Intel 13th Gen Core i5-1334U, 16GB, 1TB SSD, FHD,15.6"/39.62cm, Win 11, MSO'24, Silver, 1.62kg, [Dell 15], 12 Month McAfee, Backlit KB, Thin & Light Laptop
+4.0
+(288)
+200+ bought in past month
+₹73,990
+M.R.P:
+₹99,478 (26% off)
+Save extra with No Cost EMI
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 4, text: Dell 15 (Previously Inspiron) Laptop, 14th Gen Intel Core i3/Core 3 100U Processor, 8GB DDR4, 512 SSD, 15.6" FHD 120Hz IPS AG 250 nit Display, Win 11 + Office H&S 2024, Carbon Black, 1.63Kg
+4.0
+(372)
+100+ bought in past month
+₹57,490
+M.R.P:
+₹62,598 (8% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 5, text: Acer Smartchoice Aspire One, AMD Ryzen 5-40, 8GB LPDDR5 RAM/ 256GB SSD, 14.0"/35.56cm WXGA Display, Win 11 Home, Pure Silver, 1.48KG, A114-43, Thin and Light Laptop
+4.1
+(11)
+100+ bought in past month
+₹43,990
+M.R.P:
+₹84,999 (48% off)
+10% Off on select cards
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 6, text: EBook 11.6" HD Laptop | Best Student & Office Work Laptop | Celeron N4020 | 4GB DDR4 | 128GB eMMC + M.2 SSD Expandable Slot | Win 11 Home |31Wh Battery | UHD Graphics 600 | Black
+3.3
+(215)
+500+ bought in past month
+₹12,990
+M.R.P:
+₹25,000 (48% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 7, text: HP Victus, Intel Core 5 210H, 4GB RTX 3050 A (24GB DDR5, 512GB SSD) FHD, 144Hz, 300 nits, IPS, 15.6''/39.6 cm, Win11, M365* Office24, Mica Silver, 2.29kg, fa2500TX, Backlit, Gaming Laptop
+5.0
+(1)
+400+ bought in past month
+₹92,990
+M.R.P:
+₹1,47,674 (37% off)
+Save extra with No Cost EMI
+FREE delivery Mon, 28 Sept
+Or fastest delivery Tomorrow, 27 Sept
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 8, text: HP Professional 15 (2026), Intel (i5 14th Gen) Core 5 120U - (8 GB DDR5/512 GB SSD/Intel Iris Xe Graphics/Windows 11 Pro) Business Laptop/15.6" FHD/Backlit + Fingerprint/Silver/Copilot/1.5kg/MSO 2024
+₹62,990
+M.R.P:
+₹85,000 (26% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 29 Sept
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 9, text: Dell 15 AI Powered Laptop, Intel Core Ultra 5 225H, 16GB DDR5 RAM, 512GB SSD, 15.6" FHD Anti-Glare Display, Intel Arc Graphics, Dedicated Copilot Key, Backlit Keyboard, Silver, Win11 Home + MSO H&S'24
+4.0
+(15)
+100+ bought in past month
+₹84,990
+M.R.P:
+₹91,715 (7% off)
+Save extra with No Cost EMI
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 10, text: HP Chromebook 14, MediaTek Kompanio 540 (4GB LPDDR5, 128GB UFS) HD, Anti-Glare, Micro-Edge, 14''/35.6cm, ChromeOS, 100 GB Google One(1yr), Modern Gray,1.35kg, nm0004MU, HD Camera w/Shutter Laptop
+2.4
+(11)
+100+ bought in past month
+₹25,990
+M.R.P:
+₹58,733 (56% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 11, text: Acer Aspire 3 Laptop Intel Core Celeron N4500 Processor Laptop (8 GB LPDDR4X SDRAM/256 GB SSD/Win11 Home/38 WHR/HD Webcam) A325-45 with 39.63 cm (15.6") HD Display, Pure Silver, 1.5 KG
+3.3
+(234)
+₹35,600
+M.R.P:
+₹48,990 (27% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Tomorrow, 27 Sept
+Service: Device Setup
+Add to cart
+More Buying Choices
+₹35,590(6 new offers)
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 12, text: Apple 2026 MacBook Neo 13" Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 512GB SSD Storage, 1080p FaceTime HD Camera, Touch ID; Silver
+4.7
+(272)
+₹80,990
+M.R.P:
+₹89,900 (10% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
++3 other colors/patterns
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 13, text: HP Professional 14 (2026), Intel (i7 14th Gen) Core 7 150U - (32 GB/512 GB SSD/Intel Iris Xe Graphic/Windows 11 Pro) Business Laptop/14.0" FHD/Backlit + Fingerprint/Silver/Copilot Key/1.4kg/MSO 2024
+5.0
+(2)
+50+ bought in past month
+₹93,090
+M.R.P:
+₹1,49,990 (38% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 29 Sept
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 14, text: HP 15 (i5 14th Gen), Intel Core 5, 16GB RAM (Upgradeable), 512GB SSD, FHD, Anti-Glare, 15.6''/39.6cm, Win11, M365 Basic(1yr), Office24, Silver,1.59kg, fd0682tu, FHD Camera w/Shutter, Backlit Laptop
+3.8
+(50)
+100+ bought in past month
+₹74,990
+Save extra with No Cost EMI
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Checking if the allowedDateParts have the assert text — index 15, text: Acer Chromebook, MediaTek Kompanio 540 Octa-Core Processor, 4GB RAM, 64GB eMMC, Full HD, 11.6"/27.94cm Display, Chrome OS, Black, 1.2 KG, C725, Arm Mali G57 Graphics, WiFi 6E Laptop
+4.2
+(13)
+100+ bought in past month
+₹19,990
+M.R.P:
+₹36,999 (46% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Mon, 28 Sept
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+21:05:19 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02 - [verifyingFreeDeliveryFilterFunctionality_Laptop_21-05-02] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
