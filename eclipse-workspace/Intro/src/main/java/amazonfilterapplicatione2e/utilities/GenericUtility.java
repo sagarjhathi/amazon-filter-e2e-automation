@@ -124,33 +124,10 @@ public class GenericUtility extends ProductListingPage{
 	}
     
     
-    public void handleCaptcha() throws InterruptedException {
-    	String src = driver.getPageSource().toLowerCase();
-    	
-		if (src.contains("click the button below to continue shopping") || src.contains("continue shopping")) {
-			   System.out.println("Found the captcha hence refreshing the page to test");
-		        log.warn("[{}]  Found the captcha hence refreshing the page to test", ThreadContext.get("testName"));
-		        driver.navigate().refresh();
-			}
-    }
+   
     
 	
-    public void printFilterNamesOnly(By filterName) throws InterruptedException {
-		log.info("[{}] Within printFilterNamesOnly method", ThreadContext.get("testName"));
-		SafeActions safeAct=new SafeActions();
-		List<WebElement> filterOptions=safeAct.safeFindElements(filterName);		
-		for (int i = 0; i < filterOptions.size(); i++) {
-			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
-		}
-    }
-    
-    public void printNamesOnly(List<WebElement> filterOptions) {
-		log.info("[{}] Within printNamesOnly method", ThreadContext.get("testName"));
-
-		for (int i = 0; i < filterOptions.size(); i++) {
-			System.out.println(filterOptions.get(i).getText() + "   size of the list is  " + filterOptions.size());
-		}
-    }
+   
 
     
     public void scrollByPixel(int x, int y) {
