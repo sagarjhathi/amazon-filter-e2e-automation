@@ -1,0 +1,58 @@
+22:18:30 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+22:18:30 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - WebDriverManager: chromedriver setup OK
+22:18:33 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - ChromeDriver initialized successfully for thread: 34
+22:18:33 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Opening amazon Landing page
+22:18:33 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within safeFindElement method
+22:18:36 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (89eccf8582a470154426b3d4c6220226)] -> xpath: //a[@id='nav-logo-sprites']]
+22:18:37 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Giving input within the search bar
+22:18:37 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within safeClick method
+22:18:41 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Clicked the  [[ChromeDriver: chrome on windows (89eccf8582a470154426b3d4c6220226)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+22:18:41 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Clicking on the submit in the search bar
+22:18:41 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Waiting until element is visible in viewport
+22:18:41 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within validateDeliveryFilterOptionsWithResult method
+22:18:41 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within safeClick method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Clicked the  [[ChromeDriver: chrome on windows (89eccf8582a470154426b3d4c6220226)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']]   using safeClick
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within getMoreButtonByFilterTypeAndName method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It by Tomorrow']
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within safeFindElements 
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Returning the  [[[ChromeDriver: chrome on windows (89eccf8582a470154426b3d4c6220226)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (89eccf8582a470154426b3d4c6220226)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (89eccf8582a470154426b3d4c6220226)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] this is the set  [Thu, 01, Oct, 02, Today, FREE delivery, Fri, Tomorrow]
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Checking if the allowedDateParts have the assert text — index 0, text: OnePlus 13s | Snapdragon® 8 Elite | Smarter with OnePlus AI | Lifetime Display Warranty | 12GB+512GB | Green Silk
+4.6
+(578)
+200+ bought in past month
+₹59,999
+M.R.P:
+₹62,999 (5% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Sun, 4 Oct
+Or fastest delivery Today 8 am - 12 pm
+Add to cart
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Checking if the allowedDateParts have the assert text — index 1, text: iQOO Z10 Lite 5G (Titanium Blue 2026, 4GB RAM, 64GB Storage) | Dimensity 6300 5G Processor | 50MP Sony AI Camera | 6000 mAh Battery | IP64 Rated & Military Grade Shock-Resistance*
+4.2
+(462)
+1K+ bought in past month
+₹16,997
+M.R.P:
+₹27,999 (39% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Sun, 4 Oct
+Or fastest delivery Today 8 am - 12 pm
+Add to cart
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Checking if the allowedDateParts have the assert text — index 2, text: OnePlus N6 Lite | 4GB+64GB | Neo Green | Massive 7000mAh Long-Lasting Battery | 120Hz Ultra Smooth Display | 36 Months Fast & Smooth | Military-Grade Durability
+4.7
+(22)
+Limited time deal
+₹16,999
+M.R.P:
+₹24,999 (32% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Sun, 4 Oct
+Or fastest delivery Today 8 am - 12 pm
+Add to cart
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+22:18:42 [TestNG-test-Test-1] INFO  verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30 - [verifyingGetItByTomorrowFilterFunctionality_Mobile_22-18-30] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
