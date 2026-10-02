@@ -1,0 +1,48 @@
+07:06:01 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+07:06:01 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - WebDriverManager: chromedriver setup OK
+07:06:03 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - ChromeDriver initialized successfully for thread: 36
+07:06:05 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Opening amazon Landing page
+07:06:05 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within safeFindElement method
+07:06:05 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (e8bcebf29a78983d372769f199076333)] -> xpath: //a[@id='nav-logo-sprites']]
+07:06:05 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Giving input within the search bar
+07:06:05 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within safeClick method
+07:06:08 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Clicked the  [[ChromeDriver: chrome on windows (e8bcebf29a78983d372769f199076333)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+07:06:08 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Clicking on the submit in the search bar
+07:06:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Waiting until element is visible in viewport
+07:06:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within validateDeliveryFilterOptionsWithResult method
+07:06:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within safeClick method
+07:06:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Clicked the  [[ChromeDriver: chrome on windows (e8bcebf29a78983d372769f199076333)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']]   using safeClick
+07:06:09 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within getMoreButtonByFilterTypeAndName method
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within safeFindElements 
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Returning the  [[[ChromeDriver: chrome on windows (e8bcebf29a78983d372769f199076333)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e8bcebf29a78983d372769f199076333)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] this is the set  [Oct, 02, Today, 03, FREE delivery, Sat, Fri, Tomorrow]
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Checking if the allowedDateParts have the assert text — index 0, text: HP 15, AMD Ryzen 3 7320U (8GB LPDDR4, 512GB SSD) FHD, Micro-Edge, 15.6"/39.6cm, Win 11, M365 Basic(1yr), Office24, Silver, 1.59kg, fc0499AU, AMD Radeon Graphics, 1080p FHD Camera Laptop
+4.1
+(405)
+50+ bought in past month
+₹49,750
+M.R.P:
+₹72,990 (32% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Sun, 4 Oct
+Or fastest delivery Tomorrow, 3 Oct
+Service: Device Setup
+Add to cart
+07:06:10 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+07:06:11 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Checking if the allowedDateParts have the assert text — index 1, text: HP Professional 15 (2026), Intel (i3 14th Gen) Core 3 100U - (8 GB DDR5/512 GB SSD/Intel UHD Graphics) - Thin & Light Business Laptop/15.6" FHD/Fingerprint/Silver/1.5kg
+3.3
+(30)
+400+ bought in past month
+₹47,890
+M.R.P:
+₹99,999 (52% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Sun, 4 Oct
+Or fastest delivery Tomorrow, 3 Oct
+Service: Device Setup
+Add to cart
+07:06:11 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+07:06:11 [TestNG-test-Test-3] INFO  verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01 - [verifyingFreeDeliveryFilterFunctionality_Laptop_07-06-01] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
