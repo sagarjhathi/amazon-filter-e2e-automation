@@ -1,0 +1,13 @@
+22:04:07 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+22:04:08 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - WebDriverManager: chromedriver setup OK
+22:04:10 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - ChromeDriver initialized successfully for thread: 35
+22:04:13 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Opening amazon Landing page
+22:04:13 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Within safeFindElement method
+22:04:13 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (2047093fdd5652e5114f5d6fd3bbde84)] -> xpath: //a[@id='nav-logo-sprites']]
+22:04:15 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Giving input within the search bar
+22:04:15 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Within safeClick method
+22:04:18 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Clicked the  [[ChromeDriver: chrome on windows (2047093fdd5652e5114f5d6fd3bbde84)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+22:04:18 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Clicking on the submit in the search bar
+22:04:18 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Within filterCheckUnderList method
+22:04:18 [TestNG-test-Test-2] INFO  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Filter option does not exist within the filter check List
+22:04:18 [TestNG-test-Test-2] WARN  verifyingTheBrandsFilterFunctionality_Mobile_22-04-07 - [verifyingTheBrandsFilterFunctionality_Mobile_22-04-07] Filter option 'brands' does not exist in the list. Skipping the test.
