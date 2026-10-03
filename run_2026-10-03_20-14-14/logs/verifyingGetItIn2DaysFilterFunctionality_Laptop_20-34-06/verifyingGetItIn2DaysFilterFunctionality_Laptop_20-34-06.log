@@ -1,0 +1,221 @@
+20:34:06 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:34:06 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - WebDriverManager: chromedriver setup OK
+20:34:08 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - ChromeDriver initialized successfully for thread: 36
+20:34:08 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Opening amazon Landing page
+20:34:08 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within safeFindElement method
+20:34:09 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //a[@id='nav-logo-sprites']]
+20:34:10 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Giving input within the search bar
+20:34:10 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within safeClick method
+20:34:12 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Clicked the  [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+20:34:12 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Clicking on the submit in the search bar
+20:34:12 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Waiting until element is visible in viewport
+20:34:12 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within validateDeliveryFilterOptionsWithResult method
+20:34:12 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within safeClick method
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Clicked the  [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']]   using safeClick
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within getMoreButtonByFilterTypeAndName method
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within safeFindElements 
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Returning the  [[[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (e13d0422354e74dafe0e304048d55493)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] this is the set  [Oct, Today, 03, 04, FREE delivery, Sat, Sun, Tomorrow]
+20:34:13 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 0, text: Dell 15 (Previously Inspiron) Laptop, 14th Gen Intel Core i3/Core 3 100U Processor, 8GB DDR4, 512 SSD, 15.6" FHD 120Hz IPS AG 250 nit Display, Win 11 + Office H&S 2024, Carbon Black, 1.63Kg
+4.0
+(377)
+100+ bought in past month
+₹57,490
+M.R.P:
+₹62,598 (8% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 1, text: Acer Smartchoice Aspire One, AMD Ryzen 5-40, 8GB LPDDR5 RAM/ 256GB SSD, 14.0"/35.56cm WXGA Display, Win 11 Home, Pure Silver, 1.48KG, A114-43, Thin and Light Laptop
+4.1
+(12)
+100+ bought in past month
+₹43,990
+M.R.P:
+₹84,999 (48% off)
+Save extra with No Cost EMI
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 2, text: Dell 15 SmartChoice (Previously Inspiron), Intel 13th Gen Core i5-1334U, 16GB, 1TB SSD, FHD,15.6"/39.62cm, Win 11, MSO'24, Silver, 1.62kg, [Dell 15], 12 Month McAfee, Backlit KB, Thin & Light Laptop
+4.0
+(298)
+200+ bought in past month
+₹76,990
+M.R.P:
+₹99,478 (23% off)
+Save extra with No Cost EMI
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 3, text: Dell 15 (Previously Inspiron) Laptop, 14th Gen Intel Core i3/Core 3 100U Processor, 16GB DDR4, 512 SSD, Intel UHD Graphics, 15.6" FHD 120Hz IPS AG 250 nit Display, Win 11 + Office 2024, Black, 1.63Kg
+4.0
+(1.1K)
+200+ bought in past month
+₹66,490
+M.R.P:
+₹72,781 (9% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 4, text: HP Chromebook 14, MediaTek Kompanio 540 (4GB LPDDR5, 128GB UFS) HD, Anti-Glare, Micro-Edge, 14''/35.6cm, ChromeOS, 100 GB Google One(1yr), Modern Gray,1.35kg, nm0004MU, HD Camera w/Shutter Laptop
+2.8
+(15)
+200+ bought in past month
+₹25,990
+M.R.P:
+₹58,733 (56% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 5, text: Apple 2026 MacBook Neo 13" Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 512GB SSD Storage, 1080p FaceTime HD Camera, Touch ID; Indigo
+4.7
+(346)
+500+ bought in past month
+₹87,990
+M.R.P:
+₹89,900 (2% off)
+Flat INR 7000 Off on ICICI Cards
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
++3 other colors/patterns
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 6, text: HP 14, AMD Ryzen 7 7730U (16GB DDR4, 512GB SSD) FHD, Anti-Glare, Micro-Edge, 14''/35.6cm, Win11, M365 Basic(1yr), Office Home24, Silver,1.4kg, EM0104AU, FHD Camera w/Privacy Shutter, Backlit Laptop
+4.3
+(17)
+₹79,990
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 7, text: Apple 2026 MacBook Neo 13″ Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 256GB SSD Storage, 1080p FaceTime HD Camera; Indigo
+4.7
+(346)
+200+ bought in past month
+₹75,990
+M.R.P:
+₹79,900 (5% off)
+Flat INR 7000 Off on SBI Cards
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
++3 other colors/patterns
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 8, text: Dell 15 AI Powered Laptop, Intel Core Ultra 5 225H, 16GB DDR5 RAM, 512GB SSD, 15.6" FHD Anti-Glare Display, Intel Arc Graphics, Dedicated Copilot Key, Backlit Keyboard, Silver, Win11 Home + MSO H&S'24
+4.0
+(15)
+100+ bought in past month
+₹84,990
+M.R.P:
+₹91,715 (7% off)
+Save extra with No Cost EMI
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:14 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 9, text: HP Chromebook 14, MediaTek Kompanio 540 (4GB LPDDR5, 128GB UFS) HD, Touch, Anti-Glare, Micro-Edge, 14''/35.6cm, ChromeOS, 100GB Google One(1yr),Modern gray,1.35kg, nm0006MU, HD Camera w/shutter Laptop
+2.8
+(15)
+50+ bought in past month
+₹29,990
+M.R.P:
+₹60,075 (50% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 10, text: ASUS Chromebook CX1405 (2026), Smartchoice,Intel N50 Processor, Intel UHD iGPU, 8GB RAM, 128GB SSD, FHD, 14" (35.5 cm), Chrome OS, Pure Grey, 1.39 Kg, CX1405CTA-S60622, 42WHrs, Thin & Light Laptop
+3.8
+(30)
+100+ bought in past month
+₹39,990
+M.R.P:
+₹51,990 (23% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 11, text: Apple 2026 MacBook Neo 13″ Laptop with A18 Pro chip: Built for AI and Apple Intelligence, Liquid Retina Display, 8GB Unified Memory, 256GB SSD Storage, 1080p FaceTime HD Camera; Citrus
+4.7
+(346)
+100+ bought in past month
+₹77,990
+M.R.P:
+₹79,900 (2% off)
+Flat INR 7000 Off on SBI Cards
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
++3 other colors/patterns
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 12, text: Lenovo IdeaPad Slim 3, AMD Ryzen 5 40, 16GB RAM, 512GB SSD, FHD Thin and Light Laptop, 15.6" (39.6cm), Windows 11, Microsoft 365 Basic + Office 2024, Grey, 1.6Kg, 82XQ01HQIN, Backlit Keyboard, Laptop
+4.4
+(11)
+₹75,490
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 13, text: ASUS Vivobook S14, Intel Core Ultra 5 225H, Intel iGPU,16GB RAM,512GB SSD, FHD+,14",60Hz,Windows 11,M365 Basic (1Year)*,Office Home 2024,Cool Silver,1.4 Kg, S3407CA-LY060WS, Metallic Design Laptop
+4.2
+(30)
+₹92,990
+M.R.P:
+₹99,990 (7% off)
+Flat INR 3000 Off on SBI BankCards
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 14, text: ASUS Zenbook 14,Smartchoice,Intel Core Ultra 5 (Series 2),16GB,1TB,3K OLED Touch Screen,14" (35.5 cm),120Hz,Win 11,M365 Basic (1Y),Office 2024, Silver,1.28 kg,UX3405CA-PZ345WS,Thin & Light Laptop
+4.2
+(37)
+₹1,27,990
+M.R.P:
+₹1,35,990 (6% off)
+Flat INR 5000 Off on SBI BankCards
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Checking if the allowedDateParts have the assert text — index 15, text: ASUS Chromebook CM32 Detachable (2026),Smartchoice,MediaTek Kompanio 540 Processor,8GB RAM,128GB SSD,Touchscreen,12.1"(30.7 cm),Chrome OS,Cloud Titanium,0.64 Kg,CM3206DM4A-TR0119,Thin & Light Laptop
+3.1
+(5)
+₹48,990
+M.R.P:
+₹66,990 (27% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Service: Device Setup
+Add to cart
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+20:34:15 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_20-34-06] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors

@@ -1,0 +1,61 @@
+20:33:50 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+20:33:50 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - WebDriverManager: chromedriver setup OK
+20:33:52 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - ChromeDriver initialized successfully for thread: 36
+20:33:53 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Opening amazon Landing page
+20:33:53 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within safeFindElement method
+20:33:58 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50]Retrying findElement for: ->By.xpath: //a[@id='nav-logo-sprites']
+20:33:59 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50]Refrehsing the page , while trying to safely find : ->By.xpath: //a[@id='nav-logo-sprites']
+20:33:59 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (b5d09b106a58556ba54b2418ce0d9133)] -> xpath: //a[@id='nav-logo-sprites']]
+20:34:00 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Giving input within the search bar
+20:34:00 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within safeClick method
+20:34:03 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Clicked the  [[ChromeDriver: chrome on windows (b5d09b106a58556ba54b2418ce0d9133)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+20:34:03 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Clicking on the submit in the search bar
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Waiting until element is visible in viewport
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within validateDeliveryFilterOptionsWithResult method
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within safeClick method
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Clicked the  [[ChromeDriver: chrome on windows (b5d09b106a58556ba54b2418ce0d9133)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']]   using safeClick
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within getMoreButtonByFilterTypeAndName method
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']
+20:34:04 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within safeFindElements 
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Returning the  [[[ChromeDriver: chrome on windows (b5d09b106a58556ba54b2418ce0d9133)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (b5d09b106a58556ba54b2418ce0d9133)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (b5d09b106a58556ba54b2418ce0d9133)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] this is the set  [Oct, Today, 03, 04, FREE delivery, Sat, Sun, Tomorrow]
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Checking if the allowedDateParts have the assert text — index 0, text: iQOO Z10 Lite 5G (Titanium Blue 2026, 4GB RAM, 64GB Storage) | Dimensity 6300 5G Processor | 50MP Sony AI Camera | 6000 mAh Battery | IP64 Rated & Military Grade Shock-Resistance*
+4.2
+(474)
+1K+ bought in past month
+Sale Price Live
+₹16,997
+M.R.P:
+₹27,999 (39% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Checking if the allowedDateParts have the assert text — index 1, text: OnePlus 13s | Snapdragon® 8 Elite | Smarter with OnePlus AI | Lifetime Display Warranty | 12GB+512GB | Green Silk
+4.6
+(583)
+200+ bought in past month
+₹59,999
+M.R.P:
+₹62,999 (5% off)
+Up to 5% back with Amazon Pay ICICI card
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+20:34:05 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+20:34:06 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Checking if the allowedDateParts have the assert text — index 2, text: OnePlus N6 Lite | 4GB+64GB | Neo Green | Massive 7000mAh Long-Lasting Battery | 120Hz Ultra Smooth Display | 36 Months Fast & Smooth | Military-Grade Durability
+4.1
+(23)
+Limited time deal
+₹16,999
+M.R.P:
+₹24,999 (32% off)
+Up to 5% back with Amazon Pay ICI...
+FREE delivery Tue, 6 Oct
+Or fastest delivery Today 4 pm - 8 pm
+Add to cart
+20:34:06 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+20:34:06 [TestNG-test-Test-3] INFO  verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50 - [verifyingGetItIn2DaysFilterFunctionality_Mobile_20-33-50] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
