@@ -709,7 +709,6 @@ public class AmazonTests extends BaseTest {
         		System.out.println(" Filter '" + filter + "' matched in at least one section of product details.");
         	}
         }
-
         log.info("[{}] Final assertion for processor speed filter validation starting...", testName);
         softAssert.assertAll(); 
 		
