@@ -9,7 +9,13 @@
     </listeners>
   <test thread-count="2" parallel="methods" name="Test">
     <classes>
-      <class name="test.java.tests.AmazonTests"/>
+      <class name="test.java.tests.AmazonTests">
+      
+      <methods>
+      <include name="verifyingTheBrandsFilterFunctionality"></include>
+      </methods>
+      </class>
+      
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
