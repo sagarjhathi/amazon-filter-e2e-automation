@@ -163,6 +163,7 @@ jobs:
       - name: Checkout gh-pages
         uses: actions/checkout@v4
         with:
+          clean: false
           ref: gh-pages
 
 
