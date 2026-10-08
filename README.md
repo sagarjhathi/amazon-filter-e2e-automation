@@ -370,5 +370,17 @@ A visual reference generated directly from the codebase: the actual class-to-cla
 
 ---
 
+# Disclaimer
+
+This project is for learning and portfolio purposes only. It is not affiliated with, endorsed by, or sponsored by Amazon in any way. Amazon's Terms of Service restrict automated access to its site; this framework is intended for occasional, low-volume demonstration runs, not for scraping or continuous/high-frequency execution against the live site.
+
+---
+
+# License
+
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
 
 
