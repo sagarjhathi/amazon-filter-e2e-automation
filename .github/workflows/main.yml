@@ -223,13 +223,61 @@ jobs:
           Copy-Item -Recurse -Force "allure-report" "$runPath/allure-report"
 
           $indexPath = "gh-pages/index.html"
-          Set-Content -Path $indexPath -Value "<h1>Test run: $run</h1>"
-          Add-Content -Path $indexPath -Value "<ul>"
-          Add-Content -Path $indexPath -Value "<li><a href='$run/allure-report/index.html'>Allure report (all shards, merged)</a></li>"
-          Add-Content -Path $indexPath -Value "<li><a href='$run/BatteryProcessorOsStorage/reports/ExtentReport.html'>Extent report - Battery / Processor / OS / Storage / Discount</a></li>"
-          Add-Content -Path $indexPath -Value "<li><a href='$run/BrandsScreenSizeTypeCamEtc/reports/ExtentReport.html'>Extent report - Brands / Screen Size / Display Type / Camera</a></li>"
-          Add-Content -Path $indexPath -Value "<li><a href='$run/DeliveryAndPrice/reports/ExtentReport.html'>Extent report - Delivery / Price</a></li>"
-          Add-Content -Path $indexPath -Value "</ul>"
+          $lines = @(
+            '<!DOCTYPE html>'
+            '<html lang="en">'
+            '<head>'
+            '<meta charset="UTF-8">'
+            '<meta name="viewport" content="width=device-width, initial-scale=1">'
+            '<title>Test Report Hub</title>'
+            '<style>'
+            '  body { margin:0; padding:48px 20px; background:#f5f6f8;'
+            '         font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;'
+            '         color:#1a1a2e; }'
+            '  .container { max-width:680px; margin:0 auto; }'
+            '  h1 { font-size:24px; margin:0 0 4px 0; }'
+            '  .subtitle { color:#6b7280; font-size:14px; margin-bottom:32px; }'
+            '  .card { display:block; background:#ffffff; border:1px solid #e5e7eb; border-radius:10px;'
+            '          padding:18px 20px; margin-bottom:12px; text-decoration:none; color:inherit;'
+            '          transition:box-shadow .15s ease, border-color .15s ease; }'
+            '  .card:hover { box-shadow:0 4px 14px rgba(0,0,0,.08); border-color:#c7d2fe; }'
+            '  .card-title { font-size:16px; font-weight:600; margin-bottom:4px; }'
+            '  .card-desc { font-size:13px; color:#6b7280; }'
+            '  .badge { display:inline-block; font-size:11px; font-weight:600; color:#4338ca;'
+            '           background:#eef2ff; border-radius:999px; padding:2px 10px; margin-bottom:8px; }'
+            '</style>'
+            '</head>'
+            '<body>'
+            '<div class="container">'
+            '<h1>Amazon Filter E2E - Test Report Hub</h1>'
+            "<div class='subtitle'>Run: $run</div>"
+
+            "<a class='card' href='$run/allure-report/index.html'>"
+            '<span class="badge">MERGED</span>'
+            '<div class="card-title">Allure report</div>'
+            '<div class="card-desc">All 3 shards combined in one dashboard</div>'
+            '</a>'
+
+            "<a class='card' href='$run/BatteryProcessorOsStorage/reports/ExtentReport.html'>"
+            '<div class="card-title">Battery / Processor / OS / Storage / Discount</div>'
+            '<div class="card-desc">Extent report for this shard</div>'
+            '</a>'
+
+            "<a class='card' href='$run/BrandsScreenSizeTypeCamEtc/reports/ExtentReport.html'>"
+            '<div class="card-title">Brands / Screen Size / Display Type / Camera</div>'
+            '<div class="card-desc">Extent report for this shard</div>'
+            '</a>'
+
+            "<a class='card' href='$run/DeliveryAndPrice/reports/ExtentReport.html'>"
+            '<div class="card-title">Delivery / Price</div>'
+            '<div class="card-desc">Extent report for this shard</div>'
+            '</a>'
+
+            '</div>'
+            '</body>'
+            '</html>'
+          )
+          Set-Content -Path $indexPath -Value $lines
 
 
       - name: Deploy
