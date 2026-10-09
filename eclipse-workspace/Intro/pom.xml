@@ -10,6 +10,9 @@
     <maven.compiler.release>21</maven.compiler.release>
     <log4j.version>2.20.0</log4j.version>
     <allure.version>2.29.0</allure.version>
+    <!-- Empty by default = no group filter = run everything, same as today.
+         Override per shard with: mvn test -Dgroups=BatteryProcessorOsStorage -->
+    <groups></groups>
   </properties>
 
   <dependencies>
@@ -139,6 +142,7 @@
     <suiteXmlFiles>
       <suiteXmlFile>src/test/runners/AllTestsGlobal.xml</suiteXmlFile>
     </suiteXmlFiles>
+    <groups>${groups}</groups>
   </configuration>
   <dependencies>
   

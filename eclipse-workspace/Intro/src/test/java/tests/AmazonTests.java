@@ -59,7 +59,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "Delivery" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
 		)
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -108,7 +108,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,groups = { "Delivery" }
+		    dataProviderClass = TestDataProvider.class,groups = { "DeliveryAndPrice" }
 		)
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -156,7 +156,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
 		)
 	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -204,7 +204,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "Delivery" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
 		)
 	public void verifyingFreeDeliveryFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -249,7 +249,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BrandsScreenSizeTypeCamEtc" }
 		)
 	public void verifyingTheBrandsFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -321,7 +321,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
 		)
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -401,7 +401,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
 		)
 	public void verifyingPriceSilderFunctionality(String str) throws InterruptedException {
 		
@@ -471,7 +471,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
 		)
 	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
@@ -553,7 +553,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BrandsScreenSizeTypeCamEtc" }
 		)
 	public void verifyingDisplaySizeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -636,7 +636,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
 		)
 	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -718,7 +718,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BrandsScreenSizeTypeCamEtc" }
 		)
 	public void verifyingDisplayTypeFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -798,7 +798,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
 		)
 	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -880,7 +880,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BrandsScreenSizeTypeCamEtc" }
 		)
 	public void verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -963,7 +963,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
 		)
 	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
