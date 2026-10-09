@@ -189,6 +189,10 @@ jobs:
           allure generate allure-results/BatteryProcessorOsStorage allure-results/BrandsScreenSizeTypeCamEtc allure-results/DeliveryAndPrice --clean -o allure-report
 
 
+      - name: Enable long paths (Windows)
+        shell: pwsh
+        run: git config --global core.longpaths true
+
       - name: Checkout gh-pages
         uses: actions/checkout@v4
         with:
