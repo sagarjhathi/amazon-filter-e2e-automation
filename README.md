@@ -71,11 +71,12 @@ This framework is built using a rich, modern, and production oriented technology
 - **Timestamped artifact organization** for intuitive debugging.
 
 ## Reporting System
-- **ExtentReports (Spark HTML)** for:
+- **ExtentReports (Spark HTML)**, one per CI shard, for:
   - Visual dashboards
   - Screenshots embedded per step
   - Linked test logs
   - Sequential and chronological execution views
+- **Allure**, merged across all CI shards into a single unified dashboard.
 
 ## CI/CD and DevOps Toolchain
 - **GitHub Actions** running automated workflows including:
@@ -83,9 +84,10 @@ This framework is built using a rich, modern, and production oriented technology
   - Pull request validations
   - Scheduled nightly CRON jobs
   - On demand manual dispatches
+- **Parallel test sharding** using a matrix build: tests are split into three meaningfully named TestNG groups, each running on its own runner.
 - **CI aware configuration toggling** that adjusts execution scale based on the trigger source.
-- **Artifact storage** for preserving logs and screenshots.
-- **GitHub Pages deployment** for easy, public access to latest test reports.
+- **Artifact storage** for preserving logs, screenshots, and Allure results.
+- **GitHub Pages deployment** of a report hub page linking the merged Allure report and each shard's Extent report.
 
 ## Team Communication and Alerting
 - **Discord Webhooks** integrated into the CI for:
@@ -105,11 +107,13 @@ This framework is built using a rich, modern, and production oriented technology
 # Key Highlights
 
 ## Fully Isolated Per Run Artifacts
-Every test run generates its own uniquely timestamped folder. Both logs and screenshots are placed inside this folder in a structured manner that mirrors the test execution itself. This separation ensures predictable debugging and keeps historical artifacts cleanly organized.
+Every test run generates its own uniquely timestamped folder. Reports, logs and screenshots live side by side inside this folder, which is what lets the Extent report link to them with simple relative paths. This separation ensures predictable debugging and keeps historical artifacts cleanly organized.
 
 ```
-logs/run_<timestamp>/<testName>.log
-screenshots/Run_<timestamp>/<testName>/<step>.png
+run_<timestamp>/
+   reports/ExtentReport.html
+   logs/<testName>.log
+   screenshots/<testName>/<step>.png
 ```
 
 ## Configuration Driven Execution
@@ -121,8 +125,11 @@ The CI pipeline identifies whether the run originated from a code push or from t
 ## Real Time Discord Notifications
 Whenever CI starts, a clear and informative message is sent to Discord. It includes the triggering user, branch name, commit reference, start time, and a direct link to the run. When execution finishes, another message appears showing the final status, completion time, artifact links, and a button to open the latest hosted report on GitHub Pages. This provides immediate visibility and eliminates the need to hunt through CI logs.
 
+## Parallel CI Shards
+Tests are tagged with TestNG groups (`BatteryProcessorStorage`, `BrandsScreenSizeTypeCamEtc`, `DeliveryPriceOs`). CI runs one job per group in parallel, so the full suite finishes in roughly the time of its slowest shard instead of the sum of all tests. Group names describe what is being tested, so anyone can also run a single group locally.
+
 ## GitHub Pages Hosted Reports
-The CI publishes the entire Extent Report folder to GitHub Pages. Anyone can open the interactive report in a browser and navigate through test steps, screenshots, and logs. This makes sharing results extremely convenient.
+After all shards finish, a separate publish job gathers their output and deploys a report hub to GitHub Pages: one merged Allure report covering every shard, plus each shard's own interactive Extent report with its screenshots and logs. Anyone can open it in a browser and navigate through test steps. Each deploy replaces the previous history with a single commit, so the Pages branch never grows.
 
 ---
 
@@ -145,7 +152,7 @@ Driver and Utility Layer
    DriverManager, WaitUtility, GenericUtility, ExcelReader
          |
 Reporting and Logging Layer
-   ExtentReports and Log4j2 managing artifacts and diagnostics
+   ExtentReports, Allure and Log4j2 managing artifacts and diagnostics
 ```
 
 ---
@@ -155,25 +162,24 @@ Reporting and Logging Layer
 ```text
 Trigger (push or CRON)
         |
-Read configuration file
+CI starts one parallel job per test group (3 shards)
         |
-Driver initialization
+   Each shard:
+      Read configuration file
+      Driver initialization
+      Navigate to listing page
+      Identify available filters
+      Apply filter one by one based on configuration
+      Collect updated product list for each filter
+      Open product pages and validate attributes
+      Capture logs and screenshots for each stage
+      Generate Extent Report + Allure results
+      Upload both as artifacts
         |
-Navigate to listing page
-        |
-Identify available filters
-        |
-Apply filter one by one based on configuration
-        |
-Collect updated product list for each filter
-        |
-Open product pages and validate attributes
-        |
-Capture logs and screenshots for each stage
-        |
-Generate Extent Report
-        |
-CI uploads artifacts and deploys report to GitHub Pages
+Publish job (runs after all shards, even if some failed)
+      Merge all Allure results into one report
+      Assemble hub page + 3 Extent reports + merged Allure report
+      Deploy to GitHub Pages
         |
 Discord webhook publishes notification with links
 ```
@@ -193,7 +199,17 @@ Manual CI Dispatch
    Uses developer provided inputs
 ```
 
-Each run publishes logs, screenshots, and a complete Extent Report. The report is then deployed to GitHub Pages for immediate access.
+Each run publishes logs, screenshots, one Extent Report per shard, and a single merged Allure report. Everything is deployed to GitHub Pages behind a simple index page for immediate access.
+
+The three shards are defined by TestNG groups on the tests in `AmazonTests.java`:
+
+```text
+BatteryProcessorStorage      Storage, Battery, Processor, Discount
+BrandsScreenSizeTypeCamEtc   Brands, Display Size, Display Type, Camera
+DeliveryPriceOs              Delivery options, Price slider, OS Version
+```
+
+Extent reports are kept whole per shard because they link to their logs and screenshots with relative paths. Allure stores attachments by unique ID, so its results from all shards merge safely into one report.
 
 ---
 
@@ -226,78 +242,51 @@ Below is a broad and expanded folder visualization that clearly illustrates how 
 ```text
 project-root/
 │
-├── src/
-│   ├── main/java/
-│   │   ├── base/
-│   │   │     BaseTest.java
-│   │   │     BasePage.java
-│   │   │
-│   │   ├── driverManager/
-│   │   │     DriverManager.java
-│   │   │     ConfigManager.java
-│   │   │
-│   │   ├── pages/
-│   │   │     AmazonLandingPage.java
-│   │   │     ProductListingPage.java
-│   │   │
-│   │   ├── flows/
-│   │   │     SharedFilterFlows.java
-│   │   │     BrandFilterFlows.java
-│   │   │     PriceSliderFlows.java
-│   │   │     DeliveryFilterFlows.java
-│   │   │     OperatingSystemFilterFlows.java
-│   │   │
-│   │   ├── safeActions/
-│   │   │     SafeActions.java
-│   │   │     CaptchaHandler.java
-│   │   │
-│   │   ├── util/
-│   │   │     ScreenshotUtil.java
-│   │   │     GenericUtility.java
-│   │   │     WaitUtility.java
-│   │   │     ExcelReader.java
-│   │   │     FileReader.java
-│   │   │
-│   │   ├── reporting/
-│   │   │     ExtentManager.java
-│   │   │     ExtentTestManager.java
-│   │   │     TestListener.java
-│   │   │
-│   │   └── logger/
-│   │         LoggerFolderSetup.java
-│   │         LoggerUtility.java
-│   │         log4j2.xml
+├── eclipse-workspace/Intro/            (Maven module)
+│   ├── pom.xml
 │   │
-│   ├── test/java/tests/
-│   │       AmazonTests.java
-│   │       RetryFailedTest.java
-│   │       TestDataProvider.java
-│   │
-│   └── test/resources/
-│           UtilData.properties
-│           testng.xml
-│
-├── data/
-│     Products.xlsx
-│
-├── logs/
-│     run_<timestamp>/
-│          <testName>.log
-│
-├── test-output/
-│     ExtentReports/
-│          ExtentReport.html
-│          screenshots/
-│               Run_<timestamp>/
-│                    <testName>/
-│                         <captured_images>.png
+│   └── src/
+│       ├── main/java/amazonfilterapplicatione2e/
+│       │   ├── base/              BaseTest, BasePage
+│       │   ├── captcha/           CaptchaHandler
+│       │   ├── configManager/     ConfigManager
+│       │   ├── constants/         GlobalConstants
+│       │   ├── driverManager/     DriverManager
+│       │   ├── fileReader/        ExcelReader, FileReader
+│       │   ├── flows/             SharedFilterFlows, BrandFilterFlows,
+│       │   │                      PriceSliderFlows, DeliveryFilterFlows,
+│       │   │                      OperatingSystemFilterFlows
+│       │   ├── logger/            LoggerUtility
+│       │   ├── pages/             AmazonLandingPage, ProductListingPage
+│       │   ├── pathManager/       PathManager (per-run folder layout)
+│       │   ├── reporting/         ReportManager, TestListenerUpdated, Attachers
+│       │   ├── safeActions/       SafeActions
+│       │   ├── SeleniumGrid/      GlobalGridUtility
+│       │   ├── database/          JDBCConnection
+│       │   └── utilities/         GenericUtility, WaitUtility,
+│       │                          ScreenshotUtilUpdated, ImageCompressor
+│       │
+│       ├── main/resources/
+│       │   ├── configs/           UtilData.properties
+│       │   ├── data/              Products.xlsx
+│       │   └── log4j2.xml
+│       │
+│       └── test/
+│           ├── java/tests/            AmazonTests (tests tagged with groups)
+│           ├── java/retry/            RetryFailedTest, RetryListener
+│           ├── testDataProvider/      TestDataProvider
+│           └── runners/               AllTestsGlobal.xml (default suite)
+│                                      plus older per-area suite files
 │
 ├── .github/workflows/
-│     main.yml (CI/CD pipeline with Discord + Pages)
+│     main.yml (matrix-sharded tests, publish job, Discord, Pages)
 │
-├── pom.xml
+├── LICENSE
+├── dependency-map.html
 └── README.md
 ```
+
+Each test run also creates a `run_<timestamp>/` folder at execution time (see Key Highlights); it is generated output and not committed.
 
 This structure emphasizes how every file and module participates in the broader framework. Each folder contains logically grouped responsibilities, making the entire system easy to navigate and easy to extend.
 
@@ -319,6 +308,15 @@ Executes all filter combinations and validates all products.
 mvn clean test -DrunForAllFilterOptions=true -DrunForAllProductsUnderListing=true
 ```
 
+## Run One Test Group (Shard)
+Runs only the tests tagged with a given TestNG group, exactly as a CI shard does. Omit `-Dgroups` to run everything.
+
+```bash
+mvn clean test -Dgroups=DeliveryPriceOs
+```
+
+Available groups: `BatteryProcessorStorage`, `BrandsScreenSizeTypeCamEtc`, `DeliveryPriceOs`. Every new test should carry a `groups` tag, otherwise CI shards will skip it.
+
 ---
 
 # Engineering Decisions Explained
@@ -331,8 +329,11 @@ Direct Selenium calls are prone to flakiness, inconsistent behavior, and complex
 ## TestNG Over JUnit
 TestNG was selected due to its stronger support for parallel execution, data driven testing, custom listeners, retry analyzers, dependency hierarchies, and flexible suite configurations. These capabilities are essential for a UI automation framework that needs to scale efficiently and report results in a structured manner.
 
-## ExtentReports Over Allure
-Allure provides good visuals but requires more configuration and is less self contained. ExtentReports, especially the Spark HTML variant, offers instant, interactive HTML dashboards without external build steps. It embeds screenshots and logs directly into the report, making debugging much easier. ExtentReports also supports hierarchical test structures which complement this project's flow based model.
+## ExtentReports and Allure Together
+Each tool covers a different need. ExtentReports (Spark HTML) gives an instant, self contained dashboard per shard with screenshots and logs embedded, but it links to those files with relative paths, so each shard's report has to stay intact as a unit. Allure stores attachments by unique ID, which makes it safe to merge results from every shard into one combined dashboard. The published site offers both: the merged Allure report for the whole-run picture, and the Extent reports for per-shard debugging.
+
+## Sharding by Meaningful TestNG Groups
+Tests are split across CI jobs using TestNG groups rather than hand-maintained method lists in XML files. Group names describe the features they cover, so anyone can tell what a shard contains and run it locally with `-Dgroups=`. Shards are kept roughly balanced in runtime, but meaningful names were chosen over perfectly numbered, time-optimized buckets.
 
 ## Log4j2 Routing
 Log4j2 was chosen for its performance, flexibility, and routing appenders that allow logs to be automatically directed into per run folders. This enables excellent traceability and prevents log mixing between different runs. Each test receives its own log file, which is then linked directly inside the Extent report.
@@ -341,7 +342,7 @@ Log4j2 was chosen for its performance, flexibility, and routing appenders that a
 Automated tests for pull requests and code pushes need fast feedback. Full regressions are better suited for scheduled executions. The CI mode switching mechanism allows the framework to detect the trigger source and adapt execution depth accordingly. This balances speed, thoroughness, and resource usage without requiring any manual intervention.
 
 ## GitHub Pages for Report Hosting
-Hosting test reports publicly accessible through GitHub Pages allows team members to view results with a single click from Discord or CI logs. It removes the need to download artifacts and improves visibility. GitHub Pages is stable, fast, and integrates naturally with GitHub Actions.
+Hosting test reports publicly accessible through GitHub Pages allows team members to view results with a single click from Discord or CI logs. It removes the need to download artifacts and improves visibility. GitHub Pages is stable, fast, and integrates naturally with GitHub Actions. Each deploy is pushed as a single fresh commit, so old report history never accumulates and the branch stays small.
 
 ## Discord Notifications
 Email notifications are slower and often ignored. Discord provides real time notifications directly where teams communicate. The webhook integration allows the CI to send clear, actionable messages that include links to build logs, artifacts, and the latest hosted report. This increases collaboration and makes the testing system feel alive and responsive.
@@ -352,12 +353,15 @@ Email notifications are slower and often ignored. Discord provides real time not
 - Add new filters by updating flow classes and page layers
 - Add new UI checks by extending GenericUtility and PDP validation methods
 - Add new supported browsers by modifying DriverManager
+- Add new tests by tagging them with an existing TestNG group (or a new, meaningfully named one, then add it to the matrix in `main.yml`)
 
 ---
 
 # Troubleshooting
 - Captcha can appear during Amazon navigation. Retrying the test usually resolves it
 - If certain report links do not open, confirm that GitHub Pages deployed all screenshots and logs
+- If a test never appears in CI results, check that it has a `groups` tag matching one of the matrix shards in `main.yml`
+- On Windows, very long screenshot file names can exceed the path limit during git operations; run `git config core.longpaths true`
 - SafeActions already mitigates stale element exceptions. Increase wait durations only when necessary
 
 ---
