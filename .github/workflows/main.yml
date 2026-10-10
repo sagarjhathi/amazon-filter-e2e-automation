@@ -27,7 +27,7 @@ jobs:
     strategy:
       fail-fast: false   # one shard failing shouldn't cancel the other two
       matrix:
-        group: [BatteryProcessorOsStorage, BrandsScreenSizeTypeCamEtc, DeliveryAndPrice]
+        group: [BatteryProcessorStorage, BrandsScreenSizeTypeCamEtc, DeliveryPriceOs]
     env:
       REPORT_BASE: "/amazon-filter-e2e-automation/"
       IS_CRON: ${{ github.event_name == 'schedule' || true }} # <-- "true" only for cron
@@ -142,11 +142,11 @@ jobs:
           $ts = Get-Date -Format 'yyyy-MM-dd_HH-mm-ss'
           Add-Content -Path $env:GITHUB_ENV -Value "RUN_TIMESTAMP=$ts"
 
-      - name: Download BatteryProcessorOsStorage report
+      - name: Download BatteryProcessorStorage report
         uses: actions/download-artifact@v4
         with:
-          name: extent-BatteryProcessorOsStorage
-          path: shards/BatteryProcessorOsStorage
+          name: extent-BatteryProcessorStorage
+          path: shards/BatteryProcessorStorage
 
       - name: Download BrandsScreenSizeTypeCamEtc report
         uses: actions/download-artifact@v4
@@ -154,17 +154,17 @@ jobs:
           name: extent-BrandsScreenSizeTypeCamEtc
           path: shards/BrandsScreenSizeTypeCamEtc
 
-      - name: Download DeliveryAndPrice report
+      - name: Download DeliveryPriceOs report
         uses: actions/download-artifact@v4
         with:
-          name: extent-DeliveryAndPrice
-          path: shards/DeliveryAndPrice
+          name: extent-DeliveryPriceOs
+          path: shards/DeliveryPriceOs
 
-      - name: Download BatteryProcessorOsStorage allure results
+      - name: Download BatteryProcessorStorage allure results
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-BatteryProcessorOsStorage
-          path: allure-results/BatteryProcessorOsStorage
+          name: allure-results-BatteryProcessorStorage
+          path: allure-results/BatteryProcessorStorage
 
       - name: Download BrandsScreenSizeTypeCamEtc allure results
         uses: actions/download-artifact@v4
@@ -172,11 +172,11 @@ jobs:
           name: allure-results-BrandsScreenSizeTypeCamEtc
           path: allure-results/BrandsScreenSizeTypeCamEtc
 
-      - name: Download DeliveryAndPrice allure results
+      - name: Download DeliveryPriceOs allure results
         uses: actions/download-artifact@v4
         with:
-          name: allure-results-DeliveryAndPrice
-          path: allure-results/DeliveryAndPrice
+          name: allure-results-DeliveryPriceOs
+          path: allure-results/DeliveryPriceOs
 
       - name: Set up Node (for Allure CLI)
         uses: actions/setup-node@v4
@@ -186,7 +186,7 @@ jobs:
       - name: Generate merged Allure report
         run: |
           npm install -g allure-commandline
-          allure generate allure-results/BatteryProcessorOsStorage allure-results/BrandsScreenSizeTypeCamEtc allure-results/DeliveryAndPrice --clean -o allure-report
+          allure generate allure-results/BatteryProcessorStorage allure-results/BrandsScreenSizeTypeCamEtc allure-results/DeliveryPriceOs --clean -o allure-report
 
 
       - name: Enable long paths (Windows)
@@ -217,9 +217,9 @@ jobs:
           # Each shard's reports/logs/screenshots folder is moved as a whole, untouched -
           # its ExtentReport.html uses ../logs and ../screenshots relative links, so the
           # three subfolders inside it must stay exactly as the shard produced them.
-          Copy-Item -Recurse -Force "shards/BatteryProcessorOsStorage" "$runPath/BatteryProcessorOsStorage"
+          Copy-Item -Recurse -Force "shards/BatteryProcessorStorage" "$runPath/BatteryProcessorStorage"
           Copy-Item -Recurse -Force "shards/BrandsScreenSizeTypeCamEtc" "$runPath/BrandsScreenSizeTypeCamEtc"
-          Copy-Item -Recurse -Force "shards/DeliveryAndPrice" "$runPath/DeliveryAndPrice"
+          Copy-Item -Recurse -Force "shards/DeliveryPriceOs" "$runPath/DeliveryPriceOs"
           Copy-Item -Recurse -Force "allure-report" "$runPath/allure-report"
 
           $indexPath = "gh-pages/index.html"
@@ -258,8 +258,8 @@ jobs:
             '<div class="card-desc">All 3 shards combined in one dashboard</div>'
             '</a>'
 
-            "<a class='card' href='$run/BatteryProcessorOsStorage/reports/ExtentReport.html'>"
-            '<div class="card-title">Battery / Processor / OS / Storage / Discount</div>'
+            "<a class='card' href='$run/BatteryProcessorStorage/reports/ExtentReport.html'>"
+            '<div class="card-title">Battery / Processor / Storage / Discount</div>'
             '<div class="card-desc">Extent report for this shard</div>'
             '</a>'
 
@@ -268,8 +268,8 @@ jobs:
             '<div class="card-desc">Extent report for this shard</div>'
             '</a>'
 
-            "<a class='card' href='$run/DeliveryAndPrice/reports/ExtentReport.html'>"
-            '<div class="card-title">Delivery / Price</div>'
+            "<a class='card' href='$run/DeliveryPriceOs/reports/ExtentReport.html'>"
+            '<div class="card-title">Delivery / Price / OS Version</div>'
             '<div class="card-desc">Extent report for this shard</div>'
             '</a>'
 
