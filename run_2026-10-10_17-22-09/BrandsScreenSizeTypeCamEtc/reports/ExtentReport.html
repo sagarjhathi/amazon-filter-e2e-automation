@@ -1,0 +1,2556 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary"></span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Oct 10, 2026 05:12:59 PM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00</p>
+            <p class="text-sm">
+              <span>5:13:14 PM</span> / <span>00:01:08:017</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00</h5>
+<span class='badge badge-success'>10.10.2026 5:13:14 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:22 PM</span>
+<span class='badge badge-default'>00:01:08:017</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:13:14 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	filter 'up to 12.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: motorola moto g37 5g (pantone nautical blue, 64gb storage, 4gb ram) | 5g smartphone with large display and dual camera | long lasting battery | smooth performance & stylish design
+ Key Features: join prime
+cancel anytime
+ About: about this item
+motorola moto g37 5g (pantone nautical blue, 64gb storage, 4gb ram)
+› see more product details
+ Tech Details: motorola moto g37 5g mobile phone information
+additional details
+item details
+
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+battery
+measurements
+------------------------------------------------------------------------------------------,
+	filter 'up to 12.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: peace mi5 pro android smartphone | 4gb ram + 32gb storage | 4.05-inch qhd display | 8mp rear camera | 5mp front camera | dual sim 4g volte | 2500mah battery | orange
+ Key Features: brand peace
+operating system android 12.0
+ram memory installed size 4 gb
+memory storage capacity 32 gb
+screen size 4.05 inches
+ About: about this item
+compact 4.05-inch qhd display – comfortable one-hand operation with a bright and sharp display for videos, browsing and everyday use.
+4gb ram + 32gb storage – smooth multitasking with expandable storage support up to 128gb for photos, apps and media.
+octa-core processor – powered by a mediatek processor for reliable daily performance and faster app switching.
+8mp rear & 5mp front camera – capture clear photos, selfies and full hd videos with led flash support.
+2500mah battery – long-lasting battery designed for all-day calling, browsing and entertainment.
+dual sim 4g volte – supports dual nano sim, 4g volte, wi-fi, bluetooth 5.1, gps and google applications.
+› see more product details
+ Tech Details: peace mi5 pro android smartphone mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+video
+------------------------------------------------------------------------------------------,
+	filter '15 to 17.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------,
+	filter '15 to 17.9 cm' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplaySizeFilterFunctionality(AmazonTests.java:631)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00/verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00.log' target='_blank'>verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00/Mobile239856760900.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00/Mobile239856760900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00/Mobile275877220800.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00/Mobile275877220800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00</p>
+            <p class="text-sm">
+              <span>5:13:14 PM</span> / <span>00:02:09:785</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00</h5>
+<span class='badge badge-success'>10.10.2026 5:13:14 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:23 PM</span>
+<span class='badge badge-default'>00:02:09:785</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:13:14 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; white
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrw4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqw31klk
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; white
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrw4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqw31klk
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; soft pink
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrx4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqvqy8b7
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; white
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrw4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqw31klk
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; soft pink
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrx4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqvqy8b7
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: lava bold n4 lite (empire gold, 3gb ram, 32gb storage) | 6.56" qhd display | 8mp rear camera | 5000 mah battery | free service @ home | fingerprint reader | charger & phone-cover in box
+ Key Features: brand lava
+operating system android 16 go
+ram memory installed size 3 gb
+memory storage capacity 32 gb
+screen size 6.56 inches
+ About: about this item
+octa-core power | 190k+ antutu: unisoc sc9863a1 processor delivers smooth and reliable everyday performance.
+5000mah battery | 10w charger: all-day power with a 5000mah battery and convenient 10w charging.
+6.56” 60hz display: enjoy a big qhd screen with smooth scrolling and an immersive viewing experience.
+clean android 16 go | made in india: experience bloatware-free android 16 go, proudly made in india.
+8mp ai camera | 5mp front camera: capture everyday moments with the 8mp rear and 5mp front cameras.
+› see more product details
+ Tech Details: lava bold n4 lite mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; white
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrw4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqw31klk
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; soft pink
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrx4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqvqy8b7
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: lava bold n4 lite (empire gold, 3gb ram, 32gb storage) | 6.56" qhd display | 8mp rear camera | 5000 mah battery | free service @ home | fingerprint reader | charger & phone-cover in box
+ Key Features: brand lava
+operating system android 16 go
+ram memory installed size 3 gb
+memory storage capacity 32 gb
+screen size 6.56 inches
+ About: about this item
+octa-core power | 190k+ antutu: unisoc sc9863a1 processor delivers smooth and reliable everyday performance.
+5000mah battery | 10w charger: all-day power with a 5000mah battery and convenient 10w charging.
+6.56” 60hz display: enjoy a big qhd screen with smooth scrolling and an immersive viewing experience.
+clean android 16 go | made in india: experience bloatware-free android 16 go, proudly made in india.
+8mp ai camera | 5mp front camera: capture everyday moments with the 8mp rear and 5mp front cameras.
+› see more product details
+ Tech Details: lava bold n4 lite mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; white
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrw4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqw31klk
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; soft pink
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrx4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqvqy8b7
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: lava bold n4 lite (empire gold, 3gb ram, 32gb storage) | 6.56" qhd display | 8mp rear camera | 5000 mah battery | free service @ home | fingerprint reader | charger & phone-cover in box
+ Key Features: brand lava
+operating system android 16 go
+ram memory installed size 3 gb
+memory storage capacity 32 gb
+screen size 6.56 inches
+ About: about this item
+octa-core power | 190k+ antutu: unisoc sc9863a1 processor delivers smooth and reliable everyday performance.
+5000mah battery | 10w charger: all-day power with a 5000mah battery and convenient 10w charging.
+6.56” 60hz display: enjoy a big qhd screen with smooth scrolling and an immersive viewing experience.
+clean android 16 go | made in india: experience bloatware-free android 16 go, proudly made in india.
+8mp ai camera | 5mp front camera: capture everyday moments with the 8mp rear and 5mp front cameras.
+› see more product details
+ Tech Details: lava bold n4 lite mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '12 - 15.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; white
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrw4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqw31klk
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter 'up to 3.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: apple iphone 17e 256 gb: 15.40 cm (6.1″) super retina xdr display, a19 chip, all-day battery life, 48mp fusion camera, 256gb starting storage; soft pink
+ Key Features: brand apple
+operating system ios 26
+memory storage capacity 256 gb
+screen size 6.1 inches
+model name iphone 17e
+ About: about this item
+say hello to a good buy — iphone 17e comes with many of the same great features as iphone 17 at a wallet-friendly price.
+durable design. brilliant display — stunning 15.40 cm (6.1″) super retina xdr display. ceramic shield 2 front with 3x better scratch resistance than iphone 16e. usb-c lets you charge and connect to apple devices and a wide variety of accessories.
+all-day battery life — text, browse and binge movies and shows for hours on end.
+fast wireless charging. all in a snap with magsafe — iphone 17e lets you charge wirelessly up to 15w, compared to 7.5w with iphone 16e. that means when you need to charge, it’s easy, convenient and fast.
+a19 chip. blasts and lasts — a19 makes everything you do feel fast and fluid, now and for years to come — including powerful aaa gaming, 4k streaming and more.
+two advanced cameras in one — the 48mp fusion camera delivers optical-quality 2x telephoto. and next-generation portraits let you shoot photos in any mode and turn them into beautiful portraits later by adding a background blur after the shot.
+more space for what matters — with storage starting at 256gb, there’s plenty of room for everything you love, now and in the future — from super-high-resolution photos to 4k videos to your favourite apps, games and more.
+show more
+ Tech Details: apple iphone 17e 256 gb: 15.40 cm mobile phone information
+technical details
+manufacturer apple
+country of origin india
+item model number mhrx4hn/a
+product dimensions 0.78 x 7.15 x 14.67 cm; 169 g
+asin b0gqvqy8b7
+additional information
+manufacturer apple, apple inc, one apple park way, cupertino, ca 95014, usa. or apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+packer not applicable for apple (always)
+importer (if applicable) apple india private limited 13th floor, prestige minsk square, municipal no. 6, cubbon road, bengaluru, karnataka - 560001, india
+item weight 169 g
+item dimensions lxwxh 8 x 71 x 147 millimeters
+net quantity 1.0 count
+included components usb-c charge cable, iphone 17e
+generic name iphone 17e
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: lava bold n4 lite (empire gold, 3gb ram, 32gb storage) | 6.56" qhd display | 8mp rear camera | 5000 mah battery | free service @ home | fingerprint reader | charger & phone-cover in box
+ Key Features: brand lava
+operating system android 16 go
+ram memory installed size 3 gb
+memory storage capacity 32 gb
+screen size 6.56 inches
+ About: about this item
+octa-core power | 190k+ antutu: unisoc sc9863a1 processor delivers smooth and reliable everyday performance.
+5000mah battery | 10w charger: all-day power with a 5000mah battery and convenient 10w charging.
+6.56” 60hz display: enjoy a big qhd screen with smooth scrolling and an immersive viewing experience.
+clean android 16 go | made in india: experience bloatware-free android 16 go, proudly made in india.
+8mp ai camera | 5mp front camera: capture everyday moments with the 8mp rear and 5mp front cameras.
+› see more product details
+ Tech Details: lava bold n4 lite mobile phone information
+additional details
+camera
+battery
+measurements
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+video
+------------------------------------------------------------- filter '8 - 11.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '12 - 15.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '12 - 15.9 mp' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality(AmazonTests.java:958)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00.log' target='_blank'>verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/Mobile233580467300.png' src="../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/Mobile233580467300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/Mobile312827075700.png' src="../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/Mobile312827075700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:23 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/Mobile339640678500.png' src="../screenshots/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00/Mobile339640678500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00</p>
+            <p class="text-sm">
+              <span>5:13:15 PM</span> / <span>00:00:58:995</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00</h5>
+<span class='badge badge-success'>10.10.2026 5:13:15 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:14 PM</span>
+<span class='badge badge-default'>00:00:58:995</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:13:15 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'oled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'oled' not found in product details.
+-------------------------------------------------------------
+ Title: motorola moto g67 power 5g – pantone curacao blue 12gb ram + 256gb storage | 7000mah battery | snapdragon 7s gen 2 | 30w turbopower charging | 5g smartphone
+ Key Features: brand motorola
+operating system android 15
+ram memory installed size 12 gb
+cpu model cortex a7
+cpu speed 2.4 ghz
+ About: about this item
+massive 7000mah battery for extended usage 30w turbopower fast charging support qualcomm snapdragon 7s gen 2 5g processor smooth and efficient 4nm architecture 5g network connectivity dolby atmos enhanced sound experience corning protection for improved durability premium motorola design and build quality
+› see more product details
+ Tech Details: product information
+additional details
+battery
+measurements
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplayTypeFilterFunctionality(AmazonTests.java:793)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00.log' target='_blank'>verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/Mobile234629452500.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/Mobile234629452500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/Mobile250061266000.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/Mobile250061266000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:14 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/Mobile260987398500.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00/Mobile260987398500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="4"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14</p>
+            <p class="text-sm">
+              <span>5:14:16 PM</span> / <span>00:01:19:438</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14</h5>
+<span class='badge badge-success'>10.10.2026 5:14:16 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:36 PM</span>
+<span class='badge badge-default'>00:01:19:438</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:16 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: lenovo v15 g4 amd ryzen 5 7520u 15.6 inch fhd laptop
+ Key Features: brand lenovo
+model name v15 g4 amn
+screen size 15.6 inches
+colour gray
+hard disk size 512 gb
+cpu model ryzen 5
+ram memory installed size 16 gb
+ About: about this item
+🚀 powerful performance powered by amd ryzen 5 7520u processor (4 cores, 8 threads, up to 4.3ghz) with integrated amd radeon graphics. perfect for multitasking, office work, online classes, and light editing.
+fast memory & storage 16gb ddr5 ram & 512gb pcie nvme ssd: equipped with 16gb ddr5 5500mhz memory for smooth multitasking and a high-speed 512gb pcie nvme ssd for faster boot times, quick file access, and responsive performance.
+immersive display 15.6-inch full hd anti-glare display: enjoy sharp visuals on the 15.6-inch full hd (1920 × 1080) anti-glare display that delivers comfortable viewing for work, study, video streaming, and everyday productivity.
+productivity ready windows 11 & microsoft office 2024: get started right away with windows 11 and microsoft office 2024 pre-installed, making this laptop ideal for professionals, students, remote workers, and business users.
+everyday business laptop amd radeon graphics & dolby audio: integrated amd radeon graphics deliver smooth visuals, while dolby audio enhances sound quality for meetings and entertainment. finished in arctic grey, this lightweight business laptop is ideal for office work, online classes, and daily use.
+🔌 connectivity & extras usb-c, hdmi, rj45, wi-fi 6, bluetooth 5.1, hd webcam, numeric keypad & anti-glare screen for comfortable all-day use.
+› see more product details
+ Tech Details: lenovo v15 g4 amd ryzen 5 7520u 15.6 inch fhd laptop information
+additional details
+display
+connectivity
+ports & slots
+audio
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+memory
+battery
+input devices
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'led' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplayTypeFilterFunctionality(AmazonTests.java:793)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14.log' target='_blank'>verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/Laptop291269621100.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/Laptop291269621100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/Laptop314053137300.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/Laptop314053137300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:36 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/Laptop339563850500.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14/Laptop339563850500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="5"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22</p>
+            <p class="text-sm">
+              <span>5:14:24 PM</span> / <span>00:01:21:479</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22</h5>
+<span class='badge badge-success'>10.10.2026 5:14:24 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:45 PM</span>
+<span class='badge badge-default'>00:01:21:479</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:24 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	filter 'up to 13.9 in' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------------------------------------,
+	filter 'up to 13.9 in' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; citrus
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour citrus
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------------------------------------,
+	filter '14 to 14.9 in' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------,
+	filter '14 to 14.9 in' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: acer smartchoice aspire one, amd ryzen 3-7320u, 8gb lpddr5 ram/ 256gb ssd, 14.0"/35.56cm tn hd display, win 11 home, pure silver, 1.48kg, a114-43, thin and light laptop
+ Key Features: brand acer
+model name aspire one
+screen size 14 inches
+colour pure silver
+hard disk size 256 gb
+cpu model ryzen 3
+ram memory installed size 8 gb
+ About: about this item
+processor : whether you're at home, school, or work, get all the performance you need with the latest amd ryzen 3-7320u processor @ 2.4ghz ( 4 cores, 4mb cache, up to 4.1 ghz); maintaining order and keeping your apps running consistently and smoothly.
+operating system: windows 11 home |preinstalled software: none
+performance : 8gb lpddr5 ram for full-power multitasking; 256gb ssd; this thin and light laptop offers a good experience for watching videos, browsing the web, remote work, or study from home.
+display : 14.0-inch hd 1366 x 768 resolution display keeps images and videos stunning while the narrow border offers-up more viewable space. to protect user’s eyes from harmful blue light, it also includes acer blueligh shield.
+wireless connectivity : dual band wi-fi 5 (802.11a/b/g/n/ac) provides fast internet access. for enhanced video calls this laptop also includes and optimized camera and microphones.
+plenty of ports : flexible connectivity options through usb 2.0/ 3.0/3.2 ports. users can also connect an external display through the hdmi port.
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+------------------------------------------------------------------------------------------,
+	filter '15 to 15.9 in' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------,
+	filter '15 to 15.9 in' not found in product details.
+--------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplaySizeFilterFunctionality(AmazonTests.java:631)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22.log' target='_blank'>verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/Laptop297209505400.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/Laptop297209505400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/Laptop334497901600.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/Laptop334497901600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:45 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/Laptop359941854500.png' src="../screenshots/verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22/Laptop359941854500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="6"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_17-15-24</p>
+            <p class="text-sm">
+              <span>5:15:25 PM</span> / <span>00:00:04:871</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_17-15-24</h5>
+<span class='badge badge-success'>10.10.2026 5:15:25 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:30 PM</span>
+<span class='badge badge-default'>00:00:04:871</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:25 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:15:30 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:30 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:30 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_17-15-24/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_17-15-24.log' target='_blank'>verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_17-15-24.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-15-30</p>
+            <p class="text-sm">
+              <span>5:15:32 PM</span> / <span>00:00:17:988</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-15-30</h5>
+<span class='badge badge-success'>10.10.2026 5:15:32 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:50 PM</span>
+<span class='badge badge-default'>00:00:17:988</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:32 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:15:50 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:50 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:50 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-15-30/verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-15-30.log' target='_blank'>verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-15-30.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="8"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37</p>
+            <p class="text-sm">
+              <span>5:15:38 PM</span> / <span>00:01:14:251</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37</h5>
+<span class='badge badge-success'>10.10.2026 5:15:38 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:16:52 PM</span>
+<span class='badge badge-default'>00:01:14:251</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:38 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: motorola pad 60 neo 11 inches display |wi-fi |(blue, 8 gb ram, 128 gb rom)
+ Key Features: brand motorola
+model name motorola pad 60 neo
+memory storage capacity 2 tb
+screen size 11 inches
+operating system android
+ About: about this item
+experience seamless performance with the mediatek dimensity 6300 octa-core processor paired with 8 gb lpddr5x ram and 128 gb ufs 3.1 storage, ideal for multitasking, entertainment, and productivity.
+› see more product details
+ Tech Details: product information
+item details
+
+battery
+processor
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+connectivity
+-------------------------------------------------------------,
+	 filter 'amoled' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'ips' not found in product details.
+-------------------------------------------------------------
+ Title: brave ark android tablet with pen| 12.95"(32cm) 2.8k 144hz display| snapdragon 8s gen 3| ai-enabled|12gb ram, 256gb rom| segment's biggest 14550mah battery| 8 speakers|wifi|galactic blue
+ Key Features: brand brave
+model name brave ark
+memory storage capacity 256 gb
+screen size 12.95 inches
+display resolution maximum 2880 x 1840 pixels
+ About: about this item
+segment’s biggest battery: with a massive 14,550mah battery, brave ark delivers up to 2-day backup for classes, notes, and streaming.
+snapdragon-powered performance: powered by qualcomm snapdragon 8s gen 3 (octa-core) for smooth multitasking and fast, responsive performance. the adreno 732 gpu (up to 950mhz) keeps ui and gaming fluid, while the qualcomm hexagon npu accelerates ai workloads.
+ultra-smooth viewing experience with a 12.95” 2.8k 144hz display: experience a stunning 12.95” 2880 x 1840 pixels display with a super-fluid 144hz refresh rate and up to 700 nits brightness—sharp in detail, smooth in motion, and easy to view even in bright spaces.
+cinematic sound with 8 surround speakers: enjoy dts audio powered by 8 surround speakers (4 woofers + 4 tweeters) for deeper bass, crisp highs, and immersive audio across music, movies, and calls.
+slim metal unibody, built for endurance: a 7.6mm thin metal unibody with a premium feel—designed around a massive 14,550mah battery (largest in the segment).
+more memory. more storage: stay smooth on heavy multitasking with 12gb ram and store more with 256gb internal storage—microsd expansion up to 1tb for lectures, projects, files, and media.
+brave ark pen: unlock 20+ stylus toolbox options with the brave ark pen. enjoy a natural writing feel with 4096 pressure levels and 240hz sampling, plus instant calibration and dynamic pressure mapping for consistent strokes- with 20+ hours continuous usage for all-day notes and creativity.
+show more
+› see more product details
+ Tech Details: product information
+item details
+
+battery
+processor
+camera
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+connectivity
+features
+audio
+-------------------------------------------------------------,
+	 filter 'ips' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'lcd' not found in product details.
+-------------------------------------------------------------
+ Title: lenovo {smartchoice} idea tab pro with pen plus & keyboard|12.7" 3k display|144 hz refresh|12 gb ram, 256 gb rom| ai-enabled| mediatek dimensity 8300|4 jbl speakers|10200 mah battery with 45 w charger
+ Key Features: brand lenovo
+model name ideatab pro
+memory storage capacity 256 gb
+screen size 12.7 inches
+display resolution maximum 2944x1840 pixels
+ About: about this item
+your all-in-one productivity hub: the lenovo idea tab pro brings together a desktop-grade keyboard, precision pen plus for note-taking and annotation, quad jbl dolby atmos speakers for immersive calls and presentations, and an 11-hour battery with 45w fast charging — giving professionals and multitaskers everything they need to stay productive all day, every day.
+designed for work, study, and multitasking – experience enhanced productivity on a large 12.7-inch display with sharp 3k-level clarity and ultra-smooth 144hz visuals. whether you’re editing documents, attending virtual meetings, or managing multiple apps, the high-resolution screen and bright 400-nit panel deliver a comfortable and immersive workspace.
+powerful performance for work and entertainment – featuring the mediatek dimensity 8300 octa-core chipset, this device is designed to handle productivity, multitasking, and entertainment with ease. the advanced 4nm architecture ensures efficient performance, while 256gb storage and wi-fi 6 deliver faster downloads, smoother streaming, and responsive everyday usage.
+premium performance with everything you need included – stay productive and creative with 12gb lpddr5x ram for smoother multitasking and 256gb ufs 4.0 storage for faster file transfers and app launches. with support for up to 1tb expandable storage and bundled lenovo pogo pin keyboard and lenovo pen plus, this device is ready for work, study, and entertainment from day one.
+powerful sound with versatile camera performance – featuring a quad jbl speaker setup with dolby atmos, this tablet delivers dynamic audio for streaming, presentations, and gaming. the 8mp front-facing camera supports crystal-clear virtual meetings, while the 13mp rear camera with built-in flash helps you capture detailed images and important documents even in low-light conditions.
+› see more product details
+ Tech Details: product information
+item details
+
+connectivity
+features
+audio
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+battery
+processor
+camera
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDisplayTypeFilterFunctionality(AmazonTests.java:793)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37.log' target='_blank'>verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/Tablet375656709000.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/Tablet375656709000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/Tablet401447529100.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/Tablet401447529100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:52 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/Tablet415515726700.png' src="../screenshots/verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37/Tablet415515726700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDisplaySizeFilterFunctionality_Tablet_17-15-49</p>
+            <p class="text-sm">
+              <span>5:15:51 PM</span> / <span>00:00:10:882</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingDisplaySizeFilterFunctionality_Tablet_17-15-49</h5>
+<span class='badge badge-success'>10.10.2026 5:15:51 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:16:02 PM</span>
+<span class='badge badge-default'>00:00:10:882</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:51 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:16:02 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:02 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:02 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDisplaySizeFilterFunctionality_Tablet_17-15-49/verifyingDisplaySizeFilterFunctionality_Tablet_17-15-49.log' target='_blank'>verifyingDisplaySizeFilterFunctionality_Tablet_17-15-49.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="10"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingTheBrandsFilterFunctionality_Mobile_17-15-51</p>
+            <p class="text-sm">
+              <span>5:15:53 PM</span> / <span>00:01:14:870</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingTheBrandsFilterFunctionality_Mobile_17-15-51</h5>
+<span class='badge badge-success'>10.10.2026 5:15:53 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:17:08 PM</span>
+<span class='badge badge-default'>00:01:14:870</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:53 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	❌ Index: 6, Brand: Motorola, Title: 'Moto g06 Power (Pantone Tendril, 64 GB) (4 GB RAM)'
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingTheBrandsFilterFunctionality(AmazonTests.java:315)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51.log' target='_blank'>verifyingTheBrandsFilterFunctionality_Mobile_17-15-51.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/Mobile416925037500.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/Mobile416925037500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/Mobile435721314900.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/Mobile435721314900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:08 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/Mobile452131953900.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Mobile_17-15-51/Mobile452131953900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="11"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingTheBrandsFilterFunctionality_Laptop_17-17-08</p>
+            <p class="text-sm">
+              <span>5:17:10 PM</span> / <span>00:01:07:318</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingTheBrandsFilterFunctionality_Laptop_17-17-08</h5>
+<span class='badge badge-success'>10.10.2026 5:17:10 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:18:17 PM</span>
+<span class='badge badge-default'>00:01:07:318</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:10 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08.log' target='_blank'>verifyingTheBrandsFilterFunctionality_Laptop_17-17-08.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/Laptop487758293400.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/Laptop487758293400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/Laptop504035221100.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/Laptop504035221100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:17 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/Laptop520737073300.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Laptop_17-17-08/Laptop520737073300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="12"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingTheBrandsFilterFunctionality_Tablet_17-18-19</p>
+            <p class="text-sm">
+              <span>5:18:20 PM</span> / <span>00:01:18:079</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingTheBrandsFilterFunctionality_Tablet_17-18-19</h5>
+<span class='badge badge-success'>10.10.2026 5:18:20 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:19:39 PM</span>
+<span class='badge badge-default'>00:01:18:079</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:18:20 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19.log' target='_blank'>verifyingTheBrandsFilterFunctionality_Tablet_17-18-19.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/Tablet566677759800.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/Tablet566677759800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/Tablet584953222600.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/Tablet584953222600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:19:39 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/Tablet602787780900.png' src="../screenshots/verifyingTheBrandsFilterFunctionality_Tablet_17-18-19/Tablet602787780900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>7</span>
+</span>
+<p class="name">java.lang.AssertionError</p>
+<p class="duration text-sm">7 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.AssertionError</h4>
+<span status="fail" class='badge log badge-danger'>7 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:13:15 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:13:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:13:14 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:14:16 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:14:24 PM</td>
+<td>
+<a href="#" class="linked" test-id='5' id='5'>verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:15:38 PM</td>
+<td>
+<a href="#" class="linked" test-id='8' id='8'>verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:15:53 PM</td>
+<td>
+<a href="#" class="linked" test-id='10' id='10'>verifyingTheBrandsFilterFunctionality_Mobile_17-15-51</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Oct 10, 2026 05:12:59 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Oct 10, 2026 05:19:39 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>5</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>7</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='41%'>
+<b>5</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='58%'><b>7</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='6%'><b>5</b> events passed</small></div>
+<div>
+<small data-tooltip='8%'><b>7</b> events failed,
+<b data-tooltip='%'>71</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"verifyingDisplaySizeFilterFunctionality_Mobile_17-13-00":68.017,"verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Mobile_17-13-00":129.785,"verifyingDisplayTypeFilterFunctionality_Mobile_17-13-00":58.995,"verifyingDisplayTypeFilterFunctionality_Laptop_17-14-14":79.438,"verifyingDisplaySizeFilterFunctionality_Laptop_17-14-22":81.479,"verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Laptop_17-15-24":4.871,"verifyingMobilePhonePrimaryCameraResolutionFilterFunctionality_Tablet_17-15-30":17.988,"verifyingDisplayTypeFilterFunctionality_Tablet_17-15-37":74.251,"verifyingDisplaySizeFilterFunctionality_Tablet_17-15-49":10.882,"verifyingTheBrandsFilterFunctionality_Mobile_17-15-51":74.87,"verifyingTheBrandsFilterFunctionality_Laptop_17-17-08":67.318,"verifyingTheBrandsFilterFunctionality_Tablet_17-18-19":78.079
+};
+</script>
+<div class="row">
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 5,
+failParent: 7,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 5,
+failEvents: 7,
+warningEvents: 0,
+skipEvents: 0,
+infoEvents: 71
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c05cd28cde1617b9d0c05a831daff6cb97fd9fd5/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>

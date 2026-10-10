@@ -1,0 +1,3097 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title></title>
+<link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png">
+<link href="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@ce8b10435bcbae260c334c0d0c6b61d2c19b6168/spark/css/spark-style.css" rel="stylesheet" />
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@7cc78ce/spark/js/jsontree.js"></script>
+<style type="text/css"></style></head><body class="spa -report dark">
+  <div class="app">
+    <div class="layout">
+<div class="header navbar">
+<div class="vheader">
+<div class="nav-logo">
+<a href="#">
+<div class="logo" style="background-image: url('https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@b00a2d0486596e73dd7326beacf352c639623a0e/commons/img/logo.png')"></div>
+</a>
+</div>
+<ul class="nav-left">
+<li class="search-box">
+<a class="search-toggle" href="#">
+<i class="search-icon fa fa-search"></i>
+<i class="search-icon-close fa fa-close"></i>
+</a>
+</li>
+<li class="search-input"><input id="search-tests" class="form-control" type="text" placeholder="Search..."></li>
+</ul>
+<ul class="nav-right">
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary"></span></a>
+</li>
+<li class="m-r-10">
+<a href="#"><span class="badge badge-primary">Oct 10, 2026 05:13:00 PM</span></a>
+</li>
+</ul>
+</div>
+</div><div class="side-nav">
+<div class="side-nav-inner">
+<ul class="side-nav-menu">
+<li class="nav-item dropdown" onclick="toggleView('test-view')">
+<a id="nav-test" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-list"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('exception-view')">
+<a id="nav-exception" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bug"></i></span>
+</a>
+</li>
+<li class="nav-item dropdown" onclick="toggleView('dashboard-view')">
+<a id="nav-dashboard" class="dropdown-toggle" href="#">
+<span class="ico"><i class="fa fa-bar-chart"></i></span>
+</a>
+</li>
+</ul>
+</div>
+</div>      <div class="vcontainer">
+        <div class="main-content">
+<div class="test-wrapper row view test-view">
+  <div class="test-list">
+    <div class="test-list-tools">
+<ul class="tools pull-left">
+<li><a href="#"><span class="font-size-14">Tests</span></a></li>
+</ul>
+<ul class="tools text-right">
+<li class="dropdown">
+<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-exclamation-circle"></i></a>
+<ul id="status-toggle" class="dropdown-menu dropdown-md p-v-0">
+<a class="dropdown-item" status="pass" href="#"><span>Pass</span><span class="status success"></span></a>
+<a class="dropdown-item" status="fail" href="#"><span>Fail</span><span class="status danger"></span></a>
+<div class="dropdown-divider"></div>
+<a status="clear" class="dropdown-item" href="#"><span>Clear</span><span class="pull-right"><i class="fa fa-close"></i></span></a>
+</ul>
+</li>
+</ul>
+</div>    <div class="test-list-wrapper scrollable">
+      <ul class="test-list-item">
+        <li class="test-item"  status="fail" test-id="1"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDiscountFilterFunctionality_Mobile_17-13-00</p>
+            <p class="text-sm">
+              <span>5:13:15 PM</span> / <span>00:00:45:310</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDiscountFilterFunctionality_Mobile_17-13-00</h5>
+<span class='badge badge-success'>10.10.2026 5:13:15 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:00 PM</span>
+<span class='badge badge-default'>00:00:45:310</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=1</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:13:15 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDiscountFilterFunctionality(AmazonTests.java:1041)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDiscountFilterFunctionality_Mobile_17-13-00/verifyingDiscountFilterFunctionality_Mobile_17-13-00.log' target='_blank'>verifyingDiscountFilterFunctionality_Mobile_17-13-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Mobile_17-13-00/Mobile302964684200.png' src="../screenshots/verifyingDiscountFilterFunctionality_Mobile_17-13-00/Mobile302964684200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Mobile_17-13-00/Mobile316453709200.png' src="../screenshots/verifyingDiscountFilterFunctionality_Mobile_17-13-00/Mobile316453709200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:00 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Mobile_17-13-00/Mobile328415060400.png' src="../screenshots/verifyingDiscountFilterFunctionality_Mobile_17-13-00/Mobile328415060400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="2"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00</p>
+            <p class="text-sm">
+              <span>5:13:15 PM</span> / <span>00:01:07:539</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00</h5>
+<span class='badge badge-success'>10.10.2026 5:13:15 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:22 PM</span>
+<span class='badge badge-default'>00:01:07:539</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=2</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:13:15 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 2,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------,
+	 filter 'up to 2,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------,
+	 filter '3,000 to 3,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------,
+	 filter '3,000 to 3,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: poco c85x 5g smartphone (sunset gold, 4gb ram), (128gb storage)
+ Key Features: brand poco
+operating system android 16
+ram memory installed size 4 gb
+cpu model cortex a5
+cpu speed 2.2 ghz
+ About: about this item
+5g connectivity: the poco c85x 5g supports next-generation 5g networks, enabling faster download and upload speeds for seamless browsing and streaming.
+camera system: equipped with a 32mp rear camera, the poco c85x 5g captures sharp, detailed photos and videos for every occasion.
+performance: powered by 4gb ram and 128gb internal storage, this smartphone handles everyday tasks, apps, and media with ease.
+vibrant display: features a large waterdrop notch display that delivers vivid visuals, making it ideal for watching content and browsing.
+stylish design: the emerald green finish with a subtle poco-branded pattern on the back gives this smartphone a distinctive and premium look.
+› see more product details
+ Tech Details: poco c85x 5g smartphone mobile phone information
+additional details
+camera
+battery
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+video
+-----------------------------------------------------------------------------------------,
+	 filter '4,000 to 4,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: motorola g67 power 5g (pantone cilantro, 256 gb) (12 gb ram)
+ Key Features: brand motorola
+operating system android 15
+ram memory installed size 12 gb
+cpu model cortex a7
+cpu speed 2.4 ghz
+ About: about this item
+50mp ai camera: sony lytia 600 sensor with f/1.8 aperture, pdaf, and 8mp ultrawide lens for stunning photos and 4k video recording
+7000mah battery: segment-leading silicon carbon battery lasts over 2 days, with 30w turbopower charging to power up quickly
+powerful performance: qualcomm snapdragon 7s gen 2 (4nm) octa-core processor with up to 24gb adaptive ram via ram boost and 5g connectivity
+brilliant display: 6.7-inch fhd+ lcd with 120hz refresh rate, corning gorilla glass 7i, pantone validated colours, and hdr10+ support
+durable build: ip64 water and dust resistance, mil-810h military-grade durability, vegan leather body, and stereo speakers with dolby atmos
+advanced front camera: 32mp front-facing camera with 4k video recording capability for high-quality selfies and video calls
+latest android os: runs on android 15 operating system with ram boost 4.0 technology for smooth and responsive user experience
+premium color options: available in pantone cilantro, parachute purple, and blue curacao with premium vegan leather body finish
+› see more product details
+ Tech Details: motorola g67 power 5g mobile phone information
+additional details
+camera
+battery
+battery life
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+measurements
+video
+-----------------------------------------------------------------------------------------,
+	 filter '4,000 to 4,999 mah' not found in product details.
+---------------------------------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-----------------------------------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingBatteryCapacityFilterFunctionality(AmazonTests.java:549)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00.log' target='_blank'>verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/Mobile303113313900.png' src="../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/Mobile303113313900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/Mobile316030384000.png' src="../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/Mobile316030384000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:22 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/Mobile339762006200.png' src="../screenshots/verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00/Mobile339762006200.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="3"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00</p>
+            <p class="text-sm">
+              <span>5:13:17 PM</span> / <span>00:01:18:852</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00</h5>
+<span class='badge badge-success'>10.10.2026 5:13:17 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:35 PM</span>
+<span class='badge badge-default'>00:01:18:852</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=3</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:13:17 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x smartphone 6.72 inch 144hz display 7000mah titan bettery 45w fast charge 6gb ram 128gb rom dimensity 7400 ultra 5g chipset ip64 waterproof dual sim (lake green)
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x smartphone 6.72 inch 144hz display 7000mah titan bettery 45w fast charge 6gb ram 128gb rom dimensity 7400 ultra 5g chipset ip64 waterproof dual sim (lake green)
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x smartphone 6.72 inch 144hz display 7000mah titan bettery 45w fast charge 6gb ram 128gb rom dimensity 7400 ultra 5g chipset ip64 waterproof dual sim (lake green)
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: tecno spark go 3 (ink black, 4gb+64gb | super durability drop resistant & ip64 rated | make calls without network* |ella al in your own language | super smooth 120hz 6.74" display |5000mah battery
+ Key Features: brand tecno
+operating system android 15
+ram memory installed size 4 gb
+cpu model others
+cpu speed 1.4 ghz
+ About: about this item
+super durability drop resistant & ip64 protection : built to handle real-life usage with confidence. spark go 3’s sturdy design, drop resistance, and ip64-rated protection safeguard the device against accidental splashes, dust, and everyday bumps.
+smooth 120hz industry leading display : experience ultra-fluid scrolling and crisp visuals on an smooth 120hz display. whether browsing, watching, or reels scrolling, everything feels smoother and more responsive.
+make calls without network* : stay connected even in no signal areas. spark go 3 allows essential calling support without active network coverage in limited range, ensuring communication when it matters the most. tnc apply.
+ella al in your own language : ella ai understands and interacts in your preferred regional language, making daily tasks simpler, more intuitive, and more personal.a smart assistant that truly feels local. tnc apply
+premium flagship design : a stylish, modern build that stands out. spark go 3 combines refined craftsmanship with bold color finishes, offering a premium flagship-like look and feel in an accessible package.
+long lasting big battery : designed to keep up with long days and longer routines. the 5000mah battery ensures extended usage without frequent charging breaks, supporting uninterrupted learning, entertainment, and communication.
+› see more product details
+ Tech Details: tecno spark go 3 mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+video
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x smartphone 6.72 inch 144hz display 7000mah titan bettery 45w fast charge 6gb ram 128gb rom dimensity 7400 ultra 5g chipset ip64 waterproof dual sim (lake green)
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: tecno spark go 3 (ink black, 4gb+64gb | super durability drop resistant & ip64 rated | make calls without network* |ella al in your own language | super smooth 120hz 6.74" display |5000mah battery
+ Key Features: brand tecno
+operating system android 15
+ram memory installed size 4 gb
+cpu model others
+cpu speed 1.4 ghz
+ About: about this item
+super durability drop resistant & ip64 protection : built to handle real-life usage with confidence. spark go 3’s sturdy design, drop resistance, and ip64-rated protection safeguard the device against accidental splashes, dust, and everyday bumps.
+smooth 120hz industry leading display : experience ultra-fluid scrolling and crisp visuals on an smooth 120hz display. whether browsing, watching, or reels scrolling, everything feels smoother and more responsive.
+make calls without network* : stay connected even in no signal areas. spark go 3 allows essential calling support without active network coverage in limited range, ensuring communication when it matters the most. tnc apply.
+ella al in your own language : ella ai understands and interacts in your preferred regional language, making daily tasks simpler, more intuitive, and more personal.a smart assistant that truly feels local. tnc apply
+premium flagship design : a stylish, modern build that stands out. spark go 3 combines refined craftsmanship with bold color finishes, offering a premium flagship-like look and feel in an accessible package.
+long lasting big battery : designed to keep up with long days and longer routines. the 5000mah battery ensures extended usage without frequent charging breaks, supporting uninterrupted learning, entertainment, and communication.
+› see more product details
+ Tech Details: tecno spark go 3 mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+video
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: redmi mi 5 (black, 4gb ram, 64gb storage)
+ Key Features: brand redmi
+operating system android
+ram memory installed size 4 gb
+cpu model snapdragon
+cpu speed 1.3 ghz
+ About: about this item
+camera: 12 mp rear camera with large 1.25μm pixels | 5 mp front camera with led selfie light
+display: 14.4 centimeters (5.7-inch) hd+ full screen display with 720x1440 pixels and 18:9 aspect ratio | 2.5d curved glass; 450 nits brightness; 72% of ntsc color gamut; night display; reading mode
+memory, storage & sim: 4gb ram | 64gb storage expandable up to 128gb | dual hybrid sim support (nano+nano) with dual standby (4g+4g)
+operating system and processor: qualcomm snapdragon 450 octa core processor with 14nm finfet technology
+battery: 3300 mah lithium ion large battery with stand by upto 31 days; non-removable battery; 5v/2a
+warranty: 1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories including batteries from the date of purchase
+included in box: power adaptor, usb cable, clear soft case
+› see more product details
+ Tech Details: redmi mi 5 mobile phone information
+additional details
+camera
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery
+video
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x smartphone 6.72 inch 144hz display 7000mah titan bettery 45w fast charge 6gb ram 128gb rom dimensity 7400 ultra 5g chipset ip64 waterproof dual sim (lake green)
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: tecno spark go 3 (ink black, 4gb+64gb | super durability drop resistant & ip64 rated | make calls without network* |ella al in your own language | super smooth 120hz 6.74" display |5000mah battery
+ Key Features: brand tecno
+operating system android 15
+ram memory installed size 4 gb
+cpu model others
+cpu speed 1.4 ghz
+ About: about this item
+super durability drop resistant & ip64 protection : built to handle real-life usage with confidence. spark go 3’s sturdy design, drop resistance, and ip64-rated protection safeguard the device against accidental splashes, dust, and everyday bumps.
+smooth 120hz industry leading display : experience ultra-fluid scrolling and crisp visuals on an smooth 120hz display. whether browsing, watching, or reels scrolling, everything feels smoother and more responsive.
+make calls without network* : stay connected even in no signal areas. spark go 3 allows essential calling support without active network coverage in limited range, ensuring communication when it matters the most. tnc apply.
+ella al in your own language : ella ai understands and interacts in your preferred regional language, making daily tasks simpler, more intuitive, and more personal.a smart assistant that truly feels local. tnc apply
+premium flagship design : a stylish, modern build that stands out. spark go 3 combines refined craftsmanship with bold color finishes, offering a premium flagship-like look and feel in an accessible package.
+long lasting big battery : designed to keep up with long days and longer routines. the 5000mah battery ensures extended usage without frequent charging breaks, supporting uninterrupted learning, entertainment, and communication.
+› see more product details
+ Tech Details: tecno spark go 3 mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+video
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: redmi mi 5 (black, 4gb ram, 64gb storage)
+ Key Features: brand redmi
+operating system android
+ram memory installed size 4 gb
+cpu model snapdragon
+cpu speed 1.3 ghz
+ About: about this item
+camera: 12 mp rear camera with large 1.25μm pixels | 5 mp front camera with led selfie light
+display: 14.4 centimeters (5.7-inch) hd+ full screen display with 720x1440 pixels and 18:9 aspect ratio | 2.5d curved glass; 450 nits brightness; 72% of ntsc color gamut; night display; reading mode
+memory, storage & sim: 4gb ram | 64gb storage expandable up to 128gb | dual hybrid sim support (nano+nano) with dual standby (4g+4g)
+operating system and processor: qualcomm snapdragon 450 octa core processor with 14nm finfet technology
+battery: 3300 mah lithium ion large battery with stand by upto 31 days; non-removable battery; 5v/2a
+warranty: 1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories including batteries from the date of purchase
+included in box: power adaptor, usb cable, clear soft case
+› see more product details
+ Tech Details: redmi mi 5 mobile phone information
+additional details
+camera
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery
+video
+------------------------------------------------------------- filter '1.5 - 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: realme p4x smartphone 6.72 inch 144hz display 7000mah titan bettery 45w fast charge 6gb ram 128gb rom dimensity 7400 ultra 5g chipset ip64 waterproof dual sim (lake green)
+ Key Features: brand realme
+operating system android
+ram memory installed size 6 gb
+cpu model mediatek dimensity 8000
+cpu speed 2.6 hz
+ About: about this item
+brand & model: realme p4x smartphone in an attractive lake green colour with sleek modern design
+› see more product details
+ Tech Details: product information
+additional details
+camera
+battery
+measurements
+video
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+navigation
+------------------------------------------------------------- filter 'less than 0.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: tecno spark go 3 (ink black, 4gb+64gb | super durability drop resistant & ip64 rated | make calls without network* |ella al in your own language | super smooth 120hz 6.74" display |5000mah battery
+ Key Features: brand tecno
+operating system android 15
+ram memory installed size 4 gb
+cpu model others
+cpu speed 1.4 ghz
+ About: about this item
+super durability drop resistant & ip64 protection : built to handle real-life usage with confidence. spark go 3’s sturdy design, drop resistance, and ip64-rated protection safeguard the device against accidental splashes, dust, and everyday bumps.
+smooth 120hz industry leading display : experience ultra-fluid scrolling and crisp visuals on an smooth 120hz display. whether browsing, watching, or reels scrolling, everything feels smoother and more responsive.
+make calls without network* : stay connected even in no signal areas. spark go 3 allows essential calling support without active network coverage in limited range, ensuring communication when it matters the most. tnc apply.
+ella al in your own language : ella ai understands and interacts in your preferred regional language, making daily tasks simpler, more intuitive, and more personal.a smart assistant that truly feels local. tnc apply
+premium flagship design : a stylish, modern build that stands out. spark go 3 combines refined craftsmanship with bold color finishes, offering a premium flagship-like look and feel in an accessible package.
+long lasting big battery : designed to keep up with long days and longer routines. the 5000mah battery ensures extended usage without frequent charging breaks, supporting uninterrupted learning, entertainment, and communication.
+› see more product details
+ Tech Details: tecno spark go 3 mobile phone information
+additional details
+camera
+battery
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery life
+video
+------------------------------------------------------------- filter '1 - 1.49 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: redmi mi 5 (black, 4gb ram, 64gb storage)
+ Key Features: brand redmi
+operating system android
+ram memory installed size 4 gb
+cpu model snapdragon
+cpu speed 1.3 ghz
+ About: about this item
+camera: 12 mp rear camera with large 1.25μm pixels | 5 mp front camera with led selfie light
+display: 14.4 centimeters (5.7-inch) hd+ full screen display with 720x1440 pixels and 18:9 aspect ratio | 2.5d curved glass; 450 nits brightness; 72% of ntsc color gamut; night display; reading mode
+memory, storage & sim: 4gb ram | 64gb storage expandable up to 128gb | dual hybrid sim support (nano+nano) with dual standby (4g+4g)
+operating system and processor: qualcomm snapdragon 450 octa core processor with 14nm finfet technology
+battery: 3300 mah lithium ion large battery with stand by upto 31 days; non-removable battery; 5v/2a
+warranty: 1 year manufacturer warranty for device and 6 months manufacturer warranty for in-box accessories including batteries from the date of purchase
+included in box: power adaptor, usb cable, clear soft case
+› see more product details
+ Tech Details: redmi mi 5 mobile phone information
+additional details
+camera
+measurements
+navigation
+feedback
+would you like to tell us about a lower price?
+display
+connectivity
+item details
+
+battery
+video
+------------------------------------------------------------- filter '1.5 - 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+------------------------------------------------------------- filter '1.5 - 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingProcessorSpeedFilterFunctionality(AmazonTests.java:713)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00.log' target='_blank'>verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/Mobile303128959300.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/Mobile303128959300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/Mobile328000201700.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/Mobile328000201700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:35 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/Mobile362886251600.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00/Mobile362886251600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="4"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDiscountFilterFunctionality_Laptop_17-14-01</p>
+            <p class="text-sm">
+              <span>5:14:02 PM</span> / <span>00:01:18:637</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDiscountFilterFunctionality_Laptop_17-14-01</h5>
+<span class='badge badge-success'>10.10.2026 5:14:02 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:21 PM</span>
+<span class='badge badge-default'>00:01:18:637</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=4</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:02 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: dell 15 (previously inspiron) laptop, 14th gen intel core i3/core 3 100u processor, 8gb ddr4, 512 ssd, 15.6" fhd 120hz ips ag 250 nit display, win 11 + office h&s 2024, carbon black, 1.63kg
+ Key Features: brand dell
+model name inspiron
+screen size 15.6 inches
+colour black
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 8 gb
+ About: about this item
+processor: intel core 3 100u 14th generation (up to 4.70 ghz, 10mb 6 cores)
+ram & storage: 8 gb, 1 x 8 gb, ddr4, 2666 mt/s & 512gb ssd
+software: pre-loaded windows 11 home with lifetime validity | ms office home and student 2024 with lifetime validity| mcafee multi-device security 12-month subscription graphics & keyboard: intel uhd graphics & standard keyboard
+display: 15.6" nt fhd 120hz wva ips ag 250 nit narrow border led-backlit // warranty: 1 year onsite hardware service
+ports: 1 usb 3.2 gen 1 type-a port + 1 usb 3.2 gen 1 type-c data only (on systems configured with plastic chassis and 13th generation intel core processors), 1 usb 3.2 gen 1 type-a port + 1 usb 3.2 gen 1 type-c full function (on systems configured with aluminum cover chassis), 1 usb 2.0 port, 1 headset jack, 1 hdmi 1.4 port, 1 sd 3.0 card slot
+› see more product details
+ Tech Details: dell 15 (previously inspiron) laptop information
+additional details
+display
+connectivity
+battery
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+memory
+ports & slots
+audio
+-------------------------------------------------------------,
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: acer smartchoice aspire one, amd ryzen 3-7320u, 8gb lpddr5 ram/ 256gb ssd, 14.0"/35.56cm tn hd display, win 11 home, pure silver, 1.48kg, a114-43, thin and light laptop
+ Key Features: brand acer
+model name aspire one
+screen size 14 inches
+colour pure silver
+hard disk size 256 gb
+cpu model ryzen 3
+ram memory installed size 8 gb
+ About: about this item
+processor : whether you're at home, school, or work, get all the performance you need with the latest amd ryzen 3-7320u processor @ 2.4ghz ( 4 cores, 4mb cache, up to 4.1 ghz); maintaining order and keeping your apps running consistently and smoothly.
+operating system: windows 11 home |preinstalled software: none
+performance : 8gb lpddr5 ram for full-power multitasking; 256gb ssd; this thin and light laptop offers a good experience for watching videos, browsing the web, remote work, or study from home.
+display : 14.0-inch hd 1366 x 768 resolution display keeps images and videos stunning while the narrow border offers-up more viewable space. to protect user’s eyes from harmful blue light, it also includes acer blueligh shield.
+wireless connectivity : dual band wi-fi 5 (802.11a/b/g/n/ac) provides fast internet access. for enhanced video calls this laptop also includes and optimized camera and microphones.
+plenty of ports : flexible connectivity options through usb 2.0/ 3.0/3.2 ports. users can also connect an external display through the hdmi port.
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: acer smartchoice aspire one, amd ryzen 3-7320u, 8gb lpddr5 ram/ 256gb ssd, 14.0"/35.56cm tn hd display, win 11 home, pure silver, 1.48kg, a114-43, thin and light laptop
+ Key Features: brand acer
+model name aspire one
+screen size 14 inches
+colour pure silver
+hard disk size 256 gb
+cpu model ryzen 3
+ram memory installed size 8 gb
+ About: about this item
+processor : whether you're at home, school, or work, get all the performance you need with the latest amd ryzen 3-7320u processor @ 2.4ghz ( 4 cores, 4mb cache, up to 4.1 ghz); maintaining order and keeping your apps running consistently and smoothly.
+operating system: windows 11 home |preinstalled software: none
+performance : 8gb lpddr5 ram for full-power multitasking; 256gb ssd; this thin and light laptop offers a good experience for watching videos, browsing the web, remote work, or study from home.
+display : 14.0-inch hd 1366 x 768 resolution display keeps images and videos stunning while the narrow border offers-up more viewable space. to protect user’s eyes from harmful blue light, it also includes acer blueligh shield.
+wireless connectivity : dual band wi-fi 5 (802.11a/b/g/n/ac) provides fast internet access. for enhanced video calls this laptop also includes and optimized camera and microphones.
+plenty of ports : flexible connectivity options through usb 2.0/ 3.0/3.2 ports. users can also connect an external display through the hdmi port.
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDiscountFilterFunctionality(AmazonTests.java:1041)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDiscountFilterFunctionality_Laptop_17-14-01/verifyingDiscountFilterFunctionality_Laptop_17-14-01.log' target='_blank'>verifyingDiscountFilterFunctionality_Laptop_17-14-01.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Laptop_17-14-01/Laptop344043751600.png' src="../screenshots/verifyingDiscountFilterFunctionality_Laptop_17-14-01/Laptop344043751600.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Laptop_17-14-01/Laptop377679460900.png' src="../screenshots/verifyingDiscountFilterFunctionality_Laptop_17-14-01/Laptop377679460900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:21 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Laptop_17-14-01/Laptop398610558000.png' src="../screenshots/verifyingDiscountFilterFunctionality_Laptop_17-14-01/Laptop398610558000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="5"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingBatteryCapacityFilterFunctionality_Laptop_17-14-23</p>
+            <p class="text-sm">
+              <span>5:14:25 PM</span> / <span>00:00:06:087</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingBatteryCapacityFilterFunctionality_Laptop_17-14-23</h5>
+<span class='badge badge-success'>10.10.2026 5:14:25 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:31 PM</span>
+<span class='badge badge-default'>00:00:06:087</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=5</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:25 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:14:31 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:31 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:31 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingBatteryCapacityFilterFunctionality_Laptop_17-14-23/verifyingBatteryCapacityFilterFunctionality_Laptop_17-14-23.log' target='_blank'>verifyingBatteryCapacityFilterFunctionality_Laptop_17-14-23.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="6"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingBatteryCapacityFilterFunctionality_Tablet_17-14-31</p>
+            <p class="text-sm">
+              <span>5:14:33 PM</span> / <span>00:00:08:348</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingBatteryCapacityFilterFunctionality_Tablet_17-14-31</h5>
+<span class='badge badge-success'>10.10.2026 5:14:33 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:14:41 PM</span>
+<span class='badge badge-default'>00:00:08:348</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=6</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:33 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:14:41 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:41 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:41 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingBatteryCapacityFilterFunctionality_Tablet_17-14-31/verifyingBatteryCapacityFilterFunctionality_Tablet_17-14-31.log' target='_blank'>verifyingBatteryCapacityFilterFunctionality_Tablet_17-14-31.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="7"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36</p>
+            <p class="text-sm">
+              <span>5:14:38 PM</span> / <span>00:01:32:312</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36</h5>
+<span class='badge badge-success'>10.10.2026 5:14:38 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:16:11 PM</span>
+<span class='badge badge-default'>00:01:32:312</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=7</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:38 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+-------------------------------------------------------------,
+	 filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------- filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 15 (2026),intel core 3 100u (i3-14th gen), intel igpu, 8gb/512gb,fhd,15.6"(39.6 cm),windows 11,m365 basic(1 year)* office 2024,cool silver,1.7 kg, x1504vap-bq1321ws,thin & light laptop
+ Key Features: brand asus
+model name asus vivobook 15
+screen size 15.6 inches
+colour cool silver
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 8 gb
+ About: about this item
+processor, memory & storage : intel core 3 processor 100u 1.2 ghz (10mb cache, up to 4.7 ghz, 6 cores, 8 threads) | memory : ddr5 8gb ram | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 15.6-inch, fhd (1920 x 1080) 16:9 aspect ratio, 60hz refresh rate, 250nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 84% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 1x usb 2.0 type-a (data speed up to 480mbps), 1x usb 3.2 gen 1 type-c (data speed up to 5gbps), 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack, 1x dc-in | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : 720p hd camera ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+-------------------------------------------------------------,
+	 filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------- filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 15 (2026),intel core 3 100u (i3-14th gen), intel igpu, 8gb/512gb,fhd,15.6"(39.6 cm),windows 11,m365 basic(1 year)* office 2024,cool silver,1.7 kg, x1504vap-bq1321ws,thin & light laptop
+ Key Features: brand asus
+model name asus vivobook 15
+screen size 15.6 inches
+colour cool silver
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 8 gb
+ About: about this item
+processor, memory & storage : intel core 3 processor 100u 1.2 ghz (10mb cache, up to 4.7 ghz, 6 cores, 8 threads) | memory : ddr5 8gb ram | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 15.6-inch, fhd (1920 x 1080) 16:9 aspect ratio, 60hz refresh rate, 250nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 84% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 1x usb 2.0 type-a (data speed up to 480mbps), 1x usb 3.2 gen 1 type-c (data speed up to 5gbps), 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack, 1x dc-in | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : 720p hd camera ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 16 (2026),intel core ultra 5 225h,intel igpu,16gb ram (upgradeable),512gb ssd,fhd+,16"(40 cm),windows 11 home,m365 basic(1 year),office 2024,quiet blue,1.88 kg,x1607ca-mb349ws,ai laptop
+ Key Features: brand asus
+model name asus vivobook 16
+screen size 16 inches
+colour quiet blue
+hard disk size 512 gb
+cpu model intel core ultra 5
+ram memory installed size 16 gb
+ About: about this item
+processor, memory & storage : intel core ultra 5 processor 225h 1.7 ghz (18mb cache, up to 4.9 ghz, 14 cores, 14 threads); intel ai boost npu up to 13tops | memory : ddr5 16gb ram (upgradeable) | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 16.0-inch, fhd+, wuxga (1920 x 1200) 16:10 aspect ratio, 60hz refresh rate, 300nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 89% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 2x usb 3.2 gen 1 type-c with support for display / power delivery (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : fhd camera with ir function to support windows hello ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key with copilot key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+-------------------------------------------------------------,
+	 filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------- filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 15 (2026),intel core 3 100u (i3-14th gen), intel igpu, 8gb/512gb,fhd,15.6"(39.6 cm),windows 11,m365 basic(1 year)* office 2024,cool silver,1.7 kg, x1504vap-bq1321ws,thin & light laptop
+ Key Features: brand asus
+model name asus vivobook 15
+screen size 15.6 inches
+colour cool silver
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 8 gb
+ About: about this item
+processor, memory & storage : intel core 3 processor 100u 1.2 ghz (10mb cache, up to 4.7 ghz, 6 cores, 8 threads) | memory : ddr5 8gb ram | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 15.6-inch, fhd (1920 x 1080) 16:9 aspect ratio, 60hz refresh rate, 250nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 84% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 1x usb 2.0 type-a (data speed up to 480mbps), 1x usb 3.2 gen 1 type-c (data speed up to 5gbps), 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack, 1x dc-in | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : 720p hd camera ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 16 (2026),intel core ultra 5 225h,intel igpu,16gb ram (upgradeable),512gb ssd,fhd+,16"(40 cm),windows 11 home,m365 basic(1 year),office 2024,quiet blue,1.88 kg,x1607ca-mb349ws,ai laptop
+ Key Features: brand asus
+model name asus vivobook 16
+screen size 16 inches
+colour quiet blue
+hard disk size 512 gb
+cpu model intel core ultra 5
+ram memory installed size 16 gb
+ About: about this item
+processor, memory & storage : intel core ultra 5 processor 225h 1.7 ghz (18mb cache, up to 4.9 ghz, 14 cores, 14 threads); intel ai boost npu up to 13tops | memory : ddr5 16gb ram (upgradeable) | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 16.0-inch, fhd+, wuxga (1920 x 1200) 16:10 aspect ratio, 60hz refresh rate, 300nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 89% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 2x usb 3.2 gen 1 type-c with support for display / power delivery (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : fhd camera with ir function to support windows hello ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key with copilot key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗗𝗲𝗹𝗹laptop model e5440 business laptop | core i5 4200u | 8gb ram | 256gb ssd | 14" hd display | win 10 | a+condition (pre-owned & tested)
+ Key Features: brand generic
+model name e5440
+screen size 14 inches
+colour black
+cpu model core i5 4200u
+ram memory installed size 8 gb
+ About: about this item
+this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 6 month seller warranty; box may be generic
+› see more product details
+ Tech Details: 𝗗𝗲𝗹𝗹laptop information
+additional details
+display
+memory
+connectivity
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+ports & slots
+-------------------------------------------------------------,
+	 filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------- filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 15 (2026),intel core 3 100u (i3-14th gen), intel igpu, 8gb/512gb,fhd,15.6"(39.6 cm),windows 11,m365 basic(1 year)* office 2024,cool silver,1.7 kg, x1504vap-bq1321ws,thin & light laptop
+ Key Features: brand asus
+model name asus vivobook 15
+screen size 15.6 inches
+colour cool silver
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 8 gb
+ About: about this item
+processor, memory & storage : intel core 3 processor 100u 1.2 ghz (10mb cache, up to 4.7 ghz, 6 cores, 8 threads) | memory : ddr5 8gb ram | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 15.6-inch, fhd (1920 x 1080) 16:9 aspect ratio, 60hz refresh rate, 250nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 84% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 1x usb 2.0 type-a (data speed up to 480mbps), 1x usb 3.2 gen 1 type-c (data speed up to 5gbps), 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack, 1x dc-in | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : 720p hd camera ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 16 (2026),intel core ultra 5 225h,intel igpu,16gb ram (upgradeable),512gb ssd,fhd+,16"(40 cm),windows 11 home,m365 basic(1 year),office 2024,quiet blue,1.88 kg,x1607ca-mb349ws,ai laptop
+ Key Features: brand asus
+model name asus vivobook 16
+screen size 16 inches
+colour quiet blue
+hard disk size 512 gb
+cpu model intel core ultra 5
+ram memory installed size 16 gb
+ About: about this item
+processor, memory & storage : intel core ultra 5 processor 225h 1.7 ghz (18mb cache, up to 4.9 ghz, 14 cores, 14 threads); intel ai boost npu up to 13tops | memory : ddr5 16gb ram (upgradeable) | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 16.0-inch, fhd+, wuxga (1920 x 1200) 16:10 aspect ratio, 60hz refresh rate, 300nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 89% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 2x usb 3.2 gen 1 type-c with support for display / power delivery (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : fhd camera with ir function to support windows hello ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key with copilot key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗗𝗲𝗹𝗹laptop model e5440 business laptop | core i5 4200u | 8gb ram | 256gb ssd | 14" hd display | win 10 | a+condition (pre-owned & tested)
+ Key Features: brand generic
+model name e5440
+screen size 14 inches
+colour black
+cpu model core i5 4200u
+ram memory installed size 8 gb
+ About: about this item
+this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 6 month seller warranty; box may be generic
+› see more product details
+ Tech Details: 𝗗𝗲𝗹𝗹laptop information
+additional details
+display
+memory
+connectivity
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+ports & slots
+------------------------------------------------------------- filter '1.80 to 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗟𝗲𝗻𝗼𝘃𝗼model t490 laptop | core i5 8th gen processor | fast 16gb ram | 256 gb ssd | 14-inch hd display | win 10 |(pre-owned & tested)
+ Key Features: brand generic
+model name t490
+screen size 14 inches
+colour black
+hard disk size 256 gb
+cpu model core i5
+ram memory installed size 16 gb
+ About: about this item
+this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 3 month seller warranty; box may be generic disclaimer: the laptop shown in the images is for reference only. as this is a pre-owned product, the actual unit may vary in appearance, including cosmetic differences, while maintaining the same specifications and functionality. note: physical, liquid, electrical damages, unauthorized repair and any type of software issue are not covered in warranty.
+it gives fast performance at an affordable price. laptop ideal for professionals/students needing best-in-class, slim and light laptop. it's powered with intei core i5 8565u 1.8 ghz with intei turbo boost, 16gb ddr4 ram along with 256gb ssd storage which enhances the overall performance of the machine .
+it offers brighter, crisper display with 14-inch hd along with webcam and microphone which enhances your video conferencing experience. pre-installed with win 10.
+it encompasses a wide range of slots and ports, it comes along with usb, hdmi, power connector,headphone/microphone combo jack reader.it also comes with bluetooth 5.0 making your wireless connectivity easier and faster.
+certified & thoroughly tested - professionally checked for performance, durability & quality - your everyday workhorse
+› see more product details
+ Tech Details: 𝗟𝗲𝗻𝗼𝘃𝗼model t490 laptop information
+additional details
+memory
+connectivity
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+display
+battery
+input devices
+audio
+-------------------------------------------------------------,
+	 filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: apple 2026 macbook neo 13″ laptop with a18 pro chip: built for ai and apple intelligence, liquid retina display, 8gb unified memory, 256gb ssd storage, 1080p facetime hd camera; indigo
+ Key Features: brand apple
+model name macbook neo
+screen size 13 inches
+colour indigo
+cpu model apple a18 pro
+ram memory installed size 8 gb
+ About: about this item
+hello, macbook neo — ready for whatever your day brings, macbook neo flies through everyday tasks and apps. choose from four stunning colours in a durable aluminium design. with a brilliant 33.02 cm (13″) liquid retina display, the a18 pro chip built for ai and apple intelligence, and up to 16 hours of battery life, it’s an amazing mac at a surprising price.
+the most colourful macbook line-up ever — choose from silver, blush, citrus or indigo — each with a colour-coordinated keyboard to complete the look. and with a durable aluminium design, macbook neo is built to go wherever you go.
+power for everyday tasks — ready the moment you open it, macbook neo with the a18 pro chip delivers the performance and ai capabilities you need to get things done, whether you’re editing family photos, powering through spreadsheets, using ai to summarise class notes or playing the latest apple arcade game.
+up to 16 hours of battery life — with all-day battery life, macbook neo is equipped to go the distance for everyday users and students — from early-morning classes to late-night study sessions.
+a brilliant 33.02 cm (13″) display — feast your eyes on the gorgeous liquid retina display. a 2408x1506 resolution, up to 500 nits of brightness and support for a billion colours provide vivid images and crisp text.
+› see more product details
+ Tech Details: apple 2026 macbook neo 13″ laptop information
+additional details
+display
+memory
+battery
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+------------------------------------------------------------- filter '1 to 1.59 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 15 (2026),intel core 3 100u (i3-14th gen), intel igpu, 8gb/512gb,fhd,15.6"(39.6 cm),windows 11,m365 basic(1 year)* office 2024,cool silver,1.7 kg, x1504vap-bq1321ws,thin & light laptop
+ Key Features: brand asus
+model name asus vivobook 15
+screen size 15.6 inches
+colour cool silver
+hard disk size 512 gb
+cpu model intel core 3
+ram memory installed size 8 gb
+ About: about this item
+processor, memory & storage : intel core 3 processor 100u 1.2 ghz (10mb cache, up to 4.7 ghz, 6 cores, 8 threads) | memory : ddr5 8gb ram | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 15.6-inch, fhd (1920 x 1080) 16:9 aspect ratio, 60hz refresh rate, 250nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 84% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 1x usb 2.0 type-a (data speed up to 480mbps), 1x usb 3.2 gen 1 type-c (data speed up to 5gbps), 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack, 1x dc-in | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : 720p hd camera ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: asus vivobook 16 (2026),intel core ultra 5 225h,intel igpu,16gb ram (upgradeable),512gb ssd,fhd+,16"(40 cm),windows 11 home,m365 basic(1 year),office 2024,quiet blue,1.88 kg,x1607ca-mb349ws,ai laptop
+ Key Features: brand asus
+model name asus vivobook 16
+screen size 16 inches
+colour quiet blue
+hard disk size 512 gb
+cpu model intel core ultra 5
+ram memory installed size 16 gb
+ About: about this item
+processor, memory & storage : intel core ultra 5 processor 225h 1.7 ghz (18mb cache, up to 4.9 ghz, 14 cores, 14 threads); intel ai boost npu up to 13tops | memory : ddr5 16gb ram (upgradeable) | storage : 512gb m.2 nvme pcie 4.0 ssd + 100gb cloud storage with microsoft 365 basic for 1 year.
+operating system & software : windows 11 home | software : microsoft office home 2024 for lifetime + microsoft 365 basic with 100gb cloud storage for 1 year.
+display & graphics : 16.0-inch, fhd+, wuxga (1920 x 1200) 16:10 aspect ratio, 60hz refresh rate, 300nits brightness, 45% ntsc color gamut, anti-glare(ag) display, 89% screen-to-body ratio | graphics : intergrated intel graphics
+ports & connectivity : 2x usb 3.2 gen 1 type-a (data speed up to 5gbps), 2x usb 3.2 gen 1 type-c with support for display / power delivery (data speed up to 5gbps), 1x hdmi 1.4, 1x 3.5mm combo audio jack | connectivity : wi-fi 6(802.11ax) (dual band) 1*1 + bluetooth 5.2 wireless card (*bluetooth version may change with os version different.)
+other features : front-facing camera : fhd camera with ir function to support windows hello ; with privacy shutter | keyboard : backlit chiclet keyboard with num-key with copilot key | battery : 42whrs, 3s1p, 3-cell li-ion
+› see more product details
+ Tech Details: product information
+additional details
+display
+memory
+ports & slots
+input devices
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+
+connectivity
+battery
+audio
+------------------------------------------------------------- filter '1.60 to 1.79 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗗𝗲𝗹𝗹laptop model e5440 business laptop | core i5 4200u | 8gb ram | 256gb ssd | 14" hd display | win 10 | a+condition (pre-owned & tested)
+ Key Features: brand generic
+model name e5440
+screen size 14 inches
+colour black
+cpu model core i5 4200u
+ram memory installed size 8 gb
+ About: about this item
+this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 6 month seller warranty; box may be generic
+› see more product details
+ Tech Details: 𝗗𝗲𝗹𝗹laptop information
+additional details
+display
+memory
+connectivity
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+ports & slots
+------------------------------------------------------------- filter '1.80 to 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: 𝗟𝗲𝗻𝗼𝘃𝗼model t490 laptop | core i5 8th gen processor | fast 16gb ram | 256 gb ssd | 14-inch hd display | win 10 |(pre-owned & tested)
+ Key Features: brand generic
+model name t490
+screen size 14 inches
+colour black
+hard disk size 256 gb
+cpu model core i5
+ram memory installed size 16 gb
+ About: about this item
+this product is tested to work and look like new with minimal to no signs of wear & tear; the product comes with relevant accessories and is backed by a minimum 3 month seller warranty; box may be generic disclaimer: the laptop shown in the images is for reference only. as this is a pre-owned product, the actual unit may vary in appearance, including cosmetic differences, while maintaining the same specifications and functionality. note: physical, liquid, electrical damages, unauthorized repair and any type of software issue are not covered in warranty.
+it gives fast performance at an affordable price. laptop ideal for professionals/students needing best-in-class, slim and light laptop. it's powered with intei core i5 8565u 1.8 ghz with intei turbo boost, 16gb ddr4 ram along with 256gb ssd storage which enhances the overall performance of the machine .
+it offers brighter, crisper display with 14-inch hd along with webcam and microphone which enhances your video conferencing experience. pre-installed with win 10.
+it encompasses a wide range of slots and ports, it comes along with usb, hdmi, power connector,headphone/microphone combo jack reader.it also comes with bluetooth 5.0 making your wireless connectivity easier and faster.
+certified & thoroughly tested - professionally checked for performance, durability & quality - your everyday workhorse
+› see more product details
+ Tech Details: 𝗟𝗲𝗻𝗼𝘃𝗼model t490 laptop information
+additional details
+memory
+connectivity
+ports & slots
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+display
+battery
+input devices
+audio
+------------------------------------------------------------- filter '1.80 to 1.99 ghz' not found in product details.
+-------------------------------------------------------------
+ Title: alketron - 14.1 inch full hd(2026 model) professional laptop - 256gb ssd - intel processor with intel hd graphics 600 - windows 11 pro & ms office - 1yr + 3yr warranty(basic edition)
+ Key Features: brand alketron
+model name alketron laptop & notebook
+screen size 14.1 inches
+hard disk size 256 gb
+cpu model intel n50
+ram memory installed size 6 gb
+ About: about this item
+assembled in india | 1year warranty + 3 year extended warranty** | after sales services & warranty claims available all over india - laptops & notebooks by alketron computers – a leading laptops & pc manufacturers in india
+[processor] intel n3350 high performance(2.4 ghz turbo) processor with intel hd graphics 600 to handle your daily tasks with full hd video support.
+[storage] 256gb m.2 high speed ssd [ram] 6gb ddr3 sodimm ram preinstalled
+[connectivity] pcie inbuilt wifi 6e(2,400 mbps - 5g support) with bluetooth 5.0
+[camera] built-in 1080p full hd front camera [speakers] surround sound speakers [battery] long lasting 6000mah battery [weight] 1.2 kg laptop weight
+[other item specification] 14.1 inch display screen with anti glare | usb 3.0 + usb 2.0 ports | mini hdmi port | micro sd card port | back lit keypad with wide scrollpad
+[software installed] windows 11 professional with ms office preinstalled which includes ms word, excel, powerpoint and other useful applications
+show more
+› see more product details
+ Tech Details: product information
+additional details
+display
+connectivity
+battery
+feedback
+would you like to tell us about a lower price?
+processor
+item details
+memory
+ports & slots
+input devices
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingProcessorSpeedFilterFunctionality(AmazonTests.java:713)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36.log' target='_blank'>verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/Laptop382715647100.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/Laptop382715647100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/Laptop414931396700.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/Laptop414931396700.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:11 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/Laptop448972198800.png' src="../screenshots/verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36/Laptop448972198800.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="8"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42</p>
+            <p class="text-sm">
+              <span>5:14:43 PM</span> / <span>00:01:41:555</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42</h5>
+<span class='badge badge-success'>10.10.2026 5:14:43 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:16:25 PM</span>
+<span class='badge badge-default'>00:01:41:555</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=8</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:14:43 PM</td>
+        <td>
+          Test Input Parameter: <b>Mobile</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 3.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 3.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '4 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '8 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingStorageCapacityFilterFunctionality(AmazonTests.java:396)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42.log' target='_blank'>verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/Mobile391770092900.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/Mobile391770092900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/Mobile424543709400.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/Mobile424543709400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:25 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/Mobile445654558100.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42/Mobile445654558100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="9"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingDiscountFilterFunctionality_Tablet_17-15-22</p>
+            <p class="text-sm">
+              <span>5:15:24 PM</span> / <span>00:00:34:462</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingDiscountFilterFunctionality_Tablet_17-15-22</h5>
+<span class='badge badge-success'>10.10.2026 5:15:24 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:15:58 PM</span>
+<span class='badge badge-default'>00:00:34:462</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=9</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:24 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '10% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '25% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '35% off or more' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingDiscountFilterFunctionality(AmazonTests.java:1041)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingDiscountFilterFunctionality_Tablet_17-15-22/verifyingDiscountFilterFunctionality_Tablet_17-15-22.log' target='_blank'>verifyingDiscountFilterFunctionality_Tablet_17-15-22.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Tablet_17-15-22/Tablet426569939300.png' src="../screenshots/verifyingDiscountFilterFunctionality_Tablet_17-15-22/Tablet426569939300.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Tablet_17-15-22/Tablet437464032900.png' src="../screenshots/verifyingDiscountFilterFunctionality_Tablet_17-15-22/Tablet437464032900.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:15:58 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingDiscountFilterFunctionality_Tablet_17-15-22/Tablet446808173400.png' src="../screenshots/verifyingDiscountFilterFunctionality_Tablet_17-15-22/Tablet446808173400.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="10"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingProcessorSpeedFilterFunctionality_Tablet_17-16-11</p>
+            <p class="text-sm">
+              <span>5:16:12 PM</span> / <span>00:00:04:802</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingProcessorSpeedFilterFunctionality_Tablet_17-16-11</h5>
+<span class='badge badge-success'>10.10.2026 5:16:12 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:16:17 PM</span>
+<span class='badge badge-default'>00:00:04:802</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=10</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:12 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:16:17 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:17 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:17 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingProcessorSpeedFilterFunctionality_Tablet_17-16-11/verifyingProcessorSpeedFilterFunctionality_Tablet_17-16-11.log' target='_blank'>verifyingProcessorSpeedFilterFunctionality_Tablet_17-16-11.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="pass" test-id="11"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingStorageCapacityFilterFunctionality_Laptop_17-16-27</p>
+            <p class="text-sm">
+              <span>5:16:28 PM</span> / <span>00:00:04:095</span>
+              <span class="badge pass-bg log float-right">Pass</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-pass">verifyingStorageCapacityFilterFunctionality_Laptop_17-16-27</h5>
+<span class='badge badge-success'>10.10.2026 5:16:28 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:16:33 PM</span>
+<span class='badge badge-default'>00:00:04:095</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=11</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:28 PM</td>
+        <td>
+          Test Input Parameter: <b>Laptop</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log pass-bg">Pass</span></td>
+        <td>5:16:33 PM</td>
+        <td>
+          Test Passed
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:33 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:33 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingStorageCapacityFilterFunctionality_Laptop_17-16-27/verifyingStorageCapacityFilterFunctionality_Laptop_17-16-27.log' target='_blank'>verifyingStorageCapacityFilterFunctionality_Laptop_17-16-27.log</a>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+        <li class="test-item"  status="fail" test-id="12"
+          author=""
+          tag=""
+          device="">
+          <div class="test-detail">
+            <p class="name">verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33</p>
+            <p class="text-sm">
+              <span>5:16:34 PM</span> / <span>00:01:03:452</span>
+              <span class="badge fail-bg log float-right">Fail</span>
+            </p>
+          </div>
+          <div class="test-contents d-none">
+<div class="detail-head">
+<div class="p-v-10">
+<div class="info">
+<h5 class="test-status text-fail">verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33</h5>
+<span class='badge badge-success'>10.10.2026 5:16:34 PM</span>
+<span class='badge badge-danger'>10.10.2026 5:17:37 PM</span>
+<span class='badge badge-default'>00:01:03:452</span>
+&middot; <span class='uri-anchor badge badge-default'>#test-id=12</span>
+<span title='Skip to the next failed step' class='badge badge-danger pointer float-right ne ml-1'><i class="fa fa-fast-forward"></i></span>
+<span title='Collapse all nodes' class='badge badge-default pointer float-right ct ml-1'><i class="fa fa-compress"></i></span>
+<span title='Expand all nodes' class='badge badge-default pointer float-right et'><i class="fa fa-expand"></i></span>
+</div>
+</div>
+</div><div class="detail-body mt-4">
+<table class="table table-sm">
+  <thead><tr><th class="status-col">Status</th><th class="timestamp-col">Timestamp</th><th class="details-col">Details</th></tr></thead>
+  <tbody>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:16:34 PM</td>
+        <td>
+          Test Input Parameter: <b>Tablet</b>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log fail-bg">Fail</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          <textarea readonly class="code-block">java.lang.AssertionError: The following asserts failed:
+	 filter 'up to 6.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter 'up to 6.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: lenovo idea tab - college tablet - 11″ 2.5k ips touchscreen display - 90hz - mediatek dimensity 6300-4 gb memory - 128 gb storage - integrated arm mali-g57 mc2 - tab pen and folio case
+ Key Features: brand lenovo
+model name idea tab
+memory storage capacity 4 gb
+screen size 11 inches
+display resolution maximum 2560 x 1600
+ About: about this item
+power your study, fuel your play – discover smarter learning with the lenovo idea tab. stay campus-ready with all-day battery life, ai-powered apps to enhance your work, and sharp graphics for tv marathons with friends.
+smooth, powerful, immersive – the mediatek dimensity 6300 processor is more powerful than ever, with the ai-enhanced multitasking you need to stay ahead.
+circle it, search it – use your lenovo tab pen or fingertip to circle items for instant search results or to translate other languages without switching apps. circle to search with google ensures answers are only a circle away.
+sharp view, clear sound – experience sharp visuals and immersive sound for study sessions and streaming breaks. with 72% ntsc and quad dolby atmos-tuned speakers you can enjoy your study breaks with vivid videos and crystal-clear sound.
+level up your study – write, organize, sketch, and calculate with four learning apps built to match your flow. lenovo ai note, squid, nebo, and myscript calculator help you stay clear, focused, and ready for every study session.
+stay powerful – go from study sessions to streaming marathons without worrying about your next charge. enjoy up to 12 hours of youtube, power through assignments, and when you need a boost, the 20w charger gets you back in action quickly.
+vivid and smooth display – write smoothly and study comfortably on the 11” 2.5k ips touchscreen display. tüv rheinland low blue light hardware solutions keeps your eyes safe from harmful blue light so you can work and play fatigue-free.
+unify your digital life – embrace a unified digital ecosystem with smart connect. transition tasks effortlessly across devices without the hassle of cables or email attachments.
+› see more product details
+ Tech Details: product information
+item details
+
+connectivity
+camera
+features
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+battery
+processor
+-------------------------------------------------------------,
+	 filter '7 to 11.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '7 to 11.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: 
+ Key Features: 
+ About: 
+ Tech Details: 
+-------------------------------------------------------------,
+	 filter '12 to 16.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: lenovo 8.8" legion tab multi-touch tablet 12gb/256gb 3040x1904 resolution
+ Key Features: brand lenovo
+model name zah20126us
+memory storage capacity 12 gb
+screen size 8.8 inches
+display resolution maximum 3040 x 1904
+ About: about this item
+powerful processor: equipped with the qualcomm snapdragon 8 elite gen 5 chipset, delivering exceptional performance for gaming and multitasking.
+stunning display: features an 8.8-inch multi-touch screen with a native resolution of 3040 x 1904 for sharp, vivid visuals.
+ample memory & storage: comes with 12gb of ram and 256gb of onboard storage, providing plenty of space for apps, games, and media.
+gaming-ready design: the legion tab is purpose-built for mobile gaming, featuring a sleek, bold aesthetic with an rgb camera ring accent.
+included protective case: comes with a tri-fold folio case that offers full front and back protection while supporting multiple viewing angles.
+› see more product details
+ Tech Details: product information
+item details
+
+battery
+connectivity
+camera
+audio
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+processor
+features
+-------------------------------------------------------------,
+	 filter '12 to 16.9 gb' not found in product details.
+-------------------------------------------------------------
+ Title: ikall n11 tablet – 7 inch hd display, android 8.0, quad-core processor, 2gb ram, 16gb storage & 3000mah battery - black
+ Key Features: brand ikall
+model name n11
+memory storage capacity 16 gb
+screen size 7 inches
+display resolution maximum 1024 x 600 pixels
+ About: about this item
+2mp rear camera capture clear photos and videos with ease. 0.3mp front camera ideal for video calls and selfies. | made in india
+17.78 cm 7-inch display: enjoy vibrant visuals and an immersive viewing experience on a compact screen. |1024*600 resolution
+android 8.0 with 1.3 ghz quad core 3000mah battery long-lasting power for extended usage, perfect for streaming and browsing.
+2gb ram and 16gb internal storage ample space for your apps, documents, and media. expandable memory up to 32gb additional storage with a dedicated memory card slot.
+in box (tablet, traveling adapter, usb cable, user manual)
+› see more product details
+ Tech Details: product information
+item details
+
+battery
+processor
+features
+audio
+feedback
+would you like to tell us about a lower price?
+additional details
+display
+memory
+connectivity
+camera
+-------------------------------------------------------------
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+	at test.java.tests.AmazonTests.verifyingStorageCapacityFilterFunctionality(AmazonTests.java:396)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:545)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:328)
+	at org.testng.internal.thread.graph.TestNGFutureTask.run(TestNGFutureTask.java:22)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1095)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:619)
+	at java.base/java.lang.Thread.run(Thread.java:1447)
+</textarea>
+          
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          📂 Logs:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          📄 <a href='../logs/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33.log' target='_blank'>verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33.log</a>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          📸 Screenshots:
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/Tablet495745530000.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/Tablet495745530000.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/Tablet514783440100.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/Tablet514783440100.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+      <tr class="event-row">
+        <td><span class="badge log info-bg">Info</span></td>
+        <td>5:17:37 PM</td>
+        <td>
+          
+    <div class="row mb-3"><div class="col-md-3">
+    
+
+<img data-featherlight='../screenshots/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/Tablet525563031500.png' src="../screenshots/verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33/Tablet525563031500.png">
+  
+    
+
+    </div></div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+<div class="test-content scrollable">
+<div class="test-content-tools">
+<ul><li><a class="back-to-test" href="#"><i class="fa fa-arrow-left"></i></a></li></ul>
+</div>
+<div class="test-content-detail"><div class="detail-body"></div></div>
+</div></div>
+<div class="test-wrapper row view exception-view attributes-view">
+<div class="test-list">
+<div class="test-list-tools">
+<ul class="tools pull-left"><li><a href=""><span class="font-size-14">Exception</span></a></li></ul>
+<ul class="tools text-right"><li><a href="#"><span class="badge badge-primary">1</span></a></li></ul>
+</div>
+<div class="test-list-wrapper scrollable">
+<ul class="test-list-item">
+<li class="test-item">
+<div class="test-detail">
+<span class="meta">
+<span class='badge log badge-danger'>8</span>
+</span>
+<p class="name">java.lang.AssertionError</p>
+<p class="duration text-sm">8 tests</p>
+</div>
+<div class="test-contents d-none">
+<div class="info">
+<h4>java.lang.AssertionError</h4>
+<span status="fail" class='badge log badge-danger'>8 failed</span>
+</div>
+<table class='table table-sm mt-4'>
+<thead>
+<tr>
+<th class="status-col">Status</th>
+<th class="timestamp-col">Timestamp</th>
+<th>TestName</th>
+</tr>
+</thead>
+<tbody>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:13:15 PM</td>
+<td>
+<a href="#" class="linked" test-id='1' id='1'>verifyingDiscountFilterFunctionality_Mobile_17-13-00</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:13:15 PM</td>
+<td>
+<a href="#" class="linked" test-id='2' id='2'>verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:13:17 PM</td>
+<td>
+<a href="#" class="linked" test-id='3' id='3'>verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:14:02 PM</td>
+<td>
+<a href="#" class="linked" test-id='4' id='4'>verifyingDiscountFilterFunctionality_Laptop_17-14-01</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:15:24 PM</td>
+<td>
+<a href="#" class="linked" test-id='9' id='9'>verifyingDiscountFilterFunctionality_Tablet_17-15-22</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:14:38 PM</td>
+<td>
+<a href="#" class="linked" test-id='7' id='7'>verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:14:43 PM</td>
+<td>
+<a href="#" class="linked" test-id='8' id='8'>verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42</a>
+</td>
+</tr>
+<tr class="tag-test-status" status="fail">
+<td><span class="badge log fail-bg">Fail</span></td>
+<td>17:16:34 PM</td>
+<td>
+<a href="#" class="linked" test-id='12' id='12'>verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="test-content scrollable">
+<div class="test-content-detail">
+<div class="detail-body"></div>
+</div>
+</div>
+</div><div class="container-fluid p-4 view dashboard-view">
+<div class="row">
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Started</p>
+<h3>Oct 10, 2026 05:13:00 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0">Ended</p>
+<h3>Oct 10, 2026 05:17:38 PM</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-pass">Tests Passed</p>
+<h3>4</h3>
+</div></div>
+</div>
+<div class="col-md-3">
+<div class="card"><div class="card-body">
+<p class="m-b-0 text-fail">Tests Failed</p>
+<h3>8</h3>
+</div></div>
+</div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Tests</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='parent-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='33%'>
+<b>4</b> tests passed
+</small>
+</div>
+<div>
+<small data-tooltip='66%'><b>8</b> tests failed,
+<b>0</b> skipped, <b data-tooltip='0%'>0</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+<div class="col-md-6">
+<div class="card">
+<div class="card-header">
+<h6 class="card-title">Log events</h6>
+</div>
+<div class="card-body">
+<div class="">
+<canvas id='events-analysis' width='115' height='90'></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div><small data-tooltip='5%'><b>4</b> events passed</small></div>
+<div>
+<small data-tooltip='10%'><b>8</b> events failed,
+<b data-tooltip='%'>68</b> others
+</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row"><div class="col-md-12">
+<div class="card"><div class="card-header"><p>Timeline</p></div>
+<div class="card-body pt-0"><div>
+<canvas id="timeline" height="120"></canvas>
+</div></div>
+</div>
+</div></div>
+<script>
+var timeline = {
+"verifyingDiscountFilterFunctionality_Mobile_17-13-00":45.31,"verifyingBatteryCapacityFilterFunctionality_Mobile_17-13-00":67.539,"verifyingProcessorSpeedFilterFunctionality_Mobile_17-13-00":78.852,"verifyingDiscountFilterFunctionality_Laptop_17-14-01":78.637,"verifyingBatteryCapacityFilterFunctionality_Laptop_17-14-23":6.087,"verifyingBatteryCapacityFilterFunctionality_Tablet_17-14-31":8.348,"verifyingProcessorSpeedFilterFunctionality_Laptop_17-14-36":92.312,"verifyingStorageCapacityFilterFunctionality_Mobile_17-14-42":101.555,"verifyingDiscountFilterFunctionality_Tablet_17-15-22":34.462,"verifyingProcessorSpeedFilterFunctionality_Tablet_17-16-11":4.802,"verifyingStorageCapacityFilterFunctionality_Laptop_17-16-27":4.095,"verifyingStorageCapacityFilterFunctionality_Tablet_17-16-33":63.452
+};
+</script>
+<div class="row">
+</div>
+</div>
+<script>
+var statusGroup = {
+parentCount: 5,
+passParent: 4,
+failParent: 8,
+warningParent: 0,
+skipParent: 0,
+childCount: 5,
+passChild: 0,
+failChild: 0,
+warningChild: 0,
+skipChild: 0,
+infoChild: 0,
+grandChildCount: 5,
+passGrandChild: 0,
+failGrandChild: 0,
+warningGrandChild: 0,
+skipGrandChild: 0,
+infoGrandChild: 0,
+eventsCount: 5,
+passEvents: 4,
+failEvents: 8,
+warningEvents: 0,
+skipEvents: 0,
+infoEvents: 68
+};
+</script>        </div>
+      </div>
+    </div>
+  </div>
+<script src="https://cdn.jsdelivr.net/gh/extent-framework/extent-github-cdn@c05cd28cde1617b9d0c05a831daff6cb97fd9fd5/spark/js/spark-script.js"></script>
+<script type="text/javascript"></script></body>
+</html>
