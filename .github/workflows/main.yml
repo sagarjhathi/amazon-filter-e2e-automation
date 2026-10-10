@@ -30,7 +30,7 @@ jobs:
         group: [BatteryProcessorStorage, BrandsScreenSizeTypeCamEtc, DeliveryPriceOs]
     env:
       REPORT_BASE: "/amazon-filter-e2e-automation/"
-      IS_CRON: ${{ github.event_name == 'schedule' || true }} # <-- "true" only for cron
+      IS_CRON: ${{ github.event_name == 'schedule'}} # <-- "true" only for cron
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -294,3 +294,26 @@ jobs:
           git add -A
           git commit -m "Update report"
           git push origin gh-pages-deploy:gh-pages --force
+
+      - name: Notify Discord – End of Test
+        if: always()
+        shell: bash
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          runUrl="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          status="${{ needs.test.result }}"
+
+          if [ "$status" = "success" ]; then
+            status_emoji="✅"
+          elif [ "$status" = "failure" ]; then
+            status_emoji="❌"
+          else
+            status_emoji="⚠️"
+          fi
+
+          commit_short="${GITHUB_SHA:0:7}"
+          timestamp=$(TZ='Asia/Kolkata' date +"%Y-%m-%d %I:%M %p IST")
+          pagesUrl="https://sagarjhathi.github.io/amazon-filter-e2e-automation/"
+
+          curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$status_emoji **CI Pipeline** (${{ github.ref_name }}): tests $status\n Triggered by: ${{ github.actor }}\n Commit: \`$commit_short\`\n Completed at: $timestamp\n [View Full Run Details]($runUrl)\n [Open Latest Report on GitHub Pages]($pagesUrl)\"}" "$DISCORD_WEBHOOK"
