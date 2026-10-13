@@ -59,7 +59,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryPriceOs" }
 		)
 	public void verifyingGetItByTomorrowFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -108,7 +108,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class,groups = { "DeliveryAndPrice" }
+		    dataProviderClass = TestDataProvider.class,groups = { "DeliveryPriceOs" }
 		)
 	public void verifyingGetItIn2DaysFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -156,7 +156,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryPriceOs" }
 		)
 	public void verifyingGetItByTodayFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -204,7 +204,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryPriceOs" }
 		)
 	public void verifyingFreeDeliveryFilterFunctionality(String input) throws InterruptedException, TimeoutException{
 		
@@ -321,7 +321,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorStorage" }
 		)
 	public void verifyingStorageCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -401,7 +401,7 @@ public class AmazonTests extends BaseTest {
 	
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryAndPrice" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryPriceOs" }
 		)
 	public void verifyingPriceSilderFunctionality(String str) throws InterruptedException {
 		
@@ -471,7 +471,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorStorage" }
 		)
 	public void verifyingBatteryCapacityFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		ReportManager.getTest().info("Test Input Parameter: <b>" + input + "</b>");
@@ -636,7 +636,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorStorage" }
 		)
 	public void verifyingProcessorSpeedFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -798,7 +798,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
+		    dataProviderClass = TestDataProvider.class, groups = { "DeliveryPriceOs" }
 		)
 	public void verifyingOperatingSystemVersionFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		
@@ -963,7 +963,7 @@ public class AmazonTests extends BaseTest {
 
 	@Test(
 		    dataProvider = "ExcelData",
-		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorOsStorage" }
+		    dataProviderClass = TestDataProvider.class, groups = { "BatteryProcessorStorage" }
 		)
 	public void verifyingDiscountFilterFunctionality(String input) throws InterruptedException, TimeoutException {
 		

@@ -1,5 +1,8 @@
 
 
+# Local-only engineering notes - not part of the public-facing project
+docs/
+
 # Build output
 eclipse-workspace/Intro/target/
 

@@ -492,73 +492,94 @@ footer{
   </figure>
 
   <figure>
-    <svg viewBox="0 0 940 620" role="img" aria-label="Vertical diagram of the GitHub Actions pipeline from trigger through Discord notification, Maven build and test, artifact upload, to publishing the Extent report on GitHub Pages.">
+    <svg viewBox="0 0 940 700" role="img" aria-label="GitHub Actions pipeline: a trigger fans out into three parallel test shards, each uploading Extent and Allure artifacts; a publish job then merges Allure results, assembles the site, deploys to GitHub Pages with a single orphan commit, and sends a Discord completion message.">
       <defs>
         <marker id="arrow4" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
           <path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path>
         </marker>
       </defs>
 
-      <rect x="170" y="16" width="650" height="48" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="36" class="chip-text">Trigger: push · pull_request · workflow_dispatch · nightly cron (17:50 UTC)</text>
-      <text x="190" y="52" class="chip-text" style="fill:var(--ink-soft)">only the schedule trigger sets IS_CRON=true</text>
+      <rect x="170" y="12" width="650" height="48" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
+      <text x="190" y="32" class="chip-text">Trigger: push · pull_request · workflow_dispatch · nightly cron (17:50 UTC)</text>
+      <text x="190" y="48" class="chip-text" style="fill:var(--ink-soft)">only the schedule trigger sets IS_CRON=true</text>
 
-      <line x1="495" y1="64" x2="495" y2="86" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="400" y1="60" x2="170" y2="104" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="495" y1="60" x2="470" y2="104" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="590" y1="60" x2="770" y2="104" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
 
-      <rect x="170" y="88" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="111" class="chip-text">Discord webhook: "CI Test Started" (actor, branch, run link) — runs via if: always()</text>
+      <text x="30" y="98" class="band-title">job: test · matrix of 3 groups · fail-fast: false · runs in parallel</text>
 
-      <line x1="495" y1="124" x2="495" y2="146" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <rect x="30" y="106" width="280" height="132" rx="5" style="fill:var(--surface-2);stroke:var(--line)"></rect>
+      <text x="44" y="128" class="chip-text" style="fill:var(--accent)">BatteryProcessorStorage</text>
+      <text x="44" y="148" class="chip-text">Discord "started" message</text>
+      <text x="44" y="166" class="chip-text">mvn test -Dgroups=&lt;group&gt;</text>
+      <text x="44" y="184" class="chip-text" style="fill:var(--ink-soft)">upload extent-&lt;group&gt;</text>
+      <text x="44" y="202" class="chip-text" style="fill:var(--ink-soft)">upload allure-results-&lt;group&gt;</text>
+      <text x="44" y="224" class="chip-text" style="fill:var(--ink-soft)">Storage · Battery · Processor · Discount</text>
 
-      <rect x="170" y="148" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="171" class="chip-text">mvn clean compile → mvn test (continue-on-error: true)</text>
+      <rect x="330" y="106" width="280" height="132" rx="5" style="fill:var(--surface-2);stroke:var(--line)"></rect>
+      <text x="344" y="128" class="chip-text" style="fill:var(--accent)">BrandsScreenSizeTypeCamEtc</text>
+      <text x="344" y="148" class="chip-text">Discord "started" message</text>
+      <text x="344" y="166" class="chip-text">mvn test -Dgroups=&lt;group&gt;</text>
+      <text x="344" y="184" class="chip-text" style="fill:var(--ink-soft)">upload extent-&lt;group&gt;</text>
+      <text x="344" y="202" class="chip-text" style="fill:var(--ink-soft)">upload allure-results-&lt;group&gt;</text>
+      <text x="344" y="224" class="chip-text" style="fill:var(--ink-soft)">Brands · Size · Display · Camera</text>
 
-      <line x1="495" y1="184" x2="495" y2="206" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <rect x="630" y="106" width="280" height="132" rx="5" style="fill:var(--surface-2);stroke:var(--line)"></rect>
+      <text x="644" y="128" class="chip-text" style="fill:var(--accent)">DeliveryPriceOs</text>
+      <text x="644" y="148" class="chip-text">Discord "started" message</text>
+      <text x="644" y="166" class="chip-text">mvn test -Dgroups=&lt;group&gt;</text>
+      <text x="644" y="184" class="chip-text" style="fill:var(--ink-soft)">upload extent-&lt;group&gt;</text>
+      <text x="644" y="202" class="chip-text" style="fill:var(--ink-soft)">upload allure-results-&lt;group&gt;</text>
+      <text x="644" y="224" class="chip-text" style="fill:var(--ink-soft)">Delivery · Price slider · OS Version</text>
 
-      <rect x="170" y="208" width="650" height="48" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="228" class="chip-text">Find newest run_* folder on disk → RUN_FOLDER</text>
-      <text x="190" y="244" class="chip-text" style="fill:var(--ink-soft)">upload it as a build artifact, 30-day retention</text>
+      <line x1="170" y1="238" x2="420" y2="282" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="470" y1="238" x2="480" y2="282" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="770" y1="238" x2="570" y2="282" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
 
-      <line x1="495" y1="256" x2="495" y2="278" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <text x="30" y="276" class="band-title">job: publish · needs: test · if: always() — runs even if a shard failed</text>
 
-      <rect x="170" y="280" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="303" class="chip-text">Copy run_* to a temp path — staging, before the workspace gets wiped</text>
+      <rect x="170" y="286" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
+      <text x="190" y="309" class="chip-text">Download the 6 artifacts (3 Extent folders + 3 Allure result sets)</text>
 
-      <line x1="495" y1="316" x2="495" y2="338" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="495" y1="322" x2="495" y2="342" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
 
-      <rect x="170" y="340" width="650" height="48" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="360" class="chip-text">Checkout gh-pages branch, delete everything but .git</text>
-      <text x="190" y="376" class="chip-text" style="fill:var(--ink-soft)">restore the staged run_* folder into it</text>
+      <rect x="170" y="344" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
+      <text x="190" y="367" class="chip-text">allure generate &lt;3 result dirs&gt; → one merged Allure report</text>
 
-      <line x1="495" y1="388" x2="495" y2="410" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="495" y1="380" x2="495" y2="400" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
 
-      <rect x="170" y="412" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
-      <text x="190" y="435" class="chip-text">Write index.html — meta-refresh to run_*/reports/ExtentReport.html</text>
+      <rect x="170" y="402" width="650" height="48" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
+      <text x="190" y="422" class="chip-text">core.longpaths on → checkout gh-pages → delete everything but .git</text>
+      <text x="190" y="438" class="chip-text" style="fill:var(--ink-soft)">create run_&lt;timestamp&gt;/ in it</text>
 
-      <line x1="495" y1="448" x2="495" y2="470" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+      <line x1="495" y1="450" x2="495" y2="470" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
 
-      <rect x="170" y="472" width="650" height="36" rx="5" style="fill:var(--accent-soft);stroke:var(--accent)"></rect>
-      <text x="190" y="495" class="chip-text" style="fill:var(--accent)">git commit + push --force to gh-pages → report is now live</text>
+      <rect x="170" y="472" width="650" height="60" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
+      <text x="190" y="492" class="chip-text">Copy each shard folder in whole, untouched + allure-report/</text>
+      <text x="190" y="508" class="chip-text">Write styled index.html: MERGED Allure card + 3 Extent report cards</text>
 
-      <line x1="495" y1="508" x2="230" y2="530" style="stroke:var(--line)" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrow4)"></line>
-      <rect x="30" y="532" width="400" height="60" rx="5" style="fill:var(--surface-2);stroke:var(--line-soft)"></rect>
-      <text x="46" y="552" class="chip-text">No "completion" Discord message exists</text>
-      <text x="46" y="568" class="chip-text" style="fill:var(--ink-soft)">the README describes one; main.yml only sends</text>
-      <text x="46" y="582" class="chip-text" style="fill:var(--ink-soft)">the start notification. Worth knowing, not assuming.</text>
+      <line x1="495" y1="532" x2="495" y2="552" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
 
-      <line x1="495" y1="508" x2="760" y2="530" style="stroke:var(--line)" stroke-width="1.3" stroke-dasharray="4 3" marker-end="url(#arrow4)"></line>
-      <rect x="510" y="532" width="400" height="60" rx="5" style="fill:var(--surface-2);stroke:var(--line-soft)"></rect>
-      <text x="526" y="552" class="chip-text">IS_CRON reaches the suite via ConfigManager</text>
-      <text x="526" y="568" class="chip-text" style="fill:var(--ink-soft)">get(key): -D system property → env var → properties</text>
-      <text x="526" y="582" class="chip-text" style="fill:var(--ink-soft)">file, in that order — not a Maven -D flag today</text>
+      <rect x="170" y="554" width="650" height="48" rx="5" style="fill:var(--accent-soft);stroke:var(--accent)"></rect>
+      <text x="190" y="574" class="chip-text" style="fill:var(--accent)">git checkout --orphan → commit → push --force to gh-pages</text>
+      <text x="190" y="590" class="chip-text" style="fill:var(--accent)">single-commit history each deploy; report is now live</text>
+
+      <line x1="495" y1="602" x2="495" y2="620" style="stroke:currentColor" stroke-width="1.4" marker-end="url(#arrow4)"></line>
+
+      <rect x="170" y="622" width="650" height="36" rx="5" style="fill:var(--surface);stroke:var(--line)"></rect>
+      <text x="190" y="645" class="chip-text">Discord "completed" message: test result, commit, run + Pages links</text>
+
+      <text x="30" y="688" class="chip-text" style="fill:var(--ink-soft)">Extent reports stay whole per shard (relative ../logs links); Allure merges safely because attachments are keyed by UUID.</text>
     </svg>
     <figcaption>
-      Traced from <code>.github/workflows/main.yml</code>. The two side notes are the kind
-      of gap between documentation and implementation an interviewer likes to hear you
-      describe accurately: the completion Discord notice the README promises isn't wired
-      up in the workflow file, and the nightly/push mode switch depends on
-      <code>ConfigManager</code>'s three-tier property resolution rather than an explicit
-      flag passed into <code>mvn test</code>.
+      Traced from <code>.github/workflows/main.yml</code>. The <b>test</b> job fans out into
+      one runner per TestNG group, so total time is roughly the slowest shard, not the sum.
+      The <b>publish</b> job then does everything that must happen once: merge Allure,
+      assemble the site, deploy with a single orphan commit, and notify. The nightly/push
+      mode switch still depends on <code>ConfigManager</code>'s three-tier property
+      resolution (<code>-D</code> system property → env var → properties file) rather than
+      a flag passed into <code>mvn test</code>.
     </figcaption>
   </figure>
 
