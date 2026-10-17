@@ -1,0 +1,61 @@
+19:45:10 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:45:10 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - WebDriverManager: chromedriver setup OK
+19:45:14 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - ChromeDriver initialized successfully for thread: 34
+19:45:16 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Opening amazon Landing page
+19:45:16 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within safeFindElement method
+19:45:16 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (86d482d94dcf0df3238e35c82f1da41d)] -> xpath: //a[@id='nav-logo-sprites']]
+19:45:18 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Giving input within the search bar
+19:45:18 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within safeClick method
+19:45:21 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Clicked the  [[ChromeDriver: chrome on windows (86d482d94dcf0df3238e35c82f1da41d)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:45:21 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Clicking on the submit in the search bar
+19:45:21 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Waiting until element is visible in viewport
+19:45:22 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within validateDeliveryFilterOptionsWithResult method
+19:45:22 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within safeClick method
+19:45:22 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Clicked the  [[ChromeDriver: chrome on windows (86d482d94dcf0df3238e35c82f1da41d)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']]   using safeClick
+19:45:22 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within getMoreButtonByFilterTypeAndName method
+19:45:22 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Eligible for Free Delivery']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Free Shipping']
+19:45:22 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within safeFindElements 
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Returning the  [[[ChromeDriver: chrome on windows (86d482d94dcf0df3238e35c82f1da41d)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (86d482d94dcf0df3238e35c82f1da41d)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (86d482d94dcf0df3238e35c82f1da41d)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] this is the set  [Oct, Today, FREE delivery, 17, Sat, 18, Sun, Tomorrow]
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Checking if the allowedDateParts have the assert text — index 0, text: Samsung Galaxy Tab A11+ [Smartchoice], 11-inch (27.82 CM), LCD Display, 6GB RAM, 128GB ROM, Wi-Fi, Quad Speakers, Dolby Atmos, Silver, AI Enabled
+4.4
+(260)
+1K+ bought in past month
+Great Indian Festival
+₹21,499
+M.R.P:
+₹27,999 (23% off)
+Flat INR 250 Off on SBI BankCards
+FREE delivery Tue, 20 Oct
+Or fastest delivery Today 8 am - 12 pm
+Add to cart
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Checking if the allowedDateParts have the assert text — index 1, text: Lenovo Tab (Smartchoice) | 10.1 Inch Display| Wi-Fi Only| 4 GB RAM + 64 GB ROM (Expandable up to 1 TB)| Metal Body| Dual Speakers with Dolby Atmos| Android 14| Color: Polar Blue
+4.2
+(658)
+1K+ bought in past month
+Great Indian Festival
+₹14,490
+M.R.P:
+₹18,000 (20% off)
+You pay ₹13,990 with coupon
+FREE delivery Thu, 22 Oct
+Or fastest delivery Tomorrow, 19 Oct
+Add to cart
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Checking if the allowedDateParts have the assert text — index 2, text: Samsung Galaxy Tab S10 Lite [Smartchoice], 10.9-inch (27.7 CM), LCD Display, 6GB RAM, 128GB ROM, Wi-Fi+5G, Dual Speakers, S Pen, Silver, AI Enabled
+4.4
+(291)
+1K+ bought in past month
+Great Indian Festival
+₹33,999
+M.R.P:
+₹41,999 (19% off)
+Flat INR 1000 Off on SBI BankCards
+FREE delivery Thu, 22 Oct
+Or fastest delivery Today 8 am - 12 pm
+Add to cart
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+19:45:23 [TestNG-test-Test-1] INFO  verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10 - [verifyingFreeDeliveryFilterFunctionality_Tablet_19-45-10] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors

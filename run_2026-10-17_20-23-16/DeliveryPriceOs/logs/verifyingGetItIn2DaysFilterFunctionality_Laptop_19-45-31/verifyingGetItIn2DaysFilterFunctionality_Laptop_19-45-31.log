@@ -1,0 +1,77 @@
+19:45:31 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - No existing WebDriver found for current thread. Initializing a new ChromeDriver...
+19:45:31 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - WebDriverManager: chromedriver setup OK
+19:45:33 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - ChromeDriver initialized successfully for thread: 34
+19:45:38 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Opening amazon Landing page
+19:45:38 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within safeFindElement method
+19:45:38 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31]Found the element returning it ,element ->[[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //a[@id='nav-logo-sprites']]
+19:45:40 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Giving input within the search bar
+19:45:40 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within safeClick method
+19:45:43 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Clicked the  [[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //input[@id='nav-search-submit-button']]   using safeClick
+19:45:43 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Clicking on the submit in the search bar
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Waiting until element is visible in viewport
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within validateDeliveryFilterOptionsWithResult method
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within safeClick method
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Clicked the  [[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']]   using safeClick
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within getMoreButtonByFilterTypeAndName method
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Clicked on By.xpath: //span[@class='a-size-base a-color-base puis-bold-weight-text' and text()='Delivery Day']/parent::div/following-sibling::ul//span[@class='a-size-base a-color-base' and text()='Get It in 2 Days']
+19:45:44 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within safeFindElements 
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Returning the  [[[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']], [[ChromeDriver: chrome on windows (9e30a5c29dcfec8712b20af12ff78716)] -> xpath: //div[@class='a-section a-spacing-small a-spacing-top-small']]] from the safeFindElements method
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Created hashset with required data to assert with Within validateDeliveryFilterOptionsWithResult method
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] this is the set  [Oct, Today, FREE delivery, 17, Sat, 18, Sun, Tomorrow]
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Checking if the allowedDateParts have the assert text — index 0, text: Acer Smartchoice Aspire One, AMD Ryzen 3-7320U, 8GB LPDDR5 RAM/ 256GB SSD, 14.0"/35.56cm TN HD Display, Win 11 Home, Pure Silver, 1.48KG, A114-43, Thin and Light Laptop
+3.5
+(133)
+500+ bought in past month
+Great Indian Festival
+₹33,990
+M.R.P:
+₹71,999 (53% off)
+Flat INR 2000 Off on SBI BankCards
+FREE delivery Tue, 20 Oct
+Or fastest delivery Today 8 am - 12 pm
+Service: Device Setup
+Add to cart
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Checking if the allowedDateParts have the assert text — index 1, text: Acer Smartchoice Aspire One, AMD Ryzen 3-7320U, 8GB LPDDR5 RAM/ 512GB SSD, 14.0"/35.56cm TN HD Display, Win 11 Home, Pure Silver, 1.48KG, A114-43, Thin and Light Laptop
+3.5
+(133)
+500+ bought in past month
+Great Indian Festival
+₹36,990
+M.R.P:
+₹79,999 (54% off)
+Flat INR 2000 Off on SBI BankCards
+FREE delivery Tue, 20 Oct
+Or fastest delivery Today 8 am - 12 pm
+Service: Device Setup
+Add to cart
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Checking if the allowedDateParts have the assert text — index 2, text: Lenovo IdeaPad Slim 3 Smartchoice 13th Gen, Core i7-13620H, 16GB RAM, 512GB SSD, WUXGA IPS, 15.3 inch (38.8cm), Windows 11, Office 24, Grey, 1.6Kg, 83K1016UIN, Top Metal Cover, Backlit KB, Laptop
+4.3
+(22)
+400+ bought in past month
+Mega Festival Deal
+₹77,990
+M.R.P:
+₹1,16,890 (33% off)
+Save extra with No Cost EMI
+FREE delivery Tue, 20 Oct
+Or fastest delivery Today 8 am - 12 pm
+Service: Device Setup
+Add to cart
+19:45:45 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Within deliveryElements loop iterating over the products  Within validateDeliveryFilterOptionsWithResult method
+19:45:46 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Checking if the allowedDateParts have the assert text — index 3, text: Dell 15 SmartChoice (Previously Inspiron), Intel 13th Gen Core i5-1334U, 16GB, 1TB SSD, FHD,15.6"/39.62cm, Win 11, MSO'24, Silver, 1.62kg, [Dell 15], 12 Month McAfee, Backlit KB, Thin & Light Laptop
+4.0
+(317)
+1K+ bought in past month
+₹72,990
+M.R.P:
+₹99,478 (27% off)
+Save extra with No Cost EMI
+FREE delivery Sat, 24 Oct
+Or fastest delivery Today 8 am - 12 pm
+Service: Device Setup
+Add to cart
+19:45:46 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Returning the list with boolean values   Within validateDeliveryFilterOptionsWithResult method
+19:45:46 [TestNG-test-Test-1] INFO  verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31 - [verifyingGetItIn2DaysFilterFunctionality_Laptop_19-45-31] Asserting delivery filter: isValid=true, index=-1, text=All the things are valid no errors
